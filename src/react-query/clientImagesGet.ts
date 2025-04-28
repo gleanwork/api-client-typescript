@@ -87,7 +87,7 @@ export function setClientImagesGetData(
   client: QueryClient,
   queryKeyBase: [
     parameters: {
-      xScioActas?: string | undefined;
+      xGleanActAs?: string | undefined;
       xGleanAuthType?: string | undefined;
       key?: string | undefined;
       type?: components.ImageType | undefined;
@@ -107,7 +107,7 @@ export function invalidateClientImagesGet(
   client: QueryClient,
   queryKeyBase: TupleToPrefixes<
     [parameters: {
-      xScioActas?: string | undefined;
+      xGleanActAs?: string | undefined;
       xGleanAuthType?: string | undefined;
       key?: string | undefined;
       type?: components.ImageType | undefined;
@@ -144,7 +144,7 @@ export function buildClientImagesGetQuery(
 } {
   return {
     queryKey: queryKeyClientImagesGet({
-      xScioActas: request.xScioActas,
+      xGleanActAs: request.xGleanActAs,
       xGleanAuthType: request.xGleanAuthType,
       key: request.key,
       type: request.type,
@@ -172,7 +172,7 @@ export function buildClientImagesGetQuery(
 
 export function queryKeyClientImagesGet(
   parameters: {
-    xScioActas?: string | undefined;
+    xGleanActAs?: string | undefined;
     xGleanAuthType?: string | undefined;
     key?: string | undefined;
     type?: components.ImageType | undefined;

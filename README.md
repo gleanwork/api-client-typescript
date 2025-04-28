@@ -333,10 +333,6 @@ run();
 
 * [generate](docs/sdks/summarize/README.md#generate) - Summarize documents
 
-#### [client.tools](docs/sdks/tools/README.md)
-
-* [executeAction](docs/sdks/tools/README.md#executeaction) - Execute Action Tool
-
 #### [client.user](docs/sdks/user/README.md)
 
 * [addCredential](docs/sdks/user/README.md#addcredential) - Create credentials
@@ -522,7 +518,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`clientShortcutsUpload`](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 - [`clientSummarizeGenerate`](docs/sdks/summarize/README.md#generate) - Summarize documents
-- [`clientToolsExecuteAction`](docs/sdks/tools/README.md#executeaction) - Execute Action Tool
 - [`clientUserAddCredential`](docs/sdks/user/README.md#addcredential) - Create credentials
 - [`clientUserDeleteQueryHistory`](docs/sdks/user/README.md#deletequeryhistory) - Delete query history
 - [`clientUserGetPublicConfig`](docs/sdks/user/README.md#getpublicconfig) - Read public client configuration
@@ -690,7 +685,6 @@ To learn about this feature and how to get started, check
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`useClientShortcutsUploadMutation`](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 - [`useClientSummarizeGenerateMutation`](docs/sdks/summarize/README.md#generate) - Summarize documents
-- [`useClientToolsExecuteActionMutation`](docs/sdks/tools/README.md#executeaction) - Execute Action Tool
 - [`useClientUserAddCredentialMutation`](docs/sdks/user/README.md#addcredential) - Create credentials
 - [`useClientUserDeleteQueryHistoryMutation`](docs/sdks/user/README.md#deletequeryhistory) - Delete query history
 - [`useClientUserGetPublicConfigMutation`](docs/sdks/user/README.md#getpublicconfig) - Read public client configuration

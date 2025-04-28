@@ -59,6 +59,7 @@ let value: ChatMessageFragment = {
         id: "<id>",
         name: "<value>",
         members: [],
+        customFields: [],
         datasourceProfiles: [
           {
             datasource: "github",

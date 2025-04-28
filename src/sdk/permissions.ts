@@ -23,7 +23,7 @@ export class Permissions extends ClientSDK {
    * Update document permissions
    *
    * @remarks
-   * Updates the permissions for a given document without modifying document content. **This endpoint is not yet generally available. Please contact Glean support to enable this feature.**
+   * Updates the permissions for a given document without modifying document content.
    */
   async updatePermissions(
     request: components.UpdatePermissionsRequest,

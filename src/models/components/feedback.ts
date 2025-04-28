@@ -169,6 +169,10 @@ export type Feedback = {
    * The application ID of the client that sent the feedback event.
    */
   applicationId?: string | undefined;
+  /**
+   * The agent ID of the client that sent the feedback event.
+   */
+  agentId?: string | undefined;
 };
 
 /** @internal */
@@ -259,6 +263,7 @@ export const Feedback$inboundSchema: z.ZodType<
   userViewInfo: UserViewInfo$inboundSchema.optional(),
   workflowFeedbackInfo: WorkflowFeedbackInfo$inboundSchema.optional(),
   applicationId: z.string().optional(),
+  agentId: z.string().optional(),
 });
 
 /** @internal */
@@ -282,6 +287,7 @@ export type Feedback$Outbound = {
   userViewInfo?: UserViewInfo$Outbound | undefined;
   workflowFeedbackInfo?: WorkflowFeedbackInfo$Outbound | undefined;
   applicationId?: string | undefined;
+  agentId?: string | undefined;
 };
 
 /** @internal */
@@ -309,6 +315,7 @@ export const Feedback$outboundSchema: z.ZodType<
   userViewInfo: UserViewInfo$outboundSchema.optional(),
   workflowFeedbackInfo: WorkflowFeedbackInfo$outboundSchema.optional(),
   applicationId: z.string().optional(),
+  agentId: z.string().optional(),
 });
 
 /**

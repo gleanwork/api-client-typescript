@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Beta: Get information of a batch of documents
  *
  * @remarks
- * Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice. **This endpoint is not yet generally available. Please contact Glean support to enable this feature.**
+ * Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
  *
  * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
  */

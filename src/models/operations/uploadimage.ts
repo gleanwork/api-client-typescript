@@ -13,7 +13,7 @@ export type UploadimageRequest = {
   /**
    * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
    */
-  xScioActas?: string | undefined;
+  xGleanActAs?: string | undefined;
   /**
    * Auth type being used to access the endpoint (should be non-empty only for global tokens).
    */
@@ -46,7 +46,7 @@ export const UploadimageRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Scio-Actas": z.string().optional(),
+  "X-Glean-ActAs": z.string().optional(),
   "X-Glean-Auth-Type": z.string().optional(),
   type: components.ImageType$inboundSchema.optional(),
   id: z.string().optional(),
@@ -60,7 +60,7 @@ export const UploadimageRequest$inboundSchema: z.ZodType<
   ]),
 }).transform((v) => {
   return remap$(v, {
-    "X-Scio-Actas": "xScioActas",
+    "X-Glean-ActAs": "xGleanActAs",
     "X-Glean-Auth-Type": "xGleanAuthType",
     "RequestBody": "requestBody",
   });
@@ -68,7 +68,7 @@ export const UploadimageRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UploadimageRequest$Outbound = {
-  "X-Scio-Actas"?: string | undefined;
+  "X-Glean-ActAs"?: string | undefined;
   "X-Glean-Auth-Type"?: string | undefined;
   type?: string | undefined;
   id?: string | undefined;
@@ -83,7 +83,7 @@ export const UploadimageRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadimageRequest
 > = z.object({
-  xScioActas: z.string().optional(),
+  xGleanActAs: z.string().optional(),
   xGleanAuthType: z.string().optional(),
   type: components.ImageType$outboundSchema.optional(),
   id: z.string().optional(),
@@ -97,7 +97,7 @@ export const UploadimageRequest$outboundSchema: z.ZodType<
   ]),
 }).transform((v) => {
   return remap$(v, {
-    xScioActas: "X-Scio-Actas",
+    xGleanActAs: "X-Glean-ActAs",
     xGleanAuthType: "X-Glean-Auth-Type",
     requestBody: "RequestBody",
   });

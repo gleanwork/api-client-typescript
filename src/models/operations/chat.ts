@@ -13,7 +13,7 @@ export type ChatRequest = {
   /**
    * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
    */
-  xScioActas?: string | undefined;
+  xGleanActAs?: string | undefined;
   /**
    * Auth type being used to access the endpoint (should be non-empty only for global tokens).
    */
@@ -34,13 +34,13 @@ export const ChatRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Scio-Actas": z.string().optional(),
+  "X-Glean-ActAs": z.string().optional(),
   "X-Glean-Auth-Type": z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   ChatRequest: components.ChatRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "X-Scio-Actas": "xScioActas",
+    "X-Glean-ActAs": "xGleanActAs",
     "X-Glean-Auth-Type": "xGleanAuthType",
     "ChatRequest": "chatRequest",
   });
@@ -48,7 +48,7 @@ export const ChatRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ChatRequest$Outbound = {
-  "X-Scio-Actas"?: string | undefined;
+  "X-Glean-ActAs"?: string | undefined;
   "X-Glean-Auth-Type"?: string | undefined;
   timezoneOffset?: number | undefined;
   ChatRequest: components.ChatRequest$Outbound;
@@ -60,13 +60,13 @@ export const ChatRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ChatRequest
 > = z.object({
-  xScioActas: z.string().optional(),
+  xGleanActAs: z.string().optional(),
   xGleanAuthType: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   chatRequest: components.ChatRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xScioActas: "X-Scio-Actas",
+    xGleanActAs: "X-Glean-ActAs",
     xGleanAuthType: "X-Glean-Auth-Type",
     chatRequest: "ChatRequest",
   });

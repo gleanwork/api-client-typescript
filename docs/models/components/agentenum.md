@@ -7,11 +7,11 @@ Name of the agent.
 ```typescript
 import { AgentEnum } from "@gleanwork/api-client/models/components";
 
-let value: AgentEnum = "DEEP_RESEARCH";
+let value: AgentEnum = "GPT";
 ```
 
 ## Values
 
 ```typescript
-"DEFAULT" | "GPT" | "DEEP_RESEARCH"
+"DEFAULT" | "GPT"
 ```

@@ -100,6 +100,7 @@ let value: Chat = {
                 id: "<id>",
                 name: "<value>",
                 members: [],
+                customFields: [],
                 datasourceProfiles: [
                   {
                     datasource: "github",

@@ -111,6 +111,10 @@ export type AssistantConfig = {
    */
   chatBarPlaceholderText?: string | undefined;
   agentMigrationStatuses?: AgentMigrationStatuses | undefined;
+  /**
+   * The prompt deprecation time shown on the prompt library warning.
+   */
+  promptDeprecationTimestamp?: number | undefined;
 };
 
 /** @internal */
@@ -139,6 +143,7 @@ export const AssistantConfig$inboundSchema: z.ZodType<
   chatBarV3Enabled: z.boolean().optional(),
   chatBarPlaceholderText: z.string().optional(),
   agentMigrationStatuses: AgentMigrationStatuses$inboundSchema.optional(),
+  promptDeprecationTimestamp: z.number().int().optional(),
 });
 
 /** @internal */
@@ -163,6 +168,7 @@ export type AssistantConfig$Outbound = {
   chatBarV3Enabled?: boolean | undefined;
   chatBarPlaceholderText?: string | undefined;
   agentMigrationStatuses?: AgentMigrationStatuses$Outbound | undefined;
+  promptDeprecationTimestamp?: number | undefined;
 };
 
 /** @internal */
@@ -191,6 +197,7 @@ export const AssistantConfig$outboundSchema: z.ZodType<
   chatBarV3Enabled: z.boolean().optional(),
   chatBarPlaceholderText: z.string().optional(),
   agentMigrationStatuses: AgentMigrationStatuses$outboundSchema.optional(),
+  promptDeprecationTimestamp: z.number().int().optional(),
 });
 
 /**

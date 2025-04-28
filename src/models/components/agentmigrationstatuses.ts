@@ -17,6 +17,10 @@ export type AgentMigrationStatuses = {
    * The status of an agent migration
    */
   advancedPromptsMigrationStatus?: AgentMigrationStatus | undefined;
+  /**
+   * The status of an agent migration
+   */
+  appsMigrationStatus?: AgentMigrationStatus | undefined;
 };
 
 /** @internal */
@@ -26,11 +30,13 @@ export const AgentMigrationStatuses$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   advancedPromptsMigrationStatus: AgentMigrationStatus$inboundSchema.optional(),
+  appsMigrationStatus: AgentMigrationStatus$inboundSchema.optional(),
 });
 
 /** @internal */
 export type AgentMigrationStatuses$Outbound = {
   advancedPromptsMigrationStatus?: string | undefined;
+  appsMigrationStatus?: string | undefined;
 };
 
 /** @internal */
@@ -41,6 +47,7 @@ export const AgentMigrationStatuses$outboundSchema: z.ZodType<
 > = z.object({
   advancedPromptsMigrationStatus: AgentMigrationStatus$outboundSchema
     .optional(),
+  appsMigrationStatus: AgentMigrationStatus$outboundSchema.optional(),
 });
 
 /**

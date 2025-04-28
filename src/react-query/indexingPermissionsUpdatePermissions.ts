@@ -27,7 +27,7 @@ export type IndexingPermissionsUpdatePermissionsMutationData = void;
  * Update document permissions
  *
  * @remarks
- * Updates the permissions for a given document without modifying document content. **This endpoint is not yet generally available. Please contact Glean support to enable this feature.**
+ * Updates the permissions for a given document without modifying document content.
  */
 export function useIndexingPermissionsUpdatePermissionsMutation(
   options?: MutationHookOptions<

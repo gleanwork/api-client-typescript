@@ -11,6 +11,7 @@ let value: TeamsResponse = {
       id: "<id>",
       name: "<value>",
       members: [],
+      customFields: [],
       datasourceProfiles: [
         {
           datasource: "github",

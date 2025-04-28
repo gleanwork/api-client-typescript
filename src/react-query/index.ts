@@ -96,7 +96,6 @@ export * from "./clientShortcutsPreview.js";
 export * from "./clientShortcutsUpdate.js";
 export * from "./clientShortcutsUpload.js";
 export * from "./clientSummarizeGenerate.js";
-export * from "./clientToolsExecuteAction.js";
 export * from "./clientUserAddCredential.js";
 export * from "./clientUserDeleteQueryHistory.js";
 export * from "./clientUserGetPublicConfig.js";

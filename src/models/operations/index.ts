@@ -35,7 +35,6 @@ export * from "./editcollection.js";
 export * from "./editcollectionitem.js";
 export * from "./editdocumentcollections.js";
 export * from "./editpin.js";
-export * from "./executeactiontool.js";
 export * from "./feed.js";
 export * from "./feedback.js";
 export * from "./getagentinputs.js";

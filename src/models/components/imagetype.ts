@@ -16,6 +16,7 @@ export const ImageType = {
   Logo: "LOGO",
   Ugc: "UGC",
   User: "USER",
+  DocumentImage: "DOCUMENT_IMAGE",
 } as const;
 /**
  * The type of the image that determines how to interprets metadata and where the image will be stored

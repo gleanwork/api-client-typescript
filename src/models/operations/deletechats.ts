@@ -13,7 +13,7 @@ export type DeletechatsRequest = {
   /**
    * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
    */
-  xScioActas?: string | undefined;
+  xGleanActAs?: string | undefined;
   /**
    * Auth type being used to access the endpoint (should be non-empty only for global tokens).
    */
@@ -31,13 +31,13 @@ export const DeletechatsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Scio-Actas": z.string().optional(),
+  "X-Glean-ActAs": z.string().optional(),
   "X-Glean-Auth-Type": z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   DeleteChatsRequest: components.DeleteChatsRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "X-Scio-Actas": "xScioActas",
+    "X-Glean-ActAs": "xGleanActAs",
     "X-Glean-Auth-Type": "xGleanAuthType",
     "DeleteChatsRequest": "deleteChatsRequest",
   });
@@ -45,7 +45,7 @@ export const DeletechatsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DeletechatsRequest$Outbound = {
-  "X-Scio-Actas"?: string | undefined;
+  "X-Glean-ActAs"?: string | undefined;
   "X-Glean-Auth-Type"?: string | undefined;
   timezoneOffset?: number | undefined;
   DeleteChatsRequest: components.DeleteChatsRequest$Outbound;
@@ -57,13 +57,13 @@ export const DeletechatsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeletechatsRequest
 > = z.object({
-  xScioActas: z.string().optional(),
+  xGleanActAs: z.string().optional(),
   xGleanAuthType: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   deleteChatsRequest: components.DeleteChatsRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xScioActas: "X-Scio-Actas",
+    xGleanActAs: "X-Glean-ActAs",
     xGleanAuthType: "X-Glean-Auth-Type",
     deleteChatsRequest: "DeleteChatsRequest",
   });

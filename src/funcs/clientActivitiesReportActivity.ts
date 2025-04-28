@@ -92,15 +92,15 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "*/*",
+    "X-Glean-ActAs": encodeSimple("X-Glean-ActAs", payload["X-Glean-ActAs"], {
+      explode: false,
+      charEncoding: "none",
+    }),
     "X-Glean-Auth-Type": encodeSimple(
       "X-Glean-Auth-Type",
       payload["X-Glean-Auth-Type"],
       { explode: false, charEncoding: "none" },
     ),
-    "X-Scio-Actas": encodeSimple("X-Scio-Actas", payload["X-Scio-Actas"], {
-      explode: false,
-      charEncoding: "none",
-    }),
   }));
 
   const secConfig = await extractSecurity(client._options.bearerAuth);

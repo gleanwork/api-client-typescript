@@ -18,7 +18,7 @@ export type ImageMetadata = {
    */
   type: ImageType;
   /**
-   * ID, if a specific entity/type is requested. The id may have different meaning for each type. For USER, it is user id For UGC, it is the id of the content For ICON, the doctype.
+   * ID, if a specific entity/type is requested. The id may have different meaning for each type. For USER, it is user id For UGC, it is the id of the content For ICON, the doctype. For DOCUMENT_IMAGE, it is the id of the image.
    */
   id?: string | undefined;
   /**
@@ -29,6 +29,10 @@ export type ImageMetadata = {
    * Content id to differentitate multiple images that can have the same type and datasource e.g. thumnail or image from content of UGC. It can also be empty.
    */
   cid?: string | undefined;
+  /**
+   * Doc Id of the document for document images.
+   */
+  docid?: string | undefined;
   /**
    * Extension the image is saved with. The extension data is deduced from content type for image uploads.
    */
@@ -45,6 +49,7 @@ export const ImageMetadata$inboundSchema: z.ZodType<
   id: z.string().optional(),
   ds: z.string().optional(),
   cid: z.string().optional(),
+  docid: z.string().optional(),
   ext: z.string().optional(),
 });
 
@@ -54,6 +59,7 @@ export type ImageMetadata$Outbound = {
   id?: string | undefined;
   ds?: string | undefined;
   cid?: string | undefined;
+  docid?: string | undefined;
   ext?: string | undefined;
 };
 
@@ -67,6 +73,7 @@ export const ImageMetadata$outboundSchema: z.ZodType<
   id: z.string().optional(),
   ds: z.string().optional(),
   cid: z.string().optional(),
+  docid: z.string().optional(),
   ext: z.string().optional(),
 });
 

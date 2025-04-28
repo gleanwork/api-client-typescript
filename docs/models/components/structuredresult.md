@@ -57,6 +57,7 @@ let value: StructuredResult = {
     id: "<id>",
     name: "<value>",
     members: [],
+    customFields: [],
     datasourceProfiles: [
       {
         datasource: "github",

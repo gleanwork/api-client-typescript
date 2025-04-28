@@ -2,7 +2,7 @@
 
 {
   "name": "@gleanwork/api-client",
-  "version": "0.1.0-beta",
+  "version": "0.1.0-beta.1",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    

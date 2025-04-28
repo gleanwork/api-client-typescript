@@ -13,7 +13,7 @@ export type EditcollectionitemRequest = {
   /**
    * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
    */
-  xScioActas?: string | undefined;
+  xGleanActAs?: string | undefined;
   /**
    * Auth type being used to access the endpoint (should be non-empty only for global tokens).
    */
@@ -30,12 +30,12 @@ export const EditcollectionitemRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Scio-Actas": z.string().optional(),
+  "X-Glean-ActAs": z.string().optional(),
   "X-Glean-Auth-Type": z.string().optional(),
   EditCollectionItemRequest: components.EditCollectionItemRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "X-Scio-Actas": "xScioActas",
+    "X-Glean-ActAs": "xGleanActAs",
     "X-Glean-Auth-Type": "xGleanAuthType",
     "EditCollectionItemRequest": "editCollectionItemRequest",
   });
@@ -43,7 +43,7 @@ export const EditcollectionitemRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EditcollectionitemRequest$Outbound = {
-  "X-Scio-Actas"?: string | undefined;
+  "X-Glean-ActAs"?: string | undefined;
   "X-Glean-Auth-Type"?: string | undefined;
   EditCollectionItemRequest: components.EditCollectionItemRequest$Outbound;
 };
@@ -54,13 +54,13 @@ export const EditcollectionitemRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   EditcollectionitemRequest
 > = z.object({
-  xScioActas: z.string().optional(),
+  xGleanActAs: z.string().optional(),
   xGleanAuthType: z.string().optional(),
   editCollectionItemRequest:
     components.EditCollectionItemRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xScioActas: "X-Scio-Actas",
+    xGleanActAs: "X-Glean-ActAs",
     xGleanAuthType: "X-Glean-Auth-Type",
     editCollectionItemRequest: "EditCollectionItemRequest",
   });

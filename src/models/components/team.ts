@@ -8,6 +8,12 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CustomFieldData,
+  CustomFieldData$inboundSchema,
+  CustomFieldData$Outbound,
+  CustomFieldData$outboundSchema,
+} from "./customfielddata.js";
+import {
   DatasourceProfile,
   DatasourceProfile$inboundSchema,
   DatasourceProfile$Outbound,
@@ -102,6 +108,10 @@ export type Team = {
    */
   emails?: Array<TeamEmail> | undefined;
   /**
+   * Customizable fields for additional team information.
+   */
+  customFields?: Array<CustomFieldData> | undefined;
+  /**
    * The datasource profiles of the team
    */
   datasourceProfiles?: Array<DatasourceProfile> | undefined;
@@ -167,6 +177,8 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z
       .optional(),
     memberCount: z.number().int().optional(),
     emails: z.array(TeamEmail$inboundSchema).optional(),
+    customFields: z.array(z.lazy(() => CustomFieldData$inboundSchema))
+      .optional(),
     datasourceProfiles: z.array(DatasourceProfile$inboundSchema).optional(),
     datasource: z.string().optional(),
     createdFrom: z.string().optional(),
@@ -193,6 +205,7 @@ export type Team$Outbound = {
   members?: Array<PersonToTeamRelationship$Outbound> | undefined;
   memberCount?: number | undefined;
   emails?: Array<TeamEmail$Outbound> | undefined;
+  customFields?: Array<CustomFieldData$Outbound> | undefined;
   datasourceProfiles?: Array<DatasourceProfile$Outbound> | undefined;
   datasource?: string | undefined;
   createdFrom?: string | undefined;
@@ -219,6 +232,8 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
       .optional(),
     memberCount: z.number().int().optional(),
     emails: z.array(TeamEmail$outboundSchema).optional(),
+    customFields: z.array(z.lazy(() => CustomFieldData$outboundSchema))
+      .optional(),
     datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
     datasource: z.string().optional(),
     createdFrom: z.string().optional(),

@@ -13,7 +13,7 @@ export type DeletedisplayablelistsRequest = {
   /**
    * Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
    */
-  xScioActas?: string | undefined;
+  xGleanActAs?: string | undefined;
   /**
    * Auth type being used to access the endpoint (should be non-empty only for global tokens).
    */
@@ -30,13 +30,13 @@ export const DeletedisplayablelistsRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "X-Scio-Actas": z.string().optional(),
+  "X-Glean-ActAs": z.string().optional(),
   "X-Glean-Auth-Type": z.string().optional(),
   DeleteDisplayableListsRequest:
     components.DeleteDisplayableListsRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "X-Scio-Actas": "xScioActas",
+    "X-Glean-ActAs": "xGleanActAs",
     "X-Glean-Auth-Type": "xGleanAuthType",
     "DeleteDisplayableListsRequest": "deleteDisplayableListsRequest",
   });
@@ -44,7 +44,7 @@ export const DeletedisplayablelistsRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DeletedisplayablelistsRequest$Outbound = {
-  "X-Scio-Actas"?: string | undefined;
+  "X-Glean-ActAs"?: string | undefined;
   "X-Glean-Auth-Type"?: string | undefined;
   DeleteDisplayableListsRequest:
     components.DeleteDisplayableListsRequest$Outbound;
@@ -56,13 +56,13 @@ export const DeletedisplayablelistsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeletedisplayablelistsRequest
 > = z.object({
-  xScioActas: z.string().optional(),
+  xGleanActAs: z.string().optional(),
   xGleanAuthType: z.string().optional(),
   deleteDisplayableListsRequest:
     components.DeleteDisplayableListsRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    xScioActas: "X-Scio-Actas",
+    xGleanActAs: "X-Glean-ActAs",
     xGleanAuthType: "X-Glean-Auth-Type",
     deleteDisplayableListsRequest: "DeleteDisplayableListsRequest",
   });

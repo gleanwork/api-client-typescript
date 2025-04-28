@@ -88,6 +88,7 @@ let value: ChatRequest = {
                 id: "<id>",
                 name: "<value>",
                 members: [],
+                customFields: [],
                 datasourceProfiles: [
                   {
                     datasource: "github",

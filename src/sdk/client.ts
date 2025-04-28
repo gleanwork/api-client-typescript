@@ -21,7 +21,6 @@ import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
 import { Search } from "./search.js";
 import { Summarize } from "./summarize.js";
-import { Tools } from "./tools.js";
 import { User } from "./user.js";
 import { Verification } from "./verification.js";
 
@@ -114,11 +113,6 @@ export class Client extends ClientSDK {
   private _summarize?: Summarize;
   get summarize(): Summarize {
     return (this._summarize ??= new Summarize(this._options));
-  }
-
-  private _tools?: Tools;
-  get tools(): Tools {
-    return (this._tools ??= new Tools(this._options));
   }
 
   private _user?: User;

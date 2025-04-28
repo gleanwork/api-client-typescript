@@ -60,7 +60,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - name: feedback
                   in: query
@@ -95,7 +95,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -130,7 +130,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -165,7 +165,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -196,7 +196,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -227,7 +227,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -262,7 +262,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -297,7 +297,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -332,7 +332,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -367,7 +367,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -402,7 +402,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -433,7 +433,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -468,7 +468,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -503,7 +503,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -538,7 +538,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -573,7 +573,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -604,7 +604,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -639,7 +639,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -674,7 +674,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -709,7 +709,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -744,7 +744,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -779,7 +779,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -815,7 +815,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -851,7 +851,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -887,7 +887,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -923,7 +923,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -959,7 +959,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1016,7 +1016,7 @@ paths:
             operationId: createauthtoken
             x-visibility: Public
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             responses:
                 "200":
@@ -1043,7 +1043,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1078,7 +1078,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1124,7 +1124,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1263,7 +1263,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             responses:
@@ -1287,7 +1287,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1320,7 +1320,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1357,7 +1357,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             responses:
@@ -1385,7 +1385,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1419,7 +1419,7 @@ paths:
             operationId: uploadchatfiles
             x-visibility: Public
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1455,7 +1455,7 @@ paths:
             operationId: getchatfiles
             x-visibility: Public
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1491,7 +1491,7 @@ paths:
             operationId: deletechatfiles
             x-visibility: Public
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1523,7 +1523,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1558,7 +1558,7 @@ paths:
             description: Lists all agents that are available.
             operationId: listagents
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1591,7 +1591,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - $ref: "#/components/parameters/timezoneOffset"
             requestBody:
@@ -1626,7 +1626,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1661,7 +1661,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1702,7 +1702,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1739,7 +1739,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1776,7 +1776,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1817,7 +1817,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1852,7 +1852,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1887,7 +1887,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1922,7 +1922,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1957,7 +1957,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -1994,7 +1994,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2029,7 +2029,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2066,7 +2066,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2099,7 +2099,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2135,7 +2135,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2172,7 +2172,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2209,7 +2209,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2244,7 +2244,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2279,7 +2279,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2312,7 +2312,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - in: query
                   name: key
@@ -2370,7 +2370,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - in: query
                   name: type
@@ -2430,7 +2430,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2465,7 +2465,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2500,7 +2500,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2535,7 +2535,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2570,7 +2570,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2605,7 +2605,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2640,7 +2640,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2673,7 +2673,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2719,7 +2719,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2754,7 +2754,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2791,7 +2791,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 $ref: "#/components/requestBodies/PeopleSuggestRequest"
@@ -2820,7 +2820,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 $ref: "#/components/requestBodies/PeopleSuggestRequest"
@@ -2849,7 +2849,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2889,7 +2889,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2937,7 +2937,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -2972,7 +2972,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3007,7 +3007,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3042,7 +3042,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3077,7 +3077,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3108,7 +3108,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3143,7 +3143,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3178,7 +3178,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3213,7 +3213,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3248,7 +3248,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3283,7 +3283,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3308,42 +3308,6 @@ paths:
                     description: Too Many Requests
             x-speakeasy-name-override: generate
             x-speakeasy-group: client.summarize
-    /rest/api/v1/executeactiontool:
-        post:
-            tags:
-                - Tools
-            summary: Execute Action Tool
-            description: Executes an Action tool with the specified parameters.
-            operationId: executeactiontool
-            x-visibility: Preview
-            x-codegen-request-body-name: payload
-            parameters:
-                - $ref: "#/components/parameters/timezoneOffset"
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: "#/components/schemas/ExecuteActionToolRequest"
-                description: Execute Action Tool request
-                required: true
-                x-exportParamName: Request
-            responses:
-                "200":
-                    description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: "#/components/schemas/ExecuteActionToolResponse"
-                "400":
-                    description: Invalid request
-                "401":
-                    description: Not Authorized
-                "429":
-                    description: Too Many Requests
-                "500":
-                    description: Internal Server Error
-            x-speakeasy-name-override: executeAction
-            x-speakeasy-group: client.tools
     /rest/api/v1/addcredential:
         post:
             tags:
@@ -3354,7 +3318,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3385,7 +3349,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3420,7 +3384,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3451,7 +3415,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3483,7 +3447,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3514,7 +3478,7 @@ paths:
             x-visibility: Preview
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3545,7 +3509,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3582,7 +3546,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
                 - in: query
                   name: count
@@ -3615,7 +3579,7 @@ paths:
             x-visibility: Public
             x-codegen-request-body-name: payload
             parameters:
-                - $ref: "#/components/parameters/xScioActAsHeader"
+                - $ref: "#/components/parameters/xGleanActAsHeader"
                 - $ref: "#/components/parameters/xGleanAuthTypeHeader"
             requestBody:
                 content:
@@ -3720,9 +3684,8 @@ paths:
             x-speakeasy-group: indexing.documents
     /api/index/v1/updatepermissions:
         post:
-            x-beta: true
             summary: Update document permissions
-            description: Updates the permissions for a given document without modifying document content. **This endpoint is not yet generally available. Please contact Glean support to enable this feature.**
+            description: Updates the permissions for a given document without modifying document content.
             tags:
                 - Documents
             requestBody:
@@ -4116,7 +4079,7 @@ paths:
             summary: |
                 Beta: Get information of a batch of documents
             description: |
-                Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice. **This endpoint is not yet generally available. Please contact Glean support to enable this feature.**
+                Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
 
                 Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
             tags:
@@ -5048,6 +5011,9 @@ components:
                 applicationId:
                     type: string
                     description: The application ID of the client that sent the feedback event.
+                agentId:
+                    type: string
+                    description: The agent ID of the client that sent the feedback event.
             example:
                 trackingTokens:
                     - trackingTokens
@@ -5635,6 +5601,45 @@ components:
             required:
                 - email
                 - type
+        CustomFieldValueStr:
+            properties:
+                strText:
+                    type: string
+                    description: Text field for string value.
+        CustomFieldValueHyperlink:
+            properties:
+                urlAnchor:
+                    type: string
+                    description: Anchor text for hyperlink.
+                urlLink:
+                    type: string
+                    description: Link for this URL.
+        CustomFieldValuePerson:
+            properties:
+                person:
+                    $ref: "#/components/schemas/Person"
+        CustomFieldValue:
+            oneOf:
+                - $ref: "#/components/schemas/CustomFieldValueStr"
+                - $ref: "#/components/schemas/CustomFieldValueHyperlink"
+                - $ref: "#/components/schemas/CustomFieldValuePerson"
+        CustomFieldData:
+            required:
+                - label
+                - values
+                - displayable
+            properties:
+                label:
+                    type: string
+                    description: A user-facing label for this field.
+                values:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/CustomFieldValue"
+                displayable:
+                    type: boolean
+                    description: Determines whether the client should display this custom field
+                    default: true
         DatasourceProfile:
             required:
                 - datasource
@@ -5705,6 +5710,11 @@ components:
                         description: The emails for this team
                         items:
                             $ref: "#/components/schemas/TeamEmail"
+                    customFields:
+                        type: array
+                        description: Customizable fields for additional team information.
+                        items:
+                            $ref: "#/components/schemas/CustomFieldData"
                     datasourceProfiles:
                         type: array
                         description: The datasource profiles of the team
@@ -7046,45 +7056,6 @@ components:
                     description: The roleIds of the roles a user has.
                     items:
                         type: string
-        CustomFieldValueStr:
-            properties:
-                strText:
-                    type: string
-                    description: Text field for string value.
-        CustomFieldValueHyperlink:
-            properties:
-                urlAnchor:
-                    type: string
-                    description: Anchor text for hyperlink.
-                urlLink:
-                    type: string
-                    description: Link for this URL.
-        CustomFieldValuePerson:
-            properties:
-                person:
-                    $ref: "#/components/schemas/Person"
-        CustomFieldValue:
-            oneOf:
-                - $ref: "#/components/schemas/CustomFieldValueStr"
-                - $ref: "#/components/schemas/CustomFieldValueHyperlink"
-                - $ref: "#/components/schemas/CustomFieldValuePerson"
-        CustomFieldData:
-            required:
-                - label
-                - values
-                - displayable
-            properties:
-                label:
-                    type: string
-                    description: A user-facing label for this field.
-                values:
-                    type: array
-                    items:
-                        $ref: "#/components/schemas/CustomFieldValue"
-                displayable:
-                    type: boolean
-                    description: Determines whether the client should display this custom field
-                    default: true
         TimeInterval:
             required:
                 - start
@@ -9039,11 +9010,9 @@ components:
                     x-enumDescriptions:
                         DEFAULT: Integrates with your company's knowledge.
                         GPT: Communicates directly with the LLM.
-                        DEEP_RESEARCH: Agentic research to answer complex questions. Not currently available for API.
                     enum:
                         - DEFAULT
                         - GPT
-                        - DEEP_RESEARCH
                 mode:
                     type: string
                     description: Top level modes to run GleanChat in.
@@ -10191,6 +10160,7 @@ components:
                 - LOGO
                 - UGC
                 - USER
+                - DOCUMENT_IMAGE
         ImageMetadata:
             required:
                 - type
@@ -10199,13 +10169,16 @@ components:
                     $ref: "#/components/schemas/ImageType"
                 id:
                     type: string
-                    description: ID, if a specific entity/type is requested. The id may have different meaning for each type. For USER, it is user id For UGC, it is the id of the content For ICON, the doctype.
+                    description: ID, if a specific entity/type is requested. The id may have different meaning for each type. For USER, it is user id For UGC, it is the id of the content For ICON, the doctype. For DOCUMENT_IMAGE, it is the id of the image.
                 ds:
                     type: string
                     description: A specific datasource for which an image is requested for. The ds may have different meaning for each type and can also be empty for some. For USER, it is empty or datasource the icon is asked for. For UGC, it is the UGC datasource. For ICON, it is datasource instance the icon is asked for.
                 cid:
                     type: string
                     description: Content id to differentitate multiple images that can have the same type and datasource e.g. thumnail or image from content of UGC. It can also be empty.
+                docid:
+                    type: string
+                    description: Doc Id of the document for document images.
                 ext:
                     type: string
                     description: Extension the image is saved with. The extension data is deduced from content type for image uploads.
@@ -10226,6 +10199,14 @@ components:
                     items:
                         type: string
                     description: IDs of the AI Apps for which Insights should be returned. An empty array signifies all.
+        InsightsAgentsRequestOptions:
+            type: object
+            properties:
+                agentIds:
+                    type: array
+                    items:
+                        type: string
+                    description: IDs of the Agents for which Insights should be returned. An empty array signifies all.
         DownloadInsightsRequest:
             required:
                 - categories
@@ -10235,6 +10216,7 @@ components:
                     items:
                         type: string
                         enum:
+                            - AGENTS
                             - AI
                             - AI_APPS
                             - ANNOUNCEMENTS
@@ -10255,6 +10237,8 @@ components:
                     $ref: "#/components/schemas/Period"
                 aiAppRequestOptions:
                     $ref: "#/components/schemas/InsightsAiAppRequestOptions"
+                agentsRequestOptions:
+                    $ref: "#/components/schemas/InsightsAgentsRequestOptions"
         InsightsRequest:
             allOf:
                 - $ref: "#/components/schemas/DownloadInsightsRequest"
@@ -11446,41 +11430,6 @@ components:
                 trackingToken:
                     type: string
                     description: An opaque token that represents this summary in this particular query. To be used for /feedback reporting.
-        ExecuteActionToolRequest:
-            required:
-                - name
-            properties:
-                actionRunId:
-                    type: string
-                    description: Unique identifier for this actionRun execution event.
-                name:
-                    type: string
-                    description: The name of the tool.
-                actionInstanceId:
-                    type: string
-                    description: Unique identifier of an action instance.
-                parameters:
-                    type: object
-                    description: The parameters to be passed to the tool for action.
-                    additionalProperties:
-                        $ref: "#/components/schemas/WriteActionParameter"
-        ExecuteActionToolResponse:
-            properties:
-                message:
-                    type: string
-                    description: A descriptive message about the execution of the action tool.
-                error:
-                    type: string
-                    description: Error message, if any, when executing the action.
-                rawExternalResponse:
-                    type: string
-                    description: The raw response received from the external server.
-                resultURL:
-                    type: string
-                    description: The URL, if any, pointing to the output generated by the Action Tool after executing an action.
-                title:
-                    type: string
-                    description: The title, if any, of the output generated by the Action Tool after executing an action.
         AddCredentialRequest:
             properties:
                 datasource:
@@ -11646,6 +11595,8 @@ components:
             properties:
                 advancedPromptsMigrationStatus:
                     $ref: "#/components/schemas/AgentMigrationStatus"
+                appsMigrationStatus:
+                    $ref: "#/components/schemas/AgentMigrationStatus"
         AssistantConfig:
             description: Configuration settings specific to Assistant features
             type: object
@@ -11713,6 +11664,9 @@ components:
                     description: Placeholder text for the chat bar
                 agentMigrationStatuses:
                     $ref: "#/components/schemas/AgentMigrationStatuses"
+                promptDeprecationTimestamp:
+                    type: integer
+                    description: The prompt deprecation time shown on the prompt library warning.
         ToolsConfig:
             deprecated: true
             description: Configuration settings related to Tools.
@@ -13916,8 +13870,8 @@ components:
                         type: string
                         description: A human readable string identifying this instance as compared to its peers, e.g. "github.com/askscio" or "github.askscio.com"
     parameters:
-        xScioActAsHeader:
-            name: X-Scio-Actas
+        xGleanActAsHeader:
+            name: X-Glean-ActAs
             in: header
             description: Email address of a user on whose behalf the request is intended to be made (should be non-empty only for global tokens).
             required: false

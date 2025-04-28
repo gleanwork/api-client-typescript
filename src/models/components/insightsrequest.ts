@@ -8,6 +8,12 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  InsightsAgentsRequestOptions,
+  InsightsAgentsRequestOptions$inboundSchema,
+  InsightsAgentsRequestOptions$Outbound,
+  InsightsAgentsRequestOptions$outboundSchema,
+} from "./insightsagentsrequestoptions.js";
+import {
   InsightsAiAppRequestOptions,
   InsightsAiAppRequestOptions$inboundSchema,
   InsightsAiAppRequestOptions$Outbound,
@@ -21,6 +27,7 @@ import {
 } from "./period.js";
 
 export const InsightsRequestCategory = {
+  Agents: "AGENTS",
   Ai: "AI",
   AiApps: "AI_APPS",
   Announcements: "ANNOUNCEMENTS",
@@ -55,6 +62,7 @@ export type InsightsRequest = {
   departments?: Array<string> | undefined;
   dayRange?: Period | undefined;
   aiAppRequestOptions?: InsightsAiAppRequestOptions | undefined;
+  agentsRequestOptions?: InsightsAgentsRequestOptions | undefined;
   /**
    * Types of activity that should count in the definition of an Assistant Active User. Affects only insights for AI category.
    */
@@ -117,6 +125,7 @@ export const InsightsRequest$inboundSchema: z.ZodType<
   departments: z.array(z.string()).optional(),
   dayRange: Period$inboundSchema.optional(),
   aiAppRequestOptions: InsightsAiAppRequestOptions$inboundSchema.optional(),
+  agentsRequestOptions: InsightsAgentsRequestOptions$inboundSchema.optional(),
   assistantActivityTypes: z.array(AssistantActivityType$inboundSchema)
     .optional(),
   disablePerUserInsights: z.boolean().optional(),
@@ -128,6 +137,7 @@ export type InsightsRequest$Outbound = {
   departments?: Array<string> | undefined;
   dayRange?: Period$Outbound | undefined;
   aiAppRequestOptions?: InsightsAiAppRequestOptions$Outbound | undefined;
+  agentsRequestOptions?: InsightsAgentsRequestOptions$Outbound | undefined;
   assistantActivityTypes?: Array<string> | undefined;
   disablePerUserInsights?: boolean | undefined;
 };
@@ -142,6 +152,7 @@ export const InsightsRequest$outboundSchema: z.ZodType<
   departments: z.array(z.string()).optional(),
   dayRange: Period$outboundSchema.optional(),
   aiAppRequestOptions: InsightsAiAppRequestOptions$outboundSchema.optional(),
+  agentsRequestOptions: InsightsAgentsRequestOptions$outboundSchema.optional(),
   assistantActivityTypes: z.array(AssistantActivityType$outboundSchema)
     .optional(),
   disablePerUserInsights: z.boolean().optional(),
