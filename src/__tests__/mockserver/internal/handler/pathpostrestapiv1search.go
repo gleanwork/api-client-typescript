@@ -64,7 +64,7 @@ func testSearchSearch0(w http.ResponseWriter, req *http.Request) {
 				URL:   "https://www.example.com/",
 			},
 		},
-		ErrorInfo: &components.ErrorInfo{
+		GleanDataError: &components.GleanDataError{
 			ErrorMessages: []components.ErrorMessage{
 				components.ErrorMessage{
 					Source:       types.String("gmail"),

@@ -231,19 +231,10 @@ test("Collections Editcollectionitem", async () => {
   expect(result).toBeDefined();
 });
 
-test("Collections Editdocumentcollections", async () => {
-  const testHttpClient = createTestHTTPClient("editdocumentcollections");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.collections.edit({
-    editDocumentCollectionsRequest: {},
-  });
-  expect(result).toBeDefined();
+it.skip("Collections Editdocumentcollections", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step editdocumentcollections.test referencing operation editdocumentcollections not found in document`]",
+  );
 });
 
 test("Collections Getcollection", async () => {
@@ -278,37 +269,16 @@ test("Collections Listcollections", async () => {
   expect(result).toBeDefined();
 });
 
-test("Collections Movecollectionitem", async () => {
-  const testHttpClient = createTestHTTPClient("movecollectionitem");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.collections.moveItem({
-    moveCollectionItemRequest: {
-      collectionId: 451684,
-      itemId: "<id>",
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Collections Movecollectionitem", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step movecollectionitem.test referencing operation movecollectionitem not found in document`]",
+  );
 });
 
-test("Collections Pincollection", async () => {
-  const testHttpClient = createTestHTTPClient("pincollection");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.collections.pin({
-    pinCollectionRequest: {},
-  });
-  expect(result).toBeDefined();
+it.skip("Collections Pincollection", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step pincollection.test referencing operation pincollection not found in document`]",
+  );
 });
 
 it.skip("Collections Pin Collection", async () => {

@@ -6,83 +6,10 @@ import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Chat Ask", async () => {
-  const testHttpClient = createTestHTTPClient("ask");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.chat.ask({
-    askRequest: {
-      detectOnly: true,
-      askExperimentalMetadata: {
-        queryHasMentions: true,
-        queryIsLengthAppropriate: true,
-        queryIsAnswerable: true,
-      },
-      searchRequest: {
-        trackingToken: "trackingToken",
-        pageSize: 10,
-        query: "vacation policy",
-        requestOptions: {
-          facetFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "article",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "document",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-            {
-              fieldName: "department",
-              values: [],
-            },
-          ],
-          facetBucketSize: 250170,
-        },
-      },
-      excludedDocumentSpecs: [
-        {
-          url: "string",
-        },
-      ],
-      operators: "string",
-      backend: "SEARCH",
-      chatApplicationId: "string",
-      inclusions: {
-        containerSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        documentSpecs: [
-          {
-            url: "string",
-          },
-        ],
-        datasourceInstances: [
-          "string",
-        ],
-      },
-      exclusions: {
-        containerSpecs: [],
-        documentSpecs: [],
-        datasourceInstances: [
-          "string",
-        ],
-      },
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Chat Ask", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step ask.test referencing operation ask not found in document`]",
+  );
 });
 
 test("Chat Chat Default Example", async () => {

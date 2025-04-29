@@ -38,7 +38,7 @@ export function clientSearchAdmin(
 ): APIPromise<
   Result<
     components.SearchResponse,
-    | errors.ErrorInfo
+    | errors.GleanDataError
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -63,7 +63,7 @@ async function $do(
   [
     Result<
       components.SearchResponse,
-      | errors.ErrorInfo
+      | errors.GleanDataError
       | GleanError
       | SDKValidationError
       | UnexpectedClientError
@@ -151,7 +151,7 @@ async function $do(
 
   const [result] = await M.match<
     components.SearchResponse,
-    | errors.ErrorInfo
+    | errors.GleanDataError
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -161,7 +161,7 @@ async function $do(
     | ConnectionError
   >(
     M.json(200, components.SearchResponse$inboundSchema),
-    M.jsonErr([403, 422], errors.ErrorInfo$inboundSchema),
+    M.jsonErr([403, 422], errors.GleanDataError$inboundSchema),
     M.fail([400, 401, 429, "4XX"]),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

@@ -104,11 +104,11 @@ export const Event = {
  */
 export type Event = ClosedEnum<typeof Event>;
 
-export const FeedbackChannel1 = {
+export const FeedbackChannel = {
   Company: "COMPANY",
   Glean: "GLEAN",
 } as const;
-export type FeedbackChannel1 = ClosedEnum<typeof FeedbackChannel1>;
+export type FeedbackChannel = ClosedEnum<typeof FeedbackChannel>;
 
 export type Feedback = {
   /**
@@ -148,7 +148,7 @@ export type Feedback = {
   /**
    * Where the feedback will be sent, e.g. to Glean, the user's company, or both. If no channels are specified, feedback will go only to Glean.
    */
-  channels?: Array<FeedbackChannel1> | undefined;
+  channels?: Array<FeedbackChannel> | undefined;
   /**
    * The URL the client was at when the feedback event triggered.
    */
@@ -217,24 +217,24 @@ export namespace Event$ {
 }
 
 /** @internal */
-export const FeedbackChannel1$inboundSchema: z.ZodNativeEnum<
-  typeof FeedbackChannel1
-> = z.nativeEnum(FeedbackChannel1);
+export const FeedbackChannel$inboundSchema: z.ZodNativeEnum<
+  typeof FeedbackChannel
+> = z.nativeEnum(FeedbackChannel);
 
 /** @internal */
-export const FeedbackChannel1$outboundSchema: z.ZodNativeEnum<
-  typeof FeedbackChannel1
-> = FeedbackChannel1$inboundSchema;
+export const FeedbackChannel$outboundSchema: z.ZodNativeEnum<
+  typeof FeedbackChannel
+> = FeedbackChannel$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FeedbackChannel1$ {
-  /** @deprecated use `FeedbackChannel1$inboundSchema` instead. */
-  export const inboundSchema = FeedbackChannel1$inboundSchema;
-  /** @deprecated use `FeedbackChannel1$outboundSchema` instead. */
-  export const outboundSchema = FeedbackChannel1$outboundSchema;
+export namespace FeedbackChannel$ {
+  /** @deprecated use `FeedbackChannel$inboundSchema` instead. */
+  export const inboundSchema = FeedbackChannel$inboundSchema;
+  /** @deprecated use `FeedbackChannel$outboundSchema` instead. */
+  export const outboundSchema = FeedbackChannel$outboundSchema;
 }
 
 /** @internal */
@@ -254,7 +254,7 @@ export const Feedback$inboundSchema: z.ZodType<
     .optional(),
   user: User$inboundSchema.optional(),
   pathname: z.string().optional(),
-  channels: z.array(FeedbackChannel1$inboundSchema).optional(),
+  channels: z.array(FeedbackChannel$inboundSchema).optional(),
   url: z.string().optional(),
   uiTree: z.array(z.string()).optional(),
   uiElement: z.string().optional(),
@@ -306,7 +306,7 @@ export const Feedback$outboundSchema: z.ZodType<
   timestamp: z.date().transform(v => v.toISOString()).optional(),
   user: User$outboundSchema.optional(),
   pathname: z.string().optional(),
-  channels: z.array(FeedbackChannel1$outboundSchema).optional(),
+  channels: z.array(FeedbackChannel$outboundSchema).optional(),
   url: z.string().optional(),
   uiTree: z.array(z.string()).optional(),
   uiElement: z.string().optional(),

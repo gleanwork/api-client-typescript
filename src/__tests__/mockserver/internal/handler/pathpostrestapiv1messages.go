@@ -292,7 +292,7 @@ func testMessagesMessages0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 			},
-			ErrorInfo: &components.ErrorInfo{
+			GleanDataError: &components.GleanDataError{
 				ErrorMessages: []components.ErrorMessage{
 					components.ErrorMessage{
 						Source:       types.String("gmail"),

@@ -7,38 +7,38 @@ import (
 	"fmt"
 )
 
-// FeedEntryFormat - defines how to render this particular displayable list card
-type FeedEntryFormat string
+// Format - defines how to render this particular displayable list card
+type Format string
 
 const (
-	FeedEntryFormatList FeedEntryFormat = "LIST"
+	FormatList Format = "LIST"
 )
 
-func (e FeedEntryFormat) ToPointer() *FeedEntryFormat {
+func (e Format) ToPointer() *Format {
 	return &e
 }
-func (e *FeedEntryFormat) UnmarshalJSON(data []byte) error {
+func (e *Format) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "LIST":
-		*e = FeedEntryFormat(v)
+		*e = Format(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FeedEntryFormat: %v", v)
+		return fmt.Errorf("invalid value for Format: %v", v)
 	}
 }
 
 type UIConfig struct {
 	// defines how to render this particular displayable list card
-	Format *FeedEntryFormat `json:"format,omitempty"`
+	Format *Format `json:"format,omitempty"`
 	// UI configurations for each item of the list
 	AdditionalFlags *DisplayableListItemUIConfig `json:"additionalFlags,omitempty"`
 }
 
-func (o *UIConfig) GetFormat() *FeedEntryFormat {
+func (o *UIConfig) GetFormat() *Format {
 	if o == nil {
 		return nil
 	}

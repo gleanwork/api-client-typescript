@@ -15,7 +15,6 @@ The Glean TypeScript SDK provides convenient access to the Glean REST API in bot
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
   * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
-  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -202,18 +201,8 @@ run();
 #### [client.announcements](docs/sdks/announcements/README.md)
 
 * [create](docs/sdks/announcements/README.md#create) - Create Announcement
-* [createDraft](docs/sdks/announcements/README.md#createdraft) - Create draft Announcement
 * [delete](docs/sdks/announcements/README.md#delete) - Delete Announcement
-* [deleteDraft](docs/sdks/announcements/README.md#deletedraft) - Delete draft Announcement
-* [get](docs/sdks/announcements/README.md#get) - Read Announcement
-* [getDraft](docs/sdks/announcements/README.md#getdraft) - Read draft Announcement
-* [list](docs/sdks/announcements/README.md#list) - List Announcements
-* [preview](docs/sdks/announcements/README.md#preview) - Preview Announcement
-* [previewDraft](docs/sdks/announcements/README.md#previewdraft) - Preview draft Announcement
-* [publish](docs/sdks/announcements/README.md#publish) - Publish draft Announcement
-* [unpublish](docs/sdks/announcements/README.md#unpublish) - Unpublish Announcement
 * [update](docs/sdks/announcements/README.md#update) - Update Announcement
-* [updateDraft](docs/sdks/announcements/README.md#updatedraft) - Update draft Announcement
 
 #### [client.answers](docs/sdks/answers/README.md)
 
@@ -222,27 +211,13 @@ run();
 * [edit](docs/sdks/answers/README.md#edit) - Update Answer
 * [get](docs/sdks/answers/README.md#get) - Read Answer
 * [list](docs/sdks/answers/README.md#list) - List Answers
-* [preview](docs/sdks/answers/README.md#preview) - Preview Answer
-* [previewDraft](docs/sdks/answers/README.md#previewdraft) - Preview draft Answer
-* [updateLikes](docs/sdks/answers/README.md#updatelikes) - Update Answer likes
-* [~~createBoard~~](docs/sdks/answers/README.md#createboard) - Create Answer Board :warning: **Deprecated**
-* [~~deleteBoard~~](docs/sdks/answers/README.md#deleteboard) - Delete Answer Board :warning: **Deprecated**
-* [~~updateBoard~~](docs/sdks/answers/README.md#updateboard) - Update Answer Board :warning: **Deprecated**
-* [~~getBoard~~](docs/sdks/answers/README.md#getboard) - Read Answer Board :warning: **Deprecated**
-* [~~listBoards~~](docs/sdks/answers/README.md#listboards) - List Answer Boards :warning: **Deprecated**
 
 #### [client.authentication](docs/sdks/clientauthentication/README.md)
 
-* [createAnonymousToken](docs/sdks/clientauthentication/README.md#createanonymoustoken) - Create anonymous token
 * [createToken](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-
-#### [client.calendar](docs/sdks/calendar/README.md)
-
-* [getEvents](docs/sdks/calendar/README.md#getevents) - Read events
 
 #### [client.chat](docs/sdks/chat/README.md)
 
-* [ask](docs/sdks/chat/README.md#ask) - Detect and answer questions
 * [start](docs/sdks/chat/README.md#start) - Chat
 * [deleteAll](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
 * [delete](docs/sdks/chat/README.md#delete) - Deletes saved Chats
@@ -261,36 +236,19 @@ run();
 * [deleteItem](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
 * [update](docs/sdks/collections/README.md#update) - Update Collection
 * [editItem](docs/sdks/collections/README.md#edititem) - Update Collection item
-* [edit](docs/sdks/collections/README.md#edit) - Update document Collections
 * [get](docs/sdks/collections/README.md#get) - Read Collection
 * [list](docs/sdks/collections/README.md#list) - List Collections
-* [moveItem](docs/sdks/collections/README.md#moveitem) - Move Collection item
-* [pin](docs/sdks/collections/README.md#pin) - Pin Collection
-
-#### [client.displayableLists](docs/sdks/displayablelists/README.md)
-
-* [create](docs/sdks/displayablelists/README.md#create) - Create displayable lists
-* [delete](docs/sdks/displayablelists/README.md#delete) - Delete displayable lists
-* [get](docs/sdks/displayablelists/README.md#get) - Read displayable lists
-* [update](docs/sdks/displayablelists/README.md#update) - Update displayable lists
 
 #### [client.documents](docs/sdks/clientdocuments/README.md)
 
 * [getPermissions](docs/sdks/clientdocuments/README.md#getpermissions) - Read document permissions
 * [get](docs/sdks/clientdocuments/README.md#get) - Read documents
 * [getByFacets](docs/sdks/clientdocuments/README.md#getbyfacets) - Read documents by facets
-* [getAnalytics](docs/sdks/clientdocuments/README.md#getanalytics) - Read document analytics
 
 #### [client.entities](docs/sdks/entities/README.md)
 
 * [list](docs/sdks/entities/README.md#list) - List entities
 * [readPeople](docs/sdks/entities/README.md#readpeople) - Read people
-* [getTeams](docs/sdks/entities/README.md#getteams) - Read teams
-
-#### [client.images](docs/sdks/images/README.md)
-
-* [get](docs/sdks/images/README.md#get) - Get image
-* [upload](docs/sdks/images/README.md#upload) - Upload images
 
 #### [client.insights](docs/sdks/insights/README.md)
 
@@ -313,8 +271,6 @@ run();
 * [admin](docs/sdks/search/README.md#admin) - Search the index (admin)
 * [autocomplete](docs/sdks/search/README.md#autocomplete) - Autocomplete
 * [getFeed](docs/sdks/search/README.md#getfeed) - Feed of documents and events
-* [suggestPeople](docs/sdks/search/README.md#suggestpeople) - Suggest people
-* [suggestPeopleAdmin](docs/sdks/search/README.md#suggestpeopleadmin) - Suggest people (admin)
 * [recommendations](docs/sdks/search/README.md#recommendations) - Recommend documents
 * [execute](docs/sdks/search/README.md#execute) - Search
 
@@ -323,24 +279,13 @@ run();
 * [create](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
 * [delete](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
 * [get](docs/sdks/clientshortcuts/README.md#get) - Read shortcut
-* [getSimilar](docs/sdks/clientshortcuts/README.md#getsimilar) - Get similar shortcuts
 * [list](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
-* [preview](docs/sdks/clientshortcuts/README.md#preview) - Preview shortcut
 * [update](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 * [upload](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 
 #### [client.summarize](docs/sdks/summarize/README.md)
 
 * [generate](docs/sdks/summarize/README.md#generate) - Summarize documents
-
-#### [client.user](docs/sdks/user/README.md)
-
-* [addCredential](docs/sdks/user/README.md#addcredential) - Create credentials
-* [deleteQueryHistory](docs/sdks/user/README.md#deletequeryhistory) - Delete query history
-* [invite](docs/sdks/user/README.md#invite) - Send invitation
-* [getPublicConfig](docs/sdks/user/README.md#getpublicconfig) - Read public client configuration
-* [removeCredential](docs/sdks/user/README.md#removecredential) - Delete credentials
-* [sendSupportEmail](docs/sdks/user/README.md#sendsupportemail) - Send support email
 
 #### [client.verification](docs/sdks/verification/README.md)
 
@@ -438,30 +383,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientActivitiesReportActivity`](docs/sdks/activities/README.md#reportactivity) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
-- [`clientAnnouncementsCreateDraft`](docs/sdks/announcements/README.md#createdraft) - Create draft Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
-- [`clientAnnouncementsDeleteDraft`](docs/sdks/announcements/README.md#deletedraft) - Delete draft Announcement
-- [`clientAnnouncementsGet`](docs/sdks/announcements/README.md#get) - Read Announcement
-- [`clientAnnouncementsGetDraft`](docs/sdks/announcements/README.md#getdraft) - Read draft Announcement
-- [`clientAnnouncementsList`](docs/sdks/announcements/README.md#list) - List Announcements
-- [`clientAnnouncementsPreview`](docs/sdks/announcements/README.md#preview) - Preview Announcement
-- [`clientAnnouncementsPreviewDraft`](docs/sdks/announcements/README.md#previewdraft) - Preview draft Announcement
-- [`clientAnnouncementsPublish`](docs/sdks/announcements/README.md#publish) - Publish draft Announcement
-- [`clientAnnouncementsUnpublish`](docs/sdks/announcements/README.md#unpublish) - Unpublish Announcement
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
-- [`clientAnnouncementsUpdateDraft`](docs/sdks/announcements/README.md#updatedraft) - Update draft Announcement
 - [`clientAnswersCreate`](docs/sdks/answers/README.md#create) - Create Answer
 - [`clientAnswersDelete`](docs/sdks/answers/README.md#delete) - Delete Answer
 - [`clientAnswersEdit`](docs/sdks/answers/README.md#edit) - Update Answer
 - [`clientAnswersGet`](docs/sdks/answers/README.md#get) - Read Answer
 - [`clientAnswersList`](docs/sdks/answers/README.md#list) - List Answers
-- [`clientAnswersPreview`](docs/sdks/answers/README.md#preview) - Preview Answer
-- [`clientAnswersPreviewDraft`](docs/sdks/answers/README.md#previewdraft) - Preview draft Answer
-- [`clientAnswersUpdateLikes`](docs/sdks/answers/README.md#updatelikes) - Update Answer likes
-- [`clientAuthenticationCreateAnonymousToken`](docs/sdks/clientauthentication/README.md#createanonymoustoken) - Create anonymous token
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`clientCalendarGetEvents`](docs/sdks/calendar/README.md#getevents) - Read events
-- [`clientChatAsk`](docs/sdks/chat/README.md#ask) - Detect and answer questions
 - [`clientChatDelete`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
 - [`clientChatDeleteAll`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
 - [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
@@ -475,26 +404,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientCollectionsCreate`](docs/sdks/collections/README.md#create) - Create Collection
 - [`clientCollectionsDelete`](docs/sdks/collections/README.md#delete) - Delete Collection
 - [`clientCollectionsDeleteItem`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
-- [`clientCollectionsEdit`](docs/sdks/collections/README.md#edit) - Update document Collections
 - [`clientCollectionsEditItem`](docs/sdks/collections/README.md#edititem) - Update Collection item
 - [`clientCollectionsGet`](docs/sdks/collections/README.md#get) - Read Collection
 - [`clientCollectionsList`](docs/sdks/collections/README.md#list) - List Collections
-- [`clientCollectionsMoveItem`](docs/sdks/collections/README.md#moveitem) - Move Collection item
-- [`clientCollectionsPin`](docs/sdks/collections/README.md#pin) - Pin Collection
 - [`clientCollectionsUpdate`](docs/sdks/collections/README.md#update) - Update Collection
-- [`clientDisplayableListsCreate`](docs/sdks/displayablelists/README.md#create) - Create displayable lists
-- [`clientDisplayableListsDelete`](docs/sdks/displayablelists/README.md#delete) - Delete displayable lists
-- [`clientDisplayableListsGet`](docs/sdks/displayablelists/README.md#get) - Read displayable lists
-- [`clientDisplayableListsUpdate`](docs/sdks/displayablelists/README.md#update) - Update displayable lists
 - [`clientDocumentsGet`](docs/sdks/clientdocuments/README.md#get) - Read documents
-- [`clientDocumentsGetAnalytics`](docs/sdks/clientdocuments/README.md#getanalytics) - Read document analytics
 - [`clientDocumentsGetByFacets`](docs/sdks/clientdocuments/README.md#getbyfacets) - Read documents by facets
 - [`clientDocumentsGetPermissions`](docs/sdks/clientdocuments/README.md#getpermissions) - Read document permissions
-- [`clientEntitiesGetTeams`](docs/sdks/entities/README.md#getteams) - Read teams
 - [`clientEntitiesList`](docs/sdks/entities/README.md#list) - List entities
 - [`clientEntitiesReadPeople`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`clientImagesGet`](docs/sdks/images/README.md#get) - Get image
-- [`clientImagesUpload`](docs/sdks/images/README.md#upload) - Upload images
 - [`clientInsightsGet`](docs/sdks/insights/README.md#get) - Read insights
 - [`clientMessagesGet`](docs/sdks/messages/README.md#get) - Read messages
 - [`clientPinsCreate`](docs/sdks/pins/README.md#create) - Create pin
@@ -507,23 +425,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientSearchExecute`](docs/sdks/search/README.md#execute) - Search
 - [`clientSearchGetFeed`](docs/sdks/search/README.md#getfeed) - Feed of documents and events
 - [`clientSearchRecommendations`](docs/sdks/search/README.md#recommendations) - Recommend documents
-- [`clientSearchSuggestPeople`](docs/sdks/search/README.md#suggestpeople) - Suggest people
-- [`clientSearchSuggestPeopleAdmin`](docs/sdks/search/README.md#suggestpeopleadmin) - Suggest people (admin)
 - [`clientShortcutsCreate`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
 - [`clientShortcutsDelete`](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
 - [`clientShortcutsGet`](docs/sdks/clientshortcuts/README.md#get) - Read shortcut
-- [`clientShortcutsGetSimilar`](docs/sdks/clientshortcuts/README.md#getsimilar) - Get similar shortcuts
 - [`clientShortcutsList`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
-- [`clientShortcutsPreview`](docs/sdks/clientshortcuts/README.md#preview) - Preview shortcut
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`clientShortcutsUpload`](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 - [`clientSummarizeGenerate`](docs/sdks/summarize/README.md#generate) - Summarize documents
-- [`clientUserAddCredential`](docs/sdks/user/README.md#addcredential) - Create credentials
-- [`clientUserDeleteQueryHistory`](docs/sdks/user/README.md#deletequeryhistory) - Delete query history
-- [`clientUserGetPublicConfig`](docs/sdks/user/README.md#getpublicconfig) - Read public client configuration
-- [`clientUserInvite`](docs/sdks/user/README.md#invite) - Send invitation
-- [`clientUserRemoveCredential`](docs/sdks/user/README.md#removecredential) - Delete credentials
-- [`clientUserSendSupportEmail`](docs/sdks/user/README.md#sendsupportemail) - Send support email
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
@@ -564,11 +472,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`indexingTroubleshootingPostDocumentsDebug`](docs/sdks/troubleshooting/README.md#postdocumentsdebug) - Beta: Get information of a batch of documents
 
-- ~~[`clientAnswersCreateBoard`](docs/sdks/answers/README.md#createboard)~~ - Create Answer Board :warning: **Deprecated**
-- ~~[`clientAnswersDeleteBoard`](docs/sdks/answers/README.md#deleteboard)~~ - Delete Answer Board :warning: **Deprecated**
-- ~~[`clientAnswersGetBoard`](docs/sdks/answers/README.md#getboard)~~ - Read Answer Board :warning: **Deprecated**
-- ~~[`clientAnswersListBoards`](docs/sdks/answers/README.md#listboards)~~ - List Answer Boards :warning: **Deprecated**
-- ~~[`clientAnswersUpdateBoard`](docs/sdks/answers/README.md#updateboard)~~ - Update Answer Board :warning: **Deprecated**
 - ~~[`indexingPeopleBulkIndex`](docs/sdks/people/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
 - ~~[`indexingTroubleshootingGetDocumentCount`](docs/sdks/troubleshooting/README.md#getdocumentcount)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingTroubleshootingGetStatus`](docs/sdks/troubleshooting/README.md#getstatus)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -604,31 +507,15 @@ To learn about this feature and how to get started, check
 - [`useAgentsRunagentMutation`](docs/sdks/agents/README.md#runagent) - Runs an Agent.
 - [`useClientActivitiesReportActivityMutation`](docs/sdks/activities/README.md#reportactivity) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
-- [`useClientAnnouncementsCreateDraftMutation`](docs/sdks/announcements/README.md#createdraft) - Create draft Announcement
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
-- [`useClientAnnouncementsDeleteDraftMutation`](docs/sdks/announcements/README.md#deletedraft) - Delete draft Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
-- [`useClientAnnouncementsGetDraftMutation`](docs/sdks/announcements/README.md#getdraft) - Read draft Announcement
-- [`useClientAnnouncementsGetMutation`](docs/sdks/announcements/README.md#get) - Read Announcement
-- [`useClientAnnouncementsListMutation`](docs/sdks/announcements/README.md#list) - List Announcements
-- [`useClientAnnouncementsPreviewDraftMutation`](docs/sdks/announcements/README.md#previewdraft) - Preview draft Announcement
-- [`useClientAnnouncementsPreviewMutation`](docs/sdks/announcements/README.md#preview) - Preview Announcement
-- [`useClientAnnouncementsPublishMutation`](docs/sdks/announcements/README.md#publish) - Publish draft Announcement
-- [`useClientAnnouncementsUnpublishMutation`](docs/sdks/announcements/README.md#unpublish) - Unpublish Announcement
-- [`useClientAnnouncementsUpdateDraftMutation`](docs/sdks/announcements/README.md#updatedraft) - Update draft Announcement
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`useClientAnswersCreateMutation`](docs/sdks/answers/README.md#create) - Create Answer
 - [`useClientAnswersDeleteMutation`](docs/sdks/answers/README.md#delete) - Delete Answer
 - [`useClientAnswersEditMutation`](docs/sdks/answers/README.md#edit) - Update Answer
 - [`useClientAnswersGetMutation`](docs/sdks/answers/README.md#get) - Read Answer
 - [`useClientAnswersListMutation`](docs/sdks/answers/README.md#list) - List Answers
-- [`useClientAnswersPreviewDraftMutation`](docs/sdks/answers/README.md#previewdraft) - Preview draft Answer
-- [`useClientAnswersPreviewMutation`](docs/sdks/answers/README.md#preview) - Preview Answer
-- [`useClientAnswersUpdateLikesMutation`](docs/sdks/answers/README.md#updatelikes) - Update Answer likes
-- [`useClientAuthenticationCreateAnonymousTokenMutation`](docs/sdks/clientauthentication/README.md#createanonymoustoken) - Create anonymous token
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`useClientCalendarGetEventsMutation`](docs/sdks/calendar/README.md#getevents) - Read events
-- [`useClientChatAskMutation`](docs/sdks/chat/README.md#ask) - Detect and answer questions
 - [`useClientChatDeleteAllMutation`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
 - [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
 - [`useClientChatDeleteMutation`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
@@ -643,25 +530,14 @@ To learn about this feature and how to get started, check
 - [`useClientCollectionsDeleteItemMutation`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
 - [`useClientCollectionsDeleteMutation`](docs/sdks/collections/README.md#delete) - Delete Collection
 - [`useClientCollectionsEditItemMutation`](docs/sdks/collections/README.md#edititem) - Update Collection item
-- [`useClientCollectionsEditMutation`](docs/sdks/collections/README.md#edit) - Update document Collections
 - [`useClientCollectionsGetMutation`](docs/sdks/collections/README.md#get) - Read Collection
 - [`useClientCollectionsListMutation`](docs/sdks/collections/README.md#list) - List Collections
-- [`useClientCollectionsMoveItemMutation`](docs/sdks/collections/README.md#moveitem) - Move Collection item
-- [`useClientCollectionsPinMutation`](docs/sdks/collections/README.md#pin) - Pin Collection
 - [`useClientCollectionsUpdateMutation`](docs/sdks/collections/README.md#update) - Update Collection
-- [`useClientDisplayableListsCreateMutation`](docs/sdks/displayablelists/README.md#create) - Create displayable lists
-- [`useClientDisplayableListsDeleteMutation`](docs/sdks/displayablelists/README.md#delete) - Delete displayable lists
-- [`useClientDisplayableListsGetMutation`](docs/sdks/displayablelists/README.md#get) - Read displayable lists
-- [`useClientDisplayableListsUpdateMutation`](docs/sdks/displayablelists/README.md#update) - Update displayable lists
-- [`useClientDocumentsGetAnalyticsMutation`](docs/sdks/clientdocuments/README.md#getanalytics) - Read document analytics
 - [`useClientDocumentsGetByFacetsMutation`](docs/sdks/clientdocuments/README.md#getbyfacets) - Read documents by facets
 - [`useClientDocumentsGetMutation`](docs/sdks/clientdocuments/README.md#get) - Read documents
 - [`useClientDocumentsGetPermissionsMutation`](docs/sdks/clientdocuments/README.md#getpermissions) - Read document permissions
-- [`useClientEntitiesGetTeamsMutation`](docs/sdks/entities/README.md#getteams) - Read teams
 - [`useClientEntitiesListMutation`](docs/sdks/entities/README.md#list) - List entities
 - [`useClientEntitiesReadPeopleMutation`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`useClientImagesGet`](docs/sdks/images/README.md#get) - Get image
-- [`useClientImagesUploadMutation`](docs/sdks/images/README.md#upload) - Upload images
 - [`useClientInsightsGetMutation`](docs/sdks/insights/README.md#get) - Read insights
 - [`useClientMessagesGetMutation`](docs/sdks/messages/README.md#get) - Read messages
 - [`useClientPinsCreateMutation`](docs/sdks/pins/README.md#create) - Create pin
@@ -674,23 +550,13 @@ To learn about this feature and how to get started, check
 - [`useClientSearchExecuteMutation`](docs/sdks/search/README.md#execute) - Search
 - [`useClientSearchGetFeedMutation`](docs/sdks/search/README.md#getfeed) - Feed of documents and events
 - [`useClientSearchRecommendationsMutation`](docs/sdks/search/README.md#recommendations) - Recommend documents
-- [`useClientSearchSuggestPeopleAdminMutation`](docs/sdks/search/README.md#suggestpeopleadmin) - Suggest people (admin)
-- [`useClientSearchSuggestPeopleMutation`](docs/sdks/search/README.md#suggestpeople) - Suggest people
 - [`useClientShortcutsCreateMutation`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
 - [`useClientShortcutsDeleteMutation`](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
 - [`useClientShortcutsGetMutation`](docs/sdks/clientshortcuts/README.md#get) - Read shortcut
-- [`useClientShortcutsGetSimilarMutation`](docs/sdks/clientshortcuts/README.md#getsimilar) - Get similar shortcuts
 - [`useClientShortcutsListMutation`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
-- [`useClientShortcutsPreviewMutation`](docs/sdks/clientshortcuts/README.md#preview) - Preview shortcut
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`useClientShortcutsUploadMutation`](docs/sdks/clientshortcuts/README.md#upload) - Upload shortcuts
 - [`useClientSummarizeGenerateMutation`](docs/sdks/summarize/README.md#generate) - Summarize documents
-- [`useClientUserAddCredentialMutation`](docs/sdks/user/README.md#addcredential) - Create credentials
-- [`useClientUserDeleteQueryHistoryMutation`](docs/sdks/user/README.md#deletequeryhistory) - Delete query history
-- [`useClientUserGetPublicConfigMutation`](docs/sdks/user/README.md#getpublicconfig) - Read public client configuration
-- [`useClientUserInviteMutation`](docs/sdks/user/README.md#invite) - Send invitation
-- [`useClientUserRemoveCredentialMutation`](docs/sdks/user/README.md#removecredential) - Delete credentials
-- [`useClientUserSendSupportEmailMutation`](docs/sdks/user/README.md#sendsupportemail) - Send support email
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
@@ -731,11 +597,6 @@ To learn about this feature and how to get started, check
 
 - [`useIndexingTroubleshootingPostDocumentsDebugMutation`](docs/sdks/troubleshooting/README.md#postdocumentsdebug) - Beta: Get information of a batch of documents
 
-- ~~[`useClientAnswersCreateBoardMutation`](docs/sdks/answers/README.md#createboard)~~ - Create Answer Board :warning: **Deprecated**
-- ~~[`useClientAnswersDeleteBoardMutation`](docs/sdks/answers/README.md#deleteboard)~~ - Delete Answer Board :warning: **Deprecated**
-- ~~[`useClientAnswersGetBoardMutation`](docs/sdks/answers/README.md#getboard)~~ - Read Answer Board :warning: **Deprecated**
-- ~~[`useClientAnswersListBoardsMutation`](docs/sdks/answers/README.md#listboards)~~ - List Answer Boards :warning: **Deprecated**
-- ~~[`useClientAnswersUpdateBoardMutation`](docs/sdks/answers/README.md#updateboard)~~ - Update Answer Board :warning: **Deprecated**
 - ~~[`useIndexingPeopleBulkIndexMutation`](docs/sdks/people/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
 - ~~[`useIndexingTroubleshootingGetDocumentCountMutation`](docs/sdks/troubleshooting/README.md#getdocumentcount)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingTroubleshootingGetStatusMutation`](docs/sdks/troubleshooting/README.md#getstatus)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -743,42 +604,6 @@ To learn about this feature and how to get started, check
 
 </details>
 <!-- End React hooks with TanStack Query [react-query] -->
-
-<!-- Start File uploads [file-upload] -->
-## File uploads
-
-Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
-
-> [!TIP]
->
-> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
->
-> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
-> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
-> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
-> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
-
-```typescript
-import { Glean } from "@gleanwork/api-client";
-import { openAsBlob } from "node:fs";
-
-const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
-});
-
-async function run() {
-  const result = await glean.client.images.upload({
-    requestBody: await openAsBlob("example.file"),
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End File uploads [file-upload] -->
 
 <!-- Start Retries [retries] -->
 ## Retries

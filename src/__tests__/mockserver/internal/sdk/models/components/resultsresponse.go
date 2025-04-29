@@ -9,7 +9,7 @@ type ResultsResponse struct {
 	Results            []SearchResult     `json:"results,omitempty"`
 	StructuredResults  []StructuredResult `json:"structuredResults,omitempty"`
 	GeneratedQnaResult *GeneratedQna      `json:"generatedQnaResult,omitempty"`
-	ErrorInfo          *ErrorInfo         `json:"errorInfo,omitempty"`
+	GleanDataError     *GleanDataError    `json:"errorInfo,omitempty"`
 	// A platform-generated request ID to correlate backend logs.
 	RequestID *string `json:"requestID,omitempty"`
 	// Time in milliseconds the backend took to respond to the request.
@@ -51,11 +51,11 @@ func (o *ResultsResponse) GetGeneratedQnaResult() *GeneratedQna {
 	return o.GeneratedQnaResult
 }
 
-func (o *ResultsResponse) GetErrorInfo() *ErrorInfo {
+func (o *ResultsResponse) GetGleanDataError() *GleanDataError {
 	if o == nil {
 		return nil
 	}
-	return o.ErrorInfo
+	return o.GleanDataError
 }
 
 func (o *ResultsResponse) GetRequestID() *string {

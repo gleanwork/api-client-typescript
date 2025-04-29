@@ -20,7 +20,7 @@ let value: MessagesResponse = {
         url: "https://www.example.com/",
       },
     ],
-    errorInfo: {
+    gleanDataError: {
       errorMessages: [
         {
           source: "gmail",

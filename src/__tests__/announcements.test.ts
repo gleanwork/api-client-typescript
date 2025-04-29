@@ -4,7 +4,6 @@
 
 import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
-import { RFCDate } from "../types/index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Announcements Createannouncement", async () => {
@@ -32,40 +31,10 @@ test("Announcements Createannouncement", async () => {
   expect(result).toBeDefined();
 });
 
-test("Announcements Createdraftannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("createdraftannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.createDraft({
-    createDraftAnnouncementRequest: {
-      body: {
-        text:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        structuredList: [],
-      },
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Createdraftannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step createdraftannouncement.test referencing operation createdraftannouncement not found in document`]",
+  );
 });
 
 test("Announcements Deleteannouncement", async () => {
@@ -84,219 +53,52 @@ test("Announcements Deleteannouncement", async () => {
   });
 });
 
-test("Announcements Deletedraftannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("deletedraftannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  await glean.client.announcements.deleteDraft({
-    deleteAnnouncementRequest: {
-      id: 545907,
-    },
-  });
+it.skip("Announcements Deletedraftannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step deletedraftannouncement.test referencing operation deletedraftannouncement not found in document`]",
+  );
 });
 
-test("Announcements Getannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("getannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.get({
-    getAnnouncementRequest: {
-      id: 700347,
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Getannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step getannouncement.test referencing operation getannouncement not found in document`]",
+  );
 });
 
-test("Announcements Getdraftannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("getdraftannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.getDraft({
-    getAnnouncementRequest: {
-      id: 700347,
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Getdraftannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step getdraftannouncement.test referencing operation getdraftannouncement not found in document`]",
+  );
 });
 
-test("Announcements Listannouncements", async () => {
-  const testHttpClient = createTestHTTPClient("listannouncements");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.list({
-    listAnnouncementsRequest: {},
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Listannouncements", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step listannouncements.test referencing operation listannouncements not found in document`]",
+  );
 });
 
-test("Announcements Previewannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("previewannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.preview({
-    structuredTextMutableProperties: {
-      text:
-        "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Previewannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step previewannouncement.test referencing operation previewannouncement not found in document`]",
+  );
 });
 
-test("Announcements Previewannouncementdraft", async () => {
-  const testHttpClient = createTestHTTPClient("previewannouncementdraft");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.previewDraft({
-    previewUgcRequest: {
-      draft: {
-        announcement: {
-          body: {
-            text:
-              "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-            structuredList: [],
-          },
-          audienceFilters: [
-            {
-              fieldName: "type",
-              values: [
-                {
-                  value: "Spreadsheet",
-                  relationType: "EQUALS",
-                },
-                {
-                  value: "Presentation",
-                  relationType: "EQUALS",
-                },
-              ],
-            },
-          ],
-        },
-        answer: {
-          question: "Why is the sky blue?",
-          bodyText:
-            "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-          audienceFilters: [],
-          addedRoles: [
-            {
-              person: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-                relatedDocuments: [],
-                metadata: {
-                  type: "FULL_TIME",
-                  title: "Actor",
-                  department: "Movies",
-                  email: "george@example.com",
-                  location: "Hollywood, CA",
-                  managementChain: [],
-                  phone: "6505551234",
-                  photoUrl: "https://example.com/george.jpg",
-                  reports: [],
-                  startDate: new RFCDate("2000-01-23"),
-                  datasourceProfile: [],
-                  querySuggestions: {
-                    suggestions: [],
-                  },
-                  inviteInfo: {
-                    invites: [],
-                  },
-                  customFields: [],
-                  badges: [],
-                },
-              },
-              role: "EDITOR",
-            },
-            {
-              role: "EDITOR",
-            },
-            {
-              role: "EDITOR",
-            },
-          ],
-          removedRoles: [
-            {
-              role: "EDITOR",
-            },
-            {
-              role: "EDITOR",
-            },
-          ],
-          roles: [
-            {
-              role: "ANSWER_MODERATOR",
-            },
-            {
-              role: "ANSWER_MODERATOR",
-            },
-          ],
-        },
-      },
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Previewannouncementdraft", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step previewannouncementdraft.test referencing operation previewannouncementdraft not found in document`]",
+  );
 });
 
-test("Announcements Publishdraftannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("publishdraftannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  await glean.client.announcements.publish({
-    publishDraftAnnouncementRequest: {
-      id: 900222,
-    },
-  });
+it.skip("Announcements Publishdraftannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step publishdraftannouncement.test referencing operation publishdraftannouncement not found in document`]",
+  );
 });
 
-test("Announcements Unpublishannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("unpublishannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.unpublish({
-    unpublishAnnouncementRequest: {
-      id: 195182,
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Unpublishannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step unpublishannouncement.test referencing operation unpublishannouncement not found in document`]",
+  );
 });
 
 test("Announcements Updateannouncement", async () => {
@@ -339,41 +141,10 @@ test("Announcements Updateannouncement", async () => {
   expect(result).toBeDefined();
 });
 
-test("Announcements Updatedraftannouncement", async () => {
-  const testHttpClient = createTestHTTPClient("updatedraftannouncement");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.announcements.updateDraft({
-    updateDraftAnnouncementRequest: {
-      body: {
-        text:
-          "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        structuredList: [],
-      },
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      draftId: 410741,
-    },
-  });
-  expect(result).toBeDefined();
+it.skip("Announcements Updatedraftannouncement", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step updatedraftannouncement.test referencing operation updatedraftannouncement not found in document`]",
+  );
 });
 
 it.skip("Announcements Create Announcement", async () => {

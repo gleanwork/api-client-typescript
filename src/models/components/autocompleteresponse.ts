@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -19,11 +20,11 @@ import {
   AutocompleteResultGroup$outboundSchema,
 } from "./autocompleteresultgroup.js";
 import {
-  ErrorInfo,
-  ErrorInfo$inboundSchema,
-  ErrorInfo$Outbound,
-  ErrorInfo$outboundSchema,
-} from "./errorinfo.js";
+  GleanDataError,
+  GleanDataError$inboundSchema,
+  GleanDataError$Outbound,
+  GleanDataError$outboundSchema,
+} from "./gleandataerror.js";
 import {
   SessionInfo,
   SessionInfo$inboundSchema,
@@ -46,7 +47,7 @@ export type AutocompleteResponse = {
    * Subsections of the results list from which distinct sections should be created.
    */
   groups?: Array<AutocompleteResultGroup> | undefined;
-  errorInfo?: ErrorInfo | undefined;
+  gleanDataError?: GleanDataError | undefined;
   /**
    * Time in milliseconds the backend took to respond to the request.
    */
@@ -64,8 +65,12 @@ export const AutocompleteResponse$inboundSchema: z.ZodType<
   sessionInfo: SessionInfo$inboundSchema.optional(),
   results: z.array(AutocompleteResult$inboundSchema).optional(),
   groups: z.array(AutocompleteResultGroup$inboundSchema).optional(),
-  errorInfo: ErrorInfo$inboundSchema.optional(),
+  errorInfo: GleanDataError$inboundSchema.optional(),
   backendTimeMillis: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "errorInfo": "gleanDataError",
+  });
 });
 
 /** @internal */
@@ -75,7 +80,7 @@ export type AutocompleteResponse$Outbound = {
   sessionInfo?: SessionInfo$Outbound | undefined;
   results?: Array<AutocompleteResult$Outbound> | undefined;
   groups?: Array<AutocompleteResultGroup$Outbound> | undefined;
-  errorInfo?: ErrorInfo$Outbound | undefined;
+  errorInfo?: GleanDataError$Outbound | undefined;
   backendTimeMillis?: number | undefined;
 };
 
@@ -90,8 +95,12 @@ export const AutocompleteResponse$outboundSchema: z.ZodType<
   sessionInfo: SessionInfo$outboundSchema.optional(),
   results: z.array(AutocompleteResult$outboundSchema).optional(),
   groups: z.array(AutocompleteResultGroup$outboundSchema).optional(),
-  errorInfo: ErrorInfo$outboundSchema.optional(),
+  gleanDataError: GleanDataError$outboundSchema.optional(),
   backendTimeMillis: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    gleanDataError: "errorInfo",
+  });
 });
 
 /**

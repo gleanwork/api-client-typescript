@@ -47,14 +47,14 @@ import {
 /**
  * This determines whether this is a Social Feed post or a regular announcement.
  */
-export const AnnouncementChannel1 = {
+export const AnnouncementChannel = {
   Main: "MAIN",
   SocialFeed: "SOCIAL_FEED",
 } as const;
 /**
  * This determines whether this is a Social Feed post or a regular announcement.
  */
-export type AnnouncementChannel1 = ClosedEnum<typeof AnnouncementChannel1>;
+export type AnnouncementChannel = ClosedEnum<typeof AnnouncementChannel>;
 
 /**
  * This determines whether this is an external-link post or a regular announcement post. TEXT - Regular announcement that can contain rich text. LINK - Announcement that is linked to an external site.
@@ -114,7 +114,7 @@ export type Announcement = {
   /**
    * This determines whether this is a Social Feed post or a regular announcement.
    */
-  channel?: AnnouncementChannel1 | undefined;
+  channel?: AnnouncementChannel | undefined;
   /**
    * This determines whether this is an external-link post or a regular announcement post. TEXT - Regular announcement that can contain rich text. LINK - Announcement that is linked to an external site.
    */
@@ -155,24 +155,24 @@ export type Announcement = {
 };
 
 /** @internal */
-export const AnnouncementChannel1$inboundSchema: z.ZodNativeEnum<
-  typeof AnnouncementChannel1
-> = z.nativeEnum(AnnouncementChannel1);
+export const AnnouncementChannel$inboundSchema: z.ZodNativeEnum<
+  typeof AnnouncementChannel
+> = z.nativeEnum(AnnouncementChannel);
 
 /** @internal */
-export const AnnouncementChannel1$outboundSchema: z.ZodNativeEnum<
-  typeof AnnouncementChannel1
-> = AnnouncementChannel1$inboundSchema;
+export const AnnouncementChannel$outboundSchema: z.ZodNativeEnum<
+  typeof AnnouncementChannel
+> = AnnouncementChannel$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AnnouncementChannel1$ {
-  /** @deprecated use `AnnouncementChannel1$inboundSchema` instead. */
-  export const inboundSchema = AnnouncementChannel1$inboundSchema;
-  /** @deprecated use `AnnouncementChannel1$outboundSchema` instead. */
-  export const outboundSchema = AnnouncementChannel1$outboundSchema;
+export namespace AnnouncementChannel$ {
+  /** @deprecated use `AnnouncementChannel$inboundSchema` instead. */
+  export const inboundSchema = AnnouncementChannel$inboundSchema;
+  /** @deprecated use `AnnouncementChannel$outboundSchema` instead. */
+  export const outboundSchema = AnnouncementChannel$outboundSchema;
 }
 
 /** @internal */
@@ -271,7 +271,7 @@ export const Announcement$inboundSchema: z.ZodType<
   audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
   sourceDocumentId: z.string().optional(),
   hideAttribution: z.boolean().optional(),
-  channel: AnnouncementChannel1$inboundSchema.optional(),
+  channel: AnnouncementChannel$inboundSchema.optional(),
   postType: AnnouncementPostType$inboundSchema.optional(),
   isPrioritized: z.boolean().optional(),
   viewUrl: z.string().optional(),
@@ -331,7 +331,7 @@ export const Announcement$outboundSchema: z.ZodType<
   audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
   sourceDocumentId: z.string().optional(),
   hideAttribution: z.boolean().optional(),
-  channel: AnnouncementChannel1$outboundSchema.optional(),
+  channel: AnnouncementChannel$outboundSchema.optional(),
   postType: AnnouncementPostType$outboundSchema.optional(),
   isPrioritized: z.boolean().optional(),
   viewUrl: z.string().optional(),

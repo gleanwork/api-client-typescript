@@ -7,8 +7,6 @@ import { clientSearchAutocomplete } from "../funcs/clientSearchAutocomplete.js";
 import { clientSearchExecute } from "../funcs/clientSearchExecute.js";
 import { clientSearchGetFeed } from "../funcs/clientSearchGetFeed.js";
 import { clientSearchRecommendations } from "../funcs/clientSearchRecommendations.js";
-import { clientSearchSuggestPeople } from "../funcs/clientSearchSuggestPeople.js";
-import { clientSearchSuggestPeopleAdmin } from "../funcs/clientSearchSuggestPeopleAdmin.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -60,40 +58,6 @@ export class Search extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.FeedResponse> {
     return unwrapAsync(clientSearchGetFeed(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Suggest people
-   *
-   * @remarks
-   * Retrieves a list of suggested people for given type. Includes information about the persons.
-   */
-  async suggestPeople(
-    request: operations.PeoplesuggestRequest,
-    options?: RequestOptions,
-  ): Promise<components.PeopleSuggestResponse> {
-    return unwrapAsync(clientSearchSuggestPeople(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Suggest people (admin)
-   *
-   * @remarks
-   * Returns a list of suggested people for given type for admin's view. Includes information about the persons.
-   */
-  async suggestPeopleAdmin(
-    request: operations.PeoplesuggestadminRequest,
-    options?: RequestOptions,
-  ): Promise<components.PeopleSuggestResponse> {
-    return unwrapAsync(clientSearchSuggestPeopleAdmin(
       this,
       request,
       options,

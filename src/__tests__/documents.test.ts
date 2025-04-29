@@ -86,17 +86,10 @@ test("Documents Getdocumentsbyfacets", async () => {
   expect(result).toBeDefined();
 });
 
-test("Documents Getdocumentanalytics", async () => {
-  const testHttpClient = createTestHTTPClient("getdocumentanalytics");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.documents.getAnalytics({});
-  expect(result).toBeDefined();
+it.skip("Documents Getdocumentanalytics", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step getdocumentanalytics.test referencing operation getdocumentanalytics not found in document`]",
+  );
 });
 
 it.skip("Documents Post /Indexdocument", async () => {

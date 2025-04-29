@@ -5,11 +5,11 @@
 ```typescript
 import { FeedbackChannel } from "@gleanwork/api-client/models/components";
 
-let value: FeedbackChannel = "COMPANY_CHANNEL";
+let value: FeedbackChannel = "GLEAN";
 ```
 
 ## Values
 
 ```typescript
-"GLEAN_CHANNEL" | "COMPANY_CHANNEL"
+"COMPANY" | "GLEAN"
 ```

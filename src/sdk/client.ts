@@ -7,21 +7,17 @@ import { Activities } from "./activities.js";
 import { Activity } from "./activity.js";
 import { Announcements } from "./announcements.js";
 import { Answers } from "./answers.js";
-import { Calendar } from "./calendar.js";
 import { Chat } from "./chat.js";
 import { ClientAuthentication } from "./clientauthentication.js";
 import { ClientDocuments } from "./clientdocuments.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
 import { Collections } from "./collections.js";
-import { DisplayableLists } from "./displayablelists.js";
 import { Entities } from "./entities.js";
-import { Images } from "./images.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
 import { Search } from "./search.js";
 import { Summarize } from "./summarize.js";
-import { User } from "./user.js";
 import { Verification } from "./verification.js";
 
 export class Client extends ClientSDK {
@@ -50,11 +46,6 @@ export class Client extends ClientSDK {
     return (this._authentication ??= new ClientAuthentication(this._options));
   }
 
-  private _calendar?: Calendar;
-  get calendar(): Calendar {
-    return (this._calendar ??= new Calendar(this._options));
-  }
-
   private _chat?: Chat;
   get chat(): Chat {
     return (this._chat ??= new Chat(this._options));
@@ -65,19 +56,9 @@ export class Client extends ClientSDK {
     return (this._collections ??= new Collections(this._options));
   }
 
-  private _displayableLists?: DisplayableLists;
-  get displayableLists(): DisplayableLists {
-    return (this._displayableLists ??= new DisplayableLists(this._options));
-  }
-
   private _documents?: ClientDocuments;
   get documents(): ClientDocuments {
     return (this._documents ??= new ClientDocuments(this._options));
-  }
-
-  private _images?: Images;
-  get images(): Images {
-    return (this._images ??= new Images(this._options));
   }
 
   private _insights?: Insights;
@@ -113,11 +94,6 @@ export class Client extends ClientSDK {
   private _summarize?: Summarize;
   get summarize(): Summarize {
     return (this._summarize ??= new Summarize(this._options));
-  }
-
-  private _user?: User;
-  get user(): User {
-    return (this._user ??= new User(this._options));
   }
 
   private _verification?: Verification;

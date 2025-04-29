@@ -9,18 +9,18 @@ import (
 	"time"
 )
 
-// AnnouncementChannel1 - This determines whether this is a Social Feed post or a regular announcement.
-type AnnouncementChannel1 string
+// AnnouncementChannel - This determines whether this is a Social Feed post or a regular announcement.
+type AnnouncementChannel string
 
 const (
-	AnnouncementChannel1Main       AnnouncementChannel1 = "MAIN"
-	AnnouncementChannel1SocialFeed AnnouncementChannel1 = "SOCIAL_FEED"
+	AnnouncementChannelMain       AnnouncementChannel = "MAIN"
+	AnnouncementChannelSocialFeed AnnouncementChannel = "SOCIAL_FEED"
 )
 
-func (e AnnouncementChannel1) ToPointer() *AnnouncementChannel1 {
+func (e AnnouncementChannel) ToPointer() *AnnouncementChannel {
 	return &e
 }
-func (e *AnnouncementChannel1) UnmarshalJSON(data []byte) error {
+func (e *AnnouncementChannel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,10 +29,10 @@ func (e *AnnouncementChannel1) UnmarshalJSON(data []byte) error {
 	case "MAIN":
 		fallthrough
 	case "SOCIAL_FEED":
-		*e = AnnouncementChannel1(v)
+		*e = AnnouncementChannel(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AnnouncementChannel1: %v", v)
+		return fmt.Errorf("invalid value for AnnouncementChannel: %v", v)
 	}
 }
 
@@ -103,7 +103,7 @@ type Announcement struct {
 	// Whether or not to hide an author attribution.
 	HideAttribution *bool `json:"hideAttribution,omitempty"`
 	// This determines whether this is a Social Feed post or a regular announcement.
-	Channel *AnnouncementChannel1 `json:"channel,omitempty"`
+	Channel *AnnouncementChannel `json:"channel,omitempty"`
 	// This determines whether this is an external-link post or a regular announcement post. TEXT - Regular announcement that can contain rich text. LINK - Announcement that is linked to an external site.
 	PostType *AnnouncementPostType `json:"postType,omitempty"`
 	// Used by the Social Feed to pin posts to the front of the feed.
@@ -208,7 +208,7 @@ func (o *Announcement) GetHideAttribution() *bool {
 	return o.HideAttribution
 }
 
-func (o *Announcement) GetChannel() *AnnouncementChannel1 {
+func (o *Announcement) GetChannel() *AnnouncementChannel {
 	if o == nil {
 		return nil
 	}

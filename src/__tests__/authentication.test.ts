@@ -6,17 +6,10 @@ import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Authentication Createanonymoustoken", async () => {
-  const testHttpClient = createTestHTTPClient("createanonymoustoken");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
-  });
-
-  const result = await glean.client.authentication.createAnonymousToken();
-  expect(result).toBeDefined();
+it.skip("Authentication Createanonymoustoken", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step createanonymoustoken.test referencing operation createanonymoustoken not found in document`]",
+  );
 });
 
 test("Authentication Createauthtoken", async () => {

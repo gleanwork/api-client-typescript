@@ -3,21 +3,22 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ErrorInfo,
-  ErrorInfo$inboundSchema,
-  ErrorInfo$Outbound,
-  ErrorInfo$outboundSchema,
-} from "./errorinfo.js";
 import {
   GeneratedQna,
   GeneratedQna$inboundSchema,
   GeneratedQna$Outbound,
   GeneratedQna$outboundSchema,
 } from "./generatedqna.js";
+import {
+  GleanDataError,
+  GleanDataError$inboundSchema,
+  GleanDataError$Outbound,
+  GleanDataError$outboundSchema,
+} from "./gleandataerror.js";
 import {
   SearchResult,
   SearchResult$inboundSchema,
@@ -46,7 +47,7 @@ export type ResultsResponse = {
   results?: Array<SearchResult> | undefined;
   structuredResults?: Array<StructuredResult> | undefined;
   generatedQnaResult?: GeneratedQna | undefined;
-  errorInfo?: ErrorInfo | undefined;
+  gleanDataError?: GleanDataError | undefined;
   /**
    * A platform-generated request ID to correlate backend logs.
    */
@@ -68,9 +69,13 @@ export const ResultsResponse$inboundSchema: z.ZodType<
   results: z.array(SearchResult$inboundSchema).optional(),
   structuredResults: z.array(StructuredResult$inboundSchema).optional(),
   generatedQnaResult: GeneratedQna$inboundSchema.optional(),
-  errorInfo: ErrorInfo$inboundSchema.optional(),
+  errorInfo: GleanDataError$inboundSchema.optional(),
   requestID: z.string().optional(),
   backendTimeMillis: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "errorInfo": "gleanDataError",
+  });
 });
 
 /** @internal */
@@ -80,7 +85,7 @@ export type ResultsResponse$Outbound = {
   results?: Array<SearchResult$Outbound> | undefined;
   structuredResults?: Array<StructuredResult$Outbound> | undefined;
   generatedQnaResult?: GeneratedQna$Outbound | undefined;
-  errorInfo?: ErrorInfo$Outbound | undefined;
+  errorInfo?: GleanDataError$Outbound | undefined;
   requestID?: string | undefined;
   backendTimeMillis?: number | undefined;
 };
@@ -96,9 +101,13 @@ export const ResultsResponse$outboundSchema: z.ZodType<
   results: z.array(SearchResult$outboundSchema).optional(),
   structuredResults: z.array(StructuredResult$outboundSchema).optional(),
   generatedQnaResult: GeneratedQna$outboundSchema.optional(),
-  errorInfo: ErrorInfo$outboundSchema.optional(),
+  gleanDataError: GleanDataError$outboundSchema.optional(),
   requestID: z.string().optional(),
   backendTimeMillis: z.number().int().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    gleanDataError: "errorInfo",
+  });
 });
 
 /**

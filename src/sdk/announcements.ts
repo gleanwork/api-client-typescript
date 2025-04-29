@@ -3,18 +3,8 @@
  */
 
 import { clientAnnouncementsCreate } from "../funcs/clientAnnouncementsCreate.js";
-import { clientAnnouncementsCreateDraft } from "../funcs/clientAnnouncementsCreateDraft.js";
 import { clientAnnouncementsDelete } from "../funcs/clientAnnouncementsDelete.js";
-import { clientAnnouncementsDeleteDraft } from "../funcs/clientAnnouncementsDeleteDraft.js";
-import { clientAnnouncementsGet } from "../funcs/clientAnnouncementsGet.js";
-import { clientAnnouncementsGetDraft } from "../funcs/clientAnnouncementsGetDraft.js";
-import { clientAnnouncementsList } from "../funcs/clientAnnouncementsList.js";
-import { clientAnnouncementsPreview } from "../funcs/clientAnnouncementsPreview.js";
-import { clientAnnouncementsPreviewDraft } from "../funcs/clientAnnouncementsPreviewDraft.js";
-import { clientAnnouncementsPublish } from "../funcs/clientAnnouncementsPublish.js";
-import { clientAnnouncementsUnpublish } from "../funcs/clientAnnouncementsUnpublish.js";
 import { clientAnnouncementsUpdate } from "../funcs/clientAnnouncementsUpdate.js";
-import { clientAnnouncementsUpdateDraft } from "../funcs/clientAnnouncementsUpdateDraft.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -39,23 +29,6 @@ export class Announcements extends ClientSDK {
   }
 
   /**
-   * Create draft Announcement
-   *
-   * @remarks
-   * Create a draft of a textual announcement visible to some set of users based on department and location.
-   */
-  async createDraft(
-    request: operations.CreatedraftannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<components.Announcement> {
-    return unwrapAsync(clientAnnouncementsCreateDraft(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Delete Announcement
    *
    * @remarks
@@ -73,142 +46,6 @@ export class Announcements extends ClientSDK {
   }
 
   /**
-   * Delete draft Announcement
-   *
-   * @remarks
-   * Delete an existing user-generated draft Announcement.
-   */
-  async deleteDraft(
-    request: operations.DeletedraftannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(clientAnnouncementsDeleteDraft(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Read Announcement
-   *
-   * @remarks
-   * Read the details of an Announcement given its ID.
-   */
-  async get(
-    request: operations.GetannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetAnnouncementResponse> {
-    return unwrapAsync(clientAnnouncementsGet(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Read draft Announcement
-   *
-   * @remarks
-   * Read the details of an existing user-generated draft Announcement.
-   */
-  async getDraft(
-    request: operations.GetdraftannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetDraftAnnouncementResponse> {
-    return unwrapAsync(clientAnnouncementsGetDraft(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List Announcements
-   *
-   * @remarks
-   * List Announcement details for all Announcements matching the given criteria.
-   */
-  async list(
-    request: operations.ListannouncementsRequest,
-    options?: RequestOptions,
-  ): Promise<components.ListAnnouncementsResponse> {
-    return unwrapAsync(clientAnnouncementsList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Preview Announcement
-   *
-   * @remarks
-   * Generate a preview for a user-generated Announcement from structured text.
-   */
-  async preview(
-    request: operations.PreviewannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<components.PreviewStructuredTextResponse> {
-    return unwrapAsync(clientAnnouncementsPreview(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Preview draft Announcement
-   *
-   * @remarks
-   * Generates a preview for a user-generated Announcement from a draft.
-   */
-  async previewDraft(
-    request: operations.PreviewannouncementdraftRequest,
-    options?: RequestOptions,
-  ): Promise<components.PreviewUgcResponse> {
-    return unwrapAsync(clientAnnouncementsPreviewDraft(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Publish draft Announcement
-   *
-   * @remarks
-   * Promote a draft Announcement to be visible to others.
-   */
-  async publish(
-    request: operations.PublishdraftannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(clientAnnouncementsPublish(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Unpublish Announcement
-   *
-   * @remarks
-   * Unpublish an Announcement to hide it from users.
-   */
-  async unpublish(
-    request: operations.UnpublishannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<components.Announcement> {
-    return unwrapAsync(clientAnnouncementsUnpublish(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update Announcement
    *
    * @remarks
@@ -219,23 +56,6 @@ export class Announcements extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.Announcement> {
     return unwrapAsync(clientAnnouncementsUpdate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update draft Announcement
-   *
-   * @remarks
-   * Update a textual Announcement visible to some set of users based on department and location.
-   */
-  async updateDraft(
-    request: operations.UpdatedraftannouncementRequest,
-    options?: RequestOptions,
-  ): Promise<components.Announcement> {
-    return unwrapAsync(clientAnnouncementsUpdateDraft(
       this,
       request,
       options,

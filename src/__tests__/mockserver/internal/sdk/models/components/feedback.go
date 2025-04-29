@@ -171,17 +171,17 @@ func (e *Event) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type FeedbackChannel1 string
+type FeedbackChannel string
 
 const (
-	FeedbackChannel1Company FeedbackChannel1 = "COMPANY"
-	FeedbackChannel1Glean   FeedbackChannel1 = "GLEAN"
+	FeedbackChannelCompany FeedbackChannel = "COMPANY"
+	FeedbackChannelGlean   FeedbackChannel = "GLEAN"
 )
 
-func (e FeedbackChannel1) ToPointer() *FeedbackChannel1 {
+func (e FeedbackChannel) ToPointer() *FeedbackChannel {
 	return &e
 }
-func (e *FeedbackChannel1) UnmarshalJSON(data []byte) error {
+func (e *FeedbackChannel) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -190,10 +190,10 @@ func (e *FeedbackChannel1) UnmarshalJSON(data []byte) error {
 	case "COMPANY":
 		fallthrough
 	case "GLEAN":
-		*e = FeedbackChannel1(v)
+		*e = FeedbackChannel(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FeedbackChannel1: %v", v)
+		return fmt.Errorf("invalid value for FeedbackChannel: %v", v)
 	}
 }
 
@@ -217,7 +217,7 @@ type Feedback struct {
 	// The path the client was at when the feedback event triggered.
 	Pathname *string `json:"pathname,omitempty"`
 	// Where the feedback will be sent, e.g. to Glean, the user's company, or both. If no channels are specified, feedback will go only to Glean.
-	Channels []FeedbackChannel1 `json:"channels,omitempty"`
+	Channels []FeedbackChannel `json:"channels,omitempty"`
 	// The URL the client was at when the feedback event triggered.
 	URL *string `json:"url,omitempty"`
 	// The UI element tree associated with the event, if any.
@@ -315,7 +315,7 @@ func (o *Feedback) GetPathname() *string {
 	return o.Pathname
 }
 
-func (o *Feedback) GetChannels() []FeedbackChannel1 {
+func (o *Feedback) GetChannels() []FeedbackChannel {
 	if o == nil {
 		return nil
 	}

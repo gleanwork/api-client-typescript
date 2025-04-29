@@ -3,18 +3,10 @@
  */
 
 import { clientAnswersCreate } from "../funcs/clientAnswersCreate.js";
-import { clientAnswersCreateBoard } from "../funcs/clientAnswersCreateBoard.js";
 import { clientAnswersDelete } from "../funcs/clientAnswersDelete.js";
-import { clientAnswersDeleteBoard } from "../funcs/clientAnswersDeleteBoard.js";
 import { clientAnswersEdit } from "../funcs/clientAnswersEdit.js";
 import { clientAnswersGet } from "../funcs/clientAnswersGet.js";
-import { clientAnswersGetBoard } from "../funcs/clientAnswersGetBoard.js";
 import { clientAnswersList } from "../funcs/clientAnswersList.js";
-import { clientAnswersListBoards } from "../funcs/clientAnswersListBoards.js";
-import { clientAnswersPreview } from "../funcs/clientAnswersPreview.js";
-import { clientAnswersPreviewDraft } from "../funcs/clientAnswersPreviewDraft.js";
-import { clientAnswersUpdateBoard } from "../funcs/clientAnswersUpdateBoard.js";
-import { clientAnswersUpdateLikes } from "../funcs/clientAnswersUpdateLikes.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
@@ -100,152 +92,6 @@ export class Answers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ListAnswersResponse> {
     return unwrapAsync(clientAnswersList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Preview Answer
-   *
-   * @remarks
-   * Generate a preview for a user-generated Answer that contains a question and answer.
-   */
-  async preview(
-    request: operations.PreviewanswerRequest,
-    options?: RequestOptions,
-  ): Promise<components.PreviewStructuredTextResponse> {
-    return unwrapAsync(clientAnswersPreview(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Preview draft Answer
-   *
-   * @remarks
-   * Generate a preview for a user-generated answer from a draft.
-   */
-  async previewDraft(
-    request: operations.PreviewanswerdraftRequest,
-    options?: RequestOptions,
-  ): Promise<components.PreviewUgcResponse> {
-    return unwrapAsync(clientAnswersPreviewDraft(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update Answer likes
-   *
-   * @remarks
-   * Update the likes for an existing user-generated Answer. Examples are liking or unliking the Answer.
-   */
-  async updateLikes(
-    request: operations.UpdateanswerlikesRequest,
-    options?: RequestOptions,
-  ): Promise<components.UpdateAnswerLikesResponse> {
-    return unwrapAsync(clientAnswersUpdateLikes(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create Answer Board
-   *
-   * @remarks
-   * Create a board of Answers.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async createBoard(
-    request: operations.CreateanswerboardRequest,
-    options?: RequestOptions,
-  ): Promise<components.CreateAnswerBoardResponse> {
-    return unwrapAsync(clientAnswersCreateBoard(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete Answer Board
-   *
-   * @remarks
-   * Delete an Answer Board given the Answer Board's ID. Multi-delete is not currently supported.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async deleteBoard(
-    request: operations.DeleteanswerboardsRequest,
-    options?: RequestOptions,
-  ): Promise<components.DeleteAnswerBoardsResponse> {
-    return unwrapAsync(clientAnswersDeleteBoard(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update Answer Board
-   *
-   * @remarks
-   * Modifies the properties of an existing Answer Board.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async updateBoard(
-    request: operations.EditanswerboardRequest,
-    options?: RequestOptions,
-  ): Promise<components.EditAnswerBoardResponse> {
-    return unwrapAsync(clientAnswersUpdateBoard(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Read Answer Board
-   *
-   * @remarks
-   * Read the details of an Answer Board given its ID. Does not fetch items in this Answer Board, use /listanswers instead.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async getBoard(
-    request: operations.GetanswerboardRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetAnswerBoardResponse> {
-    return unwrapAsync(clientAnswersGetBoard(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List Answer Boards
-   *
-   * @remarks
-   * List all existing Answer Boards
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async listBoards(
-    request: operations.ListanswerboardsRequest,
-    options?: RequestOptions,
-  ): Promise<components.ListAnswerBoardsResponse> {
-    return unwrapAsync(clientAnswersListBoards(
       this,
       request,
       options,

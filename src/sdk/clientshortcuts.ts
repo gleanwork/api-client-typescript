@@ -5,9 +5,7 @@
 import { clientShortcutsCreate } from "../funcs/clientShortcutsCreate.js";
 import { clientShortcutsDelete } from "../funcs/clientShortcutsDelete.js";
 import { clientShortcutsGet } from "../funcs/clientShortcutsGet.js";
-import { clientShortcutsGetSimilar } from "../funcs/clientShortcutsGetSimilar.js";
 import { clientShortcutsList } from "../funcs/clientShortcutsList.js";
-import { clientShortcutsPreview } from "../funcs/clientShortcutsPreview.js";
 import { clientShortcutsUpdate } from "../funcs/clientShortcutsUpdate.js";
 import { clientShortcutsUpload } from "../funcs/clientShortcutsUpload.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -68,23 +66,6 @@ export class ClientShortcuts extends ClientSDK {
   }
 
   /**
-   * Get similar shortcuts
-   *
-   * @remarks
-   * Get shortcuts with similar aliases to a given alias.
-   */
-  async getSimilar(
-    request: operations.GetsimilarshortcutsRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetSimilarShortcutsResponse> {
-    return unwrapAsync(clientShortcutsGetSimilar(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * List shortcuts
    *
    * @remarks
@@ -95,23 +76,6 @@ export class ClientShortcuts extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ListShortcutsPaginatedResponse> {
     return unwrapAsync(clientShortcutsList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Preview shortcut
-   *
-   * @remarks
-   * Preview a shortcut that contains an alias and destination URL.
-   */
-  async preview(
-    request: operations.PreviewshortcutRequest,
-    options?: RequestOptions,
-  ): Promise<components.PreviewShortcutResponse> {
-    return unwrapAsync(clientShortcutsPreview(
       this,
       request,
       options,

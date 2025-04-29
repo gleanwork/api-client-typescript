@@ -6,12 +6,9 @@ import { clientCollectionsAddItems } from "../funcs/clientCollectionsAddItems.js
 import { clientCollectionsCreate } from "../funcs/clientCollectionsCreate.js";
 import { clientCollectionsDelete } from "../funcs/clientCollectionsDelete.js";
 import { clientCollectionsDeleteItem } from "../funcs/clientCollectionsDeleteItem.js";
-import { clientCollectionsEdit } from "../funcs/clientCollectionsEdit.js";
 import { clientCollectionsEditItem } from "../funcs/clientCollectionsEditItem.js";
 import { clientCollectionsGet } from "../funcs/clientCollectionsGet.js";
 import { clientCollectionsList } from "../funcs/clientCollectionsList.js";
-import { clientCollectionsMoveItem } from "../funcs/clientCollectionsMoveItem.js";
-import { clientCollectionsPin } from "../funcs/clientCollectionsPin.js";
 import { clientCollectionsUpdate } from "../funcs/clientCollectionsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -122,23 +119,6 @@ export class Collections extends ClientSDK {
   }
 
   /**
-   * Update document Collections
-   *
-   * @remarks
-   * Update the Collections that a document belongs to.
-   */
-  async edit(
-    request: operations.EditdocumentcollectionsRequest,
-    options?: RequestOptions,
-  ): Promise<components.EditDocumentCollectionsResponse> {
-    return unwrapAsync(clientCollectionsEdit(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Read Collection
    *
    * @remarks
@@ -166,40 +146,6 @@ export class Collections extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.ListCollectionsResponse> {
     return unwrapAsync(clientCollectionsList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Move Collection item
-   *
-   * @remarks
-   * Reorder a Collection by moving a CollectionItem below another CollectionItem.
-   */
-  async moveItem(
-    request: operations.MovecollectionitemRequest,
-    options?: RequestOptions,
-  ): Promise<components.MoveCollectionItemResponse> {
-    return unwrapAsync(clientCollectionsMoveItem(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Pin Collection
-   *
-   * @remarks
-   * Given the Collection id and category, pins the Collection to the home page for all company users.
-   */
-  async pin(
-    request: operations.PincollectionRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetCollectionResponse> {
-    return unwrapAsync(clientCollectionsPin(
       this,
       request,
       options,

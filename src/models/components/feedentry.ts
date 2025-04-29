@@ -89,19 +89,19 @@ import {
 /**
  * defines how to render this particular displayable list card
  */
-export const FeedEntryFormat = {
+export const Format = {
   List: "LIST",
 } as const;
 /**
  * defines how to render this particular displayable list card
  */
-export type FeedEntryFormat = ClosedEnum<typeof FeedEntryFormat>;
+export type Format = ClosedEnum<typeof Format>;
 
 export type UiConfig = {
   /**
    * defines how to render this particular displayable list card
    */
-  format?: FeedEntryFormat | undefined;
+  format?: Format | undefined;
   /**
    * UI configurations for each item of the list
    */
@@ -195,24 +195,22 @@ export type FeedEntry = {
 };
 
 /** @internal */
-export const FeedEntryFormat$inboundSchema: z.ZodNativeEnum<
-  typeof FeedEntryFormat
-> = z.nativeEnum(FeedEntryFormat);
+export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> = z
+  .nativeEnum(Format);
 
 /** @internal */
-export const FeedEntryFormat$outboundSchema: z.ZodNativeEnum<
-  typeof FeedEntryFormat
-> = FeedEntryFormat$inboundSchema;
+export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> =
+  Format$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FeedEntryFormat$ {
-  /** @deprecated use `FeedEntryFormat$inboundSchema` instead. */
-  export const inboundSchema = FeedEntryFormat$inboundSchema;
-  /** @deprecated use `FeedEntryFormat$outboundSchema` instead. */
-  export const outboundSchema = FeedEntryFormat$outboundSchema;
+export namespace Format$ {
+  /** @deprecated use `Format$inboundSchema` instead. */
+  export const inboundSchema = Format$inboundSchema;
+  /** @deprecated use `Format$outboundSchema` instead. */
+  export const outboundSchema = Format$outboundSchema;
 }
 
 /** @internal */
@@ -221,7 +219,7 @@ export const UiConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  format: FeedEntryFormat$inboundSchema.optional(),
+  format: Format$inboundSchema.optional(),
   additionalFlags: DisplayableListItemUIConfig$inboundSchema.optional(),
 });
 
@@ -237,7 +235,7 @@ export const UiConfig$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UiConfig
 > = z.object({
-  format: FeedEntryFormat$outboundSchema.optional(),
+  format: Format$outboundSchema.optional(),
   additionalFlags: DisplayableListItemUIConfig$outboundSchema.optional(),
 });
 

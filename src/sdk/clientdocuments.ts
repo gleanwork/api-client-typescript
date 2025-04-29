@@ -3,7 +3,6 @@
  */
 
 import { clientDocumentsGet } from "../funcs/clientDocumentsGet.js";
-import { clientDocumentsGetAnalytics } from "../funcs/clientDocumentsGetAnalytics.js";
 import { clientDocumentsGetByFacets } from "../funcs/clientDocumentsGetByFacets.js";
 import { clientDocumentsGetPermissions } from "../funcs/clientDocumentsGetPermissions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -57,23 +56,6 @@ export class ClientDocuments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.GetDocumentsByFacetsResponse> {
     return unwrapAsync(clientDocumentsGetByFacets(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Read document analytics
-   *
-   * @remarks
-   * Read the document analytics information for the given list of Glean Document IDs or URLs specified in the request
-   */
-  async getAnalytics(
-    request: operations.GetdocumentanalyticsRequest,
-    options?: RequestOptions,
-  ): Promise<components.GetDocumentAnalyticsResponse> {
-    return unwrapAsync(clientDocumentsGetAnalytics(
       this,
       request,
       options,
