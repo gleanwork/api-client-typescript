@@ -1,10 +1,10 @@
 lockVersion: 2.0.0
 id: 9e4b1e83-7853-4088-b960-4cbc5769b62c
 management:
-  docChecksum: 1a2c49930fef57ea7cddf2ed9b486f1d
+  docChecksum: 5f39e048571bfcd8aae3cc610c7d8852
   docVersion: 0.9.0
-  speakeasyVersion: 1.540.1
-  generationVersion: 2.593.4
+  speakeasyVersion: 1.541.0
+  generationVersion: 2.595.2
   releaseVersion: 0.1.0-beta
   configChecksum: 385d1e516bba00f162736f14ce7aa499
   repoURL: https://github.com/gleanwork/api-client-typescript.git
@@ -21,6 +21,7 @@ features:
     devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
+    examples: 2.81.5
     flattening: 2.82.1
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0

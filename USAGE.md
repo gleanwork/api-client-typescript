@@ -7,32 +7,20 @@ const glean = new Glean({
 });
 
 async function run() {
-  await glean.client.activity.report({
-    events: [
+  const result = await glean.client.chat.start({
+    messages: [
       {
-        action: "HISTORICAL_VIEW",
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/",
-      },
-      {
-        action: "SEARCH",
-        params: {
-          query: "query",
-        },
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/search?q=query",
-      },
-      {
-        action: "VIEW",
-        params: {
-          duration: 20,
-          referrer: "https://example.com/document",
-        },
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/",
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
       },
     ],
   });
+
+  // Handle the result
+  console.log(result);
 }
 
 run();

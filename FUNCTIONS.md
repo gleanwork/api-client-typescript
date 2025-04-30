@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { GleanCore } from "@gleanwork/api-client/core.js";
-import { clientActivityReport } from "@gleanwork/api-client/funcs/clientActivityReport.js";
+import { clientChatStart } from "@gleanwork/api-client/funcs/clientChatStart.js";
 import { SDKValidationError } from "@gleanwork/api-client/models/errors/sdkvalidationerror.js";
 
 // Use `GleanCore` for best tree-shaking performance.
@@ -30,29 +30,14 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientActivityReport(glean, {
-    events: [
+  const res = await clientChatStart(glean, {
+    messages: [
       {
-        action: "HISTORICAL_VIEW",
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/",
-      },
-      {
-        action: "SEARCH",
-        params: {
-          query: "query",
-        },
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/search?q=query",
-      },
-      {
-        action: "VIEW",
-        params: {
-          duration: 20,
-          referrer: "https://example.com/document",
-        },
-        timestamp: new Date("2000-01-23T04:56:07.000Z"),
-        url: "https://example.com/",
+        fragments: [
+          {
+            text: "What are the company holidays this year?",
+          },
+        ],
       },
     ],
   });
@@ -76,7 +61,8 @@ async function run() {
 
   const { value: result } = res;
 
-  
+  // Handle the result
+  console.log(result);
 }
 
 run();
