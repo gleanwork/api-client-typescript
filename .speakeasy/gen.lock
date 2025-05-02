@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 9e4b1e83-7853-4088-b960-4cbc5769b62c
 management:
-  docChecksum: 1cc19604b6542fcea54e78c6786aba78
+  docChecksum: 15c57c0feb1bebc240daa11037344f81
   docVersion: 0.9.0
-  speakeasyVersion: 1.541.2
-  generationVersion: 2.595.4
-  releaseVersion: 0.1.0-beta.2
-  configChecksum: 0e38427161a2776fba7cd61456c3315c
+  speakeasyVersion: 1.542.0
+  generationVersion: 2.596.2
+  releaseVersion: 0.1.0-beta.3
+  configChecksum: 5b3f662338f0e1c8be5b42990790f7ea
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -593,6 +593,7 @@ generatedFiles:
   - src/__tests__/indexingdocuments.test.ts
   - src/__tests__/insights.test.ts
   - src/__tests__/messages.test.ts
+  - src/__tests__/mockserver/.gitignore
   - src/__tests__/mockserver/Dockerfile
   - src/__tests__/mockserver/Makefile
   - src/__tests__/mockserver/README.md
