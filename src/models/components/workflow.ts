@@ -33,6 +33,8 @@ export type Workflow = {
   permissions?: ObjectPermissions | undefined;
   /**
    * The name of the workflow.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   name?: string | undefined;
   /**

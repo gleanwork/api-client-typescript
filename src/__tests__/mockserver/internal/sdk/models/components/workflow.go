@@ -11,6 +11,8 @@ type Workflow struct {
 	LastUpdatedBy       *Person            `json:"lastUpdatedBy,omitempty"`
 	Permissions         *ObjectPermissions `json:"permissions,omitempty"`
 	// The name of the workflow.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Name *string `json:"name,omitempty"`
 	// The ID of the workflow.
 	ID *string `json:"id,omitempty"`
