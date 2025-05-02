@@ -288,6 +288,12 @@ DEBUG	discriminated: Renamed to "indexing_authentication"
 	 registrationID: "scope:sdk mainSDK:Glean group:indexing originalName:authentication"
 DEBUG	
 
+--- Renaming 2 types with name "chat" ---
+DEBUG	discriminated: Renamed to "client_chat" 
+	 labels: "original_name:chat group:client data_type:SDK mainSDK:Glean" 
+	 registrationID: "scope:sdk mainSDK:Glean group:client originalName:chat"
+DEBUG	
+
 --- Renaming 2 types with name "documents" ---
 DEBUG	discriminated: Renamed to "client_documents" 
 	 labels: "original_name:documents group:client data_type:SDK mainSDK:Glean" 
@@ -500,7 +506,7 @@ ListanswersResponse (HttpMeta: HTTPMetadata, ListAnswersResponse: ListAnswersRes
 ClientAuthentication (SDK empty)
 CreateauthtokenResponse (HttpMeta: HTTPMetadata, CreateAuthTokenResponse: CreateAuthTokenResponse)
  CreateAuthTokenResponse (token: string, expirationTime: integer)
-Chat (SDK empty)
+ClientChat (SDK empty)
 ChatRequest (timezoneOffset: integer, ChatRequest: ChatRequest)
  ChatRequest (saveChat: boolean, chatId: string, messages: array ...)
    ChatMessage (agentConfig: AgentConfig, author: enum, citations: array ...)
@@ -531,7 +537,8 @@ ChatRequest (timezoneOffset: integer, ChatRequest: ChatRequest)
           PossibleValue (value: string, label: string)
     MessageType (enum: UPDATE, CONTENT, CONTEXT ...)
   ChatRestrictionFilters (containerSpecs: array, documentSpecs: array, datasourceInstances: array)
-ChatResponse (HttpMeta: HTTPMetadata, ChatResponse: string)
+ChatResponse (HttpMeta: HTTPMetadata, ChatResponse: ChatResponse)
+ ChatResponse (messages: array, chatId: string, followUpPrompts: array ...)
 DeleteallchatsRequest (timezoneOffset: integer)
 DeleteallchatsResponse (HttpMeta: HTTPMetadata)
 DeletechatsRequest (timezoneOffset: integer, DeleteChatsRequest: DeleteChatsRequest)
@@ -778,7 +785,6 @@ Agents (SDK empty)
 RunagentRequest (timezoneOffset: integer, RunAgentRequest: RunAgentRequest)
  RunAgentRequest (agentId: string, fields: map, stream: boolean)
 RunagentResponse (HttpMeta: HTTPMetadata, ChatResponse: ChatResponse)
- ChatResponse (messages: array, chatId: string, followUpPrompts: array ...)
 ListagentsRequest (timezoneOffset: integer, RequestBody: any)
 ListagentsResponse (HttpMeta: HTTPMetadata, ListAgentsResponse: ListAgentsResponse)
  ListAgentsResponse (agents: array)
@@ -927,4 +933,7 @@ IndexingShortcuts (SDK empty)
 BulkIndexShortcutsRequest (uploadId: string, isFirstPage: boolean, isLastPage: boolean ...)
   ExternalShortcut (inputAlias: string, description: string, destinationUrl: string ...)
 PostApiIndexV1BulkindexshortcutsResponse (HttpMeta: HTTPMetadata)
+Chat (SDK empty)
+ChatStreamRequest (timezoneOffset: integer, ChatRequest: ChatRequest)
+ChatStreamResponse (HttpMeta: HTTPMetadata, ChatRequestStream: string)
 

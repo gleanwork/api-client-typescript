@@ -8,6 +8,7 @@ export * from "./_types.js";
 export * from "./agentsGetagentinputs.js";
 export * from "./agentsListagents.js";
 export * from "./agentsRunagent.js";
+export * from "./chatChatStream.js";
 export * from "./clientActivitiesReportActivity.js";
 export * from "./clientActivityReport.js";
 export * from "./clientAnnouncementsCreate.js";

@@ -3,6 +3,7 @@
  */
 
 export * from "./chat.js";
+export * from "./chatstream.js";
 export * from "./deleteallchats.js";
 export * from "./deletechatfiles.js";
 export * from "./deletechats.js";
