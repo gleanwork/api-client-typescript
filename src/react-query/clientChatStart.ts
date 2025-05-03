@@ -22,7 +22,7 @@ export type ClientChatStartMutationVariables = {
   options?: RequestOptions;
 };
 
-export type ClientChatStartMutationData = string;
+export type ClientChatStartMutationData = components.ChatResponse;
 
 /**
  * Chat

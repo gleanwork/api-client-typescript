@@ -403,7 +403,7 @@ paths:
                 "200":
                     description: OK
                     content:
-                        text/plain:
+                        application/json:
                             schema:
                                 $ref: "#/components/schemas/ChatResponse"
                             examples:
@@ -3007,6 +3007,141 @@ paths:
                     description: Conflict
             x-speakeasy-name-override: upload
             x-speakeasy-group: client.shortcuts
+    /rest/api/v1/chat#stream:
+        post:
+            tags:
+                - Chat
+            summary: Chat
+            description: Have a conversation with Glean AI.
+            operationId: chatStream
+            x-visibility: Public
+            x-codegen-request-body-name: payload
+            parameters:
+                - $ref: '#/components/parameters/timezoneOffset'
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ChatRequest'
+                        examples:
+                            defaultExample:
+                                value:
+                                    messages:
+                                        - author: USER
+                                          messageType: CONTENT
+                                          fragments:
+                                            - text: What are the company holidays this year?
+                            gptAgentExample:
+                                value:
+                                    agentConfig:
+                                        agent: GPT
+                                    messages:
+                                        - author: USER
+                                          messageType: CONTENT
+                                          fragments:
+                                            - text: Who was the first person to land on the moon?
+                description: Includes chat history for Glean AI to respond to.
+                required: true
+                x-exportParamName: Request
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        text/plain:
+                            schema:
+                                $ref: '#/components/schemas/ChatRequestStream'
+                            examples:
+                                defaultExample:
+                                    value:
+                                        messages:
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              hasMoreFragments: false
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                              fragments:
+                                                - text: There are no holidays!
+                                streamingExample:
+                                    value:
+                                        messages:
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                                hasMoreFragments: true
+                                              fragments: null
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                                hasMoreFragments: true
+                                              fragments: null
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                                hasMoreFragments: true
+                                              fragments:
+                                                - text: e are
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                                hasMoreFragments: true
+                                              fragments:
+                                                - text: no hol
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                                hasMoreFragments: false
+                                              fragments:
+                                                - text: idays!
+                                updateResponse:
+                                    value:
+                                        messages:
+                                            - author: GLEAN_AI
+                                              messageType: UPDATE
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                              fragments:
+                                                - text: '**Reading:**'
+                                                - structuredResults:
+                                                    - document:
+                                                        id: '123'
+                                                        title: Company Handbook
+                                citationResponse:
+                                    value:
+                                        messages:
+                                            - author: GLEAN_AI
+                                              messageType: CONTENT
+                                              agentConfig:
+                                                agent: DEFAULT
+                                                mode: DEFAULT
+                                              citations:
+                                                - sourceDocument:
+                                                    id: '123'
+                                                    title: Company Handbook
+                                                    referenceRanges:
+                                                        - textRange:
+                                                            startIndex: 0
+                                                            endIndex: 12
+                                                            type: CITATION
+                '400':
+                    description: Invalid request
+                '401':
+                    description: Not Authorized
+                '408':
+                    description: Request Timeout
+                '429':
+                    description: Too Many Requests
 components:
     securitySchemes:
         BearerAuth:
@@ -10837,6 +10972,49 @@ components:
                     instanceDescription:
                         type: string
                         description: A human readable string identifying this instance as compared to its peers, e.g. "github.com/askscio" or "github.askscio.com"
+        ChatRequestStream:
+            required:
+                - messages
+            properties:
+                saveChat:
+                    type: boolean
+                    description: >-
+                        Save the current interaction as a Chat for the user to access and potentially continue later.
+                chatId:
+                    type: string
+                    description: >-
+                        The id of the Chat that context should be retrieved from and messages added to. An empty id starts a new Chat, and the Chat is saved if saveChat is true.
+                messages:
+                    type: array
+                    description: >-
+                        A list of chat messages, from most recent to least recent. It can be assumed that the first chat message in the list is the user's most recent query.
+                    items:
+                        $ref: '#/components/schemas/ChatMessage'
+                agentConfig:
+                    $ref: '#/components/schemas/AgentConfig'
+                    description: Describes the agent that will execute the request.
+                inclusions:
+                    $ref: '#/components/schemas/ChatRestrictionFilters'
+                    description: >-
+                        A list of filters which only allows chat to access certain content.
+                exclusions:
+                    $ref: '#/components/schemas/ChatRestrictionFilters'
+                    description: >-
+                        A list of filters which disallows chat from accessing certain content. If content is in both inclusions and exclusions, it'll be excluded.
+                timeoutMillis:
+                    type: integer
+                    description: >-
+                        Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
+                    example: 30000
+                applicationId:
+                    type: string
+                    description: >-
+                        The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
+                stream:
+                    type: boolean
+                    description: >-
+                        If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
+                    default: true
     parameters:
         timezoneOffset:
             name: timezoneOffset

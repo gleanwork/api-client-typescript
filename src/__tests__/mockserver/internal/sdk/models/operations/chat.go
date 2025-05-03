@@ -30,7 +30,7 @@ func (o *ChatRequest) GetChatRequest() components.ChatRequest {
 type ChatResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
-	ChatResponse *string
+	ChatResponse *components.ChatResponse
 }
 
 func (o *ChatResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -40,7 +40,7 @@ func (o *ChatResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *ChatResponse) GetChatResponse() *string {
+func (o *ChatResponse) GetChatResponse() *components.ChatResponse {
 	if o == nil {
 		return nil
 	}
