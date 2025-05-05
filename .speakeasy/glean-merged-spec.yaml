@@ -1542,6 +1542,8 @@ paths:
                     description: Not Authorized
                 "429":
                     description: Too Many Requests
+            x-speakeasy-group: client.search
+            x-speakeasy-name-override: autocomplete
     /rest/api/v1/feed:
         post:
             tags:
