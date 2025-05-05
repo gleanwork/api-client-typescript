@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: dfcae6d955bab86fcc81ab13294569d5
+  docChecksum: cd79d66351289c12da17708ea6a4a064
   docVersion: 0.9.0
   speakeasyVersion: 1.542.3
   generationVersion: 2.597.9
-  releaseVersion: 0.1.0-beta.8
-  configChecksum: abf362b56a53867f1e042b6b4e8e5446
+  releaseVersion: 0.1.0-beta.9
+  configChecksum: d3e171da201461b398f3722f0ca892d1
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -553,7 +553,6 @@ generatedFiles:
   - docs/sdks/client/README.md
   - docs/sdks/clientauthentication/README.md
   - docs/sdks/clientdocuments/README.md
-  - docs/sdks/clientsearch/README.md
   - docs/sdks/clientshortcuts/README.md
   - docs/sdks/collections/README.md
   - docs/sdks/datasource/README.md
@@ -1237,6 +1236,7 @@ generatedFiles:
   - src/funcs/clientPinsRemove.ts
   - src/funcs/clientPinsRetrieve.ts
   - src/funcs/clientPinsUpdate.ts
+  - src/funcs/clientSearchAutocomplete.ts
   - src/funcs/clientSearchQuery.ts
   - src/funcs/clientSearchQueryAsAdmin.ts
   - src/funcs/clientSearchRecommendations.ts
@@ -1286,7 +1286,6 @@ generatedFiles:
   - src/funcs/indexingPermissionsUpdatePermissions.ts
   - src/funcs/indexingShortcutsBulkIndex.ts
   - src/funcs/indexingShortcutsUpload.ts
-  - src/funcs/searchAutocomplete.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -1750,6 +1749,7 @@ generatedFiles:
   - src/react-query/clientPinsRemove.ts
   - src/react-query/clientPinsRetrieve.ts
   - src/react-query/clientPinsUpdate.ts
+  - src/react-query/clientSearchAutocomplete.ts
   - src/react-query/clientSearchQuery.ts
   - src/react-query/clientSearchQueryAsAdmin.ts
   - src/react-query/clientSearchRecommendations.ts
@@ -1800,7 +1800,6 @@ generatedFiles:
   - src/react-query/indexingPermissionsUpdatePermissions.ts
   - src/react-query/indexingShortcutsBulkIndex.ts
   - src/react-query/indexingShortcutsUpload.ts
-  - src/react-query/searchAutocomplete.ts
   - src/sdk/activity.ts
   - src/sdk/agents.ts
   - src/sdk/announcements.ts
@@ -1809,7 +1808,6 @@ generatedFiles:
   - src/sdk/client.ts
   - src/sdk/clientauthentication.ts
   - src/sdk/clientdocuments.ts
-  - src/sdk/clientsearch.ts
   - src/sdk/clientshortcuts.ts
   - src/sdk/collections.ts
   - src/sdk/datasource.ts

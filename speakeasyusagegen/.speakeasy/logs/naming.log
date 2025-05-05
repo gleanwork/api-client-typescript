@@ -297,12 +297,6 @@ DEBUG	discriminated: Renamed to "indexing_documents"
 	 registrationID: "scope:sdk mainSDK:Glean group:indexing originalName:documents"
 DEBUG	
 
---- Renaming 2 types with name "search" ---
-DEBUG	discriminated: Renamed to "client_search" 
-	 labels: "original_name:search group:client data_type:SDK mainSDK:Glean" 
-	 registrationID: "scope:sdk mainSDK:Glean group:client originalName:search"
-DEBUG	
-
 --- Renaming 2 types with name "shortcuts" ---
 DEBUG	discriminated: Renamed to "client_shortcuts" 
 	 labels: "original_name:shortcuts group:client data_type:SDK mainSDK:Glean" 
@@ -694,10 +688,22 @@ PinRequest (queries: array, audienceFilters: array, documentId: string)
 PinResponse (HttpMeta: HTTPMetadata, PinDocument: PinDocument)
 Unpin (id: string)
 UnpinResponse (HttpMeta: HTTPMetadata)
-ClientSearch (SDK empty)
+Search (SDK empty)
 SearchRequest (timestamp: date-time, trackingToken: string, sessionInfo: SessionInfo ...)
 AdminsearchResponse (HttpMeta: HTTPMetadata, SearchResponse: SearchResponse)
 GleanDataError (error)
+AutocompleteRequest (trackingToken: string, sessionInfo: SessionInfo, query: string ...)
+  AutocompleteRequestResultType (enum: ADDITIONAL_DOCUMENT, APP, BROWSER_HISTORY ...)
+AutocompleteResponse (HttpMeta: HTTPMetadata, AutocompleteResponse: AutocompleteResponse)
+ AutocompleteResponse (experimentIds: array, trackingToken: string, sessionInfo: SessionInfo ...)
+   AutocompleteResult (result: string, keywords: array, resultType: enum ...)
+    AutocompleteResultResultType (enum: ADDITIONAL_DOCUMENT, APP, BROWSER_HISTORY ...)
+    OperatorMetadata (name: string, isCustom: boolean, operatorType: enum ...)
+     OperatorType (enum: TEXT, DOUBLE, DATE ...)
+      OperatorScope (datasource: string, docType: string)
+    Quicklink (name: string, shortName: string, url: string ...)
+      Scope (enum: APP_CARD, AUTOCOMPLETE_EXACT_MATCH, AUTOCOMPLETE_FUZZY_MATCH ...)
+   AutocompleteResultGroup (startIndex: integer, endIndex: integer, title: string)
 FeedRequest (categories: array, requestOptions: FeedRequestOptions, timeoutMillis: integer ...)
   FeedRequestCategory (enum: DOCUMENT_SUGGESTION, DOCUMENT_SUGGESTION_SCENARIO, TRENDING_DOCUMENT ...)
  FeedRequestOptions (resultSize: integer, timezoneOffset: integer, categoryToResultSize: map ...)
@@ -781,19 +787,6 @@ ListverificationsResponse (HttpMeta: HTTPMetadata, VerificationFeed: Verificatio
 VerifyRequest (documentId: string, action: enum)
  VerifyRequestAction (enum: VERIFY, DEPRECATE, UNVERIFY)
 VerifyResponse (HttpMeta: HTTPMetadata, Verification: Verification)
-Search (SDK empty)
-AutocompleteRequest (trackingToken: string, sessionInfo: SessionInfo, query: string ...)
-  AutocompleteRequestResultType (enum: ADDITIONAL_DOCUMENT, APP, BROWSER_HISTORY ...)
-AutocompleteResponse (HttpMeta: HTTPMetadata, AutocompleteResponse: AutocompleteResponse)
- AutocompleteResponse (experimentIds: array, trackingToken: string, sessionInfo: SessionInfo ...)
-   AutocompleteResult (result: string, keywords: array, resultType: enum ...)
-    AutocompleteResultResultType (enum: ADDITIONAL_DOCUMENT, APP, BROWSER_HISTORY ...)
-    OperatorMetadata (name: string, isCustom: boolean, operatorType: enum ...)
-     OperatorType (enum: TEXT, DOUBLE, DATE ...)
-      OperatorScope (datasource: string, docType: string)
-    Quicklink (name: string, shortName: string, url: string ...)
-      Scope (enum: APP_CARD, AUTOCOMPLETE_EXACT_MATCH, AUTOCOMPLETE_FUZZY_MATCH ...)
-   AutocompleteResultGroup (startIndex: integer, endIndex: integer, title: string)
 Indexing (SDK empty)
 IndexingDocuments (SDK empty)
 IndexDocumentRequest (version: integer, document: DocumentDefinition)

@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieve query suggestions, operators and documents for the given partially typed query.
  */
-export function searchAutocomplete(
+export function clientSearchAutocomplete(
   client: GleanCore,
   request: components.AutocompleteRequest,
   options?: RequestOptions,

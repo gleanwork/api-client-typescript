@@ -8,7 +8,7 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { GleanCore } from "../core.js";
-import { searchAutocomplete } from "../funcs/searchAutocomplete.js";
+import { clientSearchAutocomplete } from "../funcs/clientSearchAutocomplete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -16,12 +16,13 @@ import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export type SearchAutocompleteMutationVariables = {
+export type ClientSearchAutocompleteMutationVariables = {
   request: components.AutocompleteRequest;
   options?: RequestOptions;
 };
 
-export type SearchAutocompleteMutationData = components.AutocompleteResponse;
+export type ClientSearchAutocompleteMutationData =
+  components.AutocompleteResponse;
 
 /**
  * Autocomplete
@@ -29,43 +30,43 @@ export type SearchAutocompleteMutationData = components.AutocompleteResponse;
  * @remarks
  * Retrieve query suggestions, operators and documents for the given partially typed query.
  */
-export function useSearchAutocompleteMutation(
+export function useClientSearchAutocompleteMutation(
   options?: MutationHookOptions<
-    SearchAutocompleteMutationData,
+    ClientSearchAutocompleteMutationData,
     Error,
-    SearchAutocompleteMutationVariables
+    ClientSearchAutocompleteMutationVariables
   >,
 ): UseMutationResult<
-  SearchAutocompleteMutationData,
+  ClientSearchAutocompleteMutationData,
   Error,
-  SearchAutocompleteMutationVariables
+  ClientSearchAutocompleteMutationVariables
 > {
   const client = useGleanContext();
   return useMutation({
-    ...buildSearchAutocompleteMutation(client, options),
+    ...buildClientSearchAutocompleteMutation(client, options),
     ...options,
   });
 }
 
-export function mutationKeySearchAutocomplete(): MutationKey {
-  return ["@gleanwork/api-client", "Search", "autocomplete"];
+export function mutationKeyClientSearchAutocomplete(): MutationKey {
+  return ["@gleanwork/api-client", "search", "autocomplete"];
 }
 
-export function buildSearchAutocompleteMutation(
+export function buildClientSearchAutocompleteMutation(
   client$: GleanCore,
   hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (
-    variables: SearchAutocompleteMutationVariables,
-  ) => Promise<SearchAutocompleteMutationData>;
+    variables: ClientSearchAutocompleteMutationVariables,
+  ) => Promise<ClientSearchAutocompleteMutationData>;
 } {
   return {
-    mutationKey: mutationKeySearchAutocomplete(),
-    mutationFn: function searchAutocompleteMutationFn({
+    mutationKey: mutationKeyClientSearchAutocomplete(),
+    mutationFn: function clientSearchAutocompleteMutationFn({
       request,
       options,
-    }): Promise<SearchAutocompleteMutationData> {
+    }): Promise<ClientSearchAutocompleteMutationData> {
       const mergedOptions = {
         ...hookOptions,
         ...options,
@@ -78,7 +79,7 @@ export function buildSearchAutocompleteMutation(
           ),
         },
       };
-      return unwrapAsync(searchAutocomplete(
+      return unwrapAsync(clientSearchAutocomplete(
         client$,
         request,
         mergedOptions,

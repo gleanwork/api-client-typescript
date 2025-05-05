@@ -283,12 +283,13 @@ run();
 * [create](docs/sdks/pins/README.md#create) - Create pin
 * [remove](docs/sdks/pins/README.md#remove) - Delete pin
 
-#### [client.search](docs/sdks/clientsearch/README.md)
+#### [client.search](docs/sdks/search/README.md)
 
-* [queryAsAdmin](docs/sdks/clientsearch/README.md#queryasadmin) - Search the index (admin)
-* [retrieveFeed](docs/sdks/clientsearch/README.md#retrievefeed) - Feed of documents and events
-* [recommendations](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
-* [query](docs/sdks/clientsearch/README.md#query) - Search
+* [queryAsAdmin](docs/sdks/search/README.md#queryasadmin) - Search the index (admin)
+* [autocomplete](docs/sdks/search/README.md#autocomplete) - Autocomplete
+* [retrieveFeed](docs/sdks/search/README.md#retrievefeed) - Feed of documents and events
+* [recommendations](docs/sdks/search/README.md#recommendations) - Recommend documents
+* [query](docs/sdks/search/README.md#query) - Search
 
 #### [client.shortcuts](docs/sdks/clientshortcuts/README.md)
 
@@ -370,10 +371,6 @@ run();
 * [bulkIndex](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 * [upload](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
 
-### [search](docs/sdks/search/README.md)
-
-* [autocomplete](docs/sdks/search/README.md#autocomplete) - Autocomplete
-
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -437,10 +434,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientPinsRemove`](docs/sdks/pins/README.md#remove) - Delete pin
 - [`clientPinsRetrieve`](docs/sdks/pins/README.md#retrieve) - Read pin
 - [`clientPinsUpdate`](docs/sdks/pins/README.md#update) - Update pin
-- [`clientSearchQuery`](docs/sdks/clientsearch/README.md#query) - Search
-- [`clientSearchQueryAsAdmin`](docs/sdks/clientsearch/README.md#queryasadmin) - Search the index (admin)
-- [`clientSearchRecommendations`](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
-- [`clientSearchRetrieveFeed`](docs/sdks/clientsearch/README.md#retrievefeed) - Feed of documents and events
+- [`clientSearchAutocomplete`](docs/sdks/search/README.md#autocomplete) - Autocomplete
+- [`clientSearchQuery`](docs/sdks/search/README.md#query) - Search
+- [`clientSearchQueryAsAdmin`](docs/sdks/search/README.md#queryasadmin) - Search the index (admin)
+- [`clientSearchRecommendations`](docs/sdks/search/README.md#recommendations) - Recommend documents
+- [`clientSearchRetrieveFeed`](docs/sdks/search/README.md#retrievefeed) - Feed of documents and events
 - [`clientShortcutsCreate`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
 - [`clientShortcutsDelete`](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
 - [`clientShortcutsList`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
@@ -487,7 +485,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-- [`searchAutocomplete`](docs/sdks/search/README.md#autocomplete) - Autocomplete
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
 - ~~[`indexingPeopleCount`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
@@ -562,10 +559,11 @@ To learn about this feature and how to get started, check
 - [`useClientPinsRemoveMutation`](docs/sdks/pins/README.md#remove) - Delete pin
 - [`useClientPinsRetrieveMutation`](docs/sdks/pins/README.md#retrieve) - Read pin
 - [`useClientPinsUpdateMutation`](docs/sdks/pins/README.md#update) - Update pin
-- [`useClientSearchQueryAsAdminMutation`](docs/sdks/clientsearch/README.md#queryasadmin) - Search the index (admin)
-- [`useClientSearchQueryMutation`](docs/sdks/clientsearch/README.md#query) - Search
-- [`useClientSearchRecommendationsMutation`](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
-- [`useClientSearchRetrieveFeedMutation`](docs/sdks/clientsearch/README.md#retrievefeed) - Feed of documents and events
+- [`useClientSearchAutocompleteMutation`](docs/sdks/search/README.md#autocomplete) - Autocomplete
+- [`useClientSearchQueryAsAdminMutation`](docs/sdks/search/README.md#queryasadmin) - Search the index (admin)
+- [`useClientSearchQueryMutation`](docs/sdks/search/README.md#query) - Search
+- [`useClientSearchRecommendationsMutation`](docs/sdks/search/README.md#recommendations) - Recommend documents
+- [`useClientSearchRetrieveFeedMutation`](docs/sdks/search/README.md#retrievefeed) - Feed of documents and events
 - [`useClientShortcutsCreateMutation`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
 - [`useClientShortcutsDeleteMutation`](docs/sdks/clientshortcuts/README.md#delete) - Delete shortcut
 - [`useClientShortcutsListMutation`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
@@ -612,7 +610,6 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-- [`useSearchAutocompleteMutation`](docs/sdks/search/README.md#autocomplete) - Autocomplete
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
 - ~~[`useIndexingPeopleCountMutation`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**

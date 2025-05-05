@@ -15,7 +15,7 @@ test("Search Autocomplete", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.search.autocomplete({
+  const result = await glean.client.search.autocomplete({
     trackingToken: "trackingToken",
     query: "San Fra",
     datasource: "GDRIVE",
