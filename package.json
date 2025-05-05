@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.1.0-beta.6",
+  "version": "0.1.0-beta.7",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
@@ -20,6 +20,10 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gleanwork/api-client-typescript.git"
+  },
   "scripts": {
     "test": "vitest run src --reporter=junit --outputFile=.speakeasy/reports/tests.xml --reporter=default",
     "check": "npm run test && npm run lint",
