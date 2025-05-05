@@ -8,7 +8,7 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { GleanCore } from "../core.js";
-import { clientAdminSearchQuery } from "../funcs/clientAdminSearchQuery.js";
+import { clientSearchQueryAsAdmin } from "../funcs/clientSearchQueryAsAdmin.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -16,12 +16,12 @@ import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export type ClientAdminSearchQueryMutationVariables = {
+export type ClientSearchQueryAsAdminMutationVariables = {
   request?: components.SearchRequest | undefined;
   options?: RequestOptions;
 };
 
-export type ClientAdminSearchQueryMutationData = components.SearchResponse;
+export type ClientSearchQueryAsAdminMutationData = components.SearchResponse;
 
 /**
  * Search the index (admin)
@@ -29,43 +29,43 @@ export type ClientAdminSearchQueryMutationData = components.SearchResponse;
  * @remarks
  * Retrieves results for search query without respect for permissions. This is available only to privileged users.
  */
-export function useClientAdminSearchQueryMutation(
+export function useClientSearchQueryAsAdminMutation(
   options?: MutationHookOptions<
-    ClientAdminSearchQueryMutationData,
+    ClientSearchQueryAsAdminMutationData,
     Error,
-    ClientAdminSearchQueryMutationVariables
+    ClientSearchQueryAsAdminMutationVariables
   >,
 ): UseMutationResult<
-  ClientAdminSearchQueryMutationData,
+  ClientSearchQueryAsAdminMutationData,
   Error,
-  ClientAdminSearchQueryMutationVariables
+  ClientSearchQueryAsAdminMutationVariables
 > {
   const client = useGleanContext();
   return useMutation({
-    ...buildClientAdminSearchQueryMutation(client, options),
+    ...buildClientSearchQueryAsAdminMutation(client, options),
     ...options,
   });
 }
 
-export function mutationKeyClientAdminSearchQuery(): MutationKey {
-  return ["@gleanwork/api-client", "search", "query"];
+export function mutationKeyClientSearchQueryAsAdmin(): MutationKey {
+  return ["@gleanwork/api-client", "search", "queryAsAdmin"];
 }
 
-export function buildClientAdminSearchQueryMutation(
+export function buildClientSearchQueryAsAdminMutation(
   client$: GleanCore,
   hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (
-    variables: ClientAdminSearchQueryMutationVariables,
-  ) => Promise<ClientAdminSearchQueryMutationData>;
+    variables: ClientSearchQueryAsAdminMutationVariables,
+  ) => Promise<ClientSearchQueryAsAdminMutationData>;
 } {
   return {
-    mutationKey: mutationKeyClientAdminSearchQuery(),
-    mutationFn: function clientAdminSearchQueryMutationFn({
+    mutationKey: mutationKeyClientSearchQueryAsAdmin(),
+    mutationFn: function clientSearchQueryAsAdminMutationFn({
       request,
       options,
-    }): Promise<ClientAdminSearchQueryMutationData> {
+    }): Promise<ClientSearchQueryAsAdminMutationData> {
       const mergedOptions = {
         ...hookOptions,
         ...options,
@@ -78,7 +78,7 @@ export function buildClientAdminSearchQueryMutation(
           ),
         },
       };
-      return unwrapAsync(clientAdminSearchQuery(
+      return unwrapAsync(clientSearchQueryAsAdmin(
         client$,
         request,
         mergedOptions,

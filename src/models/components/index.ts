@@ -220,7 +220,6 @@ export * from "./grouptype.js";
 export * from "./iconconfig.js";
 export * from "./indexdocumentrequest.js";
 export * from "./indexdocumentsrequest.js";
-export * from "./indexemployeelistrequest.js";
 export * from "./indexemployeerequest.js";
 export * from "./indexgrouprequest.js";
 export * from "./indexingshortcut.js";

@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Retrieves results for search query without respect for permissions. This is available only to privileged users.
  */
-export function clientAdminSearchQuery(
+export function clientSearchQueryAsAdmin(
   client: GleanCore,
   request?: components.SearchRequest | undefined,
   options?: RequestOptions,

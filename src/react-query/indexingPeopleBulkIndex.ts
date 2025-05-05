@@ -17,7 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type IndexingPeopleBulkIndexMutationVariables = {
-  request: components.IndexEmployeeListRequest;
+  request: components.BulkIndexEmployeesRequest;
   options?: RequestOptions;
 };
 
@@ -27,9 +27,7 @@ export type IndexingPeopleBulkIndexMutationData = void;
  * Bulk index employees
  *
  * @remarks
- * Bulk upload details of all the employees. This deletes all employees uploaded in the prior batch. SOON TO BE DEPRECATED in favor of /bulkindexemployees.
- *
- * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+ * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
  */
 export function useIndexingPeopleBulkIndexMutation(
   options?: MutationHookOptions<
