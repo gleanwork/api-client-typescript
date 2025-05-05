@@ -297,10 +297,7 @@ DEBUG	discriminated: Renamed to "indexing_documents"
 	 registrationID: "scope:sdk mainSDK:Glean group:indexing originalName:documents"
 DEBUG	
 
---- Renaming 3 types with name "search" ---
-DEBUG	discriminated: Renamed to "admin_search" 
-	 labels: "original_name:search group:admin group:client data_type:SDK mainSDK:Glean" 
-	 registrationID: "scope:sdk mainSDK:Glean group:client group:admin originalName:search"
+--- Renaming 2 types with name "search" ---
 DEBUG	discriminated: Renamed to "client_search" 
 	 labels: "original_name:search group:client data_type:SDK mainSDK:Glean" 
 	 registrationID: "scope:sdk mainSDK:Glean group:client originalName:search"
@@ -313,12 +310,6 @@ DEBUG	discriminated: Renamed to "client_shortcuts"
 DEBUG	discriminated: Renamed to "indexing_shortcuts" 
 	 labels: "original_name:shortcuts group:indexing data_type:SDK mainSDK:Glean" 
 	 registrationID: "scope:sdk mainSDK:Glean group:indexing originalName:shortcuts"
-DEBUG	
-
---- Renaming 2 types with name "people" ---
-DEBUG	discriminated: Renamed to "indexing_people" 
-	 labels: "original_name:people group:indexing data_type:SDK mainSDK:Glean" 
-	 registrationID: "scope:sdk mainSDK:Glean group:indexing originalName:people"
 DEBUG	prepend_op_id: N/A rename "listpins_request" 
 	 labels: "original_name:request operation:listpins operationTag:client.pins" 
 	 registrationID: "scope:operations operationTag:client.pins operation:listpins requestResponse:request originalName:RequestBody"
@@ -703,12 +694,10 @@ PinRequest (queries: array, audienceFilters: array, documentId: string)
 PinResponse (HttpMeta: HTTPMetadata, PinDocument: PinDocument)
 Unpin (id: string)
 UnpinResponse (HttpMeta: HTTPMetadata)
-Admin (SDK empty)
-AdminSearch (SDK empty)
+ClientSearch (SDK empty)
 SearchRequest (timestamp: date-time, trackingToken: string, sessionInfo: SessionInfo ...)
 AdminsearchResponse (HttpMeta: HTTPMetadata, SearchResponse: SearchResponse)
 GleanDataError (error)
-ClientSearch (SDK empty)
 FeedRequest (categories: array, requestOptions: FeedRequestOptions, timeoutMillis: integer ...)
   FeedRequestCategory (enum: DOCUMENT_SUGGESTION, DOCUMENT_SUGGESTION_SCENARIO, TRENDING_DOCUMENT ...)
  FeedRequestOptions (resultSize: integer, timezoneOffset: integer, categoryToResultSize: map ...)
@@ -888,7 +877,7 @@ PostApiIndexV1DebugDatasourceStatusResponse (HttpMeta: HTTPMetadata, DebugDataso
    DebugDatasourceStatusIdentityResponseComponent (bulkUploadHistory: array, counts: class)
     DebugDatasourceStatusIdentityResponseComponentCounts (uploaded: integer)
   DatasourceVisibility (enum: ENABLED_FOR_ALL, ENABLED_FOR_TEST_GROUP, NOT_ENABLED)
-IndexingPeople (SDK empty)
+People (SDK empty)
 Post/api/index/v1/debug/{datasource}/userRequest (datasource: string, DebugUserRequest: DebugUserRequest)
  DebugUserRequest (email: string)
 PostApiIndexV1DebugDatasourceUserResponse (HttpMeta: HTTPMetadata, DebugUserResponse: DebugUserResponse)
@@ -906,8 +895,8 @@ IndexEmployeeRequest (employee: EmployeeInfoDefinition, version: integer)
    AdditionalFieldDefinition (key: string, value: array)
      Value (empty)
 PostApiIndexV1IndexemployeeResponse (HttpMeta: HTTPMetadata)
-IndexEmployeeListRequest (employees: array)
-PostApiIndexV1IndexemployeelistResponse (HttpMeta: HTTPMetadata)
+BulkIndexEmployeesRequest (uploadId: string, isFirstPage: boolean, isLastPage: boolean ...)
+PostApiIndexV1BulkindexemployeesResponse (HttpMeta: HTTPMetadata)
 PostApiIndexV1ProcessallemployeesandteamsResponse (HttpMeta: HTTPMetadata)
 DeleteEmployeeRequest (version: integer, employeeEmail: string)
 PostApiIndexV1DeleteemployeeResponse (HttpMeta: HTTPMetadata)
@@ -944,7 +933,4 @@ PostApiIndexV1BulkindexshortcutsResponse (HttpMeta: HTTPMetadata)
 UploadShortcutsRequest (uploadId: string, isFirstPage: boolean, isLastPage: boolean ...)
   IndexingShortcut (inputAlias: string, description: string, destinationUrl: string ...)
 PostApiIndexV1UploadshortcutsResponse (HttpMeta: HTTPMetadata)
-People (SDK empty)
-BulkIndexEmployeesRequest (uploadId: string, isFirstPage: boolean, isLastPage: boolean ...)
-PostApiIndexV1BulkindexemployeesResponse (HttpMeta: HTTPMetadata)
 

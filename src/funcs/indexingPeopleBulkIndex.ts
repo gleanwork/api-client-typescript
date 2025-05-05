@@ -28,13 +28,11 @@ import { Result } from "../types/fp.js";
  * Bulk index employees
  *
  * @remarks
- * Bulk upload details of all the employees. This deletes all employees uploaded in the prior batch. SOON TO BE DEPRECATED in favor of /bulkindexemployees.
- *
- * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+ * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
  */
 export function indexingPeopleBulkIndex(
   client: GleanCore,
-  request: components.IndexEmployeeListRequest,
+  request: components.BulkIndexEmployeesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +55,7 @@ export function indexingPeopleBulkIndex(
 
 async function $do(
   client: GleanCore,
-  request: components.IndexEmployeeListRequest,
+  request: components.BulkIndexEmployeesRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -76,7 +74,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => components.IndexEmployeeListRequest$outboundSchema.parse(value),
+    (value) => components.BulkIndexEmployeesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -85,7 +83,7 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/api/index/v1/indexemployeelist")();
+  const path = pathToFunc("/api/index/v1/bulkindexemployees")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -98,7 +96,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "post_/api/index/v1/indexemployeelist",
+    operationID: "post_/api/index/v1/bulkindexemployees",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,

@@ -16,7 +16,7 @@ test("Admin Search Adminsearch", async () => {
     bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
   });
 
-  const result = await glean.client.admin.search.query({
+  const result = await glean.client.search.queryAsAdmin({
     trackingToken: "trackingToken",
     sourceDocument: {
       metadata: {

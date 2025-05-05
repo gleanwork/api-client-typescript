@@ -7,8 +7,8 @@ import { Datasource } from "./datasource.js";
 import { Datasources } from "./datasources.js";
 import { IndexingAuthentication } from "./indexingauthentication.js";
 import { IndexingDocuments } from "./indexingdocuments.js";
-import { IndexingPeople } from "./indexingpeople.js";
 import { IndexingShortcuts } from "./indexingshortcuts.js";
+import { People } from "./people.js";
 import { Permissions } from "./permissions.js";
 
 export class Indexing extends ClientSDK {
@@ -27,9 +27,9 @@ export class Indexing extends ClientSDK {
     return (this._datasource ??= new Datasource(this._options));
   }
 
-  private _people?: IndexingPeople;
-  get people(): IndexingPeople {
-    return (this._people ??= new IndexingPeople(this._options));
+  private _people?: People;
+  get people(): People {
+    return (this._people ??= new People(this._options));
   }
 
   private _datasources?: Datasources;

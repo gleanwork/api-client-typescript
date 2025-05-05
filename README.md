@@ -207,13 +207,6 @@ run();
 * [report](docs/sdks/activity/README.md#report) - Report document activity
 * [feedback](docs/sdks/activity/README.md#feedback) - Report client activity
 
-#### [client.admin](docs/sdks/admin/README.md)
-
-
-#### [client.admin.search](docs/sdks/adminsearch/README.md)
-
-* [query](docs/sdks/adminsearch/README.md#query) - Search the index (admin)
-
 #### [client.agents](docs/sdks/agents/README.md)
 
 * [run](docs/sdks/agents/README.md#run) - Runs an Agent.
@@ -292,6 +285,7 @@ run();
 
 #### [client.search](docs/sdks/clientsearch/README.md)
 
+* [queryAsAdmin](docs/sdks/clientsearch/README.md#queryasadmin) - Search the index (admin)
 * [retrieveFeed](docs/sdks/clientsearch/README.md#retrievefeed) - Feed of documents and events
 * [recommendations](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
 * [query](docs/sdks/clientsearch/README.md#query) - Search
@@ -343,18 +337,18 @@ run();
 * [~~status~~](docs/sdks/indexingdocuments/README.md#status) - Get document upload and indexing status :warning: **Deprecated**
 * [~~count~~](docs/sdks/indexingdocuments/README.md#count) - Get document count :warning: **Deprecated**
 
-#### [indexing.people](docs/sdks/indexingpeople/README.md)
+#### [indexing.people](docs/sdks/people/README.md)
 
-* [debug](docs/sdks/indexingpeople/README.md#debug) - Beta: Get user information
+* [debug](docs/sdks/people/README.md#debug) - Beta: Get user information
 
-* [~~count~~](docs/sdks/indexingpeople/README.md#count) - Get user count :warning: **Deprecated**
-* [index](docs/sdks/indexingpeople/README.md#index) - Index employee
-* [~~bulkIndex~~](docs/sdks/indexingpeople/README.md#bulkindex) - Bulk index employees :warning: **Deprecated**
-* [processAllEmployeesAndTeams](docs/sdks/indexingpeople/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
-* [delete](docs/sdks/indexingpeople/README.md#delete) - Delete employee
-* [indexTeam](docs/sdks/indexingpeople/README.md#indexteam) - Index team
-* [deleteTeam](docs/sdks/indexingpeople/README.md#deleteteam) - Delete team
-* [bulkIndexTeams](docs/sdks/indexingpeople/README.md#bulkindexteams) - Bulk index teams
+* [~~count~~](docs/sdks/people/README.md#count) - Get user count :warning: **Deprecated**
+* [index](docs/sdks/people/README.md#index) - Index employee
+* [bulkIndex](docs/sdks/people/README.md#bulkindex) - Bulk index employees
+* [processAllEmployeesAndTeams](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
+* [delete](docs/sdks/people/README.md#delete) - Delete employee
+* [indexTeam](docs/sdks/people/README.md#indexteam) - Index team
+* [deleteTeam](docs/sdks/people/README.md#deleteteam) - Delete team
+* [bulkIndexTeams](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
 
 #### [indexing.permissions](docs/sdks/permissions/README.md)
 
@@ -375,10 +369,6 @@ run();
 
 * [bulkIndex](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 * [upload](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-
-### [people](docs/sdks/people/README.md)
-
-* [postApiIndexV1Bulkindexemployees](docs/sdks/people/README.md#postapiindexv1bulkindexemployees) - Bulk index employees
 
 ### [search](docs/sdks/search/README.md)
 
@@ -404,7 +394,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
-- [`clientAdminSearchQuery`](docs/sdks/adminsearch/README.md#query) - Search the index (admin)
 - [`clientAgentsList`](docs/sdks/agents/README.md#list) - Lists all agents.
 - [`clientAgentsRetrieveInputs`](docs/sdks/agents/README.md#retrieveinputs) - Gets the inputs to an agent.
 - [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Runs an Agent.
@@ -449,6 +438,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientPinsRetrieve`](docs/sdks/pins/README.md#retrieve) - Read pin
 - [`clientPinsUpdate`](docs/sdks/pins/README.md#update) - Update pin
 - [`clientSearchQuery`](docs/sdks/clientsearch/README.md#query) - Search
+- [`clientSearchQueryAsAdmin`](docs/sdks/clientsearch/README.md#queryasadmin) - Search the index (admin)
 - [`clientSearchRecommendations`](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
 - [`clientSearchRetrieveFeed`](docs/sdks/clientsearch/README.md#retrievefeed) - Feed of documents and events
 - [`clientShortcutsCreate`](docs/sdks/clientshortcuts/README.md#create) - Create shortcut
@@ -474,14 +464,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingDocumentsDelete`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`indexingDocumentsIndex`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`indexingDocumentsProcessAll`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
-- [`indexingPeopleBulkIndexTeams`](docs/sdks/indexingpeople/README.md#bulkindexteams) - Bulk index teams
-- [`indexingPeopleDebug`](docs/sdks/indexingpeople/README.md#debug) - Beta: Get user information
+- [`indexingPeopleBulkIndex`](docs/sdks/people/README.md#bulkindex) - Bulk index employees
+- [`indexingPeopleBulkIndexTeams`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
+- [`indexingPeopleDebug`](docs/sdks/people/README.md#debug) - Beta: Get user information
 
-- [`indexingPeopleDelete`](docs/sdks/indexingpeople/README.md#delete) - Delete employee
-- [`indexingPeopleDeleteTeam`](docs/sdks/indexingpeople/README.md#deleteteam) - Delete team
-- [`indexingPeopleIndex`](docs/sdks/indexingpeople/README.md#index) - Index employee
-- [`indexingPeopleIndexTeam`](docs/sdks/indexingpeople/README.md#indexteam) - Index team
-- [`indexingPeopleProcessAllEmployeesAndTeams`](docs/sdks/indexingpeople/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
+- [`indexingPeopleDelete`](docs/sdks/people/README.md#delete) - Delete employee
+- [`indexingPeopleDeleteTeam`](docs/sdks/people/README.md#deleteteam) - Delete team
+- [`indexingPeopleIndex`](docs/sdks/people/README.md#index) - Index employee
+- [`indexingPeopleIndexTeam`](docs/sdks/people/README.md#indexteam) - Index team
+- [`indexingPeopleProcessAllEmployeesAndTeams`](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
 - [`indexingPermissionsAuthorizeBetaUsers`](docs/sdks/permissions/README.md#authorizebetausers) - Beta users
 - [`indexingPermissionsBulkIndexGroups`](docs/sdks/permissions/README.md#bulkindexgroups) - Bulk index groups
 - [`indexingPermissionsBulkIndexMemberships`](docs/sdks/permissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
@@ -496,12 +487,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-- [`peoplePostApiIndexV1Bulkindexemployees`](docs/sdks/people/README.md#postapiindexv1bulkindexemployees) - Bulk index employees
 - [`searchAutocomplete`](docs/sdks/search/README.md#autocomplete) - Autocomplete
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
-- ~~[`indexingPeopleBulkIndex`](docs/sdks/indexingpeople/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
-- ~~[`indexingPeopleCount`](docs/sdks/indexingpeople/README.md#count)~~ - Get user count :warning: **Deprecated**
+- ~~[`indexingPeopleCount`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -530,7 +519,6 @@ To learn about this feature and how to get started, check
 
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
-- [`useClientAdminSearchQueryMutation`](docs/sdks/adminsearch/README.md#query) - Search the index (admin)
 - [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Lists all agents.
 - [`useClientAgentsRetrieveInputsMutation`](docs/sdks/agents/README.md#retrieveinputs) - Gets the inputs to an agent.
 - [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Runs an Agent.
@@ -574,6 +562,7 @@ To learn about this feature and how to get started, check
 - [`useClientPinsRemoveMutation`](docs/sdks/pins/README.md#remove) - Delete pin
 - [`useClientPinsRetrieveMutation`](docs/sdks/pins/README.md#retrieve) - Read pin
 - [`useClientPinsUpdateMutation`](docs/sdks/pins/README.md#update) - Update pin
+- [`useClientSearchQueryAsAdminMutation`](docs/sdks/clientsearch/README.md#queryasadmin) - Search the index (admin)
 - [`useClientSearchQueryMutation`](docs/sdks/clientsearch/README.md#query) - Search
 - [`useClientSearchRecommendationsMutation`](docs/sdks/clientsearch/README.md#recommendations) - Recommend documents
 - [`useClientSearchRetrieveFeedMutation`](docs/sdks/clientsearch/README.md#retrievefeed) - Feed of documents and events
@@ -600,14 +589,15 @@ To learn about this feature and how to get started, check
 - [`useIndexingDocumentsDeleteMutation`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`useIndexingDocumentsIndexMutation`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`useIndexingDocumentsProcessAllMutation`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
-- [`useIndexingPeopleBulkIndexTeamsMutation`](docs/sdks/indexingpeople/README.md#bulkindexteams) - Bulk index teams
-- [`useIndexingPeopleDebugMutation`](docs/sdks/indexingpeople/README.md#debug) - Beta: Get user information
+- [`useIndexingPeopleBulkIndexMutation`](docs/sdks/people/README.md#bulkindex) - Bulk index employees
+- [`useIndexingPeopleBulkIndexTeamsMutation`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
+- [`useIndexingPeopleDebugMutation`](docs/sdks/people/README.md#debug) - Beta: Get user information
 
-- [`useIndexingPeopleDeleteMutation`](docs/sdks/indexingpeople/README.md#delete) - Delete employee
-- [`useIndexingPeopleDeleteTeamMutation`](docs/sdks/indexingpeople/README.md#deleteteam) - Delete team
-- [`useIndexingPeopleIndexMutation`](docs/sdks/indexingpeople/README.md#index) - Index employee
-- [`useIndexingPeopleIndexTeamMutation`](docs/sdks/indexingpeople/README.md#indexteam) - Index team
-- [`useIndexingPeopleProcessAllEmployeesAndTeamsMutation`](docs/sdks/indexingpeople/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
+- [`useIndexingPeopleDeleteMutation`](docs/sdks/people/README.md#delete) - Delete employee
+- [`useIndexingPeopleDeleteTeamMutation`](docs/sdks/people/README.md#deleteteam) - Delete team
+- [`useIndexingPeopleIndexMutation`](docs/sdks/people/README.md#index) - Index employee
+- [`useIndexingPeopleIndexTeamMutation`](docs/sdks/people/README.md#indexteam) - Index team
+- [`useIndexingPeopleProcessAllEmployeesAndTeamsMutation`](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
 - [`useIndexingPermissionsAuthorizeBetaUsersMutation`](docs/sdks/permissions/README.md#authorizebetausers) - Beta users
 - [`useIndexingPermissionsBulkIndexGroupsMutation`](docs/sdks/permissions/README.md#bulkindexgroups) - Bulk index groups
 - [`useIndexingPermissionsBulkIndexMembershipsMutation`](docs/sdks/permissions/README.md#bulkindexmemberships) - Bulk index memberships for a group
@@ -622,12 +612,10 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-- [`usePeoplePostApiIndexV1BulkindexemployeesMutation`](docs/sdks/people/README.md#postapiindexv1bulkindexemployees) - Bulk index employees
 - [`useSearchAutocompleteMutation`](docs/sdks/search/README.md#autocomplete) - Autocomplete
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
-- ~~[`useIndexingPeopleBulkIndexMutation`](docs/sdks/indexingpeople/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
-- ~~[`useIndexingPeopleCountMutation`](docs/sdks/indexingpeople/README.md#count)~~ - Get user count :warning: **Deprecated**
+- ~~[`useIndexingPeopleCountMutation`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
 
 </details>
 <!-- End React hooks with TanStack Query [react-query] -->

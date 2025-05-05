@@ -4,7 +4,6 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Activity } from "./activity.js";
-import { Admin } from "./admin.js";
 import { Agents } from "./agents.js";
 import { Announcements } from "./announcements.js";
 import { Answers } from "./answers.js";
@@ -74,11 +73,6 @@ export class Client extends ClientSDK {
   private _pins?: Pins;
   get pins(): Pins {
     return (this._pins ??= new Pins(this._options));
-  }
-
-  private _admin?: Admin;
-  get admin(): Admin {
-    return (this._admin ??= new Admin(this._options));
   }
 
   private _search?: ClientSearch;

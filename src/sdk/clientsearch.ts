@@ -3,6 +3,7 @@
  */
 
 import { clientSearchQuery } from "../funcs/clientSearchQuery.js";
+import { clientSearchQueryAsAdmin } from "../funcs/clientSearchQueryAsAdmin.js";
 import { clientSearchRecommendations } from "../funcs/clientSearchRecommendations.js";
 import { clientSearchRetrieveFeed } from "../funcs/clientSearchRetrieveFeed.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -10,6 +11,23 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ClientSearch extends ClientSDK {
+  /**
+   * Search the index (admin)
+   *
+   * @remarks
+   * Retrieves results for search query without respect for permissions. This is available only to privileged users.
+   */
+  async queryAsAdmin(
+    request?: components.SearchRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<components.SearchResponse> {
+    return unwrapAsync(clientSearchQueryAsAdmin(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Feed of documents and events
    *
