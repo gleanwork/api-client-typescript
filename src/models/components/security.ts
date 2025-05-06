@@ -9,7 +9,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Security = {
-  bearerAuth?: string | undefined;
+  apiToken?: string | undefined;
 };
 
 /** @internal */
@@ -18,16 +18,16 @@ export const Security$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  BearerAuth: z.string().optional(),
+  APIToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "BearerAuth": "bearerAuth",
+    "APIToken": "apiToken",
   });
 });
 
 /** @internal */
 export type Security$Outbound = {
-  BearerAuth?: string | undefined;
+  APIToken?: string | undefined;
 };
 
 /** @internal */
@@ -36,10 +36,10 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  bearerAuth: z.string().optional(),
+  apiToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    bearerAuth: "BearerAuth",
+    apiToken: "APIToken",
   });
 });
 

@@ -18,7 +18,7 @@ Report user activity that occurs on indexed documents such as viewing or editing
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -66,7 +66,7 @@ import { clientActivityReport } from "@gleanwork/api-client/funcs/clientActivity
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -155,7 +155,7 @@ Report events that happen to results within a Glean client UI, such as search re
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -183,7 +183,7 @@ import { clientActivityFeedback } from "@gleanwork/api-client/funcs/clientActivi
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

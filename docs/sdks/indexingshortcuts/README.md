@@ -18,7 +18,7 @@ Replaces all the currently indexed shortcuts using paginated batch API calls. No
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -51,7 +51,7 @@ import { indexingShortcutsBulkIndex } from "@gleanwork/api-client/funcs/indexing
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -125,7 +125,7 @@ Creates glean shortcuts for uploaded shortcuts info. Glean would host the shortc
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -157,7 +157,7 @@ import { indexingShortcutsUpload } from "@gleanwork/api-client/funcs/indexingSho
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

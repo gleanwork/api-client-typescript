@@ -6,19 +6,21 @@ import {
   GleanError,
 } from "@gleanwork/api-client/models/errors";
 
-if (!process.env["SERVER_URL"]) {
-  throw new Error("SERVER_URL is not set");
+if (!process.env["GLEAN_DOMAIN"]) {
+  throw new Error("GLEAN_DOMAIN is not set");
 }
 
-console.log(process.env["SERVER_URL"]);
+if (!process.env["GLEAN_BEARER_AUTH"]) {
+  throw new Error("GLEAN_BEARER_AUTH is not set");
+}
 
 const glean = new Glean({
-  domain: "customerName",
-  bearerAuth: process.env["BEARER_AUTH"],
+  domain: process.env["GLEAN_DOMAIN"] ?? "",
+  apiToken: process.env["GLEAN_BEARER_AUTH"] ?? "",
 });
 
 try {
-  const data = await glean.client.search.execute({
+  const data = await glean.client.search.query({
     query: "What are the company holidays this year?",
   });
   console.log(data);

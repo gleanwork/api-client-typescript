@@ -19,7 +19,7 @@ Trigger an Agent with a given id.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -43,7 +43,7 @@ import { clientAgentsRun } from "@gleanwork/api-client/funcs/clientAgentsRun.js"
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -109,7 +109,7 @@ Lists all agents that are available.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -133,7 +133,7 @@ import { clientAgentsList } from "@gleanwork/api-client/funcs/clientAgentsList.j
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -199,7 +199,7 @@ Get the inputs to an agent with a given id.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -223,7 +223,7 @@ import { clientAgentsRetrieveInputs } from "@gleanwork/api-client/funcs/clientAg
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

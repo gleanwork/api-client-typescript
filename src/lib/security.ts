@@ -244,7 +244,7 @@ export function resolveGlobalSecurity(
       {
         fieldName: "Authorization",
         type: "http:bearer",
-        value: security?.bearerAuth ?? env().GLEAN_BEARER_AUTH,
+        value: security?.apiToken ?? env().GLEAN_API_TOKEN,
       },
     ],
   );

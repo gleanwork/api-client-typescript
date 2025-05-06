@@ -106,8 +106,8 @@ async function $do(
     Accept: "application/json; charset=UTF-8",
   }));
 
-  const secConfig = await extractSecurity(client._options.bearerAuth);
-  const securityInput = secConfig == null ? {} : { bearerAuth: secConfig };
+  const secConfig = await extractSecurity(client._options.apiToken);
+  const securityInput = secConfig == null ? {} : { apiToken: secConfig };
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
@@ -117,7 +117,7 @@ async function $do(
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.bearerAuth,
+    securitySource: client._options.apiToken,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },

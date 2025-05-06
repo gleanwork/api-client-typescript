@@ -12,7 +12,7 @@ test("Verification Addverificationreminder", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.verification.addReminder({
@@ -27,7 +27,7 @@ test("Verification Listverifications", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.verification.list();
@@ -40,7 +40,7 @@ test("Verification Verify", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.verification.verify({

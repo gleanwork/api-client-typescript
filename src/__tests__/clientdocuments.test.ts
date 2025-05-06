@@ -12,7 +12,7 @@ test("Client Documents Getdocpermissions", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.documents.retrievePermissions({});
@@ -25,7 +25,7 @@ test("Client Documents Getdocuments", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.documents.retrieve();
@@ -38,7 +38,7 @@ test("Client Documents Getdocumentsbyfacets", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.documents.retrieveByFacets({
@@ -88,7 +88,7 @@ test("Client Documents Summarize", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.documents.summarize({
