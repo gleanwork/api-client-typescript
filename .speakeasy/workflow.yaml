@@ -16,7 +16,7 @@ targets:
             registry:
                 location: registry.speakeasyapi.dev/glean-el2/sdk/glean-api-specs-typescript-code-samples
             labelOverride:
-                fixedValue: Typescript (SDK)
+                fixedValue: Typescript (API Client)
             blocking: false
         testing:
             enabled: true
