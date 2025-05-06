@@ -14,7 +14,7 @@ test("Indexing Documents Post /Api/index/v1 /Indexdocument", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.documents.addOrUpdate({
@@ -32,7 +32,7 @@ test("Indexing Documents Post /Api/index/v1 /Indexdocuments", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.documents.index({
@@ -53,7 +53,7 @@ test("Indexing Documents Post /Api/index/v1 /Bulkindexdocuments", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.documents.bulkIndex({
@@ -75,7 +75,7 @@ test("Indexing Documents Post /Api/index/v1 /Processalldocuments", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.documents.processAll();
@@ -89,7 +89,7 @@ test("Indexing Documents Post /Api/index/v1 /Deletedocument", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.documents.delete({
@@ -107,7 +107,7 @@ test("Indexing Documents Post /Api/index/v1 /Checkdocumentaccess", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.indexing.documents.checkAccess({
@@ -127,7 +127,7 @@ test("Indexing Documents Post /Api/index/v1 /Getdocumentstatus", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.indexing.documents.status({
@@ -146,7 +146,7 @@ test("Indexing Documents Post /Api/index/v1 /Getdocumentcount", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.indexing.documents.count({

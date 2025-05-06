@@ -13,25 +13,48 @@ Each namespace has its own authentication requirements and access patterns. Whil
 
 ```typescript
 // Example of accessing Client namespace
-const glean = new Glean({ bearerAuth: "client-token" });
+const glean = new Glean({ apiToken: "client-token" });
 await glean.client.search.query({ query: "search term" });
 
 // Example of accessing Indexing namespace 
-const glean = new Glean({ bearerAuth: "indexing-token" });
+const glean = new Glean({ apiToken: "indexing-token" });
 await glean.indexing.documents.index({ /* document data */ });
 ```
 
 Remember that each namespace requires its own authentication token type as described in the [Authentication Methods](#authentication-methods) section.
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Glean API: # Introduction
+In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
+
+# Usage guidelines
+This API is evolving fast. Glean will provide advance notice of any planned backwards incompatible changes along
+with a 6-month sunset period for anything that requires developers to adopt the new versions.
+
+# API Clients
+Official API clients for the Glean Indexing API are available in multiple languages:
+
+- [Python](https://github.com/gleanwork/api-client-python)
+- [TypeScript](https://github.com/gleanwork/api-client-typescript)
+- [Go](https://github.com/gleanwork/api-client-go)
+- [Java](https://github.com/gleanwork/api-client-java)
+
+These API clients provide type-safe, idiomatic interfaces for working with Glean IndexingAPIs in your language of choice.
+<!-- End Summary [summary] -->
+
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
 * [Glean TypeScript API Client](#glean-typescript-api-client)
+  * [Unified SDK Architecture](#unified-sdk-architecture)
+* [Usage guidelines](#usage-guidelines)
+* [API Clients](#api-clients)
   * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
-  * [Authentication Methods](#authentication-methods)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
   * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
@@ -105,7 +128,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -135,7 +158,7 @@ run();
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -167,16 +190,16 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name         | Type | Scheme      | Environment Variable |
-| ------------ | ---- | ----------- | -------------------- |
-| `bearerAuth` | http | HTTP Bearer | `GLEAN_BEARER_AUTH`  |
+| Name       | Type | Scheme      | Environment Variable |
+| ---------- | ---- | ----------- | -------------------- |
+| `apiToken` | http | HTTP Bearer | `GLEAN_API_TOKEN`    |
 
-To authenticate with the API the `bearerAuth` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiToken` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -211,7 +234,6 @@ async function run() {
 run();
 
 ```
-
 <!-- End Authentication [security] -->
 
 ### Authentication Methods
@@ -677,7 +699,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -739,7 +761,7 @@ const glean = new Glean({
     },
     retryConnectionErrors: false,
   },
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -794,11 +816,11 @@ The following errors may be thrown by the SDK:
 ### Example
 
 ```typescript
-import { Glean } from "@gleanwork/api-client";
+import { Glean } from "@gleanwork/api-client";****
 import { GleanDataError, GleanError } from "glean/models/errors";
 
 const glean = new Glean({
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_BEARER_AUTH"] ?? "",
 });
 
 try {
@@ -857,7 +879,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   domain: "scared-pearl.biz",
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -901,7 +923,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   serverURL: "https://domain-be.glean.com",
-  bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "",
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

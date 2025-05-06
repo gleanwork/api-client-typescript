@@ -3,19 +3,21 @@ config();
 import { Glean } from "@gleanwork/api-client";
 import { GleanError } from "@gleanwork/api-client/models/errors";
 
-if (!process.env["SERVER_URL"]) {
-  throw new Error("SERVER_URL is not set");
+if (!process.env["GLEAN_DOMAIN"]) {
+  throw new Error("GLEAN_DOMAIN is not set");
 }
 
-console.log(process.env["SERVER_URL"]);
+if (!process.env["GLEAN_BEARER_AUTH"]) {
+  throw new Error("GLEAN_BEARER_AUTH is not set");
+}
 
 const glean = new Glean({
   domain: "customerName",
-  bearerAuth: process.env["BEARER_AUTH"],
+  apiToken: process.env["GLEAN_BEARER_AUTH"],
 });
 
 try {
-  const data = await glean.client.chat.start({
+  const data = await glean.client.chat.create({
     messages: [
       {
         fragments: [{ text: "What are the company holidays this year?" }],

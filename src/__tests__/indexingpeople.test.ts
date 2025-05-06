@@ -14,7 +14,7 @@ test("Indexing People Post /Api/index/v1 /Getusercount", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.indexing.people.count({
@@ -31,7 +31,7 @@ test("Indexing People Post /Api/index/v1 /Processallemployeesandteams", async ()
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    bearerAuth: process.env["GLEAN_BEARER_AUTH"] ?? "value",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.people.processAllEmployeesAndTeams();
