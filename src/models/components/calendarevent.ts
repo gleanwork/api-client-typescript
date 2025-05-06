@@ -85,6 +85,10 @@ export type CalendarEvent = {
    * The event has a transcript associated with it enabling features like summarization
    */
   hasTranscript?: boolean | undefined;
+  /**
+   * A link to the transcript of the event
+   */
+  transcriptUrl?: string | undefined;
   classifications?: Array<EventClassification> | undefined;
   generatedAttachments?: Array<GeneratedAttachment> | undefined;
 };
@@ -126,6 +130,7 @@ export const CalendarEvent$inboundSchema: z.ZodType<
   description: z.string().optional(),
   datasource: z.string().optional(),
   hasTranscript: z.boolean().optional(),
+  transcriptUrl: z.string().optional(),
   classifications: z.array(EventClassification$inboundSchema).optional(),
   generatedAttachments: z.array(GeneratedAttachment$inboundSchema).optional(),
 });
@@ -142,6 +147,7 @@ export type CalendarEvent$Outbound = {
   description?: string | undefined;
   datasource?: string | undefined;
   hasTranscript?: boolean | undefined;
+  transcriptUrl?: string | undefined;
   classifications?: Array<EventClassification$Outbound> | undefined;
   generatedAttachments?: Array<GeneratedAttachment$Outbound> | undefined;
 };
@@ -162,6 +168,7 @@ export const CalendarEvent$outboundSchema: z.ZodType<
   description: z.string().optional(),
   datasource: z.string().optional(),
   hasTranscript: z.boolean().optional(),
+  transcriptUrl: z.string().optional(),
   classifications: z.array(EventClassification$outboundSchema).optional(),
   generatedAttachments: z.array(GeneratedAttachment$outboundSchema).optional(),
 });
