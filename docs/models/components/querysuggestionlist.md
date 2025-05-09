@@ -6,7 +6,13 @@
 import { QuerySuggestionList } from "@gleanwork/api-client/models/components";
 
 let value: QuerySuggestionList = {
-  suggestions: [],
+  suggestions: [
+    {
+      query: "app:github type:pull author:mortimer",
+      label: "Mortimer's PRs",
+      datasource: "github",
+    },
+  ],
   person: {
     name: "George Clooney",
     obfuscatedId: "abc123",

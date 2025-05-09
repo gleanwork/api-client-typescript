@@ -866,11 +866,11 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 ### Server Variables
 
-The default server `https://{domain}-be.glean.com` contains variables and is set to `https://domain-be.glean.com` by default. To override default values, the following parameters are available when initializing the SDK client instance:
+The default server `https://{instance}-be.glean.com` contains variables and is set to `https://instance-name-be.glean.com` by default. To override default values, the following parameters are available when initializing the SDK client instance:
 
-| Variable | Parameter        | Default    | Description                                                              |
-| -------- | ---------------- | ---------- | ------------------------------------------------------------------------ |
-| `domain` | `domain: string` | `"domain"` | Email domain (without extension) that determines the deployment backend. |
+| Variable   | Parameter          | Default           | Description                                                                                                  |
+| ---------- | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------ |
+| `instance` | `instance: string` | `"instance-name"` | The instance name (typically the email domain without the extension) that determines the deployment backend. |
 
 #### Example
 
@@ -878,7 +878,7 @@ The default server `https://{domain}-be.glean.com` contains variables and is set
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  domain: "scared-pearl.biz",
+  instance: "<value>",
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
@@ -922,7 +922,7 @@ The default server can be overridden globally by passing a URL to the `serverURL
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  serverURL: "https://domain-be.glean.com",
+  serverURL: "https://instance-name-be.glean.com",
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 

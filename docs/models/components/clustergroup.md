@@ -6,7 +6,20 @@
 import { ClusterGroup } from "@gleanwork/api-client/models/components";
 
 let value: ClusterGroup = {
-  clusteredResults: [],
+  clusteredResults: [
+    {
+      title: "title",
+      url: "https://example.com/foo/bar",
+      nativeAppUrl: "slack://foo/bar",
+      snippets: [
+        {
+          snippet: "snippet",
+          mimeType: "mimeType",
+        },
+      ],
+      mustIncludeSuggestions: {},
+    },
+  ],
   visibleCountHint: 522964,
 };
 ```

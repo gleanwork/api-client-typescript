@@ -66,6 +66,10 @@ let value: Answer = {
               documentId: "documentId",
               createTime: new Date("2000-01-23T04:56:07.000Z"),
               updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
               components: [
                 "Backend",
                 "Networking",
@@ -90,7 +94,12 @@ let value: Answer = {
         },
         remindAt: 108859,
       },
-      candidateVerifiers: [],
+      candidateVerifiers: [
+        {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      ],
     },
   },
   board: {
