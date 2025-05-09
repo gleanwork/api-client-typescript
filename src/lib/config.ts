@@ -11,7 +11,7 @@ import { Params, pathToFunc } from "./url.js";
  * Contains the list of servers available to the SDK
  */
 export const ServerList = [
-  "https://{domain}-be.glean.com",
+  "https://{instance}-be.glean.com",
 ] as const;
 
 export type SDKOptions = {
@@ -23,9 +23,9 @@ export type SDKOptions = {
    */
   serverIdx?: number | undefined;
   /**
-   * Sets the domain variable for url substitution
+   * Sets the instance variable for url substitution
    */
-  domain?: string | undefined;
+  instance?: string | undefined;
   /**
    * Allows overriding the default server URL used by the SDK
    */
@@ -43,7 +43,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 
   const serverParams: Params[] = [
     {
-      "domain": options.domain ?? "domain",
+      "instance": options.instance ?? "instance-name",
     },
   ];
   let params: Params = {};
@@ -64,8 +64,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "0.9.0",
-  sdkVersion: "0.2.0",
-  genVersion: "2.597.9",
+  sdkVersion: "0.3.0",
+  genVersion: "2.598.22",
   userAgent:
-    "speakeasy-sdk/typescript 0.2.0 2.597.9 0.9.0 @gleanwork/api-client",
+    "speakeasy-sdk/typescript 0.3.0 2.598.22 0.9.0 @gleanwork/api-client",
 } as const;

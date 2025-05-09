@@ -23,7 +23,328 @@ test("Client Shortcuts Createshortcut", async () => {
           person: {
             name: "George Clooney",
             obfuscatedId: "abc123",
-            relatedDocuments: [],
+            relatedDocuments: [
+              {
+                querySuggestion: {
+                  query: "app:github type:pull author:mortimer",
+                  searchProviderInfo: {
+                    name: "Google",
+                    searchLinkUrlTemplate:
+                      "https://www.google.com/search?q={query}&hl=en",
+                  },
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                  requestOptions: {
+                    datasourceFilter: "JIRA",
+                    datasourcesFilter: [
+                      "JIRA",
+                    ],
+                    queryOverridesFacetFilters: true,
+                    facetFilters: [
+                      {
+                        fieldName: "type",
+                        values: [
+                          {
+                            value: "Spreadsheet",
+                            relationType: "EQUALS",
+                          },
+                          {
+                            value: "Presentation",
+                            relationType: "EQUALS",
+                          },
+                        ],
+                      },
+                    ],
+                    facetFilterSets: [
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                    facetBucketSize: 134365,
+                    authTokens: [
+                      {
+                        accessToken: "123abc",
+                        datasource: "gmail",
+                        scope:
+                          "email profile https://www.googleapis.com/auth/gmail.readonly",
+                        tokenType: "Bearer",
+                        authUser: "1",
+                      },
+                    ],
+                  },
+                  ranges: [
+                    {
+                      startIndex: 796474,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "fumigate convection though zowie",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 496323,
+                              items: [
+                                {
+                                  collectionId: 782367,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "URL",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 219974,
+                              },
+                              {
+                                numDaysAgo: 449221,
+                              },
+                              {
+                                numDaysAgo: 427887,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "VERIFIED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 491427,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 490420,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                  ],
+                  inputDetails: {
+                    hasCopyPaste: true,
+                  },
+                },
+                results: [
+                  {
+                    title: "title",
+                    url: "https://example.com/foo/bar",
+                    nativeAppUrl: "slack://foo/bar",
+                    snippets: [
+                      {
+                        snippet: "snippet",
+                        mimeType: "mimeType",
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                querySuggestion: {
+                  query: "app:github type:pull author:mortimer",
+                  searchProviderInfo: {
+                    name: "Google",
+                    searchLinkUrlTemplate:
+                      "https://www.google.com/search?q={query}&hl=en",
+                  },
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                  requestOptions: {
+                    datasourceFilter: "JIRA",
+                    datasourcesFilter: [
+                      "JIRA",
+                    ],
+                    queryOverridesFacetFilters: true,
+                    facetFilters: [
+                      {
+                        fieldName: "type",
+                        values: [
+                          {
+                            value: "Spreadsheet",
+                            relationType: "EQUALS",
+                          },
+                          {
+                            value: "Presentation",
+                            relationType: "EQUALS",
+                          },
+                        ],
+                      },
+                    ],
+                    facetFilterSets: [
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                    facetBucketSize: 129663,
+                    authTokens: [
+                      {
+                        accessToken: "123abc",
+                        datasource: "gmail",
+                        scope:
+                          "email profile https://www.googleapis.com/auth/gmail.readonly",
+                        tokenType: "Bearer",
+                        authUser: "1",
+                      },
+                    ],
+                  },
+                  inputDetails: {
+                    hasCopyPaste: true,
+                  },
+                },
+              },
+            ],
             metadata: {
               type: "FULL_TIME",
               title: "Actor",
@@ -40,12 +361,32 @@ test("Client Shortcuts Createshortcut", async () => {
                 },
               ],
               querySuggestions: {
-                suggestions: [],
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
               },
               inviteInfo: {
-                invites: [],
+                invites: [
+                  {},
+                  {},
+                ],
               },
-              customFields: [],
+              customFields: [
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                  ],
+                },
+                {
+                  label: "<value>",
+                  values: [],
+                },
+              ],
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -63,17 +404,161 @@ test("Client Shortcuts Createshortcut", async () => {
           role: "OWNER",
         },
         {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {},
+              inviteInfo: {},
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
           role: "VERIFIER",
         },
       ],
       removedRoles: [
         {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {},
+              inviteInfo: {},
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
           role: "VERIFIER",
         },
         {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {},
+              inviteInfo: {},
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
           role: "ANSWER_MODERATOR",
         },
         {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {},
+              inviteInfo: {},
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
           role: "OWNER",
         },
       ],
@@ -155,7 +640,397 @@ test("Client Shortcuts Updateshortcut", async () => {
         person: {
           name: "George Clooney",
           obfuscatedId: "abc123",
-          relatedDocuments: [],
+          relatedDocuments: [
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate:
+                    "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 627690,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope:
+                        "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                ranges: [
+                  {
+                    startIndex: 984008,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "for drat underneath sticky yuck even",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 996168,
+                            items: [
+                              {
+                                collectionId: 392671,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "TEXT",
+                              },
+                              {
+                                collectionId: 845914,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                          {
+                            name: "<value>",
+                            description:
+                              "duh now mechanically during since anxiously lightly ultimately",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 958595,
+                          },
+                          {
+                            name: "<value>",
+                            description:
+                              "whereas anenst habit onto worriedly revoke hm eminent sham",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 115263,
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                            {},
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 691669,
+                            },
+                            {
+                              numDaysAgo: 202116,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "UNVERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 246216,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 778241,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 698908,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        interactions: {},
+                        verification: {
+                          state: "UNVERIFIED",
+                          metadata: {
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 451776,
+                            },
+                          },
+                        },
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate:
+                    "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 158724,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope:
+                        "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+            },
+          ],
           metadata: {
             type: "FULL_TIME",
             title: "Actor",
@@ -180,12 +1055,34 @@ test("Client Shortcuts Updateshortcut", async () => {
               },
             ],
             querySuggestions: {
-              suggestions: [],
+              suggestions: [
+                {
+                  query: "app:github type:pull author:mortimer",
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                },
+              ],
             },
             inviteInfo: {
-              invites: [],
+              invites: [
+                {},
+                {},
+              ],
             },
-            customFields: [],
+            customFields: [
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [],
+              },
+            ],
             badges: [
               {
                 key: "deployment_name_new_hire",
@@ -203,17 +1100,173 @@ test("Client Shortcuts Updateshortcut", async () => {
         role: "ANSWER_MODERATOR",
       },
       {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
+        },
         role: "EDITOR",
       },
     ],
     removedRoles: [
       {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
+        },
         role: "VIEWER",
       },
       {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
+        },
         role: "OWNER",
       },
       {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
+        },
         role: "VIEWER",
       },
     ],

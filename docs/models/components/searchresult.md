@@ -9,7 +9,12 @@ let value: SearchResult = {
   title: "title",
   url: "https://example.com/foo/bar",
   nativeAppUrl: "slack://foo/bar",
-  snippets: [],
+  snippets: [
+    {
+      snippet: "snippet",
+      mimeType: "mimeType",
+    },
+  ],
   mustIncludeSuggestions: {},
 };
 ```

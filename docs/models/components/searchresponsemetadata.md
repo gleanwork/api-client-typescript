@@ -45,7 +45,13 @@ let value: SearchResponseMetadata = {
     datasource: "github",
   },
   additionalQuerySuggestions: {
-    suggestions: [],
+    suggestions: [
+      {
+        query: "app:github type:pull author:mortimer",
+        label: "Mortimer's PRs",
+        datasource: "github",
+      },
+    ],
     person: {
       name: "George Clooney",
       obfuscatedId: "abc123",

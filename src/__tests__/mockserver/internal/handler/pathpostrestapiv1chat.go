@@ -166,7 +166,30 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 							components.ReferenceRange{
 								TextRange: &components.TextRange{
 									StartIndex: 134365,
-									Document:   &components.Document{},
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
 								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
@@ -176,6 +199,33 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 69025,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -186,13 +236,68 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 					components.ChatMessageCitation{
+						SourceDocument: &components.Document{
+							Metadata: &components.DocumentMetadata{
+								Datasource: types.String("datasource"),
+								ObjectType: types.String("Feature Request"),
+								Container:  types.String("container"),
+								ParentID:   types.String("JIRA_EN-1337"),
+								MimeType:   types.String("mimeType"),
+								DocumentID: types.String("documentId"),
+								CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								Author: &components.Person{
+									Name:         "name",
+									ObfuscatedID: "<id>",
+								},
+								Components: []string{
+									"Backend",
+									"Networking",
+								},
+								Status: types.String("[\"Done\"]"),
+								CustomData: map[string]components.CustomDataValue{
+									"someCustomField": components.CustomDataValue{},
+								},
+							},
+						},
 						SourceFile: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
 							URL:  types.String("www.google.com"),
 							Name: types.String("sample.pdf"),
 						},
+						SourcePerson: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
 						ReferenceRanges: []components.ReferenceRange{
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 951062,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -201,6 +306,33 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 86,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -209,6 +341,33 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 169727,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -223,6 +382,30 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
 							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
 								Person: &components.Person{
 									Name:         "George Clooney",
 									ObfuscatedID: "abc123",
@@ -235,14 +418,60 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 										Industry: types.String("Finances"),
 										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
 									},
-									Poc:   []components.Person{},
+									Poc: []components.Person{
+										components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
 									Notes: types.String("CIO is interested in trying out the product."),
 								},
 								Team: &components.Team{
-									ID:           "<id>",
-									Name:         "<value>",
-									Members:      []components.PersonToTeamRelationship{},
-									CustomFields: []components.CustomFieldData{},
+									ID:   "<id>",
+									Name: "<value>",
+									Members: []components.PersonToTeamRelationship{
+										components.PersonToTeamRelationship{
+											Person: components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Relationship: components.PersonToTeamRelationshipRelationshipMember.ToPointer(),
+										},
+										components.PersonToTeamRelationship{
+											Person: components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Relationship: components.PersonToTeamRelationshipRelationshipMember.ToPointer(),
+										},
+									},
+									CustomFields: []components.CustomFieldData{
+										components.CustomFieldData{
+											Label: "<value>",
+											Values: []components.CustomFieldValue{
+												components.CreateCustomFieldValueCustomFieldValueStr(
+													components.CustomFieldValueStr{},
+												),
+												components.CreateCustomFieldValueCustomFieldValueStr(
+													components.CustomFieldValueStr{},
+												),
+												components.CreateCustomFieldValueCustomFieldValueStr(
+													components.CustomFieldValueStr{},
+												),
+											},
+											Displayable: types.Bool(true),
+										},
+										components.CustomFieldData{
+											Label:       "<value>",
+											Values:      []components.CustomFieldValue{},
+											Displayable: types.Bool(true),
+										},
+										components.CustomFieldData{
+											Label:       "<value>",
+											Values:      []components.CustomFieldValue{},
+											Displayable: types.Bool(true),
+										},
+									},
 									DatasourceProfiles: []components.DatasourceProfile{
 										components.DatasourceProfile{
 											Datasource: "github",
@@ -253,7 +482,15 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 									CanBeDeleted: types.Bool(true),
 								},
 								CustomEntity: &components.CustomEntity{
-									Roles: []components.UserRoleSpecification{},
+									Roles: []components.UserRoleSpecification{
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleOwner,
+										},
+									},
 								},
 								Answer: &components.Answer{
 									ID:       3,
@@ -275,16 +512,100 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									AddedRoles:   []components.UserRoleSpecification{},
-									RemovedRoles: []components.UserRoleSpecification{},
+									AddedRoles: []components.UserRoleSpecification{
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleOwner,
+										},
+									},
+									RemovedRoles: []components.UserRoleSpecification{
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleOwner,
+										},
+									},
 									CombinedAnswerText: &components.StructuredText{
-										Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-										StructuredList: []components.StructuredTextItem{},
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+										StructuredList: []components.StructuredTextItem{
+											components.StructuredTextItem{
+												Link: types.String("https://en.wikipedia.org/wiki/Diffuse_sky_radiation"),
+												Document: &components.Document{
+													Metadata: &components.DocumentMetadata{
+														Datasource: types.String("datasource"),
+														ObjectType: types.String("Feature Request"),
+														Container:  types.String("container"),
+														ParentID:   types.String("JIRA_EN-1337"),
+														MimeType:   types.String("mimeType"),
+														DocumentID: types.String("documentId"),
+														CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														Author: &components.Person{
+															Name:         "name",
+															ObfuscatedID: "<id>",
+														},
+														Components: []string{
+															"Backend",
+															"Networking",
+														},
+														Status: types.String("[\"Done\"]"),
+														CustomData: map[string]components.CustomDataValue{
+															"someCustomField": components.CustomDataValue{},
+														},
+													},
+												},
+												Text: types.String("Because its wavelengths are shorter, blue light is more strongly scattered than the longer-wavelength lights, red or green. Hence the result that when looking at the sky away from the direct incident sunlight, the human eye perceives the sky to be blue."),
+											},
+											components.StructuredTextItem{
+												Link: types.String("https://en.wikipedia.org/wiki/Diffuse_sky_radiation"),
+												Document: &components.Document{
+													Metadata: &components.DocumentMetadata{
+														Datasource: types.String("datasource"),
+														ObjectType: types.String("Feature Request"),
+														Container:  types.String("container"),
+														ParentID:   types.String("JIRA_EN-1337"),
+														MimeType:   types.String("mimeType"),
+														DocumentID: types.String("documentId"),
+														CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														Author: &components.Person{
+															Name:         "name",
+															ObfuscatedID: "<id>",
+														},
+														Components: []string{
+															"Backend",
+															"Networking",
+														},
+														Status: types.String("[\"Done\"]"),
+														CustomData: map[string]components.CustomDataValue{
+															"someCustomField": components.CustomDataValue{},
+														},
+													},
+												},
+												Text: types.String("Because its wavelengths are shorter, blue light is more strongly scattered than the longer-wavelength lights, red or green. Hence the result that when looking at the sky away from the direct incident sunlight, the human eye perceives the sky to be blue."),
+											},
+										},
 									},
 									Likes: &components.AnswerLikes{
-										LikedBy:     []components.AnswerLike{},
+										LikedBy: []components.AnswerLike{
+											components.AnswerLike{
+												User: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+										},
 										LikedByUser: true,
 										NumLikes:    621636,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
 									},
 									UpdatedBy: &components.Person{
 										Name:         "George Clooney",
@@ -297,7 +618,43 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 												Name:         "George Clooney",
 												ObfuscatedID: "abc123",
 											},
-											Reminders: []components.Reminder{},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											Reminders: []components.Reminder{
+												components.Reminder{
+													Assignee: components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Requestor: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													RemindAt: 15552,
+												},
+											},
 											LastReminder: &components.Reminder{
 												Assignee: components.Person{
 													Name:         "George Clooney",
@@ -309,7 +666,12 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 												},
 												RemindAt: 523523,
 											},
-											CandidateVerifiers: []components.Person{},
+											CandidateVerifiers: []components.Person{
+												components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
 										},
 									},
 									Board: &components.AnswerBoard{
@@ -335,8 +697,268 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 											Name:         "George Clooney",
 											ObfuscatedID: "abc123",
 										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
 									},
-									Collections: []components.Collection{},
+									Collections: []components.Collection{
+										components.Collection{
+											Name:        "<value>",
+											Description: "through for ick superb nudge",
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
+											ID: 520049,
+											Creator: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											UpdatedBy: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Items: []components.CollectionItem{
+												components.CollectionItem{
+													CollectionID: 800759,
+													CreatedBy: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Document: &components.Document{
+														Metadata: &components.DocumentMetadata{
+															Datasource: types.String("datasource"),
+															ObjectType: types.String("Feature Request"),
+															Container:  types.String("container"),
+															ParentID:   types.String("JIRA_EN-1337"),
+															MimeType:   types.String("mimeType"),
+															DocumentID: types.String("documentId"),
+															CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															Author: &components.Person{
+																Name:         "name",
+																ObfuscatedID: "<id>",
+															},
+															Components: []string{
+																"Backend",
+																"Networking",
+															},
+															Status: types.String("[\"Done\"]"),
+															CustomData: map[string]components.CustomDataValue{
+																"someCustomField": components.CustomDataValue{},
+															},
+														},
+													},
+													Shortcut: &components.Shortcut{
+														InputAlias: "<value>",
+														CreatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														UpdatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														DestinationDocument: &components.Document{
+															Metadata: &components.DocumentMetadata{
+																Datasource: types.String("datasource"),
+																ObjectType: types.String("Feature Request"),
+																Container:  types.String("container"),
+																ParentID:   types.String("JIRA_EN-1337"),
+																MimeType:   types.String("mimeType"),
+																DocumentID: types.String("documentId"),
+																CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																Author: &components.Person{
+																	Name:         "name",
+																	ObfuscatedID: "<id>",
+																},
+																Components: []string{
+																	"Backend",
+																	"Networking",
+																},
+																Status: types.String("[\"Done\"]"),
+																CustomData: map[string]components.CustomDataValue{
+																	"someCustomField": components.CustomDataValue{},
+																},
+															},
+														},
+													},
+													ItemType: components.CollectionItemItemTypeDocument,
+												},
+												components.CollectionItem{
+													CollectionID: 589813,
+													CreatedBy: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Document: &components.Document{
+														Metadata: &components.DocumentMetadata{
+															Datasource: types.String("datasource"),
+															ObjectType: types.String("Feature Request"),
+															Container:  types.String("container"),
+															ParentID:   types.String("JIRA_EN-1337"),
+															MimeType:   types.String("mimeType"),
+															DocumentID: types.String("documentId"),
+															CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															Author: &components.Person{
+																Name:         "name",
+																ObfuscatedID: "<id>",
+															},
+															Components: []string{
+																"Backend",
+																"Networking",
+															},
+															Status: types.String("[\"Done\"]"),
+															CustomData: map[string]components.CustomDataValue{
+																"someCustomField": components.CustomDataValue{},
+															},
+														},
+													},
+													Shortcut: &components.Shortcut{
+														InputAlias: "<value>",
+														CreatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														UpdatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														DestinationDocument: &components.Document{
+															Metadata: &components.DocumentMetadata{
+																Datasource: types.String("datasource"),
+																ObjectType: types.String("Feature Request"),
+																Container:  types.String("container"),
+																ParentID:   types.String("JIRA_EN-1337"),
+																MimeType:   types.String("mimeType"),
+																DocumentID: types.String("documentId"),
+																CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																Author: &components.Person{
+																	Name:         "name",
+																	ObfuscatedID: "<id>",
+																},
+																Components: []string{
+																	"Backend",
+																	"Networking",
+																},
+																Status: types.String("[\"Done\"]"),
+																CustomData: map[string]components.CustomDataValue{
+																	"someCustomField": components.CustomDataValue{},
+																},
+															},
+														},
+													},
+													ItemType: components.CollectionItemItemTypeCollection,
+												},
+												components.CollectionItem{
+													CollectionID: 277321,
+													CreatedBy: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Document: &components.Document{
+														Metadata: &components.DocumentMetadata{
+															Datasource: types.String("datasource"),
+															ObjectType: types.String("Feature Request"),
+															Container:  types.String("container"),
+															ParentID:   types.String("JIRA_EN-1337"),
+															MimeType:   types.String("mimeType"),
+															DocumentID: types.String("documentId"),
+															CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															Author: &components.Person{
+																Name:         "name",
+																ObfuscatedID: "<id>",
+															},
+															Components: []string{
+																"Backend",
+																"Networking",
+															},
+															Status: types.String("[\"Done\"]"),
+															CustomData: map[string]components.CustomDataValue{
+																"someCustomField": components.CustomDataValue{},
+															},
+														},
+													},
+													Shortcut: &components.Shortcut{
+														InputAlias: "<value>",
+														CreatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														UpdatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														DestinationDocument: &components.Document{
+															Metadata: &components.DocumentMetadata{
+																Datasource: types.String("datasource"),
+																ObjectType: types.String("Feature Request"),
+																Container:  types.String("container"),
+																ParentID:   types.String("JIRA_EN-1337"),
+																MimeType:   types.String("mimeType"),
+																DocumentID: types.String("documentId"),
+																CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																Author: &components.Person{
+																	Name:         "name",
+																	ObfuscatedID: "<id>",
+																},
+																Components: []string{
+																	"Backend",
+																	"Networking",
+																},
+																Status: types.String("[\"Done\"]"),
+																CustomData: map[string]components.CustomDataValue{
+																	"someCustomField": components.CustomDataValue{},
+																},
+															},
+														},
+													},
+													ItemType: components.CollectionItemItemTypeCollection,
+												},
+											},
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
 								},
 								ExtractedQnA: &components.ExtractedQnA{
 									QuestionResult: &components.SearchResult{
@@ -347,7 +969,14 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 								},
 								Meeting: &components.Meeting{
 									Attendees: &components.CalendarAttendees{
-										People: []components.CalendarAttendee{},
+										People: []components.CalendarAttendee{
+											components.CalendarAttendee{
+												Person: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+										},
 									},
 								},
 								Collection: &components.Collection{
@@ -369,6 +998,14 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 										},
 									},
 									ID: 150565,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
 								},
 								AnswerBoard: &components.AnswerBoard{
 									Name:        "<value>",
@@ -389,6 +1026,14 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 										},
 									},
 									ID: 585844,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
 								},
 								Code: &components.Code{
 									RepoName: types.String("scio"),
@@ -400,18 +1045,714 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 										Name:         "George Clooney",
 										ObfuscatedID: "abc123",
 									},
-									DestinationDocument: &components.Document{},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
 								},
 								QuerySuggestions: &components.QuerySuggestionList{
-									Suggestions: []components.QuerySuggestion{},
+									Suggestions: []components.QuerySuggestion{
+										components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+									},
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
 								},
-								RelatedDocuments: []components.RelatedDocuments{},
+								RelatedDocuments: []components.RelatedDocuments{
+									components.RelatedDocuments{
+										QuerySuggestion: &components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+										Results: []components.SearchResult{
+											components.SearchResult{
+												Title:        types.String("title"),
+												URL:          "https://example.com/foo/bar",
+												NativeAppURL: types.String("slack://foo/bar"),
+											},
+										},
+									},
+									components.RelatedDocuments{
+										QuerySuggestion: &components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+									},
+									components.RelatedDocuments{
+										QuerySuggestion: &components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+									},
+								},
 								RelatedQuestion: &components.RelatedQuestion{
-									Ranges: []components.TextRange{},
+									Ranges: []components.TextRange{
+										components.TextRange{
+											StartIndex: 514645,
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+										},
+									},
 								},
 							},
-							components.StructuredResult{},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    312813,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 903800,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "negative fax since nightlife final phew boyfriend",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 752527,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "aha lamp condense quarterly now hypothesize merry meanwhile exhaust",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 49135,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "properly purple now once times",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 508126,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    71323,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateVerified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 379801,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "upright sophisticated roughly now simplistic",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 38016,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "solace fat whoa braid factorise apud",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 531603,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "meanwhile snarling appropriate",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 764664,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
 						},
 						QuerySuggestion: &components.QuerySuggestion{
 							Query:      "app:github type:pull author:mortimer",
@@ -440,13 +1781,68 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 				Author: components.AuthorUser.ToPointer(),
 				Citations: []components.ChatMessageCitation{
 					components.ChatMessageCitation{
+						SourceDocument: &components.Document{
+							Metadata: &components.DocumentMetadata{
+								Datasource: types.String("datasource"),
+								ObjectType: types.String("Feature Request"),
+								Container:  types.String("container"),
+								ParentID:   types.String("JIRA_EN-1337"),
+								MimeType:   types.String("mimeType"),
+								DocumentID: types.String("documentId"),
+								CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								Author: &components.Person{
+									Name:         "name",
+									ObfuscatedID: "<id>",
+								},
+								Components: []string{
+									"Backend",
+									"Networking",
+								},
+								Status: types.String("[\"Done\"]"),
+								CustomData: map[string]components.CustomDataValue{
+									"someCustomField": components.CustomDataValue{},
+								},
+							},
+						},
 						SourceFile: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
 							URL:  types.String("www.google.com"),
 							Name: types.String("sample.pdf"),
 						},
+						SourcePerson: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
 						ReferenceRanges: []components.ReferenceRange{
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 289259,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -455,6 +1851,33 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 								},
 							},
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 597731,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -465,13 +1888,68 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 					components.ChatMessageCitation{
+						SourceDocument: &components.Document{
+							Metadata: &components.DocumentMetadata{
+								Datasource: types.String("datasource"),
+								ObjectType: types.String("Feature Request"),
+								Container:  types.String("container"),
+								ParentID:   types.String("JIRA_EN-1337"),
+								MimeType:   types.String("mimeType"),
+								DocumentID: types.String("documentId"),
+								CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+								Author: &components.Person{
+									Name:         "name",
+									ObfuscatedID: "<id>",
+								},
+								Components: []string{
+									"Backend",
+									"Networking",
+								},
+								Status: types.String("[\"Done\"]"),
+								CustomData: map[string]components.CustomDataValue{
+									"someCustomField": components.CustomDataValue{},
+								},
+							},
+						},
 						SourceFile: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
 							URL:  types.String("www.google.com"),
 							Name: types.String("sample.pdf"),
 						},
+						SourcePerson: &components.Person{
+							Name:         "George Clooney",
+							ObfuscatedID: "abc123",
+						},
 						ReferenceRanges: []components.ReferenceRange{
 							components.ReferenceRange{
+								TextRange: &components.TextRange{
+									StartIndex: 616491,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
 								Snippets: []components.SearchResultSnippet{
 									components.SearchResultSnippet{
 										Snippet:  "snippet",
@@ -485,8 +1963,607 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 				Fragments: []components.ChatMessageFragment{
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    251771,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateUnverified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 76822,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "fooey silver motivate shinny ugh sheepishly mmm",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 879224,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "amid um where helpless properly in graceful yowza",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 789729,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "because chatter video developmental edge rationalize rival",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 358939,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    348242,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateVerified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 46099,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "among mid steel machine along amid than factorise blah below",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 892357,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "hm while underneath woot pepper hmph wildly if greedily",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 655664,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "pulse entry knowledgeably victoriously fraternise deeply mechanically suburban",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 884558,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
 						},
 						File: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
@@ -505,7 +2582,317 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 					},
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    798850,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateUnverified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 91149,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "within overcooked a operating dreamily gadzooks",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 538031,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "questionably dirty horn brace",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 95542,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "blossom sell junior easily kettledrum besides bookcase acceptable",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 357974,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
 						},
 						File: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
@@ -612,14 +2999,37 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 										Industry: types.String("Finances"),
 										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
 									},
-									Poc:   []components.Person{},
+									Poc: []components.Person{
+										components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
 									Notes: types.String("CIO is interested in trying out the product."),
 								},
 								Team: &components.Team{
-									ID:           "<id>",
-									Name:         "<value>",
-									Members:      []components.PersonToTeamRelationship{},
-									CustomFields: []components.CustomFieldData{},
+									ID:   "<id>",
+									Name: "<value>",
+									Members: []components.PersonToTeamRelationship{
+										components.PersonToTeamRelationship{
+											Person: components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Relationship: components.PersonToTeamRelationshipRelationshipMember.ToPointer(),
+										},
+									},
+									CustomFields: []components.CustomFieldData{
+										components.CustomFieldData{
+											Label: "<value>",
+											Values: []components.CustomFieldValue{
+												components.CreateCustomFieldValueCustomFieldValueStr(
+													components.CustomFieldValueStr{},
+												),
+											},
+											Displayable: types.Bool(true),
+										},
+									},
 									DatasourceProfiles: []components.DatasourceProfile{
 										components.DatasourceProfile{
 											Datasource: "github",
@@ -634,7 +3044,15 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 									CanBeDeleted: types.Bool(true),
 								},
 								CustomEntity: &components.CustomEntity{
-									Roles: []components.UserRoleSpecification{},
+									Roles: []components.UserRoleSpecification{
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleEditor,
+										},
+									},
 								},
 								Answer: &components.Answer{
 									ID:       3,
@@ -656,16 +3074,127 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									AddedRoles:   []components.UserRoleSpecification{},
-									RemovedRoles: []components.UserRoleSpecification{},
+									AddedRoles: []components.UserRoleSpecification{
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleOwner,
+										},
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleViewer,
+										},
+									},
+									RemovedRoles: []components.UserRoleSpecification{
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleEditor,
+										},
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleEditor,
+										},
+										components.UserRoleSpecification{
+											Person: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Role: components.UserRoleOwner,
+										},
+									},
 									CombinedAnswerText: &components.StructuredText{
-										Text:           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-										StructuredList: []components.StructuredTextItem{},
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+										StructuredList: []components.StructuredTextItem{
+											components.StructuredTextItem{
+												Link: types.String("https://en.wikipedia.org/wiki/Diffuse_sky_radiation"),
+												Document: &components.Document{
+													Metadata: &components.DocumentMetadata{
+														Datasource: types.String("datasource"),
+														ObjectType: types.String("Feature Request"),
+														Container:  types.String("container"),
+														ParentID:   types.String("JIRA_EN-1337"),
+														MimeType:   types.String("mimeType"),
+														DocumentID: types.String("documentId"),
+														CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														Author: &components.Person{
+															Name:         "name",
+															ObfuscatedID: "<id>",
+														},
+														Components: []string{
+															"Backend",
+															"Networking",
+														},
+														Status: types.String("[\"Done\"]"),
+														CustomData: map[string]components.CustomDataValue{
+															"someCustomField": components.CustomDataValue{},
+														},
+													},
+												},
+												Text: types.String("Because its wavelengths are shorter, blue light is more strongly scattered than the longer-wavelength lights, red or green. Hence the result that when looking at the sky away from the direct incident sunlight, the human eye perceives the sky to be blue."),
+											},
+											components.StructuredTextItem{
+												Link: types.String("https://en.wikipedia.org/wiki/Diffuse_sky_radiation"),
+												Document: &components.Document{
+													Metadata: &components.DocumentMetadata{
+														Datasource: types.String("datasource"),
+														ObjectType: types.String("Feature Request"),
+														Container:  types.String("container"),
+														ParentID:   types.String("JIRA_EN-1337"),
+														MimeType:   types.String("mimeType"),
+														DocumentID: types.String("documentId"),
+														CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+														Author: &components.Person{
+															Name:         "name",
+															ObfuscatedID: "<id>",
+														},
+														Components: []string{
+															"Backend",
+															"Networking",
+														},
+														Status: types.String("[\"Done\"]"),
+														CustomData: map[string]components.CustomDataValue{
+															"someCustomField": components.CustomDataValue{},
+														},
+													},
+												},
+												Text: types.String("Because its wavelengths are shorter, blue light is more strongly scattered than the longer-wavelength lights, red or green. Hence the result that when looking at the sky away from the direct incident sunlight, the human eye perceives the sky to be blue."),
+											},
+										},
 									},
 									Likes: &components.AnswerLikes{
-										LikedBy:     []components.AnswerLike{},
+										LikedBy: []components.AnswerLike{
+											components.AnswerLike{
+												User: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+											components.AnswerLike{
+												User: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+										},
 										LikedByUser: false,
 										NumLikes:    935878,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
 									},
 									UpdatedBy: &components.Person{
 										Name:         "George Clooney",
@@ -678,7 +3207,54 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 												Name:         "George Clooney",
 												ObfuscatedID: "abc123",
 											},
-											Reminders: []components.Reminder{},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											Reminders: []components.Reminder{
+												components.Reminder{
+													Assignee: components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Requestor: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													RemindAt: 621458,
+												},
+												components.Reminder{
+													Assignee: components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Requestor: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													RemindAt: 604916,
+												},
+											},
 											LastReminder: &components.Reminder{
 												Assignee: components.Person{
 													Name:         "George Clooney",
@@ -690,7 +3266,12 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 												},
 												RemindAt: 930484,
 											},
-											CandidateVerifiers: []components.Person{},
+											CandidateVerifiers: []components.Person{
+												components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
 										},
 									},
 									Board: &components.AnswerBoard{
@@ -716,21 +3297,226 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 											Name:         "George Clooney",
 											ObfuscatedID: "abc123",
 										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
 									},
-									Collections:    []components.Collection{},
-									SourceDocument: &components.Document{},
+									Collections: []components.Collection{
+										components.Collection{
+											Name:        "<value>",
+											Description: "toaster yuck suffice council mockingly fortunate onto what like scientific",
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
+											ID: 496420,
+											Creator: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											UpdatedBy: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Items: []components.CollectionItem{
+												components.CollectionItem{
+													CollectionID: 562084,
+													CreatedBy: &components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													Document: &components.Document{
+														Metadata: &components.DocumentMetadata{
+															Datasource: types.String("datasource"),
+															ObjectType: types.String("Feature Request"),
+															Container:  types.String("container"),
+															ParentID:   types.String("JIRA_EN-1337"),
+															MimeType:   types.String("mimeType"),
+															DocumentID: types.String("documentId"),
+															CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+															Author: &components.Person{
+																Name:         "name",
+																ObfuscatedID: "<id>",
+															},
+															Components: []string{
+																"Backend",
+																"Networking",
+															},
+															Status: types.String("[\"Done\"]"),
+															CustomData: map[string]components.CustomDataValue{
+																"someCustomField": components.CustomDataValue{},
+															},
+														},
+													},
+													Shortcut: &components.Shortcut{
+														InputAlias: "<value>",
+														CreatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														UpdatedBy: &components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														DestinationDocument: &components.Document{
+															Metadata: &components.DocumentMetadata{
+																Datasource: types.String("datasource"),
+																ObjectType: types.String("Feature Request"),
+																Container:  types.String("container"),
+																ParentID:   types.String("JIRA_EN-1337"),
+																MimeType:   types.String("mimeType"),
+																DocumentID: types.String("documentId"),
+																CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+																Author: &components.Person{
+																	Name:         "name",
+																	ObfuscatedID: "<id>",
+																},
+																Components: []string{
+																	"Backend",
+																	"Networking",
+																},
+																Status: types.String("[\"Done\"]"),
+																CustomData: map[string]components.CustomDataValue{
+																	"someCustomField": components.CustomDataValue{},
+																},
+															},
+														},
+													},
+													ItemType: components.CollectionItemItemTypeText,
+												},
+											},
+										},
+										components.Collection{
+											Name:        "<value>",
+											Description: "upwardly custody till furthermore because sunny coil brave calmly",
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
+											ID: 216078,
+											Creator: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											UpdatedBy: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+										},
+										components.Collection{
+											Name:        "<value>",
+											Description: "rebuke after wherever lest",
+											AudienceFilters: []components.FacetFilter{
+												components.FacetFilter{
+													FieldName: types.String("type"),
+													Values: []components.FacetFilterValue{
+														components.FacetFilterValue{
+															Value:        types.String("Spreadsheet"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+														components.FacetFilterValue{
+															Value:        types.String("Presentation"),
+															RelationType: components.RelationTypeEquals.ToPointer(),
+														},
+													},
+												},
+											},
+											ID: 912648,
+											Creator: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											UpdatedBy: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
 								},
 								ExtractedQnA: &components.ExtractedQnA{
 									QuestionResult: &components.SearchResult{
 										Title:        types.String("title"),
 										URL:          "https://example.com/foo/bar",
 										NativeAppURL: types.String("slack://foo/bar"),
-										Snippets:     []components.SearchResultSnippet{},
+										Snippets: []components.SearchResultSnippet{
+											components.SearchResultSnippet{
+												Snippet:  "snippet",
+												MimeType: types.String("mimeType"),
+											},
+										},
 									},
 								},
 								Meeting: &components.Meeting{
 									Attendees: &components.CalendarAttendees{
-										People: []components.CalendarAttendee{},
+										People: []components.CalendarAttendee{
+											components.CalendarAttendee{
+												Person: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+											components.CalendarAttendee{
+												Person: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+											components.CalendarAttendee{
+												Person: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+											},
+										},
 									},
 								},
 								Collection: &components.Collection{
@@ -752,6 +3538,14 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 										},
 									},
 									ID: 881035,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
 								},
 								AnswerBoard: &components.AnswerBoard{
 									Name:        "<value>",
@@ -772,6 +3566,14 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 										},
 									},
 									ID: 156192,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
 								},
 								Code: &components.Code{
 									RepoName: types.String("scio"),
@@ -783,17 +3585,436 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 										Name:         "George Clooney",
 										ObfuscatedID: "abc123",
 									},
-									DestinationDocument: &components.Document{},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
 								},
 								QuerySuggestions: &components.QuerySuggestionList{
-									Suggestions: []components.QuerySuggestion{},
+									Suggestions: []components.QuerySuggestion{
+										components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+									},
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
 								},
-								RelatedDocuments: []components.RelatedDocuments{},
+								RelatedDocuments: []components.RelatedDocuments{
+									components.RelatedDocuments{
+										QuerySuggestion: &components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+										Results: []components.SearchResult{
+											components.SearchResult{
+												Title:        types.String("title"),
+												URL:          "https://example.com/foo/bar",
+												NativeAppURL: types.String("slack://foo/bar"),
+											},
+										},
+									},
+									components.RelatedDocuments{
+										QuerySuggestion: &components.QuerySuggestion{
+											Query:      "app:github type:pull author:mortimer",
+											Label:      types.String("Mortimer's PRs"),
+											Datasource: types.String("github"),
+										},
+									},
+								},
 								RelatedQuestion: &components.RelatedQuestion{
-									Ranges: []components.TextRange{},
+									Ranges: []components.TextRange{
+										components.TextRange{
+											StartIndex: 975283,
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+										},
+										components.TextRange{
+											StartIndex: 70638,
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+										},
+									},
 								},
 							},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    233788,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateVerified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 234922,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "intermesh whoever between until that",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 631476,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "consequently treble freezing regularly hospitable",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 351287,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "barring eek but gloss till consequently exacerbate",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 382364,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
 						},
 						QuerySuggestion: &components.QuerySuggestion{
 							Query:      "app:github type:pull author:mortimer",
@@ -817,9 +4038,921 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 					},
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
-							components.StructuredResult{},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    329438,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateUnverified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 49611,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "speedily gosh unselfish ack which husky",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 685723,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "oh to lest brightly before community mid",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 844444,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "besides positively along usefully foolish ridge upon if blindly",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 631523,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    292522,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateUnverified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 475456,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "likewise except mid across unlike duh wise er dramatize daughter",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 436853,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "massage irk cease",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 465037,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "brightly implode mechanic galoshes leading obvious",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 620554,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    868508,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 51366,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "gah since gurn depend",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 558192,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "stale knife unbearably",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 100438,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "meander ick gadzooks doting",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 958595,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
 						},
 						File: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
@@ -838,9 +4971,917 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 					},
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
-							components.StructuredResult{},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    844016,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateUnverified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 290543,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "concerning worriedly marvelous ah out steak unrealistic",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 920788,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "of subsidy cleverly shrilly",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 921675,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "now concerning small",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 953316,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    703579,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 998289,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "crowded really daintily beard",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 581734,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "rigidly singing including yowza hm greatly window",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 345493,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "shirk brr seriously irresponsible",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 791736,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    720092,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 627162,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "part earth crystallize gah",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 891546,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "incidentally reproachfully alive",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 471465,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "ick yesterday behind till surprised coolly sadly archaeology while unto",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 677422,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
 						},
 						File: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
@@ -869,8 +5910,615 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 				Fragments: []components.ChatMessageFragment{
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    190136,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 540629,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "monthly resolve stark if dally warped",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 436386,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "wearily sediment shush wherever ick",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 43811,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "zowie concentration encode kiddingly below aching",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 386718,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    279059,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 940346,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "regarding strictly apropos yogurt safe exactly likely",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 199481,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "sometimes dependent mixture if fence that aha highly",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 662964,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "jacket birdcage near",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 524789,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
 						},
 						File: &components.ChatFile{
 							ID:   types.String("FILE_1234"),
@@ -889,9 +6537,921 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 					},
 					components.ChatMessageFragment{
 						StructuredResults: []components.StructuredResult{
-							components.StructuredResult{},
-							components.StructuredResult{},
-							components.StructuredResult{},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    147642,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 90045,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "quit inasmuch underneath massage",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 608690,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "seal fuzzy that elegantly unlike ugh yellowish ethyl gnash gah",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 942754,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "encode even musty notwithstanding reorganisation er embed",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 448544,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: false,
+										NumLikes:    995034,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateVerified,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 49621,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "boohoo indeed discrete athwart softly overwork hotfoot blue the",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 80478,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "put evenly save fondly phooey known ah accelerator shoulder eminent",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 432774,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "contradict speedy yet considering from considering",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 253748,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+							components.StructuredResult{
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Author: &components.Person{
+											Name:         "name",
+											ObfuscatedID: "<id>",
+										},
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+								Person: &components.Person{
+									Name:         "George Clooney",
+									ObfuscatedID: "abc123",
+								},
+								Customer: &components.Customer{
+									ID: "<id>",
+									Company: components.Company{
+										Name:     "<value>",
+										Location: types.String("New York City"),
+										Industry: types.String("Finances"),
+										About:    types.String("Financial, software, data, and media company headquartered in Midtown Manhattan, New York City"),
+									},
+									Notes: types.String("CIO is interested in trying out the product."),
+								},
+								Team: &components.Team{
+									ID:   "<id>",
+									Name: "<value>",
+									DatasourceProfiles: []components.DatasourceProfile{
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+										components.DatasourceProfile{
+											Datasource: "github",
+											Handle:     "<value>",
+										},
+									},
+									Status:       components.TeamStatusProcessed.ToPointer(),
+									CanBeDeleted: types.Bool(true),
+								},
+								CustomEntity: &components.CustomEntity{},
+								Answer: &components.Answer{
+									ID:       3,
+									DocID:    types.String("ANSWERS_answer_3"),
+									Question: types.String("Why is the sky blue?"),
+									BodyText: types.String("From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light."),
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									CombinedAnswerText: &components.StructuredText{
+										Text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
+									},
+									Likes: &components.AnswerLikes{
+										LikedBy:     []components.AnswerLike{},
+										LikedByUser: true,
+										NumLikes:    816879,
+									},
+									Author: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									Verification: &components.Verification{
+										State: components.StateDeprecated,
+										Metadata: &components.VerificationMetadata{
+											LastVerifier: &components.Person{
+												Name:         "George Clooney",
+												ObfuscatedID: "abc123",
+											},
+											Document: &components.Document{
+												Metadata: &components.DocumentMetadata{
+													Datasource: types.String("datasource"),
+													ObjectType: types.String("Feature Request"),
+													Container:  types.String("container"),
+													ParentID:   types.String("JIRA_EN-1337"),
+													MimeType:   types.String("mimeType"),
+													DocumentID: types.String("documentId"),
+													CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+													Author: &components.Person{
+														Name:         "name",
+														ObfuscatedID: "<id>",
+													},
+													Components: []string{
+														"Backend",
+														"Networking",
+													},
+													Status: types.String("[\"Done\"]"),
+													CustomData: map[string]components.CustomDataValue{
+														"someCustomField": components.CustomDataValue{},
+													},
+												},
+											},
+											LastReminder: &components.Reminder{
+												Assignee: components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												Requestor: &components.Person{
+													Name:         "George Clooney",
+													ObfuscatedID: "abc123",
+												},
+												RemindAt: 406634,
+											},
+										},
+									},
+									Board: &components.AnswerBoard{
+										Name:        "<value>",
+										Description: "cannibalise wide misappropriate cinch institute aside grumpy ick pfft for",
+										AudienceFilters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+										ID: 1204,
+										Creator: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+										UpdatedBy: &components.Person{
+											Name:         "George Clooney",
+											ObfuscatedID: "abc123",
+										},
+									},
+									SourceDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								ExtractedQnA: &components.ExtractedQnA{
+									QuestionResult: &components.SearchResult{
+										Title:        types.String("title"),
+										URL:          "https://example.com/foo/bar",
+										NativeAppURL: types.String("slack://foo/bar"),
+									},
+								},
+								Meeting: &components.Meeting{
+									Attendees: &components.CalendarAttendees{},
+								},
+								Collection: &components.Collection{
+									Name:        "<value>",
+									Description: "wobbly immense aside blowgun mid opposite restfully",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 24215,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								AnswerBoard: &components.AnswerBoard{
+									Name:        "<value>",
+									Description: "essence if gorgeous",
+									AudienceFilters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+									ID: 917540,
+									Creator: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								Code: &components.Code{
+									RepoName: types.String("scio"),
+									FileName: types.String("README.md"),
+								},
+								Shortcut: &components.Shortcut{
+									InputAlias: "<value>",
+									CreatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									UpdatedBy: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+									DestinationDocument: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Author: &components.Person{
+												Name:         "name",
+												ObfuscatedID: "<id>",
+											},
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status: types.String("[\"Done\"]"),
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								QuerySuggestions: &components.QuerySuggestionList{
+									Person: &components.Person{
+										Name:         "George Clooney",
+										ObfuscatedID: "abc123",
+									},
+								},
+								RelatedQuestion: &components.RelatedQuestion{},
+							},
+						},
+						QuerySuggestion: &components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
 						},
 						File: &components.ChatFile{
 							ID:   types.String("FILE_1234"),

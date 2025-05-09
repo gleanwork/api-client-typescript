@@ -31,7 +31,335 @@ test("Admin Search Adminsearch", async () => {
         author: {
           name: "George Clooney",
           obfuscatedId: "abc123",
-          relatedDocuments: [],
+          relatedDocuments: [
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate:
+                    "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 51090,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope:
+                        "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                ranges: [
+                  {
+                    startIndex: 636850,
+                  },
+                  {
+                    startIndex: 559323,
+                  },
+                  {
+                    startIndex: 639917,
+                  },
+                ],
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate:
+                    "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 855317,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope:
+                        "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+            },
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate:
+                    "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 899726,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope:
+                        "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+            },
+          ],
           metadata: {
             type: "FULL_TIME",
             title: "Actor",
@@ -52,12 +380,25 @@ test("Admin Search Adminsearch", async () => {
               },
             ],
             querySuggestions: {
-              suggestions: [],
+              suggestions: [
+                {
+                  query: "app:github type:pull author:mortimer",
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                },
+              ],
             },
             inviteInfo: {
-              invites: [],
+              invites: [
+                {},
+              ],
             },
-            customFields: [],
+            customFields: [
+              {
+                label: "<value>",
+                values: [],
+              },
+            ],
             badges: [
               {
                 key: "deployment_name_new_hire",
@@ -75,26 +416,1004 @@ test("Admin Search Adminsearch", async () => {
         owner: {
           name: "George Clooney",
           obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
         },
-        mentionedPeople: [],
+        mentionedPeople: [
+          {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        ],
         components: [
           "Backend",
           "Networking",
         ],
         status: "[\"Done\"]",
-        pins: [],
+        pins: [
+          {
+            audienceFilters: [
+              {
+                fieldName: "type",
+                values: [
+                  {
+                    value: "Spreadsheet",
+                    relationType: "EQUALS",
+                  },
+                  {
+                    value: "Presentation",
+                    relationType: "EQUALS",
+                  },
+                ],
+              },
+            ],
+            documentId: "<id>",
+            attribution: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+            updatedBy: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
         assignedTo: {
           name: "George Clooney",
           obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
         },
         updatedBy: {
           name: "George Clooney",
           obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
         },
-        collections: [],
+        collections: [
+          {
+            name: "<value>",
+            description: "mmm video mid",
+            addedRoles: [
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                role: "OWNER",
+              },
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                role: "ANSWER_MODERATOR",
+              },
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                role: "EDITOR",
+              },
+            ],
+            removedRoles: [
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                role: "ANSWER_MODERATOR",
+              },
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                role: "VERIFIER",
+              },
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                role: "OWNER",
+              },
+            ],
+            audienceFilters: [
+              {
+                fieldName: "type",
+                values: [
+                  {
+                    value: "Spreadsheet",
+                    relationType: "EQUALS",
+                  },
+                  {
+                    value: "Presentation",
+                    relationType: "EQUALS",
+                  },
+                ],
+              },
+            ],
+            id: 524051,
+            creator: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+            updatedBy: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+            items: [
+              {
+                collectionId: 75113,
+                createdBy: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                shortcut: {
+                  inputAlias: "<value>",
+                  createdBy: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                    metadata: {
+                      type: "FULL_TIME",
+                      title: "Actor",
+                      department: "Movies",
+                      email: "george@example.com",
+                      location: "Hollywood, CA",
+                      phone: "6505551234",
+                      photoUrl: "https://example.com/george.jpg",
+                      startDate: new RFCDate("2000-01-23"),
+                      datasourceProfile: [
+                        {
+                          datasource: "github",
+                          handle: "<value>",
+                        },
+                        {
+                          datasource: "github",
+                          handle: "<value>",
+                        },
+                      ],
+                      querySuggestions: {},
+                      inviteInfo: {},
+                      badges: [
+                        {
+                          key: "deployment_name_new_hire",
+                          displayName: "New hire",
+                          iconConfig: {
+                            color: "#343CED",
+                            key: "person_icon",
+                            iconType: "GLYPH",
+                            name: "user",
+                          },
+                        },
+                      ],
+                    },
+                  },
+                  updatedBy: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                    metadata: {
+                      type: "FULL_TIME",
+                      title: "Actor",
+                      department: "Movies",
+                      email: "george@example.com",
+                      location: "Hollywood, CA",
+                      phone: "6505551234",
+                      photoUrl: "https://example.com/george.jpg",
+                      startDate: new RFCDate("2000-01-23"),
+                      datasourceProfile: [
+                        {
+                          datasource: "github",
+                          handle: "<value>",
+                        },
+                      ],
+                      querySuggestions: {},
+                      inviteInfo: {},
+                      badges: [
+                        {
+                          key: "deployment_name_new_hire",
+                          displayName: "New hire",
+                          iconConfig: {
+                            color: "#343CED",
+                            key: "person_icon",
+                            iconType: "GLYPH",
+                            name: "user",
+                          },
+                        },
+                      ],
+                    },
+                  },
+                  roles: [
+                    {
+                      person: {
+                        name: "George Clooney",
+                        obfuscatedId: "abc123",
+                        metadata: {
+                          type: "FULL_TIME",
+                          title: "Actor",
+                          department: "Movies",
+                          email: "george@example.com",
+                          location: "Hollywood, CA",
+                          phone: "6505551234",
+                          photoUrl: "https://example.com/george.jpg",
+                          startDate: new RFCDate("2000-01-23"),
+                          datasourceProfile: [
+                            {
+                              datasource: "github",
+                              handle: "<value>",
+                            },
+                            {
+                              datasource: "github",
+                              handle: "<value>",
+                            },
+                            {
+                              datasource: "github",
+                              handle: "<value>",
+                            },
+                          ],
+                          querySuggestions: {},
+                          inviteInfo: {},
+                          badges: [
+                            {
+                              key: "deployment_name_new_hire",
+                              displayName: "New hire",
+                              iconConfig: {
+                                color: "#343CED",
+                                key: "person_icon",
+                                iconType: "GLYPH",
+                                name: "user",
+                              },
+                            },
+                          ],
+                        },
+                      },
+                      role: "VERIFIER",
+                    },
+                  ],
+                },
+                itemType: "COLLECTION",
+              },
+              {
+                collectionId: 744767,
+                createdBy: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                shortcut: {
+                  inputAlias: "<value>",
+                  createdBy: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                    metadata: {
+                      type: "FULL_TIME",
+                      title: "Actor",
+                      department: "Movies",
+                      email: "george@example.com",
+                      location: "Hollywood, CA",
+                      phone: "6505551234",
+                      photoUrl: "https://example.com/george.jpg",
+                      startDate: new RFCDate("2000-01-23"),
+                      datasourceProfile: [
+                        {
+                          datasource: "github",
+                          handle: "<value>",
+                        },
+                        {
+                          datasource: "github",
+                          handle: "<value>",
+                        },
+                      ],
+                      querySuggestions: {},
+                      inviteInfo: {},
+                      badges: [
+                        {
+                          key: "deployment_name_new_hire",
+                          displayName: "New hire",
+                          iconConfig: {
+                            color: "#343CED",
+                            key: "person_icon",
+                            iconType: "GLYPH",
+                            name: "user",
+                          },
+                        },
+                      ],
+                    },
+                  },
+                  updatedBy: {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                    metadata: {
+                      type: "FULL_TIME",
+                      title: "Actor",
+                      department: "Movies",
+                      email: "george@example.com",
+                      location: "Hollywood, CA",
+                      phone: "6505551234",
+                      photoUrl: "https://example.com/george.jpg",
+                      startDate: new RFCDate("2000-01-23"),
+                      datasourceProfile: [
+                        {
+                          datasource: "github",
+                          handle: "<value>",
+                        },
+                      ],
+                      querySuggestions: {},
+                      inviteInfo: {},
+                      badges: [
+                        {
+                          key: "deployment_name_new_hire",
+                          displayName: "New hire",
+                          iconConfig: {
+                            color: "#343CED",
+                            key: "person_icon",
+                            iconType: "GLYPH",
+                            name: "user",
+                          },
+                        },
+                      ],
+                    },
+                  },
+                },
+                itemType: "DOCUMENT",
+              },
+            ],
+          },
+          {
+            name: "<value>",
+            description:
+              "brr finally hastily amused needily if uh-huh outside wrongly too",
+            audienceFilters: [
+              {
+                fieldName: "type",
+                values: [
+                  {
+                    value: "Spreadsheet",
+                    relationType: "EQUALS",
+                  },
+                  {
+                    value: "Presentation",
+                    relationType: "EQUALS",
+                  },
+                ],
+              },
+            ],
+            id: 448428,
+            creator: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+            updatedBy: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
         interactions: {
-          reacts: [],
-          shares: [],
+          reacts: [
+            {
+              reactors: [
+                {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+              ],
+            },
+            {},
+            {},
+          ],
+          shares: [
+            {
+              numDaysAgo: 876677,
+              sharer: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+                metadata: {
+                  type: "FULL_TIME",
+                  title: "Actor",
+                  department: "Movies",
+                  email: "george@example.com",
+                  location: "Hollywood, CA",
+                  phone: "6505551234",
+                  photoUrl: "https://example.com/george.jpg",
+                  startDate: new RFCDate("2000-01-23"),
+                  datasourceProfile: [
+                    {
+                      datasource: "github",
+                      handle: "<value>",
+                    },
+                  ],
+                  querySuggestions: {},
+                  inviteInfo: {},
+                  badges: [
+                    {
+                      key: "deployment_name_new_hire",
+                      displayName: "New hire",
+                      iconConfig: {
+                        color: "#343CED",
+                        key: "person_icon",
+                        iconType: "GLYPH",
+                        name: "user",
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+          ],
         },
         verification: {
           state: "UNVERIFIED",
@@ -102,29 +1421,488 @@ test("Admin Search Adminsearch", async () => {
             lastVerifier: {
               name: "George Clooney",
               obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
             },
-            reminders: [],
+            reminders: [
+              {
+                assignee: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                requestor: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                remindAt: 854607,
+              },
+              {
+                assignee: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                requestor: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                remindAt: 214607,
+              },
+              {
+                assignee: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                requestor: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                  metadata: {
+                    type: "FULL_TIME",
+                    title: "Actor",
+                    department: "Movies",
+                    email: "george@example.com",
+                    location: "Hollywood, CA",
+                    phone: "6505551234",
+                    photoUrl: "https://example.com/george.jpg",
+                    startDate: new RFCDate("2000-01-23"),
+                    datasourceProfile: [
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                      {
+                        datasource: "github",
+                        handle: "<value>",
+                      },
+                    ],
+                    querySuggestions: {},
+                    inviteInfo: {},
+                    badges: [
+                      {
+                        key: "deployment_name_new_hire",
+                        displayName: "New hire",
+                        iconConfig: {
+                          color: "#343CED",
+                          key: "person_icon",
+                          iconType: "GLYPH",
+                          name: "user",
+                        },
+                      },
+                    ],
+                  },
+                },
+                remindAt: 204917,
+              },
+            ],
             lastReminder: {
               assignee: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
+                metadata: {
+                  type: "FULL_TIME",
+                  title: "Actor",
+                  department: "Movies",
+                  email: "george@example.com",
+                  location: "Hollywood, CA",
+                  phone: "6505551234",
+                  photoUrl: "https://example.com/george.jpg",
+                  startDate: new RFCDate("2000-01-23"),
+                  datasourceProfile: [
+                    {
+                      datasource: "github",
+                      handle: "<value>",
+                    },
+                    {
+                      datasource: "github",
+                      handle: "<value>",
+                    },
+                    {
+                      datasource: "github",
+                      handle: "<value>",
+                    },
+                  ],
+                  querySuggestions: {},
+                  inviteInfo: {},
+                  badges: [
+                    {
+                      key: "deployment_name_new_hire",
+                      displayName: "New hire",
+                      iconConfig: {
+                        color: "#343CED",
+                        key: "person_icon",
+                        iconType: "GLYPH",
+                        name: "user",
+                      },
+                    },
+                  ],
+                },
               },
               requestor: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
+                metadata: {
+                  type: "FULL_TIME",
+                  title: "Actor",
+                  department: "Movies",
+                  email: "george@example.com",
+                  location: "Hollywood, CA",
+                  phone: "6505551234",
+                  photoUrl: "https://example.com/george.jpg",
+                  startDate: new RFCDate("2000-01-23"),
+                  datasourceProfile: [
+                    {
+                      datasource: "github",
+                      handle: "<value>",
+                    },
+                  ],
+                  querySuggestions: {},
+                  inviteInfo: {},
+                  badges: [
+                    {
+                      key: "deployment_name_new_hire",
+                      displayName: "New hire",
+                      iconConfig: {
+                        color: "#343CED",
+                        key: "person_icon",
+                        iconType: "GLYPH",
+                        name: "user",
+                      },
+                    },
+                  ],
+                },
               },
               remindAt: 554738,
             },
-            candidateVerifiers: [],
+            candidateVerifiers: [
+              {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+            ],
           },
         },
-        shortcuts: [],
+        shortcuts: [
+          {
+            inputAlias: "<value>",
+            createdBy: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+            updatedBy: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+              metadata: {
+                type: "FULL_TIME",
+                title: "Actor",
+                department: "Movies",
+                email: "george@example.com",
+                location: "Hollywood, CA",
+                phone: "6505551234",
+                photoUrl: "https://example.com/george.jpg",
+                startDate: new RFCDate("2000-01-23"),
+                datasourceProfile: [
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                  {
+                    datasource: "github",
+                    handle: "<value>",
+                  },
+                ],
+                querySuggestions: {},
+                inviteInfo: {},
+                badges: [
+                  {
+                    key: "deployment_name_new_hire",
+                    displayName: "New hire",
+                    iconConfig: {
+                      color: "#343CED",
+                      key: "person_icon",
+                      iconType: "GLYPH",
+                      name: "user",
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
         customData: {
           "someCustomField": {},
         },
         contactPerson: {
           name: "George Clooney",
           obfuscatedId: "abc123",
+          metadata: {
+            type: "FULL_TIME",
+            title: "Actor",
+            department: "Movies",
+            email: "george@example.com",
+            location: "Hollywood, CA",
+            phone: "6505551234",
+            photoUrl: "https://example.com/george.jpg",
+            startDate: new RFCDate("2000-01-23"),
+            datasourceProfile: [
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+              {
+                datasource: "github",
+                handle: "<value>",
+              },
+            ],
+            querySuggestions: {},
+            inviteInfo: {},
+            badges: [
+              {
+                key: "deployment_name_new_hire",
+                displayName: "New hire",
+                iconConfig: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
+                },
+              },
+            ],
+          },
         },
       },
     },

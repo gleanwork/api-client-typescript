@@ -50,7 +50,12 @@ let value: VerificationMetadata = {
     },
     remindAt: 298116,
   },
-  candidateVerifiers: [],
+  candidateVerifiers: [
+    {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+  ],
 };
 ```
 
