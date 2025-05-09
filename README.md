@@ -13,12 +13,24 @@ Each namespace has its own authentication requirements and access patterns. Whil
 
 ```typescript
 // Example of accessing Client namespace
-const glean = new Glean({ apiToken: "client-token" });
-await glean.client.search.query({ query: "search term" });
+const glean = new Glean({
+  instance: 'instance-name',
+  apiToken: 'client-token'
+});
+
+await glean.client.search.query({ 
+  query: 'search term' 
+});
 
 // Example of accessing Indexing namespace 
-const glean = new Glean({ apiToken: "indexing-token" });
-await glean.indexing.documents.index({ /* document data */ });
+const glean = new Glean({
+  instance: 'instance-name',
+  apiToken: 'indexing-token'
+});
+
+await glean.indexing.documents.index({ 
+  /* document data */ 
+});
 ```
 
 Remember that each namespace requires its own authentication token type as described in the [Authentication Methods](#authentication-methods) section.
