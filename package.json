@@ -1,6 +1,7 @@
 {
   "name": "@gleanwork/api-client",
   "version": "0.3.0",
+  "license": "MIT",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
