@@ -54,7 +54,12 @@ let value: VerificationFeed = {
           },
           remindAt: 665011,
         },
-        candidateVerifiers: [],
+        candidateVerifiers: [
+          {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        ],
       },
     },
   ],

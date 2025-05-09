@@ -11,11 +11,22 @@ let value: SearchResponse = {
     {
       title: "title",
       url: "https://www.example.com/",
-      snippets: [],
+      snippets: [
+        {
+          snippet: "snippet",
+          mimeType: "mimeType",
+        },
+      ],
     },
     {
       title: "title",
       url: "https://www.example.com/",
+      snippets: [
+        {
+          snippet: "snippet",
+          mimeType: "mimeType",
+        },
+      ],
     },
   ],
   gleanDataError: {

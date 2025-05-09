@@ -14,7 +14,12 @@ let value: Customer = {
     about:
       "Financial, software, data, and media company headquartered in Midtown Manhattan, New York City",
   },
-  poc: [],
+  poc: [
+    {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+  ],
   mergedCustomers: [],
   notes: "CIO is interested in trying out the product.",
 };

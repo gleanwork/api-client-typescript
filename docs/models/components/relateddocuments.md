@@ -11,7 +11,20 @@ let value: RelatedDocuments = {
     label: "Mortimer's PRs",
     datasource: "github",
   },
-  results: [],
+  results: [
+    {
+      title: "title",
+      url: "https://example.com/foo/bar",
+      nativeAppUrl: "slack://foo/bar",
+      snippets: [
+        {
+          snippet: "snippet",
+          mimeType: "mimeType",
+        },
+      ],
+      mustIncludeSuggestions: {},
+    },
+  ],
 };
 ```
 

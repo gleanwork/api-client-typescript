@@ -6,7 +6,12 @@
 import { Reaction } from "@gleanwork/api-client/models/components";
 
 let value: Reaction = {
-  reactors: [],
+  reactors: [
+    {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+  ],
 };
 ```
 

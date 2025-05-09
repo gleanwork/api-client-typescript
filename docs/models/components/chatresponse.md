@@ -82,7 +82,12 @@ let value: ChatResponse = {
                   about:
                     "Financial, software, data, and media company headquartered in Midtown Manhattan, New York City",
                 },
-                poc: [],
+                poc: [
+                  {
+                    name: "George Clooney",
+                    obfuscatedId: "abc123",
+                  },
+                ],
                 mergedCustomers: [],
                 notes: "CIO is interested in trying out the product.",
               },
@@ -157,7 +162,12 @@ let value: ChatResponse = {
                       },
                       remindAt: 399728,
                     },
-                    candidateVerifiers: [],
+                    candidateVerifiers: [
+                      {
+                        name: "George Clooney",
+                        obfuscatedId: "abc123",
+                      },
+                    ],
                   },
                 },
                 board: {
@@ -192,6 +202,12 @@ let value: ChatResponse = {
                   title: "title",
                   url: "https://example.com/foo/bar",
                   nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
                   mustIncludeSuggestions: {},
                 },
               },
@@ -255,7 +271,13 @@ let value: ChatResponse = {
                 destinationDocument: {},
               },
               querySuggestions: {
-                suggestions: [],
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
               },
               relatedDocuments: [],
               relatedQuestion: {

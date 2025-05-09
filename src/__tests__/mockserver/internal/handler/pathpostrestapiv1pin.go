@@ -69,9 +69,379 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 		},
 		DocumentID: "<id>",
 		Attribution: &components.Person{
-			Name:             "George Clooney",
-			ObfuscatedID:     "abc123",
-			RelatedDocuments: []components.RelatedDocuments{},
+			Name:         "George Clooney",
+			ObfuscatedID: "abc123",
+			RelatedDocuments: []components.RelatedDocuments{
+				components.RelatedDocuments{
+					QuerySuggestion: &components.QuerySuggestion{
+						Query: "app:github type:pull author:mortimer",
+						SearchProviderInfo: &components.SearchProviderInfo{
+							Name:                  types.String("Google"),
+							SearchLinkURLTemplate: types.String("https://www.google.com/search?q={query}&hl=en"),
+						},
+						Label:      types.String("Mortimer's PRs"),
+						Datasource: types.String("github"),
+						RequestOptions: &components.SearchRequestOptions{
+							DatasourceFilter: types.String("JIRA"),
+							DatasourcesFilter: []string{
+								"JIRA",
+							},
+							QueryOverridesFacetFilters: types.Bool(true),
+							FacetFilters: []components.FacetFilter{
+								components.FacetFilter{
+									FieldName: types.String("type"),
+									Values: []components.FacetFilterValue{
+										components.FacetFilterValue{
+											Value:        types.String("Spreadsheet"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+										components.FacetFilterValue{
+											Value:        types.String("Presentation"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+									},
+								},
+							},
+							FacetFilterSets: []components.FacetFilterSet{
+								components.FacetFilterSet{
+									Filters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+								},
+								components.FacetFilterSet{
+									Filters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+								},
+							},
+							FacetBucketSize: 417458,
+							AuthTokens: []components.AuthToken{
+								components.AuthToken{
+									AccessToken: "123abc",
+									Datasource:  "gmail",
+									Scope:       types.String("email profile https://www.googleapis.com/auth/gmail.readonly"),
+									TokenType:   types.String("Bearer"),
+									AuthUser:    types.String("1"),
+								},
+							},
+						},
+						Ranges: []components.TextRange{
+							components.TextRange{
+								StartIndex: 69025,
+								Document: &components.Document{
+									Metadata: &components.DocumentMetadata{
+										Datasource: types.String("datasource"),
+										ObjectType: types.String("Feature Request"),
+										Container:  types.String("container"),
+										ParentID:   types.String("JIRA_EN-1337"),
+										MimeType:   types.String("mimeType"),
+										DocumentID: types.String("documentId"),
+										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+										Components: []string{
+											"Backend",
+											"Networking",
+										},
+										Status: types.String("[\"Done\"]"),
+										Collections: []components.Collection{
+											components.Collection{
+												Name:        "<value>",
+												Description: "vice between gee",
+												AddedRoles: []components.UserRoleSpecification{
+													components.UserRoleSpecification{
+														Role: components.UserRoleViewer,
+													},
+													components.UserRoleSpecification{
+														Role: components.UserRoleOwner,
+													},
+												},
+												RemovedRoles: []components.UserRoleSpecification{
+													components.UserRoleSpecification{
+														Role: components.UserRoleOwner,
+													},
+													components.UserRoleSpecification{
+														Role: components.UserRoleEditor,
+													},
+												},
+												AudienceFilters: []components.FacetFilter{
+													components.FacetFilter{
+														FieldName: types.String("type"),
+														Values: []components.FacetFilterValue{
+															components.FacetFilterValue{
+																Value:        types.String("Spreadsheet"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+															components.FacetFilterValue{
+																Value:        types.String("Presentation"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+														},
+													},
+												},
+												ID: 550483,
+												Items: []components.CollectionItem{
+													components.CollectionItem{
+														CollectionID: 452224,
+														Shortcut: &components.Shortcut{
+															InputAlias: "<value>",
+															Roles: []components.UserRoleSpecification{
+																components.UserRoleSpecification{
+																	Role: components.UserRoleViewer,
+																},
+																components.UserRoleSpecification{
+																	Role: components.UserRoleEditor,
+																},
+															},
+														},
+														ItemType: components.CollectionItemItemTypeDocument,
+													},
+													components.CollectionItem{
+														CollectionID: 703441,
+														Shortcut: &components.Shortcut{
+															InputAlias: "<value>",
+														},
+														ItemType: components.CollectionItemItemTypeCollection,
+													},
+													components.CollectionItem{
+														CollectionID: 780486,
+														Shortcut: &components.Shortcut{
+															InputAlias: "<value>",
+														},
+														ItemType: components.CollectionItemItemTypeCollection,
+													},
+												},
+											},
+											components.Collection{
+												Name:        "<value>",
+												Description: "tousle aha while till lazily than",
+												AudienceFilters: []components.FacetFilter{
+													components.FacetFilter{
+														FieldName: types.String("type"),
+														Values: []components.FacetFilterValue{
+															components.FacetFilterValue{
+																Value:        types.String("Spreadsheet"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+															components.FacetFilterValue{
+																Value:        types.String("Presentation"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+														},
+													},
+												},
+												ID: 271081,
+											},
+											components.Collection{
+												Name:        "<value>",
+												Description: "which yippee where until waver colorless",
+												AudienceFilters: []components.FacetFilter{
+													components.FacetFilter{
+														FieldName: types.String("type"),
+														Values: []components.FacetFilterValue{
+															components.FacetFilterValue{
+																Value:        types.String("Spreadsheet"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+															components.FacetFilterValue{
+																Value:        types.String("Presentation"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+														},
+													},
+												},
+												ID: 290613,
+											},
+										},
+										Interactions: &components.DocumentInteractions{
+											Reacts: []components.Reaction{
+												components.Reaction{},
+												components.Reaction{},
+												components.Reaction{},
+											},
+											Shares: []components.Share{
+												components.Share{
+													NumDaysAgo: 405497,
+												},
+											},
+										},
+										Verification: &components.Verification{
+											State: components.StateVerified,
+											Metadata: &components.VerificationMetadata{
+												Reminders: []components.Reminder{
+													components.Reminder{
+														Assignee: components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														RemindAt: 338524,
+													},
+													components.Reminder{
+														Assignee: components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														RemindAt: 913221,
+													},
+													components.Reminder{
+														Assignee: components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														RemindAt: 154150,
+													},
+												},
+												LastReminder: &components.Reminder{
+													Assignee: components.Person{
+														Name:         "George Clooney",
+														ObfuscatedID: "abc123",
+													},
+													RemindAt: 721880,
+												},
+											},
+										},
+										Shortcuts: []components.Shortcut{
+											components.Shortcut{
+												InputAlias: "<value>",
+											},
+											components.Shortcut{
+												InputAlias: "<value>",
+											},
+											components.Shortcut{
+												InputAlias: "<value>",
+											},
+										},
+										CustomData: map[string]components.CustomDataValue{
+											"someCustomField": components.CustomDataValue{},
+										},
+									},
+								},
+							},
+						},
+						InputDetails: &components.SearchRequestInputDetails{
+							HasCopyPaste: types.Bool(true),
+						},
+					},
+					Results: []components.SearchResult{
+						components.SearchResult{
+							Title:        types.String("title"),
+							URL:          "https://example.com/foo/bar",
+							NativeAppURL: types.String("slack://foo/bar"),
+							Snippets: []components.SearchResultSnippet{
+								components.SearchResultSnippet{
+									Snippet:  "snippet",
+									MimeType: types.String("mimeType"),
+								},
+							},
+						},
+					},
+				},
+				components.RelatedDocuments{
+					QuerySuggestion: &components.QuerySuggestion{
+						Query: "app:github type:pull author:mortimer",
+						SearchProviderInfo: &components.SearchProviderInfo{
+							Name:                  types.String("Google"),
+							SearchLinkURLTemplate: types.String("https://www.google.com/search?q={query}&hl=en"),
+						},
+						Label:      types.String("Mortimer's PRs"),
+						Datasource: types.String("github"),
+						RequestOptions: &components.SearchRequestOptions{
+							DatasourceFilter: types.String("JIRA"),
+							DatasourcesFilter: []string{
+								"JIRA",
+							},
+							QueryOverridesFacetFilters: types.Bool(true),
+							FacetFilters: []components.FacetFilter{
+								components.FacetFilter{
+									FieldName: types.String("type"),
+									Values: []components.FacetFilterValue{
+										components.FacetFilterValue{
+											Value:        types.String("Spreadsheet"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+										components.FacetFilterValue{
+											Value:        types.String("Presentation"),
+											RelationType: components.RelationTypeEquals.ToPointer(),
+										},
+									},
+								},
+							},
+							FacetFilterSets: []components.FacetFilterSet{
+								components.FacetFilterSet{
+									Filters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+								},
+								components.FacetFilterSet{
+									Filters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+								},
+							},
+							FacetBucketSize: 931588,
+							AuthTokens: []components.AuthToken{
+								components.AuthToken{
+									AccessToken: "123abc",
+									Datasource:  "gmail",
+									Scope:       types.String("email profile https://www.googleapis.com/auth/gmail.readonly"),
+									TokenType:   types.String("Bearer"),
+									AuthUser:    types.String("1"),
+								},
+							},
+						},
+						InputDetails: &components.SearchRequestInputDetails{
+							HasCopyPaste: types.Bool(true),
+						},
+					},
+				},
+			},
 			Metadata: &components.PersonMetadata{
 				Type:       components.PersonMetadataTypeFullTime.ToPointer(),
 				Title:      types.String("Actor"),
@@ -88,12 +458,40 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 					},
 				},
 				QuerySuggestions: &components.QuerySuggestionList{
-					Suggestions: []components.QuerySuggestion{},
+					Suggestions: []components.QuerySuggestion{
+						components.QuerySuggestion{
+							Query:      "app:github type:pull author:mortimer",
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
+						},
+					},
 				},
 				InviteInfo: &components.InviteInfo{
-					Invites: []components.ChannelInviteInfo{},
+					Invites: []components.ChannelInviteInfo{
+						components.ChannelInviteInfo{},
+					},
 				},
-				CustomFields: []components.CustomFieldData{},
+				CustomFields: []components.CustomFieldData{
+					components.CustomFieldData{
+						Label: "<value>",
+						Values: []components.CustomFieldValue{
+							components.CreateCustomFieldValueCustomFieldValueStr(
+								components.CustomFieldValueStr{},
+							),
+						},
+						Displayable: types.Bool(true),
+					},
+					components.CustomFieldData{
+						Label:       "<value>",
+						Values:      []components.CustomFieldValue{},
+						Displayable: types.Bool(true),
+					},
+					components.CustomFieldData{
+						Label:       "<value>",
+						Values:      []components.CustomFieldValue{},
+						Displayable: types.Bool(true),
+					},
+				},
 				Badges: []components.Badge{
 					components.Badge{
 						Key:         types.String("deployment_name_new_hire"),
@@ -111,6 +509,44 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 		UpdatedBy: &components.Person{
 			Name:         "George Clooney",
 			ObfuscatedID: "abc123",
+			Metadata: &components.PersonMetadata{
+				Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+				Title:      types.String("Actor"),
+				Department: types.String("Movies"),
+				Email:      types.String("george@example.com"),
+				Location:   types.String("Hollywood, CA"),
+				Phone:      types.String("6505551234"),
+				PhotoURL:   types.String("https://example.com/george.jpg"),
+				StartDate:  types.MustNewDateFromString("2000-01-23"),
+				DatasourceProfile: []components.DatasourceProfile{
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
+				},
+				QuerySuggestions: &components.QuerySuggestionList{},
+				InviteInfo:       &components.InviteInfo{},
+				Badges: []components.Badge{
+					components.Badge{
+						Key:         types.String("deployment_name_new_hire"),
+						DisplayName: types.String("New hire"),
+						IconConfig: &components.IconConfig{
+							Color:    types.String("#343CED"),
+							Key:      types.String("person_icon"),
+							IconType: components.IconTypeGlyph.ToPointer(),
+							Name:     types.String("user"),
+						},
+					},
+				},
+			},
 		},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)

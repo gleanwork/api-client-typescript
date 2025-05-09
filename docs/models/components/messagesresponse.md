@@ -13,11 +13,22 @@ let value: MessagesResponse = {
       {
         title: "title",
         url: "https://www.example.com/",
-        snippets: [],
+        snippets: [
+          {
+            snippet: "snippet",
+            mimeType: "mimeType",
+          },
+        ],
       },
       {
         title: "title",
         url: "https://www.example.com/",
+        snippets: [
+          {
+            snippet: "snippet",
+            mimeType: "mimeType",
+          },
+        ],
       },
     ],
     gleanDataError: {
@@ -102,6 +113,12 @@ let value: MessagesResponse = {
     title: "title",
     url: "https://example.com/foo/bar",
     nativeAppUrl: "slack://foo/bar",
+    snippets: [
+      {
+        snippet: "snippet",
+        mimeType: "mimeType",
+      },
+    ],
     mustIncludeSuggestions: {},
   },
 };
