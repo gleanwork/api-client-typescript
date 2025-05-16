@@ -17,7 +17,9 @@ Rotates the secret value inside the Indexing API token and returns the new raw s
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -41,7 +43,9 @@ import { indexingAuthenticationRotateToken } from "@gleanwork/api-client/funcs/i
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {

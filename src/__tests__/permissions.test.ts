@@ -14,7 +14,9 @@ test("Permissions Post /Api/index/v1 /Updatepermissions", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.updatePermissions({
@@ -29,7 +31,9 @@ test("Permissions Post /Api/index/v1 /Indexuser", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.indexUser({
@@ -49,7 +53,9 @@ test("Permissions Post /Api/index/v1 /Bulkindexusers", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.bulkIndexUsers({
@@ -78,7 +84,9 @@ test("Permissions Post /Api/index/v1 /Indexgroup", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.indexGroup({
@@ -97,7 +105,9 @@ test("Permissions Post /Api/index/v1 /Bulkindexgroups", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.bulkIndexGroups({
@@ -122,7 +132,9 @@ test("Permissions Post /Api/index/v1 /Indexmembership", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.indexMembership({
@@ -141,7 +153,9 @@ test("Permissions Post /Api/index/v1 /Bulkindexmemberships", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.bulkIndexMemberships({
@@ -163,7 +177,9 @@ test("Permissions Post /Api/index/v1 /Processallmemberships", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.processMemberships();
@@ -175,7 +191,9 @@ test("Permissions Post /Api/index/v1 /Deleteuser", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.deleteUser({
@@ -190,7 +208,9 @@ test("Permissions Post /Api/index/v1 /Deletegroup", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.deleteGroup({
@@ -207,7 +227,9 @@ test("Permissions Post /Api/index/v1 /Deletemembership", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.deleteMembership({
@@ -224,7 +246,9 @@ test("Permissions Post /Api/index/v1 /Betausers", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.indexing.permissions.authorizeBetaUsers({

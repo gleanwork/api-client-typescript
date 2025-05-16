@@ -13,7 +13,9 @@ test("Client Shortcuts Createshortcut", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   const result = await glean.client.shortcuts.create({
@@ -573,7 +575,9 @@ test("Client Shortcuts Deleteshortcut", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.client.shortcuts.delete({
@@ -587,7 +591,9 @@ test("Client Shortcuts Getshortcut", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   const result = await glean.client.shortcuts.retrieve({});
@@ -600,7 +606,9 @@ test("Client Shortcuts Listshortcuts", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   const result = await glean.client.shortcuts.list({
@@ -630,7 +638,9 @@ test("Client Shortcuts Updateshortcut", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   const result = await glean.client.shortcuts.update({

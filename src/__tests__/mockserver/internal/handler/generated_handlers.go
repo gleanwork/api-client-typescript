@@ -12,6 +12,10 @@ import (
 // GeneratedHandlers returns all generated handlers.
 func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) []*GeneratedHandler {
 	return []*GeneratedHandler{
+		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/agents/{agent_id}", pathGetRestAPIV1AgentsAgentID(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/agents/{agent_id}/schemas", pathGetRestAPIV1AgentsAgentIDSchemas(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/governance/data/policies", pathGetRestAPIV1GovernanceDataPolicies(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/governance/data/policies/{id}", pathGetRestAPIV1GovernanceDataPoliciesID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/api/index/v1/adddatasource", pathPostAPIIndexV1Adddatasource(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/api/index/v1/betausers", pathPostAPIIndexV1Betausers(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/api/index/v1/bulkindexdocuments", pathPostAPIIndexV1Bulkindexdocuments(dir, rt)),
@@ -41,6 +45,8 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/addcollectionitems", pathPostRestAPIV1Addcollectionitems(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/addverificationreminder", pathPostRestAPIV1Addverificationreminder(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/adminsearch", pathPostRestAPIV1Adminsearch(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/agents/runs/wait", pathPostRestAPIV1AgentsRunsWait(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/agents/search", pathPostRestAPIV1AgentsSearch(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/autocomplete", pathPostRestAPIV1Autocomplete(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/chat", pathPostRestAPIV1Chat(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/createannouncement", pathPostRestAPIV1Createannouncement(dir, rt)),
@@ -62,7 +68,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/editpin", pathPostRestAPIV1Editpin(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/feed", pathPostRestAPIV1Feed(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/feedback", pathPostRestAPIV1Feedback(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/getagentinputs", pathPostRestAPIV1Getagentinputs(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/getanswer", pathPostRestAPIV1Getanswer(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/getchat", pathPostRestAPIV1Getchat(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/getchatapplication", pathPostRestAPIV1Getchatapplication(dir, rt)),
@@ -74,7 +79,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/getpin", pathPostRestAPIV1Getpin(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/getshortcut", pathPostRestAPIV1Getshortcut(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/insights", pathPostRestAPIV1Insights(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/listagents", pathPostRestAPIV1Listagents(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/listanswers", pathPostRestAPIV1Listanswers(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/listchats", pathPostRestAPIV1Listchats(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/listcollections", pathPostRestAPIV1Listcollections(dir, rt)),
@@ -86,7 +90,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/people", pathPostRestAPIV1People(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/pin", pathPostRestAPIV1Pin(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/recommendations", pathPostRestAPIV1Recommendations(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/runagent", pathPostRestAPIV1Runagent(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/search", pathPostRestAPIV1Search(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/summarize", pathPostRestAPIV1Summarize(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/unpin", pathPostRestAPIV1Unpin(dir, rt)),

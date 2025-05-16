@@ -21,7 +21,9 @@ Update an existing user-generated pin.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -61,7 +63,9 @@ import { clientPinsUpdate } from "@gleanwork/api-client/funcs/clientPinsUpdate.j
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -142,7 +146,9 @@ Read pin details given its ID.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -166,7 +172,9 @@ import { clientPinsRetrieve } from "@gleanwork/api-client/funcs/clientPinsRetrie
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -231,7 +239,9 @@ Lists all pins.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -255,7 +265,9 @@ import { clientPinsList } from "@gleanwork/api-client/funcs/clientPinsList.js";
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -320,7 +332,9 @@ Pin a document as a result for a given search query.Pin results that are known t
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -360,7 +374,9 @@ import { clientPinsCreate } from "@gleanwork/api-client/funcs/clientPinsCreate.j
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -441,7 +457,9 @@ Unpin a previously pinned result.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -464,7 +482,9 @@ import { clientPinsRemove } from "@gleanwork/api-client/funcs/clientPinsRemove.j
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {

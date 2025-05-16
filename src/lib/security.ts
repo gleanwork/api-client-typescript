@@ -243,8 +243,15 @@ export function resolveGlobalSecurity(
     [
       {
         fieldName: "Authorization",
-        type: "http:bearer",
-        value: security?.apiToken ?? env().GLEAN_API_TOKEN,
+        type: "apiKey:header",
+        value: security?.actAsBearerToken ?? env().GLEAN_ACT_AS_BEARER_TOKEN,
+      },
+    ],
+    [
+      {
+        fieldName: "Authorization",
+        type: "apiKey:header",
+        value: security?.cookieAuth ?? env().GLEAN_COOKIE_AUTH,
       },
     ],
   );

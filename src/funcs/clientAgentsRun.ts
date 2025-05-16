@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
+import { encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -20,24 +20,22 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Runs an Agent.
+ * Create Run, Wait for Output
  *
  * @remarks
- * Trigger an Agent with a given id.
+ * Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
  */
 export function clientAgentsRun(
   client: GleanCore,
-  runAgentRequest: components.RunAgentRequest,
-  timezoneOffset?: number | undefined,
+  request: components.AgentRunCreate,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.ChatResponse,
+    components.AgentRunWaitResponse,
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -49,21 +47,19 @@ export function clientAgentsRun(
 > {
   return new APIPromise($do(
     client,
-    runAgentRequest,
-    timezoneOffset,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  runAgentRequest: components.RunAgentRequest,
-  timezoneOffset?: number | undefined,
+  request: components.AgentRunCreate,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      components.ChatResponse,
+      components.AgentRunWaitResponse,
       | GleanError
       | SDKValidationError
       | UnexpectedClientError
@@ -75,45 +71,35 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.RunagentRequest = {
-    runAgentRequest: runAgentRequest,
-    timezoneOffset: timezoneOffset,
-  };
-
   const parsed = safeParse(
-    input,
-    (value) => operations.RunagentRequest$outboundSchema.parse(value),
+    request,
+    (value) => components.AgentRunCreate$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.RunAgentRequest, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
-  const path = pathToFunc("/rest/api/v1/runagent")();
-
-  const query = encodeFormQuery({
-    "timezoneOffset": payload.timezoneOffset,
-  });
+  const path = pathToFunc("/rest/api/v1/agents/runs/wait")();
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
-  const secConfig = await extractSecurity(client._options.apiToken);
-  const securityInput = secConfig == null ? {} : { apiToken: secConfig };
+  const securityInput = await extractSecurity(client._options.security);
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "runagent",
+    operationID: "createAndWaitRun",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,
 
-    securitySource: client._options.apiToken,
+    securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
       || { strategy: "none" },
@@ -126,7 +112,6 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
@@ -137,7 +122,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "408", "429", "4XX", "5XX"],
+    errorCodes: ["400", "403", "404", "409", "422", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -147,7 +132,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    components.ChatResponse,
+    components.AgentRunWaitResponse,
     | GleanError
     | SDKValidationError
     | UnexpectedClientError
@@ -156,9 +141,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.ChatResponse$inboundSchema),
-    M.fail([400, 401, 408, 429, "4XX"]),
-    M.fail("5XX"),
+    M.json(200, components.AgentRunWaitResponse$inboundSchema),
+    M.fail([400, 403, 404, 409, 422, "4XX"]),
+    M.fail([500, "5XX"]),
   )(response);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
