@@ -15,7 +15,7 @@ test("Permissions Post /Api/index/v1 /Updatepermissions", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -32,7 +32,7 @@ test("Permissions Post /Api/index/v1 /Indexuser", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -54,7 +54,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexusers", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -85,7 +85,7 @@ test("Permissions Post /Api/index/v1 /Indexgroup", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -106,7 +106,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexgroups", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -133,7 +133,7 @@ test("Permissions Post /Api/index/v1 /Indexmembership", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -154,7 +154,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexmemberships", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -178,7 +178,7 @@ test("Permissions Post /Api/index/v1 /Processallmemberships", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -192,7 +192,7 @@ test("Permissions Post /Api/index/v1 /Deleteuser", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -209,7 +209,7 @@ test("Permissions Post /Api/index/v1 /Deletegroup", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -228,7 +228,7 @@ test("Permissions Post /Api/index/v1 /Deletemembership", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -247,7 +247,7 @@ test("Permissions Post /Api/index/v1 /Betausers", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 

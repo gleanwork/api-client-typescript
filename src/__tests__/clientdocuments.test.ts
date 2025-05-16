@@ -13,7 +13,7 @@ test("Client Documents Getdocpermissions", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -28,7 +28,7 @@ test("Client Documents Getdocuments", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -43,7 +43,7 @@ test("Client Documents Getdocumentsbyfacets", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -95,7 +95,7 @@ test("Client Documents Summarize", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 

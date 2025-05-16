@@ -15,7 +15,7 @@ test("Indexing Documents Post /Api/index/v1 /Indexdocument", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -35,7 +35,7 @@ test("Indexing Documents Post /Api/index/v1 /Indexdocuments", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -58,7 +58,7 @@ test("Indexing Documents Post /Api/index/v1 /Bulkindexdocuments", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -82,7 +82,7 @@ test("Indexing Documents Post /Api/index/v1 /Processalldocuments", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -98,7 +98,7 @@ test("Indexing Documents Post /Api/index/v1 /Deletedocument", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -118,7 +118,7 @@ test("Indexing Documents Post /Api/index/v1 /Checkdocumentaccess", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -140,7 +140,7 @@ test("Indexing Documents Post /Api/index/v1 /Getdocumentstatus", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -161,7 +161,7 @@ test("Indexing Documents Post /Api/index/v1 /Getdocumentcount", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 

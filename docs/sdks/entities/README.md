@@ -19,7 +19,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -62,7 +62,7 @@ import { clientEntitiesList } from "@gleanwork/api-client/funcs/clientEntitiesLi
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -146,7 +146,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -177,7 +177,7 @@ import { clientEntitiesReadPeople } from "@gleanwork/api-client/funcs/clientEnti
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 

@@ -3,12 +3,13 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Security = {
-  actAsBearerToken?: string | undefined;
+  apiToken?: string | undefined;
   cookieAuth?: string | undefined;
 };
 
@@ -18,13 +19,17 @@ export const Security$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  actAsBearerToken: z.string().optional(),
+  APIToken: z.string().optional(),
   cookieAuth: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "APIToken": "apiToken",
+  });
 });
 
 /** @internal */
 export type Security$Outbound = {
-  actAsBearerToken?: string | undefined;
+  APIToken?: string | undefined;
   cookieAuth?: string | undefined;
 };
 
@@ -34,8 +39,12 @@ export const Security$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Security
 > = z.object({
-  actAsBearerToken: z.string().optional(),
+  apiToken: z.string().optional(),
   cookieAuth: z.string().optional(),
+}).transform((v) => {
+  return remap$(v, {
+    apiToken: "APIToken",
+  });
 });
 
 /**

@@ -29,7 +29,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -58,7 +58,7 @@ import { indexingDocumentsAddOrUpdate } from "@gleanwork/api-client/funcs/indexi
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -128,7 +128,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -156,7 +156,7 @@ import { indexingDocumentsIndex } from "@gleanwork/api-client/funcs/indexingDocu
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -225,7 +225,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -254,7 +254,7 @@ import { indexingDocumentsBulkIndex } from "@gleanwork/api-client/funcs/indexing
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -335,7 +335,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -360,7 +360,7 @@ import { indexingDocumentsProcessAll } from "@gleanwork/api-client/funcs/indexin
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -426,7 +426,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -455,7 +455,7 @@ import { indexingDocumentsDelete } from "@gleanwork/api-client/funcs/indexingDoc
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -528,7 +528,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -557,7 +557,7 @@ import { indexingDocumentsDebug } from "@gleanwork/api-client/funcs/indexingDocu
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -631,7 +631,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -664,7 +664,7 @@ import { indexingDocumentsDebugMany } from "@gleanwork/api-client/funcs/indexing
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -742,7 +742,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -773,7 +773,7 @@ import { indexingDocumentsCheckAccess } from "@gleanwork/api-client/funcs/indexi
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -850,7 +850,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -880,7 +880,7 @@ import { indexingDocumentsStatus } from "@gleanwork/api-client/funcs/indexingDoc
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -956,7 +956,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -984,7 +984,7 @@ import { indexingDocumentsCount } from "@gleanwork/api-client/funcs/indexingDocu
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
