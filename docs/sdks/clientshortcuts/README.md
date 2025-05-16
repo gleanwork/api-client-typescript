@@ -22,7 +22,9 @@ import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -99,8 +101,25 @@ async function run() {
                           },
                         ],
                       },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
                     ],
-                    facetBucketSize: 134365,
+                    facetBucketSize: 523271,
                     authTokens: [
                       {
                         accessToken: "123abc",
@@ -113,7 +132,7 @@ async function run() {
                   },
                   ranges: [
                     {
-                      startIndex: 796474,
+                      startIndex: 365818,
                       document: {
                         metadata: {
                           datasource: "datasource",
@@ -166,6 +185,132 @@ async function run() {
                               ],
                               documentId: "<id>",
                             },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
                             {
                               audienceFilters: [
                                 {
@@ -188,7 +333,7 @@ async function run() {
                           collections: [
                             {
                               name: "<value>",
-                              description: "fumigate convection though zowie",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
                               audienceFilters: [
                                 {
                                   fieldName: "type",
@@ -204,14 +349,21 @@ async function run() {
                                   ],
                                 },
                               ],
-                              id: 496323,
+                              id: 100369,
                               items: [
                                 {
-                                  collectionId: 782367,
+                                  collectionId: 239768,
                                   shortcut: {
                                     inputAlias: "<value>",
                                   },
-                                  itemType: "URL",
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
                                 },
                               ],
                             },
@@ -224,18 +376,12 @@ async function run() {
                             ],
                             shares: [
                               {
-                                numDaysAgo: 219974,
-                              },
-                              {
-                                numDaysAgo: 449221,
-                              },
-                              {
-                                numDaysAgo: 427887,
+                                numDaysAgo: 771560,
                               },
                             ],
                           },
                           verification: {
-                            state: "VERIFIED",
+                            state: "DEPRECATED",
                             metadata: {
                               reminders: [
                                 {
@@ -243,7 +389,14 @@ async function run() {
                                     name: "George Clooney",
                                     obfuscatedId: "abc123",
                                   },
-                                  remindAt: 491427,
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
                                 },
                               ],
                               lastReminder: {
@@ -251,7 +404,7 @@ async function run() {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
                                 },
-                                remindAt: 490420,
+                                remindAt: 627228,
                               },
                             },
                           },
@@ -285,6 +438,75 @@ async function run() {
                   },
                 ],
               },
+            ],
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              customFields: [
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+              ],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
+          role: "VIEWER",
+        },
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            relatedDocuments: [
               {
                 querySuggestion: {
                   query: "app:github type:pull author:mortimer",
@@ -333,8 +555,42 @@ async function run() {
                           },
                         ],
                       },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
                     ],
-                    facetBucketSize: 129663,
+                    facetBucketSize: 523271,
                     authTokens: [
                       {
                         accessToken: "123abc",
@@ -345,10 +601,313 @@ async function run() {
                       },
                     ],
                   },
+                  ranges: [
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                  ],
                   inputDetails: {
                     hasCopyPaste: true,
                   },
                 },
+                results: [
+                  {
+                    title: "title",
+                    url: "https://example.com/foo/bar",
+                    nativeAppUrl: "slack://foo/bar",
+                    snippets: [
+                      {
+                        snippet: "snippet",
+                        mimeType: "mimeType",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
             metadata: {
@@ -379,6 +938,7 @@ async function run() {
                 invites: [
                   {},
                   {},
+                  {},
                 ],
               },
               customFields: [
@@ -386,13 +946,545 @@ async function run() {
                   label: "<value>",
                   values: [
                     {},
+                    {},
                   ],
                 },
                 {
                   label: "<value>",
-                  values: [],
+                  values: [
+                    {},
+                    {},
+                  ],
                 },
               ],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
+          role: "VIEWER",
+        },
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            relatedDocuments: [
+              {
+                querySuggestion: {
+                  query: "app:github type:pull author:mortimer",
+                  searchProviderInfo: {
+                    name: "Google",
+                    searchLinkUrlTemplate: "https://www.google.com/search?q={query}&hl=en",
+                  },
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                  requestOptions: {
+                    datasourceFilter: "JIRA",
+                    datasourcesFilter: [
+                      "JIRA",
+                    ],
+                    queryOverridesFacetFilters: true,
+                    facetFilters: [
+                      {
+                        fieldName: "type",
+                        values: [
+                          {
+                            value: "Spreadsheet",
+                            relationType: "EQUALS",
+                          },
+                          {
+                            value: "Presentation",
+                            relationType: "EQUALS",
+                          },
+                        ],
+                      },
+                    ],
+                    facetFilterSets: [
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                    facetBucketSize: 523271,
+                    authTokens: [
+                      {
+                        accessToken: "123abc",
+                        datasource: "gmail",
+                        scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+                        tokenType: "Bearer",
+                        authUser: "1",
+                      },
+                    ],
+                  },
+                  ranges: [
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                  ],
+                  inputDetails: {
+                    hasCopyPaste: true,
+                  },
+                },
+                results: [
+                  {
+                    title: "title",
+                    url: "https://example.com/foo/bar",
+                    nativeAppUrl: "slack://foo/bar",
+                    snippets: [
+                      {
+                        snippet: "snippet",
+                        mimeType: "mimeType",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              customFields: [
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+              ],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
+          role: "VIEWER",
+        },
+      ],
+      removedRoles: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -427,48 +1519,27 @@ async function run() {
                   datasource: "github",
                   handle: "<value>",
                 },
-              ],
-              querySuggestions: {},
-              inviteInfo: {},
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
-            },
-          },
-          role: "VERIFIER",
-        },
-      ],
-      removedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
                 {
                   datasource: "github",
                   handle: "<value>",
                 },
               ],
-              querySuggestions: {},
-              inviteInfo: {},
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -483,7 +1554,7 @@ async function run() {
               ],
             },
           },
-          role: "VERIFIER",
+          role: "OWNER",
         },
         {
           person: {
@@ -507,50 +1578,23 @@ async function run() {
                   datasource: "github",
                   handle: "<value>",
                 },
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
               ],
-              querySuggestions: {},
-              inviteInfo: {},
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
                   },
-                },
-              ],
-            },
-          },
-          role: "ANSWER_MODERATOR",
-        },
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {},
-              inviteInfo: {},
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -590,7 +1634,9 @@ import { RFCDate } from "@gleanwork/api-client/types";
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -667,8 +1713,25 @@ async function run() {
                           },
                         ],
                       },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
                     ],
-                    facetBucketSize: 134365,
+                    facetBucketSize: 523271,
                     authTokens: [
                       {
                         accessToken: "123abc",
@@ -681,7 +1744,7 @@ async function run() {
                   },
                   ranges: [
                     {
-                      startIndex: 796474,
+                      startIndex: 365818,
                       document: {
                         metadata: {
                           datasource: "datasource",
@@ -734,6 +1797,132 @@ async function run() {
                               ],
                               documentId: "<id>",
                             },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
                             {
                               audienceFilters: [
                                 {
@@ -756,7 +1945,7 @@ async function run() {
                           collections: [
                             {
                               name: "<value>",
-                              description: "fumigate convection though zowie",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
                               audienceFilters: [
                                 {
                                   fieldName: "type",
@@ -772,14 +1961,21 @@ async function run() {
                                   ],
                                 },
                               ],
-                              id: 496323,
+                              id: 100369,
                               items: [
                                 {
-                                  collectionId: 782367,
+                                  collectionId: 239768,
                                   shortcut: {
                                     inputAlias: "<value>",
                                   },
-                                  itemType: "URL",
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
                                 },
                               ],
                             },
@@ -792,18 +1988,12 @@ async function run() {
                             ],
                             shares: [
                               {
-                                numDaysAgo: 219974,
-                              },
-                              {
-                                numDaysAgo: 449221,
-                              },
-                              {
-                                numDaysAgo: 427887,
+                                numDaysAgo: 771560,
                               },
                             ],
                           },
                           verification: {
-                            state: "VERIFIED",
+                            state: "DEPRECATED",
                             metadata: {
                               reminders: [
                                 {
@@ -811,7 +2001,14 @@ async function run() {
                                     name: "George Clooney",
                                     obfuscatedId: "abc123",
                                   },
-                                  remindAt: 491427,
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
                                 },
                               ],
                               lastReminder: {
@@ -819,7 +2016,7 @@ async function run() {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
                                 },
-                                remindAt: 490420,
+                                remindAt: 627228,
                               },
                             },
                           },
@@ -853,6 +2050,75 @@ async function run() {
                   },
                 ],
               },
+            ],
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              customFields: [
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+              ],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
+          role: "VIEWER",
+        },
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            relatedDocuments: [
               {
                 querySuggestion: {
                   query: "app:github type:pull author:mortimer",
@@ -901,8 +2167,42 @@ async function run() {
                           },
                         ],
                       },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
                     ],
-                    facetBucketSize: 129663,
+                    facetBucketSize: 523271,
                     authTokens: [
                       {
                         accessToken: "123abc",
@@ -913,10 +2213,313 @@ async function run() {
                       },
                     ],
                   },
+                  ranges: [
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                  ],
                   inputDetails: {
                     hasCopyPaste: true,
                   },
                 },
+                results: [
+                  {
+                    title: "title",
+                    url: "https://example.com/foo/bar",
+                    nativeAppUrl: "slack://foo/bar",
+                    snippets: [
+                      {
+                        snippet: "snippet",
+                        mimeType: "mimeType",
+                      },
+                    ],
+                  },
+                ],
               },
             ],
             metadata: {
@@ -947,6 +2550,7 @@ async function run() {
                 invites: [
                   {},
                   {},
+                  {},
                 ],
               },
               customFields: [
@@ -954,13 +2558,545 @@ async function run() {
                   label: "<value>",
                   values: [
                     {},
+                    {},
                   ],
                 },
                 {
                   label: "<value>",
-                  values: [],
+                  values: [
+                    {},
+                    {},
+                  ],
                 },
               ],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
+          role: "VIEWER",
+        },
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            relatedDocuments: [
+              {
+                querySuggestion: {
+                  query: "app:github type:pull author:mortimer",
+                  searchProviderInfo: {
+                    name: "Google",
+                    searchLinkUrlTemplate: "https://www.google.com/search?q={query}&hl=en",
+                  },
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                  requestOptions: {
+                    datasourceFilter: "JIRA",
+                    datasourcesFilter: [
+                      "JIRA",
+                    ],
+                    queryOverridesFacetFilters: true,
+                    facetFilters: [
+                      {
+                        fieldName: "type",
+                        values: [
+                          {
+                            value: "Spreadsheet",
+                            relationType: "EQUALS",
+                          },
+                          {
+                            value: "Presentation",
+                            relationType: "EQUALS",
+                          },
+                        ],
+                      },
+                    ],
+                    facetFilterSets: [
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        filters: [
+                          {
+                            fieldName: "type",
+                            values: [
+                              {
+                                value: "Spreadsheet",
+                                relationType: "EQUALS",
+                              },
+                              {
+                                value: "Presentation",
+                                relationType: "EQUALS",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                    facetBucketSize: 523271,
+                    authTokens: [
+                      {
+                        accessToken: "123abc",
+                        datasource: "gmail",
+                        scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+                        tokenType: "Bearer",
+                        authUser: "1",
+                      },
+                    ],
+                  },
+                  ranges: [
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                    {
+                      startIndex: 365818,
+                      document: {
+                        metadata: {
+                          datasource: "datasource",
+                          objectType: "Feature Request",
+                          container: "container",
+                          parentId: "JIRA_EN-1337",
+                          mimeType: "mimeType",
+                          documentId: "documentId",
+                          createTime: new Date("2000-01-23T04:56:07.000Z"),
+                          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                          components: [
+                            "Backend",
+                            "Networking",
+                          ],
+                          status: "[\"Done\"]",
+                          pins: [
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                            {
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              documentId: "<id>",
+                            },
+                          ],
+                          collections: [
+                            {
+                              name: "<value>",
+                              description: "terribly before ferociously how preclude aw quarterly definite schlep",
+                              audienceFilters: [
+                                {
+                                  fieldName: "type",
+                                  values: [
+                                    {
+                                      value: "Spreadsheet",
+                                      relationType: "EQUALS",
+                                    },
+                                    {
+                                      value: "Presentation",
+                                      relationType: "EQUALS",
+                                    },
+                                  ],
+                                },
+                              ],
+                              id: 100369,
+                              items: [
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                                {
+                                  collectionId: 239768,
+                                  shortcut: {
+                                    inputAlias: "<value>",
+                                  },
+                                  itemType: "TEXT",
+                                },
+                              ],
+                            },
+                          ],
+                          interactions: {
+                            reacts: [
+                              {},
+                              {},
+                              {},
+                            ],
+                            shares: [
+                              {
+                                numDaysAgo: 771560,
+                              },
+                            ],
+                          },
+                          verification: {
+                            state: "DEPRECATED",
+                            metadata: {
+                              reminders: [
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                                {
+                                  assignee: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  remindAt: 919708,
+                                },
+                              ],
+                              lastReminder: {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 627228,
+                              },
+                            },
+                          },
+                          shortcuts: [
+                            {
+                              inputAlias: "<value>",
+                            },
+                          ],
+                          customData: {
+                            "someCustomField": {},
+                          },
+                        },
+                      },
+                    },
+                  ],
+                  inputDetails: {
+                    hasCopyPaste: true,
+                  },
+                },
+                results: [
+                  {
+                    title: "title",
+                    url: "https://example.com/foo/bar",
+                    nativeAppUrl: "slack://foo/bar",
+                    snippets: [
+                      {
+                        snippet: "snippet",
+                        mimeType: "mimeType",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              customFields: [
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+                {
+                  label: "<value>",
+                  values: [
+                    {},
+                    {},
+                  ],
+                },
+              ],
+              badges: [
+                {
+                  key: "deployment_name_new_hire",
+                  displayName: "New hire",
+                  iconConfig: {
+                    color: "#343CED",
+                    key: "person_icon",
+                    iconType: "GLYPH",
+                    name: "user",
+                  },
+                },
+              ],
+            },
+          },
+          role: "VIEWER",
+        },
+      ],
+      removedRoles: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+            metadata: {
+              type: "FULL_TIME",
+              title: "Actor",
+              department: "Movies",
+              email: "george@example.com",
+              location: "Hollywood, CA",
+              phone: "6505551234",
+              photoUrl: "https://example.com/george.jpg",
+              startDate: new RFCDate("2000-01-23"),
+              datasourceProfile: [
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+                {
+                  datasource: "github",
+                  handle: "<value>",
+                },
+              ],
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -995,48 +3131,27 @@ async function run() {
                   datasource: "github",
                   handle: "<value>",
                 },
-              ],
-              querySuggestions: {},
-              inviteInfo: {},
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
-                  },
-                },
-              ],
-            },
-          },
-          role: "VERIFIER",
-        },
-      ],
-      removedRoles: [
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
                 {
                   datasource: "github",
                   handle: "<value>",
                 },
               ],
-              querySuggestions: {},
-              inviteInfo: {},
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
+                  },
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -1051,7 +3166,7 @@ async function run() {
               ],
             },
           },
-          role: "VERIFIER",
+          role: "OWNER",
         },
         {
           person: {
@@ -1075,50 +3190,23 @@ async function run() {
                   datasource: "github",
                   handle: "<value>",
                 },
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
               ],
-              querySuggestions: {},
-              inviteInfo: {},
-              badges: [
-                {
-                  key: "deployment_name_new_hire",
-                  displayName: "New hire",
-                  iconConfig: {
-                    color: "#343CED",
-                    key: "person_icon",
-                    iconType: "GLYPH",
-                    name: "user",
+              querySuggestions: {
+                suggestions: [
+                  {
+                    query: "app:github type:pull author:mortimer",
+                    label: "Mortimer's PRs",
+                    datasource: "github",
                   },
-                },
-              ],
-            },
-          },
-          role: "ANSWER_MODERATOR",
-        },
-        {
-          person: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-            metadata: {
-              type: "FULL_TIME",
-              title: "Actor",
-              department: "Movies",
-              email: "george@example.com",
-              location: "Hollywood, CA",
-              phone: "6505551234",
-              photoUrl: "https://example.com/george.jpg",
-              startDate: new RFCDate("2000-01-23"),
-              datasourceProfile: [
-                {
-                  datasource: "github",
-                  handle: "<value>",
-                },
-              ],
-              querySuggestions: {},
-              inviteInfo: {},
+                ],
+              },
+              inviteInfo: {
+                invites: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
               badges: [
                 {
                   key: "deployment_name_new_hire",
@@ -1198,12 +3286,14 @@ Delete an existing user-generated shortcut.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.client.shortcuts.delete({
-    id: 545907,
+    id: 975862,
   });
 
 
@@ -1223,12 +3313,14 @@ import { clientShortcutsDelete } from "@gleanwork/api-client/funcs/clientShortcu
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await clientShortcutsDelete(glean, {
-    id: 545907,
+    id: 975862,
   });
 
   if (!res.ok) {
@@ -1289,11 +3381,15 @@ Read a particular shortcut's details given its ID.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
-  const result = await glean.client.shortcuts.retrieve({});
+  const result = await glean.client.shortcuts.retrieve({
+    alias: "<value>",
+  });
 
   // Handle the result
   console.log(result);
@@ -1313,11 +3409,15 @@ import { clientShortcutsRetrieve } from "@gleanwork/api-client/funcs/clientShort
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
-  const res = await clientShortcutsRetrieve(glean, {});
+  const res = await clientShortcutsRetrieve(glean, {
+    alias: "<value>",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -1378,7 +3478,9 @@ List shortcuts editable/owned by the currently authenticated user.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -1419,7 +3521,9 @@ import { clientShortcutsList } from "@gleanwork/api-client/funcs/clientShortcuts
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -1502,12 +3606,14 @@ import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const result = await glean.client.shortcuts.update({
-    id: 857478,
+    id: 268238,
     addedRoles: [
       {
         person: {
@@ -1579,25 +3685,8 @@ async function run() {
                         },
                       ],
                     },
-                    {
-                      filters: [
-                        {
-                          fieldName: "type",
-                          values: [
-                            {
-                              value: "Spreadsheet",
-                              relationType: "EQUALS",
-                            },
-                            {
-                              value: "Presentation",
-                              relationType: "EQUALS",
-                            },
-                          ],
-                        },
-                      ],
-                    },
                   ],
-                  facetBucketSize: 627690,
+                  facetBucketSize: 801764,
                   authTokens: [
                     {
                       accessToken: "123abc",
@@ -1610,7 +3699,7 @@ async function run() {
                 },
                 ranges: [
                   {
-                    startIndex: 984008,
+                    startIndex: 352334,
                     document: {
                       metadata: {
                         datasource: "datasource",
@@ -1645,11 +3734,7 @@ async function run() {
                             ],
                             documentId: "<id>",
                           },
-                        ],
-                        collections: [
                           {
-                            name: "<value>",
-                            description: "for drat underneath sticky yuck even",
                             audienceFilters: [
                               {
                                 fieldName: "type",
@@ -1665,17 +3750,64 @@ async function run() {
                                 ],
                               },
                             ],
-                            id: 996168,
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
                             items: [
                               {
-                                collectionId: 392671,
+                                collectionId: 56865,
                                 shortcut: {
                                   inputAlias: "<value>",
                                 },
-                                itemType: "TEXT",
+                                itemType: "URL",
                               },
                               {
-                                collectionId: 845914,
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
                                 shortcut: {
                                   inputAlias: "<value>",
                                 },
@@ -1683,64 +3815,25 @@ async function run() {
                               },
                             ],
                           },
-                          {
-                            name: "<value>",
-                            description: "duh now mechanically during since anxiously lightly ultimately",
-                            audienceFilters: [
-                              {
-                                fieldName: "type",
-                                values: [
-                                  {
-                                    value: "Spreadsheet",
-                                    relationType: "EQUALS",
-                                  },
-                                  {
-                                    value: "Presentation",
-                                    relationType: "EQUALS",
-                                  },
-                                ],
-                              },
-                            ],
-                            id: 958595,
-                          },
-                          {
-                            name: "<value>",
-                            description: "whereas anenst habit onto worriedly revoke hm eminent sham",
-                            audienceFilters: [
-                              {
-                                fieldName: "type",
-                                values: [
-                                  {
-                                    value: "Spreadsheet",
-                                    relationType: "EQUALS",
-                                  },
-                                  {
-                                    value: "Presentation",
-                                    relationType: "EQUALS",
-                                  },
-                                ],
-                              },
-                            ],
-                            id: 115263,
-                          },
                         ],
                         interactions: {
                           reacts: [
                             {},
-                            {},
-                            {},
                           ],
                           shares: [
                             {
-                              numDaysAgo: 691669,
+                              numDaysAgo: 776330,
                             },
                             {
-                              numDaysAgo: 202116,
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
                             },
                           ],
                         },
                         verification: {
-                          state: "UNVERIFIED",
+                          state: "VERIFIED",
                           metadata: {
                             reminders: [
                               {
@@ -1748,7 +3841,21 @@ async function run() {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
                                 },
-                                remindAt: 246216,
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
                               },
                             ],
                             lastReminder: {
@@ -1756,7 +3863,7 @@ async function run() {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
                               },
-                              remindAt: 778241,
+                              remindAt: 234150,
                             },
                           },
                         },
@@ -1778,7 +3885,7 @@ async function run() {
                     },
                   },
                   {
-                    startIndex: 698908,
+                    startIndex: 352334,
                     document: {
                       metadata: {
                         datasource: "datasource",
@@ -1794,19 +3901,355 @@ async function run() {
                           "Networking",
                         ],
                         status: "[\"Done\"]",
-                        interactions: {},
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
                         verification: {
-                          state: "UNVERIFIED",
+                          state: "VERIFIED",
                           metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
                             lastReminder: {
                               assignee: {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
                               },
-                              remindAt: 451776,
+                              remindAt: 234150,
                             },
                           },
                         },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
                         customData: {
                           "someCustomField": {},
                         },
@@ -1880,8 +4323,25 @@ async function run() {
                         },
                       ],
                     },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
                   ],
-                  facetBucketSize: 158724,
+                  facetBucketSize: 801764,
                   authTokens: [
                     {
                       accessToken: "123abc",
@@ -1892,10 +4352,583 @@ async function run() {
                     },
                   ],
                 },
+                ranges: [
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
                 inputDetails: {
                   hasCopyPaste: true,
                 },
               },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
             },
           ],
           metadata: {
@@ -1908,10 +4941,6 @@ async function run() {
             photoUrl: "https://example.com/george.jpg",
             startDate: new RFCDate("2000-01-23"),
             datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
               {
                 datasource: "github",
                 handle: "<value>",
@@ -1933,7 +4962,6 @@ async function run() {
             inviteInfo: {
               invites: [
                 {},
-                {},
               ],
             },
             customFields: [
@@ -1947,7 +4975,19 @@ async function run() {
               },
               {
                 label: "<value>",
-                values: [],
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
               },
             ],
             badges: [
@@ -1970,6 +5010,1318 @@ async function run() {
         person: {
           name: "George Clooney",
           obfuscatedId: "abc123",
+          relatedDocuments: [
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate: "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 801764,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                ranges: [
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate: "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 801764,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                ranges: [
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
           metadata: {
             type: "FULL_TIME",
             title: "Actor",
@@ -1988,13 +6340,47 @@ async function run() {
                 datasource: "github",
                 handle: "<value>",
               },
+            ],
+            querySuggestions: {
+              suggestions: [
+                {
+                  query: "app:github type:pull author:mortimer",
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                },
+              ],
+            },
+            inviteInfo: {
+              invites: [
+                {},
+              ],
+            },
+            customFields: [
               {
-                datasource: "github",
-                handle: "<value>",
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
               },
             ],
-            querySuggestions: {},
-            inviteInfo: {},
             badges: [
               {
                 key: "deployment_name_new_hire",
@@ -2009,7 +6395,7 @@ async function run() {
             ],
           },
         },
-        role: "EDITOR",
+        role: "ANSWER_MODERATOR",
       },
     ],
     removedRoles: [
@@ -2036,8 +6422,20 @@ async function run() {
                 handle: "<value>",
               },
             ],
-            querySuggestions: {},
-            inviteInfo: {},
+            querySuggestions: {
+              suggestions: [
+                {
+                  query: "app:github type:pull author:mortimer",
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                },
+              ],
+            },
+            inviteInfo: {
+              invites: [
+                {},
+              ],
+            },
             badges: [
               {
                 key: "deployment_name_new_hire",
@@ -2052,89 +6450,7 @@ async function run() {
             ],
           },
         },
-        role: "VIEWER",
-      },
-      {
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-            ],
-            querySuggestions: {},
-            inviteInfo: {},
-            badges: [
-              {
-                key: "deployment_name_new_hire",
-                displayName: "New hire",
-                iconConfig: {
-                  color: "#343CED",
-                  key: "person_icon",
-                  iconType: "GLYPH",
-                  name: "user",
-                },
-              },
-            ],
-          },
-        },
-        role: "OWNER",
-      },
-      {
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-            ],
-            querySuggestions: {},
-            inviteInfo: {},
-            badges: [
-              {
-                key: "deployment_name_new_hire",
-                displayName: "New hire",
-                iconConfig: {
-                  color: "#343CED",
-                  key: "person_icon",
-                  iconType: "GLYPH",
-                  name: "user",
-                },
-              },
-            ],
-          },
-        },
-        role: "VIEWER",
+        role: "EDITOR",
       },
     ],
   });
@@ -2158,12 +6474,14 @@ import { RFCDate } from "@gleanwork/api-client/types";
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await clientShortcutsUpdate(glean, {
-    id: 857478,
+    id: 268238,
     addedRoles: [
       {
         person: {
@@ -2235,25 +6553,8 @@ async function run() {
                         },
                       ],
                     },
-                    {
-                      filters: [
-                        {
-                          fieldName: "type",
-                          values: [
-                            {
-                              value: "Spreadsheet",
-                              relationType: "EQUALS",
-                            },
-                            {
-                              value: "Presentation",
-                              relationType: "EQUALS",
-                            },
-                          ],
-                        },
-                      ],
-                    },
                   ],
-                  facetBucketSize: 627690,
+                  facetBucketSize: 801764,
                   authTokens: [
                     {
                       accessToken: "123abc",
@@ -2266,7 +6567,7 @@ async function run() {
                 },
                 ranges: [
                   {
-                    startIndex: 984008,
+                    startIndex: 352334,
                     document: {
                       metadata: {
                         datasource: "datasource",
@@ -2301,11 +6602,7 @@ async function run() {
                             ],
                             documentId: "<id>",
                           },
-                        ],
-                        collections: [
                           {
-                            name: "<value>",
-                            description: "for drat underneath sticky yuck even",
                             audienceFilters: [
                               {
                                 fieldName: "type",
@@ -2321,17 +6618,64 @@ async function run() {
                                 ],
                               },
                             ],
-                            id: 996168,
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
                             items: [
                               {
-                                collectionId: 392671,
+                                collectionId: 56865,
                                 shortcut: {
                                   inputAlias: "<value>",
                                 },
-                                itemType: "TEXT",
+                                itemType: "URL",
                               },
                               {
-                                collectionId: 845914,
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
                                 shortcut: {
                                   inputAlias: "<value>",
                                 },
@@ -2339,64 +6683,25 @@ async function run() {
                               },
                             ],
                           },
-                          {
-                            name: "<value>",
-                            description: "duh now mechanically during since anxiously lightly ultimately",
-                            audienceFilters: [
-                              {
-                                fieldName: "type",
-                                values: [
-                                  {
-                                    value: "Spreadsheet",
-                                    relationType: "EQUALS",
-                                  },
-                                  {
-                                    value: "Presentation",
-                                    relationType: "EQUALS",
-                                  },
-                                ],
-                              },
-                            ],
-                            id: 958595,
-                          },
-                          {
-                            name: "<value>",
-                            description: "whereas anenst habit onto worriedly revoke hm eminent sham",
-                            audienceFilters: [
-                              {
-                                fieldName: "type",
-                                values: [
-                                  {
-                                    value: "Spreadsheet",
-                                    relationType: "EQUALS",
-                                  },
-                                  {
-                                    value: "Presentation",
-                                    relationType: "EQUALS",
-                                  },
-                                ],
-                              },
-                            ],
-                            id: 115263,
-                          },
                         ],
                         interactions: {
                           reacts: [
                             {},
-                            {},
-                            {},
                           ],
                           shares: [
                             {
-                              numDaysAgo: 691669,
+                              numDaysAgo: 776330,
                             },
                             {
-                              numDaysAgo: 202116,
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
                             },
                           ],
                         },
                         verification: {
-                          state: "UNVERIFIED",
+                          state: "VERIFIED",
                           metadata: {
                             reminders: [
                               {
@@ -2404,7 +6709,21 @@ async function run() {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
                                 },
-                                remindAt: 246216,
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
                               },
                             ],
                             lastReminder: {
@@ -2412,7 +6731,7 @@ async function run() {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
                               },
-                              remindAt: 778241,
+                              remindAt: 234150,
                             },
                           },
                         },
@@ -2434,7 +6753,7 @@ async function run() {
                     },
                   },
                   {
-                    startIndex: 698908,
+                    startIndex: 352334,
                     document: {
                       metadata: {
                         datasource: "datasource",
@@ -2450,19 +6769,355 @@ async function run() {
                           "Networking",
                         ],
                         status: "[\"Done\"]",
-                        interactions: {},
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
                         verification: {
-                          state: "UNVERIFIED",
+                          state: "VERIFIED",
                           metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
                             lastReminder: {
                               assignee: {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
                               },
-                              remindAt: 451776,
+                              remindAt: 234150,
                             },
                           },
                         },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
                         customData: {
                           "someCustomField": {},
                         },
@@ -2536,8 +7191,25 @@ async function run() {
                         },
                       ],
                     },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
                   ],
-                  facetBucketSize: 158724,
+                  facetBucketSize: 801764,
                   authTokens: [
                     {
                       accessToken: "123abc",
@@ -2548,10 +7220,583 @@ async function run() {
                     },
                   ],
                 },
+                ranges: [
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
                 inputDetails: {
                   hasCopyPaste: true,
                 },
               },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
             },
           ],
           metadata: {
@@ -2564,10 +7809,6 @@ async function run() {
             photoUrl: "https://example.com/george.jpg",
             startDate: new RFCDate("2000-01-23"),
             datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
               {
                 datasource: "github",
                 handle: "<value>",
@@ -2589,7 +7830,6 @@ async function run() {
             inviteInfo: {
               invites: [
                 {},
-                {},
               ],
             },
             customFields: [
@@ -2603,7 +7843,19 @@ async function run() {
               },
               {
                 label: "<value>",
-                values: [],
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
               },
             ],
             badges: [
@@ -2626,6 +7878,1318 @@ async function run() {
         person: {
           name: "George Clooney",
           obfuscatedId: "abc123",
+          relatedDocuments: [
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate: "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 801764,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                ranges: [
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              querySuggestion: {
+                query: "app:github type:pull author:mortimer",
+                searchProviderInfo: {
+                  name: "Google",
+                  searchLinkUrlTemplate: "https://www.google.com/search?q={query}&hl=en",
+                },
+                label: "Mortimer's PRs",
+                datasource: "github",
+                requestOptions: {
+                  datasourceFilter: "JIRA",
+                  datasourcesFilter: [
+                    "JIRA",
+                  ],
+                  queryOverridesFacetFilters: true,
+                  facetFilters: [
+                    {
+                      fieldName: "type",
+                      values: [
+                        {
+                          value: "Spreadsheet",
+                          relationType: "EQUALS",
+                        },
+                        {
+                          value: "Presentation",
+                          relationType: "EQUALS",
+                        },
+                      ],
+                    },
+                  ],
+                  facetFilterSets: [
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      filters: [
+                        {
+                          fieldName: "type",
+                          values: [
+                            {
+                              value: "Spreadsheet",
+                              relationType: "EQUALS",
+                            },
+                            {
+                              value: "Presentation",
+                              relationType: "EQUALS",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                  facetBucketSize: 801764,
+                  authTokens: [
+                    {
+                      accessToken: "123abc",
+                      datasource: "gmail",
+                      scope: "email profile https://www.googleapis.com/auth/gmail.readonly",
+                      tokenType: "Bearer",
+                      authUser: "1",
+                    },
+                  ],
+                },
+                ranges: [
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                  {
+                    startIndex: 352334,
+                    document: {
+                      metadata: {
+                        datasource: "datasource",
+                        objectType: "Feature Request",
+                        container: "container",
+                        parentId: "JIRA_EN-1337",
+                        mimeType: "mimeType",
+                        documentId: "documentId",
+                        createTime: new Date("2000-01-23T04:56:07.000Z"),
+                        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                        components: [
+                          "Backend",
+                          "Networking",
+                        ],
+                        status: "[\"Done\"]",
+                        pins: [
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                          {
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            documentId: "<id>",
+                          },
+                        ],
+                        collections: [
+                          {
+                            name: "<value>",
+                            description: "scare following gadzooks woot translation",
+                            audienceFilters: [
+                              {
+                                fieldName: "type",
+                                values: [
+                                  {
+                                    value: "Spreadsheet",
+                                    relationType: "EQUALS",
+                                  },
+                                  {
+                                    value: "Presentation",
+                                    relationType: "EQUALS",
+                                  },
+                                ],
+                              },
+                            ],
+                            id: 78594,
+                            items: [
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                              {
+                                collectionId: 56865,
+                                shortcut: {
+                                  inputAlias: "<value>",
+                                },
+                                itemType: "URL",
+                              },
+                            ],
+                          },
+                        ],
+                        interactions: {
+                          reacts: [
+                            {},
+                          ],
+                          shares: [
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                            {
+                              numDaysAgo: 776330,
+                            },
+                          ],
+                        },
+                        verification: {
+                          state: "VERIFIED",
+                          metadata: {
+                            reminders: [
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                              {
+                                assignee: {
+                                  name: "George Clooney",
+                                  obfuscatedId: "abc123",
+                                },
+                                remindAt: 84322,
+                              },
+                            ],
+                            lastReminder: {
+                              assignee: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              remindAt: 234150,
+                            },
+                          },
+                        },
+                        shortcuts: [
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                          {
+                            inputAlias: "<value>",
+                          },
+                        ],
+                        customData: {
+                          "someCustomField": {},
+                        },
+                      },
+                    },
+                  },
+                ],
+                inputDetails: {
+                  hasCopyPaste: true,
+                },
+              },
+              results: [
+                {
+                  title: "title",
+                  url: "https://example.com/foo/bar",
+                  nativeAppUrl: "slack://foo/bar",
+                  snippets: [
+                    {
+                      snippet: "snippet",
+                      mimeType: "mimeType",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
           metadata: {
             type: "FULL_TIME",
             title: "Actor",
@@ -2644,13 +9208,47 @@ async function run() {
                 datasource: "github",
                 handle: "<value>",
               },
+            ],
+            querySuggestions: {
+              suggestions: [
+                {
+                  query: "app:github type:pull author:mortimer",
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                },
+              ],
+            },
+            inviteInfo: {
+              invites: [
+                {},
+              ],
+            },
+            customFields: [
               {
-                datasource: "github",
-                handle: "<value>",
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
+              },
+              {
+                label: "<value>",
+                values: [
+                  {},
+                  {},
+                  {},
+                ],
               },
             ],
-            querySuggestions: {},
-            inviteInfo: {},
             badges: [
               {
                 key: "deployment_name_new_hire",
@@ -2665,7 +9263,7 @@ async function run() {
             ],
           },
         },
-        role: "EDITOR",
+        role: "ANSWER_MODERATOR",
       },
     ],
     removedRoles: [
@@ -2692,8 +9290,20 @@ async function run() {
                 handle: "<value>",
               },
             ],
-            querySuggestions: {},
-            inviteInfo: {},
+            querySuggestions: {
+              suggestions: [
+                {
+                  query: "app:github type:pull author:mortimer",
+                  label: "Mortimer's PRs",
+                  datasource: "github",
+                },
+              ],
+            },
+            inviteInfo: {
+              invites: [
+                {},
+              ],
+            },
             badges: [
               {
                 key: "deployment_name_new_hire",
@@ -2708,89 +9318,7 @@ async function run() {
             ],
           },
         },
-        role: "VIEWER",
-      },
-      {
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-            ],
-            querySuggestions: {},
-            inviteInfo: {},
-            badges: [
-              {
-                key: "deployment_name_new_hire",
-                displayName: "New hire",
-                iconConfig: {
-                  color: "#343CED",
-                  key: "person_icon",
-                  iconType: "GLYPH",
-                  name: "user",
-                },
-              },
-            ],
-          },
-        },
-        role: "OWNER",
-      },
-      {
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-          metadata: {
-            type: "FULL_TIME",
-            title: "Actor",
-            department: "Movies",
-            email: "george@example.com",
-            location: "Hollywood, CA",
-            phone: "6505551234",
-            photoUrl: "https://example.com/george.jpg",
-            startDate: new RFCDate("2000-01-23"),
-            datasourceProfile: [
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-              {
-                datasource: "github",
-                handle: "<value>",
-              },
-            ],
-            querySuggestions: {},
-            inviteInfo: {},
-            badges: [
-              {
-                key: "deployment_name_new_hire",
-                displayName: "New hire",
-                iconConfig: {
-                  color: "#343CED",
-                  key: "person_icon",
-                  iconType: "GLYPH",
-                  name: "user",
-                },
-              },
-            ],
-          },
-        },
-        role: "VIEWER",
+        role: "EDITOR",
       },
     ],
   });

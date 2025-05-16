@@ -10,7 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Some metadata of the object which can be displayed, while not having the actual object.
  */
-export type Metadata = {
+export type RelatedObjectMetadata = {
   /**
    * Placeholder name of the object, not the relationship.
    */
@@ -25,12 +25,12 @@ export type RelatedObject = {
   /**
    * Some metadata of the object which can be displayed, while not having the actual object.
    */
-  metadata?: Metadata | undefined;
+  metadata?: RelatedObjectMetadata | undefined;
 };
 
 /** @internal */
-export const Metadata$inboundSchema: z.ZodType<
-  Metadata,
+export const RelatedObjectMetadata$inboundSchema: z.ZodType<
+  RelatedObjectMetadata,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -38,15 +38,15 @@ export const Metadata$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Metadata$Outbound = {
+export type RelatedObjectMetadata$Outbound = {
   name?: string | undefined;
 };
 
 /** @internal */
-export const Metadata$outboundSchema: z.ZodType<
-  Metadata$Outbound,
+export const RelatedObjectMetadata$outboundSchema: z.ZodType<
+  RelatedObjectMetadata$Outbound,
   z.ZodTypeDef,
-  Metadata
+  RelatedObjectMetadata
 > = z.object({
   name: z.string().optional(),
 });
@@ -55,26 +55,30 @@ export const Metadata$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Metadata$ {
-  /** @deprecated use `Metadata$inboundSchema` instead. */
-  export const inboundSchema = Metadata$inboundSchema;
-  /** @deprecated use `Metadata$outboundSchema` instead. */
-  export const outboundSchema = Metadata$outboundSchema;
-  /** @deprecated use `Metadata$Outbound` instead. */
-  export type Outbound = Metadata$Outbound;
+export namespace RelatedObjectMetadata$ {
+  /** @deprecated use `RelatedObjectMetadata$inboundSchema` instead. */
+  export const inboundSchema = RelatedObjectMetadata$inboundSchema;
+  /** @deprecated use `RelatedObjectMetadata$outboundSchema` instead. */
+  export const outboundSchema = RelatedObjectMetadata$outboundSchema;
+  /** @deprecated use `RelatedObjectMetadata$Outbound` instead. */
+  export type Outbound = RelatedObjectMetadata$Outbound;
 }
 
-export function metadataToJSON(metadata: Metadata): string {
-  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+export function relatedObjectMetadataToJSON(
+  relatedObjectMetadata: RelatedObjectMetadata,
+): string {
+  return JSON.stringify(
+    RelatedObjectMetadata$outboundSchema.parse(relatedObjectMetadata),
+  );
 }
 
-export function metadataFromJSON(
+export function relatedObjectMetadataFromJSON(
   jsonString: string,
-): SafeParseResult<Metadata, SDKValidationError> {
+): SafeParseResult<RelatedObjectMetadata, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Metadata' from JSON`,
+    (x) => RelatedObjectMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RelatedObjectMetadata' from JSON`,
   );
 }
 
@@ -85,13 +89,13 @@ export const RelatedObject$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  metadata: z.lazy(() => Metadata$inboundSchema).optional(),
+  metadata: z.lazy(() => RelatedObjectMetadata$inboundSchema).optional(),
 });
 
 /** @internal */
 export type RelatedObject$Outbound = {
   id: string;
-  metadata?: Metadata$Outbound | undefined;
+  metadata?: RelatedObjectMetadata$Outbound | undefined;
 };
 
 /** @internal */
@@ -101,7 +105,7 @@ export const RelatedObject$outboundSchema: z.ZodType<
   RelatedObject
 > = z.object({
   id: z.string(),
-  metadata: z.lazy(() => Metadata$outboundSchema).optional(),
+  metadata: z.lazy(() => RelatedObjectMetadata$outboundSchema).optional(),
 });
 
 /**

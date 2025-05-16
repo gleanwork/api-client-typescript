@@ -19,7 +19,9 @@ Creates a verification reminder for the document. Users can create verification 
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -45,7 +47,9 @@ import { clientVerificationAddReminder } from "@gleanwork/api-client/funcs/clien
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -112,7 +116,9 @@ Returns the information to be rendered in verification dashboard. Includes infor
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -136,7 +142,9 @@ import { clientVerificationList } from "@gleanwork/api-client/funcs/clientVerifi
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -201,7 +209,9 @@ Verify documents to keep the knowledge up to date within customer corpus.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -227,7 +237,9 @@ import { clientVerificationVerify } from "@gleanwork/api-client/funcs/clientVeri
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {

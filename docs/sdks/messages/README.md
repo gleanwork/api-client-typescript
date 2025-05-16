@@ -17,12 +17,14 @@ Retrieves list of messages from messaging/chat datasources (e.g. Slack, Teams).
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const result = await glean.client.messages.retrieve({
-    idType: "THREAD_ID",
+    idType: "CONVERSATION_ID",
     id: "<id>",
   });
 
@@ -44,12 +46,14 @@ import { clientMessagesRetrieve } from "@gleanwork/api-client/funcs/clientMessag
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await clientMessagesRetrieve(glean, {
-    idType: "THREAD_ID",
+    idType: "CONVERSATION_ID",
     id: "<id>",
   });
 

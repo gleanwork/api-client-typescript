@@ -3,66 +3,100 @@
  */
 
 import { clientAgentsList } from "../funcs/clientAgentsList.js";
-import { clientAgentsRetrieveInputs } from "../funcs/clientAgentsRetrieveInputs.js";
+import { clientAgentsRetrieve } from "../funcs/clientAgentsRetrieve.js";
+import { clientAgentsRetrieveSchemas } from "../funcs/clientAgentsRetrieveSchemas.js";
 import { clientAgentsRun } from "../funcs/clientAgentsRun.js";
+import { clientAgentsRunStream } from "../funcs/clientAgentsRunStream.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Agents extends ClientSDK {
   /**
-   * Runs an Agent.
+   * Get Agent
    *
    * @remarks
-   * Trigger an Agent with a given id.
+   * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
    */
-  async run(
-    runAgentRequest: components.RunAgentRequest,
+  async retrieve(
+    agentId: string,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
-  ): Promise<components.ChatResponse> {
-    return unwrapAsync(clientAgentsRun(
+  ): Promise<components.Agent> {
+    return unwrapAsync(clientAgentsRetrieve(
       this,
-      runAgentRequest,
+      agentId,
       timezoneOffset,
       options,
     ));
   }
 
   /**
-   * Lists all agents.
+   * Get Agent Schemas
    *
    * @remarks
-   * Lists all agents that are available.
+   * Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+   */
+  async retrieveSchemas(
+    agentId: string,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.AgentSchemas> {
+    return unwrapAsync(clientAgentsRetrieveSchemas(
+      this,
+      agentId,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Search Agents
+   *
+   * @remarks
+   * List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
    */
   async list(
-    requestBody?: any | undefined,
-    timezoneOffset?: number | undefined,
+    request: components.SearchAgentsRequest,
     options?: RequestOptions,
-  ): Promise<components.ListAgentsResponse> {
+  ): Promise<components.SearchAgentsResponse> {
     return unwrapAsync(clientAgentsList(
       this,
-      requestBody,
-      timezoneOffset,
+      request,
       options,
     ));
   }
 
   /**
-   * Gets the inputs to an agent.
+   * Create Run, Stream Output
    *
    * @remarks
-   * Get the inputs to an agent with a given id.
+   * Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
    */
-  async retrieveInputs(
-    getAgentInputsRequest: components.GetAgentInputsRequest,
-    timezoneOffset?: number | undefined,
+  async runStream(
+    request: components.AgentRunCreate,
     options?: RequestOptions,
-  ): Promise<components.GetAgentInputsResponse> {
-    return unwrapAsync(clientAgentsRetrieveInputs(
+  ): Promise<string> {
+    return unwrapAsync(clientAgentsRunStream(
       this,
-      getAgentInputsRequest,
-      timezoneOffset,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Run, Wait for Output
+   *
+   * @remarks
+   * Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+   */
+  async run(
+    request: components.AgentRunCreate,
+    options?: RequestOptions,
+  ): Promise<components.AgentRunWaitResponse> {
+    return unwrapAsync(clientAgentsRun(
+      this,
+      request,
       options,
     ));
   }

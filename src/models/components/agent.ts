@@ -3,65 +3,199 @@
  */
 
 import * as z from "zod";
-import { safeParse } from "../../lib/schemas.js";
+import { remap as remap$ } from "../../lib/primitives.js";
+import {
+  collectExtraKeys as collectExtraKeys$,
+  safeParse,
+} from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ObjectPermissions,
-  ObjectPermissions$inboundSchema,
-  ObjectPermissions$Outbound,
-  ObjectPermissions$outboundSchema,
-} from "./objectpermissions.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+
+/**
+ * The agent metadata.
+ */
+export type AgentMetadata = {};
+
+/**
+ * Describes which protocol features the agent supports. In addition to the standard capabilities (prefixed with ap.), implementations can declare custom capabilities, named in reverse domain notation (eg. com.example.some.capability).
+ */
+export type AgentCapabilities = {
+  /**
+   * Whether the agent supports Messages as input/output/state. If true, the agent uses the `messages` key in threads/runs endpoints.
+   */
+  apIoMessages?: boolean | undefined;
+  /**
+   * Whether the agent supports streaming output.
+   */
+  apIoStreaming?: boolean | undefined;
+  additionalProperties?: { [k: string]: any };
+};
 
 export type Agent = {
-  author?: Person | undefined;
-  /**
-   * Server Unix timestamp of the creation time.
-   */
-  createTimestamp?: number | undefined;
-  /**
-   * Server Unix timestamp of the last update time.
-   */
-  lastUpdateTimestamp?: number | undefined;
-  lastUpdatedBy?: Person | undefined;
   /**
    * The ID of the agent.
    */
-  id?: string | undefined;
+  agentId: string;
   /**
-   * The name of the agent.
+   * The name of the agent
    */
-  name?: string | undefined;
-  permissions?: ObjectPermissions | undefined;
+  name: string;
+  /**
+   * The description of the agent.
+   */
+  description?: string | undefined;
+  /**
+   * The agent metadata.
+   */
+  metadata?: AgentMetadata | undefined;
+  /**
+   * Describes which protocol features the agent supports. In addition to the standard capabilities (prefixed with ap.), implementations can declare custom capabilities, named in reverse domain notation (eg. com.example.some.capability).
+   */
+  capabilities: AgentCapabilities;
 };
+
+/** @internal */
+export const AgentMetadata$inboundSchema: z.ZodType<
+  AgentMetadata,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type AgentMetadata$Outbound = {};
+
+/** @internal */
+export const AgentMetadata$outboundSchema: z.ZodType<
+  AgentMetadata$Outbound,
+  z.ZodTypeDef,
+  AgentMetadata
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AgentMetadata$ {
+  /** @deprecated use `AgentMetadata$inboundSchema` instead. */
+  export const inboundSchema = AgentMetadata$inboundSchema;
+  /** @deprecated use `AgentMetadata$outboundSchema` instead. */
+  export const outboundSchema = AgentMetadata$outboundSchema;
+  /** @deprecated use `AgentMetadata$Outbound` instead. */
+  export type Outbound = AgentMetadata$Outbound;
+}
+
+export function agentMetadataToJSON(agentMetadata: AgentMetadata): string {
+  return JSON.stringify(AgentMetadata$outboundSchema.parse(agentMetadata));
+}
+
+export function agentMetadataFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentMetadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentMetadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentMetadata' from JSON`,
+  );
+}
+
+/** @internal */
+export const AgentCapabilities$inboundSchema: z.ZodType<
+  AgentCapabilities,
+  z.ZodTypeDef,
+  unknown
+> = collectExtraKeys$(
+  z.object({
+    "ap.io.messages": z.boolean().optional(),
+    "ap.io.streaming": z.boolean().optional(),
+  }).catchall(z.any()),
+  "additionalProperties",
+  true,
+).transform((v) => {
+  return remap$(v, {
+    "ap.io.messages": "apIoMessages",
+    "ap.io.streaming": "apIoStreaming",
+  });
+});
+
+/** @internal */
+export type AgentCapabilities$Outbound = {
+  "ap.io.messages"?: boolean | undefined;
+  "ap.io.streaming"?: boolean | undefined;
+  [additionalProperties: string]: unknown;
+};
+
+/** @internal */
+export const AgentCapabilities$outboundSchema: z.ZodType<
+  AgentCapabilities$Outbound,
+  z.ZodTypeDef,
+  AgentCapabilities
+> = z.object({
+  apIoMessages: z.boolean().optional(),
+  apIoStreaming: z.boolean().optional(),
+  additionalProperties: z.record(z.any()),
+}).transform((v) => {
+  return {
+    ...v.additionalProperties,
+    ...remap$(v, {
+      apIoMessages: "ap.io.messages",
+      apIoStreaming: "ap.io.streaming",
+      additionalProperties: null,
+    }),
+  };
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AgentCapabilities$ {
+  /** @deprecated use `AgentCapabilities$inboundSchema` instead. */
+  export const inboundSchema = AgentCapabilities$inboundSchema;
+  /** @deprecated use `AgentCapabilities$outboundSchema` instead. */
+  export const outboundSchema = AgentCapabilities$outboundSchema;
+  /** @deprecated use `AgentCapabilities$Outbound` instead. */
+  export type Outbound = AgentCapabilities$Outbound;
+}
+
+export function agentCapabilitiesToJSON(
+  agentCapabilities: AgentCapabilities,
+): string {
+  return JSON.stringify(
+    AgentCapabilities$outboundSchema.parse(agentCapabilities),
+  );
+}
+
+export function agentCapabilitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<AgentCapabilities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AgentCapabilities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AgentCapabilities' from JSON`,
+  );
+}
 
 /** @internal */
 export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
   .object({
-    author: Person$inboundSchema.optional(),
-    createTimestamp: z.number().int().optional(),
-    lastUpdateTimestamp: z.number().int().optional(),
-    lastUpdatedBy: Person$inboundSchema.optional(),
-    id: z.string().optional(),
-    name: z.string().optional(),
-    permissions: ObjectPermissions$inboundSchema.optional(),
+    agent_id: z.string(),
+    name: z.string(),
+    description: z.string().optional(),
+    metadata: z.lazy(() => AgentMetadata$inboundSchema).optional(),
+    capabilities: z.lazy(() => AgentCapabilities$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "agent_id": "agentId",
+    });
   });
 
 /** @internal */
 export type Agent$Outbound = {
-  author?: Person$Outbound | undefined;
-  createTimestamp?: number | undefined;
-  lastUpdateTimestamp?: number | undefined;
-  lastUpdatedBy?: Person$Outbound | undefined;
-  id?: string | undefined;
-  name?: string | undefined;
-  permissions?: ObjectPermissions$Outbound | undefined;
+  agent_id: string;
+  name: string;
+  description?: string | undefined;
+  metadata?: AgentMetadata$Outbound | undefined;
+  capabilities: AgentCapabilities$Outbound;
 };
 
 /** @internal */
@@ -70,13 +204,15 @@ export const Agent$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Agent
 > = z.object({
-  author: Person$outboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  lastUpdatedBy: Person$outboundSchema.optional(),
-  id: z.string().optional(),
-  name: z.string().optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
+  agentId: z.string(),
+  name: z.string(),
+  description: z.string().optional(),
+  metadata: z.lazy(() => AgentMetadata$outboundSchema).optional(),
+  capabilities: z.lazy(() => AgentCapabilities$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    agentId: "agent_id",
+  });
 });
 
 /**

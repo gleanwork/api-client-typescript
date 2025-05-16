@@ -140,7 +140,9 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -170,7 +172,9 @@ run();
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -200,18 +204,21 @@ run();
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name       | Type | Scheme      | Environment Variable |
-| ---------- | ---- | ----------- | -------------------- |
-| `apiToken` | http | HTTP Bearer | `GLEAN_API_TOKEN`    |
+| Name               | Type   | Scheme  | Environment Variable        |
+| ------------------ | ------ | ------- | --------------------------- |
+| `actAsBearerToken` | apiKey | API key | `GLEAN_ACT_AS_BEARER_TOKEN` |
+| `cookieAuth`       | apiKey | API key | `GLEAN_COOKIE_AUTH`         |
 
-To authenticate with the API the `apiToken` parameter must be set when initializing the SDK client instance. For example:
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -293,9 +300,11 @@ For more information on obtaining the appropriate token type, please contact you
 
 #### [client.agents](docs/sdks/agents/README.md)
 
-* [run](docs/sdks/agents/README.md#run) - Runs an Agent.
-* [list](docs/sdks/agents/README.md#list) - Lists all agents.
-* [retrieveInputs](docs/sdks/agents/README.md#retrieveinputs) - Gets the inputs to an agent.
+* [retrieve](docs/sdks/agents/README.md#retrieve) - Get Agent
+* [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
+* [list](docs/sdks/agents/README.md#list) - Search Agents
+* [runStream](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
+* [run](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
 
 #### [client.announcements](docs/sdks/announcements/README.md)
 
@@ -350,6 +359,32 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [list](docs/sdks/entities/README.md#list) - List entities
 * [readPeople](docs/sdks/entities/README.md#readpeople) - Read people
+
+
+#### [client.governance.data](docs/sdks/data/README.md)
+
+
+#### [client.governance.data.policies](docs/sdks/policies/README.md)
+
+* [retrieve](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
+* [update](docs/sdks/policies/README.md#update) - Updates an existing policy.
+* [list](docs/sdks/policies/README.md#list) - Lists policies.
+* [create](docs/sdks/policies/README.md#create) - Creates new policy.
+* [download](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
+
+#### [client.governance.data.reports](docs/sdks/reports/README.md)
+
+* [create](docs/sdks/reports/README.md#create) - Creates new one-time report.
+* [download](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
+* [status](docs/sdks/reports/README.md#status) - Fetches report run status.
+
+#### [client.governance.documents](docs/sdks/governancedocuments/README.md)
+
+
+#### [client.governance.documents.visibilityoverrides](docs/sdks/visibilityoverrides/README.md)
+
+* [list](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
+* [create](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
 
 #### [client.insights](docs/sdks/insights/README.md)
 
@@ -475,9 +510,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
-- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Lists all agents.
-- [`clientAgentsRetrieveInputs`](docs/sdks/agents/README.md#retrieveinputs) - Gets the inputs to an agent.
-- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Runs an Agent.
+- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search Agents
+- [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Get Agent
+- [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
+- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
+- [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
@@ -511,6 +548,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientDocumentsSummarize`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 - [`clientEntitiesList`](docs/sdks/entities/README.md#list) - List entities
 - [`clientEntitiesReadPeople`](docs/sdks/entities/README.md#readpeople) - Read people
+- [`clientGovernanceDataPoliciesCreate`](docs/sdks/policies/README.md#create) - Creates new policy.
+- [`clientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
+- [`clientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies.
+- [`clientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
+- [`clientGovernanceDataPoliciesUpdate`](docs/sdks/policies/README.md#update) - Updates an existing policy.
+- [`clientGovernanceDataReportsCreate`](docs/sdks/reports/README.md#create) - Creates new one-time report.
+- [`clientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
+- [`clientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status.
+- [`clientGovernanceDocumentsVisibilityoverridesCreate`](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
+- [`clientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
 - [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Read insights
 - [`clientMessagesRetrieve`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`clientPinsCreate`](docs/sdks/pins/README.md#create) - Create pin
@@ -600,9 +647,11 @@ To learn about this feature and how to get started, check
 
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
-- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Lists all agents.
-- [`useClientAgentsRetrieveInputsMutation`](docs/sdks/agents/README.md#retrieveinputs) - Gets the inputs to an agent.
-- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Runs an Agent.
+- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search Agents
+- [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Get Agent
+- [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
+- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
+- [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement
@@ -636,6 +685,16 @@ To learn about this feature and how to get started, check
 - [`useClientDocumentsSummarizeMutation`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 - [`useClientEntitiesListMutation`](docs/sdks/entities/README.md#list) - List entities
 - [`useClientEntitiesReadPeopleMutation`](docs/sdks/entities/README.md#readpeople) - Read people
+- [`useClientGovernanceDataPoliciesCreateMutation`](docs/sdks/policies/README.md#create) - Creates new policy.
+- [`useClientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
+- [`useClientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies.
+- [`useClientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
+- [`useClientGovernanceDataPoliciesUpdateMutation`](docs/sdks/policies/README.md#update) - Updates an existing policy.
+- [`useClientGovernanceDataReportsCreateMutation`](docs/sdks/reports/README.md#create) - Creates new one-time report.
+- [`useClientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
+- [`useClientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status.
+- [`useClientGovernanceDocumentsVisibilityoverridesCreateMutation`](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
+- [`useClientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
 - [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Read insights
 - [`useClientMessagesRetrieveMutation`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`useClientPinsCreateMutation`](docs/sdks/pins/README.md#create) - Create pin
@@ -711,7 +770,9 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -773,7 +834,9 @@ const glean = new Glean({
     },
     retryConnectionErrors: false,
   },
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -880,9 +943,9 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 The default server `https://{instance}-be.glean.com` contains variables and is set to `https://instance-name-be.glean.com` by default. To override default values, the following parameters are available when initializing the SDK client instance:
 
-| Variable   | Parameter          | Default           | Description                                                                                                  |
-| ---------- | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------ |
-| `instance` | `instance: string` | `"instance-name"` | The instance name (typically the email domain without the extension) that determines the deployment backend. |
+| Variable   | Parameter          | Default           | Description                                                                                            |
+| ---------- | ------------------ | ----------------- | ------------------------------------------------------------------------------------------------------ |
+| `instance` | `instance: string` | `"instance-name"` | The instance name (typically the email domain without the TLD) that determines the deployment backend. |
 
 #### Example
 
@@ -891,7 +954,9 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   instance: "<value>",
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -935,7 +1000,9 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   serverURL: "https://instance-name-be.glean.com",
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {

@@ -13,6 +13,7 @@ import { ClientDocuments } from "./clientdocuments.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
 import { Collections } from "./collections.js";
 import { Entities } from "./entities.js";
+import { Governance } from "./governance.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
@@ -93,5 +94,10 @@ export class Client extends ClientSDK {
   private _verification?: Verification;
   get verification(): Verification {
     return (this._verification ??= new Verification(this._options));
+  }
+
+  private _governance?: Governance;
+  get governance(): Governance {
+    return (this._governance ??= new Governance(this._options));
   }
 }

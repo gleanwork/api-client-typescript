@@ -12,7 +12,9 @@ test("Indexing Authentication Post /Api/index/v1 /Rotatetoken", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   const result = await glean.indexing.authentication.rotateToken();

@@ -12,11 +12,21 @@ import {
   Document$Outbound,
   Document$outboundSchema,
 } from "./document.js";
+import {
+  StructuredResult,
+  StructuredResult$inboundSchema,
+  StructuredResult$Outbound,
+  StructuredResult$outboundSchema,
+} from "./structuredresult.js";
 
 export type StructuredTextItem = {
   link?: string | undefined;
   document?: Document | undefined;
   text?: string | undefined;
+  /**
+   * A single object that can support any object in the work graph. Only a single object will be populated.
+   */
+  structuredResult?: StructuredResult | undefined;
 };
 
 /** @internal */
@@ -28,6 +38,7 @@ export const StructuredTextItem$inboundSchema: z.ZodType<
   link: z.string().optional(),
   document: z.lazy(() => Document$inboundSchema).optional(),
   text: z.string().optional(),
+  structuredResult: z.lazy(() => StructuredResult$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -35,6 +46,7 @@ export type StructuredTextItem$Outbound = {
   link?: string | undefined;
   document?: Document$Outbound | undefined;
   text?: string | undefined;
+  structuredResult?: StructuredResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -46,6 +58,7 @@ export const StructuredTextItem$outboundSchema: z.ZodType<
   link: z.string().optional(),
   document: z.lazy(() => Document$outboundSchema).optional(),
   text: z.string().optional(),
+  structuredResult: z.lazy(() => StructuredResult$outboundSchema).optional(),
 });
 
 /**

@@ -12,7 +12,9 @@ test("Activity Activity", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.client.activity.report({
@@ -49,7 +51,9 @@ test("Activity Feedback", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+    security: {
+      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+    },
   });
 
   await glean.client.activity.feedback({

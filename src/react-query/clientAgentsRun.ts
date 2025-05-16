@@ -17,18 +17,17 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAgentsRunMutationVariables = {
-  runAgentRequest: components.RunAgentRequest;
-  timezoneOffset?: number | undefined;
+  request: components.AgentRunCreate;
   options?: RequestOptions;
 };
 
-export type ClientAgentsRunMutationData = components.ChatResponse;
+export type ClientAgentsRunMutationData = components.AgentRunWaitResponse;
 
 /**
- * Runs an Agent.
+ * Create Run, Wait for Output
  *
  * @remarks
- * Trigger an Agent with a given id.
+ * Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
  */
 export function useClientAgentsRunMutation(
   options?: MutationHookOptions<
@@ -64,8 +63,7 @@ export function buildClientAgentsRunMutation(
   return {
     mutationKey: mutationKeyClientAgentsRun(),
     mutationFn: function clientAgentsRunMutationFn({
-      runAgentRequest,
-      timezoneOffset,
+      request,
       options,
     }): Promise<ClientAgentsRunMutationData> {
       const mergedOptions = {
@@ -82,8 +80,7 @@ export function buildClientAgentsRunMutation(
       };
       return unwrapAsync(clientAgentsRun(
         client$,
-        runAgentRequest,
-        timezoneOffset,
+        request,
         mergedOptions,
       ));
     },

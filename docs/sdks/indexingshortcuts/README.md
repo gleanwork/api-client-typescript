@@ -18,7 +18,9 @@ Replaces all the currently indexed shortcuts using paginated batch API calls. No
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -27,9 +29,15 @@ async function run() {
     shortcuts: [
       {
         inputAlias: "<value>",
-        destinationUrl: "https://only-juggernaut.com/",
+        destinationUrl: "https://plump-tune-up.biz/",
         createdBy: "<value>",
-        intermediateUrl: "https://descriptive-electronics.name",
+        intermediateUrl: "https://lean-sightseeing.net",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://plump-tune-up.biz/",
+        createdBy: "<value>",
+        intermediateUrl: "https://lean-sightseeing.net",
       },
     ],
   });
@@ -51,7 +59,9 @@ import { indexingShortcutsBulkIndex } from "@gleanwork/api-client/funcs/indexing
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -60,9 +70,15 @@ async function run() {
     shortcuts: [
       {
         inputAlias: "<value>",
-        destinationUrl: "https://only-juggernaut.com/",
+        destinationUrl: "https://plump-tune-up.biz/",
         createdBy: "<value>",
-        intermediateUrl: "https://descriptive-electronics.name",
+        intermediateUrl: "https://lean-sightseeing.net",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://plump-tune-up.biz/",
+        createdBy: "<value>",
+        intermediateUrl: "https://lean-sightseeing.net",
       },
     ],
   });
@@ -125,7 +141,9 @@ Creates glean shortcuts for uploaded shortcuts info. Glean would host the shortc
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -134,7 +152,17 @@ async function run() {
     shortcuts: [
       {
         inputAlias: "<value>",
-        destinationUrl: "https://needy-harp.name",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
         createdBy: "<value>",
       },
     ],
@@ -157,7 +185,9 @@ import { indexingShortcutsUpload } from "@gleanwork/api-client/funcs/indexingSho
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -166,7 +196,17 @@ async function run() {
     shortcuts: [
       {
         inputAlias: "<value>",
-        destinationUrl: "https://needy-harp.name",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
+        createdBy: "<value>",
+      },
+      {
+        inputAlias: "<value>",
+        destinationUrl: "https://majestic-pharmacopoeia.info/",
         createdBy: "<value>",
       },
     ],

@@ -29,7 +29,9 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/i
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -55,7 +57,9 @@ import { indexingPeopleDebug } from "@gleanwork/api-client/funcs/indexingPeopleD
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -128,7 +132,9 @@ Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -154,7 +160,9 @@ import { indexingPeopleCount } from "@gleanwork/api-client/funcs/indexingPeopleC
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -221,19 +229,17 @@ Adds an employee or updates information about an employee
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.indexing.people.index({
     employee: {
-      email: "Santos.Turcotte@yahoo.com",
+      email: "Jerrold_Hermann@hotmail.com",
       department: "<value>",
       datasourceProfiles: [
-        {
-          datasource: "github",
-          handle: "<value>",
-        },
         {
           datasource: "github",
           handle: "<value>",
@@ -259,19 +265,17 @@ import { indexingPeopleIndex } from "@gleanwork/api-client/funcs/indexingPeopleI
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await indexingPeopleIndex(glean, {
     employee: {
-      email: "Santos.Turcotte@yahoo.com",
+      email: "Jerrold_Hermann@hotmail.com",
       department: "<value>",
       datasourceProfiles: [
-        {
-          datasource: "github",
-          handle: "<value>",
-        },
         {
           datasource: "github",
           handle: "<value>",
@@ -338,13 +342,46 @@ Replaces all the currently indexed employees using paginated batch API calls. Pl
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.indexing.people.bulkIndex({
     uploadId: "<id>",
-    employees: [],
+    employees: [
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+    ],
   });
 
 
@@ -364,13 +401,46 @@ import { indexingPeopleBulkIndex } from "@gleanwork/api-client/funcs/indexingPeo
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await indexingPeopleBulkIndex(glean, {
     uploadId: "<id>",
-    employees: [],
+    employees: [
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+      {
+        email: "Robin.Stoltenberg@yahoo.com",
+        department: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+      },
+    ],
   });
 
   if (!res.ok) {
@@ -432,7 +502,9 @@ Schedules the immediate processing of employees and teams uploaded through the i
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -455,7 +527,9 @@ import { indexingPeopleProcessAllEmployeesAndTeams } from "@gleanwork/api-client
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -518,7 +592,9 @@ Delete an employee. Silently succeeds if employee is not present.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -543,7 +619,9 @@ import { indexingPeopleDelete } from "@gleanwork/api-client/funcs/indexingPeople
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -609,7 +687,9 @@ Adds a team or updates information about a team
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -633,13 +713,7 @@ async function run() {
       ],
       members: [
         {
-          email: "Rachelle20@yahoo.com",
-        },
-        {
-          email: "Rebeka.Gerhold@hotmail.com",
-        },
-        {
-          email: "Jace86@yahoo.com",
+          email: "Nasir.Hilll73@hotmail.com",
         },
       ],
     },
@@ -662,7 +736,9 @@ import { indexingPeopleIndexTeam } from "@gleanwork/api-client/funcs/indexingPeo
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -686,13 +762,7 @@ async function run() {
       ],
       members: [
         {
-          email: "Rachelle20@yahoo.com",
-        },
-        {
-          email: "Rebeka.Gerhold@hotmail.com",
-        },
-        {
-          email: "Jace86@yahoo.com",
+          email: "Nasir.Hilll73@hotmail.com",
         },
       ],
     },
@@ -756,7 +826,9 @@ Delete a team based on provided id.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -781,7 +853,9 @@ import { indexingPeopleDeleteTeam } from "@gleanwork/api-client/funcs/indexingPe
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -847,13 +921,61 @@ Replaces all the currently indexed teams using paginated batch API calls. Please
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.indexing.people.bulkIndexTeams({
     uploadId: "<id>",
-    teams: [],
+    teams: [
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+    ],
   });
 
 
@@ -873,13 +995,61 @@ import { indexingPeopleBulkIndexTeams } from "@gleanwork/api-client/funcs/indexi
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await indexingPeopleBulkIndexTeams(glean, {
     uploadId: "<id>",
-    teams: [],
+    teams: [
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+      {
+        id: "<id>",
+        name: "<value>",
+        datasourceProfiles: [
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+          {
+            datasource: "github",
+            handle: "<value>",
+          },
+        ],
+        members: [],
+      },
+    ],
   });
 
   if (!res.ok) {

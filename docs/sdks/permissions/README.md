@@ -28,7 +28,9 @@ Updates the permissions for a given document without modifying document content.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -54,7 +56,9 @@ import { indexingPermissionsUpdatePermissions } from "@gleanwork/api-client/func
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -121,14 +125,16 @@ Adds a datasource user or updates an existing user.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.indexing.permissions.indexUser({
     datasource: "<value>",
     user: {
-      email: "Elroy38@gmail.com",
+      email: "Art.Schaden@hotmail.com",
       name: "<value>",
     },
   });
@@ -150,14 +156,16 @@ import { indexingPermissionsIndexUser } from "@gleanwork/api-client/funcs/indexi
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await indexingPermissionsIndexUser(glean, {
     datasource: "<value>",
     user: {
-      email: "Elroy38@gmail.com",
+      email: "Art.Schaden@hotmail.com",
       name: "<value>",
     },
   });
@@ -220,7 +228,9 @@ Replaces the users in a datasource using paginated batch API calls. Please refer
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -229,15 +239,15 @@ async function run() {
     datasource: "<value>",
     users: [
       {
-        email: "Nola85@hotmail.com",
+        email: "Ivory_Cummerata@hotmail.com",
         name: "<value>",
       },
       {
-        email: "Francisca44@hotmail.com",
+        email: "Ivory_Cummerata@hotmail.com",
         name: "<value>",
       },
       {
-        email: "Georgiana_Fadel-Boyle@yahoo.com",
+        email: "Ivory_Cummerata@hotmail.com",
         name: "<value>",
       },
     ],
@@ -260,7 +270,9 @@ import { indexingPermissionsBulkIndexUsers } from "@gleanwork/api-client/funcs/i
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -269,15 +281,15 @@ async function run() {
     datasource: "<value>",
     users: [
       {
-        email: "Nola85@hotmail.com",
+        email: "Ivory_Cummerata@hotmail.com",
         name: "<value>",
       },
       {
-        email: "Francisca44@hotmail.com",
+        email: "Ivory_Cummerata@hotmail.com",
         name: "<value>",
       },
       {
-        email: "Georgiana_Fadel-Boyle@yahoo.com",
+        email: "Ivory_Cummerata@hotmail.com",
         name: "<value>",
       },
     ],
@@ -341,7 +353,9 @@ Add or update a group in the datasource.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -369,7 +383,9 @@ import { indexingPermissionsIndexGroup } from "@gleanwork/api-client/funcs/index
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -438,7 +454,9 @@ Replaces the groups in a datasource using paginated batch API calls. Please refe
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -472,7 +490,9 @@ import { indexingPermissionsBulkIndexGroups } from "@gleanwork/api-client/funcs/
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -547,7 +567,9 @@ Add the memberships of a group in the datasource.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -575,7 +597,9 @@ import { indexingPermissionsIndexMembership } from "@gleanwork/api-client/funcs/
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -644,7 +668,9 @@ Replaces the memberships for a group in a datasource using paginated batch API c
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -675,7 +701,9 @@ import { indexingPermissionsBulkIndexMemberships } from "@gleanwork/api-client/f
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -748,7 +776,9 @@ Schedules the immediate processing of all group memberships uploaded through the
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -771,7 +801,9 @@ import { indexingPermissionsProcessMemberships } from "@gleanwork/api-client/fun
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -835,13 +867,15 @@ Delete the user from the datasource. Silently succeeds if user is not present.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.indexing.permissions.deleteUser({
     datasource: "<value>",
-    email: "Estrella.Robel56@gmail.com",
+    email: "Ed.Johnston@gmail.com",
   });
 
 
@@ -861,13 +895,15 @@ import { indexingPermissionsDeleteUser } from "@gleanwork/api-client/funcs/index
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await indexingPermissionsDeleteUser(glean, {
     datasource: "<value>",
-    email: "Estrella.Robel56@gmail.com",
+    email: "Ed.Johnston@gmail.com",
   });
 
   if (!res.ok) {
@@ -928,7 +964,9 @@ Delete group from the datasource. Silently succeeds if group is not present.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -954,7 +992,9 @@ import { indexingPermissionsDeleteGroup } from "@gleanwork/api-client/funcs/inde
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -1021,7 +1061,9 @@ Delete membership to a group in the specified datasource. Silently succeeds if m
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -1049,7 +1091,9 @@ import { indexingPermissionsDeleteMembership } from "@gleanwork/api-client/funcs
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
@@ -1118,15 +1162,18 @@ Allow the datasource be visible to the specified beta users. The default behavio
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   await glean.indexing.permissions.authorizeBetaUsers({
     datasource: "<value>",
     emails: [
-      "Margaret94@gmail.com",
-      "Jerel_Wilkinson39@yahoo.com",
+      "Neil92@gmail.com",
+      "Alejandrin_Boyer4@hotmail.com",
+      "Shyanne_McLaughlin95@hotmail.com",
     ],
   });
 
@@ -1147,15 +1194,18 @@ import { indexingPermissionsAuthorizeBetaUsers } from "@gleanwork/api-client/fun
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  security: {
+    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+  },
 });
 
 async function run() {
   const res = await indexingPermissionsAuthorizeBetaUsers(glean, {
     datasource: "<value>",
     emails: [
-      "Margaret94@gmail.com",
-      "Jerel_Wilkinson39@yahoo.com",
+      "Neil92@gmail.com",
+      "Alejandrin_Boyer4@hotmail.com",
+      "Shyanne_McLaughlin95@hotmail.com",
     ],
   });
 

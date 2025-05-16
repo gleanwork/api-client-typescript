@@ -17,18 +17,17 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAgentsListMutationVariables = {
-  requestBody?: any | undefined;
-  timezoneOffset?: number | undefined;
+  request: components.SearchAgentsRequest;
   options?: RequestOptions;
 };
 
-export type ClientAgentsListMutationData = components.ListAgentsResponse;
+export type ClientAgentsListMutationData = components.SearchAgentsResponse;
 
 /**
- * Lists all agents.
+ * Search Agents
  *
  * @remarks
- * Lists all agents that are available.
+ * List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
  */
 export function useClientAgentsListMutation(
   options?: MutationHookOptions<
@@ -64,8 +63,7 @@ export function buildClientAgentsListMutation(
   return {
     mutationKey: mutationKeyClientAgentsList(),
     mutationFn: function clientAgentsListMutationFn({
-      requestBody,
-      timezoneOffset,
+      request,
       options,
     }): Promise<ClientAgentsListMutationData> {
       const mergedOptions = {
@@ -82,8 +80,7 @@ export function buildClientAgentsListMutation(
       };
       return unwrapAsync(clientAgentsList(
         client$,
-        requestBody,
-        timezoneOffset,
+        request,
         mergedOptions,
       ));
     },
