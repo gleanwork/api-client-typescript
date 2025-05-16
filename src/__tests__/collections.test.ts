@@ -14,7 +14,7 @@ test("Collections Addcollectionitems", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -31,7 +31,7 @@ test("Collections Createcollection", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -607,7 +607,7 @@ test("Collections Deletecollection", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -626,7 +626,7 @@ test("Collections Deletecollectionitem", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -644,7 +644,7 @@ test("Collections Editcollection", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -1305,7 +1305,7 @@ test("Collections Editcollectionitem", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -1323,7 +1323,7 @@ test("Collections Getcollection", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -1340,7 +1340,7 @@ test("Collections Listcollections", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 

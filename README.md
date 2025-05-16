@@ -141,7 +141,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -173,7 +173,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -206,10 +206,10 @@ run();
 
 This SDK supports the following security schemes globally:
 
-| Name               | Type   | Scheme  | Environment Variable        |
-| ------------------ | ------ | ------- | --------------------------- |
-| `actAsBearerToken` | apiKey | API key | `GLEAN_ACT_AS_BEARER_TOKEN` |
-| `cookieAuth`       | apiKey | API key | `GLEAN_COOKIE_AUTH`         |
+| Name         | Type   | Scheme      | Environment Variable |
+| ------------ | ------ | ----------- | -------------------- |
+| `apiToken`   | http   | HTTP Bearer | `GLEAN_API_TOKEN`    |
+| `cookieAuth` | apiKey | API key     | `GLEAN_COOKIE_AUTH`  |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```typescript
@@ -217,7 +217,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -771,7 +771,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -835,7 +835,7 @@ const glean = new Glean({
     retryConnectionErrors: false,
   },
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -955,7 +955,7 @@ import { Glean } from "@gleanwork/api-client";
 const glean = new Glean({
   instance: "<value>",
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -1001,7 +1001,7 @@ import { Glean } from "@gleanwork/api-client";
 const glean = new Glean({
   serverURL: "https://instance-name-be.glean.com",
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 

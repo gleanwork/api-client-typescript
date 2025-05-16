@@ -27,7 +27,7 @@ import { SDKValidationError } from "@gleanwork/api-client/models/errors/sdkvalid
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 

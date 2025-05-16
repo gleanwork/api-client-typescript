@@ -13,7 +13,7 @@ test("Pins Editpin", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -44,7 +44,7 @@ test("Pins Getpin", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -59,7 +59,7 @@ test("Pins Listpins", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -74,7 +74,7 @@ test("Pins Pin", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 
@@ -105,7 +105,7 @@ test("Pins Unpin", async () => {
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "value",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
     },
   });
 

@@ -24,7 +24,7 @@ import { GleanProvider } from "@gleanwork/api-client/react-query";
 const queryClient = new QueryClient();
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -251,7 +251,7 @@ import { useClientAgentsRetrieveSuspense } from "@gleanwork/api-client/react-que
 const queryClient = new QueryClient();
 const glean = new GleanCore({
   security: {
-    actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   },
 });
 
@@ -309,7 +309,7 @@ export default async function Page() {
   const queryClient = new QueryClient();
   const glean = new GleanCore({
     security: {
-      actAsBearerToken: process.env["GLEAN_ACT_AS_BEARER_TOKEN"] ?? "",
+      apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
     },
   });
 
