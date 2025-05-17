@@ -20,9 +20,7 @@ Read the emails of all users who have access to the given document.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -46,9 +44,7 @@ import { clientDocumentsRetrievePermissions } from "@gleanwork/api-client/funcs/
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -113,9 +109,7 @@ Read the documents including metadata (does not include enhanced metadata via `/
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -139,9 +133,7 @@ import { clientDocumentsRetrieve } from "@gleanwork/api-client/funcs/clientDocum
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -206,9 +198,7 @@ Read the documents including metadata (does not include enhanced metadata via `/
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -269,9 +259,7 @@ import { clientDocumentsRetrieveByFacets } from "@gleanwork/api-client/funcs/cli
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -373,9 +361,7 @@ Generate an AI summary of the requested documents.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -405,9 +391,7 @@ import { clientDocumentsSummarize } from "@gleanwork/api-client/funcs/clientDocu
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

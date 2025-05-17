@@ -3,9 +3,7 @@
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -33,9 +31,7 @@ run();
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

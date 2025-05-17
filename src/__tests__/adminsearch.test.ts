@@ -13,9 +13,7 @@ test("Admin Search Adminsearch", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.search.queryAsAdmin({

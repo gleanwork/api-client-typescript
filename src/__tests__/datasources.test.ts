@@ -14,9 +14,7 @@ test("Datasources Post /Api/index/v1 /Adddatasource", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   await glean.indexing.datasources.add({
@@ -51,9 +49,7 @@ test("Datasources Post /Api/index/v1 /Getdatasourceconfig", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.indexing.datasources.retrieveConfig({

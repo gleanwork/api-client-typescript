@@ -30,9 +30,7 @@ test("Agents Get Agent", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.agents.retrieve("<id>");
@@ -45,9 +43,7 @@ test("Agents Get Agent Schemas", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.agents.retrieveSchemas("<id>");
@@ -60,9 +56,7 @@ test("Agents Search Agents", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.agents.list({});
@@ -81,9 +75,7 @@ test("Agents Create And Wait Run", async () => {
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
     httpClient: testHttpClient,
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
   const result = await glean.client.agents.run({});

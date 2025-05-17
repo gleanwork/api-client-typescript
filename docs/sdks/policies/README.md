@@ -21,9 +21,7 @@ Fetches the specified policy version, or the latest if no version is provided.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -47,9 +45,7 @@ import { clientGovernanceDataPoliciesRetrieve } from "@gleanwork/api-client/func
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -126,9 +122,7 @@ Updates an existing policy.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -152,9 +146,7 @@ import { clientGovernanceDataPoliciesUpdate } from "@gleanwork/api-client/funcs/
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -220,9 +212,7 @@ Lists policies with filtering.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -246,9 +236,7 @@ import { clientGovernanceDataPoliciesList } from "@gleanwork/api-client/funcs/cl
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -325,9 +313,7 @@ Creates a new policy with specified specifications and returns its id.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -351,9 +337,7 @@ import { clientGovernanceDataPoliciesCreate } from "@gleanwork/api-client/funcs/
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -418,9 +402,7 @@ Downloads CSV violations report for a specific policy id. This does not support 
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -444,9 +426,7 @@ import { clientGovernanceDataPoliciesDownload } from "@gleanwork/api-client/func
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
