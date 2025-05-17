@@ -10,7 +10,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Security = {
   apiToken?: string | undefined;
-  cookieAuth?: string | undefined;
 };
 
 /** @internal */
@@ -20,7 +19,6 @@ export const Security$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   APIToken: z.string().optional(),
-  cookieAuth: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "APIToken": "apiToken",
@@ -30,7 +28,6 @@ export const Security$inboundSchema: z.ZodType<
 /** @internal */
 export type Security$Outbound = {
   APIToken?: string | undefined;
-  cookieAuth?: string | undefined;
 };
 
 /** @internal */
@@ -40,7 +37,6 @@ export const Security$outboundSchema: z.ZodType<
   Security
 > = z.object({
   apiToken: z.string().optional(),
-  cookieAuth: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     apiToken: "APIToken",

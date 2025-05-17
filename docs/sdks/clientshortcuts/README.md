@@ -22,9 +22,7 @@ import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -1634,9 +1632,7 @@ import { RFCDate } from "@gleanwork/api-client/types";
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3286,9 +3282,7 @@ Delete an existing user-generated shortcut.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3313,9 +3307,7 @@ import { clientShortcutsDelete } from "@gleanwork/api-client/funcs/clientShortcu
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3381,9 +3373,7 @@ Read a particular shortcut's details given its ID.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3409,9 +3399,7 @@ import { clientShortcutsRetrieve } from "@gleanwork/api-client/funcs/clientShort
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3478,9 +3466,7 @@ List shortcuts editable/owned by the currently authenticated user.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3521,9 +3507,7 @@ import { clientShortcutsList } from "@gleanwork/api-client/funcs/clientShortcuts
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -3606,9 +3590,7 @@ import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -6474,9 +6456,7 @@ import { RFCDate } from "@gleanwork/api-client/types";
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

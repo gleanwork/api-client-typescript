@@ -18,9 +18,7 @@ Fetches the visibility override status of the documents passed.
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -44,9 +42,7 @@ import { clientGovernanceDocumentsVisibilityoverridesList } from "@gleanwork/api
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -122,9 +118,7 @@ Sets the visibility-override state of the documents specified, effectively hidin
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -148,9 +142,7 @@ import { clientGovernanceDocumentsVisibilityoverridesCreate } from "@gleanwork/a
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

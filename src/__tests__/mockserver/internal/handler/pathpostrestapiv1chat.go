@@ -49,7 +49,7 @@ func pathPostRestAPIV1Chat(dir *logging.HTTPFileDirectory, rt *tracking.RequestT
 }
 
 func testChatChatDefaultExample0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -103,7 +103,7 @@ func testChatChatDefaultExample0(w http.ResponseWriter, req *http.Request) {
 }
 
 func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -2931,7 +2931,7 @@ func testChatChatGptAgentExample0(w http.ResponseWriter, req *http.Request) {
 }
 
 func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7528,7 +7528,7 @@ func testChatChatStreamingExample0(w http.ResponseWriter, req *http.Request) {
 }
 
 func testChatChatUpdateResponse0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7591,7 +7591,7 @@ func testChatChatUpdateResponse0(w http.ResponseWriter, req *http.Request) {
 }
 
 func testChatChatCitationResponse0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7647,7 +7647,7 @@ func testChatChatCitationResponse0(w http.ResponseWriter, req *http.Request) {
 }
 
 func testChatStreamChatStreamDefaultExample0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7674,7 +7674,7 @@ func testChatStreamChatStreamDefaultExample0(w http.ResponseWriter, req *http.Re
 }
 
 func testChatStreamChatStreamGptAgentExample0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7701,7 +7701,7 @@ func testChatStreamChatStreamGptAgentExample0(w http.ResponseWriter, req *http.R
 }
 
 func testChatStreamChatStreamStreamingExample0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7728,7 +7728,7 @@ func testChatStreamChatStreamStreamingExample0(w http.ResponseWriter, req *http.
 }
 
 func testChatStreamChatStreamUpdateResponse0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return
@@ -7755,7 +7755,7 @@ func testChatStreamChatStreamUpdateResponse0(w http.ResponseWriter, req *http.Re
 }
 
 func testChatStreamChatStreamCitationResponse0(w http.ResponseWriter, req *http.Request) {
-	if err := assert.SecurityAuthorizationHeader(req, true, ""); err != nil {
+	if err := assert.SecurityAuthorizationHeader(req, false, "Bearer"); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusUnauthorized)
 		return

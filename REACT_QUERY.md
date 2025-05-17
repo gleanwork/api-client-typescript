@@ -23,9 +23,7 @@ import { GleanProvider } from "@gleanwork/api-client/react-query";
 
 const queryClient = new QueryClient();
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 // Retries are handled by the underlying SDK.
@@ -250,9 +248,7 @@ import { useClientAgentsRetrieveSuspense } from "@gleanwork/api-client/react-que
 
 const queryClient = new QueryClient();
 const glean = new GleanCore({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 export function App() {
@@ -308,9 +304,7 @@ import { prefetchClientAgentsRetrieve } from "@gleanwork/api-client/react-query/
 export default async function Page() {
   const queryClient = new QueryClient();
   const glean = new GleanCore({
-    security: {
-      apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-    },
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   });
 
   await prefetchClientAgentsRetrieve(queryClient, glean, "<id>");

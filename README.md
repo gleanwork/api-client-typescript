@@ -140,9 +140,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -172,9 +170,7 @@ run();
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -204,21 +200,18 @@ run();
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security schemes globally:
+This SDK supports the following security scheme globally:
 
-| Name         | Type   | Scheme      | Environment Variable |
-| ------------ | ------ | ----------- | -------------------- |
-| `apiToken`   | http   | HTTP Bearer | `GLEAN_API_TOKEN`    |
-| `cookieAuth` | apiKey | API key     | `GLEAN_COOKIE_AUTH`  |
+| Name       | Type | Scheme      | Environment Variable |
+| ---------- | ---- | ----------- | -------------------- |
+| `apiToken` | http | HTTP Bearer | `GLEAN_API_TOKEN`    |
 
-You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+To authenticate with the API the `apiToken` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -770,9 +763,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -834,9 +825,7 @@ const glean = new Glean({
     },
     retryConnectionErrors: false,
   },
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -954,9 +943,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   instance: "<value>",
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
@@ -1000,9 +987,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   serverURL: "https://instance-name-be.glean.com",
-  security: {
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  },
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {

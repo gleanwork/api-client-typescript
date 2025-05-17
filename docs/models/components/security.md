@@ -13,4 +13,3 @@ let value: Security = {};
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `apiToken`         | *string*           | :heavy_minus_sign: | N/A                |
-| `cookieAuth`       | *string*           | :heavy_minus_sign: | N/A                |
