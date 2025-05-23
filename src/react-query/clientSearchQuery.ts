@@ -17,7 +17,7 @@ import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchQueryMutationVariables = {
-  request?: components.SearchRequest | undefined;
+  request: components.SearchRequest;
   options?: RequestOptions;
 };
 

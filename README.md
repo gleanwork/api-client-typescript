@@ -411,6 +411,11 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 * [update](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 
+#### [client.tools](docs/sdks/tools/README.md)
+
+* [list](docs/sdks/tools/README.md#list) - List available tools
+* [run](docs/sdks/tools/README.md#run) - Execute the specified tool
+
 #### [client.verification](docs/sdks/verification/README.md)
 
 * [addReminder](docs/sdks/verification/README.md#addreminder) - Create verification
@@ -568,6 +573,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientShortcutsList`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 - [`clientShortcutsRetrieve`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
+- [`clientToolsList`](docs/sdks/tools/README.md#list) - List available tools
+- [`clientToolsRun`](docs/sdks/tools/README.md#run) - Execute the specified tool
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
@@ -705,6 +712,8 @@ To learn about this feature and how to get started, check
 - [`useClientShortcutsListMutation`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 - [`useClientShortcutsRetrieveMutation`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
+- [`useClientToolsList`](docs/sdks/tools/README.md#list) - List available tools
+- [`useClientToolsRunMutation`](docs/sdks/tools/README.md#run) - Execute the specified tool
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification

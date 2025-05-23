@@ -19,8 +19,20 @@ test("Policies Getpolicy", async () => {
   expect(result).toBeDefined();
 });
 
-test("Policies Getpolicies", async () => {
-  const testHttpClient = createTestHTTPClient("getpolicies");
+it.skip("Policies Getpolicies", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step getpolicies.test referencing operation getpolicies not found in document`]",
+  );
+});
+
+it.skip("Policies Downloadpolicycsv", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step downloadpolicycsv.test contains criterion simple with invalid condition`, `workflow step downloadpolicycsv.test does not contain $contentType successCriteria and required for response body assertion`]",
+  );
+});
+
+test("Policies Listpolicies", async () => {
+  const testHttpClient = createTestHTTPClient("listpolicies");
 
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -30,10 +42,4 @@ test("Policies Getpolicies", async () => {
 
   const result = await glean.client.governance.data.policies.list();
   expect(result).toBeDefined();
-});
-
-it.skip("Policies Downloadpolicycsv", async () => {
-  assert.fail(
-    "incomplete test found please make sure to address the following errors: [`workflow step downloadpolicycsv.test contains criterion simple with invalid condition`, `workflow step downloadpolicycsv.test does not contain $contentType successCriteria and required for response body assertion`]",
-  );
 });
