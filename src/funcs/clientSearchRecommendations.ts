@@ -31,7 +31,7 @@ import { Result } from "../types/fp.js";
  */
 export function clientSearchRecommendations(
   client: GleanCore,
-  request?: components.RecommendationsRequest | undefined,
+  request: components.RecommendationsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -54,7 +54,7 @@ export function clientSearchRecommendations(
 
 async function $do(
   client: GleanCore,
-  request?: components.RecommendationsRequest | undefined,
+  request: components.RecommendationsRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -73,17 +73,14 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      components.RecommendationsRequest$outboundSchema.optional().parse(value),
+    (value) => components.RecommendationsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/rest/api/v1/recommendations")();
 

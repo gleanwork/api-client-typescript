@@ -1,0 +1,21 @@
+# ToolParameter
+
+## Example Usage
+
+```typescript
+import { ToolParameter } from "@gleanwork/api-client/models/components";
+
+let value: ToolParameter = {};
+```
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                  | [components.ToolParameterType](../../models/components/toolparametertype.md)                            | :heavy_minus_sign:                                                                                      | Parameter type (string, number, boolean, object, array)                                                 |
+| `name`                                                                                                  | *string*                                                                                                | :heavy_minus_sign:                                                                                      | The name of the parameter                                                                               |
+| `description`                                                                                           | *string*                                                                                                | :heavy_minus_sign:                                                                                      | The description of the parameter                                                                        |
+| `isRequired`                                                                                            | *boolean*                                                                                               | :heavy_minus_sign:                                                                                      | Whether the parameter is required                                                                       |
+| `possibleValues`                                                                                        | *string*[]                                                                                              | :heavy_minus_sign:                                                                                      | The possible values for the parameter. Can contain only primitive values or arrays of primitive values. |
+| `items`                                                                                                 | [components.ToolParameter](../../models/components/toolparameter.md)                                    | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `properties`                                                                                            | Record<string, [components.ToolParameter](../../models/components/toolparameter.md)>                    | :heavy_minus_sign:                                                                                      | When type is 'object', this describes the structure of the object.                                      |

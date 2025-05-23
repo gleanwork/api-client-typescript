@@ -19,7 +19,7 @@ export class Search extends ClientSDK {
    * Retrieves results for search query without respect for permissions. This is available only to privileged users.
    */
   async queryAsAdmin(
-    request?: components.SearchRequest | undefined,
+    request: components.SearchRequest,
     options?: RequestOptions,
   ): Promise<components.SearchResponse> {
     return unwrapAsync(clientSearchQueryAsAdmin(
@@ -70,7 +70,7 @@ export class Search extends ClientSDK {
    * Retrieve recommended documents for the given URL or Glean Document ID.
    */
   async recommendations(
-    request?: components.RecommendationsRequest | undefined,
+    request: components.RecommendationsRequest,
     options?: RequestOptions,
   ): Promise<components.ResultsResponse | undefined> {
     return unwrapAsync(clientSearchRecommendations(
@@ -87,7 +87,7 @@ export class Search extends ClientSDK {
    * Retrieve results from the index for the given query and filters.
    */
   async query(
-    request?: components.SearchRequest | undefined,
+    request: components.SearchRequest,
     options?: RequestOptions,
   ): Promise<components.SearchResponse> {
     return unwrapAsync(clientSearchQuery(

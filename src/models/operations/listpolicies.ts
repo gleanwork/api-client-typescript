@@ -7,7 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type GetpoliciesRequest = {
+export type ListpoliciesRequest = {
   /**
    * Filter to return reports with a given value of auto-hide.
    */
@@ -19,8 +19,8 @@ export type GetpoliciesRequest = {
 };
 
 /** @internal */
-export const GetpoliciesRequest$inboundSchema: z.ZodType<
-  GetpoliciesRequest,
+export const ListpoliciesRequest$inboundSchema: z.ZodType<
+  ListpoliciesRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -29,16 +29,16 @@ export const GetpoliciesRequest$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetpoliciesRequest$Outbound = {
+export type ListpoliciesRequest$Outbound = {
   autoHide?: boolean | undefined;
   frequency?: string | undefined;
 };
 
 /** @internal */
-export const GetpoliciesRequest$outboundSchema: z.ZodType<
-  GetpoliciesRequest$Outbound,
+export const ListpoliciesRequest$outboundSchema: z.ZodType<
+  ListpoliciesRequest$Outbound,
   z.ZodTypeDef,
-  GetpoliciesRequest
+  ListpoliciesRequest
 > = z.object({
   autoHide: z.boolean().optional(),
   frequency: z.string().optional(),
@@ -48,29 +48,29 @@ export const GetpoliciesRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetpoliciesRequest$ {
-  /** @deprecated use `GetpoliciesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetpoliciesRequest$inboundSchema;
-  /** @deprecated use `GetpoliciesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetpoliciesRequest$outboundSchema;
-  /** @deprecated use `GetpoliciesRequest$Outbound` instead. */
-  export type Outbound = GetpoliciesRequest$Outbound;
+export namespace ListpoliciesRequest$ {
+  /** @deprecated use `ListpoliciesRequest$inboundSchema` instead. */
+  export const inboundSchema = ListpoliciesRequest$inboundSchema;
+  /** @deprecated use `ListpoliciesRequest$outboundSchema` instead. */
+  export const outboundSchema = ListpoliciesRequest$outboundSchema;
+  /** @deprecated use `ListpoliciesRequest$Outbound` instead. */
+  export type Outbound = ListpoliciesRequest$Outbound;
 }
 
-export function getpoliciesRequestToJSON(
-  getpoliciesRequest: GetpoliciesRequest,
+export function listpoliciesRequestToJSON(
+  listpoliciesRequest: ListpoliciesRequest,
 ): string {
   return JSON.stringify(
-    GetpoliciesRequest$outboundSchema.parse(getpoliciesRequest),
+    ListpoliciesRequest$outboundSchema.parse(listpoliciesRequest),
   );
 }
 
-export function getpoliciesRequestFromJSON(
+export function listpoliciesRequestFromJSON(
   jsonString: string,
-): SafeParseResult<GetpoliciesRequest, SDKValidationError> {
+): SafeParseResult<ListpoliciesRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetpoliciesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetpoliciesRequest' from JSON`,
+    (x) => ListpoliciesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListpoliciesRequest' from JSON`,
   );
 }

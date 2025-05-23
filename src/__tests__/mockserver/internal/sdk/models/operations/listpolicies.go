@@ -6,41 +6,41 @@ import (
 	"mockserver/internal/sdk/models/components"
 )
 
-type GetpoliciesRequest struct {
+type ListpoliciesRequest struct {
 	// Filter to return reports with a given value of auto-hide.
 	AutoHide *bool `queryParam:"style=form,explode=true,name=autoHide"`
 	// Filter to return reports with a given frequency.
 	Frequency *string `queryParam:"style=form,explode=true,name=frequency"`
 }
 
-func (o *GetpoliciesRequest) GetAutoHide() *bool {
+func (o *ListpoliciesRequest) GetAutoHide() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.AutoHide
 }
 
-func (o *GetpoliciesRequest) GetFrequency() *string {
+func (o *ListpoliciesRequest) GetFrequency() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Frequency
 }
 
-type GetpoliciesResponse struct {
+type ListpoliciesResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// OK
 	ListDlpReportsResponse *components.ListDlpReportsResponse
 }
 
-func (o *GetpoliciesResponse) GetHTTPMeta() components.HTTPMetadata {
+func (o *ListpoliciesResponse) GetHTTPMeta() components.HTTPMetadata {
 	if o == nil {
 		return components.HTTPMetadata{}
 	}
 	return o.HTTPMeta
 }
 
-func (o *GetpoliciesResponse) GetListDlpReportsResponse() *components.ListDlpReportsResponse {
+func (o *ListpoliciesResponse) GetListDlpReportsResponse() *components.ListDlpReportsResponse {
 	if o == nil {
 		return nil
 	}

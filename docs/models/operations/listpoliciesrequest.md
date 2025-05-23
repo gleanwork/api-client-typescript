@@ -1,11 +1,11 @@
-# GetpoliciesRequest
+# ListpoliciesRequest
 
 ## Example Usage
 
 ```typescript
-import { GetpoliciesRequest } from "@gleanwork/api-client/models/operations";
+import { ListpoliciesRequest } from "@gleanwork/api-client/models/operations";
 
-let value: GetpoliciesRequest = {};
+let value: ListpoliciesRequest = {};
 ```
 
 ## Fields

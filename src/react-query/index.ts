@@ -72,6 +72,8 @@ export * from "./clientShortcutsDelete.js";
 export * from "./clientShortcutsList.js";
 export * from "./clientShortcutsRetrieve.js";
 export * from "./clientShortcutsUpdate.js";
+export * from "./clientToolsList.js";
+export * from "./clientToolsRun.js";
 export * from "./clientVerificationAddReminder.js";
 export * from "./clientVerificationList.js";
 export * from "./clientVerificationVerify.js";

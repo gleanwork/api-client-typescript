@@ -75,14 +75,14 @@ async function $do(
     APICall,
   ]
 > {
-  const input: operations.GetpoliciesRequest = {
+  const input: operations.ListpoliciesRequest = {
     autoHide: autoHide,
     frequency: frequency,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.GetpoliciesRequest$outboundSchema.parse(value),
+    (value) => operations.ListpoliciesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -108,7 +108,7 @@ async function $do(
 
   const context = {
     baseURL: options?.serverURL ?? client._baseURL ?? "",
-    operationID: "getpolicies",
+    operationID: "listpolicies",
     oAuth2Scopes: [],
 
     resolvedSecurity: requestSecurity,

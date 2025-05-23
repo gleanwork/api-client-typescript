@@ -18,6 +18,7 @@ import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
 import { Search } from "./search.js";
+import { Tools } from "./tools.js";
 import { Verification } from "./verification.js";
 
 export class Client extends ClientSDK {
@@ -94,6 +95,11 @@ export class Client extends ClientSDK {
   private _verification?: Verification;
   get verification(): Verification {
     return (this._verification ??= new Verification(this._options));
+  }
+
+  private _tools?: Tools;
+  get tools(): Tools {
+    return (this._tools ??= new Tools(this._options));
   }
 
   private _governance?: Governance;

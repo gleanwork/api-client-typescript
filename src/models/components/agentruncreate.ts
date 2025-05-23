@@ -15,11 +15,6 @@ import {
 } from "./message.js";
 
 /**
- * The input to the agent.
- */
-export type AgentRunCreateInput = {};
-
-/**
  * Payload for creating a run.
  */
 export type AgentRunCreate = {
@@ -30,60 +25,12 @@ export type AgentRunCreate = {
   /**
    * The input to the agent.
    */
-  input?: AgentRunCreateInput | undefined;
+  input?: { [k: string]: any } | undefined;
   /**
    * The messages to pass an input to the agent.
    */
   messages?: Array<Message> | undefined;
 };
-
-/** @internal */
-export const AgentRunCreateInput$inboundSchema: z.ZodType<
-  AgentRunCreateInput,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type AgentRunCreateInput$Outbound = {};
-
-/** @internal */
-export const AgentRunCreateInput$outboundSchema: z.ZodType<
-  AgentRunCreateInput$Outbound,
-  z.ZodTypeDef,
-  AgentRunCreateInput
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentRunCreateInput$ {
-  /** @deprecated use `AgentRunCreateInput$inboundSchema` instead. */
-  export const inboundSchema = AgentRunCreateInput$inboundSchema;
-  /** @deprecated use `AgentRunCreateInput$outboundSchema` instead. */
-  export const outboundSchema = AgentRunCreateInput$outboundSchema;
-  /** @deprecated use `AgentRunCreateInput$Outbound` instead. */
-  export type Outbound = AgentRunCreateInput$Outbound;
-}
-
-export function agentRunCreateInputToJSON(
-  agentRunCreateInput: AgentRunCreateInput,
-): string {
-  return JSON.stringify(
-    AgentRunCreateInput$outboundSchema.parse(agentRunCreateInput),
-  );
-}
-
-export function agentRunCreateInputFromJSON(
-  jsonString: string,
-): SafeParseResult<AgentRunCreateInput, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AgentRunCreateInput$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AgentRunCreateInput' from JSON`,
-  );
-}
 
 /** @internal */
 export const AgentRunCreate$inboundSchema: z.ZodType<
@@ -92,7 +39,7 @@ export const AgentRunCreate$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   agent_id: z.string().optional(),
-  input: z.lazy(() => AgentRunCreateInput$inboundSchema).optional(),
+  input: z.record(z.any()).optional(),
   messages: z.array(Message$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -103,7 +50,7 @@ export const AgentRunCreate$inboundSchema: z.ZodType<
 /** @internal */
 export type AgentRunCreate$Outbound = {
   agent_id?: string | undefined;
-  input?: AgentRunCreateInput$Outbound | undefined;
+  input?: { [k: string]: any } | undefined;
   messages?: Array<Message$Outbound> | undefined;
 };
 
@@ -114,7 +61,7 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
   AgentRunCreate
 > = z.object({
   agentId: z.string().optional(),
-  input: z.lazy(() => AgentRunCreateInput$outboundSchema).optional(),
+  input: z.record(z.any()).optional(),
   messages: z.array(Message$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
