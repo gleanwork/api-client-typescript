@@ -11,5 +11,5 @@ let value: TextRangeType = "LINK";
 ## Values
 
 ```typescript
-"BOLD" | "CITATION" | "LINK"
+"BOLD" | "CITATION" | "HIGHLIGHT" | "LINK"
 ```
