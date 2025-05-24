@@ -17,6 +17,7 @@ import {
 export const TextRangeType = {
   Bold: "BOLD",
   Citation: "CITATION",
+  Highlight: "HIGHLIGHT",
   Link: "LINK",
 } as const;
 export type TextRangeType = ClosedEnum<typeof TextRangeType>;
