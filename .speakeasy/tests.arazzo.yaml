@@ -69,7 +69,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -94,7 +94,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -191,7 +191,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -226,7 +226,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -255,7 +255,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -284,7 +284,7 @@ workflows:
                                     badges:
                                       - displayName: New hire
                                         iconConfig:
-                                          color: '#343CED'
+                                          color: "#343CED"
                                           iconType: GLYPH
                                           key: person_icon
                                           name: user
@@ -311,7 +311,7 @@ workflows:
                                         badges:
                                           - displayName: New hire
                                             iconConfig:
-                                              color: '#343CED'
+                                              color: "#343CED"
                                               iconType: GLYPH
                                               key: person_icon
                                               name: user
@@ -337,7 +337,7 @@ workflows:
                                     badges:
                                       - displayName: New hire
                                         iconConfig:
-                                          color: '#343CED'
+                                          color: "#343CED"
                                           iconType: GLYPH
                                           key: person_icon
                                           name: user
@@ -366,7 +366,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -392,7 +392,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -420,7 +420,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -448,7 +448,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -490,7 +490,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -516,7 +516,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -546,7 +546,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -578,7 +578,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -605,7 +605,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -638,7 +638,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -664,7 +664,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -692,7 +692,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -721,7 +721,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -752,7 +752,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -780,7 +780,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -805,7 +805,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -831,7 +831,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -861,7 +861,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -888,7 +888,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -914,7 +914,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -941,7 +941,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -971,7 +971,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -1005,7 +1005,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -1032,7 +1032,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -1064,7 +1064,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -1100,7 +1100,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -1128,7 +1128,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -1160,7 +1160,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -1188,7 +1188,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -1213,7 +1213,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -4382,7 +4382,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -4411,7 +4411,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -4585,7 +4585,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -4613,7 +4613,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -4648,7 +4648,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -4677,7 +4677,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -4706,7 +4706,7 @@ workflows:
                                     badges:
                                       - displayName: New hire
                                         iconConfig:
-                                          color: '#343CED'
+                                          color: "#343CED"
                                           iconType: GLYPH
                                           key: person_icon
                                           name: user
@@ -4735,7 +4735,7 @@ workflows:
                                         badges:
                                           - displayName: New hire
                                             iconConfig:
-                                              color: '#343CED'
+                                              color: "#343CED"
                                               iconType: GLYPH
                                               key: person_icon
                                               name: user
@@ -4765,7 +4765,7 @@ workflows:
                                     badges:
                                       - displayName: New hire
                                         iconConfig:
-                                          color: '#343CED'
+                                          color: "#343CED"
                                           iconType: GLYPH
                                           key: person_icon
                                           name: user
@@ -4793,7 +4793,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -4820,7 +4820,7 @@ workflows:
                                     badges:
                                       - displayName: New hire
                                         iconConfig:
-                                          color: '#343CED'
+                                          color: "#343CED"
                                           iconType: GLYPH
                                           key: person_icon
                                           name: user
@@ -4848,7 +4848,7 @@ workflows:
                                     badges:
                                       - displayName: New hire
                                         iconConfig:
-                                          color: '#343CED'
+                                          color: "#343CED"
                                           iconType: GLYPH
                                           key: person_icon
                                           name: user
@@ -4877,7 +4877,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -4903,7 +4903,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -4929,7 +4929,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -4963,7 +4963,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -4995,7 +4995,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5031,7 +5031,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5059,7 +5059,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5091,7 +5091,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5131,7 +5131,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -5165,7 +5165,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5196,7 +5196,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5231,7 +5231,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5258,7 +5258,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5291,7 +5291,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5316,7 +5316,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5351,7 +5351,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5381,7 +5381,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5409,7 +5409,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5438,7 +5438,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5473,7 +5473,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -5501,7 +5501,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -5526,7 +5526,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -5554,7 +5554,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -5582,7 +5582,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -5612,7 +5612,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5639,7 +5639,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5671,7 +5671,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5705,7 +5705,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5733,7 +5733,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -5765,7 +5765,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -5795,7 +5795,7 @@ workflows:
                                 badges:
                                   - displayName: New hire
                                     iconConfig:
-                                      color: '#343CED'
+                                      color: "#343CED"
                                       iconType: GLYPH
                                       key: person_icon
                                       name: user
@@ -5820,7 +5820,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -7798,7 +7798,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -7913,8 +7913,14 @@ workflows:
                                     metadata:
                                       lastReminder:
                                         remindAt: 490420
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                       reminders:
                                         - remindAt: 491427
+                                          assignee:
+                                            name: George Clooney
+                                            obfuscatedId: abc123
                                     state: VERIFIED
                               startIndex: 796474
                           requestOptions:
@@ -8003,7 +8009,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -8041,7 +8047,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -8067,7 +8073,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -8097,7 +8103,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -8124,7 +8130,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -8152,7 +8158,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -8182,7 +8188,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -9921,7 +9927,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10037,8 +10043,14 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 532806
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                     reminders:
                                       - remindAt: 335191
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                   state: UNVERIFIED
                             startIndex: 488852
                           - document:
@@ -10062,6 +10074,9 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 58704
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                   state: VERIFIED
                             startIndex: 463392
                         requestOptions:
@@ -10164,7 +10179,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10192,7 +10207,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10232,7 +10247,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10262,7 +10277,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10291,7 +10306,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10321,7 +10336,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -10347,7 +10362,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -88762,7 +88777,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -88877,8 +88892,14 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 490420
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                     reminders:
                                       - remindAt: 491427
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                   state: VERIFIED
                             startIndex: 796474
                         requestOptions:
@@ -88967,7 +88988,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -89002,7 +89023,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -89028,7 +89049,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -89058,7 +89079,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -95703,7 +95724,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -95819,8 +95840,14 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 532806
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                     reminders:
                                       - remindAt: 335191
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                   state: UNVERIFIED
                             startIndex: 488852
                           - document:
@@ -95844,6 +95871,9 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 58704
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                   state: VERIFIED
                             startIndex: 463392
                         requestOptions:
@@ -95946,7 +95976,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -95974,7 +96004,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -96010,7 +96040,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -96040,7 +96070,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -120900,7 +120930,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -120927,7 +120957,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -121128,7 +121158,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121154,7 +121184,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121182,7 +121212,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121215,7 +121245,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121244,7 +121274,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121273,7 +121303,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -121302,7 +121332,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -121332,7 +121362,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -121358,7 +121388,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121389,7 +121419,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -121417,7 +121447,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -121444,7 +121474,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121470,7 +121500,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121500,7 +121530,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121526,7 +121556,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121560,7 +121590,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121592,7 +121622,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121620,7 +121650,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -121664,7 +121694,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -121694,7 +121724,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -121725,7 +121755,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121760,7 +121790,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121790,7 +121820,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121818,7 +121848,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121847,7 +121877,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -121882,7 +121912,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -121912,7 +121942,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -121937,7 +121967,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -121963,7 +121993,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -121991,7 +122021,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -122018,7 +122048,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -122048,7 +122078,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -122075,7 +122105,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -122101,7 +122131,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154065,7 +154095,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -154094,7 +154124,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -154126,7 +154156,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -154164,7 +154194,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -154192,7 +154222,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -154224,7 +154254,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154250,7 +154280,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154279,7 +154309,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -154319,7 +154349,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -154348,7 +154378,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -154531,7 +154561,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154561,7 +154591,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154589,7 +154619,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154624,7 +154654,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -154657,7 +154687,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154684,7 +154714,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -154713,7 +154743,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -154743,7 +154773,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -154771,7 +154801,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -154800,7 +154830,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154826,7 +154856,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -154852,7 +154882,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -154886,7 +154916,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -154916,7 +154946,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -154950,7 +154980,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -154980,7 +155010,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -155012,7 +155042,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -155053,7 +155083,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -155083,7 +155113,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -155117,7 +155147,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -155144,7 +155174,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -155181,7 +155211,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -155207,7 +155237,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -155235,7 +155265,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -155264,7 +155294,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -155295,7 +155325,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -155323,7 +155353,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -155350,7 +155380,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -155378,7 +155408,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -155406,7 +155436,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -165838,7 +165868,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -165865,7 +165895,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -166066,7 +166096,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166092,7 +166122,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166120,7 +166150,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166153,7 +166183,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166182,7 +166212,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166211,7 +166241,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -166240,7 +166270,7 @@ workflows:
                                   badges:
                                     - displayName: New hire
                                       iconConfig:
-                                        color: '#343CED'
+                                        color: "#343CED"
                                         iconType: GLYPH
                                         key: person_icon
                                         name: user
@@ -166270,7 +166300,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -166296,7 +166326,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166327,7 +166357,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -166355,7 +166385,7 @@ workflows:
                               badges:
                                 - displayName: New hire
                                   iconConfig:
-                                    color: '#343CED'
+                                    color: "#343CED"
                                     iconType: GLYPH
                                     key: person_icon
                                     name: user
@@ -166382,7 +166412,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166408,7 +166438,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166438,7 +166468,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166464,7 +166494,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166498,7 +166528,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166530,7 +166560,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166558,7 +166588,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -166602,7 +166632,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -166632,7 +166662,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -166663,7 +166693,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166698,7 +166728,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166728,7 +166758,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166756,7 +166786,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166785,7 +166815,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -166820,7 +166850,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -166850,7 +166880,7 @@ workflows:
                           badges:
                             - displayName: New hire
                               iconConfig:
-                                color: '#343CED'
+                                color: "#343CED"
                                 iconType: GLYPH
                                 key: person_icon
                                 name: user
@@ -166875,7 +166905,7 @@ workflows:
                         badges:
                           - displayName: New hire
                             iconConfig:
-                              color: '#343CED'
+                              color: "#343CED"
                               iconType: GLYPH
                               key: person_icon
                               name: user
@@ -166901,7 +166931,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166929,7 +166959,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166956,7 +166986,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -166986,7 +167016,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -167013,7 +167043,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -167039,7 +167069,7 @@ workflows:
                             badges:
                               - displayName: New hire
                                 iconConfig:
-                                  color: '#343CED'
+                                  color: "#343CED"
                                   iconType: GLYPH
                                   key: person_icon
                                   name: user
@@ -181195,7 +181225,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -181310,8 +181340,14 @@ workflows:
                                     metadata:
                                       lastReminder:
                                         remindAt: 490420
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                       reminders:
                                         - remindAt: 491427
+                                          assignee:
+                                            name: George Clooney
+                                            obfuscatedId: abc123
                                     state: VERIFIED
                               startIndex: 796474
                           requestOptions:
@@ -181400,7 +181436,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -181427,7 +181463,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -181453,7 +181489,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -181483,7 +181519,7 @@ workflows:
                       badges:
                         - displayName: New hire
                           iconConfig:
-                            color: '#343CED'
+                            color: "#343CED"
                             iconType: GLYPH
                             key: person_icon
                             name: user
@@ -185145,7 +185181,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -185275,8 +185311,14 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 778241
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                     reminders:
                                       - remindAt: 246216
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                   state: UNVERIFIED
                             startIndex: 984008
                           - document:
@@ -185300,6 +185342,9 @@ workflows:
                                   metadata:
                                     lastReminder:
                                       remindAt: 451776
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                   state: UNVERIFIED
                             startIndex: 698908
                         requestOptions:
@@ -185395,7 +185440,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -185427,7 +185472,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -185455,7 +185500,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -185483,7 +185528,7 @@ workflows:
                     badges:
                       - displayName: New hire
                         iconConfig:
-                          color: '#343CED'
+                          color: "#343CED"
                           iconType: GLYPH
                           key: person_icon
                           name: user
@@ -190079,12 +190124,12 @@ workflows:
             name: <value>
             quicklinks:
               - iconConfig:
-                  color: '#343CED'
+                  color: "#343CED"
                   iconType: GLYPH
                   key: person_icon
                   name: user
               - iconConfig:
-                  color: '#343CED'
+                  color: "#343CED"
                   iconType: GLYPH
                   key: person_icon
                   name: user
