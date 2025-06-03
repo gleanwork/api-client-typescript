@@ -24,6 +24,12 @@ import {
   ChatRestrictionFilters$Outbound,
   ChatRestrictionFilters$outboundSchema,
 } from "./chatrestrictionfilters.js";
+import {
+  SessionInfo,
+  SessionInfo$inboundSchema,
+  SessionInfo$Outbound,
+  SessionInfo$outboundSchema,
+} from "./sessioninfo.js";
 
 export type ChatRequest = {
   /**
@@ -48,6 +54,7 @@ export type ChatRequest = {
    * Timeout in milliseconds for the request. A `408` error will be returned if handling the request takes longer.
    */
   timeoutMillis?: number | undefined;
+  sessionInfo?: SessionInfo | undefined;
   /**
    * The ID of the application this request originates from, used to determine the configuration of underlying chat processes. This should correspond to the ID set during admin setup. If not specified, the default chat experience will be used.
    */
@@ -71,6 +78,7 @@ export const ChatRequest$inboundSchema: z.ZodType<
   inclusions: ChatRestrictionFilters$inboundSchema.optional(),
   exclusions: ChatRestrictionFilters$inboundSchema.optional(),
   timeoutMillis: z.number().int().optional(),
+  sessionInfo: SessionInfo$inboundSchema.optional(),
   applicationId: z.string().optional(),
   stream: z.boolean().optional(),
 });
@@ -84,6 +92,7 @@ export type ChatRequest$Outbound = {
   inclusions?: ChatRestrictionFilters$Outbound | undefined;
   exclusions?: ChatRestrictionFilters$Outbound | undefined;
   timeoutMillis?: number | undefined;
+  sessionInfo?: SessionInfo$Outbound | undefined;
   applicationId?: string | undefined;
   stream?: boolean | undefined;
 };
@@ -101,6 +110,7 @@ export const ChatRequest$outboundSchema: z.ZodType<
   inclusions: ChatRestrictionFilters$outboundSchema.optional(),
   exclusions: ChatRestrictionFilters$outboundSchema.optional(),
   timeoutMillis: z.number().int().optional(),
+  sessionInfo: SessionInfo$outboundSchema.optional(),
   applicationId: z.string().optional(),
   stream: z.boolean().optional(),
 });

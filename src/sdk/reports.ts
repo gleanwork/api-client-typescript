@@ -11,7 +11,7 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Reports extends ClientSDK {
   /**
-   * Creates new one-time report.
+   * Creates new one-time report
    *
    * @remarks
    * Creates a new one-time report and executes its batch job.
@@ -28,7 +28,7 @@ export class Reports extends ClientSDK {
   }
 
   /**
-   * Downloads violations CSV for report.
+   * Downloads violations CSV for report
    *
    * @remarks
    * Downloads CSV violations report for a specific report id.
@@ -45,7 +45,7 @@ export class Reports extends ClientSDK {
   }
 
   /**
-   * Fetches report run status.
+   * Fetches report run status
    *
    * @remarks
    * Fetches the status of the run corresponding to the report-id.

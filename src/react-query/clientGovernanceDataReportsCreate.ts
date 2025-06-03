@@ -25,7 +25,7 @@ export type ClientGovernanceDataReportsCreateMutationData =
   components.UpdateDlpConfigResponse;
 
 /**
- * Creates new one-time report.
+ * Creates new one-time report
  *
  * @remarks
  * Creates a new one-time report and executes its batch job.

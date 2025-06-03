@@ -25,7 +25,7 @@ export type ClientGovernanceDataPoliciesCreateMutationData =
   components.CreateDlpReportResponse;
 
 /**
- * Creates new policy.
+ * Creates new policy
  *
  * @remarks
  * Creates a new policy with specified specifications and returns its id.

@@ -26,7 +26,7 @@ export type ClientGovernanceDocumentsVisibilityoverridesCreateMutationData =
   components.UpdateDocumentVisibilityOverridesResponse;
 
 /**
- * Hide/Un-hide docs.
+ * Hide or unhide docs
  *
  * @remarks
  * Sets the visibility-override state of the documents specified, effectively hiding or un-hiding documents.

@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Gets specified Policy.
+ * Gets specified policy
  *
  * @remarks
  * Fetches the specified policy version, or the latest if no version is provided.

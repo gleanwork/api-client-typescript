@@ -29,7 +29,7 @@ export type ClientGovernanceDataPoliciesListQueryData =
   components.ListDlpReportsResponse;
 
 /**
- * Lists policies.
+ * Lists policies
  *
  * @remarks
  * Lists policies with filtering.
@@ -52,7 +52,7 @@ export function useClientGovernanceDataPoliciesList(
 }
 
 /**
- * Lists policies.
+ * Lists policies
  *
  * @remarks
  * Lists policies with filtering.

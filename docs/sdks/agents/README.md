@@ -316,7 +316,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.agents.runStream({});
+  const result = await glean.client.agents.runStream({
+    agentId: "<id>",
+  });
 
   // Handle the result
   console.log(result);
@@ -340,7 +342,9 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAgentsRunStream(glean, {});
+  const res = await clientAgentsRunStream(glean, {
+    agentId: "<id>",
+  });
 
   if (!res.ok) {
     throw res.error;
@@ -405,7 +409,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.agents.run({});
+  const result = await glean.client.agents.run({
+    agentId: "<id>",
+  });
 
   // Handle the result
   console.log(result);
@@ -429,7 +435,9 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientAgentsRun(glean, {});
+  const res = await clientAgentsRun(glean, {
+    agentId: "<id>",
+  });
 
   if (!res.ok) {
     throw res.error;

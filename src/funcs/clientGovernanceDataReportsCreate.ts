@@ -24,7 +24,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Creates new one-time report.
+ * Creates new one-time report
  *
  * @remarks
  * Creates a new one-time report and executes its batch job.

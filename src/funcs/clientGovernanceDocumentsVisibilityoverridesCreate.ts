@@ -24,7 +24,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Hide/Un-hide docs.
+ * Hide or unhide docs
  *
  * @remarks
  * Sets the visibility-override state of the documents specified, effectively hiding or un-hiding documents.

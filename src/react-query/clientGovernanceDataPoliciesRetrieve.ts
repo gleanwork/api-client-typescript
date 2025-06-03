@@ -29,7 +29,7 @@ export type ClientGovernanceDataPoliciesRetrieveQueryData =
   components.GetDlpReportResponse;
 
 /**
- * Gets specified Policy.
+ * Gets specified policy
  *
  * @remarks
  * Fetches the specified policy version, or the latest if no version is provided.
@@ -52,7 +52,7 @@ export function useClientGovernanceDataPoliciesRetrieve(
 }
 
 /**
- * Gets specified Policy.
+ * Gets specified policy
  *
  * @remarks
  * Fetches the specified policy version, or the latest if no version is provided.
