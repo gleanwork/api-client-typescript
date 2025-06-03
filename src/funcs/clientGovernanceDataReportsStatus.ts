@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Fetches report run status.
+ * Fetches report run status
  *
  * @remarks
  * Fetches the status of the run corresponding to the report-id.

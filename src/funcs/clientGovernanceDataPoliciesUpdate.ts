@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Updates an existing policy.
+ * Updates an existing policy
  *
  * @remarks
  * Updates an existing policy.

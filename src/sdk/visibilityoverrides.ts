@@ -10,7 +10,7 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Visibilityoverrides extends ClientSDK {
   /**
-   * Fetches documents visibility.
+   * Fetches documents visibility
    *
    * @remarks
    * Fetches the visibility override status of the documents passed.
@@ -27,7 +27,7 @@ export class Visibilityoverrides extends ClientSDK {
   }
 
   /**
-   * Hide/Un-hide docs.
+   * Hide or unhide docs
    *
    * @remarks
    * Sets the visibility-override state of the documents specified, effectively hiding or un-hiding documents.

@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Lists policies.
+ * Lists policies
  *
  * @remarks
  * Lists policies with filtering.

@@ -27,7 +27,7 @@ import {
 export type ClientGovernanceDataReportsDownloadQueryData = string;
 
 /**
- * Downloads violations CSV for report.
+ * Downloads violations CSV for report
  *
  * @remarks
  * Downloads CSV violations report for a specific report id.
@@ -48,7 +48,7 @@ export function useClientGovernanceDataReportsDownload(
 }
 
 /**
- * Downloads violations CSV for report.
+ * Downloads violations CSV for report
  *
  * @remarks
  * Downloads CSV violations report for a specific report id.

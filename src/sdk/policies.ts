@@ -13,7 +13,7 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Policies extends ClientSDK {
   /**
-   * Gets specified Policy.
+   * Gets specified policy
    *
    * @remarks
    * Fetches the specified policy version, or the latest if no version is provided.
@@ -32,7 +32,7 @@ export class Policies extends ClientSDK {
   }
 
   /**
-   * Updates an existing policy.
+   * Updates an existing policy
    *
    * @remarks
    * Updates an existing policy.
@@ -51,7 +51,7 @@ export class Policies extends ClientSDK {
   }
 
   /**
-   * Lists policies.
+   * Lists policies
    *
    * @remarks
    * Lists policies with filtering.
@@ -70,7 +70,7 @@ export class Policies extends ClientSDK {
   }
 
   /**
-   * Creates new policy.
+   * Creates new policy
    *
    * @remarks
    * Creates a new policy with specified specifications and returns its id.
@@ -87,7 +87,7 @@ export class Policies extends ClientSDK {
   }
 
   /**
-   * Downloads violations CSV for policy.
+   * Downloads violations CSV for policy
    *
    * @remarks
    * Downloads CSV violations report for a specific policy id. This does not support continuous policies.

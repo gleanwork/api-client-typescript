@@ -27,7 +27,7 @@ import {
 export type ClientGovernanceDataPoliciesDownloadQueryData = string;
 
 /**
- * Downloads violations CSV for policy.
+ * Downloads violations CSV for policy
  *
  * @remarks
  * Downloads CSV violations report for a specific policy id. This does not support continuous policies.
@@ -48,7 +48,7 @@ export function useClientGovernanceDataPoliciesDownload(
 }
 
 /**
- * Downloads violations CSV for policy.
+ * Downloads violations CSV for policy
  *
  * @remarks
  * Downloads CSV violations report for a specific policy id. This does not support continuous policies.

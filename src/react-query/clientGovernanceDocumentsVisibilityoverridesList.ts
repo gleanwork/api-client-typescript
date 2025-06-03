@@ -29,7 +29,7 @@ export type ClientGovernanceDocumentsVisibilityoverridesListQueryData =
   components.GetDocumentVisibilityOverridesResponse;
 
 /**
- * Fetches documents visibility.
+ * Fetches documents visibility
  *
  * @remarks
  * Fetches the visibility override status of the documents passed.
@@ -55,7 +55,7 @@ export function useClientGovernanceDocumentsVisibilityoverridesList(
 }
 
 /**
- * Fetches documents visibility.
+ * Fetches documents visibility
  *
  * @remarks
  * Fetches the visibility override status of the documents passed.

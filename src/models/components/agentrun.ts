@@ -26,7 +26,7 @@ export type AgentRun = {
   /**
    * The ID of the agent to run.
    */
-  agentId?: string | undefined;
+  agentId: string;
   /**
    * The input to the agent.
    */
@@ -47,7 +47,7 @@ export const AgentRun$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  agent_id: z.string().optional(),
+  agent_id: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$inboundSchema).optional(),
   status: AgentExecutionStatus$inboundSchema.optional(),
@@ -59,7 +59,7 @@ export const AgentRun$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AgentRun$Outbound = {
-  agent_id?: string | undefined;
+  agent_id: string;
   input?: { [k: string]: any } | undefined;
   messages?: Array<Message$Outbound> | undefined;
   status?: string | undefined;
@@ -71,7 +71,7 @@ export const AgentRun$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AgentRun
 > = z.object({
-  agentId: z.string().optional(),
+  agentId: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$outboundSchema).optional(),
   status: AgentExecutionStatus$outboundSchema.optional(),

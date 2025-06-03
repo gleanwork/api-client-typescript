@@ -24,7 +24,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Creates new policy.
+ * Creates new policy
  *
  * @remarks
  * Creates a new policy with specified specifications and returns its id.

@@ -78,6 +78,8 @@ test("Agents Create And Wait Run", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.client.agents.run({});
+  const result = await glean.client.agents.run({
+    agentId: "<id>",
+  });
   expect(result).toBeDefined();
 });

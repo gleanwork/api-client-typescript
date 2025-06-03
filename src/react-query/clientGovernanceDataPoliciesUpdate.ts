@@ -26,7 +26,7 @@ export type ClientGovernanceDataPoliciesUpdateMutationData =
   components.UpdateDlpReportResponse;
 
 /**
- * Updates an existing policy.
+ * Updates an existing policy
  *
  * @remarks
  * Updates an existing policy.

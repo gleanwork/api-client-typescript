@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Downloads violations CSV for policy.
+ * Downloads violations CSV for policy
  *
  * @remarks
  * Downloads CSV violations report for a specific policy id. This does not support continuous policies.

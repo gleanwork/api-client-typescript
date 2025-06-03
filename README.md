@@ -359,25 +359,25 @@ For more information on obtaining the appropriate token type, please contact you
 
 #### [client.governance.data.policies](docs/sdks/policies/README.md)
 
-* [retrieve](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
-* [update](docs/sdks/policies/README.md#update) - Updates an existing policy.
-* [list](docs/sdks/policies/README.md#list) - Lists policies.
-* [create](docs/sdks/policies/README.md#create) - Creates new policy.
-* [download](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
+* [retrieve](docs/sdks/policies/README.md#retrieve) - Gets specified policy
+* [update](docs/sdks/policies/README.md#update) - Updates an existing policy
+* [list](docs/sdks/policies/README.md#list) - Lists policies
+* [create](docs/sdks/policies/README.md#create) - Creates new policy
+* [download](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
 
 #### [client.governance.data.reports](docs/sdks/reports/README.md)
 
-* [create](docs/sdks/reports/README.md#create) - Creates new one-time report.
-* [download](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
-* [status](docs/sdks/reports/README.md#status) - Fetches report run status.
+* [create](docs/sdks/reports/README.md#create) - Creates new one-time report
+* [download](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
+* [status](docs/sdks/reports/README.md#status) - Fetches report run status
 
 #### [client.governance.documents](docs/sdks/governancedocuments/README.md)
 
 
 #### [client.governance.documents.visibilityoverrides](docs/sdks/visibilityoverrides/README.md)
 
-* [list](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
-* [create](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
+* [list](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
+* [create](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
 
 #### [client.insights](docs/sdks/insights/README.md)
 
@@ -546,16 +546,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientDocumentsSummarize`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 - [`clientEntitiesList`](docs/sdks/entities/README.md#list) - List entities
 - [`clientEntitiesReadPeople`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`clientGovernanceDataPoliciesCreate`](docs/sdks/policies/README.md#create) - Creates new policy.
-- [`clientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
-- [`clientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies.
-- [`clientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
-- [`clientGovernanceDataPoliciesUpdate`](docs/sdks/policies/README.md#update) - Updates an existing policy.
-- [`clientGovernanceDataReportsCreate`](docs/sdks/reports/README.md#create) - Creates new one-time report.
-- [`clientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
-- [`clientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status.
-- [`clientGovernanceDocumentsVisibilityoverridesCreate`](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
-- [`clientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
+- [`clientGovernanceDataPoliciesCreate`](docs/sdks/policies/README.md#create) - Creates new policy
+- [`clientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
+- [`clientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies
+- [`clientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified policy
+- [`clientGovernanceDataPoliciesUpdate`](docs/sdks/policies/README.md#update) - Updates an existing policy
+- [`clientGovernanceDataReportsCreate`](docs/sdks/reports/README.md#create) - Creates new one-time report
+- [`clientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
+- [`clientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status
+- [`clientGovernanceDocumentsVisibilityoverridesCreate`](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
+- [`clientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
 - [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Read insights
 - [`clientMessagesRetrieve`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`clientPinsCreate`](docs/sdks/pins/README.md#create) - Create pin
@@ -685,16 +685,16 @@ To learn about this feature and how to get started, check
 - [`useClientDocumentsSummarizeMutation`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 - [`useClientEntitiesListMutation`](docs/sdks/entities/README.md#list) - List entities
 - [`useClientEntitiesReadPeopleMutation`](docs/sdks/entities/README.md#readpeople) - Read people
-- [`useClientGovernanceDataPoliciesCreateMutation`](docs/sdks/policies/README.md#create) - Creates new policy.
-- [`useClientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy.
-- [`useClientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies.
-- [`useClientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified Policy.
-- [`useClientGovernanceDataPoliciesUpdateMutation`](docs/sdks/policies/README.md#update) - Updates an existing policy.
-- [`useClientGovernanceDataReportsCreateMutation`](docs/sdks/reports/README.md#create) - Creates new one-time report.
-- [`useClientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report.
-- [`useClientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status.
-- [`useClientGovernanceDocumentsVisibilityoverridesCreateMutation`](docs/sdks/visibilityoverrides/README.md#create) - Hide/Un-hide docs.
-- [`useClientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility.
+- [`useClientGovernanceDataPoliciesCreateMutation`](docs/sdks/policies/README.md#create) - Creates new policy
+- [`useClientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
+- [`useClientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies
+- [`useClientGovernanceDataPoliciesRetrieve`](docs/sdks/policies/README.md#retrieve) - Gets specified policy
+- [`useClientGovernanceDataPoliciesUpdateMutation`](docs/sdks/policies/README.md#update) - Updates an existing policy
+- [`useClientGovernanceDataReportsCreateMutation`](docs/sdks/reports/README.md#create) - Creates new one-time report
+- [`useClientGovernanceDataReportsDownload`](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
+- [`useClientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status
+- [`useClientGovernanceDocumentsVisibilityoverridesCreateMutation`](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
+- [`useClientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
 - [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Read insights
 - [`useClientMessagesRetrieveMutation`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`useClientPinsCreateMutation`](docs/sdks/pins/README.md#create) - Create pin

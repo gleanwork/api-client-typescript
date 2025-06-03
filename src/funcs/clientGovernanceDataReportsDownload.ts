@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Downloads violations CSV for report.
+ * Downloads violations CSV for report
  *
  * @remarks
  * Downloads CSV violations report for a specific report id.

@@ -29,7 +29,7 @@ export type ClientGovernanceDataReportsStatusQueryData =
   components.ReportStatusResponse;
 
 /**
- * Fetches report run status.
+ * Fetches report run status
  *
  * @remarks
  * Fetches the status of the run corresponding to the report-id.
@@ -50,7 +50,7 @@ export function useClientGovernanceDataReportsStatus(
 }
 
 /**
- * Fetches report run status.
+ * Fetches report run status
  *
  * @remarks
  * Fetches the status of the run corresponding to the report-id.

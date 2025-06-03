@@ -25,7 +25,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Fetches documents visibility.
+ * Fetches documents visibility
  *
  * @remarks
  * Fetches the visibility override status of the documents passed.
