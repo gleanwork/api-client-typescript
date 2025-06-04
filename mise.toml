@@ -1,0 +1,4 @@
+[tools]
+# used to run the mockserver
+go = "1.22"
+node = "20"
