@@ -9,12 +9,12 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The schema for the agent input. In JSON schema format.
+ * The schema for the agent input. In JSON Schema format.
  */
 export type InputSchema = {};
 
 /**
- * The schema for the agent output. In JSON schema format.
+ * The schema for the agent output. In JSON Schema format.
  */
 export type OutputSchema = {};
 
@@ -27,11 +27,11 @@ export type AgentSchemas = {
    */
   agentId: string;
   /**
-   * The schema for the agent input. In JSON schema format.
+   * The schema for the agent input. In JSON Schema format.
    */
   inputSchema: InputSchema;
   /**
-   * The schema for the agent output. In JSON schema format.
+   * The schema for the agent output. In JSON Schema format.
    */
   outputSchema: OutputSchema;
 };

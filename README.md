@@ -297,7 +297,7 @@ For more information on obtaining the appropriate token type, please contact you
 * [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
 * [list](docs/sdks/agents/README.md#list) - Search agents
 * [runStream](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
-* [run](docs/sdks/agents/README.md#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+* [run](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
 
 #### [client.announcements](docs/sdks/announcements/README.md)
 
@@ -511,7 +511,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search agents
 - [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
 - [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
-- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
 - [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
@@ -650,7 +650,7 @@ To learn about this feature and how to get started, check
 - [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search agents
 - [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
 - [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
-- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
 - [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement

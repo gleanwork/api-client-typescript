@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: a0748babeea2c91be038da9e477a97f3
+  docChecksum: 895c9d213122353173d7c129b2c8d4b7
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.5.3
-  configChecksum: f4be71cf1dbe0f8d7bc0a4f061b7c9ce
+  releaseVersion: 0.6.1
+  configChecksum: c067068dbea5bbba98f9dfa395498f4b
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true

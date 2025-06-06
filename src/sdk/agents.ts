@@ -85,10 +85,10 @@ export class Agents extends ClientSDK {
   }
 
   /**
-   * Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+   * Create an agent run and wait for the response
    *
    * @remarks
-   * Executes an agent run and returns the final response.
+   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
    */
   async run(
     request: components.AgentRunCreate,
