@@ -25,13 +25,14 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.5.1
+  version: 0.5.3
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Speakeasy
+  baseErrorName: GleanBaseError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: GleanError
   enableCustomCodeRegions: false

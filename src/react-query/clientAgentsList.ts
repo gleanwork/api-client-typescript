@@ -24,10 +24,10 @@ export type ClientAgentsListMutationVariables = {
 export type ClientAgentsListMutationData = components.SearchAgentsResponse;
 
 /**
- * Search Agents
+ * Search agents
  *
  * @remarks
- * List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
  */
 export function useClientAgentsListMutation(
   options?: MutationHookOptions<
