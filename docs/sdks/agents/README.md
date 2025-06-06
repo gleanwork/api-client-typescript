@@ -9,7 +9,7 @@
 * [retrieveSchemas](#retrieveschemas) - List an agent's schemas
 * [list](#list) - Search agents
 * [runStream](#runstream) - Create an agent run and stream the response
-* [run](#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+* [run](#run) - Create an agent run and wait for the response
 
 ## retrieve
 
@@ -401,7 +401,7 @@ import {
 
 ## run
 
-Executes an agent run and returns the final response.
+Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
 
 ### Example Usage
 
