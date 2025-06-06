@@ -24,11 +24,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Speakeasy CLI
-        uses: gleanwork/open-api/.github/actions/speakeasy-setup@main
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install dependencies
         run: npm ci
 
