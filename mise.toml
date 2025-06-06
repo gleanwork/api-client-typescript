@@ -1,4 +1,5 @@
 [tools]
+"aqua:speakeasy-api/speakeasy" = "latest"
 # used to run the mockserver
 go = "1.22"
 node = "20"
