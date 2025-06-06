@@ -5,7 +5,17 @@
 ```typescript
 import { SearchAgentsResponse } from "@gleanwork/api-client/models/components";
 
-let value: SearchAgentsResponse = {};
+let value: SearchAgentsResponse = {
+  agents: [
+    {
+      agentId: "mho4lwzylcozgoc2",
+      name: "HR Policy Agent",
+      description:
+        "This agent answers questions about the current company HR policies.",
+      capabilities: {},
+    },
+  ],
+};
 ```
 
 ## Fields

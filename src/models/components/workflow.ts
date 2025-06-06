@@ -20,6 +20,10 @@ import {
 } from "./person.js";
 
 export type Workflow = {
+  /**
+   * The name of the workflow.
+   */
+  name?: string | undefined;
   author?: Person | undefined;
   /**
    * Server Unix timestamp of the creation time.
@@ -32,10 +36,6 @@ export type Workflow = {
   lastUpdatedBy?: Person | undefined;
   permissions?: ObjectPermissions | undefined;
   /**
-   * The name of the workflow.
-   */
-  name?: string | undefined;
-  /**
    * The ID of the workflow.
    */
   id?: string | undefined;
@@ -47,23 +47,23 @@ export const Workflow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  name: z.string().optional(),
   author: Person$inboundSchema.optional(),
   createTimestamp: z.number().int().optional(),
   lastUpdateTimestamp: z.number().int().optional(),
   lastUpdatedBy: Person$inboundSchema.optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
-  name: z.string().optional(),
   id: z.string().optional(),
 });
 
 /** @internal */
 export type Workflow$Outbound = {
+  name?: string | undefined;
   author?: Person$Outbound | undefined;
   createTimestamp?: number | undefined;
   lastUpdateTimestamp?: number | undefined;
   lastUpdatedBy?: Person$Outbound | undefined;
   permissions?: ObjectPermissions$Outbound | undefined;
-  name?: string | undefined;
   id?: string | undefined;
 };
 
@@ -73,12 +73,12 @@ export const Workflow$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Workflow
 > = z.object({
+  name: z.string().optional(),
   author: Person$outboundSchema.optional(),
   createTimestamp: z.number().int().optional(),
   lastUpdateTimestamp: z.number().int().optional(),
   lastUpdatedBy: Person$outboundSchema.optional(),
   permissions: ObjectPermissions$outboundSchema.optional(),
-  name: z.string().optional(),
   id: z.string().optional(),
 });
 

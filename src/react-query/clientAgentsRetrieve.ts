@@ -28,10 +28,10 @@ import {
 export type ClientAgentsRetrieveQueryData = components.Agent;
 
 /**
- * Get Agent
+ * Retrieve an agent
  *
  * @remarks
- * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
  */
 export function useClientAgentsRetrieve(
   agentId: string,
@@ -51,10 +51,10 @@ export function useClientAgentsRetrieve(
 }
 
 /**
- * Get Agent
+ * Retrieve an agent
  *
  * @remarks
- * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
  */
 export function useClientAgentsRetrieveSuspense(
   agentId: string,

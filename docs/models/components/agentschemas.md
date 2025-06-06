@@ -8,7 +8,7 @@ Defines the structure and properties of an agent.
 import { AgentSchemas } from "@gleanwork/api-client/models/components";
 
 let value: AgentSchemas = {
-  agentId: "<id>",
+  agentId: "mho4lwzylcozgoc2",
   inputSchema: {},
   outputSchema: {},
 };
@@ -16,8 +16,8 @@ let value: AgentSchemas = {
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `agentId`                                                          | *string*                                                           | :heavy_check_mark:                                                 | The ID of the agent.                                               |
-| `inputSchema`                                                      | [components.InputSchema](../../models/components/inputschema.md)   | :heavy_check_mark:                                                 | The schema for the agent input. In JSON Schema format.             |
-| `outputSchema`                                                     | [components.OutputSchema](../../models/components/outputschema.md) | :heavy_check_mark:                                                 | The schema for the agent output. In JSON Schema format.            |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `agentId`                                                          | *string*                                                           | :heavy_check_mark:                                                 | The ID of the agent.                                               | mho4lwzylcozgoc2                                                   |
+| `inputSchema`                                                      | [components.InputSchema](../../models/components/inputschema.md)   | :heavy_check_mark:                                                 | The schema for the agent input. In JSON schema format.             |                                                                    |
+| `outputSchema`                                                     | [components.OutputSchema](../../models/components/outputschema.md) | :heavy_check_mark:                                                 | The schema for the agent output. In JSON schema format.            |                                                                    |

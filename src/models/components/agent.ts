@@ -12,20 +12,25 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * The agent metadata.
+ * The agent metadata. Currently not implemented.
  */
 export type AgentMetadata = {};
 
 /**
- * Describes which protocol features the agent supports. In addition to the standard capabilities (prefixed with ap.), implementations can declare custom capabilities, named in reverse domain notation (eg. com.example.some.capability).
+ * Describes features that the agent supports. example: {
+ *
+ * @remarks
+ *   "ap.io.messages": true,
+ *   "ap.io.streaming": true
+ * }
  */
 export type AgentCapabilities = {
   /**
-   * Whether the agent supports Messages as input/output/state. If true, the agent uses the `messages` key in threads/runs endpoints.
+   * Whether the agent supports messages as an input. If true, you'll pass `messages` as an input when running the agent.
    */
   apIoMessages?: boolean | undefined;
   /**
-   * Whether the agent supports streaming output.
+   * Whether the agent supports streaming output. If true, you you can stream agent ouput. All agents currently support streaming.
    */
   apIoStreaming?: boolean | undefined;
   additionalProperties?: { [k: string]: any };
@@ -45,11 +50,16 @@ export type Agent = {
    */
   description?: string | undefined;
   /**
-   * The agent metadata.
+   * The agent metadata. Currently not implemented.
    */
   metadata?: AgentMetadata | undefined;
   /**
-   * Describes which protocol features the agent supports. In addition to the standard capabilities (prefixed with ap.), implementations can declare custom capabilities, named in reverse domain notation (eg. com.example.some.capability).
+   * Describes features that the agent supports. example: {
+   *
+   * @remarks
+   *   "ap.io.messages": true,
+   *   "ap.io.streaming": true
+   * }
    */
   capabilities: AgentCapabilities;
 };

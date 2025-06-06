@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: d74f93d052b62c1709b537bca6b5e9cb
+  docChecksum: a0748babeea2c91be038da9e477a97f3
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.5.1
-  configChecksum: 7a534d2eb610053ed728cbb280131186
+  releaseVersion: 0.5.3
+  configChecksum: f4be71cf1dbe0f8d7bc0a4f061b7c9ce
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -2225,7 +2225,7 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: {"agent_id": "<id>", "name": "<value>", "capabilities": {}}
+          application/json: {"agent_id": "mho4lwzylcozgoc2", "name": "HR Policy Agent", "description": "This agent answers questions about the current company HR policies.", "capabilities": {}}
   getAgentSchemas:
     speakeasy-default-get-agent-schemas:
       parameters:
@@ -2234,14 +2234,14 @@ examples:
         query: {}
       responses:
         "200":
-          application/json: {"agent_id": "<id>", "input_schema": {}, "output_schema": {}}
+          application/json: {"agent_id": "mho4lwzylcozgoc2", "input_schema": {}, "output_schema": {}}
   searchAgents:
     speakeasy-default-search-agents:
       requestBody:
-        application/json: {}
+        application/json: {"name": "HR Policy Agent"}
       responses:
         "200":
-          application/json: {}
+          application/json: {"agents": [{"agent_id": "mho4lwzylcozgoc2", "name": "HR Policy Agent", "description": "This agent answers questions about the current company HR policies.", "capabilities": {}}]}
   createAndStreamRun:
     speakeasy-default-create-and-stream-run:
       requestBody:

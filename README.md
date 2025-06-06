@@ -293,11 +293,11 @@ For more information on obtaining the appropriate token type, please contact you
 
 #### [client.agents](docs/sdks/agents/README.md)
 
-* [retrieve](docs/sdks/agents/README.md#retrieve) - Get Agent
-* [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
-* [list](docs/sdks/agents/README.md#list) - Search Agents
-* [runStream](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
-* [run](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
+* [retrieve](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+* [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
+* [list](docs/sdks/agents/README.md#list) - Search agents
+* [runStream](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
+* [run](docs/sdks/agents/README.md#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
 
 #### [client.announcements](docs/sdks/announcements/README.md)
 
@@ -508,11 +508,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
-- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search Agents
-- [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Get Agent
-- [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
-- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
-- [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
+- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search agents
+- [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+- [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
+- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+- [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
@@ -647,11 +647,11 @@ To learn about this feature and how to get started, check
 
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
-- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search Agents
-- [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Get Agent
-- [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - Get Agent Schemas
-- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create Run, Wait for Output
-- [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create Run, Stream Output
+- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search agents
+- [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
+- [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
+- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
+- [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement

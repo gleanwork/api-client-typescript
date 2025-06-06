@@ -13,10 +13,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Agents extends ClientSDK {
   /**
-   * Get Agent
+   * Retrieve an agent
    *
    * @remarks
-   * Get an agent by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+   * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
    */
   async retrieve(
     agentId: string,
@@ -32,10 +32,10 @@ export class Agents extends ClientSDK {
   }
 
   /**
-   * Get Agent Schemas
+   * List an agent's schemas
    *
    * @remarks
-   * Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+   * Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
    */
   async retrieveSchemas(
     agentId: string,
@@ -51,10 +51,10 @@ export class Agents extends ClientSDK {
   }
 
   /**
-   * Search Agents
+   * Search agents
    *
    * @remarks
-   * List Agents available in this service. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/POST/agents/search). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+   * Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
    */
   async list(
     request: components.SearchAgentsRequest,
@@ -68,10 +68,10 @@ export class Agents extends ClientSDK {
   }
 
   /**
-   * Create Run, Stream Output
+   * Create an agent run and stream the response
    *
    * @remarks
-   * Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
    */
   async runStream(
     request: components.AgentRunCreate,
@@ -85,10 +85,10 @@ export class Agents extends ClientSDK {
   }
 
   /**
-   * Create Run, Wait for Output
+   * Create an [agent](https://developers.glean.com/agents/agents-api) run and wait for the response
    *
    * @remarks
-   * Creates and triggers a run of an agent. Waits for final output and then returns it. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/wait). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+   * Executes an agent run and returns the final response.
    */
   async run(
     request: components.AgentRunCreate,

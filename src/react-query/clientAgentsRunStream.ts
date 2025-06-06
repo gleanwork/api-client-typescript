@@ -24,10 +24,10 @@ export type ClientAgentsRunStreamMutationVariables = {
 export type ClientAgentsRunStreamMutationData = string;
 
 /**
- * Create Run, Stream Output
+ * Create an agent run and stream the response
  *
  * @remarks
- * Creates and triggers a run of an agent. Streams the output in SSE format. This endpoint implements the LangChain Agent Protocol, specifically part of the Runs stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/runs/POST/runs/stream). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol. Note that running agents that reference third party platform write actions is unsupported as it requires user confirmation.
+ * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
  */
 export function useClientAgentsRunStreamMutation(
   options?: MutationHookOptions<

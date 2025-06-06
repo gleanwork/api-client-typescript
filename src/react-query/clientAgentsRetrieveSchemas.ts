@@ -28,10 +28,10 @@ import {
 export type ClientAgentsRetrieveSchemasQueryData = components.AgentSchemas;
 
 /**
- * Get Agent Schemas
+ * List an agent's schemas
  *
  * @remarks
- * Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
  */
 export function useClientAgentsRetrieveSchemas(
   agentId: string,
@@ -51,10 +51,10 @@ export function useClientAgentsRetrieveSchemas(
 }
 
 /**
- * Get Agent Schemas
+ * List an agent's schemas
  *
  * @remarks
- * Get an agent's schemas by ID. This endpoint implements the LangChain Agent Protocol, specifically part of the Agents stage (https://langchain-ai.github.io/agent-protocol/api.html#tag/agents/GET/agents/{agent_id}/schemas). It adheres to the standard contract defined for agent interoperability and can be used by agent runtimes that support the Agent Protocol.
+ * Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
  */
 export function useClientAgentsRetrieveSchemasSuspense(
   agentId: string,
