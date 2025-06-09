@@ -64,22 +64,6 @@ func testPostAPIIndexV1GetdatasourceconfigPostAPIIndexV1Getdatasourceconfig0(w h
 					Name:     types.String("user"),
 				},
 			},
-			components.Quicklink{
-				IconConfig: &components.IconConfig{
-					Color:    types.String("#343CED"),
-					Key:      types.String("person_icon"),
-					IconType: components.IconTypeGlyph.ToPointer(),
-					Name:     types.String("user"),
-				},
-			},
-			components.Quicklink{
-				IconConfig: &components.IconConfig{
-					Color:    types.String("#343CED"),
-					Key:      types.String("person_icon"),
-					IconType: components.IconTypeGlyph.ToPointer(),
-					Name:     types.String("user"),
-				},
-			},
 		},
 		TrustURLRegexForViewActivity: types.Bool(true),
 		StripFragmentInCanonicalURL:  types.Bool(true),

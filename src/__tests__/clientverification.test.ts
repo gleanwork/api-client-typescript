@@ -6,7 +6,7 @@ import { expect, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Verification Addverificationreminder", async () => {
+test("Client Verification Addverificationreminder", async () => {
   const testHttpClient = createTestHTTPClient("addverificationreminder");
 
   const glean = new Glean({
@@ -21,7 +21,7 @@ test("Verification Addverificationreminder", async () => {
   expect(result).toBeDefined();
 });
 
-test("Verification Listverifications", async () => {
+test("Client Verification Listverifications", async () => {
   const testHttpClient = createTestHTTPClient("listverifications");
 
   const glean = new Glean({
@@ -34,7 +34,7 @@ test("Verification Listverifications", async () => {
   expect(result).toBeDefined();
 });
 
-test("Verification Verify", async () => {
+test("Client Verification Verify", async () => {
   const testHttpClient = createTestHTTPClient("verify");
 
   const glean = new Glean({

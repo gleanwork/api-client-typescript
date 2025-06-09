@@ -16,8 +16,9 @@ test("Messages Messages", async () => {
   });
 
   const result = await glean.client.messages.retrieve({
-    idType: "THREAD_ID",
+    idType: "CONVERSATION_ID",
     id: "<id>",
+    timestampMillis: 558834,
   });
   expect(result).toBeDefined();
 });

@@ -50,17 +50,10 @@ test("Agents Get Agent Schemas", async () => {
   expect(result).toBeDefined();
 });
 
-test("Agents Search Agents", async () => {
-  const testHttpClient = createTestHTTPClient("searchAgents");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-  });
-
-  const result = await glean.client.agents.list({});
-  expect(result).toBeDefined();
+it.skip("Agents Search Agents", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step searchAgents.test referencing operation searchAgents is missing required request body`]",
+  );
 });
 
 it.skip("Agents Create And Stream Run", async () => {
@@ -69,17 +62,8 @@ it.skip("Agents Create And Stream Run", async () => {
   );
 });
 
-test("Agents Create And Wait Run", async () => {
-  const testHttpClient = createTestHTTPClient("createAndWaitRun");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-  });
-
-  const result = await glean.client.agents.run({
-    agentId: "<id>",
-  });
-  expect(result).toBeDefined();
+it.skip("Agents Create And Wait Run", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step createAndWaitRun.test referencing operation createAndWaitRun is missing required request body`]",
+  );
 });

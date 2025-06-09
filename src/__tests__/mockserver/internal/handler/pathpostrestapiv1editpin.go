@@ -138,7 +138,7 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 									},
 								},
 							},
-							FacetBucketSize: 344620,
+							FacetBucketSize: 922296,
 							AuthTokens: []components.AuthToken{
 								components.AuthToken{
 									AccessToken: "123abc",
@@ -151,7 +151,7 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 						},
 						Ranges: []components.TextRange{
 							components.TextRange{
-								StartIndex: 627690,
+								StartIndex: 47491,
 								Document: &components.Document{
 									Metadata: &components.DocumentMetadata{
 										Datasource: types.String("datasource"),
@@ -170,64 +170,64 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 										Collections: []components.Collection{
 											components.Collection{
 												Name:        "<value>",
-												Description: "underneath retention too",
+												Description: "informal wrongly lest slime since pace into row",
 												AddedRoles: []components.UserRoleSpecification{
+													components.UserRoleSpecification{
+														Role: components.UserRoleVerifier,
+													},
+													components.UserRoleSpecification{
+														Role: components.UserRoleViewer,
+													},
+												},
+												RemovedRoles: []components.UserRoleSpecification{
+													components.UserRoleSpecification{
+														Role: components.UserRoleEditor,
+													},
+													components.UserRoleSpecification{
+														Role: components.UserRoleEditor,
+													},
+												},
+												AudienceFilters: []components.FacetFilter{
+													components.FacetFilter{
+														FieldName: types.String("type"),
+														Values: []components.FacetFilterValue{
+															components.FacetFilterValue{
+																Value:        types.String("Spreadsheet"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+															components.FacetFilterValue{
+																Value:        types.String("Presentation"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+														},
+													},
+												},
+												ID: 793957,
+												Items: []components.CollectionItem{
+													components.CollectionItem{
+														CollectionID: 841760,
+														ItemType:     components.CollectionItemItemTypeCollection,
+													},
+													components.CollectionItem{
+														CollectionID: 546659,
+														ItemType:     components.CollectionItemItemTypeCollection,
+													},
+												},
+												Roles: []components.UserRoleSpecification{
+													components.UserRoleSpecification{
+														Role: components.UserRoleOwner,
+													},
 													components.UserRoleSpecification{
 														Role: components.UserRoleVerifier,
 													},
 													components.UserRoleSpecification{
 														Role: components.UserRoleEditor,
 													},
-													components.UserRoleSpecification{
-														Role: components.UserRoleAnswerModerator,
-													},
-												},
-												RemovedRoles: []components.UserRoleSpecification{
-													components.UserRoleSpecification{
-														Role: components.UserRoleAnswerModerator,
-													},
-												},
-												AudienceFilters: []components.FacetFilter{
-													components.FacetFilter{
-														FieldName: types.String("type"),
-														Values: []components.FacetFilterValue{
-															components.FacetFilterValue{
-																Value:        types.String("Spreadsheet"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-															components.FacetFilterValue{
-																Value:        types.String("Presentation"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-														},
-													},
-												},
-												ID: 579805,
-												Items: []components.CollectionItem{
-													components.CollectionItem{
-														CollectionID: 800094,
-														Shortcut: &components.Shortcut{
-															InputAlias: "<value>",
-															Roles: []components.UserRoleSpecification{
-																components.UserRoleSpecification{
-																	Role: components.UserRoleOwner,
-																},
-															},
-														},
-														ItemType: components.CollectionItemItemTypeText,
-													},
-													components.CollectionItem{
-														CollectionID: 656776,
-														Shortcut: &components.Shortcut{
-															InputAlias: "<value>",
-														},
-														ItemType: components.CollectionItemItemTypeDocument,
-													},
 												},
 											},
 											components.Collection{
 												Name:        "<value>",
-												Description: "even gosh frantically",
+												Description: "twine because unnaturally card gallery among agile duh pro athwart",
 												AudienceFilters: []components.FacetFilter{
 													components.FacetFilter{
 														FieldName: types.String("type"),
@@ -243,43 +243,24 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
-												ID: 198183,
-											},
-											components.Collection{
-												Name:        "<value>",
-												Description: "blah intensely fragrant lest ferret",
-												AudienceFilters: []components.FacetFilter{
-													components.FacetFilter{
-														FieldName: types.String("type"),
-														Values: []components.FacetFilterValue{
-															components.FacetFilterValue{
-																Value:        types.String("Spreadsheet"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-															components.FacetFilterValue{
-																Value:        types.String("Presentation"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-														},
-													},
-												},
-												ID: 34036,
+												ID: 201064,
 											},
 										},
 										Interactions: &components.DocumentInteractions{
 											Reacts: []components.Reaction{
 												components.Reaction{},
-												components.Reaction{},
-												components.Reaction{},
 											},
 											Shares: []components.Share{
 												components.Share{
-													NumDaysAgo: 485880,
+													NumDaysAgo: 544237,
+												},
+												components.Share{
+													NumDaysAgo: 241956,
 												},
 											},
 										},
 										Verification: &components.Verification{
-											State: components.StateVerified,
+											State: components.StateDeprecated,
 											Metadata: &components.VerificationMetadata{
 												Reminders: []components.Reminder{
 													components.Reminder{
@@ -287,21 +268,14 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 															Name:         "George Clooney",
 															ObfuscatedID: "abc123",
 														},
-														RemindAt: 446252,
+														RemindAt: 448916,
 													},
 													components.Reminder{
 														Assignee: components.Person{
 															Name:         "George Clooney",
 															ObfuscatedID: "abc123",
 														},
-														RemindAt: 438996,
-													},
-													components.Reminder{
-														Assignee: components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
-														RemindAt: 44563,
+														RemindAt: 494003,
 													},
 												},
 												LastReminder: &components.Reminder{
@@ -309,87 +283,7 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 														Name:         "George Clooney",
 														ObfuscatedID: "abc123",
 													},
-													RemindAt: 20664,
-												},
-											},
-										},
-										Shortcuts: []components.Shortcut{
-											components.Shortcut{
-												InputAlias: "<value>",
-											},
-											components.Shortcut{
-												InputAlias: "<value>",
-											},
-										},
-										CustomData: map[string]components.CustomDataValue{
-											"someCustomField": components.CustomDataValue{},
-										},
-									},
-								},
-							},
-							components.TextRange{
-								StartIndex: 134816,
-								Document: &components.Document{
-									Metadata: &components.DocumentMetadata{
-										Datasource: types.String("datasource"),
-										ObjectType: types.String("Feature Request"),
-										Container:  types.String("container"),
-										ParentID:   types.String("JIRA_EN-1337"),
-										MimeType:   types.String("mimeType"),
-										DocumentID: types.String("documentId"),
-										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
-										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
-										Components: []string{
-											"Backend",
-											"Networking",
-										},
-										Status:       types.String("[\"Done\"]"),
-										Interactions: &components.DocumentInteractions{},
-										Verification: &components.Verification{
-											State: components.StateVerified,
-											Metadata: &components.VerificationMetadata{
-												LastReminder: &components.Reminder{
-													Assignee: components.Person{
-														Name:         "George Clooney",
-														ObfuscatedID: "abc123",
-													},
-													RemindAt: 840778,
-												},
-											},
-										},
-										CustomData: map[string]components.CustomDataValue{
-											"someCustomField": components.CustomDataValue{},
-										},
-									},
-								},
-							},
-							components.TextRange{
-								StartIndex: 958595,
-								Document: &components.Document{
-									Metadata: &components.DocumentMetadata{
-										Datasource: types.String("datasource"),
-										ObjectType: types.String("Feature Request"),
-										Container:  types.String("container"),
-										ParentID:   types.String("JIRA_EN-1337"),
-										MimeType:   types.String("mimeType"),
-										DocumentID: types.String("documentId"),
-										CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
-										UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
-										Components: []string{
-											"Backend",
-											"Networking",
-										},
-										Status:       types.String("[\"Done\"]"),
-										Interactions: &components.DocumentInteractions{},
-										Verification: &components.Verification{
-											State: components.StateDeprecated,
-											Metadata: &components.VerificationMetadata{
-												LastReminder: &components.Reminder{
-													Assignee: components.Person{
-														Name:         "George Clooney",
-														ObfuscatedID: "abc123",
-													},
-													RemindAt: 761579,
+													RemindAt: 29269,
 												},
 											},
 										},
@@ -418,170 +312,6 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 				},
-				components.RelatedDocuments{
-					QuerySuggestion: &components.QuerySuggestion{
-						Query: "app:github type:pull author:mortimer",
-						SearchProviderInfo: &components.SearchProviderInfo{
-							Name:                  types.String("Google"),
-							SearchLinkURLTemplate: types.String("https://www.google.com/search?q={query}&hl=en"),
-						},
-						Label:      types.String("Mortimer's PRs"),
-						Datasource: types.String("github"),
-						RequestOptions: &components.SearchRequestOptions{
-							DatasourceFilter: types.String("JIRA"),
-							DatasourcesFilter: []string{
-								"JIRA",
-							},
-							QueryOverridesFacetFilters: types.Bool(true),
-							FacetFilters: []components.FacetFilter{
-								components.FacetFilter{
-									FieldName: types.String("type"),
-									Values: []components.FacetFilterValue{
-										components.FacetFilterValue{
-											Value:        types.String("Spreadsheet"),
-											RelationType: components.RelationTypeEquals.ToPointer(),
-										},
-										components.FacetFilterValue{
-											Value:        types.String("Presentation"),
-											RelationType: components.RelationTypeEquals.ToPointer(),
-										},
-									},
-								},
-							},
-							FacetFilterSets: []components.FacetFilterSet{
-								components.FacetFilterSet{
-									Filters: []components.FacetFilter{
-										components.FacetFilter{
-											FieldName: types.String("type"),
-											Values: []components.FacetFilterValue{
-												components.FacetFilterValue{
-													Value:        types.String("Spreadsheet"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-												components.FacetFilterValue{
-													Value:        types.String("Presentation"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-											},
-										},
-									},
-								},
-							},
-							FacetBucketSize: 889660,
-							AuthTokens: []components.AuthToken{
-								components.AuthToken{
-									AccessToken: "123abc",
-									Datasource:  "gmail",
-									Scope:       types.String("email profile https://www.googleapis.com/auth/gmail.readonly"),
-									TokenType:   types.String("Bearer"),
-									AuthUser:    types.String("1"),
-								},
-							},
-						},
-						InputDetails: &components.SearchRequestInputDetails{
-							HasCopyPaste: types.Bool(true),
-						},
-					},
-				},
-				components.RelatedDocuments{
-					QuerySuggestion: &components.QuerySuggestion{
-						Query: "app:github type:pull author:mortimer",
-						SearchProviderInfo: &components.SearchProviderInfo{
-							Name:                  types.String("Google"),
-							SearchLinkURLTemplate: types.String("https://www.google.com/search?q={query}&hl=en"),
-						},
-						Label:      types.String("Mortimer's PRs"),
-						Datasource: types.String("github"),
-						RequestOptions: &components.SearchRequestOptions{
-							DatasourceFilter: types.String("JIRA"),
-							DatasourcesFilter: []string{
-								"JIRA",
-							},
-							QueryOverridesFacetFilters: types.Bool(true),
-							FacetFilters: []components.FacetFilter{
-								components.FacetFilter{
-									FieldName: types.String("type"),
-									Values: []components.FacetFilterValue{
-										components.FacetFilterValue{
-											Value:        types.String("Spreadsheet"),
-											RelationType: components.RelationTypeEquals.ToPointer(),
-										},
-										components.FacetFilterValue{
-											Value:        types.String("Presentation"),
-											RelationType: components.RelationTypeEquals.ToPointer(),
-										},
-									},
-								},
-							},
-							FacetFilterSets: []components.FacetFilterSet{
-								components.FacetFilterSet{
-									Filters: []components.FacetFilter{
-										components.FacetFilter{
-											FieldName: types.String("type"),
-											Values: []components.FacetFilterValue{
-												components.FacetFilterValue{
-													Value:        types.String("Spreadsheet"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-												components.FacetFilterValue{
-													Value:        types.String("Presentation"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-											},
-										},
-									},
-								},
-								components.FacetFilterSet{
-									Filters: []components.FacetFilter{
-										components.FacetFilter{
-											FieldName: types.String("type"),
-											Values: []components.FacetFilterValue{
-												components.FacetFilterValue{
-													Value:        types.String("Spreadsheet"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-												components.FacetFilterValue{
-													Value:        types.String("Presentation"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-											},
-										},
-									},
-								},
-								components.FacetFilterSet{
-									Filters: []components.FacetFilter{
-										components.FacetFilter{
-											FieldName: types.String("type"),
-											Values: []components.FacetFilterValue{
-												components.FacetFilterValue{
-													Value:        types.String("Spreadsheet"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-												components.FacetFilterValue{
-													Value:        types.String("Presentation"),
-													RelationType: components.RelationTypeEquals.ToPointer(),
-												},
-											},
-										},
-									},
-								},
-							},
-							FacetBucketSize: 504322,
-							AuthTokens: []components.AuthToken{
-								components.AuthToken{
-									AccessToken: "123abc",
-									Datasource:  "gmail",
-									Scope:       types.String("email profile https://www.googleapis.com/auth/gmail.readonly"),
-									TokenType:   types.String("Bearer"),
-									AuthUser:    types.String("1"),
-								},
-							},
-						},
-						InputDetails: &components.SearchRequestInputDetails{
-							HasCopyPaste: types.Bool(true),
-						},
-					},
-				},
 			},
 			Metadata: &components.PersonMetadata{
 				Type:       components.PersonMetadataTypeFullTime.ToPointer(),
@@ -593,6 +323,10 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 				PhotoURL:   types.String("https://example.com/george.jpg"),
 				StartDate:  types.MustNewDateFromString("2000-01-23"),
 				DatasourceProfile: []components.DatasourceProfile{
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
 					components.DatasourceProfile{
 						Datasource: "github",
 						Handle:     "<value>",
@@ -609,8 +343,6 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 				},
 				InviteInfo: &components.InviteInfo{
 					Invites: []components.ChannelInviteInfo{
-						components.ChannelInviteInfo{},
-						components.ChannelInviteInfo{},
 						components.ChannelInviteInfo{},
 					},
 				},
@@ -648,14 +380,6 @@ func testEditpinEditpin0(w http.ResponseWriter, req *http.Request) {
 				PhotoURL:   types.String("https://example.com/george.jpg"),
 				StartDate:  types.MustNewDateFromString("2000-01-23"),
 				DatasourceProfile: []components.DatasourceProfile{
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 					components.DatasourceProfile{
 						Datasource: "github",
 						Handle:     "<value>",

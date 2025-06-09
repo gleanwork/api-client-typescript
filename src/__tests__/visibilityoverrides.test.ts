@@ -9,3 +9,9 @@ it.skip("Visibilityoverrides Getdocvisibility", async () => {
     "incomplete test found please make sure to address the following errors: [`workflow step getdocvisibility.test contains criterion simple with invalid condition`, `workflow step getdocvisibility.test does not contain $contentType successCriteria and required for response body assertion`]",
   );
 });
+
+it.skip("Visibilityoverrides Setdocvisibility", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step setdocvisibility.test referencing operation setdocvisibility is missing required request body`, `workflow step setdocvisibility.test contains criterion simple with invalid condition`, `workflow step setdocvisibility.test does not contain $contentType successCriteria and required for response body assertion`]",
+  );
+});

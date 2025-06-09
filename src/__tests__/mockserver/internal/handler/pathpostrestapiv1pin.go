@@ -206,38 +206,32 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 												Items: []components.CollectionItem{
 													components.CollectionItem{
 														CollectionID: 452224,
-														Shortcut: &components.Shortcut{
-															InputAlias: "<value>",
-															Roles: []components.UserRoleSpecification{
-																components.UserRoleSpecification{
-																	Role: components.UserRoleViewer,
-																},
-																components.UserRoleSpecification{
-																	Role: components.UserRoleEditor,
-																},
-															},
-														},
-														ItemType: components.CollectionItemItemTypeDocument,
+														ItemType:     components.CollectionItemItemTypeText,
 													},
 													components.CollectionItem{
-														CollectionID: 703441,
-														Shortcut: &components.Shortcut{
-															InputAlias: "<value>",
-														},
-														ItemType: components.CollectionItemItemTypeCollection,
+														CollectionID: 259772,
+														ItemType:     components.CollectionItemItemTypeCollection,
 													},
 													components.CollectionItem{
-														CollectionID: 780486,
-														Shortcut: &components.Shortcut{
-															InputAlias: "<value>",
-														},
-														ItemType: components.CollectionItemItemTypeCollection,
+														CollectionID: 137324,
+														ItemType:     components.CollectionItemItemTypeURL,
+													},
+												},
+												Roles: []components.UserRoleSpecification{
+													components.UserRoleSpecification{
+														Role: components.UserRoleEditor,
+													},
+													components.UserRoleSpecification{
+														Role: components.UserRoleViewer,
+													},
+													components.UserRoleSpecification{
+														Role: components.UserRoleAnswerModerator,
 													},
 												},
 											},
 											components.Collection{
 												Name:        "<value>",
-												Description: "tousle aha while till lazily than",
+												Description: "attend alongside aw blend ha ew",
 												AudienceFilters: []components.FacetFilter{
 													components.FacetFilter{
 														FieldName: types.String("type"),
@@ -253,11 +247,11 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
-												ID: 271081,
+												ID: 497070,
 											},
 											components.Collection{
 												Name:        "<value>",
-												Description: "which yippee where until waver colorless",
+												Description: "embalm simple ouch when pfft ah vainly",
 												AudienceFilters: []components.FacetFilter{
 													components.FacetFilter{
 														FieldName: types.String("type"),
@@ -273,7 +267,7 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
-												ID: 290613,
+												ID: 154150,
 											},
 										},
 										Interactions: &components.DocumentInteractions{
@@ -284,12 +278,18 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 											},
 											Shares: []components.Share{
 												components.Share{
-													NumDaysAgo: 405497,
+													NumDaysAgo: 842284,
+												},
+												components.Share{
+													NumDaysAgo: 466260,
+												},
+												components.Share{
+													NumDaysAgo: 931588,
 												},
 											},
 										},
 										Verification: &components.Verification{
-											State: components.StateVerified,
+											State: components.StateUnverified,
 											Metadata: &components.VerificationMetadata{
 												Reminders: []components.Reminder{
 													components.Reminder{
@@ -297,21 +297,7 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 															Name:         "George Clooney",
 															ObfuscatedID: "abc123",
 														},
-														RemindAt: 338524,
-													},
-													components.Reminder{
-														Assignee: components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
-														RemindAt: 913221,
-													},
-													components.Reminder{
-														Assignee: components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
-														RemindAt: 154150,
+														RemindAt: 982866,
 													},
 												},
 												LastReminder: &components.Reminder{
@@ -319,19 +305,8 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 														Name:         "George Clooney",
 														ObfuscatedID: "abc123",
 													},
-													RemindAt: 721880,
+													RemindAt: 482357,
 												},
-											},
-										},
-										Shortcuts: []components.Shortcut{
-											components.Shortcut{
-												InputAlias: "<value>",
-											},
-											components.Shortcut{
-												InputAlias: "<value>",
-											},
-											components.Shortcut{
-												InputAlias: "<value>",
 											},
 										},
 										CustomData: map[string]components.CustomDataValue{
@@ -424,8 +399,25 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 										},
 									},
 								},
+								components.FacetFilterSet{
+									Filters: []components.FacetFilter{
+										components.FacetFilter{
+											FieldName: types.String("type"),
+											Values: []components.FacetFilterValue{
+												components.FacetFilterValue{
+													Value:        types.String("Spreadsheet"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+												components.FacetFilterValue{
+													Value:        types.String("Presentation"),
+													RelationType: components.RelationTypeEquals.ToPointer(),
+												},
+											},
+										},
+									},
+								},
 							},
-							FacetBucketSize: 931588,
+							FacetBucketSize: 150565,
 							AuthTokens: []components.AuthToken{
 								components.AuthToken{
 									AccessToken: "123abc",
@@ -456,6 +448,10 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 						Datasource: "github",
 						Handle:     "<value>",
 					},
+					components.DatasourceProfile{
+						Datasource: "github",
+						Handle:     "<value>",
+					},
 				},
 				QuerySuggestions: &components.QuerySuggestionList{
 					Suggestions: []components.QuerySuggestion{
@@ -469,16 +465,13 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 				InviteInfo: &components.InviteInfo{
 					Invites: []components.ChannelInviteInfo{
 						components.ChannelInviteInfo{},
+						components.ChannelInviteInfo{},
 					},
 				},
 				CustomFields: []components.CustomFieldData{
 					components.CustomFieldData{
-						Label: "<value>",
-						Values: []components.CustomFieldValue{
-							components.CreateCustomFieldValueCustomFieldValueStr(
-								components.CustomFieldValueStr{},
-							),
-						},
+						Label:       "<value>",
+						Values:      []components.CustomFieldValue{},
 						Displayable: types.Bool(true),
 					},
 					components.CustomFieldData{
@@ -519,10 +512,6 @@ func testPinPin0(w http.ResponseWriter, req *http.Request) {
 				PhotoURL:   types.String("https://example.com/george.jpg"),
 				StartDate:  types.MustNewDateFromString("2000-01-23"),
 				DatasourceProfile: []components.DatasourceProfile{
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 					components.DatasourceProfile{
 						Datasource: "github",
 						Handle:     "<value>",

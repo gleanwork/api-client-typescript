@@ -46,8 +46,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/addcollectionitems", pathPostRestAPIV1Addcollectionitems(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/addverificationreminder", pathPostRestAPIV1Addverificationreminder(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/adminsearch", pathPostRestAPIV1Adminsearch(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/agents/runs/wait", pathPostRestAPIV1AgentsRunsWait(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/agents/search", pathPostRestAPIV1AgentsSearch(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/autocomplete", pathPostRestAPIV1Autocomplete(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/chat", pathPostRestAPIV1Chat(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/createannouncement", pathPostRestAPIV1Createannouncement(dir, rt)),
@@ -97,7 +95,6 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/unpin", pathPostRestAPIV1Unpin(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/updateannouncement", pathPostRestAPIV1Updateannouncement(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/updateshortcut", pathPostRestAPIV1Updateshortcut(dir, rt)),
-		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/uploadchatfiles", pathPostRestAPIV1Uploadchatfiles(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/rest/api/v1/verify", pathPostRestAPIV1Verify(dir, rt)),
 	}
 }

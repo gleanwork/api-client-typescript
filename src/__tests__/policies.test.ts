@@ -25,6 +25,12 @@ it.skip("Policies Getpolicies", async () => {
   );
 });
 
+it.skip("Policies Createpolicy", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step createpolicy.test referencing operation createpolicy is missing required request body`, `workflow step createpolicy.test contains criterion simple with invalid condition`, `workflow step createpolicy.test does not contain $contentType successCriteria and required for response body assertion`]",
+  );
+});
+
 it.skip("Policies Downloadpolicycsv", async () => {
   assert.fail(
     "incomplete test found please make sure to address the following errors: [`workflow step downloadpolicycsv.test contains criterion simple with invalid condition`, `workflow step downloadpolicycsv.test does not contain $contentType successCriteria and required for response body assertion`]",

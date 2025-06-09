@@ -14,6 +14,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const AgentEnum = {
   Default: "DEFAULT",
   Gpt: "GPT",
+  Universal: "UNIVERSAL",
 } as const;
 /**
  * Name of the agent.

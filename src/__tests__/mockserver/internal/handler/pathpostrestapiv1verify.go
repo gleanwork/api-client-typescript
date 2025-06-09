@@ -189,22 +189,19 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 													Items: []components.CollectionItem{
 														components.CollectionItem{
 															CollectionID: 159863,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-																Roles: []components.UserRoleSpecification{
-																	components.UserRoleSpecification{
-																		Role: components.UserRoleEditor,
-																	},
-																},
-															},
-															ItemType: components.CollectionItemItemTypeDocument,
+															ItemType:     components.CollectionItemItemTypeDocument,
 														},
 														components.CollectionItem{
-															CollectionID: 48460,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-															},
-															ItemType: components.CollectionItemItemTypeURL,
+															CollectionID: 725143,
+															ItemType:     components.CollectionItemItemTypeDocument,
+														},
+													},
+													Roles: []components.UserRoleSpecification{
+														components.UserRoleSpecification{
+															Role: components.UserRoleOwner,
+														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleVerifier,
 														},
 													},
 												},
@@ -213,20 +210,17 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 												Reacts: []components.Reaction{
 													components.Reaction{},
 													components.Reaction{},
-													components.Reaction{},
 												},
 												Shares: []components.Share{
 													components.Share{
-														NumDaysAgo: 725164,
-													},
-													components.Share{
 														NumDaysAgo: 638745,
 													},
-												},
-											},
-											Shortcuts: []components.Shortcut{
-												components.Shortcut{
-													InputAlias: "<value>",
+													components.Share{
+														NumDaysAgo: 331260,
+													},
+													components.Share{
+														NumDaysAgo: 759941,
+													},
 												},
 											},
 											CustomData: map[string]components.CustomDataValue{
@@ -236,7 +230,7 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 									},
 								},
 								components.TextRange{
-									StartIndex: 70232,
+									StartIndex: 344155,
 									Document: &components.Document{
 										Metadata: &components.DocumentMetadata{
 											Datasource: types.String("datasource"),
@@ -260,7 +254,7 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 									},
 								},
 								components.TextRange{
-									StartIndex: 344155,
+									StartIndex: 851433,
 									Document: &components.Document{
 										Metadata: &components.DocumentMetadata{
 											Datasource: types.String("datasource"),
@@ -317,14 +311,6 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 							Datasource: "github",
 							Handle:     "<value>",
 						},
-						components.DatasourceProfile{
-							Datasource: "github",
-							Handle:     "<value>",
-						},
-						components.DatasourceProfile{
-							Datasource: "github",
-							Handle:     "<value>",
-						},
 					},
 					QuerySuggestions: &components.QuerySuggestionList{
 						Suggestions: []components.QuerySuggestion{
@@ -338,19 +324,18 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 					InviteInfo: &components.InviteInfo{
 						Invites: []components.ChannelInviteInfo{
 							components.ChannelInviteInfo{},
+							components.ChannelInviteInfo{},
 						},
 					},
 					CustomFields: []components.CustomFieldData{
 						components.CustomFieldData{
-							Label: "<value>",
-							Values: []components.CustomFieldValue{
-								components.CreateCustomFieldValueCustomFieldValueStr(
-									components.CustomFieldValueStr{},
-								),
-								components.CreateCustomFieldValueCustomFieldValueStr(
-									components.CustomFieldValueStr{},
-								),
-							},
+							Label:       "<value>",
+							Values:      []components.CustomFieldValue{},
+							Displayable: types.Bool(true),
+						},
+						components.CustomFieldData{
+							Label:       "<value>",
+							Values:      []components.CustomFieldValue{},
 							Displayable: types.Bool(true),
 						},
 						components.CustomFieldData{
@@ -396,6 +381,10 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 							PhotoURL:   types.String("https://example.com/george.jpg"),
 							StartDate:  types.MustNewDateFromString("2000-01-23"),
 							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 								components.DatasourceProfile{
 									Datasource: "github",
 									Handle:     "<value>",
@@ -473,10 +462,6 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 									Datasource: "github",
 									Handle:     "<value>",
 								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{},
 							InviteInfo:       &components.InviteInfo{},
@@ -507,10 +492,6 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 							PhotoURL:   types.String("https://example.com/george.jpg"),
 							StartDate:  types.MustNewDateFromString("2000-01-23"),
 							DatasourceProfile: []components.DatasourceProfile{
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 								components.DatasourceProfile{
 									Datasource: "github",
 									Handle:     "<value>",
@@ -607,10 +588,6 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 									Datasource: "github",
 									Handle:     "<value>",
 								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{},
 							InviteInfo:       &components.InviteInfo{},
@@ -670,7 +647,7 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 					},
-					RemindAt: 383597,
+					RemindAt: 732097,
 				},
 				components.Reminder{
 					Assignee: components.Person{
@@ -749,7 +726,78 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 							},
 						},
 					},
-					RemindAt: 258279,
+					RemindAt: 510781,
+				},
+				components.Reminder{
+					Assignee: components.Person{
+						Name:         "George Clooney",
+						ObfuscatedID: "abc123",
+						Metadata: &components.PersonMetadata{
+							Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+							Title:      types.String("Actor"),
+							Department: types.String("Movies"),
+							Email:      types.String("george@example.com"),
+							Location:   types.String("Hollywood, CA"),
+							Phone:      types.String("6505551234"),
+							PhotoURL:   types.String("https://example.com/george.jpg"),
+							StartDate:  types.MustNewDateFromString("2000-01-23"),
+							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+							},
+							QuerySuggestions: &components.QuerySuggestionList{},
+							InviteInfo:       &components.InviteInfo{},
+							Badges: []components.Badge{
+								components.Badge{
+									Key:         types.String("deployment_name_new_hire"),
+									DisplayName: types.String("New hire"),
+									IconConfig: &components.IconConfig{
+										Color:    types.String("#343CED"),
+										Key:      types.String("person_icon"),
+										IconType: components.IconTypeGlyph.ToPointer(),
+										Name:     types.String("user"),
+									},
+								},
+							},
+						},
+					},
+					Requestor: &components.Person{
+						Name:         "George Clooney",
+						ObfuscatedID: "abc123",
+						Metadata: &components.PersonMetadata{
+							Type:       components.PersonMetadataTypeFullTime.ToPointer(),
+							Title:      types.String("Actor"),
+							Department: types.String("Movies"),
+							Email:      types.String("george@example.com"),
+							Location:   types.String("Hollywood, CA"),
+							Phone:      types.String("6505551234"),
+							PhotoURL:   types.String("https://example.com/george.jpg"),
+							StartDate:  types.MustNewDateFromString("2000-01-23"),
+							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+							},
+							QuerySuggestions: &components.QuerySuggestionList{},
+							InviteInfo:       &components.InviteInfo{},
+							Badges: []components.Badge{
+								components.Badge{
+									Key:         types.String("deployment_name_new_hire"),
+									DisplayName: types.String("New hire"),
+									IconConfig: &components.IconConfig{
+										Color:    types.String("#343CED"),
+										Key:      types.String("person_icon"),
+										IconType: components.IconTypeGlyph.ToPointer(),
+										Name:     types.String("user"),
+									},
+								},
+							},
+						},
+					},
+					RemindAt: 875373,
 				},
 			},
 			LastReminder: &components.Reminder{
@@ -766,6 +814,10 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 						PhotoURL:   types.String("https://example.com/george.jpg"),
 						StartDate:  types.MustNewDateFromString("2000-01-23"),
 						DatasourceProfile: []components.DatasourceProfile{
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
 							components.DatasourceProfile{
 								Datasource: "github",
 								Handle:     "<value>",
@@ -804,14 +856,6 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 								Datasource: "github",
 								Handle:     "<value>",
 							},
-							components.DatasourceProfile{
-								Datasource: "github",
-								Handle:     "<value>",
-							},
-							components.DatasourceProfile{
-								Datasource: "github",
-								Handle:     "<value>",
-							},
 						},
 						QuerySuggestions: &components.QuerySuggestionList{},
 						InviteInfo:       &components.InviteInfo{},
@@ -829,7 +873,7 @@ func testVerifyVerify0(w http.ResponseWriter, req *http.Request) {
 						},
 					},
 				},
-				RemindAt: 373831,
+				RemindAt: 740498,
 			},
 			CandidateVerifiers: []components.Person{
 				components.Person{

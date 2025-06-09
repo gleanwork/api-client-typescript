@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 1477738232aeb60aace8340880be72ae
+  docChecksum: 59c6e14049dbd73093349e44990e95cc
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.6.3
-  configChecksum: 7ce8e70870e34c6351c2be52621a2404
+  releaseVersion: 0.6.5
+  configChecksum: 2bb7e9c3ab12b03f19aeb288d2232546
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -642,25 +642,27 @@ generatedFiles:
   - eslint.config.mjs
   - jsr.json
   - package.json
-  - src/__tests__/activity.test.ts
-  - src/__tests__/adminsearch.test.ts
+  - src/__tests__/activities.test.ts
   - src/__tests__/agents.test.ts
   - src/__tests__/announcements.test.ts
   - src/__tests__/answers.test.ts
   - src/__tests__/assertions.ts
-  - src/__tests__/chat.test.ts
+  - src/__tests__/calendar.test.ts
+  - src/__tests__/clientactivity.test.ts
   - src/__tests__/clientauthentication.test.ts
+  - src/__tests__/clientchat.test.ts
   - src/__tests__/clientdocuments.test.ts
-  - src/__tests__/clientsearch.test.ts
   - src/__tests__/clientshortcuts.test.ts
+  - src/__tests__/clientuser.test.ts
+  - src/__tests__/clientverification.test.ts
   - src/__tests__/collections.test.ts
-  - src/__tests__/datasource.test.ts
   - src/__tests__/datasources.test.ts
+  - src/__tests__/displayablelists.test.ts
   - src/__tests__/entities.test.ts
   - src/__tests__/files.ts
   - src/__tests__/indexingauthentication.test.ts
   - src/__tests__/indexingdocuments.test.ts
-  - src/__tests__/indexingpeople.test.ts
+  - src/__tests__/indexingpermissions.test.ts
   - src/__tests__/insights.test.ts
   - src/__tests__/messages.test.ts
   - src/__tests__/mockserver/.gitignore
@@ -711,8 +713,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1addcollectionitems.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1addverificationreminder.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1adminsearch.go
-  - src/__tests__/mockserver/internal/handler/pathpostrestapiv1agentsrunswait.go
-  - src/__tests__/mockserver/internal/handler/pathpostrestapiv1agentssearch.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1autocomplete.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1chat.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1createannouncement.go
@@ -762,7 +762,6 @@ generatedFiles:
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1unpin.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1updateannouncement.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1updateshortcut.go
-  - src/__tests__/mockserver/internal/handler/pathpostrestapiv1uploadchatfiles.go
   - src/__tests__/mockserver/internal/handler/pathpostrestapiv1verify.go
   - src/__tests__/mockserver/internal/handler/values/files.go
   - src/__tests__/mockserver/internal/logging/doc.go
@@ -1312,14 +1311,15 @@ generatedFiles:
   - src/__tests__/mockserver/internal/server/templates/log/style.css.tmpl
   - src/__tests__/mockserver/internal/tracking/requesttracker.go
   - src/__tests__/mockserver/main.go
-  - src/__tests__/permissions.test.ts
+  - src/__tests__/people.test.ts
   - src/__tests__/pins.test.ts
   - src/__tests__/policies.test.ts
   - src/__tests__/reports.test.ts
   - src/__tests__/search.test.ts
+  - src/__tests__/summarize.test.ts
   - src/__tests__/testclient.ts
   - src/__tests__/tools.test.ts
-  - src/__tests__/verification.test.ts
+  - src/__tests__/troubleshooting.test.ts
   - src/__tests__/visibilityoverrides.test.ts
   - src/core.ts
   - src/funcs/clientActivityFeedback.ts
@@ -2860,3 +2860,46 @@ generatedTests:
   get_/rest/api/v1/tools/list: "2025-05-23T19:26:17Z"
   post_/rest/api/v1/tools/call: "2025-05-23T19:26:17Z"
   listpolicies: "2025-05-23T19:26:17Z"
+  createdraftannouncement: "2025-06-09T18:05:10Z"
+  deletedraftannouncement: "2025-06-09T18:05:10Z"
+  getannouncement: "2025-06-09T18:05:10Z"
+  getdraftannouncement: "2025-06-09T18:05:10Z"
+  listannouncements: "2025-06-09T18:05:10Z"
+  previewannouncement: "2025-06-09T18:05:10Z"
+  previewannouncementdraft: "2025-06-09T18:05:10Z"
+  publishdraftannouncement: "2025-06-09T18:05:10Z"
+  unpublishannouncement: "2025-06-09T18:05:10Z"
+  updatedraftannouncement: "2025-06-09T18:05:10Z"
+  previewanswer: "2025-06-09T18:05:10Z"
+  previewanswerdraft: "2025-06-09T18:05:10Z"
+  updateanswerlikes: "2025-06-09T18:05:10Z"
+  createanswerboard: "2025-06-09T18:05:10Z"
+  deleteanswerboards: "2025-06-09T18:05:10Z"
+  editanswerboard: "2025-06-09T18:05:10Z"
+  getanswerboard: "2025-06-09T18:05:10Z"
+  listanswerboards: "2025-06-09T18:05:10Z"
+  createanonymoustoken: "2025-06-09T18:05:10Z"
+  getevents: "2025-06-09T18:05:10Z"
+  ask: "2025-06-09T18:05:10Z"
+  editdocumentcollections: "2025-06-09T18:05:10Z"
+  movecollectionitem: "2025-06-09T18:05:10Z"
+  pincollection: "2025-06-09T18:05:10Z"
+  createdisplayablelists: "2025-06-09T18:05:10Z"
+  deletedisplayablelists: "2025-06-09T18:05:10Z"
+  getdisplayablelists: "2025-06-09T18:05:10Z"
+  updatedisplayablelists: "2025-06-09T18:05:10Z"
+  getdocumentanalytics: "2025-06-09T18:05:10Z"
+  peoplesuggest: "2025-06-09T18:05:10Z"
+  peoplesuggestadmin: "2025-06-09T18:05:10Z"
+  teams: "2025-06-09T18:05:10Z"
+  getsimilarshortcuts: "2025-06-09T18:05:10Z"
+  previewshortcut: "2025-06-09T18:05:10Z"
+  addcredential: "2025-06-09T18:05:10Z"
+  deletequeryhistory: "2025-06-09T18:05:10Z"
+  invite: "2025-06-09T18:05:10Z"
+  publicconfig: "2025-06-09T18:05:10Z"
+  removecredential: "2025-06-09T18:05:10Z"
+  support_email: "2025-06-09T18:05:10Z"
+  createpolicy: "2025-06-09T18:05:10Z"
+  createreport: "2025-06-09T18:05:10Z"
+  setdocvisibility: "2025-06-09T18:05:10Z"

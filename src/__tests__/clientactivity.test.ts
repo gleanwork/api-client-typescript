@@ -6,7 +6,7 @@ import { test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Activity Activity", async () => {
+test("Client Activity Activity", async () => {
   const testHttpClient = createTestHTTPClient("activity");
 
   const glean = new Glean({
@@ -40,22 +40,5 @@ test("Activity Activity", async () => {
         url: "https://example.com/",
       },
     ],
-  });
-});
-
-test("Activity Feedback", async () => {
-  const testHttpClient = createTestHTTPClient("feedback");
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-  });
-
-  await glean.client.activity.feedback({
-    trackingTokens: [
-      "trackingTokens",
-    ],
-    event: "VIEW",
   });
 });

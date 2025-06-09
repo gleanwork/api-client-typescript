@@ -243,28 +243,28 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 															Items: []components.CollectionItem{
 																components.CollectionItem{
 																	CollectionID: 480616,
-																	Shortcut: &components.Shortcut{
-																		InputAlias: "<value>",
-																		Roles: []components.UserRoleSpecification{
-																			components.UserRoleSpecification{
-																				Role: components.UserRoleAnswerModerator,
-																			},
-																		},
-																	},
-																	ItemType: components.CollectionItemItemTypeCollection,
+																	ItemType:     components.CollectionItemItemTypeDocument,
 																},
 																components.CollectionItem{
-																	CollectionID: 410206,
-																	Shortcut: &components.Shortcut{
-																		InputAlias: "<value>",
-																	},
-																	ItemType: components.CollectionItemItemTypeCollection,
+																	CollectionID: 523875,
+																	ItemType:     components.CollectionItemItemTypeCollection,
+																},
+															},
+															Roles: []components.UserRoleSpecification{
+																components.UserRoleSpecification{
+																	Role: components.UserRoleViewer,
+																},
+																components.UserRoleSpecification{
+																	Role: components.UserRoleViewer,
+																},
+																components.UserRoleSpecification{
+																	Role: components.UserRoleOwner,
 																},
 															},
 														},
 														components.Collection{
 															Name:        "<value>",
-															Description: "er boom however when uh-huh madly",
+															Description: "safely briefly ugh fen",
 															AudienceFilters: []components.FacetFilter{
 																components.FacetFilter{
 																	FieldName: types.String("type"),
@@ -280,7 +280,7 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 																	},
 																},
 															},
-															ID: 993677,
+															ID: 96709,
 														},
 													},
 													Interactions: &components.DocumentInteractions{
@@ -291,13 +291,10 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 														},
 														Shares: []components.Share{
 															components.Share{
-																NumDaysAgo: 406555,
+																NumDaysAgo: 5229,
 															},
 															components.Share{
-																NumDaysAgo: 29267,
-															},
-															components.Share{
-																NumDaysAgo: 652326,
+																NumDaysAgo: 810770,
 															},
 														},
 													},
@@ -310,14 +307,21 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 																		Name:         "George Clooney",
 																		ObfuscatedID: "abc123",
 																	},
-																	RemindAt: 408066,
+																	RemindAt: 505778,
 																},
 																components.Reminder{
 																	Assignee: components.Person{
 																		Name:         "George Clooney",
 																		ObfuscatedID: "abc123",
 																	},
-																	RemindAt: 41398,
+																	RemindAt: 948614,
+																},
+																components.Reminder{
+																	Assignee: components.Person{
+																		Name:         "George Clooney",
+																		ObfuscatedID: "abc123",
+																	},
+																	RemindAt: 900109,
 																},
 															},
 															LastReminder: &components.Reminder{
@@ -325,13 +329,8 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 																	Name:         "George Clooney",
 																	ObfuscatedID: "abc123",
 																},
-																RemindAt: 829409,
+																RemindAt: 20615,
 															},
-														},
-													},
-													Shortcuts: []components.Shortcut{
-														components.Shortcut{
-															InputAlias: "<value>",
 														},
 													},
 													CustomData: map[string]components.CustomDataValue{
@@ -407,8 +406,42 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 													},
 												},
 											},
+											components.FacetFilterSet{
+												Filters: []components.FacetFilter{
+													components.FacetFilter{
+														FieldName: types.String("type"),
+														Values: []components.FacetFilterValue{
+															components.FacetFilterValue{
+																Value:        types.String("Spreadsheet"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+															components.FacetFilterValue{
+																Value:        types.String("Presentation"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+														},
+													},
+												},
+											},
+											components.FacetFilterSet{
+												Filters: []components.FacetFilter{
+													components.FacetFilter{
+														FieldName: types.String("type"),
+														Values: []components.FacetFilterValue{
+															components.FacetFilterValue{
+																Value:        types.String("Spreadsheet"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+															components.FacetFilterValue{
+																Value:        types.String("Presentation"),
+																RelationType: components.RelationTypeEquals.ToPointer(),
+															},
+														},
+													},
+												},
+											},
 										},
-										FacetBucketSize: 117386,
+										FacetBucketSize: 726700,
 										AuthTokens: []components.AuthToken{
 											components.AuthToken{
 												AccessToken: "123abc",
@@ -461,7 +494,6 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 								Invites: []components.ChannelInviteInfo{
 									components.ChannelInviteInfo{},
 									components.ChannelInviteInfo{},
-									components.ChannelInviteInfo{},
 								},
 							},
 							CustomFields: []components.CustomFieldData{
@@ -471,12 +503,10 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 										components.CreateCustomFieldValueCustomFieldValueStr(
 											components.CustomFieldValueStr{},
 										),
+										components.CreateCustomFieldValueCustomFieldValueStr(
+											components.CustomFieldValueStr{},
+										),
 									},
-									Displayable: types.Bool(true),
-								},
-								components.CustomFieldData{
-									Label:       "<value>",
-									Values:      []components.CustomFieldValue{},
 									Displayable: types.Bool(true),
 								},
 							},
@@ -517,6 +547,10 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 							PhotoURL:   types.String("https://example.com/george.jpg"),
 							StartDate:  types.MustNewDateFromString("2000-01-23"),
 							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 								components.DatasourceProfile{
 									Datasource: "github",
 									Handle:     "<value>",
@@ -561,14 +595,6 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 							PhotoURL:   types.String("https://example.com/george.jpg"),
 							StartDate:  types.MustNewDateFromString("2000-01-23"),
 							DatasourceProfile: []components.DatasourceProfile{
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 								components.DatasourceProfile{
 									Datasource: "github",
 									Handle:     "<value>",
