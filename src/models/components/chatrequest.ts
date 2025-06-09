@@ -60,6 +60,10 @@ export type ChatRequest = {
    */
   applicationId?: string | undefined;
   /**
+   * The ID of the Agent that should process this chat request. Only Agents with trigger set to 'User chat message' are invokable through this API. If not specified, the default chat experience will be used.
+   */
+  agentId?: string | undefined;
+  /**
    * If set, response lines will be streamed one-by-one as they become available. Each will be a ChatResponse, formatted as JSON, and separated by a new line. If false, the entire response will be returned at once. Note that if this is set and the model being used does not support streaming, the model's response will not be streamed, but other messages from the endpoint still will be.
    */
   stream?: boolean | undefined;
@@ -80,6 +84,7 @@ export const ChatRequest$inboundSchema: z.ZodType<
   timeoutMillis: z.number().int().optional(),
   sessionInfo: SessionInfo$inboundSchema.optional(),
   applicationId: z.string().optional(),
+  agentId: z.string().optional(),
   stream: z.boolean().optional(),
 });
 
@@ -94,6 +99,7 @@ export type ChatRequest$Outbound = {
   timeoutMillis?: number | undefined;
   sessionInfo?: SessionInfo$Outbound | undefined;
   applicationId?: string | undefined;
+  agentId?: string | undefined;
   stream?: boolean | undefined;
 };
 
@@ -112,6 +118,7 @@ export const ChatRequest$outboundSchema: z.ZodType<
   timeoutMillis: z.number().int().optional(),
   sessionInfo: SessionInfo$outboundSchema.optional(),
   applicationId: z.string().optional(),
+  agentId: z.string().optional(),
   stream: z.boolean().optional(),
 });
 
