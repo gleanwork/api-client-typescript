@@ -219,21 +219,24 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 														Items: []components.CollectionItem{
 															components.CollectionItem{
 																CollectionID: 60868,
-																Shortcut: &components.Shortcut{
-																	InputAlias: "<value>",
-																	Roles: []components.UserRoleSpecification{
-																		components.UserRoleSpecification{
-																			Role: components.UserRoleVerifier,
-																		},
-																	},
-																},
-																ItemType: components.CollectionItemItemTypeURL,
+																ItemType:     components.CollectionItemItemTypeText,
+															},
+														},
+														Roles: []components.UserRoleSpecification{
+															components.UserRoleSpecification{
+																Role: components.UserRoleViewer,
+															},
+															components.UserRoleSpecification{
+																Role: components.UserRoleViewer,
+															},
+															components.UserRoleSpecification{
+																Role: components.UserRoleOwner,
 															},
 														},
 													},
 													components.Collection{
 														Name:        "<value>",
-														Description: "phew reschedule hammock ick absent",
+														Description: "via during someplace woot excepting gah only despite",
 														AudienceFilters: []components.FacetFilter{
 															components.FacetFilter{
 																FieldName: types.String("type"),
@@ -249,22 +252,29 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 																},
 															},
 														},
-														ID: 625217,
+														ID: 933854,
 													},
 												},
 												Interactions: &components.DocumentInteractions{
 													Reacts: []components.Reaction{
 														components.Reaction{},
 														components.Reaction{},
+														components.Reaction{},
 													},
 													Shares: []components.Share{
 														components.Share{
-															NumDaysAgo: 207451,
+															NumDaysAgo: 500063,
+														},
+														components.Share{
+															NumDaysAgo: 206163,
+														},
+														components.Share{
+															NumDaysAgo: 310383,
 														},
 													},
 												},
 												Verification: &components.Verification{
-													State: components.StateUnverified,
+													State: components.StateDeprecated,
 													Metadata: &components.VerificationMetadata{
 														Reminders: []components.Reminder{
 															components.Reminder{
@@ -272,7 +282,14 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 																	Name:         "George Clooney",
 																	ObfuscatedID: "abc123",
 																},
-																RemindAt: 673953,
+																RemindAt: 838038,
+															},
+															components.Reminder{
+																Assignee: components.Person{
+																	Name:         "George Clooney",
+																	ObfuscatedID: "abc123",
+																},
+																RemindAt: 517221,
 															},
 														},
 														LastReminder: &components.Reminder{
@@ -280,16 +297,8 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 																Name:         "George Clooney",
 																ObfuscatedID: "abc123",
 															},
-															RemindAt: 838896,
+															RemindAt: 774578,
 														},
-													},
-												},
-												Shortcuts: []components.Shortcut{
-													components.Shortcut{
-														InputAlias: "<value>",
-													},
-													components.Shortcut{
-														InputAlias: "<value>",
 													},
 												},
 												CustomData: map[string]components.CustomDataValue{
@@ -366,7 +375,7 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									FacetBucketSize: 487446,
+									FacetBucketSize: 213989,
 									AuthTokens: []components.AuthToken{
 										components.AuthToken{
 											AccessToken: "123abc",
@@ -393,10 +402,6 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 						PhotoURL:   types.String("https://example.com/george.jpg"),
 						StartDate:  types.MustNewDateFromString("2000-01-23"),
 						DatasourceProfile: []components.DatasourceProfile{
-							components.DatasourceProfile{
-								Datasource: "github",
-								Handle:     "<value>",
-							},
 							components.DatasourceProfile{
 								Datasource: "github",
 								Handle:     "<value>",
@@ -467,10 +472,6 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 								Datasource: "github",
 								Handle:     "<value>",
 							},
-							components.DatasourceProfile{
-								Datasource: "github",
-								Handle:     "<value>",
-							},
 						},
 						QuerySuggestions: &components.QuerySuggestionList{},
 						InviteInfo:       &components.InviteInfo{},
@@ -561,6 +562,10 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 								Datasource: "github",
 								Handle:     "<value>",
 							},
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
 						},
 						QuerySuggestions: &components.QuerySuggestionList{},
 						InviteInfo:       &components.InviteInfo{},
@@ -617,6 +622,10 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 								Datasource: "github",
 								Handle:     "<value>",
 							},
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
 						},
 						QuerySuggestions: &components.QuerySuggestionList{},
 						InviteInfo:       &components.InviteInfo{},
@@ -647,6 +656,10 @@ func testListpinsListpins0(w http.ResponseWriter, req *http.Request) {
 						PhotoURL:   types.String("https://example.com/george.jpg"),
 						StartDate:  types.MustNewDateFromString("2000-01-23"),
 						DatasourceProfile: []components.DatasourceProfile{
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
 							components.DatasourceProfile{
 								Datasource: "github",
 								Handle:     "<value>",

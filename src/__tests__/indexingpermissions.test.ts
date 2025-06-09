@@ -6,7 +6,7 @@ import { test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Permissions Post /Api/index/v1 /Updatepermissions", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Updatepermissions", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/updatepermissions",
   );
@@ -23,7 +23,7 @@ test("Permissions Post /Api/index/v1 /Updatepermissions", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Indexuser", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Indexuser", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/indexuser");
 
   const glean = new Glean({
@@ -41,7 +41,7 @@ test("Permissions Post /Api/index/v1 /Indexuser", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Bulkindexusers", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Bulkindexusers", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/bulkindexusers",
   );
@@ -72,7 +72,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexusers", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Indexgroup", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Indexgroup", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/indexgroup");
 
   const glean = new Glean({
@@ -89,7 +89,7 @@ test("Permissions Post /Api/index/v1 /Indexgroup", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Bulkindexgroups", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Bulkindexgroups", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/bulkindexgroups",
   );
@@ -114,7 +114,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexgroups", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Indexmembership", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Indexmembership", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/indexmembership",
   );
@@ -133,7 +133,7 @@ test("Permissions Post /Api/index/v1 /Indexmembership", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Bulkindexmemberships", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Bulkindexmemberships", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/bulkindexmemberships",
   );
@@ -155,7 +155,7 @@ test("Permissions Post /Api/index/v1 /Bulkindexmemberships", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Processallmemberships", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Processallmemberships", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/processallmemberships",
   );
@@ -169,7 +169,7 @@ test("Permissions Post /Api/index/v1 /Processallmemberships", async () => {
   await glean.indexing.permissions.processMemberships();
 });
 
-test("Permissions Post /Api/index/v1 /Deleteuser", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Deleteuser", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/deleteuser");
 
   const glean = new Glean({
@@ -184,7 +184,7 @@ test("Permissions Post /Api/index/v1 /Deleteuser", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Deletegroup", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Deletegroup", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/deletegroup");
 
   const glean = new Glean({
@@ -199,7 +199,7 @@ test("Permissions Post /Api/index/v1 /Deletegroup", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Deletemembership", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Deletemembership", async () => {
   const testHttpClient = createTestHTTPClient(
     "post_/api/index/v1/deletemembership",
   );
@@ -218,7 +218,7 @@ test("Permissions Post /Api/index/v1 /Deletemembership", async () => {
   });
 });
 
-test("Permissions Post /Api/index/v1 /Betausers", async () => {
+test("Indexing Permissions Post /Api/index/v1 /Betausers", async () => {
   const testHttpClient = createTestHTTPClient("post_/api/index/v1/betausers");
 
   const glean = new Glean({

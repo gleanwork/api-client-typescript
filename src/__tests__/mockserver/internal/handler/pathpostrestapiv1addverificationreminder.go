@@ -213,28 +213,22 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 													Items: []components.CollectionItem{
 														components.CollectionItem{
 															CollectionID: 744290,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-																Roles: []components.UserRoleSpecification{
-																	components.UserRoleSpecification{
-																		Role: components.UserRoleVerifier,
-																	},
-																	components.UserRoleSpecification{
-																		Role: components.UserRoleEditor,
-																	},
-																	components.UserRoleSpecification{
-																		Role: components.UserRoleEditor,
-																	},
-																},
-															},
-															ItemType: components.CollectionItemItemTypeCollection,
+															ItemType:     components.CollectionItemItemTypeCollection,
 														},
 														components.CollectionItem{
-															CollectionID: 159230,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-															},
-															ItemType: components.CollectionItemItemTypeCollection,
+															CollectionID: 857658,
+															ItemType:     components.CollectionItemItemTypeCollection,
+														},
+													},
+													Roles: []components.UserRoleSpecification{
+														components.UserRoleSpecification{
+															Role: components.UserRoleOwner,
+														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleVerifier,
+														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleOwner,
 														},
 													},
 												},
@@ -269,14 +263,6 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 													components.Share{
 														NumDaysAgo: 991839,
 													},
-												},
-											},
-											Shortcuts: []components.Shortcut{
-												components.Shortcut{
-													InputAlias: "<value>",
-												},
-												components.Shortcut{
-													InputAlias: "<value>",
 												},
 											},
 											CustomData: map[string]components.CustomDataValue{
@@ -319,10 +305,6 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 							Datasource: "github",
 							Handle:     "<value>",
 						},
-						components.DatasourceProfile{
-							Datasource: "github",
-							Handle:     "<value>",
-						},
 					},
 					QuerySuggestions: &components.QuerySuggestionList{
 						Suggestions: []components.QuerySuggestion{
@@ -341,8 +323,15 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 					},
 					CustomFields: []components.CustomFieldData{
 						components.CustomFieldData{
-							Label:       "<value>",
-							Values:      []components.CustomFieldValue{},
+							Label: "<value>",
+							Values: []components.CustomFieldValue{
+								components.CreateCustomFieldValueCustomFieldValueStr(
+									components.CustomFieldValueStr{},
+								),
+								components.CreateCustomFieldValueCustomFieldValueStr(
+									components.CustomFieldValueStr{},
+								),
+							},
 							Displayable: types.Bool(true),
 						},
 						components.CustomFieldData{
@@ -388,6 +377,10 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 							PhotoURL:   types.String("https://example.com/george.jpg"),
 							StartDate:  types.MustNewDateFromString("2000-01-23"),
 							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 								components.DatasourceProfile{
 									Datasource: "github",
 									Handle:     "<value>",
@@ -481,10 +474,6 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 									Datasource: "github",
 									Handle:     "<value>",
 								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{},
 							InviteInfo:       &components.InviteInfo{},
@@ -515,6 +504,10 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 							PhotoURL:   types.String("https://example.com/george.jpg"),
 							StartDate:  types.MustNewDateFromString("2000-01-23"),
 							DatasourceProfile: []components.DatasourceProfile{
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 								components.DatasourceProfile{
 									Datasource: "github",
 									Handle:     "<value>",
@@ -561,14 +554,6 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 									Datasource: "github",
 									Handle:     "<value>",
 								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{},
 							InviteInfo:       &components.InviteInfo{},
@@ -607,6 +592,10 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 									Datasource: "github",
 									Handle:     "<value>",
 								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{},
 							InviteInfo:       &components.InviteInfo{},
@@ -641,10 +630,6 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 									Datasource: "github",
 									Handle:     "<value>",
 								},
-								components.DatasourceProfile{
-									Datasource: "github",
-									Handle:     "<value>",
-								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{},
 							InviteInfo:       &components.InviteInfo{},
@@ -662,7 +647,7 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 							},
 						},
 					},
-					RemindAt: 66262,
+					RemindAt: 431849,
 				},
 			},
 			LastReminder: &components.Reminder{
@@ -679,6 +664,10 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 						PhotoURL:   types.String("https://example.com/george.jpg"),
 						StartDate:  types.MustNewDateFromString("2000-01-23"),
 						DatasourceProfile: []components.DatasourceProfile{
+							components.DatasourceProfile{
+								Datasource: "github",
+								Handle:     "<value>",
+							},
 							components.DatasourceProfile{
 								Datasource: "github",
 								Handle:     "<value>",
@@ -746,7 +735,7 @@ func testAddverificationreminderAddverificationreminder0(w http.ResponseWriter, 
 						},
 					},
 				},
-				RemindAt: 865163,
+				RemindAt: 121811,
 			},
 			CandidateVerifiers: []components.Person{
 				components.Person{

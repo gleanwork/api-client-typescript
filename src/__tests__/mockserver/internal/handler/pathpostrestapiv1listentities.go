@@ -220,29 +220,26 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 																Items: []components.CollectionItem{
 																	components.CollectionItem{
 																		CollectionID: 747562,
-																		Shortcut: &components.Shortcut{
-																			InputAlias: "<value>",
-																			Roles: []components.UserRoleSpecification{
-																				components.UserRoleSpecification{
-																					Role: components.UserRoleViewer,
-																				},
-																			},
-																		},
-																		ItemType: components.CollectionItemItemTypeDocument,
+																		ItemType:     components.CollectionItemItemTypeText,
+																	},
+																	components.CollectionItem{
+																		CollectionID: 324206,
+																		ItemType:     components.CollectionItemItemTypeDocument,
 																	},
 																	components.CollectionItem{
 																		CollectionID: 678179,
-																		Shortcut: &components.Shortcut{
-																			InputAlias: "<value>",
-																		},
-																		ItemType: components.CollectionItemItemTypeText,
+																		ItemType:     components.CollectionItemItemTypeText,
 																	},
-																	components.CollectionItem{
-																		CollectionID: 5229,
-																		Shortcut: &components.Shortcut{
-																			InputAlias: "<value>",
-																		},
-																		ItemType: components.CollectionItemItemTypeCollection,
+																},
+																Roles: []components.UserRoleSpecification{
+																	components.UserRoleSpecification{
+																		Role: components.UserRoleVerifier,
+																	},
+																	components.UserRoleSpecification{
+																		Role: components.UserRoleEditor,
+																	},
+																	components.UserRoleSpecification{
+																		Role: components.UserRoleAnswerModerator,
 																	},
 																},
 															},
@@ -255,15 +252,18 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 															},
 															Shares: []components.Share{
 																components.Share{
-																	NumDaysAgo: 948614,
+																	NumDaysAgo: 20615,
 																},
 																components.Share{
-																	NumDaysAgo: 900109,
+																	NumDaysAgo: 467775,
+																},
+																components.Share{
+																	NumDaysAgo: 993677,
 																},
 															},
 														},
 														Verification: &components.Verification{
-															State: components.StateUnverified,
+															State: components.StateDeprecated,
 															Metadata: &components.VerificationMetadata{
 																Reminders: []components.Reminder{
 																	components.Reminder{
@@ -271,14 +271,21 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 																			Name:         "George Clooney",
 																			ObfuscatedID: "abc123",
 																		},
-																		RemindAt: 993677,
+																		RemindAt: 406555,
 																	},
 																	components.Reminder{
 																		Assignee: components.Person{
 																			Name:         "George Clooney",
 																			ObfuscatedID: "abc123",
 																		},
-																		RemindAt: 726700,
+																		RemindAt: 29267,
+																	},
+																	components.Reminder{
+																		Assignee: components.Person{
+																			Name:         "George Clooney",
+																			ObfuscatedID: "abc123",
+																		},
+																		RemindAt: 652326,
 																	},
 																},
 																LastReminder: &components.Reminder{
@@ -286,16 +293,8 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 																		Name:         "George Clooney",
 																		ObfuscatedID: "abc123",
 																	},
-																	RemindAt: 767950,
+																	RemindAt: 688784,
 																},
-															},
-														},
-														Shortcuts: []components.Shortcut{
-															components.Shortcut{
-																InputAlias: "<value>",
-															},
-															components.Shortcut{
-																InputAlias: "<value>",
 															},
 														},
 														CustomData: map[string]components.CustomDataValue{
@@ -389,7 +388,7 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 													},
 												},
 											},
-											FacetBucketSize: 688784,
+											FacetBucketSize: 41398,
 											AuthTokens: []components.AuthToken{
 												components.AuthToken{
 													AccessToken: "123abc",
@@ -470,8 +469,25 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
+												components.FacetFilterSet{
+													Filters: []components.FacetFilter{
+														components.FacetFilter{
+															FieldName: types.String("type"),
+															Values: []components.FacetFilterValue{
+																components.FacetFilterValue{
+																	Value:        types.String("Spreadsheet"),
+																	RelationType: components.RelationTypeEquals.ToPointer(),
+																},
+																components.FacetFilterValue{
+																	Value:        types.String("Presentation"),
+																	RelationType: components.RelationTypeEquals.ToPointer(),
+																},
+															},
+														},
+													},
+												},
 											},
-											FacetBucketSize: 408066,
+											FacetBucketSize: 329360,
 											AuthTokens: []components.AuthToken{
 												components.AuthToken{
 													AccessToken: "123abc",
@@ -502,6 +518,10 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 										Datasource: "github",
 										Handle:     "<value>",
 									},
+									components.DatasourceProfile{
+										Datasource: "github",
+										Handle:     "<value>",
+									},
 								},
 								QuerySuggestions: &components.QuerySuggestionList{
 									Suggestions: []components.QuerySuggestion{
@@ -515,14 +535,18 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 								InviteInfo: &components.InviteInfo{
 									Invites: []components.ChannelInviteInfo{
 										components.ChannelInviteInfo{},
-										components.ChannelInviteInfo{},
-										components.ChannelInviteInfo{},
 									},
 								},
 								CustomFields: []components.CustomFieldData{
 									components.CustomFieldData{
 										Label: "<value>",
 										Values: []components.CustomFieldValue{
+											components.CreateCustomFieldValueCustomFieldValueStr(
+												components.CustomFieldValueStr{},
+											),
+											components.CreateCustomFieldValueCustomFieldValueStr(
+												components.CustomFieldValueStr{},
+											),
 											components.CreateCustomFieldValueCustomFieldValueStr(
 												components.CustomFieldValueStr{},
 											),
@@ -564,6 +588,10 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 										Datasource: "github",
 										Handle:     "<value>",
 									},
+									components.DatasourceProfile{
+										Datasource: "github",
+										Handle:     "<value>",
+									},
 								},
 								QuerySuggestions: &components.QuerySuggestionList{},
 								InviteInfo:       &components.InviteInfo{},
@@ -589,14 +617,6 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 						Datasource: "github",
 						Handle:     "<value>",
 					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 				},
 				Status:       components.TeamStatusProcessed.ToPointer(),
 				CanBeDeleted: types.Bool(true),
@@ -625,10 +645,6 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 				ID:   "<id>",
 				Name: "<value>",
 				DatasourceProfiles: []components.DatasourceProfile{
-					components.DatasourceProfile{
-						Datasource: "github",
-						Handle:     "<value>",
-					},
 					components.DatasourceProfile{
 						Datasource: "github",
 						Handle:     "<value>",
@@ -671,38 +687,6 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 				SourceName:   types.String("container_name"),
 				OperatorName: types.String("SelectMultiple"),
 				Buckets: []components.FacetBucket{
-					components.FacetBucket{
-						Count:      types.Int64(1),
-						Datasource: types.String("jira"),
-						Percentage: types.Int64(5),
-						Value: &components.FacetValue{
-							StringValue:  types.String("engineering"),
-							IntegerValue: types.Int64(5),
-							DisplayLabel: types.String("engineering"),
-							IconConfig: &components.IconConfig{
-								Color:    types.String("#343CED"),
-								Key:      types.String("person_icon"),
-								IconType: components.IconTypeGlyph.ToPointer(),
-								Name:     types.String("user"),
-							},
-						},
-					},
-					components.FacetBucket{
-						Count:      types.Int64(1),
-						Datasource: types.String("jira"),
-						Percentage: types.Int64(5),
-						Value: &components.FacetValue{
-							StringValue:  types.String("engineering"),
-							IntegerValue: types.Int64(5),
-							DisplayLabel: types.String("engineering"),
-							IconConfig: &components.IconConfig{
-								Color:    types.String("#343CED"),
-								Key:      types.String("person_icon"),
-								IconType: components.IconTypeGlyph.ToPointer(),
-								Name:     types.String("user"),
-							},
-						},
-					},
 					components.FacetBucket{
 						Count:      types.Int64(1),
 						Datasource: types.String("jira"),

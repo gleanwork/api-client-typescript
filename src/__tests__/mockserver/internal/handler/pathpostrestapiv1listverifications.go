@@ -207,29 +207,26 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 															Items: []components.CollectionItem{
 																components.CollectionItem{
 																	CollectionID: 747562,
-																	Shortcut: &components.Shortcut{
-																		InputAlias: "<value>",
-																		Roles: []components.UserRoleSpecification{
-																			components.UserRoleSpecification{
-																				Role: components.UserRoleViewer,
-																			},
-																		},
-																	},
-																	ItemType: components.CollectionItemItemTypeDocument,
+																	ItemType:     components.CollectionItemItemTypeText,
+																},
+																components.CollectionItem{
+																	CollectionID: 324206,
+																	ItemType:     components.CollectionItemItemTypeDocument,
 																},
 																components.CollectionItem{
 																	CollectionID: 678179,
-																	Shortcut: &components.Shortcut{
-																		InputAlias: "<value>",
-																	},
-																	ItemType: components.CollectionItemItemTypeText,
+																	ItemType:     components.CollectionItemItemTypeText,
 																},
-																components.CollectionItem{
-																	CollectionID: 5229,
-																	Shortcut: &components.Shortcut{
-																		InputAlias: "<value>",
-																	},
-																	ItemType: components.CollectionItemItemTypeCollection,
+															},
+															Roles: []components.UserRoleSpecification{
+																components.UserRoleSpecification{
+																	Role: components.UserRoleVerifier,
+																},
+																components.UserRoleSpecification{
+																	Role: components.UserRoleEditor,
+																},
+																components.UserRoleSpecification{
+																	Role: components.UserRoleAnswerModerator,
 																},
 															},
 														},
@@ -242,16 +239,14 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 														},
 														Shares: []components.Share{
 															components.Share{
-																NumDaysAgo: 948614,
+																NumDaysAgo: 20615,
 															},
 															components.Share{
-																NumDaysAgo: 900109,
+																NumDaysAgo: 467775,
 															},
-														},
-													},
-													Shortcuts: []components.Shortcut{
-														components.Shortcut{
-															InputAlias: "<value>",
+															components.Share{
+																NumDaysAgo: 993677,
+															},
 														},
 													},
 													CustomData: map[string]components.CustomDataValue{
@@ -362,7 +357,7 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 												},
 											},
 										},
-										FacetBucketSize: 726700,
+										FacetBucketSize: 406555,
 										AuthTokens: []components.AuthToken{
 											components.AuthToken{
 												AccessToken: "123abc",
@@ -426,42 +421,8 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 													},
 												},
 											},
-											components.FacetFilterSet{
-												Filters: []components.FacetFilter{
-													components.FacetFilter{
-														FieldName: types.String("type"),
-														Values: []components.FacetFilterValue{
-															components.FacetFilterValue{
-																Value:        types.String("Spreadsheet"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-															components.FacetFilterValue{
-																Value:        types.String("Presentation"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-														},
-													},
-												},
-											},
-											components.FacetFilterSet{
-												Filters: []components.FacetFilter{
-													components.FacetFilter{
-														FieldName: types.String("type"),
-														Values: []components.FacetFilterValue{
-															components.FacetFilterValue{
-																Value:        types.String("Spreadsheet"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-															components.FacetFilterValue{
-																Value:        types.String("Presentation"),
-																RelationType: components.RelationTypeEquals.ToPointer(),
-															},
-														},
-													},
-												},
-											},
 										},
-										FacetBucketSize: 406555,
+										FacetBucketSize: 652326,
 										AuthTokens: []components.AuthToken{
 											components.AuthToken{
 												AccessToken: "123abc",
@@ -492,6 +453,14 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 									Datasource: "github",
 									Handle:     "<value>",
 								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
+								components.DatasourceProfile{
+									Datasource: "github",
+									Handle:     "<value>",
+								},
 							},
 							QuerySuggestions: &components.QuerySuggestionList{
 								Suggestions: []components.QuerySuggestion{
@@ -509,18 +478,6 @@ func testListverificationsListverifications0(w http.ResponseWriter, req *http.Re
 								},
 							},
 							CustomFields: []components.CustomFieldData{
-								components.CustomFieldData{
-									Label: "<value>",
-									Values: []components.CustomFieldValue{
-										components.CreateCustomFieldValueCustomFieldValueStr(
-											components.CustomFieldValueStr{},
-										),
-										components.CreateCustomFieldValueCustomFieldValueStr(
-											components.CustomFieldValueStr{},
-										),
-									},
-									Displayable: types.Bool(true),
-								},
 								components.CustomFieldData{
 									Label:       "<value>",
 									Values:      []components.CustomFieldValue{},

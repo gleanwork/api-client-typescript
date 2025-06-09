@@ -138,25 +138,8 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 											},
 										},
 									},
-									components.FacetFilterSet{
-										Filters: []components.FacetFilter{
-											components.FacetFilter{
-												FieldName: types.String("type"),
-												Values: []components.FacetFilterValue{
-													components.FacetFilterValue{
-														Value:        types.String("Spreadsheet"),
-														RelationType: components.RelationTypeEquals.ToPointer(),
-													},
-													components.FacetFilterValue{
-														Value:        types.String("Presentation"),
-														RelationType: components.RelationTypeEquals.ToPointer(),
-													},
-												},
-											},
-										},
-									},
 								},
-								FacetBucketSize: 312993,
+								FacetBucketSize: 544221,
 								AuthTokens: []components.AuthToken{
 									components.AuthToken{
 										AccessToken: "123abc",
@@ -169,7 +152,7 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 							},
 							Ranges: []components.TextRange{
 								components.TextRange{
-									StartIndex: 90915,
+									StartIndex: 969961,
 									Document: &components.Document{
 										Metadata: &components.DocumentMetadata{
 											Datasource: types.String("datasource"),
@@ -188,22 +171,25 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 											Collections: []components.Collection{
 												components.Collection{
 													Name:        "<value>",
-													Description: "blissfully ouch pleasing serpentine",
+													Description: "extract neaten qua meanwhile bah",
 													AddedRoles: []components.UserRoleSpecification{
 														components.UserRoleSpecification{
-															Role: components.UserRoleVerifier,
+															Role: components.UserRoleViewer,
 														},
 														components.UserRoleSpecification{
-															Role: components.UserRoleOwner,
-														},
-														components.UserRoleSpecification{
-															Role: components.UserRoleOwner,
+															Role: components.UserRoleEditor,
 														},
 													},
 													RemovedRoles: []components.UserRoleSpecification{
 														components.UserRoleSpecification{
 															Role: components.UserRoleAnswerModerator,
 														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleViewer,
+														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleOwner,
+														},
 													},
 													AudienceFilters: []components.FacetFilter{
 														components.FacetFilter{
@@ -220,42 +206,32 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 															},
 														},
 													},
-													ID: 940805,
+													ID: 808481,
 													Items: []components.CollectionItem{
 														components.CollectionItem{
-															CollectionID: 302419,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-																Roles: []components.UserRoleSpecification{
-																	components.UserRoleSpecification{
-																		Role: components.UserRoleOwner,
-																	},
-																	components.UserRoleSpecification{
-																		Role: components.UserRoleAnswerModerator,
-																	},
-																},
-															},
-															ItemType: components.CollectionItemItemTypeText,
+															CollectionID: 656841,
+															ItemType:     components.CollectionItemItemTypeURL,
 														},
 														components.CollectionItem{
-															CollectionID: 536183,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-															},
-															ItemType: components.CollectionItemItemTypeCollection,
+															CollectionID: 607679,
+															ItemType:     components.CollectionItemItemTypeCollection,
 														},
-														components.CollectionItem{
-															CollectionID: 33481,
-															Shortcut: &components.Shortcut{
-																InputAlias: "<value>",
-															},
-															ItemType: components.CollectionItemItemTypeCollection,
+													},
+													Roles: []components.UserRoleSpecification{
+														components.UserRoleSpecification{
+															Role: components.UserRoleAnswerModerator,
+														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleOwner,
+														},
+														components.UserRoleSpecification{
+															Role: components.UserRoleEditor,
 														},
 													},
 												},
 												components.Collection{
 													Name:        "<value>",
-													Description: "dead beautifully redraw actually daintily eek contrail continually gazebo cycle",
+													Description: "once out effector determined backburn weary",
 													AudienceFilters: []components.FacetFilter{
 														components.FacetFilter{
 															FieldName: types.String("type"),
@@ -271,39 +247,24 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 															},
 														},
 													},
-													ID: 642941,
-												},
-												components.Collection{
-													Name:        "<value>",
-													Description: "developmental wisely whenever oxidize singe regarding tensely",
-													AudienceFilters: []components.FacetFilter{
-														components.FacetFilter{
-															FieldName: types.String("type"),
-															Values: []components.FacetFilterValue{
-																components.FacetFilterValue{
-																	Value:        types.String("Spreadsheet"),
-																	RelationType: components.RelationTypeEquals.ToPointer(),
-																},
-																components.FacetFilterValue{
-																	Value:        types.String("Presentation"),
-																	RelationType: components.RelationTypeEquals.ToPointer(),
-																},
-															},
-														},
-													},
-													ID: 582018,
+													ID: 547184,
 												},
 											},
 											Interactions: &components.DocumentInteractions{
 												Reacts: []components.Reaction{
 													components.Reaction{},
+													components.Reaction{},
+													components.Reaction{},
 												},
 												Shares: []components.Share{
 													components.Share{
-														NumDaysAgo: 830299,
+														NumDaysAgo: 31446,
 													},
 													components.Share{
-														NumDaysAgo: 598119,
+														NumDaysAgo: 339847,
+													},
+													components.Share{
+														NumDaysAgo: 844917,
 													},
 												},
 											},
@@ -316,21 +277,14 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 																Name:         "George Clooney",
 																ObfuscatedID: "abc123",
 															},
-															RemindAt: 441911,
+															RemindAt: 845806,
 														},
 														components.Reminder{
 															Assignee: components.Person{
 																Name:         "George Clooney",
 																ObfuscatedID: "abc123",
 															},
-															RemindAt: 983389,
-														},
-														components.Reminder{
-															Assignee: components.Person{
-																Name:         "George Clooney",
-																ObfuscatedID: "abc123",
-															},
-															RemindAt: 411447,
+															RemindAt: 350813,
 														},
 													},
 													LastReminder: &components.Reminder{
@@ -338,19 +292,44 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 															Name:         "George Clooney",
 															ObfuscatedID: "abc123",
 														},
-														RemindAt: 482869,
+														RemindAt: 534384,
 													},
 												},
 											},
-											Shortcuts: []components.Shortcut{
-												components.Shortcut{
-													InputAlias: "<value>",
-												},
-												components.Shortcut{
-													InputAlias: "<value>",
-												},
-												components.Shortcut{
-													InputAlias: "<value>",
+											CustomData: map[string]components.CustomDataValue{
+												"someCustomField": components.CustomDataValue{},
+											},
+										},
+									},
+								},
+								components.TextRange{
+									StartIndex: 913207,
+									Document: &components.Document{
+										Metadata: &components.DocumentMetadata{
+											Datasource: types.String("datasource"),
+											ObjectType: types.String("Feature Request"),
+											Container:  types.String("container"),
+											ParentID:   types.String("JIRA_EN-1337"),
+											MimeType:   types.String("mimeType"),
+											DocumentID: types.String("documentId"),
+											CreateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											UpdateTime: types.MustNewTimeFromString("2000-01-23T04:56:07.000Z"),
+											Components: []string{
+												"Backend",
+												"Networking",
+											},
+											Status:       types.String("[\"Done\"]"),
+											Interactions: &components.DocumentInteractions{},
+											Verification: &components.Verification{
+												State: components.StateUnverified,
+												Metadata: &components.VerificationMetadata{
+													LastReminder: &components.Reminder{
+														Assignee: components.Person{
+															Name:         "George Clooney",
+															ObfuscatedID: "abc123",
+														},
+														RemindAt: 533795,
+													},
 												},
 											},
 											CustomData: map[string]components.CustomDataValue{
@@ -427,7 +406,89 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 										},
 									},
 								},
-								FacetBucketSize: 792696,
+								FacetBucketSize: 949290,
+								AuthTokens: []components.AuthToken{
+									components.AuthToken{
+										AccessToken: "123abc",
+										Datasource:  "gmail",
+										Scope:       types.String("email profile https://www.googleapis.com/auth/gmail.readonly"),
+										TokenType:   types.String("Bearer"),
+										AuthUser:    types.String("1"),
+									},
+								},
+							},
+							InputDetails: &components.SearchRequestInputDetails{
+								HasCopyPaste: types.Bool(true),
+							},
+						},
+					},
+					components.RelatedDocuments{
+						QuerySuggestion: &components.QuerySuggestion{
+							Query: "app:github type:pull author:mortimer",
+							SearchProviderInfo: &components.SearchProviderInfo{
+								Name:                  types.String("Google"),
+								SearchLinkURLTemplate: types.String("https://www.google.com/search?q={query}&hl=en"),
+							},
+							Label:      types.String("Mortimer's PRs"),
+							Datasource: types.String("github"),
+							RequestOptions: &components.SearchRequestOptions{
+								DatasourceFilter: types.String("JIRA"),
+								DatasourcesFilter: []string{
+									"JIRA",
+								},
+								QueryOverridesFacetFilters: types.Bool(true),
+								FacetFilters: []components.FacetFilter{
+									components.FacetFilter{
+										FieldName: types.String("type"),
+										Values: []components.FacetFilterValue{
+											components.FacetFilterValue{
+												Value:        types.String("Spreadsheet"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+											components.FacetFilterValue{
+												Value:        types.String("Presentation"),
+												RelationType: components.RelationTypeEquals.ToPointer(),
+											},
+										},
+									},
+								},
+								FacetFilterSets: []components.FacetFilterSet{
+									components.FacetFilterSet{
+										Filters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+									},
+									components.FacetFilterSet{
+										Filters: []components.FacetFilter{
+											components.FacetFilter{
+												FieldName: types.String("type"),
+												Values: []components.FacetFilterValue{
+													components.FacetFilterValue{
+														Value:        types.String("Spreadsheet"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+													components.FacetFilterValue{
+														Value:        types.String("Presentation"),
+														RelationType: components.RelationTypeEquals.ToPointer(),
+													},
+												},
+											},
+										},
+									},
+								},
+								FacetBucketSize: 716267,
 								AuthTokens: []components.AuthToken{
 									components.AuthToken{
 										AccessToken: "123abc",
@@ -471,6 +532,8 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 					InviteInfo: &components.InviteInfo{
 						Invites: []components.ChannelInviteInfo{
 							components.ChannelInviteInfo{},
+							components.ChannelInviteInfo{},
+							components.ChannelInviteInfo{},
 						},
 					},
 					CustomFields: []components.CustomFieldData{
@@ -480,12 +543,10 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 								components.CreateCustomFieldValueCustomFieldValueStr(
 									components.CustomFieldValueStr{},
 								),
+								components.CreateCustomFieldValueCustomFieldValueStr(
+									components.CustomFieldValueStr{},
+								),
 							},
-							Displayable: types.Bool(true),
-						},
-						components.CustomFieldData{
-							Label:       "<value>",
-							Values:      []components.CustomFieldValue{},
 							Displayable: types.Bool(true),
 						},
 						components.CustomFieldData{

@@ -6,8 +6,8 @@ import { expect, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Insights Insights", async () => {
-  const testHttpClient = createTestHTTPClient("insights");
+test("Summarize Summarize", async () => {
+  const testHttpClient = createTestHTTPClient("summarize");
 
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -15,10 +15,10 @@ test("Insights Insights", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.client.insights.retrieve({
-    categories: [
-      "CONTENT",
-      "CONTENT",
+  const result = await glean.client.documents.summarize({
+    documentSpecs: [
+      {},
+      {},
     ],
   });
   expect(result).toBeDefined();
