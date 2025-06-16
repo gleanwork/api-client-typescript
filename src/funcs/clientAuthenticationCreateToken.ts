@@ -25,7 +25,11 @@ import { Result } from "../types/fp.js";
  * Create authentication token
  *
  * @remarks
- * Creates an authentication token for the authenticated user.
+ * Creates an authentication token for the authenticated user. These are
+ * specifically intended to be used with the [Web SDK](https://developers.glean.com/web).
+ *
+ * Note: The tokens generated from this endpoint are **not** valid tokens
+ * for use with the Client API (e.g. `/rest/api/v1/*`).
  */
 export function clientAuthenticationCreateToken(
   client: GleanCore,
