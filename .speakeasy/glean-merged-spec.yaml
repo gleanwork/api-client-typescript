@@ -351,7 +351,12 @@ paths:
             tags:
                 - Authentication
             summary: Create authentication token
-            description: Creates an authentication token for the authenticated user.
+            description: |
+                Creates an authentication token for the authenticated user. These are
+                specifically intended to be used with the [Web SDK](https://developers.glean.com/web).
+
+                Note: The tokens generated from this endpoint are **not** valid tokens
+                for use with the Client API (e.g. `/rest/api/v1/*`).
             operationId: createauthtoken
             x-visibility: Public
             parameters: []
@@ -841,7 +846,7 @@ paths:
             tags:
                 - Agents
             summary: Search agents
-            description: "Search for [agents](https://developers.glean.com/agents/agents-api) by agent name. "
+            description: Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
             operationId: searchAgents
             x-visibility: Preview
             requestBody:
@@ -7554,6 +7559,11 @@ components:
                         $ref: "#/components/schemas/Message"
                     title: Messages
                     description: The messages to pass an input to the agent.
+                metadata:
+                    type: object
+                    title: Metadata
+                    description: The metadata to pass to the agent.
+                    additionalProperties: true
         AgentExecutionStatus:
             description: The status of the run. One of 'error', 'success'.
             type: string

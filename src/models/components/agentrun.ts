@@ -36,6 +36,10 @@ export type AgentRun = {
    */
   messages?: Array<Message> | undefined;
   /**
+   * The metadata to pass to the agent.
+   */
+  metadata?: { [k: string]: any } | undefined;
+  /**
    * The status of the run. One of 'error', 'success'.
    */
   status?: AgentExecutionStatus | undefined;
@@ -50,6 +54,7 @@ export const AgentRun$inboundSchema: z.ZodType<
   agent_id: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$inboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
   status: AgentExecutionStatus$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -62,6 +67,7 @@ export type AgentRun$Outbound = {
   agent_id: string;
   input?: { [k: string]: any } | undefined;
   messages?: Array<Message$Outbound> | undefined;
+  metadata?: { [k: string]: any } | undefined;
   status?: string | undefined;
 };
 
@@ -74,6 +80,7 @@ export const AgentRun$outboundSchema: z.ZodType<
   agentId: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$outboundSchema).optional(),
+  metadata: z.record(z.any()).optional(),
   status: AgentExecutionStatus$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
