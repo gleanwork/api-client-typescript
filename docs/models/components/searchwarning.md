@@ -6,7 +6,7 @@
 import { SearchWarning } from "@gleanwork/api-client/models/components";
 
 let value: SearchWarning = {
-  warningType: "INVALID_OPERATOR",
+  warningType: "MAYBE_INVALID_FACET_QUERY",
 };
 ```
 

@@ -322,6 +322,11 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.agents.runStream({
     agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
   });
 
   // Handle the result
@@ -348,6 +353,11 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientAgentsRunStream(glean, {
     agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
   });
 
   if (!res.ok) {
@@ -415,6 +425,11 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.agents.run({
     agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
   });
 
   // Handle the result
@@ -441,6 +456,11 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientAgentsRun(glean, {
     agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
   });
 
   if (!res.ok) {

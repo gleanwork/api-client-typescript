@@ -34,6 +34,7 @@ export const TimePeriodType = {
   PastYear: "PAST_YEAR",
   PastDay: "PAST_DAY",
   Custom: "CUSTOM",
+  LastNDays: "LAST_N_DAYS",
 } as const;
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.

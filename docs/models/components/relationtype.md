@@ -11,5 +11,5 @@ let value: RelationType = "EQUALS";
 ## Values
 
 ```typescript
-"EQUALS" | "ID_EQUALS" | "LT" | "GT"
+"EQUALS" | "ID_EQUALS" | "LT" | "GT" | "NOT_EQUALS"
 ```
