@@ -13,5 +13,5 @@ let value: Relation = "FROM";
 ## Values
 
 ```typescript
-"ATTACHMENT" | "CANONICAL" | "CASE" | "CONTACT" | "CONVERSATION_MESSAGES" | "EXPERT" | "FROM" | "HIGHLIGHT" | "OPPORTUNITY" | "RECENT" | "SOURCE" | "TICKET" | "TRANSCRIPT" | "WITH"
+"ATTACHMENT" | "CANONICAL" | "CASE" | "contact" | "CONTACT" | "CONVERSATION_MESSAGES" | "EXPERT" | "FROM" | "HIGHLIGHT" | "opportunity" | "OPPORTUNITY" | "RECENT" | "SOURCE" | "TICKET" | "TRANSCRIPT" | "WITH"
 ```

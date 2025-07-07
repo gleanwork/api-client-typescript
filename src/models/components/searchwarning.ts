@@ -18,6 +18,7 @@ export const WarningType = {
   CopypastedQuotes: "COPYPASTED_QUOTES",
   InvalidOperator: "INVALID_OPERATOR",
   MaybeInvalidFacetQuery: "MAYBE_INVALID_FACET_QUERY",
+  TooManyDatasourceGroups: "TOO_MANY_DATASOURCE_GROUPS",
 } as const;
 /**
  * The type of the warning.

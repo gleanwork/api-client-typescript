@@ -5,7 +5,21 @@
 ```typescript
 import { AgentRunWaitResponse } from "@gleanwork/api-client/models/components";
 
-let value: AgentRunWaitResponse = {};
+let value: AgentRunWaitResponse = {
+  run: {
+    agentId: "<id>",
+    messages: [
+      {
+        role: "USER",
+      },
+    ],
+  },
+  messages: [
+    {
+      role: "USER",
+    },
+  ],
+};
 ```
 
 ## Fields

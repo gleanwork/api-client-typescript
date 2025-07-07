@@ -16,6 +16,10 @@ export type TimeRange = {
    * end time of the time range, applicable for the CUSTOM type.
    */
   endTime?: Date | undefined;
+  /**
+   * The number of days to look back from the current time, applicable for the LAST_N_DAYS type.
+   */
+  lastNDaysValue?: number | undefined;
 };
 
 /** @internal */
@@ -28,12 +32,14 @@ export const TimeRange$inboundSchema: z.ZodType<
     .optional(),
   endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  lastNDaysValue: z.number().int().optional(),
 });
 
 /** @internal */
 export type TimeRange$Outbound = {
   startTime?: string | undefined;
   endTime?: string | undefined;
+  lastNDaysValue?: number | undefined;
 };
 
 /** @internal */
@@ -44,6 +50,7 @@ export const TimeRange$outboundSchema: z.ZodType<
 > = z.object({
   startTime: z.date().transform(v => v.toISOString()).optional(),
   endTime: z.date().transform(v => v.toISOString()).optional(),
+  lastNDaysValue: z.number().int().optional(),
 });
 
 /**

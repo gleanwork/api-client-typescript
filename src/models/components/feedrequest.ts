@@ -36,6 +36,7 @@ export const FeedRequestCategory = {
   DisplayableList: "DISPLAYABLE_LIST",
   SocialLink: "SOCIAL_LINK",
   ExternalTasks: "EXTERNAL_TASKS",
+  WorkflowCollections: "WORKFLOW_COLLECTIONS",
   ZeroStateChatSuggestion: "ZERO_STATE_CHAT_SUGGESTION",
   ZeroStateChatToolSuggestion: "ZERO_STATE_CHAT_TOOL_SUGGESTION",
   ZeroStateWorkflowCreatedByMe: "ZERO_STATE_WORKFLOW_CREATED_BY_ME",

@@ -9,6 +9,11 @@ import { AgentRunCreate } from "@gleanwork/api-client/models/components";
 
 let value: AgentRunCreate = {
   agentId: "<id>",
+  messages: [
+    {
+      role: "USER",
+    },
+  ],
 };
 ```
 

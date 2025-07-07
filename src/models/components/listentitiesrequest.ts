@@ -44,6 +44,18 @@ export type ListEntitiesRequestIncludeField = ClosedEnum<
   typeof ListEntitiesRequestIncludeField
 >;
 
+/**
+ * The type of request being made.
+ */
+export const RequestType = {
+  Standard: "STANDARD",
+  FullDirectory: "FULL_DIRECTORY",
+} as const;
+/**
+ * The type of request being made.
+ */
+export type RequestType = ClosedEnum<typeof RequestType>;
+
 export type ListEntitiesRequest = {
   filter?: Array<FacetFilter> | undefined;
   /**
@@ -75,6 +87,10 @@ export type ListEntitiesRequest = {
    * A string denoting the search surface from which the endpoint is called.
    */
   source?: string | undefined;
+  /**
+   * The type of request being made.
+   */
+  requestType?: RequestType | undefined;
 };
 
 /** @internal */
@@ -120,6 +136,25 @@ export namespace ListEntitiesRequestIncludeField$ {
 }
 
 /** @internal */
+export const RequestType$inboundSchema: z.ZodNativeEnum<typeof RequestType> = z
+  .nativeEnum(RequestType);
+
+/** @internal */
+export const RequestType$outboundSchema: z.ZodNativeEnum<typeof RequestType> =
+  RequestType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace RequestType$ {
+  /** @deprecated use `RequestType$inboundSchema` instead. */
+  export const inboundSchema = RequestType$inboundSchema;
+  /** @deprecated use `RequestType$outboundSchema` instead. */
+  export const outboundSchema = RequestType$outboundSchema;
+}
+
+/** @internal */
 export const ListEntitiesRequest$inboundSchema: z.ZodType<
   ListEntitiesRequest,
   z.ZodTypeDef,
@@ -135,6 +170,7 @@ export const ListEntitiesRequest$inboundSchema: z.ZodType<
   pageSize: z.number().int().optional(),
   cursor: z.string().optional(),
   source: z.string().optional(),
+  requestType: RequestType$inboundSchema.default("STANDARD"),
 });
 
 /** @internal */
@@ -148,6 +184,7 @@ export type ListEntitiesRequest$Outbound = {
   pageSize?: number | undefined;
   cursor?: string | undefined;
   source?: string | undefined;
+  requestType: string;
 };
 
 /** @internal */
@@ -166,6 +203,7 @@ export const ListEntitiesRequest$outboundSchema: z.ZodType<
   pageSize: z.number().int().optional(),
   cursor: z.string().optional(),
   source: z.string().optional(),
+  requestType: RequestType$outboundSchema.default("STANDARD"),
 });
 
 /**

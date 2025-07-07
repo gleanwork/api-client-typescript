@@ -99,7 +99,9 @@ export type Answer = {
    */
   bodyText?: string | undefined;
   /**
-   * The parent board ID of this Answer, or 0 if it's a floating Answer.
+   * The parent board ID of this Answer, or 0 if it's a floating Answer. Adding Answers to Answer Boards is no longer permitted.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   boardId?: number | undefined;
   /**

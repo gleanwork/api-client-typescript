@@ -13,6 +13,7 @@ export const RelationType = {
   IdEquals: "ID_EQUALS",
   Lt: "LT",
   Gt: "GT",
+  NotEquals: "NOT_EQUALS",
 } as const;
 export type RelationType = ClosedEnum<typeof RelationType>;
 
