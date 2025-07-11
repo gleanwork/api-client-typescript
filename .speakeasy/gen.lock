@@ -5,8 +5,8 @@ management:
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.7.1
-  configChecksum: 5f4dd64e2f42856bb8324598fc4fc945
+  releaseVersion: 0.8.1
+  configChecksum: 0bad2f357063106341602207cf43f47b
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
