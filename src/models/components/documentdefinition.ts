@@ -132,7 +132,7 @@ export type DocumentDefinition = {
    */
   comments?: Array<CommentDefinition> | undefined;
   /**
-   * Additional metadata properties of the document. These can surface as [facets and operators](https://developers.glean.com/docs/facets_and_operators_for_custom_datasources/).
+   * Additional metadata properties of the document. These can surface as [facets and operators](https://developers.glean.com/indexing/datasource/custom-properties/operators_and_facets).
    */
   customProperties?: Array<CustomProperty> | undefined;
 };

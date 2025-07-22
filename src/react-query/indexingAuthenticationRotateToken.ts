@@ -27,7 +27,7 @@ export type IndexingAuthenticationRotateTokenMutationData =
  * Rotate token
  *
  * @remarks
- * Rotates the secret value inside the Indexing API token and returns the new raw secret. All other properties of the token are unchanged. In order to rotate the secret value, include the token as the bearer token in the `/rotatetoken` request. Please refer to [Token rotation](https://developers.glean.com/docs/indexing_api_token_rotation/) documentation for more information.
+ * Rotates the secret value inside the Indexing API token and returns the new raw secret. All other properties of the token are unchanged. In order to rotate the secret value, include the token as the bearer token in the `/rotatetoken` request. Please refer to [Token rotation](https://developers.glean.com/indexing/authentication/token-rotation) documentation for more information.
  */
 export function useIndexingAuthenticationRotateTokenMutation(
   options?: MutationHookOptions<

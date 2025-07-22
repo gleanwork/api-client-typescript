@@ -30,7 +30,7 @@ export type IndexingDocumentsCountMutationData =
  * @remarks
  * Fetches document count for the specified custom datasource.
  *
- * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+ * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */

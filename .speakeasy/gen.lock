@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: bb65a174a6b697994f7bde3845843d9d
+  docChecksum: 187eb1271d8228d58d3f867fe7532643
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.8.1
-  configChecksum: 0bad2f357063106341602207cf43f47b
+  releaseVersion: 0.9.1
+  configChecksum: efec76ea16f25a22515ea96f1d881dea
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -390,6 +390,10 @@ generatedFiles:
   - docs/models/components/listshortcutspaginatedresponse.md
   - docs/models/components/manualfeedbackinfo.md
   - docs/models/components/manualfeedbackinfosource.md
+  - docs/models/components/manualfeedbackinfovote.md
+  - docs/models/components/manualfeedbacksidebysideinfo.md
+  - docs/models/components/manualfeedbacksidebysideinfosource.md
+  - docs/models/components/manualfeedbacksidebysideinfovote.md
   - docs/models/components/meeting.md
   - docs/models/components/message.md
   - docs/models/components/messagesrequest.md
@@ -456,6 +460,7 @@ generatedFiles:
   - docs/models/components/reportstatusresponsestatus.md
   - docs/models/components/requesttype.md
   - docs/models/components/responsehint.md
+  - docs/models/components/responsemetadata.md
   - docs/models/components/responsestatus.md
   - docs/models/components/restrictionfilters.md
   - docs/models/components/resultdocument.md
@@ -493,6 +498,7 @@ generatedFiles:
   - docs/models/components/shortcutinsightsresponse.md
   - docs/models/components/shortcutmutableproperties.md
   - docs/models/components/shortcutspaginationmetadata.md
+  - docs/models/components/sidebysideimplementation.md
   - docs/models/components/socialnetwork.md
   - docs/models/components/socialnetworkdefinition.md
   - docs/models/components/sortoptions.md
@@ -568,7 +574,6 @@ generatedFiles:
   - docs/models/components/verifyrequest.md
   - docs/models/components/verifyrequestaction.md
   - docs/models/components/viewerinfo.md
-  - docs/models/components/vote.md
   - docs/models/components/warningtype.md
   - docs/models/components/workflow.md
   - docs/models/components/workflowfeedbackinfo.md
@@ -1039,6 +1044,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/listshortcutspaginatedrequest.go
   - src/__tests__/mockserver/internal/sdk/models/components/listshortcutspaginatedresponse.go
   - src/__tests__/mockserver/internal/sdk/models/components/manualfeedbackinfo.go
+  - src/__tests__/mockserver/internal/sdk/models/components/manualfeedbacksidebysideinfo.go
   - src/__tests__/mockserver/internal/sdk/models/components/meeting.go
   - src/__tests__/mockserver/internal/sdk/models/components/message.go
   - src/__tests__/mockserver/internal/sdk/models/components/messagesrequest.go
@@ -1117,6 +1123,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/shortcutinsightsresponse.go
   - src/__tests__/mockserver/internal/sdk/models/components/shortcutmutableproperties.go
   - src/__tests__/mockserver/internal/sdk/models/components/shortcutspaginationmetadata.go
+  - src/__tests__/mockserver/internal/sdk/models/components/sidebysideimplementation.go
   - src/__tests__/mockserver/internal/sdk/models/components/socialnetwork.go
   - src/__tests__/mockserver/internal/sdk/models/components/socialnetworkdefinition.go
   - src/__tests__/mockserver/internal/sdk/models/components/sortoptions.go
@@ -1718,6 +1725,7 @@ generatedFiles:
   - src/models/components/listshortcutspaginatedrequest.ts
   - src/models/components/listshortcutspaginatedresponse.ts
   - src/models/components/manualfeedbackinfo.ts
+  - src/models/components/manualfeedbacksidebysideinfo.ts
   - src/models/components/meeting.ts
   - src/models/components/message.ts
   - src/models/components/messagesrequest.ts
@@ -1796,6 +1804,7 @@ generatedFiles:
   - src/models/components/shortcutinsightsresponse.ts
   - src/models/components/shortcutmutableproperties.ts
   - src/models/components/shortcutspaginationmetadata.ts
+  - src/models/components/sidebysideimplementation.ts
   - src/models/components/socialnetwork.ts
   - src/models/components/socialnetworkdefinition.ts
   - src/models/components/sortoptions.ts
