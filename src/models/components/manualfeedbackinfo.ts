@@ -63,14 +63,14 @@ export type Issue = ClosedEnum<typeof Issue>;
 /**
  * The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
  */
-export const Vote = {
+export const ManualFeedbackInfoVote = {
   Upvote: "UPVOTE",
   Downvote: "DOWNVOTE",
 } as const;
 /**
  * The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
  */
-export type Vote = ClosedEnum<typeof Vote>;
+export type ManualFeedbackInfoVote = ClosedEnum<typeof ManualFeedbackInfoVote>;
 
 export type ManualFeedbackInfo = {
   /**
@@ -130,7 +130,7 @@ export type ManualFeedbackInfo = {
   /**
    * The vote associated with the Feedback.event.MANUAL_FEEDBACK event.
    */
-  vote?: Vote | undefined;
+  vote?: ManualFeedbackInfoVote | undefined;
   /**
    * A rating associated with the user feedback. The value will be between one and the maximum given by ratingScale, inclusive.
    */
@@ -187,23 +187,24 @@ export namespace Issue$ {
 }
 
 /** @internal */
-export const Vote$inboundSchema: z.ZodNativeEnum<typeof Vote> = z.nativeEnum(
-  Vote,
-);
+export const ManualFeedbackInfoVote$inboundSchema: z.ZodNativeEnum<
+  typeof ManualFeedbackInfoVote
+> = z.nativeEnum(ManualFeedbackInfoVote);
 
 /** @internal */
-export const Vote$outboundSchema: z.ZodNativeEnum<typeof Vote> =
-  Vote$inboundSchema;
+export const ManualFeedbackInfoVote$outboundSchema: z.ZodNativeEnum<
+  typeof ManualFeedbackInfoVote
+> = ManualFeedbackInfoVote$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Vote$ {
-  /** @deprecated use `Vote$inboundSchema` instead. */
-  export const inboundSchema = Vote$inboundSchema;
-  /** @deprecated use `Vote$outboundSchema` instead. */
-  export const outboundSchema = Vote$outboundSchema;
+export namespace ManualFeedbackInfoVote$ {
+  /** @deprecated use `ManualFeedbackInfoVote$inboundSchema` instead. */
+  export const inboundSchema = ManualFeedbackInfoVote$inboundSchema;
+  /** @deprecated use `ManualFeedbackInfoVote$outboundSchema` instead. */
+  export const outboundSchema = ManualFeedbackInfoVote$outboundSchema;
 }
 
 /** @internal */
@@ -225,7 +226,7 @@ export const ManualFeedbackInfo$inboundSchema: z.ZodType<
   previousMessages: z.array(z.string()).optional(),
   chatTranscript: z.array(FeedbackChatExchange$inboundSchema).optional(),
   numQueriesFromFirstRun: z.number().int().optional(),
-  vote: Vote$inboundSchema.optional(),
+  vote: ManualFeedbackInfoVote$inboundSchema.optional(),
   rating: z.number().int().optional(),
   ratingKey: z.string().optional(),
   ratingScale: z.number().int().optional(),
@@ -271,7 +272,7 @@ export const ManualFeedbackInfo$outboundSchema: z.ZodType<
   previousMessages: z.array(z.string()).optional(),
   chatTranscript: z.array(FeedbackChatExchange$outboundSchema).optional(),
   numQueriesFromFirstRun: z.number().int().optional(),
-  vote: Vote$outboundSchema.optional(),
+  vote: ManualFeedbackInfoVote$outboundSchema.optional(),
   rating: z.number().int().optional(),
   ratingKey: z.string().optional(),
   ratingScale: z.number().int().optional(),

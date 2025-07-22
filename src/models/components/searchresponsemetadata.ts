@@ -41,6 +41,10 @@ export type SearchResponseMetadata = {
    */
   searchedQuery?: string | undefined;
   /**
+   * The query used to perform search and return results, with negated terms and facets removed.
+   */
+  searchedQueryWithoutNegation?: string | undefined;
+  /**
    * The bolded ranges within the searched query.
    */
   searchedQueryRanges?: Array<TextRange> | undefined;
@@ -81,6 +85,7 @@ export const SearchResponseMetadata$inboundSchema: z.ZodType<
 > = z.object({
   rewrittenQuery: z.string().optional(),
   searchedQuery: z.string().optional(),
+  searchedQueryWithoutNegation: z.string().optional(),
   searchedQueryRanges: z.array(TextRange$inboundSchema).optional(),
   originalQuery: z.string().optional(),
   querySuggestion: QuerySuggestion$inboundSchema.optional(),
@@ -97,6 +102,7 @@ export const SearchResponseMetadata$inboundSchema: z.ZodType<
 export type SearchResponseMetadata$Outbound = {
   rewrittenQuery?: string | undefined;
   searchedQuery?: string | undefined;
+  searchedQueryWithoutNegation?: string | undefined;
   searchedQueryRanges?: Array<TextRange$Outbound> | undefined;
   originalQuery?: string | undefined;
   querySuggestion?: QuerySuggestion$Outbound | undefined;
@@ -117,6 +123,7 @@ export const SearchResponseMetadata$outboundSchema: z.ZodType<
 > = z.object({
   rewrittenQuery: z.string().optional(),
   searchedQuery: z.string().optional(),
+  searchedQueryWithoutNegation: z.string().optional(),
   searchedQueryRanges: z.array(TextRange$outboundSchema).optional(),
   originalQuery: z.string().optional(),
   querySuggestion: QuerySuggestion$outboundSchema.optional(),

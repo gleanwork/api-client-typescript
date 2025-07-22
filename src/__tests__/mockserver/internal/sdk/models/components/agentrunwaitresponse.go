@@ -6,6 +6,8 @@ type AgentRunWaitResponse struct {
 	Run *AgentRun `json:"run,omitempty"`
 	// The messages returned by the run.
 	Messages []Message `json:"messages,omitempty"`
+	// Metadata associated with the agent response that supplements the main messages.
+	Metadata *AgentResponseMetadata `json:"metadata,omitempty"`
 }
 
 func (o *AgentRunWaitResponse) GetRun() *AgentRun {
@@ -20,4 +22,11 @@ func (o *AgentRunWaitResponse) GetMessages() []Message {
 		return nil
 	}
 	return o.Messages
+}
+
+func (o *AgentRunWaitResponse) GetMetadata() *AgentResponseMetadata {
+	if o == nil {
+		return nil
+	}
+	return o.Metadata
 }

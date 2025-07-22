@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: bb65a174a6b697994f7bde3845843d9d
+  docChecksum: f14f3228b0d3f0957d7271d0957c949f
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.8.1
-  configChecksum: 0bad2f357063106341602207cf43f47b
+  releaseVersion: 0.9.1
+  configChecksum: efec76ea16f25a22515ea96f1d881dea
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -64,6 +64,7 @@ generatedFiles:
   - docs/models/components/agentenum.md
   - docs/models/components/agentexecutionstatus.md
   - docs/models/components/agentmetadata.md
+  - docs/models/components/agentresponsemetadata.md
   - docs/models/components/agentrun.md
   - docs/models/components/agentruncreate.md
   - docs/models/components/agentrunwaitresponse.md
@@ -390,6 +391,10 @@ generatedFiles:
   - docs/models/components/listshortcutspaginatedresponse.md
   - docs/models/components/manualfeedbackinfo.md
   - docs/models/components/manualfeedbackinfosource.md
+  - docs/models/components/manualfeedbackinfovote.md
+  - docs/models/components/manualfeedbacksidebysideinfo.md
+  - docs/models/components/manualfeedbacksidebysideinfosource.md
+  - docs/models/components/manualfeedbacksidebysideinfovote.md
   - docs/models/components/meeting.md
   - docs/models/components/message.md
   - docs/models/components/messagesrequest.md
@@ -456,6 +461,7 @@ generatedFiles:
   - docs/models/components/reportstatusresponsestatus.md
   - docs/models/components/requesttype.md
   - docs/models/components/responsehint.md
+  - docs/models/components/responsemetadata.md
   - docs/models/components/responsestatus.md
   - docs/models/components/restrictionfilters.md
   - docs/models/components/resultdocument.md
@@ -493,6 +499,7 @@ generatedFiles:
   - docs/models/components/shortcutinsightsresponse.md
   - docs/models/components/shortcutmutableproperties.md
   - docs/models/components/shortcutspaginationmetadata.md
+  - docs/models/components/sidebysideimplementation.md
   - docs/models/components/socialnetwork.md
   - docs/models/components/socialnetworkdefinition.md
   - docs/models/components/sortoptions.md
@@ -568,7 +575,6 @@ generatedFiles:
   - docs/models/components/verifyrequest.md
   - docs/models/components/verifyrequestaction.md
   - docs/models/components/viewerinfo.md
-  - docs/models/components/vote.md
   - docs/models/components/warningtype.md
   - docs/models/components/workflow.md
   - docs/models/components/workflowfeedbackinfo.md
@@ -783,6 +789,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/agent.go
   - src/__tests__/mockserver/internal/sdk/models/components/agentconfig.go
   - src/__tests__/mockserver/internal/sdk/models/components/agentexecutionstatus.go
+  - src/__tests__/mockserver/internal/sdk/models/components/agentresponsemetadata.go
   - src/__tests__/mockserver/internal/sdk/models/components/agentrun.go
   - src/__tests__/mockserver/internal/sdk/models/components/agentruncreate.go
   - src/__tests__/mockserver/internal/sdk/models/components/agentrunwaitresponse.go
@@ -1039,6 +1046,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/listshortcutspaginatedrequest.go
   - src/__tests__/mockserver/internal/sdk/models/components/listshortcutspaginatedresponse.go
   - src/__tests__/mockserver/internal/sdk/models/components/manualfeedbackinfo.go
+  - src/__tests__/mockserver/internal/sdk/models/components/manualfeedbacksidebysideinfo.go
   - src/__tests__/mockserver/internal/sdk/models/components/meeting.go
   - src/__tests__/mockserver/internal/sdk/models/components/message.go
   - src/__tests__/mockserver/internal/sdk/models/components/messagesrequest.go
@@ -1117,6 +1125,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/shortcutinsightsresponse.go
   - src/__tests__/mockserver/internal/sdk/models/components/shortcutmutableproperties.go
   - src/__tests__/mockserver/internal/sdk/models/components/shortcutspaginationmetadata.go
+  - src/__tests__/mockserver/internal/sdk/models/components/sidebysideimplementation.go
   - src/__tests__/mockserver/internal/sdk/models/components/socialnetwork.go
   - src/__tests__/mockserver/internal/sdk/models/components/socialnetworkdefinition.go
   - src/__tests__/mockserver/internal/sdk/models/components/sortoptions.go
@@ -1462,6 +1471,7 @@ generatedFiles:
   - src/models/components/agent.ts
   - src/models/components/agentconfig.ts
   - src/models/components/agentexecutionstatus.ts
+  - src/models/components/agentresponsemetadata.ts
   - src/models/components/agentrun.ts
   - src/models/components/agentruncreate.ts
   - src/models/components/agentrunwaitresponse.ts
@@ -1718,6 +1728,7 @@ generatedFiles:
   - src/models/components/listshortcutspaginatedrequest.ts
   - src/models/components/listshortcutspaginatedresponse.ts
   - src/models/components/manualfeedbackinfo.ts
+  - src/models/components/manualfeedbacksidebysideinfo.ts
   - src/models/components/meeting.ts
   - src/models/components/message.ts
   - src/models/components/messagesrequest.ts
@@ -1796,6 +1807,7 @@ generatedFiles:
   - src/models/components/shortcutinsightsresponse.ts
   - src/models/components/shortcutmutableproperties.ts
   - src/models/components/shortcutspaginationmetadata.ts
+  - src/models/components/sidebysideimplementation.ts
   - src/models/components/socialnetwork.ts
   - src/models/components/socialnetworkdefinition.ts
   - src/models/components/sortoptions.ts
@@ -2256,7 +2268,7 @@ examples:
         application/json: {"agent_id": "<id>", "messages": [{"role": "USER"}]}
       responses:
         "200":
-          application/json: {"run": {"agent_id": "<id>", "messages": [{"role": "USER"}]}, "messages": [{"role": "USER"}]}
+          application/json: {"run": {"agent_id": "<id>", "messages": [{"role": "USER"}]}, "messages": [{"role": "USER"}], "metadata": {"citations": [{"sourceDocument": {"containerDocument": {"metadata": {"datasource": "datasource", "objectType": "Feature Request", "container": "container", "parentId": "JIRA_EN-1337", "mimeType": "mimeType", "documentId": "documentId", "createTime": "2000-01-23T04:56:07.000Z", "updateTime": "2000-01-23T04:56:07.000Z", "author": {"name": "name", "obfuscatedId": "<id>"}, "components": ["Backend", "Networking"], "status": "[\"Done\"]", "customData": {"someCustomField": {}}}}, "parentDocument": {"metadata": {"datasource": "datasource", "objectType": "Feature Request", "container": "container", "parentId": "JIRA_EN-1337", "mimeType": "mimeType", "documentId": "documentId", "createTime": "2000-01-23T04:56:07.000Z", "updateTime": "2000-01-23T04:56:07.000Z", "author": {"name": "name", "obfuscatedId": "<id>"}, "components": ["Backend", "Networking"], "status": "[\"Done\"]", "customData": {"someCustomField": {}}}}, "metadata": {"datasource": "datasource", "objectType": "Feature Request", "container": "container", "parentId": "JIRA_EN-1337", "mimeType": "mimeType", "documentId": "documentId", "createTime": "2000-01-23T04:56:07.000Z", "updateTime": "2000-01-23T04:56:07.000Z", "author": {"name": "name", "obfuscatedId": "<id>"}, "components": ["Backend", "Networking"], "status": "[\"Done\"]", "customData": {"someCustomField": {}}}}, "sourceFile": {"id": "FILE_1234", "url": "www.google.com", "name": "sample.pdf"}, "sourcePerson": {"name": "George Clooney", "obfuscatedId": "abc123"}, "referenceRanges": [{"textRange": {"startIndex": 314186, "document": {"containerDocument": {"metadata": {"datasource": "datasource", "objectType": "Feature Request", "container": "container", "parentId": "JIRA_EN-1337", "mimeType": "mimeType", "documentId": "documentId", "createTime": "2000-01-23T04:56:07.000Z", "updateTime": "2000-01-23T04:56:07.000Z", "author": {"name": "name", "obfuscatedId": "<id>"}, "components": ["Backend", "Networking"], "status": "[\"Done\"]", "customData": {"someCustomField": {}}}}, "parentDocument": {"metadata": {"datasource": "datasource", "objectType": "Feature Request", "container": "container", "parentId": "JIRA_EN-1337", "mimeType": "mimeType", "documentId": "documentId", "createTime": "2000-01-23T04:56:07.000Z", "updateTime": "2000-01-23T04:56:07.000Z", "author": {"name": "name", "obfuscatedId": "<id>"}, "components": ["Backend", "Networking"], "status": "[\"Done\"]", "customData": {"someCustomField": {}}}}, "metadata": {"datasource": "datasource", "objectType": "Feature Request", "container": "container", "parentId": "JIRA_EN-1337", "mimeType": "mimeType", "documentId": "documentId", "createTime": "2000-01-23T04:56:07.000Z", "updateTime": "2000-01-23T04:56:07.000Z", "author": {"name": "name", "obfuscatedId": "<id>"}, "components": ["Backend", "Networking"], "status": "[\"Done\"]", "customData": {"someCustomField": {}}}}}, "snippets": [{"snippet": "snippet", "mimeType": "mimeType"}]}]}]}}
   addcollectionitems:
     speakeasy-default-addcollectionitems:
       requestBody:

@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AgentResponseMetadata,
+  AgentResponseMetadata$inboundSchema,
+  AgentResponseMetadata$Outbound,
+  AgentResponseMetadata$outboundSchema,
+} from "./agentresponsemetadata.js";
+import {
   AgentRun,
   AgentRun$inboundSchema,
   AgentRun$Outbound,
@@ -25,6 +31,10 @@ export type AgentRunWaitResponse = {
    * The messages returned by the run.
    */
   messages?: Array<Message> | undefined;
+  /**
+   * Metadata associated with the agent response that supplements the main messages.
+   */
+  metadata?: AgentResponseMetadata | undefined;
 };
 
 /** @internal */
@@ -35,12 +45,14 @@ export const AgentRunWaitResponse$inboundSchema: z.ZodType<
 > = z.object({
   run: AgentRun$inboundSchema.optional(),
   messages: z.array(Message$inboundSchema).optional(),
+  metadata: AgentResponseMetadata$inboundSchema.optional(),
 });
 
 /** @internal */
 export type AgentRunWaitResponse$Outbound = {
   run?: AgentRun$Outbound | undefined;
   messages?: Array<Message$Outbound> | undefined;
+  metadata?: AgentResponseMetadata$Outbound | undefined;
 };
 
 /** @internal */
@@ -51,6 +63,7 @@ export const AgentRunWaitResponse$outboundSchema: z.ZodType<
 > = z.object({
   run: AgentRun$outboundSchema.optional(),
   messages: z.array(Message$outboundSchema).optional(),
+  metadata: AgentResponseMetadata$outboundSchema.optional(),
 });
 
 /**
