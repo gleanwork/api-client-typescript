@@ -13,6 +13,12 @@ import {
   ChatFile$outboundSchema,
 } from "./chatfile.js";
 import {
+  ChatMessageCitation,
+  ChatMessageCitation$inboundSchema,
+  ChatMessageCitation$Outbound,
+  ChatMessageCitation$outboundSchema,
+} from "./chatmessagecitation.js";
+import {
   QuerySuggestion,
   QuerySuggestion$inboundSchema,
   QuerySuggestion$Outbound,
@@ -50,6 +56,10 @@ export type ChatMessageFragment = {
    */
   file?: ChatFile | undefined;
   action?: ToolInfo | undefined;
+  /**
+   * Information about the source for a ChatMessage.
+   */
+  citation?: ChatMessageCitation | undefined;
 };
 
 /** @internal */
@@ -64,6 +74,7 @@ export const ChatMessageFragment$inboundSchema: z.ZodType<
   querySuggestion: QuerySuggestion$inboundSchema.optional(),
   file: ChatFile$inboundSchema.optional(),
   action: ToolInfo$inboundSchema.optional(),
+  citation: ChatMessageCitation$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -74,6 +85,7 @@ export type ChatMessageFragment$Outbound = {
   querySuggestion?: QuerySuggestion$Outbound | undefined;
   file?: ChatFile$Outbound | undefined;
   action?: ToolInfo$Outbound | undefined;
+  citation?: ChatMessageCitation$Outbound | undefined;
 };
 
 /** @internal */
@@ -88,6 +100,7 @@ export const ChatMessageFragment$outboundSchema: z.ZodType<
   querySuggestion: QuerySuggestion$outboundSchema.optional(),
   file: ChatFile$outboundSchema.optional(),
   action: ToolInfo$outboundSchema.optional(),
+  citation: ChatMessageCitation$outboundSchema.optional(),
 });
 
 /**

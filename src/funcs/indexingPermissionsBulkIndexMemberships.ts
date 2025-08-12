@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Bulk index memberships for a group
  *
  * @remarks
- * Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+ * Replaces the memberships for a group in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
  */
 export function indexingPermissionsBulkIndexMemberships(
   client: GleanCore,

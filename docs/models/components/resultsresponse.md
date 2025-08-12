@@ -178,6 +178,9 @@ let value: ResultsResponse = {
         collections: [],
         sourceDocument: {},
       },
+      generatedQna: {
+        ranges: [],
+      },
       extractedQnA: {
         questionResult: {
           title: "title",
@@ -261,18 +264,10 @@ let value: ResultsResponse = {
         ],
       },
       relatedDocuments: [],
-      relatedQuestion: {
-        ranges: [],
-      },
+      relatedQuestion: {},
     },
   ],
-  generatedQnaResult: {
-    ranges: [
-      {
-        startIndex: 559226,
-      },
-    ],
-  },
+  generatedQnaResult: {},
   backendTimeMillis: 1100,
 };
 ```

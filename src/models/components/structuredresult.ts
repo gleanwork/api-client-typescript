@@ -68,6 +68,12 @@ import {
   ExtractedQnA$outboundSchema,
 } from "./extractedqna.js";
 import {
+  GeneratedQna,
+  GeneratedQna$inboundSchema,
+  GeneratedQna$Outbound,
+  GeneratedQna$outboundSchema,
+} from "./generatedqna.js";
+import {
   Meeting,
   Meeting$inboundSchema,
   Meeting$Outbound,
@@ -151,6 +157,7 @@ export type StructuredResult = {
   team?: Team | undefined;
   customEntity?: CustomEntity | undefined;
   answer?: Answer | undefined;
+  generatedQna?: GeneratedQna | undefined;
   extractedQnA?: ExtractedQnA | undefined;
   meeting?: Meeting | undefined;
   app?: AppResult | undefined;
@@ -238,6 +245,7 @@ export const StructuredResult$inboundSchema: z.ZodType<
   team: z.lazy(() => Team$inboundSchema).optional(),
   customEntity: z.lazy(() => CustomEntity$inboundSchema).optional(),
   answer: z.lazy(() => Answer$inboundSchema).optional(),
+  generatedQna: z.lazy(() => GeneratedQna$inboundSchema).optional(),
   extractedQnA: z.lazy(() => ExtractedQnA$inboundSchema).optional(),
   meeting: z.lazy(() => Meeting$inboundSchema).optional(),
   app: AppResult$inboundSchema.optional(),
@@ -264,6 +272,7 @@ export type StructuredResult$Outbound = {
   team?: Team$Outbound | undefined;
   customEntity?: CustomEntity$Outbound | undefined;
   answer?: Answer$Outbound | undefined;
+  generatedQna?: GeneratedQna$Outbound | undefined;
   extractedQnA?: ExtractedQnA$Outbound | undefined;
   meeting?: Meeting$Outbound | undefined;
   app?: AppResult$Outbound | undefined;
@@ -293,6 +302,7 @@ export const StructuredResult$outboundSchema: z.ZodType<
   team: z.lazy(() => Team$outboundSchema).optional(),
   customEntity: z.lazy(() => CustomEntity$outboundSchema).optional(),
   answer: z.lazy(() => Answer$outboundSchema).optional(),
+  generatedQna: z.lazy(() => GeneratedQna$outboundSchema).optional(),
   extractedQnA: z.lazy(() => ExtractedQnA$outboundSchema).optional(),
   meeting: z.lazy(() => Meeting$outboundSchema).optional(),
   app: AppResult$outboundSchema.optional(),

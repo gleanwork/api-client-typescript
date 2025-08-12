@@ -13,12 +13,6 @@ import {
   Document$outboundSchema,
 } from "./document.js";
 import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
-import {
   SearchRequestInputDetails,
   SearchRequestInputDetails$inboundSchema,
   SearchRequestInputDetails$Outbound,
@@ -75,10 +69,6 @@ export type SearchRequest = {
    */
   timeoutMillis?: number | undefined;
   /**
-   * People associated with the search request. Hints to the server to fetch additional information for these people. Note that in this request, an email may be used as a person's obfuscatedId value.
-   */
-  people?: Array<Person> | undefined;
-  /**
    * Whether or not to disable spellcheck.
    */
   disableSpellcheck?: boolean | undefined;
@@ -103,7 +93,6 @@ export const SearchRequest$inboundSchema: z.ZodType<
   inputDetails: SearchRequestInputDetails$inboundSchema.optional(),
   requestOptions: SearchRequestOptions$inboundSchema.optional(),
   timeoutMillis: z.number().int().optional(),
-  people: z.array(Person$inboundSchema).optional(),
   disableSpellcheck: z.boolean().optional(),
 });
 
@@ -121,7 +110,6 @@ export type SearchRequest$Outbound = {
   inputDetails?: SearchRequestInputDetails$Outbound | undefined;
   requestOptions?: SearchRequestOptions$Outbound | undefined;
   timeoutMillis?: number | undefined;
-  people?: Array<Person$Outbound> | undefined;
   disableSpellcheck?: boolean | undefined;
 };
 
@@ -143,7 +131,6 @@ export const SearchRequest$outboundSchema: z.ZodType<
   inputDetails: SearchRequestInputDetails$outboundSchema.optional(),
   requestOptions: SearchRequestOptions$outboundSchema.optional(),
   timeoutMillis: z.number().int().optional(),
-  people: z.array(Person$outboundSchema).optional(),
   disableSpellcheck: z.boolean().optional(),
 });
 

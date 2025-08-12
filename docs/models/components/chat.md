@@ -206,6 +206,9 @@ let value: Chat = {
                 },
                 collections: [],
               },
+              generatedQna: {
+                ranges: [],
+              },
               extractedQnA: {
                 questionResult: {
                   title: "title",
@@ -285,9 +288,7 @@ let value: Chat = {
                 ],
               },
               relatedDocuments: [],
-              relatedQuestion: {
-                ranges: [],
-              },
+              relatedQuestion: {},
             },
           ],
           querySuggestion: {
@@ -308,6 +309,23 @@ let value: Chat = {
               displayDescription: "<value>",
               objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
             },
+          },
+          citation: {
+            sourceFile: {
+              id: "FILE_1234",
+              url: "www.google.com",
+              name: "sample.pdf",
+            },
+            referenceRanges: [
+              {
+                snippets: [
+                  {
+                    snippet: "snippet",
+                    mimeType: "mimeType",
+                  },
+                ],
+              },
+            ],
           },
         },
       ],

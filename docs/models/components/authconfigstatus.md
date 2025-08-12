@@ -7,11 +7,11 @@ Auth status of the tool.
 ```typescript
 import { AuthConfigStatus } from "@gleanwork/api-client/models/components";
 
-let value: AuthConfigStatus = "AUTHORIZED";
+let value: AuthConfigStatus = "AUTH_DISABLED";
 ```
 
 ## Values
 
 ```typescript
-"AWAITING_AUTH" | "AUTHORIZED"
+"AWAITING_AUTH" | "AUTHORIZED" | "AUTH_DISABLED"
 ```
