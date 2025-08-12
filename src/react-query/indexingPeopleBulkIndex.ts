@@ -27,7 +27,7 @@ export type IndexingPeopleBulkIndexMutationData = void;
  * Bulk index employees
  *
  * @remarks
- * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+ * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
  */
 export function useIndexingPeopleBulkIndexMutation(
   options?: MutationHookOptions<

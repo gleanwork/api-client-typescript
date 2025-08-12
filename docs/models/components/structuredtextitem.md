@@ -167,6 +167,9 @@ let value: StructuredTextItem = {
       collections: [],
       sourceDocument: {},
     },
+    generatedQna: {
+      ranges: [],
+    },
     extractedQnA: {
       questionResult: {
         title: "title",
@@ -251,9 +254,7 @@ let value: StructuredTextItem = {
       ],
     },
     relatedDocuments: [],
-    relatedQuestion: {
-      ranges: [],
-    },
+    relatedQuestion: {},
   },
 };
 ```

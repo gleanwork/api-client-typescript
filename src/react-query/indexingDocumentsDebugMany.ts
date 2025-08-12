@@ -31,7 +31,7 @@ export type IndexingDocumentsDebugManyMutationData =
  * @remarks
  * Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
  *
- * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+ * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
  */
 export function useIndexingDocumentsDebugManyMutation(
   options?: MutationHookOptions<

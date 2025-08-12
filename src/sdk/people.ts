@@ -22,7 +22,7 @@ export class People extends ClientSDK {
    * @remarks
    * Gives various information that would help in debugging related to a particular user. Currently in beta, might undergo breaking changes without prior notice.
    *
-   * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/) for more information.
+   * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
    */
   async debug(
     debugUserRequest: components.DebugUserRequest,
@@ -43,7 +43,7 @@ export class People extends ClientSDK {
    * @remarks
    * Fetches user count for the specified custom datasource.
    *
-   * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-status) for richer information.
+   * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -79,7 +79,7 @@ export class People extends ClientSDK {
    * Bulk index employees
    *
    * @remarks
-   * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
    */
   async bulkIndex(
     request: components.BulkIndexEmployeesRequest,
@@ -162,7 +162,7 @@ export class People extends ClientSDK {
    * Bulk index teams
    *
    * @remarks
-   * Replaces all the currently indexed teams using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/docs/indexing_api_bulk_indexing/#bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   * Replaces all the currently indexed teams using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
    */
   async bulkIndexTeams(
     request: components.BulkIndexTeamsRequest,

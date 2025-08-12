@@ -30,7 +30,7 @@ export type IndexingDocumentsStatusMutationData =
  * @remarks
  * Intended for debugging/validation. Fetches the current upload and indexing status of documents.
  *
- * Tip: Use [/debug/{datasource}/document](https://developers.glean.com/docs/indexing_api/indexing_api_troubleshooting/#debug-datasource-document) for richer information.
+ * Tip: Use [/debug/{datasource}/document](https://developers.glean.com/indexing/debugging/datasource-document) for richer information.
  *
  * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */

@@ -41,7 +41,7 @@ export type ChatRequest = {
    */
   chatId?: string | undefined;
   /**
-   * A list of chat messages, from most recent to least recent. It can be assumed that the first chat message in the list is the user's most recent query.
+   * A list of chat messages, from most recent to least recent. At least one message must specify a USER author.
    */
   messages: Array<ChatMessage>;
   /**

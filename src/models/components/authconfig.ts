@@ -55,6 +55,7 @@ export type GrantType = ClosedEnum<typeof GrantType>;
 export const AuthConfigStatus = {
   AwaitingAuth: "AWAITING_AUTH",
   Authorized: "AUTHORIZED",
+  AuthDisabled: "AUTH_DISABLED",
 } as const;
 /**
  * Auth status of the tool.
