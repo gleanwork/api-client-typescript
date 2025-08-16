@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: b0738d0775f5848e1288d7ca6b0400e4
+  docChecksum: d015d2f56bf3407455d2fd1e9ffd21d6
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.9.1
-  configChecksum: c4c8fe53ad96314ca191efb848f9293f
+  releaseVersion: 0.10.1
+  configChecksum: f96b7dc0666506d3e5ed686fbec923d3
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -131,6 +131,7 @@ generatedFiles:
   - docs/models/components/chatresponse.md
   - docs/models/components/chatrestrictionfilters.md
   - docs/models/components/chatresult.md
+  - docs/models/components/chatsuggestion.md
   - docs/models/components/chatzerostatesuggestionoptions.md
   - docs/models/components/checkdocumentaccessrequest.md
   - docs/models/components/checkdocumentaccessresponse.md
@@ -839,6 +840,7 @@ generatedFiles:
   - src/__tests__/mockserver/internal/sdk/models/components/chatresponse.go
   - src/__tests__/mockserver/internal/sdk/models/components/chatrestrictionfilters.go
   - src/__tests__/mockserver/internal/sdk/models/components/chatresult.go
+  - src/__tests__/mockserver/internal/sdk/models/components/chatsuggestion.go
   - src/__tests__/mockserver/internal/sdk/models/components/chatzerostatesuggestionoptions.go
   - src/__tests__/mockserver/internal/sdk/models/components/checkdocumentaccessrequest.go
   - src/__tests__/mockserver/internal/sdk/models/components/checkdocumentaccessresponse.go
@@ -1520,6 +1522,7 @@ generatedFiles:
   - src/models/components/chatresponse.ts
   - src/models/components/chatrestrictionfilters.ts
   - src/models/components/chatresult.ts
+  - src/models/components/chatsuggestion.ts
   - src/models/components/chatzerostatesuggestionoptions.ts
   - src/models/components/checkdocumentaccessrequest.ts
   - src/models/components/checkdocumentaccessresponse.ts
@@ -2913,3 +2916,6 @@ generatedTests:
   createpolicy: "2025-06-09T18:05:10Z"
   createreport: "2025-06-09T18:05:10Z"
   setdocvisibility: "2025-06-09T18:05:10Z"
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `glean.client.search.retrieveFeed()`:  `response.results.[].primaryEntry.chatSuggestion` **Added**

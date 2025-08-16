@@ -26,6 +26,12 @@ import {
   CalendarEvent$outboundSchema,
 } from "./calendarevent.js";
 import {
+  ChatSuggestion,
+  ChatSuggestion$inboundSchema,
+  ChatSuggestion$Outbound,
+  ChatSuggestion$outboundSchema,
+} from "./chatsuggestion.js";
+import {
   Collection,
   Collection$inboundSchema,
   Collection$Outbound,
@@ -144,6 +150,7 @@ export const JustificationType = {
   ZeroStatePromptTemplateSuggestion: "ZERO_STATE_PROMPT_TEMPLATE_SUGGESTION",
   ZeroStateStaticWorkflowSuggestion: "ZERO_STATE_STATIC_WORKFLOW_SUGGESTION",
   ZeroStateAgentSuggestion: "ZERO_STATE_AGENT_SUGGESTION",
+  PersonalizedChatSuggestion: "PERSONALIZED_CHAT_SUGGESTION",
 } as const;
 /**
  * Type of the justification.
@@ -185,6 +192,7 @@ export type FeedEntry = {
   collectionItem?: CollectionItem | undefined;
   person?: Person | undefined;
   app?: AppResult | undefined;
+  chatSuggestion?: ChatSuggestion | undefined;
   promptTemplate?: PromptTemplateResult | undefined;
   workflow?: WorkflowResult | undefined;
   /**
@@ -309,6 +317,7 @@ export const FeedEntry$inboundSchema: z.ZodType<
   collectionItem: CollectionItem$inboundSchema.optional(),
   person: Person$inboundSchema.optional(),
   app: AppResult$inboundSchema.optional(),
+  chatSuggestion: ChatSuggestion$inboundSchema.optional(),
   promptTemplate: PromptTemplateResult$inboundSchema.optional(),
   workflow: WorkflowResult$inboundSchema.optional(),
   activities: z.array(UserActivity$inboundSchema).optional(),
@@ -333,6 +342,7 @@ export type FeedEntry$Outbound = {
   collectionItem?: CollectionItem$Outbound | undefined;
   person?: Person$Outbound | undefined;
   app?: AppResult$Outbound | undefined;
+  chatSuggestion?: ChatSuggestion$Outbound | undefined;
   promptTemplate?: PromptTemplateResult$Outbound | undefined;
   workflow?: WorkflowResult$Outbound | undefined;
   activities?: Array<UserActivity$Outbound> | undefined;
@@ -361,6 +371,7 @@ export const FeedEntry$outboundSchema: z.ZodType<
   collectionItem: CollectionItem$outboundSchema.optional(),
   person: Person$outboundSchema.optional(),
   app: AppResult$outboundSchema.optional(),
+  chatSuggestion: ChatSuggestion$outboundSchema.optional(),
   promptTemplate: PromptTemplateResult$outboundSchema.optional(),
   workflow: WorkflowResult$outboundSchema.optional(),
   activities: z.array(UserActivity$outboundSchema).optional(),

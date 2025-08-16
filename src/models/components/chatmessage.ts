@@ -140,7 +140,7 @@ export const ChatMessage$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   agentConfig: AgentConfig$inboundSchema.optional(),
-  author: Author$inboundSchema.default("GLEAN_AI"),
+  author: Author$inboundSchema.default("USER"),
   citations: z.array(ChatMessageCitation$inboundSchema).optional(),
   uploadedFileIds: z.array(z.string()).optional(),
   fragments: z.array(ChatMessageFragment$inboundSchema).optional(),
@@ -172,7 +172,7 @@ export const ChatMessage$outboundSchema: z.ZodType<
   ChatMessage
 > = z.object({
   agentConfig: AgentConfig$outboundSchema.optional(),
-  author: Author$outboundSchema.default("GLEAN_AI"),
+  author: Author$outboundSchema.default("USER"),
   citations: z.array(ChatMessageCitation$outboundSchema).optional(),
   uploadedFileIds: z.array(z.string()).optional(),
   fragments: z.array(ChatMessageFragment$outboundSchema).optional(),

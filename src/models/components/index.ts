@@ -63,6 +63,7 @@ export * from "./chatrequest.js";
 export * from "./chatresponse.js";
 export * from "./chatrestrictionfilters.js";
 export * from "./chatresult.js";
+export * from "./chatsuggestion.js";
 export * from "./chatzerostatesuggestionoptions.js";
 export * from "./checkdocumentaccessrequest.js";
 export * from "./checkdocumentaccessresponse.js";
