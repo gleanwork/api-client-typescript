@@ -291,8 +291,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -326,8 +326,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -361,8 +361,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -2483,8 +2483,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -2518,8 +2518,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -2590,8 +2590,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -2662,8 +2662,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -2697,8 +2697,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -2732,8 +2732,8 @@ test("Client Chat Chat Stream Update Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4710,8 +4710,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4745,8 +4745,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4817,8 +4817,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4852,8 +4852,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -4887,8 +4887,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -6734,8 +6734,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -6769,8 +6769,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -6804,8 +6804,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -7824,8 +7824,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -7859,8 +7859,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -7931,8 +7931,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -7966,8 +7966,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8001,8 +8001,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8073,8 +8073,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },
@@ -8108,8 +8108,8 @@ test("Client Chat Chat Stream Citation Response", async () => {
                 },
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },

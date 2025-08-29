@@ -41,8 +41,8 @@ let value: ReferenceRange = {
   },
   snippets: [
     {
-      snippet: "snippet",
       mimeType: "mimeType",
+      snippet: "snippet",
     },
   ],
 };

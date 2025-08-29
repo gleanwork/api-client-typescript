@@ -15,8 +15,8 @@ let value: MessagesResponse = {
         url: "https://www.example.com/",
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
       },
@@ -25,8 +25,8 @@ let value: MessagesResponse = {
         url: "https://www.example.com/",
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
       },
@@ -115,8 +115,8 @@ let value: MessagesResponse = {
     nativeAppUrl: "slack://foo/bar",
     snippets: [
       {
-        snippet: "snippet",
         mimeType: "mimeType",
+        snippet: "snippet",
       },
     ],
     mustIncludeSuggestions: {},

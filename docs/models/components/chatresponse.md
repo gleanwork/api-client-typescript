@@ -57,8 +57,8 @@ let value: ChatResponse = {
               },
               snippets: [
                 {
-                  snippet: "snippet",
                   mimeType: "mimeType",
+                  snippet: "snippet",
                 },
               ],
             },
@@ -207,8 +207,8 @@ let value: ChatResponse = {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                   mustIncludeSuggestions: {},
@@ -315,8 +315,8 @@ let value: ChatResponse = {
               {
                 snippets: [
                   {
-                    snippet: "snippet",
                     mimeType: "mimeType",
+                    snippet: "snippet",
                   },
                 ],
               },

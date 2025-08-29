@@ -18,8 +18,8 @@ let value: RelatedDocuments = {
       nativeAppUrl: "slack://foo/bar",
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
       mustIncludeSuggestions: {},
