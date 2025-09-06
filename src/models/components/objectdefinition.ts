@@ -41,6 +41,7 @@ export const DocCategory = {
   ExternalShortcut: "EXTERNAL_SHORTCUT",
   Entity: "ENTITY",
   Calendar: "CALENDAR",
+  Agents: "AGENTS",
 } as const;
 /**
  * The document category of this object type.

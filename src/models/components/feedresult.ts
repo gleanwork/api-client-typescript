@@ -40,6 +40,8 @@ export const FeedResultCategory = {
   ZeroStateWorkflowFavorites: "ZERO_STATE_WORKFLOW_FAVORITES",
   ZeroStateWorkflowPopular: "ZERO_STATE_WORKFLOW_POPULAR",
   ZeroStateWorkflowSuggestion: "ZERO_STATE_WORKFLOW_SUGGESTION",
+  PersonalizedChatSuggestion: "PERSONALIZED_CHAT_SUGGESTION",
+  DailyDigest: "DAILY_DIGEST",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.

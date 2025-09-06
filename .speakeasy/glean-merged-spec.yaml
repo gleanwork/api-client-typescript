@@ -3774,6 +3774,7 @@ components:
                 email:
                     type: string
                     description: The email address of the user who submitted the Feedback.event.MANUAL_FEEDBACK event.
+                    deprecated: true
                 source:
                     type: string
                     description: The source associated with the Feedback.event.MANUAL_FEEDBACK event.
@@ -4366,7 +4367,7 @@ components:
                     description: Disables automatic adjustment of the input query for spelling corrections or other reasons.
                 returnLlmContentOverSnippets:
                     type: boolean
-                    description: "[beta] Enables expanded content to be returned for LLM usage. The size of content per result returned should be modified using maxSnippetSize. Server may return less or more than what is specified in maxSnippetSize. For more details, https://docs.google.com/document/d/1CTOLSxWWT9WDEnHVLoCUaxbGYyXYP8kctPRF-RluSQY/edit. Requires sufficient permissions."
+                    description: Enables expanded content to be returned for LLM usage. The size of content per result returned should be modified using maxSnippetSize. Server may return less or more than what is specified in maxSnippetSize. For more details, see https://developers.glean.com/guides/search/llm-content.
                 inclusions:
                     $ref: "#/components/schemas/RestrictionFilters"
                     description: A list of filters which restrict the search results to only the specified content.
@@ -4864,6 +4865,9 @@ components:
                 name:
                     type: string
                     description: Name of the group.
+                datasourceInstance:
+                    type: string
+                    description: Datasource instance if the group belongs to one e.g. external groups.
         UserRole:
             type: string
             description: A user's role with respect to a specific document.
@@ -5841,9 +5845,6 @@ components:
             required:
                 - snippet
             properties:
-                snippet:
-                    type: string
-                    description: A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007.
                 mimeType:
                     type: string
                     description: The mime type of the snippets, currently either text/plain or text/html.
@@ -5861,6 +5862,10 @@ components:
                 url:
                     type: string
                     description: A URL, generated based on availability, that links to the position of the snippet text or to the nearest header above the snippet text.
+                snippet:
+                    type: string
+                    deprecated: true
+                    description: A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007. Use 'text' field instead.
             example:
                 snippet: snippet
                 mimeType: mimeType
@@ -5954,6 +5959,8 @@ components:
                 - THREAD_ROOT
                 - PREFIX
                 - SUFFIX
+                - AUTHOR_PREFIX
+                - AUTHOR_SUFFIX
         ClusterGroup:
             required:
                 - visibleCountHint
@@ -7306,7 +7313,7 @@ components:
                     $ref: "#/components/schemas/AgentConfig"
                     description: Describes the agent config that generated this message. Populated on responses and not required on requests.
                 author:
-                    default: GLEAN_AI
+                    default: USER
                     enum:
                         - USER
                         - GLEAN_AI
@@ -7482,12 +7489,18 @@ components:
             description: A historical representation of a series of chat messages a user had with Glean Assistant.
             allOf:
                 - $ref: "#/components/schemas/ChatMetadata"
+                - $ref: "#/components/schemas/PermissionedObject"
             properties:
                 messages:
                     type: array
                     items:
                         $ref: "#/components/schemas/ChatMessage"
                     description: The chat messages within a Chat.
+                roles:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/UserRoleSpecification"
+                    description: A list of roles for this Chat.
         ChatResult:
             properties:
                 chat:
@@ -9145,6 +9158,8 @@ components:
                             - ZERO_STATE_WORKFLOW_FAVORITES
                             - ZERO_STATE_WORKFLOW_POPULAR
                             - ZERO_STATE_WORKFLOW_SUGGESTION
+                            - PERSONALIZED_CHAT_SUGGESTION
+                            - DAILY_DIGEST
                     description: Categories of content requested. An allowlist gives flexibility to request content separately or together.
                 requestOptions:
                     $ref: "#/components/schemas/FeedRequestOptions"
@@ -9300,6 +9315,92 @@ components:
                         type: array
                         items:
                             $ref: "#/components/schemas/GeneratedAttachment"
+        SectionType:
+            type: string
+            description: Type of the section. This defines how the section should be interpreted and rendered in the digest.
+            x-enumDescriptions:
+                CHANNEL: A standard section for channel-based digests (e.g. from Slack, Teams).
+                MENTIONS: A dedicated section that surfaces user mentions (actionable, informative, or all).
+                TOPIC: A section driven by a generic topic, not tied to any specific channel or instance.
+            enum:
+                - CHANNEL
+                - MENTIONS
+                - TOPIC
+        UpdateType:
+            type: string
+            description: Optional type classification for the update.
+            x-enumDescriptions:
+                ACTIONABLE: Updates that require user attention or action
+                INFORMATIVE: Updates that are purely informational
+            enum:
+                - ACTIONABLE
+                - INFORMATIVE
+        DigestUpdate:
+            type: object
+            properties:
+                url:
+                    type: string
+                    description: URL link to the content or document.
+                title:
+                    type: string
+                    description: Title or headline of the update.
+                datasource:
+                    type: string
+                    description: Name or identifier of the data source (e.g., slack, confluence, etc.).
+                summary:
+                    type: string
+                    description: Brief summary or description of the update content.
+                type:
+                    $ref: "#/components/schemas/UpdateType"
+        DigestSection:
+            type: object
+            required:
+                - id
+                - type
+                - updates
+            properties:
+                id:
+                    type: string
+                    description: Unique identifier for the digest section.
+                type:
+                    $ref: "#/components/schemas/SectionType"
+                displayName:
+                    type: string
+                    description: Human-readable name for the digest section.
+                channelName:
+                    type: string
+                    description: Name of the channel (applicable for CHANNEL type sections). Used to display in the frontend.
+                instanceId:
+                    type: string
+                    description: Instance identifier for the channel or workspace. Used for constructing channel URLs to display in the frontend.
+                updates:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/DigestUpdate"
+                    description: List of updates within this digest section.
+        Digest:
+            type: object
+            properties:
+                podcastFileId:
+                    type: string
+                    description: Identifier for the podcast file generated from this digest content.
+                digestDate:
+                    type: string
+                    description: The date this digest covers, in YYYY-MM-DD format. Represents the specific day for which the digest content and updates were compiled. This can be empty if the digest is not yet available.
+                    example: "2025-09-03"
+                sections:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/DigestSection"
+                    description: Array of digest sections from which the podcast was created.
+        ChatSuggestion:
+            properties:
+                query:
+                    type: string
+                    description: The actionable chat query to run when the user selects this suggestion.
+                feature:
+                    type: string
+                    description: Targeted Glean Chat feature for the suggestion.
         PromptTemplateMutableProperties:
             required:
                 - template
@@ -9513,6 +9614,8 @@ components:
                         - ZERO_STATE_PROMPT_TEMPLATE_SUGGESTION
                         - ZERO_STATE_STATIC_WORKFLOW_SUGGESTION
                         - ZERO_STATE_AGENT_SUGGESTION
+                        - PERSONALIZED_CHAT_SUGGESTION
+                        - DAILY_DIGEST
                     description: Type of the justification.
                 justification:
                     type: string
@@ -9529,6 +9632,8 @@ components:
                     $ref: "#/components/schemas/CalendarEvent"
                 announcement:
                     $ref: "#/components/schemas/Announcement"
+                digest:
+                    $ref: "#/components/schemas/Digest"
                 collection:
                     $ref: "#/components/schemas/Collection"
                 collectionItem:
@@ -9537,6 +9642,8 @@ components:
                     $ref: "#/components/schemas/Person"
                 app:
                     $ref: "#/components/schemas/AppResult"
+                chatSuggestion:
+                    $ref: "#/components/schemas/ChatSuggestion"
                 promptTemplate:
                     $ref: "#/components/schemas/PromptTemplateResult"
                 workflow:
@@ -9578,6 +9685,8 @@ components:
                         - ZERO_STATE_WORKFLOW_FAVORITES
                         - ZERO_STATE_WORKFLOW_POPULAR
                         - ZERO_STATE_WORKFLOW_SUGGESTION
+                        - PERSONALIZED_CHAT_SUGGESTION
+                        - DAILY_DIGEST
                     description: Category of the result, one of the requested categories in incoming request.
                 primaryEntry:
                     $ref: "#/components/schemas/FeedEntry"
@@ -11575,6 +11684,7 @@ components:
                         - EXTERNAL_SHORTCUT
                         - ENTITY
                         - CALENDAR
+                        - AGENTS
                     description: The document category of this object type.
                 propertyDefinitions:
                     type: array
@@ -11629,6 +11739,7 @@ components:
                         - EXTERNAL_SHORTCUT
                         - ENTITY
                         - CALENDAR
+                        - AGENTS
                     default: UNCATEGORIZED
                     description: The type of this datasource. It is an important signal for relevance and must be specified and cannot be UNCATEGORIZED. Please refer to [this](https://developers.glean.com/docs/indexing_api_datasource_category/) for more details.
                 urlRegex:

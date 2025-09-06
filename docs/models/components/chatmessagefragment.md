@@ -176,8 +176,8 @@ let value: ChatMessageFragment = {
           nativeAppUrl: "slack://foo/bar",
           snippets: [
             {
-              snippet: "snippet",
               mimeType: "mimeType",
+              snippet: "snippet",
             },
           ],
           mustIncludeSuggestions: {},
@@ -291,8 +291,8 @@ let value: ChatMessageFragment = {
         },
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
       },

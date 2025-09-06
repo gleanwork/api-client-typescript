@@ -67,8 +67,8 @@ let value: GetChatResponse = {
                   },
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                 },
@@ -216,8 +216,8 @@ let value: GetChatResponse = {
                       nativeAppUrl: "slack://foo/bar",
                       snippets: [
                         {
-                          snippet: "snippet",
                           mimeType: "mimeType",
+                          snippet: "snippet",
                         },
                       ],
                       mustIncludeSuggestions: {},
@@ -322,8 +322,8 @@ let value: GetChatResponse = {
                   {
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                   },
@@ -331,6 +331,11 @@ let value: GetChatResponse = {
               },
             },
           ],
+        },
+      ],
+      roles: [
+        {
+          role: "VIEWER",
         },
       ],
     },

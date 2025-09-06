@@ -25,6 +25,10 @@ export type Group = {
    * Name of the group.
    */
   name?: string | undefined;
+  /**
+   * Datasource instance if the group belongs to one e.g. external groups.
+   */
+  datasourceInstance?: string | undefined;
 };
 
 /** @internal */
@@ -33,6 +37,7 @@ export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> = z
     type: GroupType$inboundSchema,
     id: z.string(),
     name: z.string().optional(),
+    datasourceInstance: z.string().optional(),
   });
 
 /** @internal */
@@ -40,6 +45,7 @@ export type Group$Outbound = {
   type: string;
   id: string;
   name?: string | undefined;
+  datasourceInstance?: string | undefined;
 };
 
 /** @internal */
@@ -51,6 +57,7 @@ export const Group$outboundSchema: z.ZodType<
   type: GroupType$outboundSchema,
   id: z.string(),
   name: z.string().optional(),
+  datasourceInstance: z.string().optional(),
 });
 
 /**

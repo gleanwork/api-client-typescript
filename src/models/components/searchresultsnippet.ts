@@ -15,10 +15,6 @@ import {
 
 export type SearchResultSnippet = {
   /**
-   * A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007.
-   */
-  snippet: string;
-  /**
    * The mime type of the snippets, currently either text/plain or text/html.
    */
   mimeType?: string | undefined;
@@ -38,6 +34,12 @@ export type SearchResultSnippet = {
    * A URL, generated based on availability, that links to the position of the snippet text or to the nearest header above the snippet text.
    */
   url?: string | undefined;
+  /**
+   * A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007. Use 'text' field instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  snippet: string;
 };
 
 /** @internal */
@@ -46,22 +48,22 @@ export const SearchResultSnippet$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  snippet: z.string(),
   mimeType: z.string().optional(),
   text: z.string().optional(),
   snippetTextOrdering: z.number().int().optional(),
   ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
   url: z.string().optional(),
+  snippet: z.string(),
 });
 
 /** @internal */
 export type SearchResultSnippet$Outbound = {
-  snippet: string;
   mimeType?: string | undefined;
   text?: string | undefined;
   snippetTextOrdering?: number | undefined;
   ranges?: Array<TextRange$Outbound> | undefined;
   url?: string | undefined;
+  snippet: string;
 };
 
 /** @internal */
@@ -70,12 +72,12 @@ export const SearchResultSnippet$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SearchResultSnippet
 > = z.object({
-  snippet: z.string(),
   mimeType: z.string().optional(),
   text: z.string().optional(),
   snippetTextOrdering: z.number().int().optional(),
   ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
   url: z.string().optional(),
+  snippet: z.string(),
 });
 
 /**
