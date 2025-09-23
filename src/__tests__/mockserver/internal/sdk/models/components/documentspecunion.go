@@ -9,20 +9,21 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
-// DocumentSpecUgcType - The type of the user generated content (UGC datasource).
-type DocumentSpecUgcType string
+// DocumentSpecUgcType2 - The type of the user generated content (UGC datasource).
+type DocumentSpecUgcType2 string
 
 const (
-	DocumentSpecUgcTypeAnnouncements DocumentSpecUgcType = "ANNOUNCEMENTS"
-	DocumentSpecUgcTypeAnswers       DocumentSpecUgcType = "ANSWERS"
-	DocumentSpecUgcTypeCollections   DocumentSpecUgcType = "COLLECTIONS"
-	DocumentSpecUgcTypeShortcuts     DocumentSpecUgcType = "SHORTCUTS"
+	DocumentSpecUgcType2Announcements DocumentSpecUgcType2 = "ANNOUNCEMENTS"
+	DocumentSpecUgcType2Answers       DocumentSpecUgcType2 = "ANSWERS"
+	DocumentSpecUgcType2Collections   DocumentSpecUgcType2 = "COLLECTIONS"
+	DocumentSpecUgcType2Shortcuts     DocumentSpecUgcType2 = "SHORTCUTS"
+	DocumentSpecUgcType2Chats         DocumentSpecUgcType2 = "CHATS"
 )
 
-func (e DocumentSpecUgcType) ToPointer() *DocumentSpecUgcType {
+func (e DocumentSpecUgcType2) ToPointer() *DocumentSpecUgcType2 {
 	return &e
 }
-func (e *DocumentSpecUgcType) UnmarshalJSON(data []byte) error {
+func (e *DocumentSpecUgcType2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,32 +36,100 @@ func (e *DocumentSpecUgcType) UnmarshalJSON(data []byte) error {
 	case "COLLECTIONS":
 		fallthrough
 	case "SHORTCUTS":
-		*e = DocumentSpecUgcType(v)
+		fallthrough
+	case "CHATS":
+		*e = DocumentSpecUgcType2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentSpecUgcType: %v", v)
+		return fmt.Errorf("invalid value for DocumentSpecUgcType2: %v", v)
+	}
+}
+
+type DocumentSpec4 struct {
+	// The type of the user generated content (UGC datasource).
+	UgcType DocumentSpecUgcType2 `json:"ugcType"`
+	// The string id for user generated content. Used for CHATS.
+	UgcID string `json:"ugcId"`
+	// The specific type of the user generated content type.
+	DocType *string `json:"docType,omitempty"`
+}
+
+func (o *DocumentSpec4) GetUgcType() DocumentSpecUgcType2 {
+	if o == nil {
+		return DocumentSpecUgcType2("")
+	}
+	return o.UgcType
+}
+
+func (o *DocumentSpec4) GetUgcID() string {
+	if o == nil {
+		return ""
+	}
+	return o.UgcID
+}
+
+func (o *DocumentSpec4) GetDocType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DocType
+}
+
+// DocumentSpecUgcType1 - The type of the user generated content (UGC datasource).
+type DocumentSpecUgcType1 string
+
+const (
+	DocumentSpecUgcType1Announcements DocumentSpecUgcType1 = "ANNOUNCEMENTS"
+	DocumentSpecUgcType1Answers       DocumentSpecUgcType1 = "ANSWERS"
+	DocumentSpecUgcType1Collections   DocumentSpecUgcType1 = "COLLECTIONS"
+	DocumentSpecUgcType1Shortcuts     DocumentSpecUgcType1 = "SHORTCUTS"
+	DocumentSpecUgcType1Chats         DocumentSpecUgcType1 = "CHATS"
+)
+
+func (e DocumentSpecUgcType1) ToPointer() *DocumentSpecUgcType1 {
+	return &e
+}
+func (e *DocumentSpecUgcType1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "ANNOUNCEMENTS":
+		fallthrough
+	case "ANSWERS":
+		fallthrough
+	case "COLLECTIONS":
+		fallthrough
+	case "SHORTCUTS":
+		fallthrough
+	case "CHATS":
+		*e = DocumentSpecUgcType1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentSpecUgcType1: %v", v)
 	}
 }
 
 type DocumentSpec3 struct {
 	// The type of the user generated content (UGC datasource).
-	UgcType *DocumentSpecUgcType `json:"ugcType,omitempty"`
-	// The id for user generated content.
-	ContentID *int64 `json:"contentId,omitempty"`
+	UgcType DocumentSpecUgcType1 `json:"ugcType"`
+	// The numeric id for user generated content. Used for ANNOUNCEMENTS, ANSWERS, COLLECTIONS, SHORTCUTS.
+	ContentID int64 `json:"contentId"`
 	// The specific type of the user generated content type.
 	DocType *string `json:"docType,omitempty"`
 }
 
-func (o *DocumentSpec3) GetUgcType() *DocumentSpecUgcType {
+func (o *DocumentSpec3) GetUgcType() DocumentSpecUgcType1 {
 	if o == nil {
-		return nil
+		return DocumentSpecUgcType1("")
 	}
 	return o.UgcType
 }
 
-func (o *DocumentSpec3) GetContentID() *int64 {
+func (o *DocumentSpec3) GetContentID() int64 {
 	if o == nil {
-		return nil
+		return 0
 	}
 	return o.ContentID
 }
@@ -74,24 +143,24 @@ func (o *DocumentSpec3) GetDocType() *string {
 
 type DocumentSpec2 struct {
 	// The ID of the document.
-	ID *string `json:"id,omitempty"`
+	ID string `json:"id"`
 }
 
-func (o *DocumentSpec2) GetID() *string {
+func (o *DocumentSpec2) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
 
 type DocumentSpec1 struct {
 	// The URL of the document.
-	URL *string `json:"url,omitempty"`
+	URL string `json:"url"`
 }
 
-func (o *DocumentSpec1) GetURL() *string {
+func (o *DocumentSpec1) GetURL() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.URL
 }
@@ -102,12 +171,14 @@ const (
 	DocumentSpecUnionTypeDocumentSpec1 DocumentSpecUnionType = "DocumentSpec_1"
 	DocumentSpecUnionTypeDocumentSpec2 DocumentSpecUnionType = "DocumentSpec_2"
 	DocumentSpecUnionTypeDocumentSpec3 DocumentSpecUnionType = "DocumentSpec_3"
+	DocumentSpecUnionTypeDocumentSpec4 DocumentSpecUnionType = "DocumentSpec_4"
 )
 
 type DocumentSpecUnion struct {
 	DocumentSpec1 *DocumentSpec1
 	DocumentSpec2 *DocumentSpec2
 	DocumentSpec3 *DocumentSpec3
+	DocumentSpec4 *DocumentSpec4
 
 	Type DocumentSpecUnionType
 }
@@ -139,6 +210,15 @@ func CreateDocumentSpecUnionDocumentSpec3(documentSpec3 DocumentSpec3) DocumentS
 	}
 }
 
+func CreateDocumentSpecUnionDocumentSpec4(documentSpec4 DocumentSpec4) DocumentSpecUnion {
+	typ := DocumentSpecUnionTypeDocumentSpec4
+
+	return DocumentSpecUnion{
+		DocumentSpec4: &documentSpec4,
+		Type:          typ,
+	}
+}
+
 func (u *DocumentSpecUnion) UnmarshalJSON(data []byte) error {
 
 	var documentSpec1 DocumentSpec1 = DocumentSpec1{}
@@ -162,6 +242,13 @@ func (u *DocumentSpecUnion) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var documentSpec4 DocumentSpec4 = DocumentSpec4{}
+	if err := utils.UnmarshalJSON(data, &documentSpec4, "", true, true); err == nil {
+		u.DocumentSpec4 = &documentSpec4
+		u.Type = DocumentSpecUnionTypeDocumentSpec4
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentSpecUnion", string(data))
 }
 
@@ -176,6 +263,10 @@ func (u DocumentSpecUnion) MarshalJSON() ([]byte, error) {
 
 	if u.DocumentSpec3 != nil {
 		return utils.MarshalJSON(u.DocumentSpec3, "", true)
+	}
+
+	if u.DocumentSpec4 != nil {
+		return utils.MarshalJSON(u.DocumentSpec4, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type DocumentSpecUnion: all fields are null")

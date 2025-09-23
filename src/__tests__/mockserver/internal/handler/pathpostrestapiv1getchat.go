@@ -171,7 +171,6 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 										},
 										Snippets: []components.SearchResultSnippet{
 											components.SearchResultSnippet{
-												Snippet: "<value>",
 												Ranges: []components.TextRange{
 													components.TextRange{
 														StartIndex: 78888,
@@ -255,6 +254,7 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
+												Snippet: "<value>",
 											},
 										},
 									},
@@ -626,8 +626,11 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 											AddedRoles:         []components.UserRoleSpecification{},
 											RemovedRoles:       []components.UserRoleSpecification{},
 											Roles:              []components.UserRoleSpecification{},
-											SourceDocumentSpec: types.Pointer(components.CreateDocumentSpecUnionDocumentSpec1(
-												components.DocumentSpec1{},
+											SourceDocumentSpec: types.Pointer(components.CreateDocumentSpecUnionDocumentSpec3(
+												components.DocumentSpec3{
+													UgcType:   components.DocumentSpecUgcType1Shortcuts,
+													ContentID: 602763,
+												},
 											)),
 											SourceType: components.AnswerSourceTypeAssistant.ToPointer(),
 											CombinedAnswerText: &components.StructuredText{

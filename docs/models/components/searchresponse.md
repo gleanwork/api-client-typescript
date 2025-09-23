@@ -13,8 +13,8 @@ let value: SearchResponse = {
       url: "https://www.example.com/",
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
     },
@@ -23,8 +23,8 @@ let value: SearchResponse = {
       url: "https://www.example.com/",
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
     },

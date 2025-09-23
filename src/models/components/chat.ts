@@ -19,11 +19,23 @@ import {
   IconConfig$outboundSchema,
 } from "./iconconfig.js";
 import {
+  ObjectPermissions,
+  ObjectPermissions$inboundSchema,
+  ObjectPermissions$Outbound,
+  ObjectPermissions$outboundSchema,
+} from "./objectpermissions.js";
+import {
   Person,
   Person$inboundSchema,
   Person$Outbound,
   Person$outboundSchema,
 } from "./person.js";
+import {
+  UserRoleSpecification,
+  UserRoleSpecification$inboundSchema,
+  UserRoleSpecification$Outbound,
+  UserRoleSpecification$outboundSchema,
+} from "./userrolespecification.js";
 
 /**
  * A historical representation of a series of chat messages a user had with Glean Assistant.
@@ -58,10 +70,15 @@ export type Chat = {
    * Defines how to render an icon
    */
   icon?: IconConfig | undefined;
+  permissions?: ObjectPermissions | undefined;
   /**
    * The chat messages within a Chat.
    */
   messages?: Array<ChatMessage> | undefined;
+  /**
+   * A list of roles for this Chat.
+   */
+  roles?: Array<UserRoleSpecification> | undefined;
 };
 
 /** @internal */
@@ -75,7 +92,9 @@ export const Chat$inboundSchema: z.ZodType<Chat, z.ZodTypeDef, unknown> = z
     applicationId: z.string().optional(),
     applicationName: z.string().optional(),
     icon: IconConfig$inboundSchema.optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
     messages: z.array(ChatMessage$inboundSchema).optional(),
+    roles: z.array(UserRoleSpecification$inboundSchema).optional(),
   });
 
 /** @internal */
@@ -88,7 +107,9 @@ export type Chat$Outbound = {
   applicationId?: string | undefined;
   applicationName?: string | undefined;
   icon?: IconConfig$Outbound | undefined;
+  permissions?: ObjectPermissions$Outbound | undefined;
   messages?: Array<ChatMessage$Outbound> | undefined;
+  roles?: Array<UserRoleSpecification$Outbound> | undefined;
 };
 
 /** @internal */
@@ -102,7 +123,9 @@ export const Chat$outboundSchema: z.ZodType<Chat$Outbound, z.ZodTypeDef, Chat> =
     applicationId: z.string().optional(),
     applicationName: z.string().optional(),
     icon: IconConfig$outboundSchema.optional(),
+    permissions: ObjectPermissions$outboundSchema.optional(),
     messages: z.array(ChatMessage$outboundSchema).optional(),
+    roles: z.array(UserRoleSpecification$outboundSchema).optional(),
   });
 
 /**

@@ -12,6 +12,10 @@ export type GetChatFilesRequest = {
    * IDs of files to fetch.
    */
   fileIds: Array<string>;
+  /**
+   * The ID of the chat that contains the chat file.
+   */
+  chatId?: string | undefined;
 };
 
 /** @internal */
@@ -21,11 +25,13 @@ export const GetChatFilesRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   fileIds: z.array(z.string()),
+  chatId: z.string().optional(),
 });
 
 /** @internal */
 export type GetChatFilesRequest$Outbound = {
   fileIds: Array<string>;
+  chatId?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +41,7 @@ export const GetChatFilesRequest$outboundSchema: z.ZodType<
   GetChatFilesRequest
 > = z.object({
   fileIds: z.array(z.string()),
+  chatId: z.string().optional(),
 });
 
 /**

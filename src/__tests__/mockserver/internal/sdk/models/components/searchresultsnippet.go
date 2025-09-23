@@ -3,8 +3,6 @@
 package components
 
 type SearchResultSnippet struct {
-	// A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007.
-	Snippet string `json:"snippet"`
 	// The mime type of the snippets, currently either text/plain or text/html.
 	MimeType *string `json:"mimeType,omitempty"`
 	// A matching snippet from the document with no highlights.
@@ -15,13 +13,10 @@ type SearchResultSnippet struct {
 	Ranges []TextRange `json:"ranges,omitempty"`
 	// A URL, generated based on availability, that links to the position of the snippet text or to the nearest header above the snippet text.
 	URL *string `json:"url,omitempty"`
-}
-
-func (o *SearchResultSnippet) GetSnippet() string {
-	if o == nil {
-		return ""
-	}
-	return o.Snippet
+	// A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007. Use 'text' field instead.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	Snippet string `json:"snippet"`
 }
 
 func (o *SearchResultSnippet) GetMimeType() *string {
@@ -57,4 +52,11 @@ func (o *SearchResultSnippet) GetURL() *string {
 		return nil
 	}
 	return o.URL
+}
+
+func (o *SearchResultSnippet) GetSnippet() string {
+	if o == nil {
+		return ""
+	}
+	return o.Snippet
 }

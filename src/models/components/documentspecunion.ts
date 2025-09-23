@@ -11,26 +11,57 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The type of the user generated content (UGC datasource).
  */
-export const DocumentSpecUgcType = {
+export const DocumentSpecUgcType2 = {
   Announcements: "ANNOUNCEMENTS",
   Answers: "ANSWERS",
   Collections: "COLLECTIONS",
   Shortcuts: "SHORTCUTS",
+  Chats: "CHATS",
 } as const;
 /**
  * The type of the user generated content (UGC datasource).
  */
-export type DocumentSpecUgcType = ClosedEnum<typeof DocumentSpecUgcType>;
+export type DocumentSpecUgcType2 = ClosedEnum<typeof DocumentSpecUgcType2>;
+
+export type DocumentSpec4 = {
+  /**
+   * The type of the user generated content (UGC datasource).
+   */
+  ugcType: DocumentSpecUgcType2;
+  /**
+   * The string id for user generated content. Used for CHATS.
+   */
+  ugcId: string;
+  /**
+   * The specific type of the user generated content type.
+   */
+  docType?: string | undefined;
+};
+
+/**
+ * The type of the user generated content (UGC datasource).
+ */
+export const DocumentSpecUgcType1 = {
+  Announcements: "ANNOUNCEMENTS",
+  Answers: "ANSWERS",
+  Collections: "COLLECTIONS",
+  Shortcuts: "SHORTCUTS",
+  Chats: "CHATS",
+} as const;
+/**
+ * The type of the user generated content (UGC datasource).
+ */
+export type DocumentSpecUgcType1 = ClosedEnum<typeof DocumentSpecUgcType1>;
 
 export type DocumentSpec3 = {
   /**
    * The type of the user generated content (UGC datasource).
    */
-  ugcType?: DocumentSpecUgcType | undefined;
+  ugcType: DocumentSpecUgcType1;
   /**
-   * The id for user generated content.
+   * The numeric id for user generated content. Used for ANNOUNCEMENTS, ANSWERS, COLLECTIONS, SHORTCUTS.
    */
-  contentId?: number | undefined;
+  contentId: number;
   /**
    * The specific type of the user generated content type.
    */
@@ -41,37 +72,118 @@ export type DocumentSpec2 = {
   /**
    * The ID of the document.
    */
-  id?: string | undefined;
+  id: string;
 };
 
 export type DocumentSpec1 = {
   /**
    * The URL of the document.
    */
-  url?: string | undefined;
+  url: string;
 };
 
-export type DocumentSpecUnion = DocumentSpec1 | DocumentSpec2 | DocumentSpec3;
+export type DocumentSpecUnion =
+  | DocumentSpec1
+  | DocumentSpec2
+  | DocumentSpec3
+  | DocumentSpec4;
 
 /** @internal */
-export const DocumentSpecUgcType$inboundSchema: z.ZodNativeEnum<
-  typeof DocumentSpecUgcType
-> = z.nativeEnum(DocumentSpecUgcType);
+export const DocumentSpecUgcType2$inboundSchema: z.ZodNativeEnum<
+  typeof DocumentSpecUgcType2
+> = z.nativeEnum(DocumentSpecUgcType2);
 
 /** @internal */
-export const DocumentSpecUgcType$outboundSchema: z.ZodNativeEnum<
-  typeof DocumentSpecUgcType
-> = DocumentSpecUgcType$inboundSchema;
+export const DocumentSpecUgcType2$outboundSchema: z.ZodNativeEnum<
+  typeof DocumentSpecUgcType2
+> = DocumentSpecUgcType2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DocumentSpecUgcType$ {
-  /** @deprecated use `DocumentSpecUgcType$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpecUgcType$inboundSchema;
-  /** @deprecated use `DocumentSpecUgcType$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpecUgcType$outboundSchema;
+export namespace DocumentSpecUgcType2$ {
+  /** @deprecated use `DocumentSpecUgcType2$inboundSchema` instead. */
+  export const inboundSchema = DocumentSpecUgcType2$inboundSchema;
+  /** @deprecated use `DocumentSpecUgcType2$outboundSchema` instead. */
+  export const outboundSchema = DocumentSpecUgcType2$outboundSchema;
+}
+
+/** @internal */
+export const DocumentSpec4$inboundSchema: z.ZodType<
+  DocumentSpec4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ugcType: DocumentSpecUgcType2$inboundSchema,
+  ugcId: z.string(),
+  docType: z.string().optional(),
+});
+
+/** @internal */
+export type DocumentSpec4$Outbound = {
+  ugcType: string;
+  ugcId: string;
+  docType?: string | undefined;
+};
+
+/** @internal */
+export const DocumentSpec4$outboundSchema: z.ZodType<
+  DocumentSpec4$Outbound,
+  z.ZodTypeDef,
+  DocumentSpec4
+> = z.object({
+  ugcType: DocumentSpecUgcType2$outboundSchema,
+  ugcId: z.string(),
+  docType: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DocumentSpec4$ {
+  /** @deprecated use `DocumentSpec4$inboundSchema` instead. */
+  export const inboundSchema = DocumentSpec4$inboundSchema;
+  /** @deprecated use `DocumentSpec4$outboundSchema` instead. */
+  export const outboundSchema = DocumentSpec4$outboundSchema;
+  /** @deprecated use `DocumentSpec4$Outbound` instead. */
+  export type Outbound = DocumentSpec4$Outbound;
+}
+
+export function documentSpec4ToJSON(documentSpec4: DocumentSpec4): string {
+  return JSON.stringify(DocumentSpec4$outboundSchema.parse(documentSpec4));
+}
+
+export function documentSpec4FromJSON(
+  jsonString: string,
+): SafeParseResult<DocumentSpec4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DocumentSpec4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DocumentSpec4' from JSON`,
+  );
+}
+
+/** @internal */
+export const DocumentSpecUgcType1$inboundSchema: z.ZodNativeEnum<
+  typeof DocumentSpecUgcType1
+> = z.nativeEnum(DocumentSpecUgcType1);
+
+/** @internal */
+export const DocumentSpecUgcType1$outboundSchema: z.ZodNativeEnum<
+  typeof DocumentSpecUgcType1
+> = DocumentSpecUgcType1$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace DocumentSpecUgcType1$ {
+  /** @deprecated use `DocumentSpecUgcType1$inboundSchema` instead. */
+  export const inboundSchema = DocumentSpecUgcType1$inboundSchema;
+  /** @deprecated use `DocumentSpecUgcType1$outboundSchema` instead. */
+  export const outboundSchema = DocumentSpecUgcType1$outboundSchema;
 }
 
 /** @internal */
@@ -80,15 +192,15 @@ export const DocumentSpec3$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ugcType: DocumentSpecUgcType$inboundSchema.optional(),
-  contentId: z.number().int().optional(),
+  ugcType: DocumentSpecUgcType1$inboundSchema,
+  contentId: z.number().int(),
   docType: z.string().optional(),
 });
 
 /** @internal */
 export type DocumentSpec3$Outbound = {
-  ugcType?: string | undefined;
-  contentId?: number | undefined;
+  ugcType: string;
+  contentId: number;
   docType?: string | undefined;
 };
 
@@ -98,8 +210,8 @@ export const DocumentSpec3$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentSpec3
 > = z.object({
-  ugcType: DocumentSpecUgcType$outboundSchema.optional(),
-  contentId: z.number().int().optional(),
+  ugcType: DocumentSpecUgcType1$outboundSchema,
+  contentId: z.number().int(),
   docType: z.string().optional(),
 });
 
@@ -136,12 +248,12 @@ export const DocumentSpec2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
 });
 
 /** @internal */
 export type DocumentSpec2$Outbound = {
-  id?: string | undefined;
+  id: string;
 };
 
 /** @internal */
@@ -150,7 +262,7 @@ export const DocumentSpec2$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentSpec2
 > = z.object({
-  id: z.string().optional(),
+  id: z.string(),
 });
 
 /**
@@ -186,12 +298,12 @@ export const DocumentSpec1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  url: z.string().optional(),
+  url: z.string(),
 });
 
 /** @internal */
 export type DocumentSpec1$Outbound = {
-  url?: string | undefined;
+  url: string;
 };
 
 /** @internal */
@@ -200,7 +312,7 @@ export const DocumentSpec1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentSpec1
 > = z.object({
-  url: z.string().optional(),
+  url: z.string(),
 });
 
 /**
@@ -239,13 +351,15 @@ export const DocumentSpecUnion$inboundSchema: z.ZodType<
   z.lazy(() => DocumentSpec1$inboundSchema),
   z.lazy(() => DocumentSpec2$inboundSchema),
   z.lazy(() => DocumentSpec3$inboundSchema),
+  z.lazy(() => DocumentSpec4$inboundSchema),
 ]);
 
 /** @internal */
 export type DocumentSpecUnion$Outbound =
   | DocumentSpec1$Outbound
   | DocumentSpec2$Outbound
-  | DocumentSpec3$Outbound;
+  | DocumentSpec3$Outbound
+  | DocumentSpec4$Outbound;
 
 /** @internal */
 export const DocumentSpecUnion$outboundSchema: z.ZodType<
@@ -256,6 +370,7 @@ export const DocumentSpecUnion$outboundSchema: z.ZodType<
   z.lazy(() => DocumentSpec1$outboundSchema),
   z.lazy(() => DocumentSpec2$outboundSchema),
   z.lazy(() => DocumentSpec3$outboundSchema),
+  z.lazy(() => DocumentSpec4$outboundSchema),
 ]);
 
 /**

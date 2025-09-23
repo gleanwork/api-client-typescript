@@ -75,6 +75,8 @@ export type ManualFeedbackInfoVote = ClosedEnum<typeof ManualFeedbackInfoVote>;
 export type ManualFeedbackInfo = {
   /**
    * The email address of the user who submitted the Feedback.event.MANUAL_FEEDBACK event.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   email?: string | undefined;
   /**
