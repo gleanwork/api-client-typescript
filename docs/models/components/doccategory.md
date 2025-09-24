@@ -7,11 +7,11 @@ The document category of this object type.
 ```typescript
 import { DocCategory } from "@gleanwork/api-client/models/components";
 
-let value: DocCategory = "PUBLISHED_CONTENT";
+let value: DocCategory = "COLLABORATIVE_CONTENT";
 ```
 
 ## Values
 
 ```typescript
-"UNCATEGORIZED" | "TICKETS" | "CRM" | "PUBLISHED_CONTENT" | "COLLABORATIVE_CONTENT" | "QUESTION_ANSWER" | "MESSAGING" | "CODE_REPOSITORY" | "CHANGE_MANAGEMENT" | "PEOPLE" | "EMAIL" | "SSO" | "ATS" | "KNOWLEDGE_HUB" | "EXTERNAL_SHORTCUT" | "ENTITY" | "CALENDAR"
+"UNCATEGORIZED" | "TICKETS" | "CRM" | "PUBLISHED_CONTENT" | "COLLABORATIVE_CONTENT" | "QUESTION_ANSWER" | "MESSAGING" | "CODE_REPOSITORY" | "CHANGE_MANAGEMENT" | "PEOPLE" | "EMAIL" | "SSO" | "ATS" | "KNOWLEDGE_HUB" | "EXTERNAL_SHORTCUT" | "ENTITY" | "CALENDAR" | "AGENTS"
 ```

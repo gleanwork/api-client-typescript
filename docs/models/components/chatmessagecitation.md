@@ -53,8 +53,8 @@ let value: ChatMessageCitation = {
       },
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
     },

@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -36,7 +37,7 @@ export function clientCollectionsCreate(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    components.CreateCollectionResponse,
+    operations.CreatecollectionResponse,
     | errors.CollectionError
     | GleanError
     | SDKValidationError
@@ -61,7 +62,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      components.CreateCollectionResponse,
+      operations.CreatecollectionResponse,
       | errors.CollectionError
       | GleanError
       | SDKValidationError
@@ -140,7 +141,7 @@ async function $do(
   };
 
   const [result] = await M.match<
-    components.CreateCollectionResponse,
+    operations.CreatecollectionResponse,
     | errors.CollectionError
     | GleanError
     | SDKValidationError
@@ -150,7 +151,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.CreateCollectionResponse$inboundSchema),
+    M.json(200, operations.CreatecollectionResponse$inboundSchema),
     M.jsonErr(422, errors.CollectionError$inboundSchema),
     M.fail([400, 401, 429, "4XX"]),
     M.fail("5XX"),

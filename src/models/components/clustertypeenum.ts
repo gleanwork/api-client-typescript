@@ -18,6 +18,8 @@ export const ClusterTypeEnum = {
   ThreadRoot: "THREAD_ROOT",
   Prefix: "PREFIX",
   Suffix: "SUFFIX",
+  AuthorPrefix: "AUTHOR_PREFIX",
+  AuthorSuffix: "AUTHOR_SUFFIX",
 } as const;
 /**
  * The reason for inclusion of clusteredResults.

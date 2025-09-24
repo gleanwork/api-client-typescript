@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  ToolSets,
+  ToolSets$inboundSchema,
+  ToolSets$Outbound,
+  ToolSets$outboundSchema,
+} from "./toolsets.js";
 
 /**
  * Name of the agent.
@@ -15,6 +21,8 @@ export const AgentEnum = {
   Default: "DEFAULT",
   Gpt: "GPT",
   Universal: "UNIVERSAL",
+  Fast: "FAST",
+  Advanced: "ADVANCED",
 } as const;
 /**
  * Name of the agent.
@@ -41,6 +49,10 @@ export type AgentConfig = {
    * Name of the agent.
    */
   agent?: AgentEnum | undefined;
+  /**
+   * The types of tools that the agent is allowed to use. Only works with FAST and ADVANCED `agent` values
+   */
+  toolSets?: ToolSets | undefined;
   /**
    * Top level modes to run GleanChat in.
    */
@@ -93,12 +105,14 @@ export const AgentConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   agent: AgentEnum$inboundSchema.optional(),
+  toolSets: ToolSets$inboundSchema.optional(),
   mode: Mode$inboundSchema.optional(),
 });
 
 /** @internal */
 export type AgentConfig$Outbound = {
   agent?: string | undefined;
+  toolSets?: ToolSets$Outbound | undefined;
   mode?: string | undefined;
 };
 
@@ -109,6 +123,7 @@ export const AgentConfig$outboundSchema: z.ZodType<
   AgentConfig
 > = z.object({
   agent: AgentEnum$outboundSchema.optional(),
+  toolSets: ToolSets$outboundSchema.optional(),
   mode: Mode$outboundSchema.optional(),
 });
 

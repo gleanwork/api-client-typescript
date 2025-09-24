@@ -262,8 +262,8 @@ test("Client Shortcuts Createshortcut", async () => {
                     nativeAppUrl: "slack://foo/bar",
                     snippets: [
                       {
-                        snippet: "snippet",
                         mimeType: "mimeType",
+                        snippet: "snippet",
                       },
                     ],
                   },
@@ -979,8 +979,8 @@ test("Client Shortcuts Updateshortcut", async () => {
                   nativeAppUrl: "slack://foo/bar",
                   snippets: [
                     {
-                      snippet: "snippet",
                       mimeType: "mimeType",
+                      snippet: "snippet",
                     },
                   ],
                 },

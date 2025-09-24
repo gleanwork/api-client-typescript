@@ -12,6 +12,7 @@ import { clientCollectionsUpdate } from "../funcs/clientCollectionsUpdate.js";
 import { clientCollectionsUpdateItem } from "../funcs/clientCollectionsUpdateItem.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Collections extends ClientSDK {
@@ -41,7 +42,7 @@ export class Collections extends ClientSDK {
   async create(
     request: components.CreateCollectionRequest,
     options?: RequestOptions,
-  ): Promise<components.CreateCollectionResponse> {
+  ): Promise<operations.CreatecollectionResponse> {
     return unwrapAsync(clientCollectionsCreate(
       this,
       request,
