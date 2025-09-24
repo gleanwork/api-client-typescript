@@ -11,8 +11,8 @@ let value: SearchResult = {
   nativeAppUrl: "slack://foo/bar",
   snippets: [
     {
-      snippet: "snippet",
       mimeType: "mimeType",
+      snippet: "snippet",
     },
   ],
   mustIncludeSuggestions: {},

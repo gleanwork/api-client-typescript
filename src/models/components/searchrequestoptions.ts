@@ -108,7 +108,7 @@ export type SearchRequestOptions = {
    */
   disableQueryAutocorrect?: boolean | undefined;
   /**
-   * [beta] Enables expanded content to be returned for LLM usage. The size of content per result returned should be modified using maxSnippetSize. Server may return less or more than what is specified in maxSnippetSize. For more details, https://docs.google.com/document/d/1CTOLSxWWT9WDEnHVLoCUaxbGYyXYP8kctPRF-RluSQY/edit. Requires sufficient permissions.
+   * Enables expanded content to be returned for LLM usage. The size of content per result returned should be modified using maxSnippetSize. Server may return less or more than what is specified in maxSnippetSize. For more details, see https://developers.glean.com/guides/search/llm-content.
    */
   returnLlmContentOverSnippets?: boolean | undefined;
   inclusions?: RestrictionFilters | undefined;

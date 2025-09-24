@@ -6,7 +6,7 @@
 import { FeedResult } from "@gleanwork/api-client/models/components";
 
 let value: FeedResult = {
-  category: "ZERO_STATE_CHAT_SUGGESTION",
+  category: "ZERO_STATE_WORKFLOW_CREATED_BY_ME",
   primaryEntry: {
     title: "<value>",
     createdBy: {
@@ -94,6 +94,9 @@ let value: FeedResult = {
     },
     announcement: {
       draftId: 342,
+    },
+    digest: {
+      digestDate: "2025-09-03",
     },
     collection: {
       name: "<value>",
@@ -203,6 +206,9 @@ let value: FeedResult = {
       },
       announcement: {
         draftId: 342,
+      },
+      digest: {
+        digestDate: "2025-09-03",
       },
       promptTemplate: {
         promptTemplate: {

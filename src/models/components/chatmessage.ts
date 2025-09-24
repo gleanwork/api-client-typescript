@@ -44,6 +44,7 @@ export const MessageType = {
   Error: "ERROR",
   Heading: "HEADING",
   Warning: "WARNING",
+  ServerTool: "SERVER_TOOL",
 } as const;
 /**
  * Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.
@@ -140,7 +141,7 @@ export const ChatMessage$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   agentConfig: AgentConfig$inboundSchema.optional(),
-  author: Author$inboundSchema.default("GLEAN_AI"),
+  author: Author$inboundSchema.default("USER"),
   citations: z.array(ChatMessageCitation$inboundSchema).optional(),
   uploadedFileIds: z.array(z.string()).optional(),
   fragments: z.array(ChatMessageFragment$inboundSchema).optional(),
@@ -172,7 +173,7 @@ export const ChatMessage$outboundSchema: z.ZodType<
   ChatMessage
 > = z.object({
   agentConfig: AgentConfig$outboundSchema.optional(),
-  author: Author$outboundSchema.default("GLEAN_AI"),
+  author: Author$outboundSchema.default("USER"),
   citations: z.array(ChatMessageCitation$outboundSchema).optional(),
   uploadedFileIds: z.array(z.string()).optional(),
   fragments: z.array(ChatMessageFragment$outboundSchema).optional(),

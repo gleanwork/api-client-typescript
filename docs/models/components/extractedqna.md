@@ -12,8 +12,8 @@ let value: ExtractedQnA = {
     nativeAppUrl: "slack://foo/bar",
     snippets: [
       {
-        snippet: "snippet",
         mimeType: "mimeType",
+        snippet: "snippet",
       },
     ],
     mustIncludeSuggestions: {},

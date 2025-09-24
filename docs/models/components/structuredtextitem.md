@@ -177,8 +177,8 @@ let value: StructuredTextItem = {
         nativeAppUrl: "slack://foo/bar",
         snippets: [
           {
-            snippet: "snippet",
             mimeType: "mimeType",
+            snippet: "snippet",
           },
         ],
         mustIncludeSuggestions: {},

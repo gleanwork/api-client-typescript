@@ -13,8 +13,8 @@ let value: ClusterGroup = {
       nativeAppUrl: "slack://foo/bar",
       snippets: [
         {
-          snippet: "snippet",
           mimeType: "mimeType",
+          snippet: "snippet",
         },
       ],
       mustIncludeSuggestions: {},

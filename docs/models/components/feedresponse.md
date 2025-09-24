@@ -9,7 +9,7 @@ let value: FeedResponse = {
   serverTimestamp: 603266,
   results: [
     {
-      category: "TRENDING_DOCUMENT",
+      category: "USE_CASE",
       primaryEntry: {
         title: "<value>",
         createdBy: {
@@ -97,6 +97,9 @@ let value: FeedResponse = {
         },
         announcement: {
           draftId: 342,
+        },
+        digest: {
+          digestDate: "2025-09-03",
         },
         collection: {
           name: "<value>",
@@ -206,6 +209,9 @@ let value: FeedResponse = {
           },
           announcement: {
             draftId: 342,
+          },
+          digest: {
+            digestDate: "2025-09-03",
           },
           promptTemplate: {
             promptTemplate: {

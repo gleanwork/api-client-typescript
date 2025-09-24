@@ -367,9 +367,17 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
-      {},
-      {},
-      {},
+      {
+        ugcType: "CHATS",
+        ugcId: "<id>",
+      },
+      {
+        ugcType: "CHATS",
+        ugcId: "<id>",
+      },
+      {
+        id: "<id>",
+      },
     ],
   });
 
@@ -397,9 +405,17 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientDocumentsSummarize(glean, {
     documentSpecs: [
-      {},
-      {},
-      {},
+      {
+        ugcType: "CHATS",
+        ugcId: "<id>",
+      },
+      {
+        ugcType: "CHATS",
+        ugcId: "<id>",
+      },
+      {
+        id: "<id>",
+      },
     ],
   });
 

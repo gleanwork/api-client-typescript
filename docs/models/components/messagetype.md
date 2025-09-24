@@ -13,5 +13,5 @@ let value: MessageType = "WARNING";
 ## Values
 
 ```typescript
-"UPDATE" | "CONTENT" | "CONTEXT" | "DEBUG" | "DEBUG_EXTERNAL" | "ERROR" | "HEADING" | "WARNING"
+"UPDATE" | "CONTENT" | "CONTEXT" | "DEBUG" | "DEBUG_EXTERNAL" | "ERROR" | "HEADING" | "WARNING" | "SERVER_TOOL"
 ```

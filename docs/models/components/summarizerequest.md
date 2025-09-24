@@ -9,7 +9,10 @@ import { SummarizeRequest } from "@gleanwork/api-client/models/components";
 
 let value: SummarizeRequest = {
   documentSpecs: [
-    {},
+    {
+      ugcType: "SHORTCUTS",
+      contentId: 935521,
+    },
   ],
 };
 ```
