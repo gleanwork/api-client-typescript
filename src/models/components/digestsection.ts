@@ -36,6 +36,13 @@ export type DigestSection = {
    */
   channelName?: string | undefined;
   /**
+   * Channel visibility/type for CHANNEL sections. For Slack this is typically one of
+   *
+   * @remarks
+   * PublicChannel, PrivateChannel. Omit if not applicable or unknown.
+   */
+  channelType?: string | undefined;
+  /**
    * Instance identifier for the channel or workspace. Used for constructing channel URLs to display in the frontend.
    */
   instanceId?: string | undefined;
@@ -59,6 +66,7 @@ export const DigestSection$inboundSchema: z.ZodType<
   type: SectionType$inboundSchema,
   displayName: z.string().optional(),
   channelName: z.string().optional(),
+  channelType: z.string().optional(),
   instanceId: z.string().optional(),
   url: z.string().optional(),
   updates: z.array(DigestUpdate$inboundSchema),
@@ -70,6 +78,7 @@ export type DigestSection$Outbound = {
   type: string;
   displayName?: string | undefined;
   channelName?: string | undefined;
+  channelType?: string | undefined;
   instanceId?: string | undefined;
   url?: string | undefined;
   updates: Array<DigestUpdate$Outbound>;
@@ -85,6 +94,7 @@ export const DigestSection$outboundSchema: z.ZodType<
   type: SectionType$outboundSchema,
   displayName: z.string().optional(),
   channelName: z.string().optional(),
+  channelType: z.string().optional(),
   instanceId: z.string().optional(),
   url: z.string().optional(),
   updates: z.array(DigestUpdate$outboundSchema),
