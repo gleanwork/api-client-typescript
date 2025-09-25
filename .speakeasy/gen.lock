@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 11234d282481d3710e009ee7857573b0
+  docChecksum: 4377bd043f605edf12d68c0ffaa8b0d1
   docVersion: 0.9.0
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.10.3
-  configChecksum: 95364415984ba790845c513bbbb022d4
+  releaseVersion: 0.11.1
+  configChecksum: 9c542a10d3a2faf87c22ef4201340cdf
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -2936,6 +2936,3 @@ generatedTests:
   createpolicy: "2025-06-09T18:05:10Z"
   createreport: "2025-06-09T18:05:10Z"
   setdocvisibility: "2025-06-09T18:05:10Z"
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `glean.client.search.retrieveFeed()`:  `response.results.[].primaryEntry.digest.sections.[].channelType` **Added**

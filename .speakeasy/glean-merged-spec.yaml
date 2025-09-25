@@ -11678,6 +11678,38 @@ components:
                 - NOT_UPLOADED
                 - STATUS_UNKNOWN
             example: UPLOADED
+        DebugDocumentLifecycleRequest:
+            type: object
+            description: Describes the request body of the /debug/{datasource}/document/events API call.
+            properties:
+                objectType:
+                    type: string
+                    description: Object type of the document to get lifecycle events for.
+                    example: Article
+                docId:
+                    type: string
+                    description: Glean Document ID within the datasource to get lifecycle events for.
+                    example: art123
+                startDate:
+                    type: string
+                    description: The start date for events to be fetched. Cannot be more than 30 days (default 7 days) in the past.
+                    example: "2025-05-01"
+                maxEvents:
+                    type: integer
+                    description: Max number of events to be fetched. Cannot be more than 100 (default 20).
+                    example: 50
+            required:
+                - objectType
+                - docId
+        DebugDocumentLifecycleResponse:
+            type: object
+            description: Describes the response body of the /debug/{datasource}/document/events API call
+            properties:
+                lifeCycleEvents:
+                    type: array
+                    description: List of lifecycle events corresponding to the document
+                    items:
+                        $ref: "#/components/schemas/LifeCycleEvent"
         PropertyDefinition:
             properties:
                 name:
