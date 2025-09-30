@@ -5,11 +5,11 @@
 ```typescript
 import { InsightsRequestCategory } from "@gleanwork/api-client/models/components";
 
-let value: InsightsRequestCategory = "GLEAN_ASSIST";
+let value: InsightsRequestCategory = "CONTENT";
 ```
 
 ## Values
 
 ```typescript
-"AGENTS" | "AI" | "AI_APPS" | "ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "CONTENT" | "GLEAN_ASSIST" | "QUERIES" | "SHORTCUTS" | "USERS"
+"AGENTS" | "AGENT_USERS" | "TOP_AGENTS" | "AGENTS_USAGE_BY_DEPARTMENT" | "AI" | "AI_APPS" | "ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "CONTENT" | "GLEAN_ASSIST" | "QUERIES" | "SHORTCUTS" | "USERS"
 ```

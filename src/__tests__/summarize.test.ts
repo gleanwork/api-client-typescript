@@ -18,11 +18,10 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        ugcType: "ANNOUNCEMENTS",
-        contentId: 4922,
+        url: "https://vivid-bourgeoisie.com/",
       },
       {
-        url: "https://pushy-marksman.biz/",
+        url: "https://sorrowful-hutch.name",
       },
     ],
   });

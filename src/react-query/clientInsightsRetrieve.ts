@@ -24,10 +24,10 @@ export type ClientInsightsRetrieveMutationVariables = {
 export type ClientInsightsRetrieveMutationData = components.InsightsResponse;
 
 /**
- * Read insights
+ * Get insights
  *
  * @remarks
- * Reads the aggregate information for each user, query, and content.
+ * Gets the aggregate usage insights data displayed in the Insights Dashboards.
  */
 export function useClientInsightsRetrieveMutation(
   options?: MutationHookOptions<
