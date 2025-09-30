@@ -29296,6 +29296,9 @@ workflows:
                                   verification:
                                     metadata:
                                       lastReminder:
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                         remindAt: 490420
                                       reminders:
                                         - remindAt: 491427
@@ -31753,6 +31756,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 630893
                                     reminders:
                                       - remindAt: 843043
@@ -47924,6 +47930,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 922800
                                     reminders:
                                       - remindAt: 301657
@@ -47951,6 +47960,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 906867
                                   state: VERIFIED
                             startIndex: 426673
@@ -48861,6 +48873,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 207960
                                     reminders:
                                       - remindAt: 909207
@@ -88011,6 +88026,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 532806
                                     reminders:
                                       - remindAt: 335191
@@ -88036,6 +88054,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 416023
                                   state: VERIFIED
                             startIndex: 556706
@@ -128397,6 +128418,9 @@ workflows:
                                   verification:
                                     metadata:
                                       lastReminder:
+                                        assignee:
+                                          name: George Clooney
+                                          obfuscatedId: abc123
                                         remindAt: 490420
                                       reminders:
                                         - remindAt: 491427
@@ -128899,6 +128923,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 476595
                                     reminders:
                                       - remindAt: 637867
@@ -129192,6 +129219,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 778241
                                     reminders:
                                       - remindAt: 246216
@@ -129217,6 +129247,9 @@ workflows:
                                 verification:
                                   metadata:
                                     lastReminder:
+                                      assignee:
+                                        name: George Clooney
+                                        obfuscatedId: abc123
                                       remindAt: 234790
                                   state: DEPRECATED
                             startIndex: 475618
