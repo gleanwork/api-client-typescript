@@ -27,8 +27,8 @@ import {
 
 export type CustomFieldValue =
   | CustomFieldValueStr
-  | CustomFieldValuePerson
-  | CustomFieldValueHyperlink;
+  | CustomFieldValueHyperlink
+  | CustomFieldValuePerson;
 
 /** @internal */
 export const CustomFieldValue$inboundSchema: z.ZodType<
@@ -37,15 +37,15 @@ export const CustomFieldValue$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   CustomFieldValueStr$inboundSchema,
-  z.lazy(() => CustomFieldValuePerson$inboundSchema),
   CustomFieldValueHyperlink$inboundSchema,
+  z.lazy(() => CustomFieldValuePerson$inboundSchema),
 ]);
 
 /** @internal */
 export type CustomFieldValue$Outbound =
   | CustomFieldValueStr$Outbound
-  | CustomFieldValuePerson$Outbound
-  | CustomFieldValueHyperlink$Outbound;
+  | CustomFieldValueHyperlink$Outbound
+  | CustomFieldValuePerson$Outbound;
 
 /** @internal */
 export const CustomFieldValue$outboundSchema: z.ZodType<
@@ -54,8 +54,8 @@ export const CustomFieldValue$outboundSchema: z.ZodType<
   CustomFieldValue
 > = z.union([
   CustomFieldValueStr$outboundSchema,
-  z.lazy(() => CustomFieldValuePerson$outboundSchema),
   CustomFieldValueHyperlink$outboundSchema,
+  z.lazy(() => CustomFieldValuePerson$outboundSchema),
 ]);
 
 /**

@@ -8,7 +8,14 @@ Information regarding the invite status of a person.
 import { InviteInfo } from "@gleanwork/api-client/models/components";
 
 let value: InviteInfo = {
-  invites: [],
+  invites: [
+    {
+      inviter: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
+  ],
   inviter: {
     name: "George Clooney",
     obfuscatedId: "abc123",

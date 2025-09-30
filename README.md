@@ -70,6 +70,7 @@ These API clients provide type-safe, idiomatic interfaces for working with Glean
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
   * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
+  * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -113,12 +114,9 @@ bun add @tanstack/react-query react react-dom
 ### Yarn
 
 ```bash
-yarn add @gleanwork/api-client zod
+yarn add @gleanwork/api-client
 # Install optional peer dependencies if you plan to use React hooks
 yarn add @tanstack/react-query react react-dom
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
 ```
 
 > [!NOTE]
@@ -156,7 +154,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -186,7 +183,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -353,10 +349,6 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/entities/README.md#list) - List entities
 * [readPeople](docs/sdks/entities/README.md#readpeople) - Read people
 
-
-#### [client.governance.data](docs/sdks/data/README.md)
-
-
 #### [client.governance.data.policies](docs/sdks/policies/README.md)
 
 * [retrieve](docs/sdks/policies/README.md#retrieve) - Gets specified policy
@@ -370,9 +362,6 @@ For more information on obtaining the appropriate token type, please contact you
 * [create](docs/sdks/reports/README.md#create) - Creates new one-time report
 * [download](docs/sdks/reports/README.md#download) - Downloads violations CSV for report
 * [status](docs/sdks/reports/README.md#status) - Fetches report run status
-
-#### [client.governance.documents](docs/sdks/governancedocuments/README.md)
-
 
 #### [client.governance.documents.visibilityoverrides](docs/sdks/visibilityoverrides/README.md)
 
@@ -762,6 +751,43 @@ To learn about this feature and how to get started, check
 </details>
 <!-- End React hooks with TanStack Query [react-query] -->
 
+<!-- Start File uploads [file-upload] -->
+## File uploads
+
+Certain SDK methods accept files as part of a multi-part request. It is possible and typically recommended to upload files as a stream rather than reading the entire contents into memory. This avoids excessive memory consumption and potentially crashing with out-of-memory errors when working with very large files. The following example demonstrates how to attach a file stream to a request.
+
+> [!TIP]
+>
+> Depending on your JavaScript runtime, there are convenient utilities that return a handle to a file without reading the entire contents into memory:
+>
+> - **Node.js v20+:** Since v20, Node.js comes with a native `openAsBlob` function in [`node:fs`](https://nodejs.org/docs/latest-v20.x/api/fs.html#fsopenasblobpath-options).
+> - **Bun:** The native [`Bun.file`](https://bun.sh/docs/api/file-io#reading-files-bun-file) function produces a file handle that can be used for streaming file uploads.
+> - **Browsers:** All supported browsers return an instance to a [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) when reading the value from an `<input type="file">` element.
+> - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+import { openAsBlob } from "node:fs";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.client.chat.uploadFiles({
+    files: [
+      await openAsBlob("example.file"),
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End File uploads [file-upload] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -1078,7 +1104,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Glean({ httpClient });
+const sdk = new Glean({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

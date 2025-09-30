@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.10.5",
+  "version": "0.11.0",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
@@ -34,8 +34,7 @@
   "peerDependencies": {
     "@tanstack/react-query": "^5",
     "react": "^18 || ^19",
-    "react-dom": "^18 || ^19",
-    "zod": ">= 3"
+    "react-dom": "^18 || ^19"
   },
   "peerDependenciesMeta": {
     "@tanstack/react-query": {
@@ -56,12 +55,13 @@
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
     "tshy": "^2.0.0",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^8.22.0",
-    "vitest": "^3.0.2",
-    "zod": "^3.25.17"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.26.0",
+    "vitest": "^3.0.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "zod": "^3.20.0"
+  },
   "exports": {
     ".": {
       "import": {

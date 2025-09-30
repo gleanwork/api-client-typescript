@@ -6,9 +6,7 @@
 import { DeleteChatsRequest } from "@gleanwork/api-client/models/components";
 
 let value: DeleteChatsRequest = {
-  ids: [
-    "<value>",
-  ],
+  ids: [],
 };
 ```
 

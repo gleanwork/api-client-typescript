@@ -8,12 +8,7 @@ Describes the request body of the /debug/{datasource}/documents API call.
 import { DebugDocumentsRequest } from "@gleanwork/api-client/models/components";
 
 let value: DebugDocumentsRequest = {
-  debugDocuments: [
-    {
-      objectType: "Article",
-      docId: "art123",
-    },
-  ],
+  debugDocuments: [],
 };
 ```
 

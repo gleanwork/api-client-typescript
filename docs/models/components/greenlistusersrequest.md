@@ -10,7 +10,8 @@ import { GreenlistUsersRequest } from "@gleanwork/api-client/models/components";
 let value: GreenlistUsersRequest = {
   datasource: "<value>",
   emails: [
-    "Keon64@hotmail.com",
+    "Lydia_Pouros@yahoo.com",
+    "Jacinto84@hotmail.com",
   ],
 };
 ```

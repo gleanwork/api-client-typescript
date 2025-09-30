@@ -18,7 +18,7 @@ let value: TeamInfoDefinition = {
   ],
   members: [
     {
-      email: "Maximillian_Fahey@yahoo.com",
+      email: "Burdette_Fisher46@yahoo.com",
     },
   ],
 };

@@ -7,8 +7,8 @@ import { AnswerLikes } from "@gleanwork/api-client/models/components";
 
 let value: AnswerLikes = {
   likedBy: [],
-  likedByUser: false,
-  numLikes: 67814,
+  likedByUser: true,
+  numLikes: 82246,
 };
 ```
 

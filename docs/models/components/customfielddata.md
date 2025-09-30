@@ -7,7 +7,14 @@ import { CustomFieldData } from "@gleanwork/api-client/models/components";
 
 let value: CustomFieldData = {
   label: "<value>",
-  values: [],
+  values: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
+  ],
 };
 ```
 

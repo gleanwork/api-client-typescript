@@ -10,9 +10,7 @@ import { BulkIndexMembershipsRequest } from "@gleanwork/api-client/models/compon
 let value: BulkIndexMembershipsRequest = {
   uploadId: "<id>",
   datasource: "<value>",
-  memberships: [
-    {},
-  ],
+  memberships: [],
 };
 ```
 

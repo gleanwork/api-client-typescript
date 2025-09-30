@@ -7,7 +7,7 @@
 
 ```typescript
 const value: components.DocumentSpec1 = {
-  url: "https://rowdy-husband.com",
+  url: "https://shabby-guidance.name",
 };
 ```
 
@@ -24,7 +24,7 @@ const value: components.DocumentSpec2 = {
 ```typescript
 const value: components.DocumentSpec3 = {
   ugcType: "CHATS",
-  contentId: 826865,
+  contentId: 447943,
 };
 ```
 
@@ -32,7 +32,7 @@ const value: components.DocumentSpec3 = {
 
 ```typescript
 const value: components.DocumentSpec4 = {
-  ugcType: "ANSWERS",
+  ugcType: "ANNOUNCEMENTS",
   ugcId: "<id>",
 };
 ```

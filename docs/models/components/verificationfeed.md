@@ -16,33 +16,89 @@ let value: VerificationFeed = {
         },
         document: {
           containerDocument: {
-            parentDocument: {
-              metadata: {
-                datasource: "datasource",
-                objectType: "Feature Request",
-                container: "container",
-                parentId: "JIRA_EN-1337",
-                mimeType: "mimeType",
-                documentId: "documentId",
-                createTime: new Date("2000-01-23T04:56:07.000Z"),
-                updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                author: {
-                  name: "name",
-                  obfuscatedId: "<id>",
-                },
-                components: [
-                  "Backend",
-                  "Networking",
-                ],
-                status: "[\"Done\"]",
-                customData: {
-                  "someCustomField": {},
-                },
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
               },
             },
           },
+          parentDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
         },
-        reminders: [],
+        reminders: [
+          {
+            assignee: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            requestor: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            remindAt: 337545,
+          },
+        ],
         lastReminder: {
           assignee: {
             name: "George Clooney",
@@ -52,7 +108,7 @@ let value: VerificationFeed = {
             name: "George Clooney",
             obfuscatedId: "abc123",
           },
-          remindAt: 665011,
+          remindAt: 349760,
         },
         candidateVerifiers: [
           {

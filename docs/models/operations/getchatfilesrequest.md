@@ -7,9 +7,7 @@ import { GetchatfilesRequest } from "@gleanwork/api-client/models/operations";
 
 let value: GetchatfilesRequest = {
   getChatFilesRequest: {
-    fileIds: [
-      "<value>",
-    ],
+    fileIds: [],
   },
 };
 ```

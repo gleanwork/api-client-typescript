@@ -17,6 +17,7 @@ Create a user-generated Answer that contains a question and answer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createanswer" method="post" path="/rest/api/v1/createanswer" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -1361,7 +1362,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -2718,15 +2718,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAnswersCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -2774,6 +2771,7 @@ Delete an existing user-generated Answer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteanswer" method="post" path="/rest/api/v1/deleteanswer" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -2812,14 +2810,12 @@ async function run() {
     id: 3,
     docId: "ANSWERS_answer_3",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientAnswersDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -2867,6 +2863,7 @@ Update an existing user-generated Answer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="editanswer" method="post" path="/rest/api/v1/editanswer" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -3799,7 +3796,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -4744,15 +4740,12 @@ async function run() {
       text: "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAnswersUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -4800,6 +4793,7 @@ Read the details of a particular Answer given its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getanswer" method="post" path="/rest/api/v1/getanswer" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -4813,7 +4807,6 @@ async function run() {
     docId: "ANSWERS_answer_3",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -4839,15 +4832,12 @@ async function run() {
     id: 3,
     docId: "ANSWERS_answer_3",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAnswersRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -4895,6 +4885,7 @@ List Answers created by the current user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listanswers" method="post" path="/rest/api/v1/listanswers" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -4905,7 +4896,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.answers.list({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -4928,15 +4918,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientAnswersList(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAnswersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

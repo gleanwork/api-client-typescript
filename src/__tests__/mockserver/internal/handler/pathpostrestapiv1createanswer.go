@@ -51,7 +51,7 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.Answer{
+	var respBody *components.Answer = &components.Answer{
 		ID:       3,
 		DocID:    types.String("ANSWERS_answer_3"),
 		Question: types.String("Why is the sky blue?"),
@@ -306,10 +306,6 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 													State: components.StateDeprecated,
 													Metadata: &components.VerificationMetadata{
 														LastReminder: &components.Reminder{
-															Assignee: components.Person{
-																Name:         "George Clooney",
-																ObfuscatedID: "abc123",
-															},
 															RemindAt: 185076,
 														},
 													},
@@ -342,10 +338,6 @@ func testCreateanswerCreateanswer0(w http.ResponseWriter, req *http.Request) {
 													State: components.StateDeprecated,
 													Metadata: &components.VerificationMetadata{
 														LastReminder: &components.Reminder{
-															Assignee: components.Person{
-																Name:         "George Clooney",
-																ObfuscatedID: "abc123",
-															},
 															RemindAt: 190973,
 														},
 													},

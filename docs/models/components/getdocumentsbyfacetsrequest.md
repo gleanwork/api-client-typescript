@@ -6,25 +6,7 @@
 import { GetDocumentsByFacetsRequest } from "@gleanwork/api-client/models/components";
 
 let value: GetDocumentsByFacetsRequest = {
-  filterSets: [
-    {
-      filters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-    },
-  ],
+  filterSets: [],
 };
 ```
 

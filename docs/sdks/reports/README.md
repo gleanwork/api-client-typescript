@@ -15,6 +15,7 @@ Creates a new one-time report and executes its batch job.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createreport" method="post" path="/rest/api/v1/governance/data/reports" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -25,7 +26,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.reports.create({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,15 +48,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataReportsCreate(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataReportsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -104,6 +101,7 @@ Downloads CSV violations report for a specific report id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="downloadreportcsv" method="get" path="/rest/api/v1/governance/data/reports/{id}/download" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -114,7 +112,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.reports.download("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -137,15 +134,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataReportsDownload(glean, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataReportsDownload failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -204,6 +198,7 @@ Fetches the status of the run corresponding to the report-id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getreportstatus" method="get" path="/rest/api/v1/governance/data/reports/{id}/status" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -214,7 +209,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.reports.status("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -237,15 +231,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataReportsStatus(glean, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataReportsStatus failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

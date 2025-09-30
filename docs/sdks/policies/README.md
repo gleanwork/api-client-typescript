@@ -17,6 +17,7 @@ Fetches the specified policy version, or the latest if no version is provided.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getpolicy" method="get" path="/rest/api/v1/governance/data/policies/{id}" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -27,7 +28,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.policies.retrieve("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,15 +50,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataPoliciesRetrieve(glean, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataPoliciesRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -118,6 +115,7 @@ Updates an existing policy.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updatepolicy" method="post" path="/rest/api/v1/governance/data/policies/{id}" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -128,7 +126,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.policies.update({}, "<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -151,15 +148,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataPoliciesUpdate(glean, {}, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataPoliciesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -208,6 +202,7 @@ Lists policies with filtering.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listpolicies" method="get" path="/rest/api/v1/governance/data/policies" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -218,7 +213,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.policies.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -241,15 +235,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataPoliciesList(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataPoliciesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -309,6 +300,7 @@ Creates a new policy with specified specifications and returns its id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createpolicy" method="post" path="/rest/api/v1/governance/data/policies" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -319,7 +311,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.policies.create({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -342,15 +333,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataPoliciesCreate(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataPoliciesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -398,6 +386,7 @@ Downloads CSV violations report for a specific policy id. This does not support 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="downloadpolicycsv" method="get" path="/rest/api/v1/governance/data/policies/{id}/download" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -408,7 +397,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.data.policies.download("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -431,15 +419,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDataPoliciesDownload(glean, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDataPoliciesDownload failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

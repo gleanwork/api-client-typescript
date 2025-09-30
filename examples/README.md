@@ -1,29 +1,31 @@
-# Examples
+# @gleanwork/api-client Examples
 
-## Run an example
+This directory contains example scripts demonstrating how to use the @gleanwork/api-client SDK.
+
+## Prerequisites
+
+- Node.js (v18 or higher)
+- npm
+
+## Setup
+
+1. Copy `.env.template` to `.env`:
+   ```bash
+   cp .env.template .env
+   ```
+
+2. Edit `.env` and add your actual credentials (API keys, tokens, etc.)
+
+## Running the Examples
+
+To run an example file from the examples directory:
 
 ```bash
-# 1. cd into the root of the repo
-cd api-client-typescript 
-
-# 2. Install dependencies
-npm install
-
-# 3. Build the project
-npm run build
-
-# 4. cd into the examples directory
-cd examples/
-
-# 5. Fill in the .env file
-cp .env.example .env
-
-# 6. Install dependencies
-npm install
-
-# 7. Run the script
-npm run script -- ./src/example.ts
+npm run build && npx tsx example.ts
 ```
 
+## Creating new examples
+
+Duplicate an existing example file, they won't be overwritten by the generation process.
 
 

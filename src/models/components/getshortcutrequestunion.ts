@@ -21,8 +21,8 @@ export type GetShortcutRequest = {
 };
 
 export type GetShortcutRequestUnion =
-  | UserGeneratedContentId
-  | GetShortcutRequest;
+  | GetShortcutRequest
+  | UserGeneratedContentId;
 
 /** @internal */
 export const GetShortcutRequest$inboundSchema: z.ZodType<
@@ -84,14 +84,14 @@ export const GetShortcutRequestUnion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  UserGeneratedContentId$inboundSchema,
   z.lazy(() => GetShortcutRequest$inboundSchema),
+  UserGeneratedContentId$inboundSchema,
 ]);
 
 /** @internal */
 export type GetShortcutRequestUnion$Outbound =
-  | UserGeneratedContentId$Outbound
-  | GetShortcutRequest$Outbound;
+  | GetShortcutRequest$Outbound
+  | UserGeneratedContentId$Outbound;
 
 /** @internal */
 export const GetShortcutRequestUnion$outboundSchema: z.ZodType<
@@ -99,8 +99,8 @@ export const GetShortcutRequestUnion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetShortcutRequestUnion
 > = z.union([
-  UserGeneratedContentId$outboundSchema,
   z.lazy(() => GetShortcutRequest$outboundSchema),
+  UserGeneratedContentId$outboundSchema,
 ]);
 
 /**

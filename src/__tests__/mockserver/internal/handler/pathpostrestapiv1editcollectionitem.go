@@ -51,7 +51,7 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.EditCollectionItemResponse{
+	var respBody *components.EditCollectionItemResponse = &components.EditCollectionItemResponse{
 		Collection: &components.Collection{
 			Name:        "<value>",
 			Description: "where nasalise emphasize jealously appliance",
@@ -246,10 +246,6 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 																},
 															},
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 286790,
 															},
 														},
@@ -282,10 +278,6 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 														State: components.StateDeprecated,
 														Metadata: &components.VerificationMetadata{
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 90490,
 															},
 														},
@@ -318,10 +310,6 @@ func testEditcollectionitemEditcollectionitem0(w http.ResponseWriter, req *http.
 														State: components.StateDeprecated,
 														Metadata: &components.VerificationMetadata{
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 299381,
 															},
 														},

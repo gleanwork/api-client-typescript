@@ -18,7 +18,11 @@ let value: UpdateShortcutRequest = {
   ],
   removedRoles: [
     {
-      role: "OWNER",
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "VERIFIER",
     },
   ],
 };

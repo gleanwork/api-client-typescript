@@ -17,7 +17,19 @@ let value: ClusterGroup = {
           snippet: "snippet",
         },
       ],
-      mustIncludeSuggestions: {},
+      mustIncludeSuggestions: {
+        suggestions: [
+          {
+            query: "app:github type:pull author:mortimer",
+            label: "Mortimer's PRs",
+            datasource: "github",
+          },
+        ],
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
     },
   ],
   visibleCountHint: 522964,

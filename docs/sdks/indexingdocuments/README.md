@@ -24,6 +24,7 @@ Adds a document to the index or updates an existing document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/indexdocument" method="post" path="/api/index/v1/indexdocument" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -64,14 +65,12 @@ async function run() {
       datasource: "<value>",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingDocumentsAddOrUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -119,6 +118,7 @@ Adds or updates multiple documents in the index. Please refer to the [bulk index
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/indexdocuments" method="post" path="/api/index/v1/indexdocuments" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -157,14 +157,12 @@ async function run() {
     datasource: "<value>",
     documents: [],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingDocumentsIndex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -212,6 +210,7 @@ Replaces the documents in a datasource using paginated batch API calls. Please r
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/bulkindexdocuments" method="post" path="/api/index/v1/bulkindexdocuments" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -252,14 +251,12 @@ async function run() {
     datasource: "<value>",
     documents: [],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingDocumentsBulkIndex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -318,6 +315,7 @@ For more frequent document processing, contact Glean support.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/processalldocuments" method="post" path="/api/index/v1/processalldocuments" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -350,14 +348,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingDocumentsProcessAll(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingDocumentsProcessAll failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -405,6 +401,7 @@ Deletes the specified document from the index. Succeeds if document is not prese
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/deletedocument" method="post" path="/api/index/v1/deletedocument" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -445,14 +442,12 @@ async function run() {
     objectType: "<value>",
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingDocumentsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -503,6 +498,7 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/debug/{datasource}/document" method="post" path="/api/index/v1/debug/{datasource}/document" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -516,7 +512,6 @@ async function run() {
     docId: "art123",
   }, "<value>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -542,15 +537,12 @@ async function run() {
     objectType: "Article",
     docId: "art123",
   }, "<value>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDocumentsDebug failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -602,6 +594,7 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/debug/{datasource}/documents" method="post" path="/api/index/v1/debug/{datasource}/documents" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -619,7 +612,6 @@ async function run() {
     ],
   }, "<value>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -649,15 +641,12 @@ async function run() {
       },
     ],
   }, "<value>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDocumentsDebugMany failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -709,6 +698,7 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/checkdocumentaccess" method="post" path="/api/index/v1/checkdocumentaccess" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -724,7 +714,6 @@ async function run() {
     userEmail: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -752,15 +741,12 @@ async function run() {
     docId: "<id>",
     userEmail: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDocumentsCheckAccess failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -813,6 +799,7 @@ Tip: Use [/debug/{datasource}/document](https://developers.glean.com/indexing/de
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/getdocumentstatus" method="post" path="/api/index/v1/getdocumentstatus" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -827,7 +814,6 @@ async function run() {
     docId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -854,15 +840,12 @@ async function run() {
     objectType: "<value>",
     docId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDocumentsStatus failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -915,6 +898,7 @@ Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debu
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/getdocumentcount" method="post" path="/api/index/v1/getdocumentcount" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -927,7 +911,6 @@ async function run() {
     datasource: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -952,15 +935,12 @@ async function run() {
   const res = await indexingDocumentsCount(glean, {
     datasource: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDocumentsCount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

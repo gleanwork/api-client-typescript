@@ -17,6 +17,7 @@ Create a user-generated shortcut that contains an alias and destination URL.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createshortcut" method="post" path="/rest/api/v1/createshortcut" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -1613,7 +1614,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3222,15 +3222,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientShortcutsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3278,6 +3275,7 @@ Delete an existing user-generated shortcut.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteshortcut" method="post" path="/rest/api/v1/deleteshortcut" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -3314,14 +3312,12 @@ async function run() {
   const res = await clientShortcutsDelete(glean, {
     id: 975862,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientShortcutsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -3369,6 +3365,7 @@ Read a particular shortcut's details given its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getshortcut" method="post" path="/rest/api/v1/getshortcut" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -3381,7 +3378,6 @@ async function run() {
     alias: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3406,15 +3402,12 @@ async function run() {
   const res = await clientShortcutsRetrieve(glean, {
     alias: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientShortcutsRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3462,6 +3455,7 @@ List shortcuts editable/owned by the currently authenticated user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listshortcuts" method="post" path="/rest/api/v1/listshortcuts" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -3489,7 +3483,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3529,15 +3522,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientShortcutsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3585,6 +3575,7 @@ Updates the shortcut with the given ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateshortcut" method="post" path="/rest/api/v1/updateshortcut" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -6437,7 +6428,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -9302,15 +9292,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientShortcutsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -20,6 +20,7 @@ Add items to a Collection.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="addcollectionitems" method="post" path="/rest/api/v1/addcollectionitems" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -32,7 +33,6 @@ async function run() {
     collectionId: 7742.68,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -57,15 +57,12 @@ async function run() {
   const res = await clientCollectionsAddItems(glean, {
     collectionId: 7742.68,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsAddItems failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -113,6 +110,7 @@ Create a publicly visible (empty) Collection of documents.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createcollection" method="post" path="/rest/api/v1/createcollection" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -775,7 +773,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1450,15 +1447,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1507,6 +1501,7 @@ Delete a Collection given the Collection's ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deletecollection" method="post" path="/rest/api/v1/deletecollection" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -1551,14 +1546,12 @@ async function run() {
       25102,
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientCollectionsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -1607,6 +1600,7 @@ Delete a single item from a Collection.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deletecollectionitem" method="post" path="/rest/api/v1/deletecollectionitem" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -1620,7 +1614,6 @@ async function run() {
     itemId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1646,15 +1639,12 @@ async function run() {
     collectionId: 6980.49,
     itemId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsDeleteItem failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1702,6 +1692,7 @@ Update the properties of an existing Collection.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="editcollection" method="post" path="/rest/api/v1/editcollection" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -2765,7 +2756,6 @@ async function run() {
     id: 671264,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3841,15 +3831,12 @@ async function run() {
     ],
     id: 671264,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3898,6 +3885,7 @@ Update the URL, Glean Document ID, description of an item within a Collection gi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="editcollectionitem" method="post" path="/rest/api/v1/editcollectionitem" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -3911,7 +3899,6 @@ async function run() {
     itemId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -3937,15 +3924,12 @@ async function run() {
     collectionId: 142375,
     itemId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsUpdateItem failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -3993,6 +3977,7 @@ Read the details of a Collection given its ID. Does not fetch items in this Coll
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getcollection" method="post" path="/rest/api/v1/getcollection" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -4005,7 +3990,6 @@ async function run() {
     id: 425335,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -4030,15 +4014,12 @@ async function run() {
   const res = await clientCollectionsRetrieve(glean, {
     id: 425335,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -4086,6 +4067,7 @@ List all existing Collections.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listcollections" method="post" path="/rest/api/v1/listcollections" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -4096,7 +4078,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.collections.list({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -4119,15 +4100,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientCollectionsList(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientCollectionsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -8,12 +8,7 @@ import { PostApiIndexV1DebugDatasourceDocumentsRequest } from "@gleanwork/api-cl
 let value: PostApiIndexV1DebugDatasourceDocumentsRequest = {
   datasource: "<value>",
   debugDocumentsRequest: {
-    debugDocuments: [
-      {
-        objectType: "Article",
-        docId: "art123",
-      },
-    ],
+    debugDocuments: [],
   },
 };
 ```

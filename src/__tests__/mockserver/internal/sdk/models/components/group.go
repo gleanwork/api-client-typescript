@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 type Group struct {
 	// The type of user group
 	Type GroupType `json:"type"`
@@ -13,6 +17,17 @@ type Group struct {
 	DatasourceInstance *string `json:"datasourceInstance,omitempty"`
 	// identifier for greenlist provisioning, aka sciokey
 	ProvisioningID *string `json:"provisioningId,omitempty"`
+}
+
+func (g Group) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *Group) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"type", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Group) GetType() GroupType {

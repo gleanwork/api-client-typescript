@@ -18,6 +18,7 @@ for use with the Client API (e.g. `/rest/api/v1/*`).
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createauthtoken" method="post" path="/rest/api/v1/createauthtoken" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -28,7 +29,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.authentication.createToken();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -51,15 +51,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientAuthenticationCreateToken(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAuthenticationCreateToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

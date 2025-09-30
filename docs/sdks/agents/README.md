@@ -17,6 +17,7 @@ Returns details of an [agent](https://developers.glean.com/agents/agents-api) cr
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAgent" method="get" path="/rest/api/v1/agents/{agent_id}" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -27,7 +28,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.agents.retrieve("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,15 +50,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientAgentsRetrieve(glean, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAgentsRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -118,6 +115,7 @@ Return [agent](https://developers.glean.com/agents/agents-api)'s input and outpu
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAgentSchemas" method="get" path="/rest/api/v1/agents/{agent_id}/schemas" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -128,7 +126,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.agents.retrieveSchemas("<id>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -151,15 +148,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientAgentsRetrieveSchemas(glean, "<id>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAgentsRetrieveSchemas failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -219,6 +213,7 @@ Search for [agents](https://developers.glean.com/agents/agents-api) by agent nam
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="searchAgents" method="post" path="/rest/api/v1/agents/search" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -231,7 +226,6 @@ async function run() {
     name: "HR Policy Agent",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -256,15 +250,12 @@ async function run() {
   const res = await clientAgentsList(glean, {
     name: "HR Policy Agent",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAgentsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -312,6 +303,7 @@ Executes an [agent](https://developers.glean.com/agents/agents-api) run and retu
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAndStreamRun" method="post" path="/rest/api/v1/agents/runs/stream" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -329,7 +321,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -359,15 +350,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAgentsRunStream failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -415,6 +403,7 @@ Executes an [agent](https://developers.glean.com/agents/agents-api) run and retu
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createAndWaitRun" method="post" path="/rest/api/v1/agents/runs/wait" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -432,7 +421,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -462,15 +450,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAgentsRun failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

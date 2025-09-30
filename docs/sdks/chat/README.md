@@ -22,6 +22,7 @@ Have a conversation with Glean AI.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="chat" method="post" path="/rest/api/v1/chat" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -42,7 +43,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -75,15 +75,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -132,6 +129,7 @@ Deletes all saved Chats a user has had and all their contained conversational co
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteallchats" method="post" path="/rest/api/v1/deleteallchats" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -164,14 +162,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatDeleteAll(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientChatDeleteAll failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -219,6 +215,7 @@ Deletes saved Chats and all their contained conversational content.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deletechats" method="post" path="/rest/api/v1/deletechats" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -255,14 +252,12 @@ async function run() {
   const res = await clientChatDelete(glean, {
     ids: [],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientChatDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -311,6 +306,7 @@ Retrieves the chat history between Glean Assistant and the user for a given Chat
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getchat" method="post" path="/rest/api/v1/getchat" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -323,7 +319,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -348,15 +343,12 @@ async function run() {
   const res = await clientChatRetrieve(glean, {
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -405,6 +397,7 @@ Retrieves all the saved Chats between Glean Assistant and the user. The returned
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listchats" method="post" path="/rest/api/v1/listchats" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -415,7 +408,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.chat.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -438,15 +430,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientChatList(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -494,6 +483,7 @@ Gets the Chat application details for the specified application ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getchatapplication" method="post" path="/rest/api/v1/getchatapplication" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -506,7 +496,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -531,15 +520,12 @@ async function run() {
   const res = await clientChatRetrieveApplication(glean, {
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatRetrieveApplication failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -588,6 +574,7 @@ Upload files for Chat.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="uploadchatfiles" method="post" path="/rest/api/v1/uploadchatfiles" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { openAsBlob } from "node:fs";
@@ -599,14 +586,10 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.chat.uploadFiles({
     files: [
-      {
-        fileName: "example.file",
-        content: await openAsBlob("example.file"),
-      },
+      await openAsBlob("example.file"),
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -631,21 +614,15 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientChatUploadFiles(glean, {
     files: [
-      {
-        fileName: "example.file",
-        content: await openAsBlob("example.file"),
-      },
+      await openAsBlob("example.file"),
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatUploadFiles failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -694,6 +671,7 @@ Get files uploaded by a user for Chat.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getchatfiles" method="post" path="/rest/api/v1/getchatfiles" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -708,7 +686,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -735,15 +712,12 @@ async function run() {
       "<value 1>",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatRetrieveFiles failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -792,6 +766,7 @@ Delete files uploaded by a user for Chat.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deletechatfiles" method="post" path="/rest/api/v1/deletechatfiles" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -836,14 +811,12 @@ async function run() {
       "<value 3>",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientChatDeleteFiles failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -892,6 +865,7 @@ Have a conversation with Glean AI.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="chatStream" method="post" path="/rest/api/v1/chat#stream" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -912,7 +886,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -945,15 +918,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientChatCreateStream failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -279,3 +279,13 @@ Based on:
 - [typescript v0.10.5] .
 ### Releases
 - [NPM v0.10.5] https://www.npmjs.com/package/@gleanwork/api-client/v/0.10.5 - .
+
+## 2025-09-30 21:42:46
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.631.5 (2.716.16) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.11.0] .
+### Releases
+- [NPM v0.11.0] https://www.npmjs.com/package/@gleanwork/api-client/v/0.11.0 - .

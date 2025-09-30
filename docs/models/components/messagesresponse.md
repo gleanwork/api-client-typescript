@@ -95,15 +95,27 @@ let value: MessagesResponse = {
       {
         fieldName: "fieldName",
         values: [
-          {},
-          {},
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
         ],
       },
       {
         fieldName: "fieldName",
         values: [
-          {},
-          {},
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
         ],
       },
     ],
@@ -119,7 +131,19 @@ let value: MessagesResponse = {
         snippet: "snippet",
       },
     ],
-    mustIncludeSuggestions: {},
+    mustIncludeSuggestions: {
+      suggestions: [
+        {
+          query: "app:github type:pull author:mortimer",
+          label: "Mortimer's PRs",
+          datasource: "github",
+        },
+      ],
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
   },
 };
 ```

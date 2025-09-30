@@ -8,9 +8,8 @@ import { AddCollectionItemsResponse } from "@gleanwork/api-client/models/compone
 let value: AddCollectionItemsResponse = {
   collection: {
     name: "<value>",
-    description: "jaggedly anti triumphantly frenetically eek with",
-    addedRoles: [],
-    removedRoles: [],
+    description:
+      "feline charming fast vibraphone immediately viciously creator",
     audienceFilters: [
       {
         fieldName: "type",
@@ -26,7 +25,7 @@ let value: AddCollectionItemsResponse = {
         ],
       },
     ],
-    id: 320120,
+    id: 278414,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -35,9 +34,36 @@ let value: AddCollectionItemsResponse = {
       name: "George Clooney",
       obfuscatedId: "abc123",
     },
-    items: [],
-    children: [],
-    roles: [],
+    children: [
+      {
+        name: "<value>",
+        description: "design cappelletti kettledrum",
+        audienceFilters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+        id: 635422,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
   },
 };
 ```

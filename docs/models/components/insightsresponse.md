@@ -31,6 +31,273 @@ let value: InsightsResponse = {
       {
         document: {
           containerDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          parentDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+      },
+    ],
+  },
+  collections: {
+    documentInsights: [
+      {
+        document: {
+          containerDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          parentDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+      },
+    ],
+  },
+  collectionsV2: {
+    documentInsights: [
+      {
+        document: {
+          containerDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          parentDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+      },
+    ],
+  },
+  shortcuts: {
+    shortcutInsights: [
+      {
+        shortcut: {
+          inputAlias: "<value>",
+          createdBy: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          updatedBy: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          destinationDocument: {
+            containerDocument: {
+              metadata: {
+                datasource: "datasource",
+                objectType: "Feature Request",
+                container: "container",
+                parentId: "JIRA_EN-1337",
+                mimeType: "mimeType",
+                documentId: "documentId",
+                createTime: new Date("2000-01-23T04:56:07.000Z"),
+                updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                author: {
+                  name: "name",
+                  obfuscatedId: "<id>",
+                },
+                components: [
+                  "Backend",
+                  "Networking",
+                ],
+                status: "[\"Done\"]",
+                customData: {
+                  "someCustomField": {},
+                },
+              },
+            },
             parentDocument: {
               metadata: {
                 datasource: "datasource",
@@ -55,42 +322,29 @@ let value: InsightsResponse = {
                 },
               },
             },
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
           },
-        },
-      },
-    ],
-  },
-  collections: {
-    documentInsights: [
-      {
-        document: {},
-      },
-    ],
-  },
-  collectionsV2: {
-    documentInsights: [
-      {
-        document: {},
-      },
-    ],
-  },
-  shortcuts: {
-    shortcutInsights: [
-      {
-        shortcut: {
-          inputAlias: "<value>",
-          addedRoles: [],
-          removedRoles: [],
-          createdBy: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          updatedBy: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          destinationDocument: {},
-          roles: [],
         },
       },
     ],
@@ -98,14 +352,156 @@ let value: InsightsResponse = {
   announcements: {
     documentInsights: [
       {
-        document: {},
+        document: {
+          containerDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          parentDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
       },
     ],
   },
   answers: {
     documentInsights: [
       {
-        document: {},
+        document: {
+          containerDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          parentDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
       },
     ],
   },
@@ -138,7 +534,7 @@ let value: InsightsResponse = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        activity: "SEARCH",
+        activity: "ALL",
       },
     ],
   },

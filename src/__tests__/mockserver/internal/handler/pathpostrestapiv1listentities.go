@@ -51,7 +51,7 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.ListEntitiesResponse{
+	var respBody *components.ListEntitiesResponse = &components.ListEntitiesResponse{
 		Results: []components.Person{
 			components.Person{
 				Name:         "George Clooney",
@@ -281,18 +281,10 @@ func testListentitiesListentities0(w http.ResponseWriter, req *http.Request) {
 																		RemindAt: 29267,
 																	},
 																	components.Reminder{
-																		Assignee: components.Person{
-																			Name:         "George Clooney",
-																			ObfuscatedID: "abc123",
-																		},
 																		RemindAt: 652326,
 																	},
 																},
 																LastReminder: &components.Reminder{
-																	Assignee: components.Person{
-																		Name:         "George Clooney",
-																		ObfuscatedID: "abc123",
-																	},
 																	RemindAt: 688784,
 																},
 															},

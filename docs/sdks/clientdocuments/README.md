@@ -16,6 +16,7 @@ Read the emails of all users who have access to the given document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getdocpermissions" method="post" path="/rest/api/v1/getdocpermissions" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -26,7 +27,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.documents.retrievePermissions({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,15 +49,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientDocumentsRetrievePermissions(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientDocumentsRetrievePermissions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -105,6 +102,7 @@ Read the documents including metadata (does not include enhanced metadata via `/
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getdocuments" method="post" path="/rest/api/v1/getdocuments" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -115,7 +113,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.documents.retrieve();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -138,15 +135,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientDocumentsRetrieve(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientDocumentsRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -194,6 +188,7 @@ Read the documents including metadata (does not include enhanced metadata via `/
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getdocumentsbyfacets" method="post" path="/rest/api/v1/getdocumentsbyfacets" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -241,7 +236,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -301,15 +295,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientDocumentsRetrieveByFacets failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -357,6 +348,7 @@ Generate an AI summary of the requested documents.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="summarize" method="post" path="/rest/api/v1/summarize" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -381,7 +373,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -418,15 +409,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientDocumentsSummarize failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

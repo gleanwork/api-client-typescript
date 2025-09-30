@@ -8,8 +8,24 @@ import { AnswerBoard } from "@gleanwork/api-client/models/components";
 let value: AnswerBoard = {
   name: "<value>",
   description: "dead nephew oh whereas vice astride",
-  addedRoles: [],
-  removedRoles: [],
+  addedRoles: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "VIEWER",
+    },
+  ],
+  removedRoles: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "VERIFIER",
+    },
+  ],
   audienceFilters: [
     {
       fieldName: "type",
@@ -34,7 +50,15 @@ let value: AnswerBoard = {
     name: "George Clooney",
     obfuscatedId: "abc123",
   },
-  roles: [],
+  roles: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "ANSWER_MODERATOR",
+    },
+  ],
 };
 ```
 

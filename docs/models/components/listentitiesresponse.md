@@ -16,8 +16,20 @@ let value: ListEntitiesResponse = {
     {
       id: "<id>",
       name: "<value>",
-      members: [],
-      customFields: [],
+      members: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        },
+      ],
+      customFields: [
+        {
+          label: "<value>",
+          values: [],
+        },
+      ],
       datasourceProfiles: [
         {
           datasource: "github",
@@ -28,7 +40,15 @@ let value: ListEntitiesResponse = {
   ],
   customEntityResults: [
     {
-      roles: [],
+      roles: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          role: "ANSWER_MODERATOR",
+        },
+      ],
     },
   ],
   facetResults: [

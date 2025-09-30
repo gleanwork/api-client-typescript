@@ -8,9 +8,7 @@ import { DigestSection } from "@gleanwork/api-client/models/components";
 let value: DigestSection = {
   id: "<id>",
   type: "MENTIONS",
-  updates: [
-    {},
-  ],
+  updates: [],
 };
 ```
 

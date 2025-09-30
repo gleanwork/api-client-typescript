@@ -17,6 +17,7 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/debug/{datasource}/status" method="post" path="/api/index/v1/debug/{datasource}/status" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -27,7 +28,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.indexing.datasource.status("<value>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -50,15 +50,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingDatasourceStatus(glean, "<value>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDatasourceStatus failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 type SearchResultSnippet struct {
 	// The mime type of the snippets, currently either text/plain or text/html.
 	MimeType *string `json:"mimeType,omitempty"`
@@ -17,6 +21,17 @@ type SearchResultSnippet struct {
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Snippet string `json:"snippet"`
+}
+
+func (s SearchResultSnippet) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SearchResultSnippet) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"snippet"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SearchResultSnippet) GetMimeType() *string {

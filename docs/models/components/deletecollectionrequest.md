@@ -7,7 +7,8 @@ import { DeleteCollectionRequest } from "@gleanwork/api-client/models/components
 
 let value: DeleteCollectionRequest = {
   ids: [
-    515599,
+    118588,
+    912038,
   ],
 };
 ```

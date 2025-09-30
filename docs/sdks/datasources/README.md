@@ -14,6 +14,7 @@ Add or update a custom datasource and its schema.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/adddatasource" method="post" path="/api/index/v1/adddatasource" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -72,14 +73,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingDatasourcesAdd failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -127,6 +126,7 @@ Fetches the datasource config for the specified custom datasource.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/getdatasourceconfig" method="post" path="/api/index/v1/getdatasourceconfig" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -139,7 +139,6 @@ async function run() {
     datasource: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -164,15 +163,12 @@ async function run() {
   const res = await indexingDatasourcesRetrieveConfig(glean, {
     datasource: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDatasourcesRetrieveConfig failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

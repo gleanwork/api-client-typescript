@@ -13,6 +13,7 @@ Rotates the secret value inside the Indexing API token and returns the new raw s
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/rotatetoken" method="post" path="/api/index/v1/rotatetoken" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -23,7 +24,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.indexing.authentication.rotateToken();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -46,15 +46,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingAuthenticationRotateToken(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingAuthenticationRotateToken failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

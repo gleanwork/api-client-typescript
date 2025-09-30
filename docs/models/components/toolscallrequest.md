@@ -7,12 +7,7 @@ import { ToolsCallRequest } from "@gleanwork/api-client/models/components";
 
 let value: ToolsCallRequest = {
   name: "<value>",
-  parameters: {
-    "key": {
-      name: "<value>",
-      value: "<value>",
-    },
-  },
+  parameters: {},
 };
 ```
 

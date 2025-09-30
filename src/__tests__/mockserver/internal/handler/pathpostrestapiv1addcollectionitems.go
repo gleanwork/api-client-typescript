@@ -51,7 +51,7 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.AddCollectionItemsResponse{
+	var respBody *components.AddCollectionItemsResponse = &components.AddCollectionItemsResponse{
 		Collection: &components.Collection{
 			Name:        "<value>",
 			Description: "greedily indeed marten whereas rebel expansion",
@@ -215,10 +215,6 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 																},
 															},
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 390252,
 															},
 														},
@@ -251,10 +247,6 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 														State: components.StateVerified,
 														Metadata: &components.VerificationMetadata{
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 869836,
 															},
 														},
@@ -287,10 +279,6 @@ func testAddcollectionitemsAddcollectionitems0(w http.ResponseWriter, req *http.
 														State: components.StateUnverified,
 														Metadata: &components.VerificationMetadata{
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 289582,
 															},
 														},

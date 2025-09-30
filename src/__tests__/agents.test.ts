@@ -58,7 +58,7 @@ it.skip("Agents Search Agents", async () => {
 
 it.skip("Agents Create And Stream Run", async () => {
   assert.fail(
-    "incomplete test found please make sure to address the following errors: [`workflow step createAndStreamRun.test referencing operation createAndStreamRun is not currently supported`]",
+    "incomplete test found please make sure to address the following errors: [`workflow step createAndStreamRun.test referencing operation createAndStreamRun is missing required request body`]",
   );
 });
 

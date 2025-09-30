@@ -15,6 +15,7 @@ Creates a verification reminder for the document. Users can create verification 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="addverificationreminder" method="post" path="/rest/api/v1/addverificationreminder" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -27,7 +28,6 @@ async function run() {
     documentId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -52,15 +52,12 @@ async function run() {
   const res = await clientVerificationAddReminder(glean, {
     documentId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientVerificationAddReminder failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -108,6 +105,7 @@ Returns the information to be rendered in verification dashboard. Includes infor
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listverifications" method="post" path="/rest/api/v1/listverifications" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -118,7 +116,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.verification.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -141,15 +138,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientVerificationList(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientVerificationList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -197,6 +191,7 @@ Verify documents to keep the knowledge up to date within customer corpus.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="verify" method="post" path="/rest/api/v1/verify" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -209,7 +204,6 @@ async function run() {
     documentId: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -234,15 +228,12 @@ async function run() {
   const res = await clientVerificationVerify(glean, {
     documentId: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientVerificationVerify failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

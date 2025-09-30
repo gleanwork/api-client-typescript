@@ -37,6 +37,7 @@ export const ManualFeedbackInfoSource = {
   Search: "SEARCH",
   Sidebar: "SIDEBAR",
   Summary: "SUMMARY",
+  Tasks: "TASKS",
 } as const;
 /**
  * The source associated with the Feedback.event.MANUAL_FEEDBACK event.

@@ -12,7 +12,7 @@ let value: BulkIndexUsersRequest = {
   datasource: "<value>",
   users: [
     {
-      email: "Ada_Goyette@hotmail.com",
+      email: "Brett_Medhurst41@gmail.com",
       name: "<value>",
     },
   ],

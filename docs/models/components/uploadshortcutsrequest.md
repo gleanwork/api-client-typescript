@@ -9,13 +9,7 @@ import { UploadShortcutsRequest } from "@gleanwork/api-client/models/components"
 
 let value: UploadShortcutsRequest = {
   uploadId: "<id>",
-  shortcuts: [
-    {
-      inputAlias: "<value>",
-      destinationUrl: "https://dull-quinoa.biz/",
-      createdBy: "<value>",
-    },
-  ],
+  shortcuts: [],
 };
 ```
 

@@ -25,6 +25,7 @@ Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexi
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/debug/{datasource}/user" method="post" path="/api/index/v1/debug/{datasource}/user" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -37,7 +38,6 @@ async function run() {
     email: "u1@foo.com",
   }, "<value>");
 
-  // Handle the result
   console.log(result);
 }
 
@@ -62,15 +62,12 @@ async function run() {
   const res = await indexingPeopleDebug(glean, {
     email: "u1@foo.com",
   }, "<value>");
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingPeopleDebug failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -124,6 +121,7 @@ Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debu
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/getusercount" method="post" path="/api/index/v1/getusercount" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -136,7 +134,6 @@ async function run() {
     datasource: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -161,15 +158,12 @@ async function run() {
   const res = await indexingPeopleCount(glean, {
     datasource: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingPeopleCount failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -217,6 +211,7 @@ Adds an employee or updates information about an employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/indexemployee" method="post" path="/api/index/v1/indexemployee" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -271,14 +266,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleIndex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -326,6 +319,7 @@ Replaces all the currently indexed employees using paginated batch API calls. Pl
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/bulkindexemployees" method="post" path="/api/index/v1/bulkindexemployees" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -426,14 +420,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleBulkIndex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -482,6 +474,7 @@ Schedules the immediate processing of employees and teams uploaded through the i
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/processallemployeesandteams" method="post" path="/api/index/v1/processallemployeesandteams" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -514,14 +507,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await indexingPeopleProcessAllEmployeesAndTeams(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleProcessAllEmployeesAndTeams failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -568,6 +559,7 @@ Delete an employee. Silently succeeds if employee is not present.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/deleteemployee" method="post" path="/api/index/v1/deleteemployee" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -604,14 +596,12 @@ async function run() {
   const res = await indexingPeopleDelete(glean, {
     employeeEmail: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -659,6 +649,7 @@ Adds a team or updates information about a team
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/indexteam" method="post" path="/api/index/v1/indexteam" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -739,14 +730,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleIndexTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -794,6 +783,7 @@ Delete a team based on provided id.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/deleteteam" method="post" path="/api/index/v1/deleteteam" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -830,14 +820,12 @@ async function run() {
   const res = await indexingPeopleDeleteTeam(glean, {
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleDeleteTeam failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -885,6 +873,7 @@ Replaces all the currently indexed teams using paginated batch API calls. Please
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/bulkindexteams" method="post" path="/api/index/v1/bulkindexteams" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -1015,14 +1004,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingPeopleBulkIndexTeams failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

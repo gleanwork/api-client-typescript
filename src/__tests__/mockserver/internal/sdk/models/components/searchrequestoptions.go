@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // ResponseHint - Hints for the response content.
@@ -75,6 +76,17 @@ type SearchRequestOptions struct {
 	ReturnLlmContentOverSnippets *bool               `json:"returnLlmContentOverSnippets,omitempty"`
 	Inclusions                   *RestrictionFilters `json:"inclusions,omitempty"`
 	Exclusions                   *RestrictionFilters `json:"exclusions,omitempty"`
+}
+
+func (s SearchRequestOptions) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SearchRequestOptions) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"facetBucketSize"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SearchRequestOptions) GetDatasourceFilter() *string {

@@ -14,12 +14,16 @@ let value: EditCollectionResponse = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "ANSWER_MODERATOR",
+      role: "VIEWER",
     },
   ],
   removedRoles: [
     {
-      role: "OWNER",
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "VERIFIER",
     },
   ],
   audienceFilters: [
@@ -37,7 +41,7 @@ let value: EditCollectionResponse = {
       ],
     },
   ],
-  id: 495145,
+  id: 494921,
   creator: {
     name: "George Clooney",
     obfuscatedId: "abc123",
@@ -48,13 +52,118 @@ let value: EditCollectionResponse = {
   },
   items: [
     {
-      collectionId: 805464,
+      collectionId: 795342,
       createdBy: {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
       document: {
         containerDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        parentDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
+      shortcut: {
+        inputAlias: "<value>",
+        createdBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        destinationDocument: {
+          containerDocument: {
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
           parentDocument: {
             metadata: {
               datasource: "datasource",
@@ -79,17 +188,34 @@ let value: EditCollectionResponse = {
               },
             },
           },
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
         },
-      },
-      shortcut: {
-        inputAlias: "<value>",
-        destinationDocument: {},
-        roles: [],
       },
       collection: {
         name: "<value>",
         description:
-          "greatly amend notwithstanding highly drowse ugh contrast oddly as",
+          "feline charming fast vibraphone immediately viciously creator",
         audienceFilters: [
           {
             fieldName: "type",
@@ -105,16 +231,53 @@ let value: EditCollectionResponse = {
             ],
           },
         ],
-        id: 65405,
-        children: [],
+        id: 278414,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        children: [
+          {
+            name: "<value>",
+            description: "design cappelletti kettledrum",
+            audienceFilters: [
+              {
+                fieldName: "type",
+                values: [
+                  {
+                    value: "Spreadsheet",
+                    relationType: "EQUALS",
+                  },
+                  {
+                    value: "Presentation",
+                    relationType: "EQUALS",
+                  },
+                ],
+              },
+            ],
+            id: 635422,
+            creator: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            updatedBy: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+          },
+        ],
       },
-      itemType: "DOCUMENT",
+      itemType: "URL",
     },
   ],
   children: [
     {
       name: "<value>",
-      description: "abaft poorly furthermore wherever with",
+      description: "design cappelletti kettledrum",
       audienceFilters: [
         {
           fieldName: "type",
@@ -130,15 +293,86 @@ let value: EditCollectionResponse = {
           ],
         },
       ],
-      id: 40583,
+      id: 635422,
+      creator: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      updatedBy: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
     },
   ],
   roles: [
     {
-      role: "OWNER",
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "ANSWER_MODERATOR",
     },
   ],
-  errorCode: "HEIGHT_VIOLATION",
+  errorCode: "NAME_EXISTS",
+  collection: {
+    name: "<value>",
+    description:
+      "feline charming fast vibraphone immediately viciously creator",
+    audienceFilters: [
+      {
+        fieldName: "type",
+        values: [
+          {
+            value: "Spreadsheet",
+            relationType: "EQUALS",
+          },
+          {
+            value: "Presentation",
+            relationType: "EQUALS",
+          },
+        ],
+      },
+    ],
+    id: 278414,
+    creator: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    updatedBy: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    children: [
+      {
+        name: "<value>",
+        description: "design cappelletti kettledrum",
+        audienceFilters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+        id: 635422,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
+  },
 };
 ```
 

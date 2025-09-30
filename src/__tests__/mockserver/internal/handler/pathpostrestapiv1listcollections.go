@@ -51,7 +51,7 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.ListCollectionsResponse{
+	var respBody *components.ListCollectionsResponse = &components.ListCollectionsResponse{
 		Collections: []components.Collection{
 			components.Collection{
 				Name:        "<value>",
@@ -227,18 +227,10 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 																		RemindAt: 141764,
 																	},
 																	components.Reminder{
-																		Assignee: components.Person{
-																			Name:         "George Clooney",
-																			ObfuscatedID: "abc123",
-																		},
 																		RemindAt: 664080,
 																	},
 																},
 																LastReminder: &components.Reminder{
-																	Assignee: components.Person{
-																		Name:         "George Clooney",
-																		ObfuscatedID: "abc123",
-																	},
 																	RemindAt: 284580,
 																},
 															},
@@ -271,10 +263,6 @@ func testListcollectionsListcollections0(w http.ResponseWriter, req *http.Reques
 															State: components.StateUnverified,
 															Metadata: &components.VerificationMetadata{
 																LastReminder: &components.Reminder{
-																	Assignee: components.Person{
-																		Name:         "George Clooney",
-																		ObfuscatedID: "abc123",
-																	},
 																	RemindAt: 60868,
 																},
 															},

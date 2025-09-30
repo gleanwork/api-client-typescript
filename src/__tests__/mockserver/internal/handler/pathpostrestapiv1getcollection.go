@@ -51,7 +51,7 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GetCollectionResponse{
+	var respBody *components.GetCollectionResponse = &components.GetCollectionResponse{
 		Collection: &components.Collection{
 			Name:        "<value>",
 			Description: "for carefully glorious scrabble ignite aw showboat",
@@ -248,10 +248,6 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 																},
 															},
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 503671,
 															},
 														},
@@ -284,10 +280,6 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 														State: components.StateUnverified,
 														Metadata: &components.VerificationMetadata{
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 81373,
 															},
 														},
@@ -320,10 +312,6 @@ func testGetcollectionGetcollection0(w http.ResponseWriter, req *http.Request) {
 														State: components.StateVerified,
 														Metadata: &components.VerificationMetadata{
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 666980,
 															},
 														},

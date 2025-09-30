@@ -9,14 +9,7 @@ import { BulkIndexShortcutsRequest } from "@gleanwork/api-client/models/componen
 
 let value: BulkIndexShortcutsRequest = {
   uploadId: "<id>",
-  shortcuts: [
-    {
-      inputAlias: "<value>",
-      destinationUrl: "https://sugary-hunger.name/",
-      createdBy: "<value>",
-      intermediateUrl: "https://assured-perfection.biz/",
-    },
-  ],
+  shortcuts: [],
 };
 ```
 
