@@ -6,7 +6,8 @@
   "main": "main.js",
   "scripts": {
     "script": "tsx",
-    "start": "npm run script -- ./src/example.ts"
+    "start": "npm run script -- ./src/example.ts",
+    "build:examples": "npm i"
   },
   "keywords": [],
   "author": "",
