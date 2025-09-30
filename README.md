@@ -381,7 +381,7 @@ For more information on obtaining the appropriate token type, please contact you
 
 #### [client.insights](docs/sdks/insights/README.md)
 
-* [retrieve](docs/sdks/insights/README.md#retrieve) - Read insights
+* [retrieve](docs/sdks/insights/README.md#retrieve) - Get insights
 
 #### [client.messages](docs/sdks/messages/README.md)
 
@@ -556,7 +556,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status
 - [`clientGovernanceDocumentsVisibilityoverridesCreate`](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
 - [`clientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
-- [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Read insights
+- [`clientInsightsRetrieve`](docs/sdks/insights/README.md#retrieve) - Get insights
 - [`clientMessagesRetrieve`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`clientPinsCreate`](docs/sdks/pins/README.md#create) - Create pin
 - [`clientPinsList`](docs/sdks/pins/README.md#list) - List pins
@@ -695,7 +695,7 @@ To learn about this feature and how to get started, check
 - [`useClientGovernanceDataReportsStatus`](docs/sdks/reports/README.md#status) - Fetches report run status
 - [`useClientGovernanceDocumentsVisibilityoverridesCreateMutation`](docs/sdks/visibilityoverrides/README.md#create) - Hide or unhide docs
 - [`useClientGovernanceDocumentsVisibilityoverridesList`](docs/sdks/visibilityoverrides/README.md#list) - Fetches documents visibility
-- [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Read insights
+- [`useClientInsightsRetrieveMutation`](docs/sdks/insights/README.md#retrieve) - Get insights
 - [`useClientMessagesRetrieveMutation`](docs/sdks/messages/README.md#retrieve) - Read messages
 - [`useClientPinsCreateMutation`](docs/sdks/pins/README.md#create) - Create pin
 - [`useClientPinsListMutation`](docs/sdks/pins/README.md#list) - List pins

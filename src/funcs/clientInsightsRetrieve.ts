@@ -24,10 +24,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Read insights
+ * Get insights
  *
  * @remarks
- * Reads the aggregate information for each user, query, and content.
+ * Gets the aggregate usage insights data displayed in the Insights Dashboards.
  */
 export function clientInsightsRetrieve(
   client: GleanCore,

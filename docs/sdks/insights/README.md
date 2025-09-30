@@ -5,11 +5,11 @@
 
 ### Available Operations
 
-* [retrieve](#retrieve) - Read insights
+* [retrieve](#retrieve) - Get insights
 
 ## retrieve
 
-Reads the aggregate information for each user, query, and content.
+Gets the aggregate usage insights data displayed in the Insights Dashboards.
 
 ### Example Usage
 
@@ -21,13 +21,7 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.insights.retrieve({
-    categories: [
-      "COLLECTIONS",
-      "SHORTCUTS",
-      "ANNOUNCEMENTS",
-    ],
-  });
+  const result = await glean.client.insights.retrieve({});
 
   // Handle the result
   console.log(result);
@@ -51,13 +45,7 @@ const glean = new GleanCore({
 });
 
 async function run() {
-  const res = await clientInsightsRetrieve(glean, {
-    categories: [
-      "COLLECTIONS",
-      "SHORTCUTS",
-      "ANNOUNCEMENTS",
-    ],
-  });
+  const res = await clientInsightsRetrieve(glean, {});
 
   if (!res.ok) {
     throw res.error;

@@ -9,10 +9,10 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Insights extends ClientSDK {
   /**
-   * Read insights
+   * Get insights
    *
    * @remarks
-   * Reads the aggregate information for each user, query, and content.
+   * Gets the aggregate usage insights data displayed in the Insights Dashboards.
    */
   async retrieve(
     request: components.InsightsRequest,
