@@ -14,6 +14,7 @@ Replaces all the currently indexed shortcuts using paginated batch API calls. No
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/bulkindexshortcuts" method="post" path="/api/index/v1/bulkindexshortcuts" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -78,14 +79,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingShortcutsBulkIndex failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -133,6 +132,7 @@ Creates glean shortcuts for uploaded shortcuts info. Glean would host the shortc
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/api/index/v1/uploadshortcuts" method="post" path="/api/index/v1/uploadshortcuts" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -203,14 +203,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("indexingShortcutsUpload failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

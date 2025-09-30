@@ -12,9 +12,7 @@ const value: operations.ResponseBody1 = {
   collection: {
     name: "<value>",
     description:
-      "low gee from without vibration what disappointment gastropod rust",
-    addedRoles: [],
-    removedRoles: [],
+      "feline charming fast vibraphone immediately viciously creator",
     audienceFilters: [
       {
         fieldName: "type",
@@ -30,7 +28,7 @@ const value: operations.ResponseBody1 = {
         ],
       },
     ],
-    id: 344436,
+    id: 278414,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -39,9 +37,36 @@ const value: operations.ResponseBody1 = {
       name: "George Clooney",
       obfuscatedId: "abc123",
     },
-    items: [],
-    children: [],
-    roles: [],
+    children: [
+      {
+        name: "<value>",
+        description: "design cappelletti kettledrum",
+        audienceFilters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+        id: 635422,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
   },
 };
 ```
@@ -52,9 +77,8 @@ const value: operations.ResponseBody1 = {
 const value: operations.ResponseBody2 = {
   collection: {
     name: "<value>",
-    description: "aboard beneath even quarrelsomely duh",
-    addedRoles: [],
-    removedRoles: [],
+    description:
+      "feline charming fast vibraphone immediately viciously creator",
     audienceFilters: [
       {
         fieldName: "type",
@@ -70,7 +94,7 @@ const value: operations.ResponseBody2 = {
         ],
       },
     ],
-    id: 721662,
+    id: 278414,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -79,12 +103,39 @@ const value: operations.ResponseBody2 = {
       name: "George Clooney",
       obfuscatedId: "abc123",
     },
-    items: [],
-    children: [],
-    roles: [],
+    children: [
+      {
+        name: "<value>",
+        description: "design cappelletti kettledrum",
+        audienceFilters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+        id: 635422,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
   },
   error: {
-    errorCode: "NOT_FOUND",
+    errorCode: "CONCURRENT_HIERARCHY_EDIT",
   },
 };
 ```

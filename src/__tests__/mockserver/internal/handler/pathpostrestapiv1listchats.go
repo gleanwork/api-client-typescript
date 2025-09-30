@@ -46,7 +46,7 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.ListChatsResponse{
+	var respBody *components.ListChatsResponse = &components.ListChatsResponse{
 		ChatResults: []components.ChatMetadataResult{
 			components.ChatMetadataResult{
 				Chat: &components.ChatMetadata{
@@ -317,18 +317,10 @@ func testListchatsListchats0(w http.ResponseWriter, req *http.Request) {
 																	RemindAt: 948614,
 																},
 																components.Reminder{
-																	Assignee: components.Person{
-																		Name:         "George Clooney",
-																		ObfuscatedID: "abc123",
-																	},
 																	RemindAt: 900109,
 																},
 															},
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 20615,
 															},
 														},

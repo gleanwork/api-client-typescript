@@ -36,12 +36,20 @@ let value: CreateAnswerRequest = {
     ],
     removedRoles: [
       {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
         role: "VERIFIER",
       },
     ],
     roles: [
       {
-        role: "EDITOR",
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        role: "ANSWER_MODERATOR",
       },
     ],
     combinedAnswerText: {

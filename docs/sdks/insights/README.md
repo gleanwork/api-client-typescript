@@ -13,6 +13,7 @@ Gets the aggregate usage insights data displayed in the Insights Dashboards.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="insights" method="post" path="/rest/api/v1/insights" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -23,7 +24,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.insights.retrieve({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -46,15 +46,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientInsightsRetrieve(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientInsightsRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

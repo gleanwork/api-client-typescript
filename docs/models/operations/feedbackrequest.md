@@ -5,14 +5,7 @@
 ```typescript
 import { FeedbackRequest } from "@gleanwork/api-client/models/operations";
 
-let value: FeedbackRequest = {
-  feedback1: {
-    trackingTokens: [
-      "trackingTokens",
-    ],
-    event: "VIEW",
-  },
-};
+let value: FeedbackRequest = {};
 ```
 
 ## Fields

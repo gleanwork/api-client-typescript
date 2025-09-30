@@ -13,6 +13,111 @@ let value: CollectionItem = {
   },
   document: {
     containerDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "name",
+          obfuscatedId: "<id>",
+        },
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        customData: {
+          "someCustomField": {},
+        },
+      },
+    },
+    parentDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "name",
+          obfuscatedId: "<id>",
+        },
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        customData: {
+          "someCustomField": {},
+        },
+      },
+    },
+    metadata: {
+      datasource: "datasource",
+      objectType: "Feature Request",
+      container: "container",
+      parentId: "JIRA_EN-1337",
+      mimeType: "mimeType",
+      documentId: "documentId",
+      createTime: new Date("2000-01-23T04:56:07.000Z"),
+      updateTime: new Date("2000-01-23T04:56:07.000Z"),
+      author: {
+        name: "name",
+        obfuscatedId: "<id>",
+      },
+      components: [
+        "Backend",
+        "Networking",
+      ],
+      status: "[\"Done\"]",
+      customData: {
+        "someCustomField": {},
+      },
+    },
+  },
+  shortcut: {
+    inputAlias: "<value>",
+    createdBy: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    updatedBy: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    destinationDocument: {
+      containerDocument: {
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
       parentDocument: {
         metadata: {
           datasource: "datasource",
@@ -37,22 +142,34 @@ let value: CollectionItem = {
           },
         },
       },
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "name",
+          obfuscatedId: "<id>",
+        },
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        customData: {
+          "someCustomField": {},
+        },
+      },
     },
-  },
-  shortcut: {
-    inputAlias: "<value>",
-    addedRoles: [],
-    removedRoles: [],
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    destinationDocument: {},
-    roles: [],
   },
   collection: {
     name: "<value>",
-    description: "overtrain safely mill lobotomise masticate",
+    description:
+      "feline charming fast vibraphone immediately viciously creator",
     audienceFilters: [
       {
         fieldName: "type",
@@ -68,15 +185,47 @@ let value: CollectionItem = {
         ],
       },
     ],
-    id: 197719,
+    id: 278414,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
     },
-    items: [],
-    children: [],
+    updatedBy: {
+      name: "George Clooney",
+      obfuscatedId: "abc123",
+    },
+    children: [
+      {
+        name: "<value>",
+        description: "design cappelletti kettledrum",
+        audienceFilters: [
+          {
+            fieldName: "type",
+            values: [
+              {
+                value: "Spreadsheet",
+                relationType: "EQUALS",
+              },
+              {
+                value: "Presentation",
+                relationType: "EQUALS",
+              },
+            ],
+          },
+        ],
+        id: 635422,
+        creator: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
   },
-  itemType: "COLLECTION",
+  itemType: "TEXT",
 };
 ```
 

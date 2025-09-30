@@ -30,7 +30,12 @@ let value: PeopleResponse = {
               snippet: "snippet",
             },
           ],
-          mustIncludeSuggestions: {},
+          mustIncludeSuggestions: {
+            person: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+          },
         },
       ],
     },

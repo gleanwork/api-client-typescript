@@ -3,7 +3,9 @@
  */
 
 export * from "./collectionerror.js";
+export * from "./gleanbaseerror.js";
 export * from "./gleandataerror.js";
 export * from "./gleanerror.js";
 export * from "./httpclienterrors.js";
+export * from "./responsevalidationerror.js";
 export * from "./sdkvalidationerror.js";

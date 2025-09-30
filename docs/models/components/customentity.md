@@ -6,7 +6,15 @@
 import { CustomEntity } from "@gleanwork/api-client/models/components";
 
 let value: CustomEntity = {
-  roles: [],
+  roles: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "ANSWER_MODERATOR",
+    },
+  ],
 };
 ```
 

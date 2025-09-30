@@ -9,6 +9,104 @@ let value: StructuredTextItem = {
   link: "https://en.wikipedia.org/wiki/Diffuse_sky_radiation",
   document: {
     containerDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "name",
+          obfuscatedId: "<id>",
+        },
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        customData: {
+          "someCustomField": {},
+        },
+      },
+    },
+    parentDocument: {
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "name",
+          obfuscatedId: "<id>",
+        },
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        customData: {
+          "someCustomField": {},
+        },
+      },
+    },
+    metadata: {
+      datasource: "datasource",
+      objectType: "Feature Request",
+      container: "container",
+      parentId: "JIRA_EN-1337",
+      mimeType: "mimeType",
+      documentId: "documentId",
+      createTime: new Date("2000-01-23T04:56:07.000Z"),
+      updateTime: new Date("2000-01-23T04:56:07.000Z"),
+      author: {
+        name: "name",
+        obfuscatedId: "<id>",
+      },
+      components: [
+        "Backend",
+        "Networking",
+      ],
+      status: "[\"Done\"]",
+      customData: {
+        "someCustomField": {},
+      },
+    },
+  },
+  text:
+    "Because its wavelengths are shorter, blue light is more strongly scattered than the longer-wavelength lights, red or green. Hence the result that when looking at the sky away from the direct incident sunlight, the human eye perceives the sky to be blue.",
+  structuredResult: {
+    document: {
+      containerDocument: {
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
       parentDocument: {
         metadata: {
           datasource: "datasource",
@@ -33,11 +131,29 @@ let value: StructuredTextItem = {
           },
         },
       },
+      metadata: {
+        datasource: "datasource",
+        objectType: "Feature Request",
+        container: "container",
+        parentId: "JIRA_EN-1337",
+        mimeType: "mimeType",
+        documentId: "documentId",
+        createTime: new Date("2000-01-23T04:56:07.000Z"),
+        updateTime: new Date("2000-01-23T04:56:07.000Z"),
+        author: {
+          name: "name",
+          obfuscatedId: "<id>",
+        },
+        components: [
+          "Backend",
+          "Networking",
+        ],
+        status: "[\"Done\"]",
+        customData: {
+          "someCustomField": {},
+        },
+      },
     },
-  },
-  text:
-    "Because its wavelengths are shorter, blue light is more strongly scattered than the longer-wavelength lights, red or green. Hence the result that when looking at the sky away from the direct incident sunlight, the human eye perceives the sky to be blue.",
-  structuredResult: {
     person: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -57,14 +173,38 @@ let value: StructuredTextItem = {
           obfuscatedId: "abc123",
         },
       ],
-      mergedCustomers: [],
+      mergedCustomers: [
+        {
+          id: "<id>",
+          company: {
+            name: "<value>",
+            location: "New York City",
+            industry: "Finances",
+            about:
+              "Financial, software, data, and media company headquartered in Midtown Manhattan, New York City",
+          },
+          notes: "CIO is interested in trying out the product.",
+        },
+      ],
       notes: "CIO is interested in trying out the product.",
     },
     team: {
       id: "<id>",
       name: "<value>",
-      members: [],
-      customFields: [],
+      members: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        },
+      ],
+      customFields: [
+        {
+          label: "<value>",
+          values: [],
+        },
+      ],
       datasourceProfiles: [
         {
           datasource: "github",
@@ -73,7 +213,15 @@ let value: StructuredTextItem = {
       ],
     },
     customEntity: {
-      roles: [],
+      roles: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          role: "ANSWER_MODERATOR",
+        },
+      ],
     },
     answer: {
       id: 3,
@@ -96,17 +244,18 @@ let value: StructuredTextItem = {
           ],
         },
       ],
-      addedRoles: [],
-      removedRoles: [],
       combinedAnswerText: {
         text:
           "From https://en.wikipedia.org/wiki/Diffuse_sky_radiation, the sky is blue because blue light is more strongly scattered than longer-wavelength light.",
-        structuredList: [],
       },
       likes: {
         likedBy: [],
-        likedByUser: false,
-        numLikes: 514053,
+        likedByUser: true,
+        numLikes: 32410,
+      },
+      author: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
       },
       updatedBy: {
         name: "George Clooney",
@@ -119,7 +268,91 @@ let value: StructuredTextItem = {
             name: "George Clooney",
             obfuscatedId: "abc123",
           },
-          reminders: [],
+          document: {
+            containerDocument: {
+              metadata: {
+                datasource: "datasource",
+                objectType: "Feature Request",
+                container: "container",
+                parentId: "JIRA_EN-1337",
+                mimeType: "mimeType",
+                documentId: "documentId",
+                createTime: new Date("2000-01-23T04:56:07.000Z"),
+                updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                author: {
+                  name: "name",
+                  obfuscatedId: "<id>",
+                },
+                components: [
+                  "Backend",
+                  "Networking",
+                ],
+                status: "[\"Done\"]",
+                customData: {
+                  "someCustomField": {},
+                },
+              },
+            },
+            parentDocument: {
+              metadata: {
+                datasource: "datasource",
+                objectType: "Feature Request",
+                container: "container",
+                parentId: "JIRA_EN-1337",
+                mimeType: "mimeType",
+                documentId: "documentId",
+                createTime: new Date("2000-01-23T04:56:07.000Z"),
+                updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                author: {
+                  name: "name",
+                  obfuscatedId: "<id>",
+                },
+                components: [
+                  "Backend",
+                  "Networking",
+                ],
+                status: "[\"Done\"]",
+                customData: {
+                  "someCustomField": {},
+                },
+              },
+            },
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+          reminders: [
+            {
+              assignee: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              requestor: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              remindAt: 337545,
+            },
+          ],
           lastReminder: {
             assignee: {
               name: "George Clooney",
@@ -129,7 +362,7 @@ let value: StructuredTextItem = {
               name: "George Clooney",
               obfuscatedId: "abc123",
             },
-            remindAt: 90777,
+            remindAt: 349760,
           },
           candidateVerifiers: [
             {
@@ -142,7 +375,7 @@ let value: StructuredTextItem = {
       board: {
         name: "<value>",
         description:
-          "insidious weird cantaloupe until who whitewash vainly fixed deceivingly fiercely",
+          "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
         audienceFilters: [
           {
             fieldName: "type",
@@ -158,17 +391,421 @@ let value: StructuredTextItem = {
             ],
           },
         ],
-        id: 243713,
+        id: 782149,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
+        updatedBy: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
       },
-      collections: [],
-      sourceDocument: {},
+      collections: [
+        {
+          name: "<value>",
+          description: "because times times",
+          audienceFilters: [
+            {
+              fieldName: "type",
+              values: [
+                {
+                  value: "Spreadsheet",
+                  relationType: "EQUALS",
+                },
+                {
+                  value: "Presentation",
+                  relationType: "EQUALS",
+                },
+              ],
+            },
+          ],
+          id: 592299,
+          creator: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          updatedBy: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          items: [
+            {
+              collectionId: 795342,
+              createdBy: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              document: {
+                containerDocument: {
+                  metadata: {
+                    datasource: "datasource",
+                    objectType: "Feature Request",
+                    container: "container",
+                    parentId: "JIRA_EN-1337",
+                    mimeType: "mimeType",
+                    documentId: "documentId",
+                    createTime: new Date("2000-01-23T04:56:07.000Z"),
+                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                    author: {
+                      name: "name",
+                      obfuscatedId: "<id>",
+                    },
+                    components: [
+                      "Backend",
+                      "Networking",
+                    ],
+                    status: "[\"Done\"]",
+                    customData: {
+                      "someCustomField": {},
+                    },
+                  },
+                },
+                parentDocument: {
+                  metadata: {
+                    datasource: "datasource",
+                    objectType: "Feature Request",
+                    container: "container",
+                    parentId: "JIRA_EN-1337",
+                    mimeType: "mimeType",
+                    documentId: "documentId",
+                    createTime: new Date("2000-01-23T04:56:07.000Z"),
+                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                    author: {
+                      name: "name",
+                      obfuscatedId: "<id>",
+                    },
+                    components: [
+                      "Backend",
+                      "Networking",
+                    ],
+                    status: "[\"Done\"]",
+                    customData: {
+                      "someCustomField": {},
+                    },
+                  },
+                },
+                metadata: {
+                  datasource: "datasource",
+                  objectType: "Feature Request",
+                  container: "container",
+                  parentId: "JIRA_EN-1337",
+                  mimeType: "mimeType",
+                  documentId: "documentId",
+                  createTime: new Date("2000-01-23T04:56:07.000Z"),
+                  updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                  author: {
+                    name: "name",
+                    obfuscatedId: "<id>",
+                  },
+                  components: [
+                    "Backend",
+                    "Networking",
+                  ],
+                  status: "[\"Done\"]",
+                  customData: {
+                    "someCustomField": {},
+                  },
+                },
+              },
+              shortcut: {
+                inputAlias: "<value>",
+                createdBy: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+                updatedBy: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+                destinationDocument: {
+                  containerDocument: {
+                    metadata: {
+                      datasource: "datasource",
+                      objectType: "Feature Request",
+                      container: "container",
+                      parentId: "JIRA_EN-1337",
+                      mimeType: "mimeType",
+                      documentId: "documentId",
+                      createTime: new Date("2000-01-23T04:56:07.000Z"),
+                      updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                      author: {
+                        name: "name",
+                        obfuscatedId: "<id>",
+                      },
+                      components: [
+                        "Backend",
+                        "Networking",
+                      ],
+                      status: "[\"Done\"]",
+                      customData: {
+                        "someCustomField": {},
+                      },
+                    },
+                  },
+                  parentDocument: {
+                    metadata: {
+                      datasource: "datasource",
+                      objectType: "Feature Request",
+                      container: "container",
+                      parentId: "JIRA_EN-1337",
+                      mimeType: "mimeType",
+                      documentId: "documentId",
+                      createTime: new Date("2000-01-23T04:56:07.000Z"),
+                      updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                      author: {
+                        name: "name",
+                        obfuscatedId: "<id>",
+                      },
+                      components: [
+                        "Backend",
+                        "Networking",
+                      ],
+                      status: "[\"Done\"]",
+                      customData: {
+                        "someCustomField": {},
+                      },
+                    },
+                  },
+                  metadata: {
+                    datasource: "datasource",
+                    objectType: "Feature Request",
+                    container: "container",
+                    parentId: "JIRA_EN-1337",
+                    mimeType: "mimeType",
+                    documentId: "documentId",
+                    createTime: new Date("2000-01-23T04:56:07.000Z"),
+                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                    author: {
+                      name: "name",
+                      obfuscatedId: "<id>",
+                    },
+                    components: [
+                      "Backend",
+                      "Networking",
+                    ],
+                    status: "[\"Done\"]",
+                    customData: {
+                      "someCustomField": {},
+                    },
+                  },
+                },
+              },
+              collection: {
+                name: "<value>",
+                description:
+                  "feline charming fast vibraphone immediately viciously creator",
+                audienceFilters: [
+                  {
+                    fieldName: "type",
+                    values: [
+                      {
+                        value: "Spreadsheet",
+                        relationType: "EQUALS",
+                      },
+                      {
+                        value: "Presentation",
+                        relationType: "EQUALS",
+                      },
+                    ],
+                  },
+                ],
+                id: 278414,
+                creator: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+                updatedBy: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+                children: [
+                  {
+                    name: "<value>",
+                    description: "design cappelletti kettledrum",
+                    audienceFilters: [
+                      {
+                        fieldName: "type",
+                        values: [
+                          {
+                            value: "Spreadsheet",
+                            relationType: "EQUALS",
+                          },
+                          {
+                            value: "Presentation",
+                            relationType: "EQUALS",
+                          },
+                        ],
+                      },
+                    ],
+                    id: 635422,
+                    creator: {
+                      name: "George Clooney",
+                      obfuscatedId: "abc123",
+                    },
+                    updatedBy: {
+                      name: "George Clooney",
+                      obfuscatedId: "abc123",
+                    },
+                  },
+                ],
+              },
+              itemType: "URL",
+            },
+          ],
+        },
+      ],
+      sourceDocument: {
+        containerDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        parentDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
     },
     generatedQna: {
-      ranges: [],
+      ranges: [
+        {
+          startIndex: 851363,
+          document: {
+            containerDocument: {
+              metadata: {
+                datasource: "datasource",
+                objectType: "Feature Request",
+                container: "container",
+                parentId: "JIRA_EN-1337",
+                mimeType: "mimeType",
+                documentId: "documentId",
+                createTime: new Date("2000-01-23T04:56:07.000Z"),
+                updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                author: {
+                  name: "name",
+                  obfuscatedId: "<id>",
+                },
+                components: [
+                  "Backend",
+                  "Networking",
+                ],
+                status: "[\"Done\"]",
+                customData: {
+                  "someCustomField": {},
+                },
+              },
+            },
+            parentDocument: {
+              metadata: {
+                datasource: "datasource",
+                objectType: "Feature Request",
+                container: "container",
+                parentId: "JIRA_EN-1337",
+                mimeType: "mimeType",
+                documentId: "documentId",
+                createTime: new Date("2000-01-23T04:56:07.000Z"),
+                updateTime: new Date("2000-01-23T04:56:07.000Z"),
+                author: {
+                  name: "name",
+                  obfuscatedId: "<id>",
+                },
+                components: [
+                  "Backend",
+                  "Networking",
+                ],
+                status: "[\"Done\"]",
+                customData: {
+                  "someCustomField": {},
+                },
+              },
+            },
+            metadata: {
+              datasource: "datasource",
+              objectType: "Feature Request",
+              container: "container",
+              parentId: "JIRA_EN-1337",
+              mimeType: "mimeType",
+              documentId: "documentId",
+              createTime: new Date("2000-01-23T04:56:07.000Z"),
+              updateTime: new Date("2000-01-23T04:56:07.000Z"),
+              author: {
+                name: "name",
+                obfuscatedId: "<id>",
+              },
+              components: [
+                "Backend",
+                "Networking",
+              ],
+              status: "[\"Done\"]",
+              customData: {
+                "someCustomField": {},
+              },
+            },
+          },
+        },
+      ],
     },
     extractedQnA: {
       questionResult: {
@@ -181,18 +818,45 @@ let value: StructuredTextItem = {
             snippet: "snippet",
           },
         ],
-        mustIncludeSuggestions: {},
+        mustIncludeSuggestions: {
+          suggestions: [
+            {
+              query: "app:github type:pull author:mortimer",
+              label: "Mortimer's PRs",
+              datasource: "github",
+            },
+          ],
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        },
       },
     },
     meeting: {
       attendees: {
-        people: [],
+        people: [
+          {
+            person: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            groupAttendees: [
+              {
+                person: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+              },
+            ],
+          },
+        ],
       },
     },
     collection: {
       name: "<value>",
       description:
-        "woot abaft across brr boohoo neglect gummy democratize round mockingly",
+        "feline charming fast vibraphone immediately viciously creator",
       audienceFilters: [
         {
           fieldName: "type",
@@ -208,13 +872,50 @@ let value: StructuredTextItem = {
           ],
         },
       ],
-      id: 890490,
-      items: [],
-      children: [],
+      id: 278414,
+      creator: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      updatedBy: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      children: [
+        {
+          name: "<value>",
+          description: "design cappelletti kettledrum",
+          audienceFilters: [
+            {
+              fieldName: "type",
+              values: [
+                {
+                  value: "Spreadsheet",
+                  relationType: "EQUALS",
+                },
+                {
+                  value: "Presentation",
+                  relationType: "EQUALS",
+                },
+              ],
+            },
+          ],
+          id: 635422,
+          creator: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          updatedBy: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        },
+      ],
     },
     answerBoard: {
       name: "<value>",
-      description: "dual fond lined if and ack easy",
+      description:
+        "um verbally till like provided recklessly yowza plus boohoo weary",
       audienceFilters: [
         {
           fieldName: "type",
@@ -230,7 +931,15 @@ let value: StructuredTextItem = {
           ],
         },
       ],
-      id: 787359,
+      id: 70559,
+      creator: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      updatedBy: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
     },
     code: {
       repoName: "scio",
@@ -242,18 +951,117 @@ let value: StructuredTextItem = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      destinationDocument: {},
+      updatedBy: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      destinationDocument: {
+        containerDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        parentDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
     },
     querySuggestions: {
-      suggestions: [
-        {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
+    relatedDocuments: [
+      {
+        querySuggestion: {
           query: "app:github type:pull author:mortimer",
           label: "Mortimer's PRs",
           datasource: "github",
         },
-      ],
-    },
-    relatedDocuments: [],
+        results: [
+          {
+            title: "title",
+            url: "https://example.com/foo/bar",
+            nativeAppUrl: "slack://foo/bar",
+            snippets: [
+              {
+                mimeType: "mimeType",
+                snippet: "snippet",
+              },
+            ],
+            mustIncludeSuggestions: {
+              person: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+            },
+          },
+        ],
+      },
+    ],
     relatedQuestion: {},
   },
 };

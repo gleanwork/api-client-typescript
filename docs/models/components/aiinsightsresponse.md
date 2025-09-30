@@ -12,7 +12,7 @@ let value: AiInsightsResponse = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      activity: "SEARCH",
+      activity: "ALL",
     },
   ],
 };

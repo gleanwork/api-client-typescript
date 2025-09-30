@@ -54,6 +54,17 @@ type DocumentSpec4 struct {
 	DocType *string `json:"docType,omitempty"`
 }
 
+func (d DocumentSpec4) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentSpec4) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"ugcType", "ugcId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentSpec4) GetUgcType() DocumentSpecUgcType2 {
 	if o == nil {
 		return DocumentSpecUgcType2("")
@@ -120,6 +131,17 @@ type DocumentSpec3 struct {
 	DocType *string `json:"docType,omitempty"`
 }
 
+func (d DocumentSpec3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentSpec3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"ugcType", "contentId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentSpec3) GetUgcType() DocumentSpecUgcType1 {
 	if o == nil {
 		return DocumentSpecUgcType1("")
@@ -146,6 +168,17 @@ type DocumentSpec2 struct {
 	ID string `json:"id"`
 }
 
+func (d DocumentSpec2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentSpec2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentSpec2) GetID() string {
 	if o == nil {
 		return ""
@@ -156,6 +189,17 @@ func (o *DocumentSpec2) GetID() string {
 type DocumentSpec1 struct {
 	// The URL of the document.
 	URL string `json:"url"`
+}
+
+func (d DocumentSpec1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentSpec1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"url"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentSpec1) GetURL() string {
@@ -175,10 +219,10 @@ const (
 )
 
 type DocumentSpecUnion struct {
-	DocumentSpec1 *DocumentSpec1
-	DocumentSpec2 *DocumentSpec2
-	DocumentSpec3 *DocumentSpec3
-	DocumentSpec4 *DocumentSpec4
+	DocumentSpec1 *DocumentSpec1 `queryParam:"inline"`
+	DocumentSpec2 *DocumentSpec2 `queryParam:"inline"`
+	DocumentSpec3 *DocumentSpec3 `queryParam:"inline"`
+	DocumentSpec4 *DocumentSpec4 `queryParam:"inline"`
 
 	Type DocumentSpecUnionType
 }
@@ -221,31 +265,31 @@ func CreateDocumentSpecUnionDocumentSpec4(documentSpec4 DocumentSpec4) DocumentS
 
 func (u *DocumentSpecUnion) UnmarshalJSON(data []byte) error {
 
-	var documentSpec1 DocumentSpec1 = DocumentSpec1{}
-	if err := utils.UnmarshalJSON(data, &documentSpec1, "", true, true); err == nil {
-		u.DocumentSpec1 = &documentSpec1
-		u.Type = DocumentSpecUnionTypeDocumentSpec1
-		return nil
-	}
-
-	var documentSpec2 DocumentSpec2 = DocumentSpec2{}
-	if err := utils.UnmarshalJSON(data, &documentSpec2, "", true, true); err == nil {
-		u.DocumentSpec2 = &documentSpec2
-		u.Type = DocumentSpecUnionTypeDocumentSpec2
-		return nil
-	}
-
 	var documentSpec3 DocumentSpec3 = DocumentSpec3{}
-	if err := utils.UnmarshalJSON(data, &documentSpec3, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentSpec3, "", true, nil); err == nil {
 		u.DocumentSpec3 = &documentSpec3
 		u.Type = DocumentSpecUnionTypeDocumentSpec3
 		return nil
 	}
 
 	var documentSpec4 DocumentSpec4 = DocumentSpec4{}
-	if err := utils.UnmarshalJSON(data, &documentSpec4, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentSpec4, "", true, nil); err == nil {
 		u.DocumentSpec4 = &documentSpec4
 		u.Type = DocumentSpecUnionTypeDocumentSpec4
+		return nil
+	}
+
+	var documentSpec1 DocumentSpec1 = DocumentSpec1{}
+	if err := utils.UnmarshalJSON(data, &documentSpec1, "", true, nil); err == nil {
+		u.DocumentSpec1 = &documentSpec1
+		u.Type = DocumentSpecUnionTypeDocumentSpec1
+		return nil
+	}
+
+	var documentSpec2 DocumentSpec2 = DocumentSpec2{}
+	if err := utils.UnmarshalJSON(data, &documentSpec2, "", true, nil); err == nil {
+		u.DocumentSpec2 = &documentSpec2
+		u.Type = DocumentSpecUnionTypeDocumentSpec2
 		return nil
 	}
 

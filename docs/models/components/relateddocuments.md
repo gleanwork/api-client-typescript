@@ -22,7 +22,19 @@ let value: RelatedDocuments = {
           snippet: "snippet",
         },
       ],
-      mustIncludeSuggestions: {},
+      mustIncludeSuggestions: {
+        suggestions: [
+          {
+            query: "app:github type:pull author:mortimer",
+            label: "Mortimer's PRs",
+            datasource: "github",
+          },
+        ],
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
     },
   ],
 };

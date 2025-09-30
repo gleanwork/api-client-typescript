@@ -7,7 +7,22 @@ import { Meeting } from "@gleanwork/api-client/models/components";
 
 let value: Meeting = {
   attendees: {
-    people: [],
+    people: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        groupAttendees: [
+          {
+            person: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 ```

@@ -13,12 +13,16 @@ let value: CreateCollectionRequest = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VERIFIER",
+      role: "VIEWER",
     },
   ],
   removedRoles: [
     {
-      role: "EDITOR",
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "VERIFIER",
     },
   ],
   audienceFilters: [

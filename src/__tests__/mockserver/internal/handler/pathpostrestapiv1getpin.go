@@ -51,7 +51,7 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.GetPinResponse{
+	var respBody *components.GetPinResponse = &components.GetPinResponse{
 		Pin: &components.PinDocument{
 			AudienceFilters: []components.FacetFilter{
 				components.FacetFilter{
@@ -288,10 +288,6 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 													LastReminder: &components.Reminder{
-														Assignee: components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
 														RemindAt: 534384,
 													},
 												},
@@ -324,10 +320,6 @@ func testGetpinGetpin0(w http.ResponseWriter, req *http.Request) {
 												State: components.StateUnverified,
 												Metadata: &components.VerificationMetadata{
 													LastReminder: &components.Reminder{
-														Assignee: components.Person{
-															Name:         "George Clooney",
-															ObfuscatedID: "abc123",
-														},
 														RemindAt: 533795,
 													},
 												},

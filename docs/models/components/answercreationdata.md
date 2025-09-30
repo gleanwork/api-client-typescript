@@ -30,16 +30,24 @@ let value: AnswerCreationData = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "EDITOR",
+      role: "VIEWER",
     },
   ],
   removedRoles: [
     {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
       role: "VERIFIER",
     },
   ],
   roles: [
     {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
       role: "ANSWER_MODERATOR",
     },
   ],

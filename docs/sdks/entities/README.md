@@ -14,6 +14,7 @@ List some set of details for all entities that fit the given criteria and return
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listentities" method="post" path="/rest/api/v1/listentities" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -41,7 +42,6 @@ async function run() {
     pageSize: 100,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -81,15 +81,12 @@ async function run() {
     ],
     pageSize: 100,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientEntitiesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -137,6 +134,7 @@ Read people details for the given IDs.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="people" method="post" path="/rest/api/v1/people" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -152,7 +150,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -180,15 +177,12 @@ async function run() {
       "abc456",
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientEntitiesReadPeople failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

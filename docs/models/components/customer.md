@@ -20,7 +20,19 @@ let value: Customer = {
       obfuscatedId: "abc123",
     },
   ],
-  mergedCustomers: [],
+  mergedCustomers: [
+    {
+      id: "<id>",
+      company: {
+        name: "<value>",
+        location: "New York City",
+        industry: "Finances",
+        about:
+          "Financial, software, data, and media company headquartered in Midtown Manhattan, New York City",
+      },
+      notes: "CIO is interested in trying out the product.",
+    },
+  ],
   notes: "CIO is interested in trying out the product.",
 };
 ```

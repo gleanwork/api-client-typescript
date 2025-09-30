@@ -4,6 +4,10 @@
 
 import { GleanCore } from "../core.js";
 import { appendForm, encodeFormQuery } from "../lib/encodings.js";
+import {
+  getContentTypeFromFileName,
+  readableStreamToArrayBuffer,
+} from "../lib/files.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -11,7 +15,7 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
-import { GleanError } from "../models/errors/gleanerror.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -19,10 +23,13 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
+import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
+import { isReadableStream } from "../types/streams.js";
 
 /**
  * Upload files for Chat.
@@ -38,13 +45,14 @@ export function clientChatUploadFiles(
 ): APIPromise<
   Result<
     components.UploadChatFilesResponse,
-    | GleanError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | GleanBaseError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -64,13 +72,14 @@ async function $do(
   [
     Result<
       components.UploadChatFilesResponse,
-      | GleanError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | GleanBaseError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -91,7 +100,26 @@ async function $do(
   const payload = parsed.value;
   const body = new FormData();
 
-  appendForm(body, "files", payload.UploadChatFilesRequest.files);
+  for (const fileItem of payload.UploadChatFilesRequest.files) {
+    if (isBlobLike(fileItem)) {
+      appendForm(body, "files[]", fileItem);
+    } else if (isReadableStream(fileItem.content)) {
+      const buffer = await readableStreamToArrayBuffer(fileItem.content);
+      const contentType = getContentTypeFromFileName(fileItem.fileName)
+        || "application/octet-stream";
+      const blob = new Blob([buffer], { type: contentType });
+      appendForm(body, "files[]", blob, fileItem.fileName);
+    } else {
+      const contentType = getContentTypeFromFileName(fileItem.fileName)
+        || "application/octet-stream";
+      appendForm(
+        body,
+        "files[]",
+        new Blob([fileItem.content], { type: contentType }),
+        fileItem.fileName,
+      );
+    }
+  }
 
   const path = pathToFunc("/rest/api/v1/uploadchatfiles")();
 
@@ -108,6 +136,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "uploadchatfiles",
     oAuth2Scopes: [],
@@ -129,6 +158,7 @@ async function $do(
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -149,18 +179,19 @@ async function $do(
 
   const [result] = await M.match<
     components.UploadChatFilesResponse,
-    | GleanError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | GleanBaseError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, components.UploadChatFilesResponse$inboundSchema),
     M.fail([400, 401, 403, 429, "4XX"]),
     M.fail("5XX"),
-  )(response);
+  )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

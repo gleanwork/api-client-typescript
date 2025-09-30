@@ -13,6 +13,7 @@ Retrieves list of messages from messaging/chat datasources (e.g. Slack, Teams).
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="messages" method="post" path="/rest/api/v1/messages" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -26,7 +27,6 @@ async function run() {
     id: "<id>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -52,15 +52,12 @@ async function run() {
     idType: "CONVERSATION_ID",
     id: "<id>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientMessagesRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

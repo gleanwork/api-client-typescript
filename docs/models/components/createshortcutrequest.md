@@ -18,6 +18,10 @@ let value: CreateShortcutRequest = {
     ],
     removedRoles: [
       {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
         role: "VERIFIER",
       },
     ],

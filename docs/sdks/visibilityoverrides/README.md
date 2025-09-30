@@ -14,6 +14,7 @@ Fetches the visibility override status of the documents passed.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getdocvisibility" method="get" path="/rest/api/v1/governance/documents/visibilityoverrides" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -24,7 +25,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.documents.visibilityoverrides.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,15 +47,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDocumentsVisibilityoverridesList(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDocumentsVisibilityoverridesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,6 +111,7 @@ Sets the visibility-override state of the documents specified, effectively hidin
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="setdocvisibility" method="post" path="/rest/api/v1/governance/documents/visibilityoverrides" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -124,7 +122,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.governance.documents.visibilityoverrides.create({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -147,15 +144,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientGovernanceDocumentsVisibilityoverridesCreate(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientGovernanceDocumentsVisibilityoverridesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

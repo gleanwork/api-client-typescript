@@ -9,18 +9,7 @@ import { BulkIndexEmployeesRequest } from "@gleanwork/api-client/models/componen
 
 let value: BulkIndexEmployeesRequest = {
   uploadId: "<id>",
-  employees: [
-    {
-      email: "Harmon_Oberbrunner72@gmail.com",
-      department: "<value>",
-      datasourceProfiles: [
-        {
-          datasource: "github",
-          handle: "<value>",
-        },
-      ],
-    },
-  ],
+  employees: [],
 };
 ```
 

@@ -14,6 +14,17 @@ type ResponseBody2 struct {
 	Error      components.CollectionError `json:"error"`
 }
 
+func (r ResponseBody2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResponseBody2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"error"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *ResponseBody2) GetCollection() *components.Collection {
 	if o == nil {
 		return nil
@@ -31,6 +42,17 @@ func (o *ResponseBody2) GetError() components.CollectionError {
 type ResponseBody1 struct {
 	Collection components.Collection       `json:"collection"`
 	Error      *components.CollectionError `json:"error,omitempty"`
+}
+
+func (r ResponseBody1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *ResponseBody1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"collection"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ResponseBody1) GetCollection() components.Collection {
@@ -56,8 +78,8 @@ const (
 
 // CreatecollectionResponseBody - OK
 type CreatecollectionResponseBody struct {
-	ResponseBody1 *ResponseBody1
-	ResponseBody2 *ResponseBody2
+	ResponseBody1 *ResponseBody1 `queryParam:"inline"`
+	ResponseBody2 *ResponseBody2 `queryParam:"inline"`
 
 	Type CreatecollectionResponseBodyType
 }
@@ -83,14 +105,14 @@ func CreateCreatecollectionResponseBodyResponseBody2(responseBody2 ResponseBody2
 func (u *CreatecollectionResponseBody) UnmarshalJSON(data []byte) error {
 
 	var responseBody1 ResponseBody1 = ResponseBody1{}
-	if err := utils.UnmarshalJSON(data, &responseBody1, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &responseBody1, "", true, nil); err == nil {
 		u.ResponseBody1 = &responseBody1
 		u.Type = CreatecollectionResponseBodyTypeResponseBody1
 		return nil
 	}
 
 	var responseBody2 ResponseBody2 = ResponseBody2{}
-	if err := utils.UnmarshalJSON(data, &responseBody2, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &responseBody2, "", true, nil); err == nil {
 		u.ResponseBody2 = &responseBody2
 		u.Type = CreatecollectionResponseBodyTypeResponseBody2
 		return nil

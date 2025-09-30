@@ -12,11 +12,15 @@ let value: ShortcutMutableProperties = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "ANSWER_MODERATOR",
+      role: "VIEWER",
     },
   ],
   removedRoles: [
     {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
       role: "VERIFIER",
     },
   ],

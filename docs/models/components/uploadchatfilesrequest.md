@@ -8,10 +8,7 @@ import { openAsBlob } from "node:fs";
 
 let value: UploadChatFilesRequest = {
   files: [
-    {
-      fileName: "example.file",
-      content: await openAsBlob("example.file"),
-    },
+    await openAsBlob("example.file"),
   ],
 };
 ```

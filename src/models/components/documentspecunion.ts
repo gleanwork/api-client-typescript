@@ -83,10 +83,10 @@ export type DocumentSpec1 = {
 };
 
 export type DocumentSpecUnion =
-  | DocumentSpec1
-  | DocumentSpec2
   | DocumentSpec3
-  | DocumentSpec4;
+  | DocumentSpec4
+  | DocumentSpec1
+  | DocumentSpec2;
 
 /** @internal */
 export const DocumentSpecUgcType2$inboundSchema: z.ZodNativeEnum<
@@ -348,18 +348,18 @@ export const DocumentSpecUnion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => DocumentSpec1$inboundSchema),
-  z.lazy(() => DocumentSpec2$inboundSchema),
   z.lazy(() => DocumentSpec3$inboundSchema),
   z.lazy(() => DocumentSpec4$inboundSchema),
+  z.lazy(() => DocumentSpec1$inboundSchema),
+  z.lazy(() => DocumentSpec2$inboundSchema),
 ]);
 
 /** @internal */
 export type DocumentSpecUnion$Outbound =
-  | DocumentSpec1$Outbound
-  | DocumentSpec2$Outbound
   | DocumentSpec3$Outbound
-  | DocumentSpec4$Outbound;
+  | DocumentSpec4$Outbound
+  | DocumentSpec1$Outbound
+  | DocumentSpec2$Outbound;
 
 /** @internal */
 export const DocumentSpecUnion$outboundSchema: z.ZodType<
@@ -367,10 +367,10 @@ export const DocumentSpecUnion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentSpecUnion
 > = z.union([
-  z.lazy(() => DocumentSpec1$outboundSchema),
-  z.lazy(() => DocumentSpec2$outboundSchema),
   z.lazy(() => DocumentSpec3$outboundSchema),
   z.lazy(() => DocumentSpec4$outboundSchema),
+  z.lazy(() => DocumentSpec1$outboundSchema),
+  z.lazy(() => DocumentSpec2$outboundSchema),
 ]);
 
 /**

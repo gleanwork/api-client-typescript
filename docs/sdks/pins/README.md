@@ -17,6 +17,7 @@ Update an existing user-generated pin.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="editpin" method="post" path="/rest/api/v1/editpin" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -43,7 +44,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -82,15 +82,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientPinsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -138,6 +135,7 @@ Read pin details given its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getpin" method="post" path="/rest/api/v1/getpin" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -148,7 +146,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.pins.retrieve({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -171,15 +168,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientPinsRetrieve(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientPinsRetrieve failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -227,6 +221,7 @@ Lists all pins.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="listpins" method="post" path="/rest/api/v1/listpins" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -237,7 +232,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.pins.list({});
 
-  // Handle the result
   console.log(result);
 }
 
@@ -260,15 +254,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientPinsList(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientPinsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -316,6 +307,7 @@ Pin a document as a result for a given search query.Pin results that are known t
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="pin" method="post" path="/rest/api/v1/pin" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -342,7 +334,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -381,15 +372,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientPinsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -437,6 +425,7 @@ Unpin a previously pinned result.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="unpin" method="post" path="/rest/api/v1/unpin" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -469,14 +458,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientPinsRemove(glean, {});
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientPinsRemove failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

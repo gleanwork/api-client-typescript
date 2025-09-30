@@ -19,13 +19,15 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
+    hoistGlobalSecurity: true
   mockServer:
     disabled: false
   tests:
+    generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.10.5
+  version: 0.11.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}

@@ -10,7 +10,14 @@ let value: CalendarAttendee = {
     name: "George Clooney",
     obfuscatedId: "abc123",
   },
-  groupAttendees: [],
+  groupAttendees: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
+  ],
 };
 ```
 

@@ -14,6 +14,7 @@ Returns a filtered set of available tools based on optional tool name parameters
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/rest/api/v1/tools/list" method="get" path="/rest/api/v1/tools/list" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -24,7 +25,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.tools.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -47,15 +47,12 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await clientToolsList(glean);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientToolsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,6 +111,7 @@ Execute the specified tool with provided parameters
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/rest/api/v1/tools/call" method="post" path="/rest/api/v1/tools/call" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -132,7 +130,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -163,15 +160,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientToolsRun failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -15,6 +15,7 @@ Create a textual announcement visible to some set of users based on department a
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="createannouncement" method="post" path="/rest/api/v1/createannouncement" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -22054,7 +22055,6 @@ async function run() {
     ],
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -44106,15 +44106,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAnnouncementsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -44162,6 +44159,7 @@ Delete an existing user-generated announcement.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteannouncement" method="post" path="/rest/api/v1/deleteannouncement" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -44198,14 +44196,12 @@ async function run() {
   const res = await clientAnnouncementsDelete(glean, {
     id: 458809,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientAnnouncementsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -44253,6 +44249,7 @@ Update a textual announcement visible to some set of users based on department a
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="updateannouncement" method="post" path="/rest/api/v1/updateannouncement" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 import { RFCDate } from "@gleanwork/api-client/types";
@@ -90878,7 +90875,6 @@ async function run() {
     id: 602589,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -137516,15 +137512,12 @@ async function run() {
     ],
     id: 602589,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAnnouncementsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

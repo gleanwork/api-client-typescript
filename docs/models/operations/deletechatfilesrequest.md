@@ -8,7 +8,8 @@ import { DeletechatfilesRequest } from "@gleanwork/api-client/models/operations"
 let value: DeletechatfilesRequest = {
   deleteChatFilesRequest: {
     fileIds: [
-      "<value>",
+      "<value 1>",
+      "<value 2>",
     ],
   },
 };

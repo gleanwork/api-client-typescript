@@ -8,8 +8,20 @@ import { Team } from "@gleanwork/api-client/models/components";
 let value: Team = {
   id: "<id>",
   name: "<value>",
-  members: [],
-  customFields: [],
+  members: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
+  ],
+  customFields: [
+    {
+      label: "<value>",
+      values: [],
+    },
+  ],
   datasourceProfiles: [
     {
       datasource: "github",

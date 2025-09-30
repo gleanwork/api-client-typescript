@@ -18,10 +18,10 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://vivid-bourgeoisie.com/",
+        url: "https://dim-glider.com/",
       },
       {
-        url: "https://sorrowful-hutch.name",
+        id: "<id>",
       },
     ],
   });

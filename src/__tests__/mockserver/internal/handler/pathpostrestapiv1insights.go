@@ -51,7 +51,7 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	respBody := &components.InsightsResponse{
+	var respBody *components.InsightsResponse = &components.InsightsResponse{
 		Users: &components.UserInsightsResponse{
 			ActivityInsights: []components.UserActivityInsight{
 				components.UserActivityInsight{
@@ -330,10 +330,6 @@ func testInsightsInsights0(w http.ResponseWriter, req *http.Request) {
 																},
 															},
 															LastReminder: &components.Reminder{
-																Assignee: components.Person{
-																	Name:         "George Clooney",
-																	ObfuscatedID: "abc123",
-																},
 																RemindAt: 287673,
 															},
 														},

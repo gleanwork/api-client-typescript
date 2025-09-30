@@ -18,7 +18,11 @@ let value: EditCollectionRequest = {
   ],
   removedRoles: [
     {
-      role: "EDITOR",
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      role: "VERIFIER",
     },
   ],
   audienceFilters: [
@@ -36,7 +40,7 @@ let value: EditCollectionRequest = {
       ],
     },
   ],
-  id: 135153,
+  id: 239006,
 };
 ```
 

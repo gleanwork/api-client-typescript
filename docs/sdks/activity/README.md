@@ -14,6 +14,7 @@ Report user activity that occurs on indexed documents such as viewing or editing
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="activity" method="post" path="/rest/api/v1/activity" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -96,14 +97,12 @@ async function run() {
       },
     ],
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientActivityReport failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();
@@ -151,6 +150,7 @@ Report events that happen to results within a Glean client UI, such as search re
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="feedback" method="post" path="/rest/api/v1/feedback" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -193,14 +193,12 @@ async function run() {
     ],
     event: "VIEW",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("clientActivityFeedback failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

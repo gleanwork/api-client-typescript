@@ -4,16 +4,10 @@
 
 ```typescript
 import { UploadchatfilesRequest } from "@gleanwork/api-client/models/operations";
-import { openAsBlob } from "node:fs";
 
 let value: UploadchatfilesRequest = {
   uploadChatFilesRequest: {
-    files: [
-      {
-        fileName: "example.file",
-        content: await openAsBlob("example.file"),
-      },
-    ],
+    files: [],
   },
 };
 ```

@@ -9,23 +9,7 @@ import { BulkIndexTeamsRequest } from "@gleanwork/api-client/models/components";
 
 let value: BulkIndexTeamsRequest = {
   uploadId: "<id>",
-  teams: [
-    {
-      id: "<id>",
-      name: "<value>",
-      datasourceProfiles: [
-        {
-          datasource: "github",
-          handle: "<value>",
-        },
-      ],
-      members: [
-        {
-          email: "Tierra.Farrell78@gmail.com",
-        },
-      ],
-    },
-  ],
+  teams: [],
 };
 ```
 

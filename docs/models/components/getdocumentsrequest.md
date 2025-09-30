@@ -8,8 +8,8 @@ import { GetDocumentsRequest } from "@gleanwork/api-client/models/components";
 let value: GetDocumentsRequest = {
   documentSpecs: [
     {
-      ugcType: "SHORTCUTS",
-      contentId: 846500,
+      ugcType: "CHATS",
+      contentId: 42373,
     },
   ],
 };

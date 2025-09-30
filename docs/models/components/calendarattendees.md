@@ -6,7 +6,22 @@
 import { CalendarAttendees } from "@gleanwork/api-client/models/components";
 
 let value: CalendarAttendees = {
-  people: [],
+  people: [
+    {
+      person: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      groupAttendees: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+        },
+      ],
+    },
+  ],
 };
 ```
 

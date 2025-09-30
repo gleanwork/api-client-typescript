@@ -7,9 +7,9 @@ import { ToolInfo } from "@gleanwork/api-client/models/components";
 
 let value: ToolInfo = {
   metadata: {
-    type: "RETRIEVAL",
+    type: "ACTION",
     name: "<value>",
-    displayName: "Mattie75",
+    displayName: "Kody.Kihn88",
     displayDescription: "<value>",
     objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
   },

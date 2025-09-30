@@ -17,6 +17,7 @@ Retrieves results for search query without respect for permissions. This is avai
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="adminsearch" method="post" path="/rest/api/v1/adminsearch" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -58,7 +59,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -112,15 +112,12 @@ async function run() {
       facetBucketSize: 421489,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientSearchQueryAsAdmin failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -169,6 +166,7 @@ Retrieve query suggestions, operators and documents for the given partially type
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="autocomplete" method="post" path="/rest/api/v1/autocomplete" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -184,7 +182,6 @@ async function run() {
     resultSize: 10,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -212,15 +209,12 @@ async function run() {
     datasource: "GDRIVE",
     resultSize: 10,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientSearchAutocomplete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -268,6 +262,7 @@ The personalized feed/home includes different types of contents including sugges
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="feed" method="post" path="/rest/api/v1/feed" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -280,7 +275,6 @@ async function run() {
     timeoutMillis: 5000,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -305,15 +299,12 @@ async function run() {
   const res = await clientSearchRetrieveFeed(glean, {
     timeoutMillis: 5000,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientSearchRetrieveFeed failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -361,6 +352,7 @@ Retrieve recommended documents for the given URL or Glean Document ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="recommendations" method="post" path="/rest/api/v1/recommendations" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -371,6 +363,54 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.search.recommendations({
     sourceDocument: {
+      containerDocument: {
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
+      parentDocument: {
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
       metadata: {
         datasource: "datasource",
         objectType: "Feature Request",
@@ -451,6 +491,54 @@ async function run() {
         },
       ],
       context: {
+        containerDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        parentDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
         metadata: {
           datasource: "datasource",
           objectType: "Feature Request",
@@ -477,7 +565,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -501,6 +588,54 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientSearchRecommendations(glean, {
     sourceDocument: {
+      containerDocument: {
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
+      parentDocument: {
+        metadata: {
+          datasource: "datasource",
+          objectType: "Feature Request",
+          container: "container",
+          parentId: "JIRA_EN-1337",
+          mimeType: "mimeType",
+          documentId: "documentId",
+          createTime: new Date("2000-01-23T04:56:07.000Z"),
+          updateTime: new Date("2000-01-23T04:56:07.000Z"),
+          author: {
+            name: "name",
+            obfuscatedId: "<id>",
+          },
+          components: [
+            "Backend",
+            "Networking",
+          ],
+          status: "[\"Done\"]",
+          customData: {
+            "someCustomField": {},
+          },
+        },
+      },
       metadata: {
         datasource: "datasource",
         objectType: "Feature Request",
@@ -581,6 +716,54 @@ async function run() {
         },
       ],
       context: {
+        containerDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
+        parentDocument: {
+          metadata: {
+            datasource: "datasource",
+            objectType: "Feature Request",
+            container: "container",
+            parentId: "JIRA_EN-1337",
+            mimeType: "mimeType",
+            documentId: "documentId",
+            createTime: new Date("2000-01-23T04:56:07.000Z"),
+            updateTime: new Date("2000-01-23T04:56:07.000Z"),
+            author: {
+              name: "name",
+              obfuscatedId: "<id>",
+            },
+            components: [
+              "Backend",
+              "Networking",
+            ],
+            status: "[\"Done\"]",
+            customData: {
+              "someCustomField": {},
+            },
+          },
+        },
         metadata: {
           datasource: "datasource",
           objectType: "Feature Request",
@@ -606,15 +789,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientSearchRecommendations failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -662,6 +842,7 @@ Retrieve results from the index for the given query and filters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="search" method="post" path="/rest/api/v1/search" -->
 ```typescript
 import { Glean } from "@gleanwork/api-client";
 
@@ -703,7 +884,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -757,15 +937,12 @@ async function run() {
       facetBucketSize: 400611,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientSearchQuery failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

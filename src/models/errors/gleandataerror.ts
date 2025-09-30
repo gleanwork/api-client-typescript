@@ -4,6 +4,7 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
+import { GleanBaseError } from "./gleanbaseerror.js";
 
 export type GleanDataErrorData = {
   /**
@@ -21,7 +22,7 @@ export type GleanDataErrorData = {
   errorMessages?: Array<components.ErrorMessage> | undefined;
 };
 
-export class GleanDataError extends Error {
+export class GleanDataError extends GleanBaseError {
   /**
    * Indicates the gmail results could not be fetched due to bad token.
    */
@@ -39,13 +40,15 @@ export class GleanDataError extends Error {
   /** The original data that was passed to this error instance. */
   data$: GleanDataErrorData;
 
-  constructor(err: GleanDataErrorData) {
+  constructor(
+    err: GleanDataErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
     const message = "message" in err && typeof err.message === "string"
       ? err.message
       : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    super(message, httpMeta);
     this.data$ = err;
-
     if (err.badGmailToken != null) this.badGmailToken = err.badGmailToken;
     if (err.badOutlookToken != null) this.badOutlookToken = err.badOutlookToken;
     if (err.invalidOperators != null) {
@@ -68,9 +71,16 @@ export const GleanDataError$inboundSchema: z.ZodType<
   invalidOperators: z.array(components.InvalidOperatorValueError$inboundSchema)
     .optional(),
   errorMessages: z.array(components.ErrorMessage$inboundSchema).optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new GleanDataError(v);
+    return new GleanDataError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
