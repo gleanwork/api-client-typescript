@@ -24,6 +24,10 @@ export type FollowupAction = {
    */
   actionId?: string | undefined;
   /**
+   * Map of assistant predicted parameters and their corresponding values.
+   */
+  parameters?: { [k: string]: string } | undefined;
+  /**
    * Text to be displayed to the user when recommending the action instance.
    */
   recommendationText?: string | undefined;
@@ -46,6 +50,7 @@ export const FollowupAction$inboundSchema: z.ZodType<
   actionRunId: z.string().optional(),
   actionInstanceId: z.string().optional(),
   actionId: z.string().optional(),
+  parameters: z.record(z.string()).optional(),
   recommendationText: z.string().optional(),
   actionLabel: z.string().optional(),
   userConfirmationRequired: z.boolean().optional(),
@@ -56,6 +61,7 @@ export type FollowupAction$Outbound = {
   actionRunId?: string | undefined;
   actionInstanceId?: string | undefined;
   actionId?: string | undefined;
+  parameters?: { [k: string]: string } | undefined;
   recommendationText?: string | undefined;
   actionLabel?: string | undefined;
   userConfirmationRequired?: boolean | undefined;
@@ -70,6 +76,7 @@ export const FollowupAction$outboundSchema: z.ZodType<
   actionRunId: z.string().optional(),
   actionInstanceId: z.string().optional(),
   actionId: z.string().optional(),
+  parameters: z.record(z.string()).optional(),
   recommendationText: z.string().optional(),
   actionLabel: z.string().optional(),
   userConfirmationRequired: z.boolean().optional(),
