@@ -6,7 +6,7 @@
 import { FeedResult } from "@gleanwork/api-client/models/components";
 
 let value: FeedResult = {
-  category: "ZERO_STATE_WORKFLOW_CREATED_BY_ME",
+  category: "ZERO_STATE_WORKFLOW_FAVORITES",
   primaryEntry: {
     title: "<value>",
     createdBy: {
