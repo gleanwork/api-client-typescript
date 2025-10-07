@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AgentsInsightsV2Response,
+  AgentsInsightsV2Response$inboundSchema,
+  AgentsInsightsV2Response$Outbound,
+  AgentsInsightsV2Response$outboundSchema,
+} from "./agentsinsightsv2response.js";
+import {
   AiAppsInsightsResponse,
   AiAppsInsightsResponse$inboundSchema,
   AiAppsInsightsResponse$Outbound,
@@ -19,6 +25,12 @@ import {
   AiInsightsResponse$outboundSchema,
 } from "./aiinsightsresponse.js";
 import {
+  AssistantInsightsResponse,
+  AssistantInsightsResponse$inboundSchema,
+  AssistantInsightsResponse$Outbound,
+  AssistantInsightsResponse$outboundSchema,
+} from "./assistantinsightsresponse.js";
+import {
   ContentInsightsResponse,
   ContentInsightsResponse$inboundSchema,
   ContentInsightsResponse$Outbound,
@@ -30,6 +42,12 @@ import {
   GleanAssistInsightsResponse$Outbound,
   GleanAssistInsightsResponse$outboundSchema,
 } from "./gleanassistinsightsresponse.js";
+import {
+  InsightsOverviewResponse,
+  InsightsOverviewResponse$inboundSchema,
+  InsightsOverviewResponse$Outbound,
+  InsightsOverviewResponse$outboundSchema,
+} from "./insightsoverviewresponse.js";
 import {
   LabeledCountInfo,
   LabeledCountInfo$inboundSchema,
@@ -58,6 +76,8 @@ import {
 export type InsightsResponse = {
   /**
    * List of timeseries to make charts (if applicable).
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   timeseries?: Array<LabeledCountInfo> | undefined;
   users?: UserInsightsResponse | undefined;
@@ -73,8 +93,13 @@ export type InsightsResponse = {
   gleanAssist?: GleanAssistInsightsResponse | undefined;
   /**
    * list of all departments.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   departments?: Array<string> | undefined;
+  overviewResponse?: InsightsOverviewResponse | undefined;
+  assistantResponse?: AssistantInsightsResponse | undefined;
+  agentsResponse?: AgentsInsightsV2Response | undefined;
 };
 
 /** @internal */
@@ -96,6 +121,9 @@ export const InsightsResponse$inboundSchema: z.ZodType<
   aiApps: AiAppsInsightsResponse$inboundSchema.optional(),
   gleanAssist: GleanAssistInsightsResponse$inboundSchema.optional(),
   departments: z.array(z.string()).optional(),
+  overviewResponse: InsightsOverviewResponse$inboundSchema.optional(),
+  assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
+  agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -113,6 +141,9 @@ export type InsightsResponse$Outbound = {
   aiApps?: AiAppsInsightsResponse$Outbound | undefined;
   gleanAssist?: GleanAssistInsightsResponse$Outbound | undefined;
   departments?: Array<string> | undefined;
+  overviewResponse?: InsightsOverviewResponse$Outbound | undefined;
+  assistantResponse?: AssistantInsightsResponse$Outbound | undefined;
+  agentsResponse?: AgentsInsightsV2Response$Outbound | undefined;
 };
 
 /** @internal */
@@ -134,6 +165,9 @@ export const InsightsResponse$outboundSchema: z.ZodType<
   aiApps: AiAppsInsightsResponse$outboundSchema.optional(),
   gleanAssist: GleanAssistInsightsResponse$outboundSchema.optional(),
   departments: z.array(z.string()).optional(),
+  overviewResponse: InsightsOverviewResponse$outboundSchema.optional(),
+  assistantResponse: AssistantInsightsResponse$outboundSchema.optional(),
+  agentsResponse: AgentsInsightsV2Response$outboundSchema.optional(),
 });
 
 /**

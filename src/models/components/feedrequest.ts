@@ -42,6 +42,7 @@ export const FeedRequestCategory = {
   ZeroStateWorkflowCreatedByMe: "ZERO_STATE_WORKFLOW_CREATED_BY_ME",
   ZeroStateWorkflowFavorites: "ZERO_STATE_WORKFLOW_FAVORITES",
   ZeroStateWorkflowPopular: "ZERO_STATE_WORKFLOW_POPULAR",
+  ZeroStateWorkflowRecent: "ZERO_STATE_WORKFLOW_RECENT",
   ZeroStateWorkflowSuggestion: "ZERO_STATE_WORKFLOW_SUGGESTION",
   PersonalizedChatSuggestion: "PERSONALIZED_CHAT_SUGGESTION",
   DailyDigest: "DAILY_DIGEST",
