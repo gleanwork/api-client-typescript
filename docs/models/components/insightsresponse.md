@@ -559,6 +559,16 @@ let value: InsightsResponse = {
     ],
   },
   agentsResponse: {
+    topAgentsInsights: [
+      {
+        icon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
+      },
+    ],
     agentUsersInsights: [
       {
         person: {

@@ -6,6 +6,12 @@ import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  IconConfig,
+  IconConfig$inboundSchema,
+  IconConfig$Outbound,
+  IconConfig$outboundSchema,
+} from "./iconconfig.js";
 
 export type PerAgentInsight = {
   /**
@@ -16,6 +22,10 @@ export type PerAgentInsight = {
    * Agent name
    */
   agentName?: string | undefined;
+  /**
+   * Defines how to render an icon
+   */
+  icon?: IconConfig | undefined;
   /**
    * Total number of users for this agent over the specified time period.
    */
@@ -34,6 +44,7 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
 > = z.object({
   agentId: z.string().optional(),
   agentName: z.string().optional(),
+  icon: IconConfig$inboundSchema.optional(),
   userCount: z.number().int().optional(),
   runCount: z.number().int().optional(),
 });
@@ -42,6 +53,7 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
 export type PerAgentInsight$Outbound = {
   agentId?: string | undefined;
   agentName?: string | undefined;
+  icon?: IconConfig$Outbound | undefined;
   userCount?: number | undefined;
   runCount?: number | undefined;
 };
@@ -54,6 +66,7 @@ export const PerAgentInsight$outboundSchema: z.ZodType<
 > = z.object({
   agentId: z.string().optional(),
   agentName: z.string().optional(),
+  icon: IconConfig$outboundSchema.optional(),
   userCount: z.number().int().optional(),
   runCount: z.number().int().optional(),
 });
