@@ -6,6 +6,16 @@
 import { AgentsInsightsV2Response } from "@gleanwork/api-client/models/components";
 
 let value: AgentsInsightsV2Response = {
+  topAgentsInsights: [
+    {
+      icon: {
+        color: "#343CED",
+        key: "person_icon",
+        iconType: "GLYPH",
+        name: "user",
+      },
+    },
+  ],
   agentUsersInsights: [
     {
       person: {
