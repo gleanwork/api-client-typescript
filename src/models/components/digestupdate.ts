@@ -14,6 +14,10 @@ import {
 
 export type DigestUpdate = {
   /**
+   * List of URLs for similar updates that are grouped together and rendered as a single update.
+   */
+  urls?: Array<string> | undefined;
+  /**
    * URL link to the content or document.
    */
   url?: string | undefined;
@@ -41,6 +45,7 @@ export const DigestUpdate$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  urls: z.array(z.string()).optional(),
   url: z.string().optional(),
   title: z.string().optional(),
   datasource: z.string().optional(),
@@ -50,6 +55,7 @@ export const DigestUpdate$inboundSchema: z.ZodType<
 
 /** @internal */
 export type DigestUpdate$Outbound = {
+  urls?: Array<string> | undefined;
   url?: string | undefined;
   title?: string | undefined;
   datasource?: string | undefined;
@@ -63,6 +69,7 @@ export const DigestUpdate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DigestUpdate
 > = z.object({
+  urls: z.array(z.string()).optional(),
   url: z.string().optional(),
   title: z.string().optional(),
   datasource: z.string().optional(),
