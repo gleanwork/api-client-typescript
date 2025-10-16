@@ -25,6 +25,7 @@ async function run() {
   const result = await glean.client.messages.retrieve({
     idType: "CONVERSATION_ID",
     id: "<id>",
+    datasource: "GCHAT",
   });
 
   console.log(result);
@@ -51,6 +52,7 @@ async function run() {
   const res = await clientMessagesRetrieve(glean, {
     idType: "CONVERSATION_ID",
     id: "<id>",
+    datasource: "GCHAT",
   });
   if (res.ok) {
     const { value: result } = res;

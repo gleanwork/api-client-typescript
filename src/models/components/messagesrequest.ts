@@ -34,15 +34,17 @@ export const Direction = {
 export type Direction = ClosedEnum<typeof Direction>;
 
 /**
- * The type of the data source. Missing field defaults to SLACK.
+ * The type of the data source.
  */
 export const Datasource = {
   Slack: "SLACK",
+  Slackentgrid: "SLACKENTGRID",
   Microsoftteams: "MICROSOFTTEAMS",
+  Gchat: "GCHAT",
   Facebookworkplace: "FACEBOOKWORKPLACE",
 } as const;
 /**
- * The type of the data source. Missing field defaults to SLACK.
+ * The type of the data source.
  */
 export type Datasource = ClosedEnum<typeof Datasource>;
 
@@ -72,9 +74,9 @@ export type MessagesRequest = {
    */
   includeRootMessage?: boolean | undefined;
   /**
-   * The type of the data source. Missing field defaults to SLACK.
+   * The type of the data source.
    */
-  datasource?: Datasource | undefined;
+  datasource: Datasource;
   /**
    * The datasource instance display name from which the document was extracted. This is used for appinstance facet filter for datasources that support multiple instances.
    */
@@ -150,7 +152,7 @@ export const MessagesRequest$inboundSchema: z.ZodType<
   direction: Direction$inboundSchema.optional(),
   timestampMillis: z.number().int().optional(),
   includeRootMessage: z.boolean().optional(),
-  datasource: Datasource$inboundSchema.optional(),
+  datasource: Datasource$inboundSchema,
   datasourceInstanceDisplayName: z.string().optional(),
 });
 
@@ -162,7 +164,7 @@ export type MessagesRequest$Outbound = {
   direction?: string | undefined;
   timestampMillis?: number | undefined;
   includeRootMessage?: boolean | undefined;
-  datasource?: string | undefined;
+  datasource: string;
   datasourceInstanceDisplayName?: string | undefined;
 };
 
@@ -178,7 +180,7 @@ export const MessagesRequest$outboundSchema: z.ZodType<
   direction: Direction$outboundSchema.optional(),
   timestampMillis: z.number().int().optional(),
   includeRootMessage: z.boolean().optional(),
-  datasource: Datasource$outboundSchema.optional(),
+  datasource: Datasource$outboundSchema,
   datasourceInstanceDisplayName: z.string().optional(),
 });
 

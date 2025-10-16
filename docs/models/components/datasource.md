@@ -1,6 +1,6 @@
 # Datasource
 
-The type of the data source. Missing field defaults to SLACK.
+The type of the data source.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: Datasource = "SLACK";
 ## Values
 
 ```typescript
-"SLACK" | "MICROSOFTTEAMS" | "FACEBOOKWORKPLACE"
+"SLACK" | "SLACKENTGRID" | "MICROSOFTTEAMS" | "GCHAT" | "FACEBOOKWORKPLACE"
 ```

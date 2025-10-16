@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
