@@ -1,21 +1,21 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 5a4cd8de1e6ca5f701ac27e244d09799
+  docChecksum: 30752ad325475357749711c885ecb81f
   docVersion: 0.9.0
-  speakeasyVersion: 1.636.3
-  generationVersion: 2.723.11
-  releaseVersion: 0.12.3
-  configChecksum: 19b09114c1109bc696d1327e2687e1ea
+  speakeasyVersion: 1.638.0
+  generationVersion: 2.728.0
+  releaseVersion: 0.13.0
+  configChecksum: b38d27b694691645b8dbb467b345e3e1
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.1.1
+    additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.21.26
+    core: 3.23.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -2979,4 +2979,4 @@ generatedTests:
   createpolicy: "2025-06-09T18:05:10Z"
   createreport: "2025-06-09T18:05:10Z"
   setdocvisibility: "2025-06-09T18:05:10Z"
-releaseNotes: "## Typescript SDK Changes Detected:\n* `glean.client.messages.retrieve()`: \n  *  `request.datasource` **Changed** **Breaking** :warning:\n"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `glean.client.chat.create()`: \n  *  `request.chatrequest.messages.[].agentConfig.useImageGeneration` **Added**\n  *  `response.messages.[].agentConfig.useImageGeneration` **Added**\n* `glean.client.chat.retrieve()`:  `response.chatresult.chat.messages.[].agentConfig.useImageGeneration` **Added**\n* `glean.client.chat.createStream()`: \n  *  `request.chatrequest.messages.[].agentConfig.useImageGeneration` **Added**\n"

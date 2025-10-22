@@ -20,6 +20,8 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
     hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
   mockServer:
     disabled: false
   tests:
@@ -27,7 +29,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.12.3
+  version: 0.13.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
