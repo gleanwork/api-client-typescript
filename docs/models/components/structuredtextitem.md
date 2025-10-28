@@ -1034,6 +1034,18 @@ let value: StructuredTextItem = {
         obfuscatedId: "abc123",
       },
     },
+    chat: {
+      createdBy: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+      icon: {
+        color: "#343CED",
+        key: "person_icon",
+        iconType: "GLYPH",
+        name: "user",
+      },
+    },
     relatedDocuments: [
       {
         querySuggestion: {

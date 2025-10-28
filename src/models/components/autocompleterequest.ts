@@ -29,6 +29,7 @@ export const AutocompleteRequestResultType = {
   Entity: "ENTITY",
   Golink: "GOLINK",
   History: "HISTORY",
+  ChatHistory: "CHAT_HISTORY",
   NewChat: "NEW_CHAT",
   Operator: "OPERATOR",
   OperatorValue: "OPERATOR_VALUE",

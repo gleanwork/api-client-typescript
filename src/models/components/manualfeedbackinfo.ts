@@ -30,6 +30,7 @@ export const ManualFeedbackInfoSource = {
   GeneratedQAndA: "GENERATED_Q_AND_A",
   InlineMenu: "INLINE_MENU",
   NativeResult: "NATIVE_RESULT",
+  Prism: "PRISM",
   QAndA: "Q_AND_A",
   RelatedQuestions: "RELATED_QUESTIONS",
   ReportIssue: "REPORT_ISSUE",

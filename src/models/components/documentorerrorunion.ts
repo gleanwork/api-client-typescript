@@ -17,10 +17,10 @@ export type DocumentOrError = {
   /**
    * The text for error, reason.
    */
-  error?: string | undefined;
+  error: string;
 };
 
-export type DocumentOrErrorUnion = Document | DocumentOrError;
+export type DocumentOrErrorUnion = DocumentOrError | Document;
 
 /** @internal */
 export const DocumentOrError$inboundSchema: z.ZodType<
@@ -28,12 +28,12 @@ export const DocumentOrError$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  error: z.string().optional(),
+  error: z.string(),
 });
 
 /** @internal */
 export type DocumentOrError$Outbound = {
-  error?: string | undefined;
+  error: string;
 };
 
 /** @internal */
@@ -42,7 +42,7 @@ export const DocumentOrError$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentOrError
 > = z.object({
-  error: z.string().optional(),
+  error: z.string(),
 });
 
 /**
@@ -80,14 +80,14 @@ export const DocumentOrErrorUnion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  Document$inboundSchema,
   z.lazy(() => DocumentOrError$inboundSchema),
+  Document$inboundSchema,
 ]);
 
 /** @internal */
 export type DocumentOrErrorUnion$Outbound =
-  | Document$Outbound
-  | DocumentOrError$Outbound;
+  | DocumentOrError$Outbound
+  | Document$Outbound;
 
 /** @internal */
 export const DocumentOrErrorUnion$outboundSchema: z.ZodType<
@@ -95,8 +95,8 @@ export const DocumentOrErrorUnion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DocumentOrErrorUnion
 > = z.union([
-  Document$outboundSchema,
   z.lazy(() => DocumentOrError$outboundSchema),
+  Document$outboundSchema,
 ]);
 
 /**
