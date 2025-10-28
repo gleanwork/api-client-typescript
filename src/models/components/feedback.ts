@@ -64,6 +64,7 @@ export const FeedbackCategory = {
   Workflows: "WORKFLOWS",
   Summary: "SUMMARY",
   General: "GENERAL",
+  Prism: "PRISM",
   Prompts: "PROMPTS",
 } as const;
 /**

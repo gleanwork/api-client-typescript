@@ -7,11 +7,11 @@ The feature category to which the feedback applies. These should be broad produc
 ```typescript
 import { FeedbackCategory } from "@gleanwork/api-client/models/components";
 
-let value: FeedbackCategory = "SEARCH";
+let value: FeedbackCategory = "CHAT";
 ```
 
 ## Values
 
 ```typescript
-"ANNOUNCEMENT" | "AUTOCOMPLETE" | "COLLECTIONS" | "FEED" | "SEARCH" | "CHAT" | "NTP" | "WORKFLOWS" | "SUMMARY" | "GENERAL" | "PROMPTS"
+"ANNOUNCEMENT" | "AUTOCOMPLETE" | "COLLECTIONS" | "FEED" | "SEARCH" | "CHAT" | "NTP" | "WORKFLOWS" | "SUMMARY" | "GENERAL" | "PRISM" | "PROMPTS"
 ```

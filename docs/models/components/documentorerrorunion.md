@@ -83,6 +83,8 @@ const value: components.Document = {
 ### `components.DocumentOrError`
 
 ```typescript
-const value: components.DocumentOrError = {};
+const value: components.DocumentOrError = {
+  error: "<value>",
+};
 ```
 

@@ -1474,6 +1474,18 @@ let value: Chat = {
                             obfuscatedId: "abc123",
                           },
                         },
+                        chat: {
+                          createdBy: {
+                            name: "George Clooney",
+                            obfuscatedId: "abc123",
+                          },
+                          icon: {
+                            color: "#343CED",
+                            key: "person_icon",
+                            iconType: "GLYPH",
+                            name: "user",
+                          },
+                        },
                         relatedDocuments: [
                           {
                             querySuggestion: {
@@ -2037,6 +2049,18 @@ let value: Chat = {
                 person: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
+                },
+              },
+              chat: {
+                createdBy: {
+                  name: "George Clooney",
+                  obfuscatedId: "abc123",
+                },
+                icon: {
+                  color: "#343CED",
+                  key: "person_icon",
+                  iconType: "GLYPH",
+                  name: "user",
                 },
               },
               relatedDocuments: [

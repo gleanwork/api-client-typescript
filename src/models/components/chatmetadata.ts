@@ -62,7 +62,7 @@ export const ChatMetadata$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string().optional(),
   createTime: z.number().int().optional(),
-  createdBy: Person$inboundSchema.optional(),
+  createdBy: z.lazy(() => Person$inboundSchema).optional(),
   updateTime: z.number().int().optional(),
   name: z.string().optional(),
   applicationId: z.string().optional(),
@@ -90,7 +90,7 @@ export const ChatMetadata$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string().optional(),
   createTime: z.number().int().optional(),
-  createdBy: Person$outboundSchema.optional(),
+  createdBy: z.lazy(() => Person$outboundSchema).optional(),
   updateTime: z.number().int().optional(),
   name: z.string().optional(),
   applicationId: z.string().optional(),

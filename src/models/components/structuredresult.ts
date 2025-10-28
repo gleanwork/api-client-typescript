@@ -26,6 +26,12 @@ import {
   AppResult$outboundSchema,
 } from "./appresult.js";
 import {
+  ChatMetadata,
+  ChatMetadata$inboundSchema,
+  ChatMetadata$Outbound,
+  ChatMetadata$outboundSchema,
+} from "./chatmetadata.js";
+import {
   Code,
   Code$inboundSchema,
   Code$Outbound,
@@ -167,6 +173,10 @@ export type StructuredResult = {
   shortcut?: Shortcut | undefined;
   querySuggestions?: QuerySuggestionList | undefined;
   /**
+   * Metadata of a Chat a user had with Glean Assistant. This contains no actual conversational content.
+   */
+  chat?: ChatMetadata | undefined;
+  /**
    * A list of documents related to this structured result.
    */
   relatedDocuments?: Array<RelatedDocuments> | undefined;
@@ -254,6 +264,7 @@ export const StructuredResult$inboundSchema: z.ZodType<
   code: z.lazy(() => Code$inboundSchema).optional(),
   shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema).optional(),
+  chat: z.lazy(() => ChatMetadata$inboundSchema).optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
     .optional(),
   relatedQuestion: z.lazy(() => RelatedQuestion$inboundSchema).optional(),
@@ -281,6 +292,7 @@ export type StructuredResult$Outbound = {
   code?: Code$Outbound | undefined;
   shortcut?: Shortcut$Outbound | undefined;
   querySuggestions?: QuerySuggestionList$Outbound | undefined;
+  chat?: ChatMetadata$Outbound | undefined;
   relatedDocuments?: Array<RelatedDocuments$Outbound> | undefined;
   relatedQuestion?: RelatedQuestion$Outbound | undefined;
   disambiguation?: Disambiguation$Outbound | undefined;
@@ -311,6 +323,7 @@ export const StructuredResult$outboundSchema: z.ZodType<
   code: z.lazy(() => Code$outboundSchema).optional(),
   shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema).optional(),
+  chat: z.lazy(() => ChatMetadata$outboundSchema).optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
     .optional(),
   relatedQuestion: z.lazy(() => RelatedQuestion$outboundSchema).optional(),
