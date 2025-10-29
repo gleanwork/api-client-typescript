@@ -18,11 +18,11 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        ugcType: "ANNOUNCEMENTS",
-        contentId: 936916,
+        url: "https://ashamed-replacement.net",
       },
       {
-        url: "https://ruddy-massage.net",
+        ugcType: "SHORTCUTS",
+        contentId: 42139,
       },
     ],
   });

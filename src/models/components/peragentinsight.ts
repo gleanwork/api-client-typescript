@@ -34,6 +34,14 @@ export type PerAgentInsight = {
    * Total number of runs for this agent over the specified time period.
    */
   runCount?: number | undefined;
+  /**
+   * Total number of upvotes for this agent over the specified time period.
+   */
+  upvoteCount?: number | undefined;
+  /**
+   * Total number of downvotes for this agent over the specified time period.
+   */
+  downvoteCount?: number | undefined;
 };
 
 /** @internal */
@@ -47,6 +55,8 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
   icon: IconConfig$inboundSchema.optional(),
   userCount: z.number().int().optional(),
   runCount: z.number().int().optional(),
+  upvoteCount: z.number().int().optional(),
+  downvoteCount: z.number().int().optional(),
 });
 
 /** @internal */
@@ -56,6 +66,8 @@ export type PerAgentInsight$Outbound = {
   icon?: IconConfig$Outbound | undefined;
   userCount?: number | undefined;
   runCount?: number | undefined;
+  upvoteCount?: number | undefined;
+  downvoteCount?: number | undefined;
 };
 
 /** @internal */
@@ -69,6 +81,8 @@ export const PerAgentInsight$outboundSchema: z.ZodType<
   icon: IconConfig$outboundSchema.optional(),
   userCount: z.number().int().optional(),
   runCount: z.number().int().optional(),
+  upvoteCount: z.number().int().optional(),
+  downvoteCount: z.number().int().optional(),
 });
 
 /**

@@ -53,6 +53,8 @@ export type AgentsInsightsV2Response = {
     | undefined;
   agentUsersInsights?: Array<AgentUsersInsight> | undefined;
   dailyAgentRunsTimeseries?: LabeledCountInfo | undefined;
+  upvotesTimeseries?: LabeledCountInfo | undefined;
+  downvotesTimeseries?: LabeledCountInfo | undefined;
 };
 
 /** @internal */
@@ -73,6 +75,8 @@ export const AgentsInsightsV2Response$inboundSchema: z.ZodType<
   ).optional(),
   agentUsersInsights: z.array(AgentUsersInsight$inboundSchema).optional(),
   dailyAgentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -89,6 +93,8 @@ export type AgentsInsightsV2Response$Outbound = {
     | undefined;
   agentUsersInsights?: Array<AgentUsersInsight$Outbound> | undefined;
   dailyAgentRunsTimeseries?: LabeledCountInfo$Outbound | undefined;
+  upvotesTimeseries?: LabeledCountInfo$Outbound | undefined;
+  downvotesTimeseries?: LabeledCountInfo$Outbound | undefined;
 };
 
 /** @internal */
@@ -109,6 +115,8 @@ export const AgentsInsightsV2Response$outboundSchema: z.ZodType<
   ).optional(),
   agentUsersInsights: z.array(AgentUsersInsight$outboundSchema).optional(),
   dailyAgentRunsTimeseries: LabeledCountInfo$outboundSchema.optional(),
+  upvotesTimeseries: LabeledCountInfo$outboundSchema.optional(),
+  downvotesTimeseries: LabeledCountInfo$outboundSchema.optional(),
 });
 
 /**
