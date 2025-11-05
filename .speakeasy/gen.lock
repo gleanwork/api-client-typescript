@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 2ffc5de135d861194642d3cb0a9e3bb4
+  docChecksum: 32dd53402e2cd4015df1497391a25ceb
   docVersion: 0.9.0
-  speakeasyVersion: 1.642.1
-  generationVersion: 2.731.4
-  releaseVersion: 0.13.2
-  configChecksum: 82244f60cc8b73c7294d00c1e83c8b08
+  speakeasyVersion: 1.649.0
+  generationVersion: 2.739.1
+  releaseVersion: 0.13.3
+  configChecksum: 790fc0fed77200cbf77a072759051d5d
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.24.1
+    core: 3.26.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -26,7 +26,7 @@ features:
     globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.5
+    globalServerURLs: 2.83.0
     groups: 2.81.3
     mockServer: 0.1.1
     nameOverrides: 2.81.2
@@ -2979,6 +2979,3 @@ generatedTests:
   createpolicy: "2025-06-09T18:05:10Z"
   createreport: "2025-06-09T18:05:10Z"
   setdocvisibility: "2025-06-09T18:05:10Z"
-releaseNotes: |
-  ## Typescript SDK Changes Detected:
-  * `glean.client.insights.retrieve()`:  `response.agentsresponse` **Changed**

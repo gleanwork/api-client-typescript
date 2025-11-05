@@ -970,7 +970,8 @@ The default server `https://{instance}-be.glean.com` contains variables and is s
 import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  instance: "<value>",
+  serverIdx: 0,
+  instance: "instance-name",
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
