@@ -34,7 +34,9 @@ import {
 
 export type DebugDatasourceStatusResponseCounts = {
   /**
-   * A list of object types and corresponding upload counts
+   * A list of object types and corresponding upload counts. Note: This data may be cached and could be up to 3 hours stale.
+   *
+   * @remarks
    */
   uploaded?: Array<DatasourceObjectTypeDocumentCountEntry> | undefined;
   /**
