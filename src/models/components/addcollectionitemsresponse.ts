@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AddCollectionItemsError,
   AddCollectionItemsError$inboundSchema,
-  AddCollectionItemsError$Outbound,
-  AddCollectionItemsError$outboundSchema,
 } from "./addcollectionitemserror.js";
-import {
-  Collection,
-  Collection$inboundSchema,
-  Collection$Outbound,
-  Collection$outboundSchema,
-} from "./collection.js";
+import { Collection, Collection$inboundSchema } from "./collection.js";
 
 export type AddCollectionItemsResponse = {
   collection?: Collection | undefined;
@@ -33,43 +26,6 @@ export const AddCollectionItemsResponse$inboundSchema: z.ZodType<
   collection: Collection$inboundSchema.optional(),
   error: AddCollectionItemsError$inboundSchema.optional(),
 });
-
-/** @internal */
-export type AddCollectionItemsResponse$Outbound = {
-  collection?: Collection$Outbound | undefined;
-  error?: AddCollectionItemsError$Outbound | undefined;
-};
-
-/** @internal */
-export const AddCollectionItemsResponse$outboundSchema: z.ZodType<
-  AddCollectionItemsResponse$Outbound,
-  z.ZodTypeDef,
-  AddCollectionItemsResponse
-> = z.object({
-  collection: Collection$outboundSchema.optional(),
-  error: AddCollectionItemsError$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddCollectionItemsResponse$ {
-  /** @deprecated use `AddCollectionItemsResponse$inboundSchema` instead. */
-  export const inboundSchema = AddCollectionItemsResponse$inboundSchema;
-  /** @deprecated use `AddCollectionItemsResponse$outboundSchema` instead. */
-  export const outboundSchema = AddCollectionItemsResponse$outboundSchema;
-  /** @deprecated use `AddCollectionItemsResponse$Outbound` instead. */
-  export type Outbound = AddCollectionItemsResponse$Outbound;
-}
-
-export function addCollectionItemsResponseToJSON(
-  addCollectionItemsResponse: AddCollectionItemsResponse,
-): string {
-  return JSON.stringify(
-    AddCollectionItemsResponse$outboundSchema.parse(addCollectionItemsResponse),
-  );
-}
 
 export function addCollectionItemsResponseFromJSON(
   jsonString: string,

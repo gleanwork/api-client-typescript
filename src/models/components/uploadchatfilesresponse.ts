@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ChatFile,
-  ChatFile$inboundSchema,
-  ChatFile$Outbound,
-  ChatFile$outboundSchema,
-} from "./chatfile.js";
+import { ChatFile, ChatFile$inboundSchema } from "./chatfile.js";
 
 export type UploadChatFilesResponse = {
   /**
@@ -28,41 +23,6 @@ export const UploadChatFilesResponse$inboundSchema: z.ZodType<
 > = z.object({
   files: z.array(ChatFile$inboundSchema).optional(),
 });
-
-/** @internal */
-export type UploadChatFilesResponse$Outbound = {
-  files?: Array<ChatFile$Outbound> | undefined;
-};
-
-/** @internal */
-export const UploadChatFilesResponse$outboundSchema: z.ZodType<
-  UploadChatFilesResponse$Outbound,
-  z.ZodTypeDef,
-  UploadChatFilesResponse
-> = z.object({
-  files: z.array(ChatFile$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadChatFilesResponse$ {
-  /** @deprecated use `UploadChatFilesResponse$inboundSchema` instead. */
-  export const inboundSchema = UploadChatFilesResponse$inboundSchema;
-  /** @deprecated use `UploadChatFilesResponse$outboundSchema` instead. */
-  export const outboundSchema = UploadChatFilesResponse$outboundSchema;
-  /** @deprecated use `UploadChatFilesResponse$Outbound` instead. */
-  export type Outbound = UploadChatFilesResponse$Outbound;
-}
-
-export function uploadChatFilesResponseToJSON(
-  uploadChatFilesResponse: UploadChatFilesResponse,
-): string {
-  return JSON.stringify(
-    UploadChatFilesResponse$outboundSchema.parse(uploadChatFilesResponse),
-  );
-}
 
 export function uploadChatFilesResponseFromJSON(
   jsonString: string,

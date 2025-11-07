@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EmployeeInfoDefinition,
-  EmployeeInfoDefinition$inboundSchema,
   EmployeeInfoDefinition$Outbound,
   EmployeeInfoDefinition$outboundSchema,
 } from "./employeeinfodefinition.js";
@@ -44,20 +40,6 @@ export type BulkIndexEmployeesRequest = {
 };
 
 /** @internal */
-export const BulkIndexEmployeesRequest$inboundSchema: z.ZodType<
-  BulkIndexEmployeesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  employees: z.array(EmployeeInfoDefinition$inboundSchema),
-  disableStaleDataDeletionCheck: z.boolean().optional(),
-});
-
-/** @internal */
 export type BulkIndexEmployeesRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -81,33 +63,10 @@ export const BulkIndexEmployeesRequest$outboundSchema: z.ZodType<
   disableStaleDataDeletionCheck: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkIndexEmployeesRequest$ {
-  /** @deprecated use `BulkIndexEmployeesRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkIndexEmployeesRequest$inboundSchema;
-  /** @deprecated use `BulkIndexEmployeesRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkIndexEmployeesRequest$outboundSchema;
-  /** @deprecated use `BulkIndexEmployeesRequest$Outbound` instead. */
-  export type Outbound = BulkIndexEmployeesRequest$Outbound;
-}
-
 export function bulkIndexEmployeesRequestToJSON(
   bulkIndexEmployeesRequest: BulkIndexEmployeesRequest,
 ): string {
   return JSON.stringify(
     BulkIndexEmployeesRequest$outboundSchema.parse(bulkIndexEmployeesRequest),
-  );
-}
-
-export function bulkIndexEmployeesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkIndexEmployeesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkIndexEmployeesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkIndexEmployeesRequest' from JSON`,
   );
 }

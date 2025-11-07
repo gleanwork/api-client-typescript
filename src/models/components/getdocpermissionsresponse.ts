@@ -23,41 +23,6 @@ export const GetDocPermissionsResponse$inboundSchema: z.ZodType<
   allowedUserEmails: z.array(z.string()).optional(),
 });
 
-/** @internal */
-export type GetDocPermissionsResponse$Outbound = {
-  allowedUserEmails?: Array<string> | undefined;
-};
-
-/** @internal */
-export const GetDocPermissionsResponse$outboundSchema: z.ZodType<
-  GetDocPermissionsResponse$Outbound,
-  z.ZodTypeDef,
-  GetDocPermissionsResponse
-> = z.object({
-  allowedUserEmails: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocPermissionsResponse$ {
-  /** @deprecated use `GetDocPermissionsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDocPermissionsResponse$inboundSchema;
-  /** @deprecated use `GetDocPermissionsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDocPermissionsResponse$outboundSchema;
-  /** @deprecated use `GetDocPermissionsResponse$Outbound` instead. */
-  export type Outbound = GetDocPermissionsResponse$Outbound;
-}
-
-export function getDocPermissionsResponseToJSON(
-  getDocPermissionsResponse: GetDocPermissionsResponse,
-): string {
-  return JSON.stringify(
-    GetDocPermissionsResponse$outboundSchema.parse(getDocPermissionsResponse),
-  );
-}
-
 export function getDocPermissionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDocPermissionsResponse, SDKValidationError> {

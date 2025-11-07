@@ -27,7 +27,6 @@ export const DocumentSection$inboundSchema: z.ZodType<
   title: z.string().optional(),
   url: z.string().optional(),
 });
-
 /** @internal */
 export type DocumentSection$Outbound = {
   title?: string | undefined;
@@ -44,25 +43,11 @@ export const DocumentSection$outboundSchema: z.ZodType<
   url: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSection$ {
-  /** @deprecated use `DocumentSection$inboundSchema` instead. */
-  export const inboundSchema = DocumentSection$inboundSchema;
-  /** @deprecated use `DocumentSection$outboundSchema` instead. */
-  export const outboundSchema = DocumentSection$outboundSchema;
-  /** @deprecated use `DocumentSection$Outbound` instead. */
-  export type Outbound = DocumentSection$Outbound;
-}
-
 export function documentSectionToJSON(
   documentSection: DocumentSection,
 ): string {
   return JSON.stringify(DocumentSection$outboundSchema.parse(documentSection));
 }
-
 export function documentSectionFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentSection, SDKValidationError> {

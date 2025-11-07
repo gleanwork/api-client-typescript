@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Shortcut,
-  Shortcut$inboundSchema,
-  Shortcut$Outbound,
-  Shortcut$outboundSchema,
-} from "./shortcut.js";
-import {
-  ShortcutError,
-  ShortcutError$inboundSchema,
-  ShortcutError$Outbound,
-  ShortcutError$outboundSchema,
-} from "./shortcuterror.js";
+import { Shortcut, Shortcut$inboundSchema } from "./shortcut.js";
+import { ShortcutError, ShortcutError$inboundSchema } from "./shortcuterror.js";
 
 export type UpdateShortcutResponse = {
   shortcut?: Shortcut | undefined;
@@ -33,43 +23,6 @@ export const UpdateShortcutResponse$inboundSchema: z.ZodType<
   shortcut: Shortcut$inboundSchema.optional(),
   error: ShortcutError$inboundSchema.optional(),
 });
-
-/** @internal */
-export type UpdateShortcutResponse$Outbound = {
-  shortcut?: Shortcut$Outbound | undefined;
-  error?: ShortcutError$Outbound | undefined;
-};
-
-/** @internal */
-export const UpdateShortcutResponse$outboundSchema: z.ZodType<
-  UpdateShortcutResponse$Outbound,
-  z.ZodTypeDef,
-  UpdateShortcutResponse
-> = z.object({
-  shortcut: Shortcut$outboundSchema.optional(),
-  error: ShortcutError$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateShortcutResponse$ {
-  /** @deprecated use `UpdateShortcutResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateShortcutResponse$inboundSchema;
-  /** @deprecated use `UpdateShortcutResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateShortcutResponse$outboundSchema;
-  /** @deprecated use `UpdateShortcutResponse$Outbound` instead. */
-  export type Outbound = UpdateShortcutResponse$Outbound;
-}
-
-export function updateShortcutResponseToJSON(
-  updateShortcutResponse: UpdateShortcutResponse,
-): string {
-  return JSON.stringify(
-    UpdateShortcutResponse$outboundSchema.parse(updateShortcutResponse),
-  );
-}
 
 export function updateShortcutResponseFromJSON(
   jsonString: string,

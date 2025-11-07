@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UserGeneratedContentId,
-  UserGeneratedContentId$inboundSchema,
   UserGeneratedContentId$Outbound,
   UserGeneratedContentId$outboundSchema,
 } from "./usergeneratedcontentid.js";
@@ -25,15 +21,6 @@ export type GetShortcutRequestUnion =
   | UserGeneratedContentId;
 
 /** @internal */
-export const GetShortcutRequest$inboundSchema: z.ZodType<
-  GetShortcutRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  alias: z.string(),
-});
-
-/** @internal */
 export type GetShortcutRequest$Outbound = {
   alias: string;
 };
@@ -47,19 +34,6 @@ export const GetShortcutRequest$outboundSchema: z.ZodType<
   alias: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetShortcutRequest$ {
-  /** @deprecated use `GetShortcutRequest$inboundSchema` instead. */
-  export const inboundSchema = GetShortcutRequest$inboundSchema;
-  /** @deprecated use `GetShortcutRequest$outboundSchema` instead. */
-  export const outboundSchema = GetShortcutRequest$outboundSchema;
-  /** @deprecated use `GetShortcutRequest$Outbound` instead. */
-  export type Outbound = GetShortcutRequest$Outbound;
-}
-
 export function getShortcutRequestToJSON(
   getShortcutRequest: GetShortcutRequest,
 ): string {
@@ -67,26 +41,6 @@ export function getShortcutRequestToJSON(
     GetShortcutRequest$outboundSchema.parse(getShortcutRequest),
   );
 }
-
-export function getShortcutRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetShortcutRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetShortcutRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetShortcutRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetShortcutRequestUnion$inboundSchema: z.ZodType<
-  GetShortcutRequestUnion,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetShortcutRequest$inboundSchema),
-  UserGeneratedContentId$inboundSchema,
-]);
 
 /** @internal */
 export type GetShortcutRequestUnion$Outbound =
@@ -103,33 +57,10 @@ export const GetShortcutRequestUnion$outboundSchema: z.ZodType<
   UserGeneratedContentId$outboundSchema,
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetShortcutRequestUnion$ {
-  /** @deprecated use `GetShortcutRequestUnion$inboundSchema` instead. */
-  export const inboundSchema = GetShortcutRequestUnion$inboundSchema;
-  /** @deprecated use `GetShortcutRequestUnion$outboundSchema` instead. */
-  export const outboundSchema = GetShortcutRequestUnion$outboundSchema;
-  /** @deprecated use `GetShortcutRequestUnion$Outbound` instead. */
-  export type Outbound = GetShortcutRequestUnion$Outbound;
-}
-
 export function getShortcutRequestUnionToJSON(
   getShortcutRequestUnion: GetShortcutRequestUnion,
 ): string {
   return JSON.stringify(
     GetShortcutRequestUnion$outboundSchema.parse(getShortcutRequestUnion),
-  );
-}
-
-export function getShortcutRequestUnionFromJSON(
-  jsonString: string,
-): SafeParseResult<GetShortcutRequestUnion, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetShortcutRequestUnion$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetShortcutRequestUnion' from JSON`,
   );
 }

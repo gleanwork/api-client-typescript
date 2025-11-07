@@ -3,21 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * List pins request
  */
 export type ListpinsRequest = {};
-
-/** @internal */
-export const ListpinsRequest$inboundSchema: z.ZodType<
-  ListpinsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
 
 /** @internal */
 export type ListpinsRequest$Outbound = {};
@@ -29,31 +19,8 @@ export const ListpinsRequest$outboundSchema: z.ZodType<
   ListpinsRequest
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListpinsRequest$ {
-  /** @deprecated use `ListpinsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListpinsRequest$inboundSchema;
-  /** @deprecated use `ListpinsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListpinsRequest$outboundSchema;
-  /** @deprecated use `ListpinsRequest$Outbound` instead. */
-  export type Outbound = ListpinsRequest$Outbound;
-}
-
 export function listpinsRequestToJSON(
   listpinsRequest: ListpinsRequest,
 ): string {
   return JSON.stringify(ListpinsRequest$outboundSchema.parse(listpinsRequest));
-}
-
-export function listpinsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListpinsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListpinsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListpinsRequest' from JSON`,
-  );
 }

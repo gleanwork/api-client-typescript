@@ -21,7 +21,6 @@ export const HotwordProximity$inboundSchema: z.ZodType<
   windowBefore: z.number().int().optional(),
   windowAfter: z.number().int().optional(),
 });
-
 /** @internal */
 export type HotwordProximity$Outbound = {
   windowBefore?: number | undefined;
@@ -38,19 +37,6 @@ export const HotwordProximity$outboundSchema: z.ZodType<
   windowAfter: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HotwordProximity$ {
-  /** @deprecated use `HotwordProximity$inboundSchema` instead. */
-  export const inboundSchema = HotwordProximity$inboundSchema;
-  /** @deprecated use `HotwordProximity$outboundSchema` instead. */
-  export const outboundSchema = HotwordProximity$outboundSchema;
-  /** @deprecated use `HotwordProximity$Outbound` instead. */
-  export type Outbound = HotwordProximity$Outbound;
-}
-
 export function hotwordProximityToJSON(
   hotwordProximity: HotwordProximity,
 ): string {
@@ -58,7 +44,6 @@ export function hotwordProximityToJSON(
     HotwordProximity$outboundSchema.parse(hotwordProximity),
   );
 }
-
 export function hotwordProximityFromJSON(
   jsonString: string,
 ): SafeParseResult<HotwordProximity, SDKValidationError> {

@@ -3,30 +3,23 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Document,
-  Document$inboundSchema,
   Document$Outbound,
   Document$outboundSchema,
 } from "./document.js";
 import {
   SearchRequestInputDetails,
-  SearchRequestInputDetails$inboundSchema,
   SearchRequestInputDetails$Outbound,
   SearchRequestInputDetails$outboundSchema,
 } from "./searchrequestinputdetails.js";
 import {
   SearchRequestOptions,
-  SearchRequestOptions$inboundSchema,
   SearchRequestOptions$Outbound,
   SearchRequestOptions$outboundSchema,
 } from "./searchrequestoptions.js";
 import {
   SessionInfo,
-  SessionInfo$inboundSchema,
   SessionInfo$Outbound,
   SessionInfo$outboundSchema,
 } from "./sessioninfo.js";
@@ -75,28 +68,6 @@ export type SearchRequest = {
 };
 
 /** @internal */
-export const SearchRequest$inboundSchema: z.ZodType<
-  SearchRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  sourceDocument: Document$inboundSchema.optional(),
-  pageSize: z.number().int().optional(),
-  maxSnippetSize: z.number().int().optional(),
-  query: z.string(),
-  cursor: z.string().optional(),
-  resultTabIds: z.array(z.string()).optional(),
-  inputDetails: SearchRequestInputDetails$inboundSchema.optional(),
-  requestOptions: SearchRequestOptions$inboundSchema.optional(),
-  timeoutMillis: z.number().int().optional(),
-  disableSpellcheck: z.boolean().optional(),
-});
-
-/** @internal */
 export type SearchRequest$Outbound = {
   timestamp?: string | undefined;
   trackingToken?: string | undefined;
@@ -134,29 +105,6 @@ export const SearchRequest$outboundSchema: z.ZodType<
   disableSpellcheck: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchRequest$ {
-  /** @deprecated use `SearchRequest$inboundSchema` instead. */
-  export const inboundSchema = SearchRequest$inboundSchema;
-  /** @deprecated use `SearchRequest$outboundSchema` instead. */
-  export const outboundSchema = SearchRequest$outboundSchema;
-  /** @deprecated use `SearchRequest$Outbound` instead. */
-  export type Outbound = SearchRequest$Outbound;
-}
-
 export function searchRequestToJSON(searchRequest: SearchRequest): string {
   return JSON.stringify(SearchRequest$outboundSchema.parse(searchRequest));
-}
-
-export function searchRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SearchRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SearchRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SearchRequest' from JSON`,
-  );
 }

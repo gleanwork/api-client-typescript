@@ -3,49 +3,35 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ManualFeedbackInfo,
-  ManualFeedbackInfo$inboundSchema,
   ManualFeedbackInfo$Outbound,
   ManualFeedbackInfo$outboundSchema,
 } from "./manualfeedbackinfo.js";
 import {
   ManualFeedbackSideBySideInfo,
-  ManualFeedbackSideBySideInfo$inboundSchema,
   ManualFeedbackSideBySideInfo$Outbound,
   ManualFeedbackSideBySideInfo$outboundSchema,
 } from "./manualfeedbacksidebysideinfo.js";
 import {
   SeenFeedbackInfo,
-  SeenFeedbackInfo$inboundSchema,
   SeenFeedbackInfo$Outbound,
   SeenFeedbackInfo$outboundSchema,
 } from "./seenfeedbackinfo.js";
 import {
   SessionInfo,
-  SessionInfo$inboundSchema,
   SessionInfo$Outbound,
   SessionInfo$outboundSchema,
 } from "./sessioninfo.js";
-import {
-  User,
-  User$inboundSchema,
-  User$Outbound,
-  User$outboundSchema,
-} from "./user.js";
+import { User, User$Outbound, User$outboundSchema } from "./user.js";
 import {
   UserViewInfo,
-  UserViewInfo$inboundSchema,
   UserViewInfo$Outbound,
   UserViewInfo$outboundSchema,
 } from "./userviewinfo.js";
 import {
   WorkflowFeedbackInfo,
-  WorkflowFeedbackInfo$inboundSchema,
   WorkflowFeedbackInfo$Outbound,
   WorkflowFeedbackInfo$outboundSchema,
 } from "./workflowfeedbackinfo.js";
@@ -101,6 +87,7 @@ export const Event = {
   RightClick: "RIGHT_CLICK",
   SectionClick: "SECTION_CLICK",
   Seen: "SEEN",
+  Select: "SELECT",
   Share: "SHARE",
   ShowMore: "SHOW_MORE",
   Upvote: "UPVOTE",
@@ -185,97 +172,19 @@ export type Feedback = {
 };
 
 /** @internal */
-export const FeedbackCategory$inboundSchema: z.ZodNativeEnum<
+export const FeedbackCategory$outboundSchema: z.ZodNativeEnum<
   typeof FeedbackCategory
 > = z.nativeEnum(FeedbackCategory);
 
 /** @internal */
-export const FeedbackCategory$outboundSchema: z.ZodNativeEnum<
-  typeof FeedbackCategory
-> = FeedbackCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedbackCategory$ {
-  /** @deprecated use `FeedbackCategory$inboundSchema` instead. */
-  export const inboundSchema = FeedbackCategory$inboundSchema;
-  /** @deprecated use `FeedbackCategory$outboundSchema` instead. */
-  export const outboundSchema = FeedbackCategory$outboundSchema;
-}
-
-/** @internal */
-export const Event$inboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
+export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
   Event,
 );
 
 /** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
-  Event$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Event$ {
-  /** @deprecated use `Event$inboundSchema` instead. */
-  export const inboundSchema = Event$inboundSchema;
-  /** @deprecated use `Event$outboundSchema` instead. */
-  export const outboundSchema = Event$outboundSchema;
-}
-
-/** @internal */
-export const FeedbackChannel$inboundSchema: z.ZodNativeEnum<
-  typeof FeedbackChannel
-> = z.nativeEnum(FeedbackChannel);
-
-/** @internal */
 export const FeedbackChannel$outboundSchema: z.ZodNativeEnum<
   typeof FeedbackChannel
-> = FeedbackChannel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedbackChannel$ {
-  /** @deprecated use `FeedbackChannel$inboundSchema` instead. */
-  export const inboundSchema = FeedbackChannel$inboundSchema;
-  /** @deprecated use `FeedbackChannel$outboundSchema` instead. */
-  export const outboundSchema = FeedbackChannel$outboundSchema;
-}
-
-/** @internal */
-export const Feedback$inboundSchema: z.ZodType<
-  Feedback,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string().optional(),
-  category: FeedbackCategory$inboundSchema.optional(),
-  trackingTokens: z.array(z.string()),
-  event: Event$inboundSchema,
-  position: z.number().int().optional(),
-  payload: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  user: User$inboundSchema.optional(),
-  pathname: z.string().optional(),
-  channels: z.array(FeedbackChannel$inboundSchema).optional(),
-  url: z.string().optional(),
-  uiTree: z.array(z.string()).optional(),
-  uiElement: z.string().optional(),
-  manualFeedbackInfo: ManualFeedbackInfo$inboundSchema.optional(),
-  manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo$inboundSchema
-    .optional(),
-  seenFeedbackInfo: SeenFeedbackInfo$inboundSchema.optional(),
-  userViewInfo: UserViewInfo$inboundSchema.optional(),
-  workflowFeedbackInfo: WorkflowFeedbackInfo$inboundSchema.optional(),
-  applicationId: z.string().optional(),
-  agentId: z.string().optional(),
-});
+> = z.nativeEnum(FeedbackChannel);
 
 /** @internal */
 export type Feedback$Outbound = {
@@ -334,29 +243,6 @@ export const Feedback$outboundSchema: z.ZodType<
   agentId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Feedback$ {
-  /** @deprecated use `Feedback$inboundSchema` instead. */
-  export const inboundSchema = Feedback$inboundSchema;
-  /** @deprecated use `Feedback$outboundSchema` instead. */
-  export const outboundSchema = Feedback$outboundSchema;
-  /** @deprecated use `Feedback$Outbound` instead. */
-  export type Outbound = Feedback$Outbound;
-}
-
 export function feedbackToJSON(feedback: Feedback): string {
   return JSON.stringify(Feedback$outboundSchema.parse(feedback));
-}
-
-export function feedbackFromJSON(
-  jsonString: string,
-): SafeParseResult<Feedback, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Feedback$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Feedback' from JSON`,
-  );
 }

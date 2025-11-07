@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SearchResponse,
   SearchResponse$inboundSchema,
-  SearchResponse$Outbound,
-  SearchResponse$outboundSchema,
 } from "./searchresponse.js";
-import {
-  SearchResult,
-  SearchResult$inboundSchema,
-  SearchResult$Outbound,
-  SearchResult$outboundSchema,
-} from "./searchresult.js";
+import { SearchResult, SearchResult$inboundSchema } from "./searchresult.js";
 
 export type MessagesResponse = {
   /**
@@ -38,45 +31,6 @@ export const MessagesResponse$inboundSchema: z.ZodType<
   searchResponse: SearchResponse$inboundSchema.optional(),
   rootMessage: SearchResult$inboundSchema.optional(),
 });
-
-/** @internal */
-export type MessagesResponse$Outbound = {
-  hasMore: boolean;
-  searchResponse?: SearchResponse$Outbound | undefined;
-  rootMessage?: SearchResult$Outbound | undefined;
-};
-
-/** @internal */
-export const MessagesResponse$outboundSchema: z.ZodType<
-  MessagesResponse$Outbound,
-  z.ZodTypeDef,
-  MessagesResponse
-> = z.object({
-  hasMore: z.boolean(),
-  searchResponse: SearchResponse$outboundSchema.optional(),
-  rootMessage: SearchResult$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagesResponse$ {
-  /** @deprecated use `MessagesResponse$inboundSchema` instead. */
-  export const inboundSchema = MessagesResponse$inboundSchema;
-  /** @deprecated use `MessagesResponse$outboundSchema` instead. */
-  export const outboundSchema = MessagesResponse$outboundSchema;
-  /** @deprecated use `MessagesResponse$Outbound` instead. */
-  export type Outbound = MessagesResponse$Outbound;
-}
-
-export function messagesResponseToJSON(
-  messagesResponse: MessagesResponse,
-): string {
-  return JSON.stringify(
-    MessagesResponse$outboundSchema.parse(messagesResponse),
-  );
-}
 
 export function messagesResponseFromJSON(
   jsonString: string,

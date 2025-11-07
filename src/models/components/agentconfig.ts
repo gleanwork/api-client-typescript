@@ -66,41 +66,17 @@ export type AgentConfig = {
 /** @internal */
 export const AgentEnum$inboundSchema: z.ZodNativeEnum<typeof AgentEnum> = z
   .nativeEnum(AgentEnum);
-
 /** @internal */
 export const AgentEnum$outboundSchema: z.ZodNativeEnum<typeof AgentEnum> =
   AgentEnum$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentEnum$ {
-  /** @deprecated use `AgentEnum$inboundSchema` instead. */
-  export const inboundSchema = AgentEnum$inboundSchema;
-  /** @deprecated use `AgentEnum$outboundSchema` instead. */
-  export const outboundSchema = AgentEnum$outboundSchema;
-}
 
 /** @internal */
 export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
   Mode,
 );
-
 /** @internal */
 export const Mode$outboundSchema: z.ZodNativeEnum<typeof Mode> =
   Mode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Mode$ {
-  /** @deprecated use `Mode$inboundSchema` instead. */
-  export const inboundSchema = Mode$inboundSchema;
-  /** @deprecated use `Mode$outboundSchema` instead. */
-  export const outboundSchema = Mode$outboundSchema;
-}
 
 /** @internal */
 export const AgentConfig$inboundSchema: z.ZodType<
@@ -113,7 +89,6 @@ export const AgentConfig$inboundSchema: z.ZodType<
   mode: Mode$inboundSchema.optional(),
   useImageGeneration: z.boolean().optional(),
 });
-
 /** @internal */
 export type AgentConfig$Outbound = {
   agent?: string | undefined;
@@ -134,23 +109,9 @@ export const AgentConfig$outboundSchema: z.ZodType<
   useImageGeneration: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentConfig$ {
-  /** @deprecated use `AgentConfig$inboundSchema` instead. */
-  export const inboundSchema = AgentConfig$inboundSchema;
-  /** @deprecated use `AgentConfig$outboundSchema` instead. */
-  export const outboundSchema = AgentConfig$outboundSchema;
-  /** @deprecated use `AgentConfig$Outbound` instead. */
-  export type Outbound = AgentConfig$Outbound;
-}
-
 export function agentConfigToJSON(agentConfig: AgentConfig): string {
   return JSON.stringify(AgentConfig$outboundSchema.parse(agentConfig));
 }
-
 export function agentConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentConfig, SDKValidationError> {

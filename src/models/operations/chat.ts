@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChatRequest = {
   /**
@@ -19,20 +16,6 @@ export type ChatRequest = {
    */
   chatRequest: components.ChatRequest;
 };
-
-/** @internal */
-export const ChatRequest$inboundSchema: z.ZodType<
-  ChatRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  ChatRequest: components.ChatRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "ChatRequest": "chatRequest",
-  });
-});
 
 /** @internal */
 export type ChatRequest$Outbound = {
@@ -54,29 +37,6 @@ export const ChatRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatRequest$ {
-  /** @deprecated use `ChatRequest$inboundSchema` instead. */
-  export const inboundSchema = ChatRequest$inboundSchema;
-  /** @deprecated use `ChatRequest$outboundSchema` instead. */
-  export const outboundSchema = ChatRequest$outboundSchema;
-  /** @deprecated use `ChatRequest$Outbound` instead. */
-  export type Outbound = ChatRequest$Outbound;
-}
-
 export function chatRequestToJSON(chatRequest: ChatRequest): string {
   return JSON.stringify(ChatRequest$outboundSchema.parse(chatRequest));
-}
-
-export function chatRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ChatRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChatRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChatRequest' from JSON`,
-  );
 }

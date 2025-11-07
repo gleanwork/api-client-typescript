@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChatMetadataResult,
   ChatMetadataResult$inboundSchema,
-  ChatMetadataResult$Outbound,
-  ChatMetadataResult$outboundSchema,
 } from "./chatmetadataresult.js";
 
 export type ListChatsResponse = {
@@ -25,41 +23,6 @@ export const ListChatsResponse$inboundSchema: z.ZodType<
 > = z.object({
   chatResults: z.array(ChatMetadataResult$inboundSchema).optional(),
 });
-
-/** @internal */
-export type ListChatsResponse$Outbound = {
-  chatResults?: Array<ChatMetadataResult$Outbound> | undefined;
-};
-
-/** @internal */
-export const ListChatsResponse$outboundSchema: z.ZodType<
-  ListChatsResponse$Outbound,
-  z.ZodTypeDef,
-  ListChatsResponse
-> = z.object({
-  chatResults: z.array(ChatMetadataResult$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListChatsResponse$ {
-  /** @deprecated use `ListChatsResponse$inboundSchema` instead. */
-  export const inboundSchema = ListChatsResponse$inboundSchema;
-  /** @deprecated use `ListChatsResponse$outboundSchema` instead. */
-  export const outboundSchema = ListChatsResponse$outboundSchema;
-  /** @deprecated use `ListChatsResponse$Outbound` instead. */
-  export type Outbound = ListChatsResponse$Outbound;
-}
-
-export function listChatsResponseToJSON(
-  listChatsResponse: ListChatsResponse,
-): string {
-  return JSON.stringify(
-    ListChatsResponse$outboundSchema.parse(listChatsResponse),
-  );
-}
 
 export function listChatsResponseFromJSON(
   jsonString: string,

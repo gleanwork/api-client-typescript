@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ShortcutInsight,
   ShortcutInsight$inboundSchema,
-  ShortcutInsight$Outbound,
-  ShortcutInsight$outboundSchema,
 } from "./shortcutinsight.js";
 
 export type ShortcutInsightsResponse = {
@@ -43,47 +41,6 @@ export const ShortcutInsightsResponse$inboundSchema: z.ZodType<
   departments: z.array(z.string()).optional(),
   minVisitorThreshold: z.number().int().optional(),
 });
-
-/** @internal */
-export type ShortcutInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  shortcutInsights?: Array<ShortcutInsight$Outbound> | undefined;
-  departments?: Array<string> | undefined;
-  minVisitorThreshold?: number | undefined;
-};
-
-/** @internal */
-export const ShortcutInsightsResponse$outboundSchema: z.ZodType<
-  ShortcutInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  ShortcutInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  shortcutInsights: z.array(ShortcutInsight$outboundSchema).optional(),
-  departments: z.array(z.string()).optional(),
-  minVisitorThreshold: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ShortcutInsightsResponse$ {
-  /** @deprecated use `ShortcutInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = ShortcutInsightsResponse$inboundSchema;
-  /** @deprecated use `ShortcutInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = ShortcutInsightsResponse$outboundSchema;
-  /** @deprecated use `ShortcutInsightsResponse$Outbound` instead. */
-  export type Outbound = ShortcutInsightsResponse$Outbound;
-}
-
-export function shortcutInsightsResponseToJSON(
-  shortcutInsightsResponse: ShortcutInsightsResponse,
-): string {
-  return JSON.stringify(
-    ShortcutInsightsResponse$outboundSchema.parse(shortcutInsightsResponse),
-  );
-}
 
 export function shortcutInsightsResponseFromJSON(
   jsonString: string,

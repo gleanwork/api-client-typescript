@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Workflow,
-  Workflow$inboundSchema,
-  Workflow$Outbound,
-  Workflow$outboundSchema,
-} from "./workflow.js";
+import { Workflow, Workflow$inboundSchema } from "./workflow.js";
 
 export type WorkflowResult = {
   workflow: Workflow;
@@ -25,37 +20,6 @@ export const WorkflowResult$inboundSchema: z.ZodType<
 > = z.object({
   workflow: Workflow$inboundSchema,
 });
-
-/** @internal */
-export type WorkflowResult$Outbound = {
-  workflow: Workflow$Outbound;
-};
-
-/** @internal */
-export const WorkflowResult$outboundSchema: z.ZodType<
-  WorkflowResult$Outbound,
-  z.ZodTypeDef,
-  WorkflowResult
-> = z.object({
-  workflow: Workflow$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkflowResult$ {
-  /** @deprecated use `WorkflowResult$inboundSchema` instead. */
-  export const inboundSchema = WorkflowResult$inboundSchema;
-  /** @deprecated use `WorkflowResult$outboundSchema` instead. */
-  export const outboundSchema = WorkflowResult$outboundSchema;
-  /** @deprecated use `WorkflowResult$Outbound` instead. */
-  export type Outbound = WorkflowResult$Outbound;
-}
-
-export function workflowResultToJSON(workflowResult: WorkflowResult): string {
-  return JSON.stringify(WorkflowResult$outboundSchema.parse(workflowResult));
-}
 
 export function workflowResultFromJSON(
   jsonString: string,

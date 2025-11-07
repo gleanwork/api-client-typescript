@@ -44,7 +44,6 @@ export const ClusterGroup$inboundSchema: z.ZodType<
   clusterType: ClusterTypeEnum$inboundSchema.optional(),
   visibleCountHint: z.number().int(),
 });
-
 /** @internal */
 export type ClusterGroup$Outbound = {
   clusteredResults?: Array<SearchResult$Outbound> | undefined;
@@ -64,23 +63,9 @@ export const ClusterGroup$outboundSchema: z.ZodType<
   visibleCountHint: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClusterGroup$ {
-  /** @deprecated use `ClusterGroup$inboundSchema` instead. */
-  export const inboundSchema = ClusterGroup$inboundSchema;
-  /** @deprecated use `ClusterGroup$outboundSchema` instead. */
-  export const outboundSchema = ClusterGroup$outboundSchema;
-  /** @deprecated use `ClusterGroup$Outbound` instead. */
-  export type Outbound = ClusterGroup$Outbound;
-}
-
 export function clusterGroupToJSON(clusterGroup: ClusterGroup): string {
   return JSON.stringify(ClusterGroup$outboundSchema.parse(clusterGroup));
 }
-
 export function clusterGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<ClusterGroup, SDKValidationError> {

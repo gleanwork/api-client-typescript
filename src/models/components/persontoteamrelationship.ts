@@ -55,24 +55,10 @@ export const PersonToTeamRelationshipRelationship$inboundSchema:
   z.ZodNativeEnum<typeof PersonToTeamRelationshipRelationship> = z.nativeEnum(
     PersonToTeamRelationshipRelationship,
   );
-
 /** @internal */
 export const PersonToTeamRelationshipRelationship$outboundSchema:
   z.ZodNativeEnum<typeof PersonToTeamRelationshipRelationship> =
     PersonToTeamRelationshipRelationship$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonToTeamRelationshipRelationship$ {
-  /** @deprecated use `PersonToTeamRelationshipRelationship$inboundSchema` instead. */
-  export const inboundSchema =
-    PersonToTeamRelationshipRelationship$inboundSchema;
-  /** @deprecated use `PersonToTeamRelationshipRelationship$outboundSchema` instead. */
-  export const outboundSchema =
-    PersonToTeamRelationshipRelationship$outboundSchema;
-}
 
 /** @internal */
 export const PersonToTeamRelationship$inboundSchema: z.ZodType<
@@ -88,7 +74,6 @@ export const PersonToTeamRelationship$inboundSchema: z.ZodType<
   joinDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type PersonToTeamRelationship$Outbound = {
   person: Person$Outbound;
@@ -111,19 +96,6 @@ export const PersonToTeamRelationship$outboundSchema: z.ZodType<
   joinDate: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonToTeamRelationship$ {
-  /** @deprecated use `PersonToTeamRelationship$inboundSchema` instead. */
-  export const inboundSchema = PersonToTeamRelationship$inboundSchema;
-  /** @deprecated use `PersonToTeamRelationship$outboundSchema` instead. */
-  export const outboundSchema = PersonToTeamRelationship$outboundSchema;
-  /** @deprecated use `PersonToTeamRelationship$Outbound` instead. */
-  export type Outbound = PersonToTeamRelationship$Outbound;
-}
-
 export function personToTeamRelationshipToJSON(
   personToTeamRelationship: PersonToTeamRelationship,
 ): string {
@@ -131,7 +103,6 @@ export function personToTeamRelationshipToJSON(
     PersonToTeamRelationship$outboundSchema.parse(personToTeamRelationship),
   );
 }
-
 export function personToTeamRelationshipFromJSON(
   jsonString: string,
 ): SafeParseResult<PersonToTeamRelationship, SDKValidationError> {

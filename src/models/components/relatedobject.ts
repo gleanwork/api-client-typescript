@@ -36,7 +36,6 @@ export const RelatedObjectMetadata$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string().optional(),
 });
-
 /** @internal */
 export type RelatedObjectMetadata$Outbound = {
   name?: string | undefined;
@@ -51,19 +50,6 @@ export const RelatedObjectMetadata$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RelatedObjectMetadata$ {
-  /** @deprecated use `RelatedObjectMetadata$inboundSchema` instead. */
-  export const inboundSchema = RelatedObjectMetadata$inboundSchema;
-  /** @deprecated use `RelatedObjectMetadata$outboundSchema` instead. */
-  export const outboundSchema = RelatedObjectMetadata$outboundSchema;
-  /** @deprecated use `RelatedObjectMetadata$Outbound` instead. */
-  export type Outbound = RelatedObjectMetadata$Outbound;
-}
-
 export function relatedObjectMetadataToJSON(
   relatedObjectMetadata: RelatedObjectMetadata,
 ): string {
@@ -71,7 +57,6 @@ export function relatedObjectMetadataToJSON(
     RelatedObjectMetadata$outboundSchema.parse(relatedObjectMetadata),
   );
 }
-
 export function relatedObjectMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<RelatedObjectMetadata, SDKValidationError> {
@@ -91,7 +76,6 @@ export const RelatedObject$inboundSchema: z.ZodType<
   id: z.string(),
   metadata: z.lazy(() => RelatedObjectMetadata$inboundSchema).optional(),
 });
-
 /** @internal */
 export type RelatedObject$Outbound = {
   id: string;
@@ -108,23 +92,9 @@ export const RelatedObject$outboundSchema: z.ZodType<
   metadata: z.lazy(() => RelatedObjectMetadata$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RelatedObject$ {
-  /** @deprecated use `RelatedObject$inboundSchema` instead. */
-  export const inboundSchema = RelatedObject$inboundSchema;
-  /** @deprecated use `RelatedObject$outboundSchema` instead. */
-  export const outboundSchema = RelatedObject$outboundSchema;
-  /** @deprecated use `RelatedObject$Outbound` instead. */
-  export type Outbound = RelatedObject$Outbound;
-}
-
 export function relatedObjectToJSON(relatedObject: RelatedObject): string {
   return JSON.stringify(RelatedObject$outboundSchema.parse(relatedObject));
 }
-
 export function relatedObjectFromJSON(
   jsonString: string,
 ): SafeParseResult<RelatedObject, SDKValidationError> {

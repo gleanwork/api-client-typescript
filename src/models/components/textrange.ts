@@ -46,22 +46,10 @@ export type TextRange = {
 export const TextRangeType$inboundSchema: z.ZodNativeEnum<
   typeof TextRangeType
 > = z.nativeEnum(TextRangeType);
-
 /** @internal */
 export const TextRangeType$outboundSchema: z.ZodNativeEnum<
   typeof TextRangeType
 > = TextRangeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TextRangeType$ {
-  /** @deprecated use `TextRangeType$inboundSchema` instead. */
-  export const inboundSchema = TextRangeType$inboundSchema;
-  /** @deprecated use `TextRangeType$outboundSchema` instead. */
-  export const outboundSchema = TextRangeType$outboundSchema;
-}
 
 /** @internal */
 export const TextRange$inboundSchema: z.ZodType<
@@ -75,7 +63,6 @@ export const TextRange$inboundSchema: z.ZodType<
   url: z.string().optional(),
   document: z.lazy(() => Document$inboundSchema).optional(),
 });
-
 /** @internal */
 export type TextRange$Outbound = {
   startIndex: number;
@@ -98,23 +85,9 @@ export const TextRange$outboundSchema: z.ZodType<
   document: z.lazy(() => Document$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TextRange$ {
-  /** @deprecated use `TextRange$inboundSchema` instead. */
-  export const inboundSchema = TextRange$inboundSchema;
-  /** @deprecated use `TextRange$outboundSchema` instead. */
-  export const outboundSchema = TextRange$outboundSchema;
-  /** @deprecated use `TextRange$Outbound` instead. */
-  export type Outbound = TextRange$Outbound;
-}
-
 export function textRangeToJSON(textRange: TextRange): string {
   return JSON.stringify(TextRange$outboundSchema.parse(textRange));
 }
-
 export function textRangeFromJSON(
   jsonString: string,
 ): SafeParseResult<TextRange, SDKValidationError> {

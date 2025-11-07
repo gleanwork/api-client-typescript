@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetchatfilesRequest = {
   /**
@@ -16,20 +13,6 @@ export type GetchatfilesRequest = {
   timezoneOffset?: number | undefined;
   getChatFilesRequest: components.GetChatFilesRequest;
 };
-
-/** @internal */
-export const GetchatfilesRequest$inboundSchema: z.ZodType<
-  GetchatfilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  GetChatFilesRequest: components.GetChatFilesRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "GetChatFilesRequest": "getChatFilesRequest",
-  });
-});
 
 /** @internal */
 export type GetchatfilesRequest$Outbound = {
@@ -51,33 +34,10 @@ export const GetchatfilesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetchatfilesRequest$ {
-  /** @deprecated use `GetchatfilesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetchatfilesRequest$inboundSchema;
-  /** @deprecated use `GetchatfilesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetchatfilesRequest$outboundSchema;
-  /** @deprecated use `GetchatfilesRequest$Outbound` instead. */
-  export type Outbound = GetchatfilesRequest$Outbound;
-}
-
 export function getchatfilesRequestToJSON(
   getchatfilesRequest: GetchatfilesRequest,
 ): string {
   return JSON.stringify(
     GetchatfilesRequest$outboundSchema.parse(getchatfilesRequest),
-  );
-}
-
-export function getchatfilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetchatfilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetchatfilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetchatfilesRequest' from JSON`,
   );
 }

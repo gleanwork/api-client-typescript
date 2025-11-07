@@ -7,35 +7,16 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  GeneratedQna,
-  GeneratedQna$inboundSchema,
-  GeneratedQna$Outbound,
-  GeneratedQna$outboundSchema,
-} from "./generatedqna.js";
+import { GeneratedQna, GeneratedQna$inboundSchema } from "./generatedqna.js";
 import {
   GleanDataError,
   GleanDataError$inboundSchema,
-  GleanDataError$Outbound,
-  GleanDataError$outboundSchema,
 } from "./gleandataerror.js";
-import {
-  SearchResult,
-  SearchResult$inboundSchema,
-  SearchResult$Outbound,
-  SearchResult$outboundSchema,
-} from "./searchresult.js";
-import {
-  SessionInfo,
-  SessionInfo$inboundSchema,
-  SessionInfo$Outbound,
-  SessionInfo$outboundSchema,
-} from "./sessioninfo.js";
+import { SearchResult, SearchResult$inboundSchema } from "./searchresult.js";
+import { SessionInfo, SessionInfo$inboundSchema } from "./sessioninfo.js";
 import {
   StructuredResult,
   StructuredResult$inboundSchema,
-  StructuredResult$Outbound,
-  StructuredResult$outboundSchema,
 } from "./structuredresult.js";
 
 export type ResultsResponse = {
@@ -77,57 +58,6 @@ export const ResultsResponse$inboundSchema: z.ZodType<
     "errorInfo": "gleanDataError",
   });
 });
-
-/** @internal */
-export type ResultsResponse$Outbound = {
-  trackingToken?: string | undefined;
-  sessionInfo?: SessionInfo$Outbound | undefined;
-  results?: Array<SearchResult$Outbound> | undefined;
-  structuredResults?: Array<StructuredResult$Outbound> | undefined;
-  generatedQnaResult?: GeneratedQna$Outbound | undefined;
-  errorInfo?: GleanDataError$Outbound | undefined;
-  requestID?: string | undefined;
-  backendTimeMillis?: number | undefined;
-};
-
-/** @internal */
-export const ResultsResponse$outboundSchema: z.ZodType<
-  ResultsResponse$Outbound,
-  z.ZodTypeDef,
-  ResultsResponse
-> = z.object({
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  results: z.array(SearchResult$outboundSchema).optional(),
-  structuredResults: z.array(StructuredResult$outboundSchema).optional(),
-  generatedQnaResult: GeneratedQna$outboundSchema.optional(),
-  gleanDataError: GleanDataError$outboundSchema.optional(),
-  requestID: z.string().optional(),
-  backendTimeMillis: z.number().int().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    gleanDataError: "errorInfo",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResultsResponse$ {
-  /** @deprecated use `ResultsResponse$inboundSchema` instead. */
-  export const inboundSchema = ResultsResponse$inboundSchema;
-  /** @deprecated use `ResultsResponse$outboundSchema` instead. */
-  export const outboundSchema = ResultsResponse$outboundSchema;
-  /** @deprecated use `ResultsResponse$Outbound` instead. */
-  export type Outbound = ResultsResponse$Outbound;
-}
-
-export function resultsResponseToJSON(
-  resultsResponse: ResultsResponse,
-): string {
-  return JSON.stringify(ResultsResponse$outboundSchema.parse(resultsResponse));
-}
 
 export function resultsResponseFromJSON(
   jsonString: string,

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetreportstatusRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetreportstatusRequest = {
    */
   id: string;
 };
-
-/** @internal */
-export const GetreportstatusRequest$inboundSchema: z.ZodType<
-  GetreportstatusRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-});
 
 /** @internal */
 export type GetreportstatusRequest$Outbound = {
@@ -37,33 +25,10 @@ export const GetreportstatusRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetreportstatusRequest$ {
-  /** @deprecated use `GetreportstatusRequest$inboundSchema` instead. */
-  export const inboundSchema = GetreportstatusRequest$inboundSchema;
-  /** @deprecated use `GetreportstatusRequest$outboundSchema` instead. */
-  export const outboundSchema = GetreportstatusRequest$outboundSchema;
-  /** @deprecated use `GetreportstatusRequest$Outbound` instead. */
-  export type Outbound = GetreportstatusRequest$Outbound;
-}
-
 export function getreportstatusRequestToJSON(
   getreportstatusRequest: GetreportstatusRequest,
 ): string {
   return JSON.stringify(
     GetreportstatusRequest$outboundSchema.parse(getreportstatusRequest),
-  );
-}
-
-export function getreportstatusRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetreportstatusRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetreportstatusRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetreportstatusRequest' from JSON`,
   );
 }

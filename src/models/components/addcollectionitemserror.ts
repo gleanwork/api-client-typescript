@@ -25,22 +25,6 @@ export const AddCollectionItemsErrorErrorType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AddCollectionItemsErrorErrorType);
 
 /** @internal */
-export const AddCollectionItemsErrorErrorType$outboundSchema: z.ZodNativeEnum<
-  typeof AddCollectionItemsErrorErrorType
-> = AddCollectionItemsErrorErrorType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddCollectionItemsErrorErrorType$ {
-  /** @deprecated use `AddCollectionItemsErrorErrorType$inboundSchema` instead. */
-  export const inboundSchema = AddCollectionItemsErrorErrorType$inboundSchema;
-  /** @deprecated use `AddCollectionItemsErrorErrorType$outboundSchema` instead. */
-  export const outboundSchema = AddCollectionItemsErrorErrorType$outboundSchema;
-}
-
-/** @internal */
 export const AddCollectionItemsError$inboundSchema: z.ZodType<
   AddCollectionItemsError,
   z.ZodTypeDef,
@@ -48,41 +32,6 @@ export const AddCollectionItemsError$inboundSchema: z.ZodType<
 > = z.object({
   errorType: AddCollectionItemsErrorErrorType$inboundSchema.optional(),
 });
-
-/** @internal */
-export type AddCollectionItemsError$Outbound = {
-  errorType?: string | undefined;
-};
-
-/** @internal */
-export const AddCollectionItemsError$outboundSchema: z.ZodType<
-  AddCollectionItemsError$Outbound,
-  z.ZodTypeDef,
-  AddCollectionItemsError
-> = z.object({
-  errorType: AddCollectionItemsErrorErrorType$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddCollectionItemsError$ {
-  /** @deprecated use `AddCollectionItemsError$inboundSchema` instead. */
-  export const inboundSchema = AddCollectionItemsError$inboundSchema;
-  /** @deprecated use `AddCollectionItemsError$outboundSchema` instead. */
-  export const outboundSchema = AddCollectionItemsError$outboundSchema;
-  /** @deprecated use `AddCollectionItemsError$Outbound` instead. */
-  export type Outbound = AddCollectionItemsError$Outbound;
-}
-
-export function addCollectionItemsErrorToJSON(
-  addCollectionItemsError: AddCollectionItemsError,
-): string {
-  return JSON.stringify(
-    AddCollectionItemsError$outboundSchema.parse(addCollectionItemsError),
-  );
-}
 
 export function addCollectionItemsErrorFromJSON(
   jsonString: string,

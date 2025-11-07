@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentVisibilityOverride,
   DocumentVisibilityOverride$inboundSchema,
-  DocumentVisibilityOverride$Outbound,
-  DocumentVisibilityOverride$outboundSchema,
 } from "./documentvisibilityoverride.js";
 
 export type GetDocumentVisibilityOverridesResponse = {
@@ -26,47 +24,6 @@ export const GetDocumentVisibilityOverridesResponse$inboundSchema: z.ZodType<
   visibilityOverrides: z.array(DocumentVisibilityOverride$inboundSchema)
     .optional(),
 });
-
-/** @internal */
-export type GetDocumentVisibilityOverridesResponse$Outbound = {
-  visibilityOverrides?: Array<DocumentVisibilityOverride$Outbound> | undefined;
-};
-
-/** @internal */
-export const GetDocumentVisibilityOverridesResponse$outboundSchema: z.ZodType<
-  GetDocumentVisibilityOverridesResponse$Outbound,
-  z.ZodTypeDef,
-  GetDocumentVisibilityOverridesResponse
-> = z.object({
-  visibilityOverrides: z.array(DocumentVisibilityOverride$outboundSchema)
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentVisibilityOverridesResponse$ {
-  /** @deprecated use `GetDocumentVisibilityOverridesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetDocumentVisibilityOverridesResponse$inboundSchema;
-  /** @deprecated use `GetDocumentVisibilityOverridesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetDocumentVisibilityOverridesResponse$outboundSchema;
-  /** @deprecated use `GetDocumentVisibilityOverridesResponse$Outbound` instead. */
-  export type Outbound = GetDocumentVisibilityOverridesResponse$Outbound;
-}
-
-export function getDocumentVisibilityOverridesResponseToJSON(
-  getDocumentVisibilityOverridesResponse:
-    GetDocumentVisibilityOverridesResponse,
-): string {
-  return JSON.stringify(
-    GetDocumentVisibilityOverridesResponse$outboundSchema.parse(
-      getDocumentVisibilityOverridesResponse,
-    ),
-  );
-}
 
 export function getDocumentVisibilityOverridesResponseFromJSON(
   jsonString: string,

@@ -30,7 +30,6 @@ export const ToolSets$inboundSchema: z.ZodType<
   enableWebSearch: z.boolean().optional(),
   enableCompanyTools: z.boolean().optional(),
 });
-
 /** @internal */
 export type ToolSets$Outbound = {
   enableWebSearch?: boolean | undefined;
@@ -47,23 +46,9 @@ export const ToolSets$outboundSchema: z.ZodType<
   enableCompanyTools: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolSets$ {
-  /** @deprecated use `ToolSets$inboundSchema` instead. */
-  export const inboundSchema = ToolSets$inboundSchema;
-  /** @deprecated use `ToolSets$outboundSchema` instead. */
-  export const outboundSchema = ToolSets$outboundSchema;
-  /** @deprecated use `ToolSets$Outbound` instead. */
-  export type Outbound = ToolSets$Outbound;
-}
-
 export function toolSetsToJSON(toolSets: ToolSets): string {
   return JSON.stringify(ToolSets$outboundSchema.parse(toolSets));
 }
-
 export function toolSetsFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolSets, SDKValidationError> {

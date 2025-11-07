@@ -28,39 +28,6 @@ export const ChatSuggestion$inboundSchema: z.ZodType<
   feature: z.string().optional(),
 });
 
-/** @internal */
-export type ChatSuggestion$Outbound = {
-  query?: string | undefined;
-  feature?: string | undefined;
-};
-
-/** @internal */
-export const ChatSuggestion$outboundSchema: z.ZodType<
-  ChatSuggestion$Outbound,
-  z.ZodTypeDef,
-  ChatSuggestion
-> = z.object({
-  query: z.string().optional(),
-  feature: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatSuggestion$ {
-  /** @deprecated use `ChatSuggestion$inboundSchema` instead. */
-  export const inboundSchema = ChatSuggestion$inboundSchema;
-  /** @deprecated use `ChatSuggestion$outboundSchema` instead. */
-  export const outboundSchema = ChatSuggestion$outboundSchema;
-  /** @deprecated use `ChatSuggestion$Outbound` instead. */
-  export type Outbound = ChatSuggestion$Outbound;
-}
-
-export function chatSuggestionToJSON(chatSuggestion: ChatSuggestion): string {
-  return JSON.stringify(ChatSuggestion$outboundSchema.parse(chatSuggestion));
-}
-
 export function chatSuggestionFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatSuggestion, SDKValidationError> {

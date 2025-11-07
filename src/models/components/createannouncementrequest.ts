@@ -3,25 +3,19 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   StructuredText,
-  StructuredText$inboundSchema,
   StructuredText$Outbound,
   StructuredText$outboundSchema,
 } from "./structuredtext.js";
 import {
   Thumbnail,
-  Thumbnail$inboundSchema,
   Thumbnail$Outbound,
   Thumbnail$outboundSchema,
 } from "./thumbnail.js";
@@ -105,69 +99,14 @@ export type CreateAnnouncementRequest = {
 };
 
 /** @internal */
-export const CreateAnnouncementRequestChannel$inboundSchema: z.ZodNativeEnum<
+export const CreateAnnouncementRequestChannel$outboundSchema: z.ZodNativeEnum<
   typeof CreateAnnouncementRequestChannel
 > = z.nativeEnum(CreateAnnouncementRequestChannel);
 
 /** @internal */
-export const CreateAnnouncementRequestChannel$outboundSchema: z.ZodNativeEnum<
-  typeof CreateAnnouncementRequestChannel
-> = CreateAnnouncementRequestChannel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnnouncementRequestChannel$ {
-  /** @deprecated use `CreateAnnouncementRequestChannel$inboundSchema` instead. */
-  export const inboundSchema = CreateAnnouncementRequestChannel$inboundSchema;
-  /** @deprecated use `CreateAnnouncementRequestChannel$outboundSchema` instead. */
-  export const outboundSchema = CreateAnnouncementRequestChannel$outboundSchema;
-}
-
-/** @internal */
-export const CreateAnnouncementRequestPostType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateAnnouncementRequestPostType
-> = z.nativeEnum(CreateAnnouncementRequestPostType);
-
-/** @internal */
 export const CreateAnnouncementRequestPostType$outboundSchema: z.ZodNativeEnum<
   typeof CreateAnnouncementRequestPostType
-> = CreateAnnouncementRequestPostType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnnouncementRequestPostType$ {
-  /** @deprecated use `CreateAnnouncementRequestPostType$inboundSchema` instead. */
-  export const inboundSchema = CreateAnnouncementRequestPostType$inboundSchema;
-  /** @deprecated use `CreateAnnouncementRequestPostType$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateAnnouncementRequestPostType$outboundSchema;
-}
-
-/** @internal */
-export const CreateAnnouncementRequest$inboundSchema: z.ZodType<
-  CreateAnnouncementRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  startTime: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  endTime: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  title: z.string(),
-  body: StructuredText$inboundSchema.optional(),
-  emoji: z.string().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  banner: Thumbnail$inboundSchema.optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  sourceDocumentId: z.string().optional(),
-  hideAttribution: z.boolean().optional(),
-  channel: CreateAnnouncementRequestChannel$inboundSchema.optional(),
-  postType: CreateAnnouncementRequestPostType$inboundSchema.optional(),
-  isPrioritized: z.boolean().optional(),
-  viewUrl: z.string().optional(),
-});
+> = z.nativeEnum(CreateAnnouncementRequestPostType);
 
 /** @internal */
 export type CreateAnnouncementRequest$Outbound = {
@@ -209,33 +148,10 @@ export const CreateAnnouncementRequest$outboundSchema: z.ZodType<
   viewUrl: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnnouncementRequest$ {
-  /** @deprecated use `CreateAnnouncementRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateAnnouncementRequest$inboundSchema;
-  /** @deprecated use `CreateAnnouncementRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateAnnouncementRequest$outboundSchema;
-  /** @deprecated use `CreateAnnouncementRequest$Outbound` instead. */
-  export type Outbound = CreateAnnouncementRequest$Outbound;
-}
-
 export function createAnnouncementRequestToJSON(
   createAnnouncementRequest: CreateAnnouncementRequest,
 ): string {
   return JSON.stringify(
     CreateAnnouncementRequest$outboundSchema.parse(createAnnouncementRequest),
-  );
-}
-
-export function createAnnouncementRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAnnouncementRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAnnouncementRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAnnouncementRequest' from JSON`,
   );
 }

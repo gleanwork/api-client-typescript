@@ -7,27 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  DlpConfig,
-  DlpConfig$inboundSchema,
-  DlpConfig$Outbound,
-  DlpConfig$outboundSchema,
-} from "./dlpconfig.js";
-import {
-  DlpFrequency,
-  DlpFrequency$inboundSchema,
-  DlpFrequency$outboundSchema,
-} from "./dlpfrequency.js";
-import {
-  DlpPerson,
-  DlpPerson$inboundSchema,
-  DlpPerson$Outbound,
-  DlpPerson$outboundSchema,
-} from "./dlpperson.js";
+import { DlpConfig, DlpConfig$inboundSchema } from "./dlpconfig.js";
+import { DlpFrequency, DlpFrequency$inboundSchema } from "./dlpfrequency.js";
+import { DlpPerson, DlpPerson$inboundSchema } from "./dlpperson.js";
 import {
   DlpReportStatus,
   DlpReportStatus$inboundSchema,
-  DlpReportStatus$outboundSchema,
 } from "./dlpreportstatus.js";
 
 export const LastScanStatus = {
@@ -91,22 +76,6 @@ export const LastScanStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(LastScanStatus);
 
 /** @internal */
-export const LastScanStatus$outboundSchema: z.ZodNativeEnum<
-  typeof LastScanStatus
-> = LastScanStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LastScanStatus$ {
-  /** @deprecated use `LastScanStatus$inboundSchema` instead. */
-  export const inboundSchema = LastScanStatus$inboundSchema;
-  /** @deprecated use `LastScanStatus$outboundSchema` instead. */
-  export const outboundSchema = LastScanStatus$outboundSchema;
-}
-
-/** @internal */
 export const DlpReport$inboundSchema: z.ZodType<
   DlpReport,
   z.ZodTypeDef,
@@ -125,59 +94,6 @@ export const DlpReport$inboundSchema: z.ZodType<
   lastScanStartTime: z.string().optional(),
   updatedBy: DlpPerson$inboundSchema.optional(),
 });
-
-/** @internal */
-export type DlpReport$Outbound = {
-  id?: string | undefined;
-  name?: string | undefined;
-  config?: DlpConfig$Outbound | undefined;
-  frequency?: string | undefined;
-  status?: string | undefined;
-  createdBy?: DlpPerson$Outbound | undefined;
-  createdAt?: string | undefined;
-  lastUpdatedAt?: string | undefined;
-  autoHideDocs?: boolean | undefined;
-  lastScanStatus?: string | undefined;
-  lastScanStartTime?: string | undefined;
-  updatedBy?: DlpPerson$Outbound | undefined;
-};
-
-/** @internal */
-export const DlpReport$outboundSchema: z.ZodType<
-  DlpReport$Outbound,
-  z.ZodTypeDef,
-  DlpReport
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  config: DlpConfig$outboundSchema.optional(),
-  frequency: DlpFrequency$outboundSchema.optional(),
-  status: DlpReportStatus$outboundSchema.optional(),
-  createdBy: DlpPerson$outboundSchema.optional(),
-  createdAt: z.string().optional(),
-  lastUpdatedAt: z.string().optional(),
-  autoHideDocs: z.boolean().optional(),
-  lastScanStatus: LastScanStatus$outboundSchema.optional(),
-  lastScanStartTime: z.string().optional(),
-  updatedBy: DlpPerson$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DlpReport$ {
-  /** @deprecated use `DlpReport$inboundSchema` instead. */
-  export const inboundSchema = DlpReport$inboundSchema;
-  /** @deprecated use `DlpReport$outboundSchema` instead. */
-  export const outboundSchema = DlpReport$outboundSchema;
-  /** @deprecated use `DlpReport$Outbound` instead. */
-  export type Outbound = DlpReport$Outbound;
-}
-
-export function dlpReportToJSON(dlpReport: DlpReport): string {
-  return JSON.stringify(DlpReport$outboundSchema.parse(dlpReport));
-}
 
 export function dlpReportFromJSON(
   jsonString: string,

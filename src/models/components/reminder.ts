@@ -42,7 +42,6 @@ export const Reminder$inboundSchema: z.ZodType<
   createdAt: z.number().int().optional(),
   reason: z.string().optional(),
 });
-
 /** @internal */
 export type Reminder$Outbound = {
   assignee: Person$Outbound;
@@ -65,23 +64,9 @@ export const Reminder$outboundSchema: z.ZodType<
   reason: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Reminder$ {
-  /** @deprecated use `Reminder$inboundSchema` instead. */
-  export const inboundSchema = Reminder$inboundSchema;
-  /** @deprecated use `Reminder$outboundSchema` instead. */
-  export const outboundSchema = Reminder$outboundSchema;
-  /** @deprecated use `Reminder$Outbound` instead. */
-  export type Outbound = Reminder$Outbound;
-}
-
 export function reminderToJSON(reminder: Reminder): string {
   return JSON.stringify(Reminder$outboundSchema.parse(reminder));
 }
-
 export function reminderFromJSON(
   jsonString: string,
 ): SafeParseResult<Reminder, SDKValidationError> {

@@ -25,7 +25,6 @@ export const AllowlistOptions$inboundSchema: z.ZodType<
 > = z.object({
   terms: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type AllowlistOptions$Outbound = {
   terms?: Array<string> | undefined;
@@ -40,19 +39,6 @@ export const AllowlistOptions$outboundSchema: z.ZodType<
   terms: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AllowlistOptions$ {
-  /** @deprecated use `AllowlistOptions$inboundSchema` instead. */
-  export const inboundSchema = AllowlistOptions$inboundSchema;
-  /** @deprecated use `AllowlistOptions$outboundSchema` instead. */
-  export const outboundSchema = AllowlistOptions$outboundSchema;
-  /** @deprecated use `AllowlistOptions$Outbound` instead. */
-  export type Outbound = AllowlistOptions$Outbound;
-}
-
 export function allowlistOptionsToJSON(
   allowlistOptions: AllowlistOptions,
 ): string {
@@ -60,7 +46,6 @@ export function allowlistOptionsToJSON(
     AllowlistOptions$outboundSchema.parse(allowlistOptions),
   );
 }
-
 export function allowlistOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<AllowlistOptions, SDKValidationError> {

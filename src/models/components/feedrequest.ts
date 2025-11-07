@@ -3,19 +3,14 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FeedRequestOptions,
-  FeedRequestOptions$inboundSchema,
   FeedRequestOptions$Outbound,
   FeedRequestOptions$outboundSchema,
 } from "./feedrequestoptions.js";
 import {
   SessionInfo,
-  SessionInfo$inboundSchema,
   SessionInfo$Outbound,
   SessionInfo$outboundSchema,
 } from "./sessioninfo.js";
@@ -63,37 +58,9 @@ export type FeedRequest = {
 };
 
 /** @internal */
-export const FeedRequestCategory$inboundSchema: z.ZodNativeEnum<
-  typeof FeedRequestCategory
-> = z.nativeEnum(FeedRequestCategory);
-
-/** @internal */
 export const FeedRequestCategory$outboundSchema: z.ZodNativeEnum<
   typeof FeedRequestCategory
-> = FeedRequestCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedRequestCategory$ {
-  /** @deprecated use `FeedRequestCategory$inboundSchema` instead. */
-  export const inboundSchema = FeedRequestCategory$inboundSchema;
-  /** @deprecated use `FeedRequestCategory$outboundSchema` instead. */
-  export const outboundSchema = FeedRequestCategory$outboundSchema;
-}
-
-/** @internal */
-export const FeedRequest$inboundSchema: z.ZodType<
-  FeedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  categories: z.array(FeedRequestCategory$inboundSchema).optional(),
-  requestOptions: FeedRequestOptions$inboundSchema.optional(),
-  timeoutMillis: z.number().int().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-});
+> = z.nativeEnum(FeedRequestCategory);
 
 /** @internal */
 export type FeedRequest$Outbound = {
@@ -115,29 +82,6 @@ export const FeedRequest$outboundSchema: z.ZodType<
   sessionInfo: SessionInfo$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedRequest$ {
-  /** @deprecated use `FeedRequest$inboundSchema` instead. */
-  export const inboundSchema = FeedRequest$inboundSchema;
-  /** @deprecated use `FeedRequest$outboundSchema` instead. */
-  export const outboundSchema = FeedRequest$outboundSchema;
-  /** @deprecated use `FeedRequest$Outbound` instead. */
-  export type Outbound = FeedRequest$Outbound;
-}
-
 export function feedRequestToJSON(feedRequest: FeedRequest): string {
   return JSON.stringify(FeedRequest$outboundSchema.parse(feedRequest));
-}
-
-export function feedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<FeedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FeedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FeedRequest' from JSON`,
-  );
 }

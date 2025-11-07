@@ -9,12 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EventClassificationName,
   EventClassificationName$inboundSchema,
-  EventClassificationName$outboundSchema,
 } from "./eventclassificationname.js";
 import {
   EventStrategyName,
   EventStrategyName$inboundSchema,
-  EventStrategyName$outboundSchema,
 } from "./eventstrategyname.js";
 
 /**
@@ -37,43 +35,6 @@ export const EventClassification$inboundSchema: z.ZodType<
   name: EventClassificationName$inboundSchema.optional(),
   strategies: z.array(EventStrategyName$inboundSchema).optional(),
 });
-
-/** @internal */
-export type EventClassification$Outbound = {
-  name?: string | undefined;
-  strategies?: Array<string> | undefined;
-};
-
-/** @internal */
-export const EventClassification$outboundSchema: z.ZodType<
-  EventClassification$Outbound,
-  z.ZodTypeDef,
-  EventClassification
-> = z.object({
-  name: EventClassificationName$outboundSchema.optional(),
-  strategies: z.array(EventStrategyName$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventClassification$ {
-  /** @deprecated use `EventClassification$inboundSchema` instead. */
-  export const inboundSchema = EventClassification$inboundSchema;
-  /** @deprecated use `EventClassification$outboundSchema` instead. */
-  export const outboundSchema = EventClassification$outboundSchema;
-  /** @deprecated use `EventClassification$Outbound` instead. */
-  export type Outbound = EventClassification$Outbound;
-}
-
-export function eventClassificationToJSON(
-  eventClassification: EventClassification,
-): string {
-  return JSON.stringify(
-    EventClassification$outboundSchema.parse(eventClassification),
-  );
-}
 
 export function eventClassificationFromJSON(
   jsonString: string,

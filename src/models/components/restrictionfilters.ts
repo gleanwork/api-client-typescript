@@ -28,7 +28,6 @@ export const RestrictionFilters$inboundSchema: z.ZodType<
 > = z.object({
   containerSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
 });
-
 /** @internal */
 export type RestrictionFilters$Outbound = {
   containerSpecs?: Array<DocumentSpecUnion$Outbound> | undefined;
@@ -43,19 +42,6 @@ export const RestrictionFilters$outboundSchema: z.ZodType<
   containerSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RestrictionFilters$ {
-  /** @deprecated use `RestrictionFilters$inboundSchema` instead. */
-  export const inboundSchema = RestrictionFilters$inboundSchema;
-  /** @deprecated use `RestrictionFilters$outboundSchema` instead. */
-  export const outboundSchema = RestrictionFilters$outboundSchema;
-  /** @deprecated use `RestrictionFilters$Outbound` instead. */
-  export type Outbound = RestrictionFilters$Outbound;
-}
-
 export function restrictionFiltersToJSON(
   restrictionFilters: RestrictionFilters,
 ): string {
@@ -63,7 +49,6 @@ export function restrictionFiltersToJSON(
     RestrictionFilters$outboundSchema.parse(restrictionFilters),
   );
 }
-
 export function restrictionFiltersFromJSON(
   jsonString: string,
 ): SafeParseResult<RestrictionFilters, SDKValidationError> {

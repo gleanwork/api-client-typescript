@@ -76,7 +76,6 @@ export const ChatMessageFragment$inboundSchema: z.ZodType<
   action: ToolInfo$inboundSchema.optional(),
   citation: ChatMessageCitation$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ChatMessageFragment$Outbound = {
   structuredResults?: Array<StructuredResult$Outbound> | undefined;
@@ -103,19 +102,6 @@ export const ChatMessageFragment$outboundSchema: z.ZodType<
   citation: ChatMessageCitation$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatMessageFragment$ {
-  /** @deprecated use `ChatMessageFragment$inboundSchema` instead. */
-  export const inboundSchema = ChatMessageFragment$inboundSchema;
-  /** @deprecated use `ChatMessageFragment$outboundSchema` instead. */
-  export const outboundSchema = ChatMessageFragment$outboundSchema;
-  /** @deprecated use `ChatMessageFragment$Outbound` instead. */
-  export type Outbound = ChatMessageFragment$Outbound;
-}
-
 export function chatMessageFragmentToJSON(
   chatMessageFragment: ChatMessageFragment,
 ): string {
@@ -123,7 +109,6 @@ export function chatMessageFragmentToJSON(
     ChatMessageFragment$outboundSchema.parse(chatMessageFragment),
   );
 }
-
 export function chatMessageFragmentFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatMessageFragment, SDKValidationError> {

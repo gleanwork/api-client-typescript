@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Collection,
-  Collection$inboundSchema,
-  Collection$Outbound,
-  Collection$outboundSchema,
-} from "./collection.js";
+import { Collection, Collection$inboundSchema } from "./collection.js";
 
 export type DeleteCollectionItemResponse = {
   collection?: Collection | undefined;
@@ -25,43 +20,6 @@ export const DeleteCollectionItemResponse$inboundSchema: z.ZodType<
 > = z.object({
   collection: Collection$inboundSchema.optional(),
 });
-
-/** @internal */
-export type DeleteCollectionItemResponse$Outbound = {
-  collection?: Collection$Outbound | undefined;
-};
-
-/** @internal */
-export const DeleteCollectionItemResponse$outboundSchema: z.ZodType<
-  DeleteCollectionItemResponse$Outbound,
-  z.ZodTypeDef,
-  DeleteCollectionItemResponse
-> = z.object({
-  collection: Collection$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteCollectionItemResponse$ {
-  /** @deprecated use `DeleteCollectionItemResponse$inboundSchema` instead. */
-  export const inboundSchema = DeleteCollectionItemResponse$inboundSchema;
-  /** @deprecated use `DeleteCollectionItemResponse$outboundSchema` instead. */
-  export const outboundSchema = DeleteCollectionItemResponse$outboundSchema;
-  /** @deprecated use `DeleteCollectionItemResponse$Outbound` instead. */
-  export type Outbound = DeleteCollectionItemResponse$Outbound;
-}
-
-export function deleteCollectionItemResponseToJSON(
-  deleteCollectionItemResponse: DeleteCollectionItemResponse,
-): string {
-  return JSON.stringify(
-    DeleteCollectionItemResponse$outboundSchema.parse(
-      deleteCollectionItemResponse,
-    ),
-  );
-}
 
 export function deleteCollectionItemResponseFromJSON(
   jsonString: string,

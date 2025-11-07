@@ -9,15 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
-  ObjectPermissions$Outbound,
-  ObjectPermissions$outboundSchema,
 } from "./objectpermissions.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 export type Workflow = {
   /**
@@ -55,49 +48,6 @@ export const Workflow$inboundSchema: z.ZodType<
   permissions: ObjectPermissions$inboundSchema.optional(),
   id: z.string().optional(),
 });
-
-/** @internal */
-export type Workflow$Outbound = {
-  name?: string | undefined;
-  author?: Person$Outbound | undefined;
-  createTimestamp?: number | undefined;
-  lastUpdateTimestamp?: number | undefined;
-  lastUpdatedBy?: Person$Outbound | undefined;
-  permissions?: ObjectPermissions$Outbound | undefined;
-  id?: string | undefined;
-};
-
-/** @internal */
-export const Workflow$outboundSchema: z.ZodType<
-  Workflow$Outbound,
-  z.ZodTypeDef,
-  Workflow
-> = z.object({
-  name: z.string().optional(),
-  author: Person$outboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  lastUpdatedBy: Person$outboundSchema.optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Workflow$ {
-  /** @deprecated use `Workflow$inboundSchema` instead. */
-  export const inboundSchema = Workflow$inboundSchema;
-  /** @deprecated use `Workflow$outboundSchema` instead. */
-  export const outboundSchema = Workflow$outboundSchema;
-  /** @deprecated use `Workflow$Outbound` instead. */
-  export type Outbound = Workflow$Outbound;
-}
-
-export function workflowToJSON(workflow: Workflow): string {
-  return JSON.stringify(Workflow$outboundSchema.parse(workflow));
-}
 
 export function workflowFromJSON(
   jsonString: string,

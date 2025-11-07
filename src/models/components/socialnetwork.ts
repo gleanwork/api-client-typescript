@@ -32,7 +32,6 @@ export const SocialNetwork$inboundSchema: z.ZodType<
   profileName: z.string().optional(),
   profileUrl: z.string(),
 });
-
 /** @internal */
 export type SocialNetwork$Outbound = {
   name: string;
@@ -51,23 +50,9 @@ export const SocialNetwork$outboundSchema: z.ZodType<
   profileUrl: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SocialNetwork$ {
-  /** @deprecated use `SocialNetwork$inboundSchema` instead. */
-  export const inboundSchema = SocialNetwork$inboundSchema;
-  /** @deprecated use `SocialNetwork$outboundSchema` instead. */
-  export const outboundSchema = SocialNetwork$outboundSchema;
-  /** @deprecated use `SocialNetwork$Outbound` instead. */
-  export type Outbound = SocialNetwork$Outbound;
-}
-
 export function socialNetworkToJSON(socialNetwork: SocialNetwork): string {
   return JSON.stringify(SocialNetwork$outboundSchema.parse(socialNetwork));
 }
-
 export function socialNetworkFromJSON(
   jsonString: string,
 ): SafeParseResult<SocialNetwork, SDKValidationError> {

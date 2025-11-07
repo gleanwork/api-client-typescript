@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DebugDocumentResponse,
   DebugDocumentResponse$inboundSchema,
-  DebugDocumentResponse$Outbound,
-  DebugDocumentResponse$outboundSchema,
 } from "./debugdocumentresponse.js";
 
 /**
@@ -41,45 +39,6 @@ export const DebugDocumentsResponseItem$inboundSchema: z.ZodType<
   objectType: z.string().optional(),
   debugInfo: DebugDocumentResponse$inboundSchema.optional(),
 });
-
-/** @internal */
-export type DebugDocumentsResponseItem$Outbound = {
-  docId?: string | undefined;
-  objectType?: string | undefined;
-  debugInfo?: DebugDocumentResponse$Outbound | undefined;
-};
-
-/** @internal */
-export const DebugDocumentsResponseItem$outboundSchema: z.ZodType<
-  DebugDocumentsResponseItem$Outbound,
-  z.ZodTypeDef,
-  DebugDocumentsResponseItem
-> = z.object({
-  docId: z.string().optional(),
-  objectType: z.string().optional(),
-  debugInfo: DebugDocumentResponse$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugDocumentsResponseItem$ {
-  /** @deprecated use `DebugDocumentsResponseItem$inboundSchema` instead. */
-  export const inboundSchema = DebugDocumentsResponseItem$inboundSchema;
-  /** @deprecated use `DebugDocumentsResponseItem$outboundSchema` instead. */
-  export const outboundSchema = DebugDocumentsResponseItem$outboundSchema;
-  /** @deprecated use `DebugDocumentsResponseItem$Outbound` instead. */
-  export type Outbound = DebugDocumentsResponseItem$Outbound;
-}
-
-export function debugDocumentsResponseItemToJSON(
-  debugDocumentsResponseItem: DebugDocumentsResponseItem,
-): string {
-  return JSON.stringify(
-    DebugDocumentsResponseItem$outboundSchema.parse(debugDocumentsResponseItem),
-  );
-}
 
 export function debugDocumentsResponseItemFromJSON(
   jsonString: string,

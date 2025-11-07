@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ExternalShortcut = {
   /**
@@ -55,25 +52,6 @@ export type ExternalShortcut = {
 };
 
 /** @internal */
-export const ExternalShortcut$inboundSchema: z.ZodType<
-  ExternalShortcut,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  inputAlias: z.string(),
-  description: z.string().optional(),
-  destinationUrl: z.string(),
-  createdBy: z.string(),
-  createTime: z.number().int().optional(),
-  updatedBy: z.string().optional(),
-  updateTime: z.number().int().optional(),
-  title: z.string().optional(),
-  intermediateUrl: z.string(),
-  decayedVisitScore: z.number().optional(),
-  editUrl: z.string().optional(),
-});
-
-/** @internal */
 export type ExternalShortcut$Outbound = {
   inputAlias: string;
   description?: string | undefined;
@@ -107,33 +85,10 @@ export const ExternalShortcut$outboundSchema: z.ZodType<
   editUrl: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExternalShortcut$ {
-  /** @deprecated use `ExternalShortcut$inboundSchema` instead. */
-  export const inboundSchema = ExternalShortcut$inboundSchema;
-  /** @deprecated use `ExternalShortcut$outboundSchema` instead. */
-  export const outboundSchema = ExternalShortcut$outboundSchema;
-  /** @deprecated use `ExternalShortcut$Outbound` instead. */
-  export type Outbound = ExternalShortcut$Outbound;
-}
-
 export function externalShortcutToJSON(
   externalShortcut: ExternalShortcut,
 ): string {
   return JSON.stringify(
     ExternalShortcut$outboundSchema.parse(externalShortcut),
-  );
-}
-
-export function externalShortcutFromJSON(
-  jsonString: string,
-): SafeParseResult<ExternalShortcut, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ExternalShortcut$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ExternalShortcut' from JSON`,
   );
 }

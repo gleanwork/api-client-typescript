@@ -23,19 +23,7 @@ export type ChatFileStatus = ClosedEnum<typeof ChatFileStatus>;
 export const ChatFileStatus$inboundSchema: z.ZodNativeEnum<
   typeof ChatFileStatus
 > = z.nativeEnum(ChatFileStatus);
-
 /** @internal */
 export const ChatFileStatus$outboundSchema: z.ZodNativeEnum<
   typeof ChatFileStatus
 > = ChatFileStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatFileStatus$ {
-  /** @deprecated use `ChatFileStatus$inboundSchema` instead. */
-  export const inboundSchema = ChatFileStatus$inboundSchema;
-  /** @deprecated use `ChatFileStatus$outboundSchema` instead. */
-  export const outboundSchema = ChatFileStatus$outboundSchema;
-}

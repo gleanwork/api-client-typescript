@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes a relationship edge between a source and destination entity
@@ -20,16 +17,6 @@ export type EntityRelationship = {
    */
   email: string;
 };
-
-/** @internal */
-export const EntityRelationship$inboundSchema: z.ZodType<
-  EntityRelationship,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  email: z.string(),
-});
 
 /** @internal */
 export type EntityRelationship$Outbound = {
@@ -47,33 +34,10 @@ export const EntityRelationship$outboundSchema: z.ZodType<
   email: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntityRelationship$ {
-  /** @deprecated use `EntityRelationship$inboundSchema` instead. */
-  export const inboundSchema = EntityRelationship$inboundSchema;
-  /** @deprecated use `EntityRelationship$outboundSchema` instead. */
-  export const outboundSchema = EntityRelationship$outboundSchema;
-  /** @deprecated use `EntityRelationship$Outbound` instead. */
-  export type Outbound = EntityRelationship$Outbound;
-}
-
 export function entityRelationshipToJSON(
   entityRelationship: EntityRelationship,
 ): string {
   return JSON.stringify(
     EntityRelationship$outboundSchema.parse(entityRelationship),
-  );
-}
-
-export function entityRelationshipFromJSON(
-  jsonString: string,
-): SafeParseResult<EntityRelationship, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EntityRelationship$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EntityRelationship' from JSON`,
   );
 }

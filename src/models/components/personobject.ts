@@ -27,7 +27,6 @@ export const PersonObject$inboundSchema: z.ZodType<
   name: z.string(),
   obfuscatedId: z.string(),
 });
-
 /** @internal */
 export type PersonObject$Outbound = {
   name: string;
@@ -44,23 +43,9 @@ export const PersonObject$outboundSchema: z.ZodType<
   obfuscatedId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonObject$ {
-  /** @deprecated use `PersonObject$inboundSchema` instead. */
-  export const inboundSchema = PersonObject$inboundSchema;
-  /** @deprecated use `PersonObject$outboundSchema` instead. */
-  export const outboundSchema = PersonObject$outboundSchema;
-  /** @deprecated use `PersonObject$Outbound` instead. */
-  export type Outbound = PersonObject$Outbound;
-}
-
 export function personObjectToJSON(personObject: PersonObject): string {
   return JSON.stringify(PersonObject$outboundSchema.parse(personObject));
 }
-
 export function personObjectFromJSON(
   jsonString: string,
 ): SafeParseResult<PersonObject, SDKValidationError> {

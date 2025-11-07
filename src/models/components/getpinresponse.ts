@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  PinDocument,
-  PinDocument$inboundSchema,
-  PinDocument$Outbound,
-  PinDocument$outboundSchema,
-} from "./pindocument.js";
+import { PinDocument, PinDocument$inboundSchema } from "./pindocument.js";
 
 export type GetPinResponse = {
   pin?: PinDocument | undefined;
@@ -25,37 +20,6 @@ export const GetPinResponse$inboundSchema: z.ZodType<
 > = z.object({
   pin: PinDocument$inboundSchema.optional(),
 });
-
-/** @internal */
-export type GetPinResponse$Outbound = {
-  pin?: PinDocument$Outbound | undefined;
-};
-
-/** @internal */
-export const GetPinResponse$outboundSchema: z.ZodType<
-  GetPinResponse$Outbound,
-  z.ZodTypeDef,
-  GetPinResponse
-> = z.object({
-  pin: PinDocument$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPinResponse$ {
-  /** @deprecated use `GetPinResponse$inboundSchema` instead. */
-  export const inboundSchema = GetPinResponse$inboundSchema;
-  /** @deprecated use `GetPinResponse$outboundSchema` instead. */
-  export const outboundSchema = GetPinResponse$outboundSchema;
-  /** @deprecated use `GetPinResponse$Outbound` instead. */
-  export type Outbound = GetPinResponse$Outbound;
-}
-
-export function getPinResponseToJSON(getPinResponse: GetPinResponse): string {
-  return JSON.stringify(GetPinResponse$outboundSchema.parse(getPinResponse));
-}
 
 export function getPinResponseFromJSON(
   jsonString: string,

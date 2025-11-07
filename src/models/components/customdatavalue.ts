@@ -30,7 +30,6 @@ export const CustomDataValue$inboundSchema: z.ZodType<
   numberValue: z.number().optional(),
   booleanValue: z.boolean().optional(),
 });
-
 /** @internal */
 export type CustomDataValue$Outbound = {
   displayLabel?: string | undefined;
@@ -53,25 +52,11 @@ export const CustomDataValue$outboundSchema: z.ZodType<
   booleanValue: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomDataValue$ {
-  /** @deprecated use `CustomDataValue$inboundSchema` instead. */
-  export const inboundSchema = CustomDataValue$inboundSchema;
-  /** @deprecated use `CustomDataValue$outboundSchema` instead. */
-  export const outboundSchema = CustomDataValue$outboundSchema;
-  /** @deprecated use `CustomDataValue$Outbound` instead. */
-  export type Outbound = CustomDataValue$Outbound;
-}
-
 export function customDataValueToJSON(
   customDataValue: CustomDataValue,
 ): string {
   return JSON.stringify(CustomDataValue$outboundSchema.parse(customDataValue));
 }
-
 export function customDataValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomDataValue, SDKValidationError> {

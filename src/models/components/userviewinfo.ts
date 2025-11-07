@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UserViewInfo = {
   /**
@@ -21,17 +18,6 @@ export type UserViewInfo = {
    */
   docUrl?: string | undefined;
 };
-
-/** @internal */
-export const UserViewInfo$inboundSchema: z.ZodType<
-  UserViewInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  docId: z.string().optional(),
-  docTitle: z.string().optional(),
-  docUrl: z.string().optional(),
-});
 
 /** @internal */
 export type UserViewInfo$Outbound = {
@@ -51,29 +37,6 @@ export const UserViewInfo$outboundSchema: z.ZodType<
   docUrl: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserViewInfo$ {
-  /** @deprecated use `UserViewInfo$inboundSchema` instead. */
-  export const inboundSchema = UserViewInfo$inboundSchema;
-  /** @deprecated use `UserViewInfo$outboundSchema` instead. */
-  export const outboundSchema = UserViewInfo$outboundSchema;
-  /** @deprecated use `UserViewInfo$Outbound` instead. */
-  export type Outbound = UserViewInfo$Outbound;
-}
-
 export function userViewInfoToJSON(userViewInfo: UserViewInfo): string {
   return JSON.stringify(UserViewInfo$outboundSchema.parse(userViewInfo));
-}
-
-export function userViewInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<UserViewInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserViewInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserViewInfo' from JSON`,
-  );
 }

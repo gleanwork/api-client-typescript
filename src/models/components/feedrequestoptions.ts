@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChatZeroStateSuggestionOptions,
-  ChatZeroStateSuggestionOptions$inboundSchema,
   ChatZeroStateSuggestionOptions$Outbound,
   ChatZeroStateSuggestionOptions$outboundSchema,
 } from "./chatzerostatesuggestionoptions.js";
@@ -38,15 +34,6 @@ export type FeedRequestOptions = {
 };
 
 /** @internal */
-export const CategoryToResultSize$inboundSchema: z.ZodType<
-  CategoryToResultSize,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  resultSize: z.number().int().optional(),
-});
-
-/** @internal */
 export type CategoryToResultSize$Outbound = {
   resultSize?: number | undefined;
 };
@@ -60,19 +47,6 @@ export const CategoryToResultSize$outboundSchema: z.ZodType<
   resultSize: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CategoryToResultSize$ {
-  /** @deprecated use `CategoryToResultSize$inboundSchema` instead. */
-  export const inboundSchema = CategoryToResultSize$inboundSchema;
-  /** @deprecated use `CategoryToResultSize$outboundSchema` instead. */
-  export const outboundSchema = CategoryToResultSize$outboundSchema;
-  /** @deprecated use `CategoryToResultSize$Outbound` instead. */
-  export type Outbound = CategoryToResultSize$Outbound;
-}
-
 export function categoryToResultSizeToJSON(
   categoryToResultSize: CategoryToResultSize,
 ): string {
@@ -80,32 +54,6 @@ export function categoryToResultSizeToJSON(
     CategoryToResultSize$outboundSchema.parse(categoryToResultSize),
   );
 }
-
-export function categoryToResultSizeFromJSON(
-  jsonString: string,
-): SafeParseResult<CategoryToResultSize, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CategoryToResultSize$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CategoryToResultSize' from JSON`,
-  );
-}
-
-/** @internal */
-export const FeedRequestOptions$inboundSchema: z.ZodType<
-  FeedRequestOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  resultSize: z.number().int(),
-  timezoneOffset: z.number().int().optional(),
-  categoryToResultSize: z.record(
-    z.lazy(() => CategoryToResultSize$inboundSchema),
-  ).optional(),
-  datasourceFilter: z.array(z.string()).optional(),
-  chatZeroStateSuggestionOptions: ChatZeroStateSuggestionOptions$inboundSchema
-    .optional(),
-});
 
 /** @internal */
 export type FeedRequestOptions$Outbound = {
@@ -136,33 +84,10 @@ export const FeedRequestOptions$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedRequestOptions$ {
-  /** @deprecated use `FeedRequestOptions$inboundSchema` instead. */
-  export const inboundSchema = FeedRequestOptions$inboundSchema;
-  /** @deprecated use `FeedRequestOptions$outboundSchema` instead. */
-  export const outboundSchema = FeedRequestOptions$outboundSchema;
-  /** @deprecated use `FeedRequestOptions$Outbound` instead. */
-  export type Outbound = FeedRequestOptions$Outbound;
-}
-
 export function feedRequestOptionsToJSON(
   feedRequestOptions: FeedRequestOptions,
 ): string {
   return JSON.stringify(
     FeedRequestOptions$outboundSchema.parse(feedRequestOptions),
-  );
-}
-
-export function feedRequestOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<FeedRequestOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FeedRequestOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FeedRequestOptions' from JSON`,
   );
 }

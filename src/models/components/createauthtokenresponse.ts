@@ -28,43 +28,6 @@ export const CreateAuthTokenResponse$inboundSchema: z.ZodType<
   expirationTime: z.number().int(),
 });
 
-/** @internal */
-export type CreateAuthTokenResponse$Outbound = {
-  token: string;
-  expirationTime: number;
-};
-
-/** @internal */
-export const CreateAuthTokenResponse$outboundSchema: z.ZodType<
-  CreateAuthTokenResponse$Outbound,
-  z.ZodTypeDef,
-  CreateAuthTokenResponse
-> = z.object({
-  token: z.string(),
-  expirationTime: z.number().int(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAuthTokenResponse$ {
-  /** @deprecated use `CreateAuthTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateAuthTokenResponse$inboundSchema;
-  /** @deprecated use `CreateAuthTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateAuthTokenResponse$outboundSchema;
-  /** @deprecated use `CreateAuthTokenResponse$Outbound` instead. */
-  export type Outbound = CreateAuthTokenResponse$Outbound;
-}
-
-export function createAuthTokenResponseToJSON(
-  createAuthTokenResponse: CreateAuthTokenResponse,
-): string {
-  return JSON.stringify(
-    CreateAuthTokenResponse$outboundSchema.parse(createAuthTokenResponse),
-  );
-}
-
 export function createAuthTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CreateAuthTokenResponse, SDKValidationError> {

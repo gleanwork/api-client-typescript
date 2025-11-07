@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  UpdateType,
-  UpdateType$inboundSchema,
-  UpdateType$outboundSchema,
-} from "./updatetype.js";
+import { UpdateType, UpdateType$inboundSchema } from "./updatetype.js";
 
 export type DigestUpdate = {
   /**
@@ -52,47 +48,6 @@ export const DigestUpdate$inboundSchema: z.ZodType<
   summary: z.string().optional(),
   type: UpdateType$inboundSchema.optional(),
 });
-
-/** @internal */
-export type DigestUpdate$Outbound = {
-  urls?: Array<string> | undefined;
-  url?: string | undefined;
-  title?: string | undefined;
-  datasource?: string | undefined;
-  summary?: string | undefined;
-  type?: string | undefined;
-};
-
-/** @internal */
-export const DigestUpdate$outboundSchema: z.ZodType<
-  DigestUpdate$Outbound,
-  z.ZodTypeDef,
-  DigestUpdate
-> = z.object({
-  urls: z.array(z.string()).optional(),
-  url: z.string().optional(),
-  title: z.string().optional(),
-  datasource: z.string().optional(),
-  summary: z.string().optional(),
-  type: UpdateType$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DigestUpdate$ {
-  /** @deprecated use `DigestUpdate$inboundSchema` instead. */
-  export const inboundSchema = DigestUpdate$inboundSchema;
-  /** @deprecated use `DigestUpdate$outboundSchema` instead. */
-  export const outboundSchema = DigestUpdate$outboundSchema;
-  /** @deprecated use `DigestUpdate$Outbound` instead. */
-  export type Outbound = DigestUpdate$Outbound;
-}
-
-export function digestUpdateToJSON(digestUpdate: DigestUpdate): string {
-  return JSON.stringify(DigestUpdate$outboundSchema.parse(digestUpdate));
-}
 
 export function digestUpdateFromJSON(
   jsonString: string,

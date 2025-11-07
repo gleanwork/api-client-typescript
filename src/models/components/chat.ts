@@ -6,35 +6,16 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ChatMessage,
-  ChatMessage$inboundSchema,
-  ChatMessage$Outbound,
-  ChatMessage$outboundSchema,
-} from "./chatmessage.js";
-import {
-  IconConfig,
-  IconConfig$inboundSchema,
-  IconConfig$Outbound,
-  IconConfig$outboundSchema,
-} from "./iconconfig.js";
+import { ChatMessage, ChatMessage$inboundSchema } from "./chatmessage.js";
+import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
-  ObjectPermissions$Outbound,
-  ObjectPermissions$outboundSchema,
 } from "./objectpermissions.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 import {
   UserRoleSpecification,
   UserRoleSpecification$inboundSchema,
-  UserRoleSpecification$Outbound,
-  UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
 
 /**
@@ -96,54 +77,6 @@ export const Chat$inboundSchema: z.ZodType<Chat, z.ZodTypeDef, unknown> = z
     messages: z.array(ChatMessage$inboundSchema).optional(),
     roles: z.array(UserRoleSpecification$inboundSchema).optional(),
   });
-
-/** @internal */
-export type Chat$Outbound = {
-  id?: string | undefined;
-  createTime?: number | undefined;
-  createdBy?: Person$Outbound | undefined;
-  updateTime?: number | undefined;
-  name?: string | undefined;
-  applicationId?: string | undefined;
-  applicationName?: string | undefined;
-  icon?: IconConfig$Outbound | undefined;
-  permissions?: ObjectPermissions$Outbound | undefined;
-  messages?: Array<ChatMessage$Outbound> | undefined;
-  roles?: Array<UserRoleSpecification$Outbound> | undefined;
-};
-
-/** @internal */
-export const Chat$outboundSchema: z.ZodType<Chat$Outbound, z.ZodTypeDef, Chat> =
-  z.object({
-    id: z.string().optional(),
-    createTime: z.number().int().optional(),
-    createdBy: Person$outboundSchema.optional(),
-    updateTime: z.number().int().optional(),
-    name: z.string().optional(),
-    applicationId: z.string().optional(),
-    applicationName: z.string().optional(),
-    icon: IconConfig$outboundSchema.optional(),
-    permissions: ObjectPermissions$outboundSchema.optional(),
-    messages: z.array(ChatMessage$outboundSchema).optional(),
-    roles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Chat$ {
-  /** @deprecated use `Chat$inboundSchema` instead. */
-  export const inboundSchema = Chat$inboundSchema;
-  /** @deprecated use `Chat$outboundSchema` instead. */
-  export const outboundSchema = Chat$outboundSchema;
-  /** @deprecated use `Chat$Outbound` instead. */
-  export type Outbound = Chat$Outbound;
-}
-
-export function chatToJSON(chat: Chat): string {
-  return JSON.stringify(Chat$outboundSchema.parse(chat));
-}
 
 export function chatFromJSON(
   jsonString: string,

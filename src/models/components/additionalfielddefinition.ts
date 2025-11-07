@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Either a string or HypertextField. When OpenAPI Generator supports oneOf, we can semantically enforce this in the docs.
@@ -43,10 +40,6 @@ export type AdditionalFieldDefinition = {
 };
 
 /** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .object({});
-
-/** @internal */
 export type Value$Outbound = {};
 
 /** @internal */
@@ -56,42 +49,9 @@ export const Value$outboundSchema: z.ZodType<
   Value
 > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Value$ {
-  /** @deprecated use `Value$inboundSchema` instead. */
-  export const inboundSchema = Value$inboundSchema;
-  /** @deprecated use `Value$outboundSchema` instead. */
-  export const outboundSchema = Value$outboundSchema;
-  /** @deprecated use `Value$Outbound` instead. */
-  export type Outbound = Value$Outbound;
-}
-
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
 }
-
-export function valueFromJSON(
-  jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
-  );
-}
-
-/** @internal */
-export const AdditionalFieldDefinition$inboundSchema: z.ZodType<
-  AdditionalFieldDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: z.string().optional(),
-  value: z.array(z.lazy(() => Value$inboundSchema)).optional(),
-});
 
 /** @internal */
 export type AdditionalFieldDefinition$Outbound = {
@@ -109,33 +69,10 @@ export const AdditionalFieldDefinition$outboundSchema: z.ZodType<
   value: z.array(z.lazy(() => Value$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AdditionalFieldDefinition$ {
-  /** @deprecated use `AdditionalFieldDefinition$inboundSchema` instead. */
-  export const inboundSchema = AdditionalFieldDefinition$inboundSchema;
-  /** @deprecated use `AdditionalFieldDefinition$outboundSchema` instead. */
-  export const outboundSchema = AdditionalFieldDefinition$outboundSchema;
-  /** @deprecated use `AdditionalFieldDefinition$Outbound` instead. */
-  export type Outbound = AdditionalFieldDefinition$Outbound;
-}
-
 export function additionalFieldDefinitionToJSON(
   additionalFieldDefinition: AdditionalFieldDefinition,
 ): string {
   return JSON.stringify(
     AdditionalFieldDefinition$outboundSchema.parse(additionalFieldDefinition),
-  );
-}
-
-export function additionalFieldDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<AdditionalFieldDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AdditionalFieldDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AdditionalFieldDefinition' from JSON`,
   );
 }

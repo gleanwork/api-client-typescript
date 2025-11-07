@@ -26,41 +26,6 @@ export const GetDocumentCountResponse$inboundSchema: z.ZodType<
   documentCount: z.number().int().optional(),
 });
 
-/** @internal */
-export type GetDocumentCountResponse$Outbound = {
-  documentCount?: number | undefined;
-};
-
-/** @internal */
-export const GetDocumentCountResponse$outboundSchema: z.ZodType<
-  GetDocumentCountResponse$Outbound,
-  z.ZodTypeDef,
-  GetDocumentCountResponse
-> = z.object({
-  documentCount: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentCountResponse$ {
-  /** @deprecated use `GetDocumentCountResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentCountResponse$inboundSchema;
-  /** @deprecated use `GetDocumentCountResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentCountResponse$outboundSchema;
-  /** @deprecated use `GetDocumentCountResponse$Outbound` instead. */
-  export type Outbound = GetDocumentCountResponse$Outbound;
-}
-
-export function getDocumentCountResponseToJSON(
-  getDocumentCountResponse: GetDocumentCountResponse,
-): string {
-  return JSON.stringify(
-    GetDocumentCountResponse$outboundSchema.parse(getDocumentCountResponse),
-  );
-}
-
 export function getDocumentCountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDocumentCountResponse, SDKValidationError> {

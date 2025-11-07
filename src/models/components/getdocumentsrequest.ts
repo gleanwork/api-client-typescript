@@ -3,13 +3,9 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentSpecUnion,
-  DocumentSpecUnion$inboundSchema,
   DocumentSpecUnion$Outbound,
   DocumentSpecUnion$outboundSchema,
 } from "./documentspecunion.js";
@@ -36,36 +32,9 @@ export type GetDocumentsRequest = {
 };
 
 /** @internal */
-export const GetDocumentsRequestIncludeField$inboundSchema: z.ZodNativeEnum<
-  typeof GetDocumentsRequestIncludeField
-> = z.nativeEnum(GetDocumentsRequestIncludeField);
-
-/** @internal */
 export const GetDocumentsRequestIncludeField$outboundSchema: z.ZodNativeEnum<
   typeof GetDocumentsRequestIncludeField
-> = GetDocumentsRequestIncludeField$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentsRequestIncludeField$ {
-  /** @deprecated use `GetDocumentsRequestIncludeField$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentsRequestIncludeField$inboundSchema;
-  /** @deprecated use `GetDocumentsRequestIncludeField$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentsRequestIncludeField$outboundSchema;
-}
-
-/** @internal */
-export const GetDocumentsRequest$inboundSchema: z.ZodType<
-  GetDocumentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  documentSpecs: z.array(DocumentSpecUnion$inboundSchema),
-  includeFields: z.array(GetDocumentsRequestIncludeField$inboundSchema)
-    .optional(),
-});
+> = z.nativeEnum(GetDocumentsRequestIncludeField);
 
 /** @internal */
 export type GetDocumentsRequest$Outbound = {
@@ -84,33 +53,10 @@ export const GetDocumentsRequest$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentsRequest$ {
-  /** @deprecated use `GetDocumentsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentsRequest$inboundSchema;
-  /** @deprecated use `GetDocumentsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentsRequest$outboundSchema;
-  /** @deprecated use `GetDocumentsRequest$Outbound` instead. */
-  export type Outbound = GetDocumentsRequest$Outbound;
-}
-
 export function getDocumentsRequestToJSON(
   getDocumentsRequest: GetDocumentsRequest,
 ): string {
   return JSON.stringify(
     GetDocumentsRequest$outboundSchema.parse(getDocumentsRequest),
-  );
-}
-
-export function getDocumentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDocumentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDocumentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDocumentsRequest' from JSON`,
   );
 }

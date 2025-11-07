@@ -59,7 +59,6 @@ export const PinDocument$inboundSchema: z.ZodType<
   updateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type PinDocument$Outbound = {
   queries?: Array<string> | undefined;
@@ -88,23 +87,9 @@ export const PinDocument$outboundSchema: z.ZodType<
   updateTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PinDocument$ {
-  /** @deprecated use `PinDocument$inboundSchema` instead. */
-  export const inboundSchema = PinDocument$inboundSchema;
-  /** @deprecated use `PinDocument$outboundSchema` instead. */
-  export const outboundSchema = PinDocument$outboundSchema;
-  /** @deprecated use `PinDocument$Outbound` instead. */
-  export type Outbound = PinDocument$Outbound;
-}
-
 export function pinDocumentToJSON(pinDocument: PinDocument): string {
   return JSON.stringify(PinDocument$outboundSchema.parse(pinDocument));
 }
-
 export function pinDocumentFromJSON(
   jsonString: string,
 ): SafeParseResult<PinDocument, SDKValidationError> {

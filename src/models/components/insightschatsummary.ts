@@ -38,47 +38,6 @@ export const InsightsChatSummary$inboundSchema: z.ZodType<
   numChatUsers: z.number().int().optional(),
 });
 
-/** @internal */
-export type InsightsChatSummary$Outbound = {
-  monthlyActiveUsers?: number | undefined;
-  weeklyActiveUsers?: number | undefined;
-  numChats?: number | undefined;
-  numChatUsers?: number | undefined;
-};
-
-/** @internal */
-export const InsightsChatSummary$outboundSchema: z.ZodType<
-  InsightsChatSummary$Outbound,
-  z.ZodTypeDef,
-  InsightsChatSummary
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  numChats: z.number().int().optional(),
-  numChatUsers: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsChatSummary$ {
-  /** @deprecated use `InsightsChatSummary$inboundSchema` instead. */
-  export const inboundSchema = InsightsChatSummary$inboundSchema;
-  /** @deprecated use `InsightsChatSummary$outboundSchema` instead. */
-  export const outboundSchema = InsightsChatSummary$outboundSchema;
-  /** @deprecated use `InsightsChatSummary$Outbound` instead. */
-  export type Outbound = InsightsChatSummary$Outbound;
-}
-
-export function insightsChatSummaryToJSON(
-  insightsChatSummary: InsightsChatSummary,
-): string {
-  return JSON.stringify(
-    InsightsChatSummary$outboundSchema.parse(insightsChatSummary),
-  );
-}
-
 export function insightsChatSummaryFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsChatSummary, SDKValidationError> {

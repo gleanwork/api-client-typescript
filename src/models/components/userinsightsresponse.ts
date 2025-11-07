@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UserActivityInsight,
   UserActivityInsight$inboundSchema,
-  UserActivityInsight$Outbound,
-  UserActivityInsight$outboundSchema,
 } from "./useractivityinsight.js";
 
 export type UserInsightsResponse = {
@@ -53,51 +51,6 @@ export const UserInsightsResponse$inboundSchema: z.ZodType<
   totalActiveUsers: z.number().int().optional(),
   departments: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type UserInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  activityInsights?: Array<UserActivityInsight$Outbound> | undefined;
-  inactiveInsights?: Array<UserActivityInsight$Outbound> | undefined;
-  totalTeammates?: number | undefined;
-  totalActiveUsers?: number | undefined;
-  departments?: Array<string> | undefined;
-};
-
-/** @internal */
-export const UserInsightsResponse$outboundSchema: z.ZodType<
-  UserInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  UserInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  activityInsights: z.array(UserActivityInsight$outboundSchema).optional(),
-  inactiveInsights: z.array(UserActivityInsight$outboundSchema).optional(),
-  totalTeammates: z.number().int().optional(),
-  totalActiveUsers: z.number().int().optional(),
-  departments: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserInsightsResponse$ {
-  /** @deprecated use `UserInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = UserInsightsResponse$inboundSchema;
-  /** @deprecated use `UserInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = UserInsightsResponse$outboundSchema;
-  /** @deprecated use `UserInsightsResponse$Outbound` instead. */
-  export type Outbound = UserInsightsResponse$Outbound;
-}
-
-export function userInsightsResponseToJSON(
-  userInsightsResponse: UserInsightsResponse,
-): string {
-  return JSON.stringify(
-    UserInsightsResponse$outboundSchema.parse(userInsightsResponse),
-  );
-}
 
 export function userInsightsResponseFromJSON(
   jsonString: string,

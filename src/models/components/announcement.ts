@@ -7,42 +7,18 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
-import {
-  FacetFilter,
-  FacetFilter$inboundSchema,
-  FacetFilter$Outbound,
-  FacetFilter$outboundSchema,
-} from "./facetfilter.js";
+import { Document, Document$inboundSchema } from "./document.js";
+import { FacetFilter, FacetFilter$inboundSchema } from "./facetfilter.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
-  ObjectPermissions$Outbound,
-  ObjectPermissions$outboundSchema,
 } from "./objectpermissions.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 import {
   StructuredText,
   StructuredText$inboundSchema,
-  StructuredText$Outbound,
-  StructuredText$outboundSchema,
 } from "./structuredtext.js";
-import {
-  Thumbnail,
-  Thumbnail$inboundSchema,
-  Thumbnail$Outbound,
-  Thumbnail$outboundSchema,
-} from "./thumbnail.js";
+import { Thumbnail, Thumbnail$inboundSchema } from "./thumbnail.js";
 
 /**
  * This determines whether this is a Social Feed post or a regular announcement.
@@ -160,41 +136,9 @@ export const AnnouncementChannel$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AnnouncementChannel);
 
 /** @internal */
-export const AnnouncementChannel$outboundSchema: z.ZodNativeEnum<
-  typeof AnnouncementChannel
-> = AnnouncementChannel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnnouncementChannel$ {
-  /** @deprecated use `AnnouncementChannel$inboundSchema` instead. */
-  export const inboundSchema = AnnouncementChannel$inboundSchema;
-  /** @deprecated use `AnnouncementChannel$outboundSchema` instead. */
-  export const outboundSchema = AnnouncementChannel$outboundSchema;
-}
-
-/** @internal */
 export const AnnouncementPostType$inboundSchema: z.ZodNativeEnum<
   typeof AnnouncementPostType
 > = z.nativeEnum(AnnouncementPostType);
-
-/** @internal */
-export const AnnouncementPostType$outboundSchema: z.ZodNativeEnum<
-  typeof AnnouncementPostType
-> = AnnouncementPostType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnnouncementPostType$ {
-  /** @deprecated use `AnnouncementPostType$inboundSchema` instead. */
-  export const inboundSchema = AnnouncementPostType$inboundSchema;
-  /** @deprecated use `AnnouncementPostType$outboundSchema` instead. */
-  export const outboundSchema = AnnouncementPostType$outboundSchema;
-}
 
 /** @internal */
 export const AnnouncementViewerInfo$inboundSchema: z.ZodType<
@@ -205,43 +149,6 @@ export const AnnouncementViewerInfo$inboundSchema: z.ZodType<
   isDismissed: z.boolean().optional(),
   isRead: z.boolean().optional(),
 });
-
-/** @internal */
-export type AnnouncementViewerInfo$Outbound = {
-  isDismissed?: boolean | undefined;
-  isRead?: boolean | undefined;
-};
-
-/** @internal */
-export const AnnouncementViewerInfo$outboundSchema: z.ZodType<
-  AnnouncementViewerInfo$Outbound,
-  z.ZodTypeDef,
-  AnnouncementViewerInfo
-> = z.object({
-  isDismissed: z.boolean().optional(),
-  isRead: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnnouncementViewerInfo$ {
-  /** @deprecated use `AnnouncementViewerInfo$inboundSchema` instead. */
-  export const inboundSchema = AnnouncementViewerInfo$inboundSchema;
-  /** @deprecated use `AnnouncementViewerInfo$outboundSchema` instead. */
-  export const outboundSchema = AnnouncementViewerInfo$outboundSchema;
-  /** @deprecated use `AnnouncementViewerInfo$Outbound` instead. */
-  export type Outbound = AnnouncementViewerInfo$Outbound;
-}
-
-export function announcementViewerInfoToJSON(
-  announcementViewerInfo: AnnouncementViewerInfo,
-): string {
-  return JSON.stringify(
-    AnnouncementViewerInfo$outboundSchema.parse(announcementViewerInfo),
-  );
-}
 
 export function announcementViewerInfoFromJSON(
   jsonString: string,
@@ -286,83 +193,6 @@ export const Announcement$inboundSchema: z.ZodType<
   sourceDocument: Document$inboundSchema.optional(),
   isPublished: z.boolean().optional(),
 });
-
-/** @internal */
-export type Announcement$Outbound = {
-  startTime?: string | undefined;
-  endTime?: string | undefined;
-  title?: string | undefined;
-  body?: StructuredText$Outbound | undefined;
-  emoji?: string | undefined;
-  thumbnail?: Thumbnail$Outbound | undefined;
-  banner?: Thumbnail$Outbound | undefined;
-  audienceFilters?: Array<FacetFilter$Outbound> | undefined;
-  sourceDocumentId?: string | undefined;
-  hideAttribution?: boolean | undefined;
-  channel?: string | undefined;
-  postType?: string | undefined;
-  isPrioritized?: boolean | undefined;
-  viewUrl?: string | undefined;
-  draftId?: number | undefined;
-  permissions?: ObjectPermissions$Outbound | undefined;
-  id?: number | undefined;
-  author?: Person$Outbound | undefined;
-  createTimestamp?: number | undefined;
-  lastUpdateTimestamp?: number | undefined;
-  updatedBy?: Person$Outbound | undefined;
-  viewerInfo?: AnnouncementViewerInfo$Outbound | undefined;
-  sourceDocument?: Document$Outbound | undefined;
-  isPublished?: boolean | undefined;
-};
-
-/** @internal */
-export const Announcement$outboundSchema: z.ZodType<
-  Announcement$Outbound,
-  z.ZodTypeDef,
-  Announcement
-> = z.object({
-  startTime: z.date().transform(v => v.toISOString()).optional(),
-  endTime: z.date().transform(v => v.toISOString()).optional(),
-  title: z.string().optional(),
-  body: StructuredText$outboundSchema.optional(),
-  emoji: z.string().optional(),
-  thumbnail: Thumbnail$outboundSchema.optional(),
-  banner: Thumbnail$outboundSchema.optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  sourceDocumentId: z.string().optional(),
-  hideAttribution: z.boolean().optional(),
-  channel: AnnouncementChannel$outboundSchema.optional(),
-  postType: AnnouncementPostType$outboundSchema.optional(),
-  isPrioritized: z.boolean().optional(),
-  viewUrl: z.string().optional(),
-  draftId: z.number().int().optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  id: z.number().int().optional(),
-  author: Person$outboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  updatedBy: Person$outboundSchema.optional(),
-  viewerInfo: z.lazy(() => AnnouncementViewerInfo$outboundSchema).optional(),
-  sourceDocument: Document$outboundSchema.optional(),
-  isPublished: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Announcement$ {
-  /** @deprecated use `Announcement$inboundSchema` instead. */
-  export const inboundSchema = Announcement$inboundSchema;
-  /** @deprecated use `Announcement$outboundSchema` instead. */
-  export const outboundSchema = Announcement$outboundSchema;
-  /** @deprecated use `Announcement$Outbound` instead. */
-  export type Outbound = Announcement$Outbound;
-}
-
-export function announcementToJSON(announcement: Announcement): string {
-  return JSON.stringify(Announcement$outboundSchema.parse(announcement));
-}
 
 export function announcementFromJSON(
   jsonString: string,

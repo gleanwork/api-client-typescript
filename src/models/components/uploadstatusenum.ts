@@ -22,19 +22,3 @@ export type UploadStatusEnum = ClosedEnum<typeof UploadStatusEnum>;
 export const UploadStatusEnum$inboundSchema: z.ZodNativeEnum<
   typeof UploadStatusEnum
 > = z.nativeEnum(UploadStatusEnum);
-
-/** @internal */
-export const UploadStatusEnum$outboundSchema: z.ZodNativeEnum<
-  typeof UploadStatusEnum
-> = UploadStatusEnum$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadStatusEnum$ {
-  /** @deprecated use `UploadStatusEnum$inboundSchema` instead. */
-  export const inboundSchema = UploadStatusEnum$inboundSchema;
-  /** @deprecated use `UploadStatusEnum$outboundSchema` instead. */
-  export const outboundSchema = UploadStatusEnum$outboundSchema;
-}

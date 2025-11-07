@@ -3,22 +3,10 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type StructuredTextMutableProperties = {
   text: string;
 };
-
-/** @internal */
-export const StructuredTextMutableProperties$inboundSchema: z.ZodType<
-  StructuredTextMutableProperties,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  text: z.string(),
-});
 
 /** @internal */
 export type StructuredTextMutableProperties$Outbound = {
@@ -34,19 +22,6 @@ export const StructuredTextMutableProperties$outboundSchema: z.ZodType<
   text: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StructuredTextMutableProperties$ {
-  /** @deprecated use `StructuredTextMutableProperties$inboundSchema` instead. */
-  export const inboundSchema = StructuredTextMutableProperties$inboundSchema;
-  /** @deprecated use `StructuredTextMutableProperties$outboundSchema` instead. */
-  export const outboundSchema = StructuredTextMutableProperties$outboundSchema;
-  /** @deprecated use `StructuredTextMutableProperties$Outbound` instead. */
-  export type Outbound = StructuredTextMutableProperties$Outbound;
-}
-
 export function structuredTextMutablePropertiesToJSON(
   structuredTextMutableProperties: StructuredTextMutableProperties,
 ): string {
@@ -54,15 +29,5 @@ export function structuredTextMutablePropertiesToJSON(
     StructuredTextMutableProperties$outboundSchema.parse(
       structuredTextMutableProperties,
     ),
-  );
-}
-
-export function structuredTextMutablePropertiesFromJSON(
-  jsonString: string,
-): SafeParseResult<StructuredTextMutableProperties, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StructuredTextMutableProperties$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StructuredTextMutableProperties' from JSON`,
   );
 }

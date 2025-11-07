@@ -36,45 +36,6 @@ export const RotateTokenResponse$inboundSchema: z.ZodType<
   rotationPeriodMinutes: z.number().int().optional(),
 });
 
-/** @internal */
-export type RotateTokenResponse$Outbound = {
-  rawSecret?: string | undefined;
-  createdAt?: number | undefined;
-  rotationPeriodMinutes?: number | undefined;
-};
-
-/** @internal */
-export const RotateTokenResponse$outboundSchema: z.ZodType<
-  RotateTokenResponse$Outbound,
-  z.ZodTypeDef,
-  RotateTokenResponse
-> = z.object({
-  rawSecret: z.string().optional(),
-  createdAt: z.number().int().optional(),
-  rotationPeriodMinutes: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RotateTokenResponse$ {
-  /** @deprecated use `RotateTokenResponse$inboundSchema` instead. */
-  export const inboundSchema = RotateTokenResponse$inboundSchema;
-  /** @deprecated use `RotateTokenResponse$outboundSchema` instead. */
-  export const outboundSchema = RotateTokenResponse$outboundSchema;
-  /** @deprecated use `RotateTokenResponse$Outbound` instead. */
-  export type Outbound = RotateTokenResponse$Outbound;
-}
-
-export function rotateTokenResponseToJSON(
-  rotateTokenResponse: RotateTokenResponse,
-): string {
-  return JSON.stringify(
-    RotateTokenResponse$outboundSchema.parse(rotateTokenResponse),
-  );
-}
-
 export function rotateTokenResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<RotateTokenResponse, SDKValidationError> {

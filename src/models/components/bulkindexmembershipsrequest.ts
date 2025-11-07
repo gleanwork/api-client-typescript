@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceBulkMembershipDefinition,
-  DatasourceBulkMembershipDefinition$inboundSchema,
   DatasourceBulkMembershipDefinition$Outbound,
   DatasourceBulkMembershipDefinition$outboundSchema,
 } from "./datasourcebulkmembershipdefinition.js";
@@ -48,21 +44,6 @@ export type BulkIndexMembershipsRequest = {
 };
 
 /** @internal */
-export const BulkIndexMembershipsRequest$inboundSchema: z.ZodType<
-  BulkIndexMembershipsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  datasource: z.string(),
-  group: z.string().optional(),
-  memberships: z.array(DatasourceBulkMembershipDefinition$inboundSchema),
-});
-
-/** @internal */
 export type BulkIndexMembershipsRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -88,19 +69,6 @@ export const BulkIndexMembershipsRequest$outboundSchema: z.ZodType<
   memberships: z.array(DatasourceBulkMembershipDefinition$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkIndexMembershipsRequest$ {
-  /** @deprecated use `BulkIndexMembershipsRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkIndexMembershipsRequest$inboundSchema;
-  /** @deprecated use `BulkIndexMembershipsRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkIndexMembershipsRequest$outboundSchema;
-  /** @deprecated use `BulkIndexMembershipsRequest$Outbound` instead. */
-  export type Outbound = BulkIndexMembershipsRequest$Outbound;
-}
-
 export function bulkIndexMembershipsRequestToJSON(
   bulkIndexMembershipsRequest: BulkIndexMembershipsRequest,
 ): string {
@@ -108,15 +76,5 @@ export function bulkIndexMembershipsRequestToJSON(
     BulkIndexMembershipsRequest$outboundSchema.parse(
       bulkIndexMembershipsRequest,
     ),
-  );
-}
-
-export function bulkIndexMembershipsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkIndexMembershipsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkIndexMembershipsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkIndexMembershipsRequest' from JSON`,
   );
 }

@@ -35,7 +35,6 @@ export const ExtractedQnA$inboundSchema: z.ZodType<
   question: z.string().optional(),
   questionResult: z.lazy(() => SearchResult$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ExtractedQnA$Outbound = {
   heading?: string | undefined;
@@ -54,23 +53,9 @@ export const ExtractedQnA$outboundSchema: z.ZodType<
   questionResult: z.lazy(() => SearchResult$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ExtractedQnA$ {
-  /** @deprecated use `ExtractedQnA$inboundSchema` instead. */
-  export const inboundSchema = ExtractedQnA$inboundSchema;
-  /** @deprecated use `ExtractedQnA$outboundSchema` instead. */
-  export const outboundSchema = ExtractedQnA$outboundSchema;
-  /** @deprecated use `ExtractedQnA$Outbound` instead. */
-  export type Outbound = ExtractedQnA$Outbound;
-}
-
 export function extractedQnAToJSON(extractedQnA: ExtractedQnA): string {
   return JSON.stringify(ExtractedQnA$outboundSchema.parse(extractedQnA));
 }
-
 export function extractedQnAFromJSON(
   jsonString: string,
 ): SafeParseResult<ExtractedQnA, SDKValidationError> {

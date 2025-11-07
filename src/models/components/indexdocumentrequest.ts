@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentDefinition,
-  DocumentDefinition$inboundSchema,
   DocumentDefinition$Outbound,
   DocumentDefinition$outboundSchema,
 } from "./documentdefinition.js";
@@ -28,16 +24,6 @@ export type IndexDocumentRequest = {
 };
 
 /** @internal */
-export const IndexDocumentRequest$inboundSchema: z.ZodType<
-  IndexDocumentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: z.number().int().optional(),
-  document: DocumentDefinition$inboundSchema,
-});
-
-/** @internal */
 export type IndexDocumentRequest$Outbound = {
   version?: number | undefined;
   document: DocumentDefinition$Outbound;
@@ -53,33 +39,10 @@ export const IndexDocumentRequest$outboundSchema: z.ZodType<
   document: DocumentDefinition$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexDocumentRequest$ {
-  /** @deprecated use `IndexDocumentRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexDocumentRequest$inboundSchema;
-  /** @deprecated use `IndexDocumentRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexDocumentRequest$outboundSchema;
-  /** @deprecated use `IndexDocumentRequest$Outbound` instead. */
-  export type Outbound = IndexDocumentRequest$Outbound;
-}
-
 export function indexDocumentRequestToJSON(
   indexDocumentRequest: IndexDocumentRequest,
 ): string {
   return JSON.stringify(
     IndexDocumentRequest$outboundSchema.parse(indexDocumentRequest),
-  );
-}
-
-export function indexDocumentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexDocumentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexDocumentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexDocumentRequest' from JSON`,
   );
 }

@@ -38,7 +38,6 @@ export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> = z
     start: TimePoint$inboundSchema.optional(),
     end: TimePoint$inboundSchema.optional(),
   });
-
 /** @internal */
 export type Period$Outbound = {
   minDaysFromNow?: number | undefined;
@@ -59,23 +58,9 @@ export const Period$outboundSchema: z.ZodType<
   end: TimePoint$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Period$ {
-  /** @deprecated use `Period$inboundSchema` instead. */
-  export const inboundSchema = Period$inboundSchema;
-  /** @deprecated use `Period$outboundSchema` instead. */
-  export const outboundSchema = Period$outboundSchema;
-  /** @deprecated use `Period$Outbound` instead. */
-  export type Outbound = Period$Outbound;
-}
-
 export function periodToJSON(period: Period): string {
   return JSON.stringify(Period$outboundSchema.parse(period));
 }
-
 export function periodFromJSON(
   jsonString: string,
 ): SafeParseResult<Period, SDKValidationError> {

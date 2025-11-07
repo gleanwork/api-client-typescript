@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 export type PerUserInsight = {
   person?: Person | undefined;
@@ -35,41 +30,6 @@ export const PerUserInsight$inboundSchema: z.ZodType<
   numSearches: z.number().int().optional(),
   numChats: z.number().int().optional(),
 });
-
-/** @internal */
-export type PerUserInsight$Outbound = {
-  person?: Person$Outbound | undefined;
-  numSearches?: number | undefined;
-  numChats?: number | undefined;
-};
-
-/** @internal */
-export const PerUserInsight$outboundSchema: z.ZodType<
-  PerUserInsight$Outbound,
-  z.ZodTypeDef,
-  PerUserInsight
-> = z.object({
-  person: Person$outboundSchema.optional(),
-  numSearches: z.number().int().optional(),
-  numChats: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PerUserInsight$ {
-  /** @deprecated use `PerUserInsight$inboundSchema` instead. */
-  export const inboundSchema = PerUserInsight$inboundSchema;
-  /** @deprecated use `PerUserInsight$outboundSchema` instead. */
-  export const outboundSchema = PerUserInsight$outboundSchema;
-  /** @deprecated use `PerUserInsight$Outbound` instead. */
-  export type Outbound = PerUserInsight$Outbound;
-}
-
-export function perUserInsightToJSON(perUserInsight: PerUserInsight): string {
-  return JSON.stringify(PerUserInsight$outboundSchema.parse(perUserInsight));
-}
 
 export function perUserInsightFromJSON(
   jsonString: string,

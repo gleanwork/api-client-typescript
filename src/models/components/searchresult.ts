@@ -172,7 +172,6 @@ export const SearchResult$inboundSchema: z.ZodType<
   attachmentContext: z.string().optional(),
   pins: z.array(z.lazy(() => PinDocument$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type SearchResult$Outbound = {
   structuredResults?: Array<StructuredResult$Outbound> | undefined;
@@ -234,23 +233,9 @@ export const SearchResult$outboundSchema: z.ZodType<
   pins: z.array(z.lazy(() => PinDocument$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchResult$ {
-  /** @deprecated use `SearchResult$inboundSchema` instead. */
-  export const inboundSchema = SearchResult$inboundSchema;
-  /** @deprecated use `SearchResult$outboundSchema` instead. */
-  export const outboundSchema = SearchResult$outboundSchema;
-  /** @deprecated use `SearchResult$Outbound` instead. */
-  export type Outbound = SearchResult$Outbound;
-}
-
 export function searchResultToJSON(searchResult: SearchResult): string {
   return JSON.stringify(SearchResult$outboundSchema.parse(searchResult));
 }
-
 export function searchResultFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchResult, SDKValidationError> {

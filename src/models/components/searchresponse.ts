@@ -7,65 +7,27 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  FacetFilter,
-  FacetFilter$inboundSchema,
-  FacetFilter$Outbound,
-  FacetFilter$outboundSchema,
-} from "./facetfilter.js";
-import {
-  FacetResult,
-  FacetResult$inboundSchema,
-  FacetResult$Outbound,
-  FacetResult$outboundSchema,
-} from "./facetresult.js";
-import {
-  GeneratedQna,
-  GeneratedQna$inboundSchema,
-  GeneratedQna$Outbound,
-  GeneratedQna$outboundSchema,
-} from "./generatedqna.js";
+import { FacetFilter, FacetFilter$inboundSchema } from "./facetfilter.js";
+import { FacetResult, FacetResult$inboundSchema } from "./facetresult.js";
+import { GeneratedQna, GeneratedQna$inboundSchema } from "./generatedqna.js";
 import {
   GleanDataError,
   GleanDataError$inboundSchema,
-  GleanDataError$Outbound,
-  GleanDataError$outboundSchema,
 } from "./gleandataerror.js";
 import {
   ResultsDescription,
   ResultsDescription$inboundSchema,
-  ResultsDescription$Outbound,
-  ResultsDescription$outboundSchema,
 } from "./resultsdescription.js";
-import {
-  ResultTab,
-  ResultTab$inboundSchema,
-  ResultTab$Outbound,
-  ResultTab$outboundSchema,
-} from "./resulttab.js";
+import { ResultTab, ResultTab$inboundSchema } from "./resulttab.js";
 import {
   SearchResponseMetadata,
   SearchResponseMetadata$inboundSchema,
-  SearchResponseMetadata$Outbound,
-  SearchResponseMetadata$outboundSchema,
 } from "./searchresponsemetadata.js";
-import {
-  SearchResult,
-  SearchResult$inboundSchema,
-  SearchResult$Outbound,
-  SearchResult$outboundSchema,
-} from "./searchresult.js";
-import {
-  SessionInfo,
-  SessionInfo$inboundSchema,
-  SessionInfo$Outbound,
-  SessionInfo$outboundSchema,
-} from "./sessioninfo.js";
+import { SearchResult, SearchResult$inboundSchema } from "./searchresult.js";
+import { SessionInfo, SessionInfo$inboundSchema } from "./sessioninfo.js";
 import {
   StructuredResult,
   StructuredResult$inboundSchema,
-  StructuredResult$Outbound,
-  StructuredResult$outboundSchema,
 } from "./structuredresult.js";
 
 export type SearchResponse = {
@@ -143,73 +105,6 @@ export const SearchResponse$inboundSchema: z.ZodType<
     "errorInfo": "gleanDataError",
   });
 });
-
-/** @internal */
-export type SearchResponse$Outbound = {
-  trackingToken?: string | undefined;
-  sessionInfo?: SessionInfo$Outbound | undefined;
-  results?: Array<SearchResult$Outbound> | undefined;
-  structuredResults?: Array<StructuredResult$Outbound> | undefined;
-  generatedQnaResult?: GeneratedQna$Outbound | undefined;
-  errorInfo?: GleanDataError$Outbound | undefined;
-  requestID?: string | undefined;
-  backendTimeMillis?: number | undefined;
-  experimentIds?: Array<number> | undefined;
-  metadata?: SearchResponseMetadata$Outbound | undefined;
-  facetResults?: Array<FacetResult$Outbound> | undefined;
-  resultTabs?: Array<ResultTab$Outbound> | undefined;
-  resultTabIds?: Array<string> | undefined;
-  resultsDescription?: ResultsDescription$Outbound | undefined;
-  rewrittenFacetFilters?: Array<FacetFilter$Outbound> | undefined;
-  cursor?: string | undefined;
-  hasMoreResults?: boolean | undefined;
-};
-
-/** @internal */
-export const SearchResponse$outboundSchema: z.ZodType<
-  SearchResponse$Outbound,
-  z.ZodTypeDef,
-  SearchResponse
-> = z.object({
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  results: z.array(SearchResult$outboundSchema).optional(),
-  structuredResults: z.array(StructuredResult$outboundSchema).optional(),
-  generatedQnaResult: GeneratedQna$outboundSchema.optional(),
-  gleanDataError: GleanDataError$outboundSchema.optional(),
-  requestID: z.string().optional(),
-  backendTimeMillis: z.number().int().optional(),
-  experimentIds: z.array(z.number().int()).optional(),
-  metadata: SearchResponseMetadata$outboundSchema.optional(),
-  facetResults: z.array(FacetResult$outboundSchema).optional(),
-  resultTabs: z.array(ResultTab$outboundSchema).optional(),
-  resultTabIds: z.array(z.string()).optional(),
-  resultsDescription: ResultsDescription$outboundSchema.optional(),
-  rewrittenFacetFilters: z.array(FacetFilter$outboundSchema).optional(),
-  cursor: z.string().optional(),
-  hasMoreResults: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    gleanDataError: "errorInfo",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchResponse$ {
-  /** @deprecated use `SearchResponse$inboundSchema` instead. */
-  export const inboundSchema = SearchResponse$inboundSchema;
-  /** @deprecated use `SearchResponse$outboundSchema` instead. */
-  export const outboundSchema = SearchResponse$outboundSchema;
-  /** @deprecated use `SearchResponse$Outbound` instead. */
-  export type Outbound = SearchResponse$Outbound;
-}
-
-export function searchResponseToJSON(searchResponse: SearchResponse): string {
-  return JSON.stringify(SearchResponse$outboundSchema.parse(searchResponse));
-}
 
 export function searchResponseFromJSON(
   jsonString: string,

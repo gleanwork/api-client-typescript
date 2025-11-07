@@ -33,7 +33,6 @@ export const SensitiveExpression$inboundSchema: z.ZodType<
   expression: z.string().optional(),
   hotwords: z.array(Hotword$inboundSchema).optional(),
 });
-
 /** @internal */
 export type SensitiveExpression$Outbound = {
   expression?: string | undefined;
@@ -50,19 +49,6 @@ export const SensitiveExpression$outboundSchema: z.ZodType<
   hotwords: z.array(Hotword$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SensitiveExpression$ {
-  /** @deprecated use `SensitiveExpression$inboundSchema` instead. */
-  export const inboundSchema = SensitiveExpression$inboundSchema;
-  /** @deprecated use `SensitiveExpression$outboundSchema` instead. */
-  export const outboundSchema = SensitiveExpression$outboundSchema;
-  /** @deprecated use `SensitiveExpression$Outbound` instead. */
-  export type Outbound = SensitiveExpression$Outbound;
-}
-
 export function sensitiveExpressionToJSON(
   sensitiveExpression: SensitiveExpression,
 ): string {
@@ -70,7 +56,6 @@ export function sensitiveExpressionToJSON(
     SensitiveExpression$outboundSchema.parse(sensitiveExpression),
   );
 }
-
 export function sensitiveExpressionFromJSON(
   jsonString: string,
 ): SafeParseResult<SensitiveExpression, SDKValidationError> {

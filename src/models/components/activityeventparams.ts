@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ActivityEventParams = {
   /**
@@ -47,23 +44,6 @@ export type ActivityEventParams = {
 };
 
 /** @internal */
-export const ActivityEventParams$inboundSchema: z.ZodType<
-  ActivityEventParams,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  bodyContent: z.string().optional(),
-  datasourceInstance: z.string().optional(),
-  datasource: z.string().optional(),
-  instanceOnlyName: z.string().optional(),
-  duration: z.number().int().optional(),
-  query: z.string().optional(),
-  referrer: z.string().optional(),
-  title: z.string().optional(),
-  truncated: z.boolean().optional(),
-});
-
-/** @internal */
 export type ActivityEventParams$Outbound = {
   bodyContent?: string | undefined;
   datasourceInstance?: string | undefined;
@@ -93,33 +73,10 @@ export const ActivityEventParams$outboundSchema: z.ZodType<
   truncated: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActivityEventParams$ {
-  /** @deprecated use `ActivityEventParams$inboundSchema` instead. */
-  export const inboundSchema = ActivityEventParams$inboundSchema;
-  /** @deprecated use `ActivityEventParams$outboundSchema` instead. */
-  export const outboundSchema = ActivityEventParams$outboundSchema;
-  /** @deprecated use `ActivityEventParams$Outbound` instead. */
-  export type Outbound = ActivityEventParams$Outbound;
-}
-
 export function activityEventParamsToJSON(
   activityEventParams: ActivityEventParams,
 ): string {
   return JSON.stringify(
     ActivityEventParams$outboundSchema.parse(activityEventParams),
-  );
-}
-
-export function activityEventParamsFromJSON(
-  jsonString: string,
-): SafeParseResult<ActivityEventParams, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ActivityEventParams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ActivityEventParams' from JSON`,
   );
 }

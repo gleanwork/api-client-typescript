@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AnswerCreationData,
-  AnswerCreationData$inboundSchema,
   AnswerCreationData$Outbound,
   AnswerCreationData$outboundSchema,
 } from "./answercreationdata.js";
@@ -16,15 +12,6 @@ import {
 export type CreateAnswerRequest = {
   data: AnswerCreationData;
 };
-
-/** @internal */
-export const CreateAnswerRequest$inboundSchema: z.ZodType<
-  CreateAnswerRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: AnswerCreationData$inboundSchema,
-});
 
 /** @internal */
 export type CreateAnswerRequest$Outbound = {
@@ -40,33 +27,10 @@ export const CreateAnswerRequest$outboundSchema: z.ZodType<
   data: AnswerCreationData$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateAnswerRequest$ {
-  /** @deprecated use `CreateAnswerRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateAnswerRequest$inboundSchema;
-  /** @deprecated use `CreateAnswerRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateAnswerRequest$outboundSchema;
-  /** @deprecated use `CreateAnswerRequest$Outbound` instead. */
-  export type Outbound = CreateAnswerRequest$Outbound;
-}
-
 export function createAnswerRequestToJSON(
   createAnswerRequest: CreateAnswerRequest,
 ): string {
   return JSON.stringify(
     CreateAnswerRequest$outboundSchema.parse(createAnswerRequest),
-  );
-}
-
-export function createAnswerRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateAnswerRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateAnswerRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateAnswerRequest' from JSON`,
   );
 }

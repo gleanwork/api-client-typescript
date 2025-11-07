@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DownloadpolicycsvRequest = {
   /**
@@ -13,15 +10,6 @@ export type DownloadpolicycsvRequest = {
    */
   id: string;
 };
-
-/** @internal */
-export const DownloadpolicycsvRequest$inboundSchema: z.ZodType<
-  DownloadpolicycsvRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-});
 
 /** @internal */
 export type DownloadpolicycsvRequest$Outbound = {
@@ -37,33 +25,10 @@ export const DownloadpolicycsvRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DownloadpolicycsvRequest$ {
-  /** @deprecated use `DownloadpolicycsvRequest$inboundSchema` instead. */
-  export const inboundSchema = DownloadpolicycsvRequest$inboundSchema;
-  /** @deprecated use `DownloadpolicycsvRequest$outboundSchema` instead. */
-  export const outboundSchema = DownloadpolicycsvRequest$outboundSchema;
-  /** @deprecated use `DownloadpolicycsvRequest$Outbound` instead. */
-  export type Outbound = DownloadpolicycsvRequest$Outbound;
-}
-
 export function downloadpolicycsvRequestToJSON(
   downloadpolicycsvRequest: DownloadpolicycsvRequest,
 ): string {
   return JSON.stringify(
     DownloadpolicycsvRequest$outboundSchema.parse(downloadpolicycsvRequest),
-  );
-}
-
-export function downloadpolicycsvRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DownloadpolicycsvRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DownloadpolicycsvRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DownloadpolicycsvRequest' from JSON`,
   );
 }

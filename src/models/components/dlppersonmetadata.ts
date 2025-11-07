@@ -27,7 +27,6 @@ export const DlpPersonMetadata$inboundSchema: z.ZodType<
   firstName: z.string().optional(),
   email: z.string().optional(),
 });
-
 /** @internal */
 export type DlpPersonMetadata$Outbound = {
   firstName?: string | undefined;
@@ -44,19 +43,6 @@ export const DlpPersonMetadata$outboundSchema: z.ZodType<
   email: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DlpPersonMetadata$ {
-  /** @deprecated use `DlpPersonMetadata$inboundSchema` instead. */
-  export const inboundSchema = DlpPersonMetadata$inboundSchema;
-  /** @deprecated use `DlpPersonMetadata$outboundSchema` instead. */
-  export const outboundSchema = DlpPersonMetadata$outboundSchema;
-  /** @deprecated use `DlpPersonMetadata$Outbound` instead. */
-  export type Outbound = DlpPersonMetadata$Outbound;
-}
-
 export function dlpPersonMetadataToJSON(
   dlpPersonMetadata: DlpPersonMetadata,
 ): string {
@@ -64,7 +50,6 @@ export function dlpPersonMetadataToJSON(
     DlpPersonMetadata$outboundSchema.parse(dlpPersonMetadata),
   );
 }
-
 export function dlpPersonMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<DlpPersonMetadata, SDKValidationError> {

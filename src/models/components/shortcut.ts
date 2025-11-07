@@ -143,7 +143,6 @@ export const Shortcut$inboundSchema: z.ZodType<
   title: z.string().optional(),
   roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type Shortcut$Outbound = {
   id?: number | undefined;
@@ -202,23 +201,9 @@ export const Shortcut$outboundSchema: z.ZodType<
   roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Shortcut$ {
-  /** @deprecated use `Shortcut$inboundSchema` instead. */
-  export const inboundSchema = Shortcut$inboundSchema;
-  /** @deprecated use `Shortcut$outboundSchema` instead. */
-  export const outboundSchema = Shortcut$outboundSchema;
-  /** @deprecated use `Shortcut$Outbound` instead. */
-  export type Outbound = Shortcut$Outbound;
-}
-
 export function shortcutToJSON(shortcut: Shortcut): string {
   return JSON.stringify(Shortcut$outboundSchema.parse(shortcut));
 }
-
 export function shortcutFromJSON(
   jsonString: string,
 ): SafeParseResult<Shortcut, SDKValidationError> {

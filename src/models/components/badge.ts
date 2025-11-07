@@ -43,7 +43,6 @@ export const Badge$inboundSchema: z.ZodType<Badge, z.ZodTypeDef, unknown> = z
     iconConfig: IconConfig$inboundSchema.optional(),
     pinned: z.boolean().optional(),
   });
-
 /** @internal */
 export type Badge$Outbound = {
   key?: string | undefined;
@@ -64,23 +63,9 @@ export const Badge$outboundSchema: z.ZodType<
   pinned: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Badge$ {
-  /** @deprecated use `Badge$inboundSchema` instead. */
-  export const inboundSchema = Badge$inboundSchema;
-  /** @deprecated use `Badge$outboundSchema` instead. */
-  export const outboundSchema = Badge$outboundSchema;
-  /** @deprecated use `Badge$Outbound` instead. */
-  export type Outbound = Badge$Outbound;
-}
-
 export function badgeToJSON(badge: Badge): string {
   return JSON.stringify(Badge$outboundSchema.parse(badge));
 }
-
 export function badgeFromJSON(
   jsonString: string,
 ): SafeParseResult<Badge, SDKValidationError> {

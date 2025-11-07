@@ -70,41 +70,9 @@ export const BulkUploadHistoryEventStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(BulkUploadHistoryEventStatus);
 
 /** @internal */
-export const BulkUploadHistoryEventStatus$outboundSchema: z.ZodNativeEnum<
-  typeof BulkUploadHistoryEventStatus
-> = BulkUploadHistoryEventStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkUploadHistoryEventStatus$ {
-  /** @deprecated use `BulkUploadHistoryEventStatus$inboundSchema` instead. */
-  export const inboundSchema = BulkUploadHistoryEventStatus$inboundSchema;
-  /** @deprecated use `BulkUploadHistoryEventStatus$outboundSchema` instead. */
-  export const outboundSchema = BulkUploadHistoryEventStatus$outboundSchema;
-}
-
-/** @internal */
 export const ProcessingState$inboundSchema: z.ZodNativeEnum<
   typeof ProcessingState
 > = z.nativeEnum(ProcessingState);
-
-/** @internal */
-export const ProcessingState$outboundSchema: z.ZodNativeEnum<
-  typeof ProcessingState
-> = ProcessingState$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessingState$ {
-  /** @deprecated use `ProcessingState$inboundSchema` instead. */
-  export const inboundSchema = ProcessingState$inboundSchema;
-  /** @deprecated use `ProcessingState$outboundSchema` instead. */
-  export const outboundSchema = ProcessingState$outboundSchema;
-}
 
 /** @internal */
 export const BulkUploadHistoryEvent$inboundSchema: z.ZodType<
@@ -118,49 +86,6 @@ export const BulkUploadHistoryEvent$inboundSchema: z.ZodType<
   status: BulkUploadHistoryEventStatus$inboundSchema.optional(),
   processingState: ProcessingState$inboundSchema.optional(),
 });
-
-/** @internal */
-export type BulkUploadHistoryEvent$Outbound = {
-  uploadId?: string | undefined;
-  startTime?: string | undefined;
-  endTime?: string | undefined;
-  status?: string | undefined;
-  processingState?: string | undefined;
-};
-
-/** @internal */
-export const BulkUploadHistoryEvent$outboundSchema: z.ZodType<
-  BulkUploadHistoryEvent$Outbound,
-  z.ZodTypeDef,
-  BulkUploadHistoryEvent
-> = z.object({
-  uploadId: z.string().optional(),
-  startTime: z.string().optional(),
-  endTime: z.string().optional(),
-  status: BulkUploadHistoryEventStatus$outboundSchema.optional(),
-  processingState: ProcessingState$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkUploadHistoryEvent$ {
-  /** @deprecated use `BulkUploadHistoryEvent$inboundSchema` instead. */
-  export const inboundSchema = BulkUploadHistoryEvent$inboundSchema;
-  /** @deprecated use `BulkUploadHistoryEvent$outboundSchema` instead. */
-  export const outboundSchema = BulkUploadHistoryEvent$outboundSchema;
-  /** @deprecated use `BulkUploadHistoryEvent$Outbound` instead. */
-  export type Outbound = BulkUploadHistoryEvent$Outbound;
-}
-
-export function bulkUploadHistoryEventToJSON(
-  bulkUploadHistoryEvent: BulkUploadHistoryEvent,
-): string {
-  return JSON.stringify(
-    BulkUploadHistoryEvent$outboundSchema.parse(bulkUploadHistoryEvent),
-  );
-}
 
 export function bulkUploadHistoryEventFromJSON(
   jsonString: string,

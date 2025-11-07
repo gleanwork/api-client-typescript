@@ -65,7 +65,6 @@ export const StructuredLocation$inboundSchema: z.ZodType<
   country: z.string().optional(),
   countryCode: z.string().optional(),
 });
-
 /** @internal */
 export type StructuredLocation$Outbound = {
   deskLocation?: string | undefined;
@@ -96,19 +95,6 @@ export const StructuredLocation$outboundSchema: z.ZodType<
   countryCode: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StructuredLocation$ {
-  /** @deprecated use `StructuredLocation$inboundSchema` instead. */
-  export const inboundSchema = StructuredLocation$inboundSchema;
-  /** @deprecated use `StructuredLocation$outboundSchema` instead. */
-  export const outboundSchema = StructuredLocation$outboundSchema;
-  /** @deprecated use `StructuredLocation$Outbound` instead. */
-  export type Outbound = StructuredLocation$Outbound;
-}
-
 export function structuredLocationToJSON(
   structuredLocation: StructuredLocation,
 ): string {
@@ -116,7 +102,6 @@ export function structuredLocationToJSON(
     StructuredLocation$outboundSchema.parse(structuredLocation),
   );
 }
-
 export function structuredLocationFromJSON(
   jsonString: string,
 ): SafeParseResult<StructuredLocation, SDKValidationError> {

@@ -31,43 +31,6 @@ export const GeneratedAttachmentContent$inboundSchema: z.ZodType<
   text: z.string().optional(),
 });
 
-/** @internal */
-export type GeneratedAttachmentContent$Outbound = {
-  displayHeader?: string | undefined;
-  text?: string | undefined;
-};
-
-/** @internal */
-export const GeneratedAttachmentContent$outboundSchema: z.ZodType<
-  GeneratedAttachmentContent$Outbound,
-  z.ZodTypeDef,
-  GeneratedAttachmentContent
-> = z.object({
-  displayHeader: z.string().optional(),
-  text: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GeneratedAttachmentContent$ {
-  /** @deprecated use `GeneratedAttachmentContent$inboundSchema` instead. */
-  export const inboundSchema = GeneratedAttachmentContent$inboundSchema;
-  /** @deprecated use `GeneratedAttachmentContent$outboundSchema` instead. */
-  export const outboundSchema = GeneratedAttachmentContent$outboundSchema;
-  /** @deprecated use `GeneratedAttachmentContent$Outbound` instead. */
-  export type Outbound = GeneratedAttachmentContent$Outbound;
-}
-
-export function generatedAttachmentContentToJSON(
-  generatedAttachmentContent: GeneratedAttachmentContent,
-): string {
-  return JSON.stringify(
-    GeneratedAttachmentContent$outboundSchema.parse(generatedAttachmentContent),
-  );
-}
-
 export function generatedAttachmentContentFromJSON(
   jsonString: string,
 ): SafeParseResult<GeneratedAttachmentContent, SDKValidationError> {

@@ -9,68 +9,46 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentsInsightsV2Response,
   AgentsInsightsV2Response$inboundSchema,
-  AgentsInsightsV2Response$Outbound,
-  AgentsInsightsV2Response$outboundSchema,
 } from "./agentsinsightsv2response.js";
 import {
   AiAppsInsightsResponse,
   AiAppsInsightsResponse$inboundSchema,
-  AiAppsInsightsResponse$Outbound,
-  AiAppsInsightsResponse$outboundSchema,
 } from "./aiappsinsightsresponse.js";
 import {
   AiInsightsResponse,
   AiInsightsResponse$inboundSchema,
-  AiInsightsResponse$Outbound,
-  AiInsightsResponse$outboundSchema,
 } from "./aiinsightsresponse.js";
 import {
   AssistantInsightsResponse,
   AssistantInsightsResponse$inboundSchema,
-  AssistantInsightsResponse$Outbound,
-  AssistantInsightsResponse$outboundSchema,
 } from "./assistantinsightsresponse.js";
 import {
   ContentInsightsResponse,
   ContentInsightsResponse$inboundSchema,
-  ContentInsightsResponse$Outbound,
-  ContentInsightsResponse$outboundSchema,
 } from "./contentinsightsresponse.js";
 import {
   GleanAssistInsightsResponse,
   GleanAssistInsightsResponse$inboundSchema,
-  GleanAssistInsightsResponse$Outbound,
-  GleanAssistInsightsResponse$outboundSchema,
 } from "./gleanassistinsightsresponse.js";
 import {
   InsightsOverviewResponse,
   InsightsOverviewResponse$inboundSchema,
-  InsightsOverviewResponse$Outbound,
-  InsightsOverviewResponse$outboundSchema,
 } from "./insightsoverviewresponse.js";
 import {
   LabeledCountInfo,
   LabeledCountInfo$inboundSchema,
-  LabeledCountInfo$Outbound,
-  LabeledCountInfo$outboundSchema,
 } from "./labeledcountinfo.js";
 import {
   QueryInsightsResponse,
   QueryInsightsResponse$inboundSchema,
-  QueryInsightsResponse$Outbound,
-  QueryInsightsResponse$outboundSchema,
 } from "./queryinsightsresponse.js";
 import {
   ShortcutInsightsResponse,
   ShortcutInsightsResponse$inboundSchema,
-  ShortcutInsightsResponse$Outbound,
-  ShortcutInsightsResponse$outboundSchema,
 } from "./shortcutinsightsresponse.js";
 import {
   UserInsightsResponse,
   UserInsightsResponse$inboundSchema,
-  UserInsightsResponse$Outbound,
-  UserInsightsResponse$outboundSchema,
 } from "./userinsightsresponse.js";
 
 export type InsightsResponse = {
@@ -125,71 +103,6 @@ export const InsightsResponse$inboundSchema: z.ZodType<
   assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
   agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),
 });
-
-/** @internal */
-export type InsightsResponse$Outbound = {
-  timeseries?: Array<LabeledCountInfo$Outbound> | undefined;
-  users?: UserInsightsResponse$Outbound | undefined;
-  content?: ContentInsightsResponse$Outbound | undefined;
-  queries?: QueryInsightsResponse$Outbound | undefined;
-  collections?: ContentInsightsResponse$Outbound | undefined;
-  collectionsV2?: ContentInsightsResponse$Outbound | undefined;
-  shortcuts?: ShortcutInsightsResponse$Outbound | undefined;
-  announcements?: ContentInsightsResponse$Outbound | undefined;
-  answers?: ContentInsightsResponse$Outbound | undefined;
-  ai?: AiInsightsResponse$Outbound | undefined;
-  aiApps?: AiAppsInsightsResponse$Outbound | undefined;
-  gleanAssist?: GleanAssistInsightsResponse$Outbound | undefined;
-  departments?: Array<string> | undefined;
-  overviewResponse?: InsightsOverviewResponse$Outbound | undefined;
-  assistantResponse?: AssistantInsightsResponse$Outbound | undefined;
-  agentsResponse?: AgentsInsightsV2Response$Outbound | undefined;
-};
-
-/** @internal */
-export const InsightsResponse$outboundSchema: z.ZodType<
-  InsightsResponse$Outbound,
-  z.ZodTypeDef,
-  InsightsResponse
-> = z.object({
-  timeseries: z.array(LabeledCountInfo$outboundSchema).optional(),
-  users: UserInsightsResponse$outboundSchema.optional(),
-  content: ContentInsightsResponse$outboundSchema.optional(),
-  queries: QueryInsightsResponse$outboundSchema.optional(),
-  collections: ContentInsightsResponse$outboundSchema.optional(),
-  collectionsV2: ContentInsightsResponse$outboundSchema.optional(),
-  shortcuts: ShortcutInsightsResponse$outboundSchema.optional(),
-  announcements: ContentInsightsResponse$outboundSchema.optional(),
-  answers: ContentInsightsResponse$outboundSchema.optional(),
-  ai: AiInsightsResponse$outboundSchema.optional(),
-  aiApps: AiAppsInsightsResponse$outboundSchema.optional(),
-  gleanAssist: GleanAssistInsightsResponse$outboundSchema.optional(),
-  departments: z.array(z.string()).optional(),
-  overviewResponse: InsightsOverviewResponse$outboundSchema.optional(),
-  assistantResponse: AssistantInsightsResponse$outboundSchema.optional(),
-  agentsResponse: AgentsInsightsV2Response$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsResponse$ {
-  /** @deprecated use `InsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = InsightsResponse$inboundSchema;
-  /** @deprecated use `InsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = InsightsResponse$outboundSchema;
-  /** @deprecated use `InsightsResponse$Outbound` instead. */
-  export type Outbound = InsightsResponse$Outbound;
-}
-
-export function insightsResponseToJSON(
-  insightsResponse: InsightsResponse,
-): string {
-  return JSON.stringify(
-    InsightsResponse$outboundSchema.parse(insightsResponse),
-  );
-}
 
 export function insightsResponseFromJSON(
   jsonString: string,

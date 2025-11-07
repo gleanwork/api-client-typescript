@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceGroupDefinition,
-  DatasourceGroupDefinition$inboundSchema,
   DatasourceGroupDefinition$Outbound,
   DatasourceGroupDefinition$outboundSchema,
 } from "./datasourcegroupdefinition.js";
@@ -32,17 +28,6 @@ export type IndexGroupRequest = {
 };
 
 /** @internal */
-export const IndexGroupRequest$inboundSchema: z.ZodType<
-  IndexGroupRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  group: DatasourceGroupDefinition$inboundSchema,
-});
-
-/** @internal */
 export type IndexGroupRequest$Outbound = {
   version?: number | undefined;
   datasource: string;
@@ -60,33 +45,10 @@ export const IndexGroupRequest$outboundSchema: z.ZodType<
   group: DatasourceGroupDefinition$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexGroupRequest$ {
-  /** @deprecated use `IndexGroupRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexGroupRequest$inboundSchema;
-  /** @deprecated use `IndexGroupRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexGroupRequest$outboundSchema;
-  /** @deprecated use `IndexGroupRequest$Outbound` instead. */
-  export type Outbound = IndexGroupRequest$Outbound;
-}
-
 export function indexGroupRequestToJSON(
   indexGroupRequest: IndexGroupRequest,
 ): string {
   return JSON.stringify(
     IndexGroupRequest$outboundSchema.parse(indexGroupRequest),
-  );
-}
-
-export function indexGroupRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexGroupRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexGroupRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexGroupRequest' from JSON`,
   );
 }

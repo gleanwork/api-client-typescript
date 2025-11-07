@@ -81,7 +81,6 @@ export const Permissions$inboundSchema: z.ZodType<
   role: z.string().optional(),
   roles: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type Permissions$Outbound = {
   canAdminSearch?: boolean | undefined;
@@ -110,23 +109,9 @@ export const Permissions$outboundSchema: z.ZodType<
   roles: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Permissions$ {
-  /** @deprecated use `Permissions$inboundSchema` instead. */
-  export const inboundSchema = Permissions$inboundSchema;
-  /** @deprecated use `Permissions$outboundSchema` instead. */
-  export const outboundSchema = Permissions$outboundSchema;
-  /** @deprecated use `Permissions$Outbound` instead. */
-  export type Outbound = Permissions$Outbound;
-}
-
 export function permissionsToJSON(permissions: Permissions): string {
   return JSON.stringify(Permissions$outboundSchema.parse(permissions));
 }
-
 export function permissionsFromJSON(
   jsonString: string,
 ): SafeParseResult<Permissions, SDKValidationError> {

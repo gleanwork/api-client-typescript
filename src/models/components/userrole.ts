@@ -23,18 +23,6 @@ export type UserRole = ClosedEnum<typeof UserRole>;
 /** @internal */
 export const UserRole$inboundSchema: z.ZodNativeEnum<typeof UserRole> = z
   .nativeEnum(UserRole);
-
 /** @internal */
 export const UserRole$outboundSchema: z.ZodNativeEnum<typeof UserRole> =
   UserRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserRole$ {
-  /** @deprecated use `UserRole$inboundSchema` instead. */
-  export const inboundSchema = UserRole$inboundSchema;
-  /** @deprecated use `UserRole$outboundSchema` instead. */
-  export const outboundSchema = UserRole$outboundSchema;
-}

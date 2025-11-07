@@ -24,7 +24,6 @@ export const Hotword$inboundSchema: z.ZodType<Hotword, z.ZodTypeDef, unknown> =
     regex: z.string().optional(),
     proximity: HotwordProximity$inboundSchema.optional(),
   });
-
 /** @internal */
 export type Hotword$Outbound = {
   regex?: string | undefined;
@@ -41,23 +40,9 @@ export const Hotword$outboundSchema: z.ZodType<
   proximity: HotwordProximity$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Hotword$ {
-  /** @deprecated use `Hotword$inboundSchema` instead. */
-  export const inboundSchema = Hotword$inboundSchema;
-  /** @deprecated use `Hotword$outboundSchema` instead. */
-  export const outboundSchema = Hotword$outboundSchema;
-  /** @deprecated use `Hotword$Outbound` instead. */
-  export type Outbound = Hotword$Outbound;
-}
-
 export function hotwordToJSON(hotword: Hotword): string {
   return JSON.stringify(Hotword$outboundSchema.parse(hotword));
 }
-
 export function hotwordFromJSON(
   jsonString: string,
 ): SafeParseResult<Hotword, SDKValidationError> {

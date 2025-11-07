@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ErrorMessage,
-  ErrorMessage$inboundSchema,
-  ErrorMessage$Outbound,
-  ErrorMessage$outboundSchema,
-} from "./errormessage.js";
+import { ErrorMessage, ErrorMessage$inboundSchema } from "./errormessage.js";
 import {
   InvalidOperatorValueError,
   InvalidOperatorValueError$inboundSchema,
-  InvalidOperatorValueError$Outbound,
-  InvalidOperatorValueError$outboundSchema,
 } from "./invalidoperatorvalueerror.js";
 
 export type GleanDataError = {
@@ -46,44 +39,6 @@ export const GleanDataError$inboundSchema: z.ZodType<
   invalidOperators: z.array(InvalidOperatorValueError$inboundSchema).optional(),
   errorMessages: z.array(ErrorMessage$inboundSchema).optional(),
 });
-
-/** @internal */
-export type GleanDataError$Outbound = {
-  badGmailToken?: boolean | undefined;
-  badOutlookToken?: boolean | undefined;
-  invalidOperators?: Array<InvalidOperatorValueError$Outbound> | undefined;
-  errorMessages?: Array<ErrorMessage$Outbound> | undefined;
-};
-
-/** @internal */
-export const GleanDataError$outboundSchema: z.ZodType<
-  GleanDataError$Outbound,
-  z.ZodTypeDef,
-  GleanDataError
-> = z.object({
-  badGmailToken: z.boolean().optional(),
-  badOutlookToken: z.boolean().optional(),
-  invalidOperators: z.array(InvalidOperatorValueError$outboundSchema)
-    .optional(),
-  errorMessages: z.array(ErrorMessage$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GleanDataError$ {
-  /** @deprecated use `GleanDataError$inboundSchema` instead. */
-  export const inboundSchema = GleanDataError$inboundSchema;
-  /** @deprecated use `GleanDataError$outboundSchema` instead. */
-  export const outboundSchema = GleanDataError$outboundSchema;
-  /** @deprecated use `GleanDataError$Outbound` instead. */
-  export type Outbound = GleanDataError$Outbound;
-}
-
-export function gleanDataErrorToJSON(gleanDataError: GleanDataError): string {
-  return JSON.stringify(GleanDataError$outboundSchema.parse(gleanDataError));
-}
 
 export function gleanDataErrorFromJSON(
   jsonString: string,

@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ExternalShortcut,
-  ExternalShortcut$inboundSchema,
   ExternalShortcut$Outbound,
   ExternalShortcut$outboundSchema,
 } from "./externalshortcut.js";
@@ -40,19 +36,6 @@ export type BulkIndexShortcutsRequest = {
 };
 
 /** @internal */
-export const BulkIndexShortcutsRequest$inboundSchema: z.ZodType<
-  BulkIndexShortcutsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  shortcuts: z.array(ExternalShortcut$inboundSchema),
-});
-
-/** @internal */
 export type BulkIndexShortcutsRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -74,33 +57,10 @@ export const BulkIndexShortcutsRequest$outboundSchema: z.ZodType<
   shortcuts: z.array(ExternalShortcut$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkIndexShortcutsRequest$ {
-  /** @deprecated use `BulkIndexShortcutsRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkIndexShortcutsRequest$inboundSchema;
-  /** @deprecated use `BulkIndexShortcutsRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkIndexShortcutsRequest$outboundSchema;
-  /** @deprecated use `BulkIndexShortcutsRequest$Outbound` instead. */
-  export type Outbound = BulkIndexShortcutsRequest$Outbound;
-}
-
 export function bulkIndexShortcutsRequestToJSON(
   bulkIndexShortcutsRequest: BulkIndexShortcutsRequest,
 ): string {
   return JSON.stringify(
     BulkIndexShortcutsRequest$outboundSchema.parse(bulkIndexShortcutsRequest),
-  );
-}
-
-export function bulkIndexShortcutsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkIndexShortcutsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkIndexShortcutsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkIndexShortcutsRequest' from JSON`,
   );
 }

@@ -61,22 +61,10 @@ export type WriteActionParameter = {
 export const WriteActionParameterType$inboundSchema: z.ZodNativeEnum<
   typeof WriteActionParameterType
 > = z.nativeEnum(WriteActionParameterType);
-
 /** @internal */
 export const WriteActionParameterType$outboundSchema: z.ZodNativeEnum<
   typeof WriteActionParameterType
 > = WriteActionParameterType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WriteActionParameterType$ {
-  /** @deprecated use `WriteActionParameterType$inboundSchema` instead. */
-  export const inboundSchema = WriteActionParameterType$inboundSchema;
-  /** @deprecated use `WriteActionParameterType$outboundSchema` instead. */
-  export const outboundSchema = WriteActionParameterType$outboundSchema;
-}
 
 /** @internal */
 export const WriteActionParameter$inboundSchema: z.ZodType<
@@ -91,7 +79,6 @@ export const WriteActionParameter$inboundSchema: z.ZodType<
   description: z.string().optional(),
   possibleValues: z.array(PossibleValue$inboundSchema).optional(),
 });
-
 /** @internal */
 export type WriteActionParameter$Outbound = {
   type?: string | undefined;
@@ -116,19 +103,6 @@ export const WriteActionParameter$outboundSchema: z.ZodType<
   possibleValues: z.array(PossibleValue$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WriteActionParameter$ {
-  /** @deprecated use `WriteActionParameter$inboundSchema` instead. */
-  export const inboundSchema = WriteActionParameter$inboundSchema;
-  /** @deprecated use `WriteActionParameter$outboundSchema` instead. */
-  export const outboundSchema = WriteActionParameter$outboundSchema;
-  /** @deprecated use `WriteActionParameter$Outbound` instead. */
-  export type Outbound = WriteActionParameter$Outbound;
-}
-
 export function writeActionParameterToJSON(
   writeActionParameter: WriteActionParameter,
 ): string {
@@ -136,7 +110,6 @@ export function writeActionParameterToJSON(
     WriteActionParameter$outboundSchema.parse(writeActionParameter),
   );
 }
-
 export function writeActionParameterFromJSON(
   jsonString: string,
 ): SafeParseResult<WriteActionParameter, SDKValidationError> {

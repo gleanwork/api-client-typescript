@@ -6,40 +6,20 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Customer,
-  Customer$inboundSchema,
-  Customer$Outbound,
-  Customer$outboundSchema,
-} from "./customer.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
+import { Customer, Customer$inboundSchema } from "./customer.js";
+import { Document, Document$inboundSchema } from "./document.js";
 import {
   EventStrategyName,
   EventStrategyName$inboundSchema,
-  EventStrategyName$outboundSchema,
 } from "./eventstrategyname.js";
 import {
   GeneratedAttachmentContent,
   GeneratedAttachmentContent$inboundSchema,
-  GeneratedAttachmentContent$Outbound,
-  GeneratedAttachmentContent$outboundSchema,
 } from "./generatedattachmentcontent.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 import {
   StructuredLink,
   StructuredLink$inboundSchema,
-  StructuredLink$Outbound,
-  StructuredLink$outboundSchema,
 } from "./structuredlink.js";
 
 /**
@@ -73,51 +53,6 @@ export const GeneratedAttachment$inboundSchema: z.ZodType<
   externalLinks: z.array(StructuredLink$inboundSchema).optional(),
   content: z.array(GeneratedAttachmentContent$inboundSchema).optional(),
 });
-
-/** @internal */
-export type GeneratedAttachment$Outbound = {
-  strategyName?: string | undefined;
-  documents?: Array<Document$Outbound> | undefined;
-  person?: Person$Outbound | undefined;
-  customer?: Customer$Outbound | undefined;
-  externalLinks?: Array<StructuredLink$Outbound> | undefined;
-  content?: Array<GeneratedAttachmentContent$Outbound> | undefined;
-};
-
-/** @internal */
-export const GeneratedAttachment$outboundSchema: z.ZodType<
-  GeneratedAttachment$Outbound,
-  z.ZodTypeDef,
-  GeneratedAttachment
-> = z.object({
-  strategyName: EventStrategyName$outboundSchema.optional(),
-  documents: z.array(Document$outboundSchema).optional(),
-  person: Person$outboundSchema.optional(),
-  customer: Customer$outboundSchema.optional(),
-  externalLinks: z.array(StructuredLink$outboundSchema).optional(),
-  content: z.array(GeneratedAttachmentContent$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GeneratedAttachment$ {
-  /** @deprecated use `GeneratedAttachment$inboundSchema` instead. */
-  export const inboundSchema = GeneratedAttachment$inboundSchema;
-  /** @deprecated use `GeneratedAttachment$outboundSchema` instead. */
-  export const outboundSchema = GeneratedAttachment$outboundSchema;
-  /** @deprecated use `GeneratedAttachment$Outbound` instead. */
-  export type Outbound = GeneratedAttachment$Outbound;
-}
-
-export function generatedAttachmentToJSON(
-  generatedAttachment: GeneratedAttachment,
-): string {
-  return JSON.stringify(
-    GeneratedAttachment$outboundSchema.parse(generatedAttachment),
-  );
-}
 
 export function generatedAttachmentFromJSON(
   jsonString: string,

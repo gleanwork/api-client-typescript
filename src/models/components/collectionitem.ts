@@ -84,22 +84,10 @@ export type CollectionItem = {
 export const CollectionItemItemType$inboundSchema: z.ZodNativeEnum<
   typeof CollectionItemItemType
 > = z.nativeEnum(CollectionItemItemType);
-
 /** @internal */
 export const CollectionItemItemType$outboundSchema: z.ZodNativeEnum<
   typeof CollectionItemItemType
 > = CollectionItemItemType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionItemItemType$ {
-  /** @deprecated use `CollectionItemItemType$inboundSchema` instead. */
-  export const inboundSchema = CollectionItemItemType$inboundSchema;
-  /** @deprecated use `CollectionItemItemType$outboundSchema` instead. */
-  export const outboundSchema = CollectionItemItemType$outboundSchema;
-}
 
 /** @internal */
 export const CollectionItem$inboundSchema: z.ZodType<
@@ -122,7 +110,6 @@ export const CollectionItem$inboundSchema: z.ZodType<
   collection: z.lazy(() => Collection$inboundSchema).optional(),
   itemType: CollectionItemItemType$inboundSchema,
 });
-
 /** @internal */
 export type CollectionItem$Outbound = {
   name?: string | undefined;
@@ -161,23 +148,9 @@ export const CollectionItem$outboundSchema: z.ZodType<
   itemType: CollectionItemItemType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionItem$ {
-  /** @deprecated use `CollectionItem$inboundSchema` instead. */
-  export const inboundSchema = CollectionItem$inboundSchema;
-  /** @deprecated use `CollectionItem$outboundSchema` instead. */
-  export const outboundSchema = CollectionItem$outboundSchema;
-  /** @deprecated use `CollectionItem$Outbound` instead. */
-  export type Outbound = CollectionItem$Outbound;
-}
-
 export function collectionItemToJSON(collectionItem: CollectionItem): string {
   return JSON.stringify(CollectionItem$outboundSchema.parse(collectionItem));
 }
-
 export function collectionItemFromJSON(
   jsonString: string,
 ): SafeParseResult<CollectionItem, SDKValidationError> {

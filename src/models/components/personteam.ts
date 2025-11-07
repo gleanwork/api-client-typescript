@@ -53,22 +53,10 @@ export type PersonTeam = {
 export const PersonTeamRelationship$inboundSchema: z.ZodNativeEnum<
   typeof PersonTeamRelationship
 > = z.nativeEnum(PersonTeamRelationship);
-
 /** @internal */
 export const PersonTeamRelationship$outboundSchema: z.ZodNativeEnum<
   typeof PersonTeamRelationship
 > = PersonTeamRelationship$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonTeamRelationship$ {
-  /** @deprecated use `PersonTeamRelationship$inboundSchema` instead. */
-  export const inboundSchema = PersonTeamRelationship$inboundSchema;
-  /** @deprecated use `PersonTeamRelationship$outboundSchema` instead. */
-  export const outboundSchema = PersonTeamRelationship$outboundSchema;
-}
 
 /** @internal */
 export const PersonTeam$inboundSchema: z.ZodType<
@@ -83,7 +71,6 @@ export const PersonTeam$inboundSchema: z.ZodType<
   joinDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type PersonTeam$Outbound = {
   id?: string | undefined;
@@ -106,23 +93,9 @@ export const PersonTeam$outboundSchema: z.ZodType<
   joinDate: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonTeam$ {
-  /** @deprecated use `PersonTeam$inboundSchema` instead. */
-  export const inboundSchema = PersonTeam$inboundSchema;
-  /** @deprecated use `PersonTeam$outboundSchema` instead. */
-  export const outboundSchema = PersonTeam$outboundSchema;
-  /** @deprecated use `PersonTeam$Outbound` instead. */
-  export type Outbound = PersonTeam$Outbound;
-}
-
 export function personTeamToJSON(personTeam: PersonTeam): string {
   return JSON.stringify(PersonTeam$outboundSchema.parse(personTeam));
 }
-
 export function personTeamFromJSON(
   jsonString: string,
 ): SafeParseResult<PersonTeam, SDKValidationError> {

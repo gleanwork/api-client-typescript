@@ -22,7 +22,6 @@ export const CustomFieldValueStr$inboundSchema: z.ZodType<
 > = z.object({
   strText: z.string().optional(),
 });
-
 /** @internal */
 export type CustomFieldValueStr$Outbound = {
   strText?: string | undefined;
@@ -37,19 +36,6 @@ export const CustomFieldValueStr$outboundSchema: z.ZodType<
   strText: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldValueStr$ {
-  /** @deprecated use `CustomFieldValueStr$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldValueStr$inboundSchema;
-  /** @deprecated use `CustomFieldValueStr$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldValueStr$outboundSchema;
-  /** @deprecated use `CustomFieldValueStr$Outbound` instead. */
-  export type Outbound = CustomFieldValueStr$Outbound;
-}
-
 export function customFieldValueStrToJSON(
   customFieldValueStr: CustomFieldValueStr,
 ): string {
@@ -57,7 +43,6 @@ export function customFieldValueStrToJSON(
     CustomFieldValueStr$outboundSchema.parse(customFieldValueStr),
   );
 }
-
 export function customFieldValueStrFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldValueStr, SDKValidationError> {

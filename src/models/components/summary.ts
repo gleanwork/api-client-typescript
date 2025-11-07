@@ -22,39 +22,6 @@ export const Summary$inboundSchema: z.ZodType<Summary, z.ZodTypeDef, unknown> =
     followUpPrompts: z.array(z.string()).optional(),
   });
 
-/** @internal */
-export type Summary$Outbound = {
-  text?: string | undefined;
-  followUpPrompts?: Array<string> | undefined;
-};
-
-/** @internal */
-export const Summary$outboundSchema: z.ZodType<
-  Summary$Outbound,
-  z.ZodTypeDef,
-  Summary
-> = z.object({
-  text: z.string().optional(),
-  followUpPrompts: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Summary$ {
-  /** @deprecated use `Summary$inboundSchema` instead. */
-  export const inboundSchema = Summary$inboundSchema;
-  /** @deprecated use `Summary$outboundSchema` instead. */
-  export const outboundSchema = Summary$outboundSchema;
-  /** @deprecated use `Summary$Outbound` instead. */
-  export type Outbound = Summary$Outbound;
-}
-
-export function summaryToJSON(summary: Summary): string {
-  return JSON.stringify(Summary$outboundSchema.parse(summary));
-}
-
 export function summaryFromJSON(
   jsonString: string,
 ): SafeParseResult<Summary, SDKValidationError> {

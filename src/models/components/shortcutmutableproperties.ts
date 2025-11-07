@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UserRoleSpecification,
-  UserRoleSpecification$inboundSchema,
   UserRoleSpecification$Outbound,
   UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
@@ -49,22 +45,6 @@ export type ShortcutMutableProperties = {
 };
 
 /** @internal */
-export const ShortcutMutableProperties$inboundSchema: z.ZodType<
-  ShortcutMutableProperties,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  inputAlias: z.string().optional(),
-  destinationUrl: z.string().optional(),
-  destinationDocumentId: z.string().optional(),
-  description: z.string().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-});
-
-/** @internal */
 export type ShortcutMutableProperties$Outbound = {
   inputAlias?: string | undefined;
   destinationUrl?: string | undefined;
@@ -92,33 +72,10 @@ export const ShortcutMutableProperties$outboundSchema: z.ZodType<
   removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ShortcutMutableProperties$ {
-  /** @deprecated use `ShortcutMutableProperties$inboundSchema` instead. */
-  export const inboundSchema = ShortcutMutableProperties$inboundSchema;
-  /** @deprecated use `ShortcutMutableProperties$outboundSchema` instead. */
-  export const outboundSchema = ShortcutMutableProperties$outboundSchema;
-  /** @deprecated use `ShortcutMutableProperties$Outbound` instead. */
-  export type Outbound = ShortcutMutableProperties$Outbound;
-}
-
 export function shortcutMutablePropertiesToJSON(
   shortcutMutableProperties: ShortcutMutableProperties,
 ): string {
   return JSON.stringify(
     ShortcutMutableProperties$outboundSchema.parse(shortcutMutableProperties),
-  );
-}
-
-export function shortcutMutablePropertiesFromJSON(
-  jsonString: string,
-): SafeParseResult<ShortcutMutableProperties, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ShortcutMutableProperties$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ShortcutMutableProperties' from JSON`,
   );
 }

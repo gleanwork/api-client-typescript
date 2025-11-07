@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
-import {
-  Shortcut,
-  Shortcut$inboundSchema,
-  Shortcut$Outbound,
-  Shortcut$outboundSchema,
-} from "./shortcut.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
+import { Shortcut, Shortcut$inboundSchema } from "./shortcut.js";
 
 export type ShortcutInsight = {
   shortcut: Shortcut;
@@ -35,43 +25,6 @@ export const ShortcutInsight$inboundSchema: z.ZodType<
   visitCount: CountInfo$inboundSchema.optional(),
   visitorCount: CountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type ShortcutInsight$Outbound = {
-  shortcut: Shortcut$Outbound;
-  visitCount?: CountInfo$Outbound | undefined;
-  visitorCount?: CountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const ShortcutInsight$outboundSchema: z.ZodType<
-  ShortcutInsight$Outbound,
-  z.ZodTypeDef,
-  ShortcutInsight
-> = z.object({
-  shortcut: Shortcut$outboundSchema,
-  visitCount: CountInfo$outboundSchema.optional(),
-  visitorCount: CountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ShortcutInsight$ {
-  /** @deprecated use `ShortcutInsight$inboundSchema` instead. */
-  export const inboundSchema = ShortcutInsight$inboundSchema;
-  /** @deprecated use `ShortcutInsight$outboundSchema` instead. */
-  export const outboundSchema = ShortcutInsight$outboundSchema;
-  /** @deprecated use `ShortcutInsight$Outbound` instead. */
-  export type Outbound = ShortcutInsight$Outbound;
-}
-
-export function shortcutInsightToJSON(
-  shortcutInsight: ShortcutInsight,
-): string {
-  return JSON.stringify(ShortcutInsight$outboundSchema.parse(shortcutInsight));
-}
 
 export function shortcutInsightFromJSON(
   jsonString: string,

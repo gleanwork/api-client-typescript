@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /deleteteam API call
@@ -16,15 +13,6 @@ export type DeleteTeamRequest = {
    */
   id: string;
 };
-
-/** @internal */
-export const DeleteTeamRequest$inboundSchema: z.ZodType<
-  DeleteTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-});
 
 /** @internal */
 export type DeleteTeamRequest$Outbound = {
@@ -40,33 +28,10 @@ export const DeleteTeamRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteTeamRequest$ {
-  /** @deprecated use `DeleteTeamRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteTeamRequest$inboundSchema;
-  /** @deprecated use `DeleteTeamRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteTeamRequest$outboundSchema;
-  /** @deprecated use `DeleteTeamRequest$Outbound` instead. */
-  export type Outbound = DeleteTeamRequest$Outbound;
-}
-
 export function deleteTeamRequestToJSON(
   deleteTeamRequest: DeleteTeamRequest,
 ): string {
   return JSON.stringify(
     DeleteTeamRequest$outboundSchema.parse(deleteTeamRequest),
-  );
-}
-
-export function deleteTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteTeamRequest' from JSON`,
   );
 }

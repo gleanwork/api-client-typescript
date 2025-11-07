@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UserActivityInsight,
   UserActivityInsight$inboundSchema,
-  UserActivityInsight$Outbound,
-  UserActivityInsight$outboundSchema,
 } from "./useractivityinsight.js";
 
 export type GleanAssistInsightsResponse = {
@@ -48,51 +46,6 @@ export const GleanAssistInsightsResponse$inboundSchema: z.ZodType<
   datasourceInstances: z.array(z.string()).optional(),
   departments: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type GleanAssistInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  activityInsights?: Array<UserActivityInsight$Outbound> | undefined;
-  totalActiveUsers?: number | undefined;
-  datasourceInstances?: Array<string> | undefined;
-  departments?: Array<string> | undefined;
-};
-
-/** @internal */
-export const GleanAssistInsightsResponse$outboundSchema: z.ZodType<
-  GleanAssistInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  GleanAssistInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  activityInsights: z.array(UserActivityInsight$outboundSchema).optional(),
-  totalActiveUsers: z.number().int().optional(),
-  datasourceInstances: z.array(z.string()).optional(),
-  departments: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GleanAssistInsightsResponse$ {
-  /** @deprecated use `GleanAssistInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = GleanAssistInsightsResponse$inboundSchema;
-  /** @deprecated use `GleanAssistInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = GleanAssistInsightsResponse$outboundSchema;
-  /** @deprecated use `GleanAssistInsightsResponse$Outbound` instead. */
-  export type Outbound = GleanAssistInsightsResponse$Outbound;
-}
-
-export function gleanAssistInsightsResponseToJSON(
-  gleanAssistInsightsResponse: GleanAssistInsightsResponse,
-): string {
-  return JSON.stringify(
-    GleanAssistInsightsResponse$outboundSchema.parse(
-      gleanAssistInsightsResponse,
-    ),
-  );
-}
 
 export function gleanAssistInsightsResponseFromJSON(
   jsonString: string,

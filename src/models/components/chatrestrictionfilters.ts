@@ -32,7 +32,6 @@ export const ChatRestrictionFilters$inboundSchema: z.ZodType<
   documentSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
   datasourceInstances: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type ChatRestrictionFilters$Outbound = {
   containerSpecs?: Array<DocumentSpecUnion$Outbound> | undefined;
@@ -51,19 +50,6 @@ export const ChatRestrictionFilters$outboundSchema: z.ZodType<
   datasourceInstances: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatRestrictionFilters$ {
-  /** @deprecated use `ChatRestrictionFilters$inboundSchema` instead. */
-  export const inboundSchema = ChatRestrictionFilters$inboundSchema;
-  /** @deprecated use `ChatRestrictionFilters$outboundSchema` instead. */
-  export const outboundSchema = ChatRestrictionFilters$outboundSchema;
-  /** @deprecated use `ChatRestrictionFilters$Outbound` instead. */
-  export type Outbound = ChatRestrictionFilters$Outbound;
-}
-
 export function chatRestrictionFiltersToJSON(
   chatRestrictionFilters: ChatRestrictionFilters,
 ): string {
@@ -71,7 +57,6 @@ export function chatRestrictionFiltersToJSON(
     ChatRestrictionFilters$outboundSchema.parse(chatRestrictionFilters),
   );
 }
-
 export function chatRestrictionFiltersFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatRestrictionFilters, SDKValidationError> {

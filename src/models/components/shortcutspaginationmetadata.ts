@@ -27,47 +27,6 @@ export const ShortcutsPaginationMetadata$inboundSchema: z.ZodType<
   totalItemCount: z.number().int().optional(),
 });
 
-/** @internal */
-export type ShortcutsPaginationMetadata$Outbound = {
-  cursor?: string | undefined;
-  hasNextPage?: boolean | undefined;
-  totalItemCount?: number | undefined;
-};
-
-/** @internal */
-export const ShortcutsPaginationMetadata$outboundSchema: z.ZodType<
-  ShortcutsPaginationMetadata$Outbound,
-  z.ZodTypeDef,
-  ShortcutsPaginationMetadata
-> = z.object({
-  cursor: z.string().optional(),
-  hasNextPage: z.boolean().optional(),
-  totalItemCount: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ShortcutsPaginationMetadata$ {
-  /** @deprecated use `ShortcutsPaginationMetadata$inboundSchema` instead. */
-  export const inboundSchema = ShortcutsPaginationMetadata$inboundSchema;
-  /** @deprecated use `ShortcutsPaginationMetadata$outboundSchema` instead. */
-  export const outboundSchema = ShortcutsPaginationMetadata$outboundSchema;
-  /** @deprecated use `ShortcutsPaginationMetadata$Outbound` instead. */
-  export type Outbound = ShortcutsPaginationMetadata$Outbound;
-}
-
-export function shortcutsPaginationMetadataToJSON(
-  shortcutsPaginationMetadata: ShortcutsPaginationMetadata,
-): string {
-  return JSON.stringify(
-    ShortcutsPaginationMetadata$outboundSchema.parse(
-      shortcutsPaginationMetadata,
-    ),
-  );
-}
-
 export function shortcutsPaginationMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ShortcutsPaginationMetadata, SDKValidationError> {

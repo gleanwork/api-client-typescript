@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ToolsCallParameter,
-  ToolsCallParameter$inboundSchema,
   ToolsCallParameter$Outbound,
   ToolsCallParameter$outboundSchema,
 } from "./toolscallparameter.js";
@@ -23,16 +19,6 @@ export type ToolsCallRequest = {
    */
   parameters: { [k: string]: ToolsCallParameter };
 };
-
-/** @internal */
-export const ToolsCallRequest$inboundSchema: z.ZodType<
-  ToolsCallRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  parameters: z.record(ToolsCallParameter$inboundSchema),
-});
 
 /** @internal */
 export type ToolsCallRequest$Outbound = {
@@ -50,33 +36,10 @@ export const ToolsCallRequest$outboundSchema: z.ZodType<
   parameters: z.record(ToolsCallParameter$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolsCallRequest$ {
-  /** @deprecated use `ToolsCallRequest$inboundSchema` instead. */
-  export const inboundSchema = ToolsCallRequest$inboundSchema;
-  /** @deprecated use `ToolsCallRequest$outboundSchema` instead. */
-  export const outboundSchema = ToolsCallRequest$outboundSchema;
-  /** @deprecated use `ToolsCallRequest$Outbound` instead. */
-  export type Outbound = ToolsCallRequest$Outbound;
-}
-
 export function toolsCallRequestToJSON(
   toolsCallRequest: ToolsCallRequest,
 ): string {
   return JSON.stringify(
     ToolsCallRequest$outboundSchema.parse(toolsCallRequest),
-  );
-}
-
-export function toolsCallRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ToolsCallRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ToolsCallRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ToolsCallRequest' from JSON`,
   );
 }

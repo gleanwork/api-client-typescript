@@ -30,7 +30,6 @@ export const PropertyGroup$inboundSchema: z.ZodType<
   name: z.string().optional(),
   displayLabel: z.string().optional(),
 });
-
 /** @internal */
 export type PropertyGroup$Outbound = {
   name?: string | undefined;
@@ -47,23 +46,9 @@ export const PropertyGroup$outboundSchema: z.ZodType<
   displayLabel: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertyGroup$ {
-  /** @deprecated use `PropertyGroup$inboundSchema` instead. */
-  export const inboundSchema = PropertyGroup$inboundSchema;
-  /** @deprecated use `PropertyGroup$outboundSchema` instead. */
-  export const outboundSchema = PropertyGroup$outboundSchema;
-  /** @deprecated use `PropertyGroup$Outbound` instead. */
-  export type Outbound = PropertyGroup$Outbound;
-}
-
 export function propertyGroupToJSON(propertyGroup: PropertyGroup): string {
   return JSON.stringify(PropertyGroup$outboundSchema.parse(propertyGroup));
 }
-
 export function propertyGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertyGroup, SDKValidationError> {

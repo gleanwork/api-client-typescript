@@ -20,18 +20,3 @@ export type UpdateType = ClosedEnum<typeof UpdateType>;
 /** @internal */
 export const UpdateType$inboundSchema: z.ZodNativeEnum<typeof UpdateType> = z
   .nativeEnum(UpdateType);
-
-/** @internal */
-export const UpdateType$outboundSchema: z.ZodNativeEnum<typeof UpdateType> =
-  UpdateType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateType$ {
-  /** @deprecated use `UpdateType$inboundSchema` instead. */
-  export const inboundSchema = UpdateType$inboundSchema;
-  /** @deprecated use `UpdateType$outboundSchema` instead. */
-  export const outboundSchema = UpdateType$outboundSchema;
-}

@@ -3,30 +3,23 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Document,
-  Document$inboundSchema,
   Document$Outbound,
   Document$outboundSchema,
 } from "./document.js";
 import {
   DocumentSpecUnion,
-  DocumentSpecUnion$inboundSchema,
   DocumentSpecUnion$Outbound,
   DocumentSpecUnion$outboundSchema,
 } from "./documentspecunion.js";
 import {
   RecommendationsRequestOptions,
-  RecommendationsRequestOptions$inboundSchema,
   RecommendationsRequestOptions$Outbound,
   RecommendationsRequestOptions$outboundSchema,
 } from "./recommendationsrequestoptions.js";
 import {
   SessionInfo,
-  SessionInfo$inboundSchema,
   SessionInfo$Outbound,
   SessionInfo$outboundSchema,
 } from "./sessioninfo.js";
@@ -53,23 +46,6 @@ export type RecommendationsRequest = {
   recommendationDocumentSpec?: DocumentSpecUnion | undefined;
   requestOptions?: RecommendationsRequestOptions | undefined;
 };
-
-/** @internal */
-export const RecommendationsRequest$inboundSchema: z.ZodType<
-  RecommendationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  sourceDocument: Document$inboundSchema.optional(),
-  pageSize: z.number().int().optional(),
-  maxSnippetSize: z.number().int().optional(),
-  recommendationDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
-  requestOptions: RecommendationsRequestOptions$inboundSchema.optional(),
-});
 
 /** @internal */
 export type RecommendationsRequest$Outbound = {
@@ -99,33 +75,10 @@ export const RecommendationsRequest$outboundSchema: z.ZodType<
   requestOptions: RecommendationsRequestOptions$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RecommendationsRequest$ {
-  /** @deprecated use `RecommendationsRequest$inboundSchema` instead. */
-  export const inboundSchema = RecommendationsRequest$inboundSchema;
-  /** @deprecated use `RecommendationsRequest$outboundSchema` instead. */
-  export const outboundSchema = RecommendationsRequest$outboundSchema;
-  /** @deprecated use `RecommendationsRequest$Outbound` instead. */
-  export type Outbound = RecommendationsRequest$Outbound;
-}
-
 export function recommendationsRequestToJSON(
   recommendationsRequest: RecommendationsRequest,
 ): string {
   return JSON.stringify(
     RecommendationsRequest$outboundSchema.parse(recommendationsRequest),
-  );
-}
-
-export function recommendationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<RecommendationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RecommendationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RecommendationsRequest' from JSON`,
   );
 }

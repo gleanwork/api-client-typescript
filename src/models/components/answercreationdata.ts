@@ -3,31 +3,24 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentSpecUnion,
-  DocumentSpecUnion$inboundSchema,
   DocumentSpecUnion$Outbound,
   DocumentSpecUnion$outboundSchema,
 } from "./documentspecunion.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   StructuredTextMutableProperties,
-  StructuredTextMutableProperties$inboundSchema,
   StructuredTextMutableProperties$Outbound,
   StructuredTextMutableProperties$outboundSchema,
 } from "./structuredtextmutableproperties.js";
 import {
   UserRoleSpecification,
-  UserRoleSpecification$inboundSchema,
   UserRoleSpecification$Outbound,
   UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
@@ -82,45 +75,9 @@ export type AnswerCreationData = {
 };
 
 /** @internal */
-export const AnswerCreationDataSourceType$inboundSchema: z.ZodNativeEnum<
-  typeof AnswerCreationDataSourceType
-> = z.nativeEnum(AnswerCreationDataSourceType);
-
-/** @internal */
 export const AnswerCreationDataSourceType$outboundSchema: z.ZodNativeEnum<
   typeof AnswerCreationDataSourceType
-> = AnswerCreationDataSourceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerCreationDataSourceType$ {
-  /** @deprecated use `AnswerCreationDataSourceType$inboundSchema` instead. */
-  export const inboundSchema = AnswerCreationDataSourceType$inboundSchema;
-  /** @deprecated use `AnswerCreationDataSourceType$outboundSchema` instead. */
-  export const outboundSchema = AnswerCreationDataSourceType$outboundSchema;
-}
-
-/** @internal */
-export const AnswerCreationData$inboundSchema: z.ZodType<
-  AnswerCreationData,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  question: z.string().optional(),
-  questionVariations: z.array(z.string()).optional(),
-  bodyText: z.string().optional(),
-  boardId: z.number().int().optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  roles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
-  sourceType: AnswerCreationDataSourceType$inboundSchema.optional(),
-  addedCollections: z.array(z.number().int()).optional(),
-  combinedAnswerText: StructuredTextMutableProperties$inboundSchema.optional(),
-});
+> = z.nativeEnum(AnswerCreationDataSourceType);
 
 /** @internal */
 export type AnswerCreationData$Outbound = {
@@ -158,33 +115,10 @@ export const AnswerCreationData$outboundSchema: z.ZodType<
   combinedAnswerText: StructuredTextMutableProperties$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerCreationData$ {
-  /** @deprecated use `AnswerCreationData$inboundSchema` instead. */
-  export const inboundSchema = AnswerCreationData$inboundSchema;
-  /** @deprecated use `AnswerCreationData$outboundSchema` instead. */
-  export const outboundSchema = AnswerCreationData$outboundSchema;
-  /** @deprecated use `AnswerCreationData$Outbound` instead. */
-  export type Outbound = AnswerCreationData$Outbound;
-}
-
 export function answerCreationDataToJSON(
   answerCreationData: AnswerCreationData,
 ): string {
   return JSON.stringify(
     AnswerCreationData$outboundSchema.parse(answerCreationData),
-  );
-}
-
-export function answerCreationDataFromJSON(
-  jsonString: string,
-): SafeParseResult<AnswerCreationData, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AnswerCreationData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AnswerCreationData' from JSON`,
   );
 }

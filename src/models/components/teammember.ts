@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Information about a team's member
@@ -26,21 +23,6 @@ export type TeamMember = {
    */
   joinDate?: RFCDate | undefined;
 };
-
-/** @internal */
-export const TeamMember$inboundSchema: z.ZodType<
-  TeamMember,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string(),
-  relationship: z.string().default("MEMBER"),
-  join_date: z.string().transform(v => new RFCDate(v)).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "join_date": "joinDate",
-  });
-});
 
 /** @internal */
 export type TeamMember$Outbound = {
@@ -64,29 +46,6 @@ export const TeamMember$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamMember$ {
-  /** @deprecated use `TeamMember$inboundSchema` instead. */
-  export const inboundSchema = TeamMember$inboundSchema;
-  /** @deprecated use `TeamMember$outboundSchema` instead. */
-  export const outboundSchema = TeamMember$outboundSchema;
-  /** @deprecated use `TeamMember$Outbound` instead. */
-  export type Outbound = TeamMember$Outbound;
-}
-
 export function teamMemberToJSON(teamMember: TeamMember): string {
   return JSON.stringify(TeamMember$outboundSchema.parse(teamMember));
-}
-
-export function teamMemberFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamMember, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamMember$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamMember' from JSON`,
-  );
 }

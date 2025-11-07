@@ -157,7 +157,6 @@ export const Collection$inboundSchema: z.ZodType<
   children: z.array(z.lazy(() => Collection$inboundSchema)).optional(),
   roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type Collection$Outbound = {
   name: string;
@@ -218,23 +217,9 @@ export const Collection$outboundSchema: z.ZodType<
   roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Collection$ {
-  /** @deprecated use `Collection$inboundSchema` instead. */
-  export const inboundSchema = Collection$inboundSchema;
-  /** @deprecated use `Collection$outboundSchema` instead. */
-  export const outboundSchema = Collection$outboundSchema;
-  /** @deprecated use `Collection$Outbound` instead. */
-  export type Outbound = Collection$Outbound;
-}
-
 export function collectionToJSON(collection: Collection): string {
   return JSON.stringify(Collection$outboundSchema.parse(collection));
 }
-
 export function collectionFromJSON(
   jsonString: string,
 ): SafeParseResult<Collection, SDKValidationError> {

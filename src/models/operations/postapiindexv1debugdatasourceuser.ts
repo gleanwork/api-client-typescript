@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PostApiIndexV1DebugDatasourceUserRequest = {
   /**
@@ -16,20 +13,6 @@ export type PostApiIndexV1DebugDatasourceUserRequest = {
   datasource: string;
   debugUserRequest: components.DebugUserRequest;
 };
-
-/** @internal */
-export const PostApiIndexV1DebugDatasourceUserRequest$inboundSchema: z.ZodType<
-  PostApiIndexV1DebugDatasourceUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-  DebugUserRequest: components.DebugUserRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DebugUserRequest": "debugUserRequest",
-  });
-});
 
 /** @internal */
 export type PostApiIndexV1DebugDatasourceUserRequest$Outbound = {
@@ -51,21 +34,6 @@ export const PostApiIndexV1DebugDatasourceUserRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostApiIndexV1DebugDatasourceUserRequest$ {
-  /** @deprecated use `PostApiIndexV1DebugDatasourceUserRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostApiIndexV1DebugDatasourceUserRequest$inboundSchema;
-  /** @deprecated use `PostApiIndexV1DebugDatasourceUserRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostApiIndexV1DebugDatasourceUserRequest$outboundSchema;
-  /** @deprecated use `PostApiIndexV1DebugDatasourceUserRequest$Outbound` instead. */
-  export type Outbound = PostApiIndexV1DebugDatasourceUserRequest$Outbound;
-}
-
 export function postApiIndexV1DebugDatasourceUserRequestToJSON(
   postApiIndexV1DebugDatasourceUserRequest:
     PostApiIndexV1DebugDatasourceUserRequest,
@@ -74,21 +42,5 @@ export function postApiIndexV1DebugDatasourceUserRequestToJSON(
     PostApiIndexV1DebugDatasourceUserRequest$outboundSchema.parse(
       postApiIndexV1DebugDatasourceUserRequest,
     ),
-  );
-}
-
-export function postApiIndexV1DebugDatasourceUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostApiIndexV1DebugDatasourceUserRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostApiIndexV1DebugDatasourceUserRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostApiIndexV1DebugDatasourceUserRequest' from JSON`,
   );
 }

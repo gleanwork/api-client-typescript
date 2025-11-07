@@ -23,19 +23,7 @@ export type DlpReportStatus = ClosedEnum<typeof DlpReportStatus>;
 export const DlpReportStatus$inboundSchema: z.ZodNativeEnum<
   typeof DlpReportStatus
 > = z.nativeEnum(DlpReportStatus);
-
 /** @internal */
 export const DlpReportStatus$outboundSchema: z.ZodNativeEnum<
   typeof DlpReportStatus
 > = DlpReportStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DlpReportStatus$ {
-  /** @deprecated use `DlpReportStatus$inboundSchema` instead. */
-  export const inboundSchema = DlpReportStatus$inboundSchema;
-  /** @deprecated use `DlpReportStatus$outboundSchema` instead. */
-  export const outboundSchema = DlpReportStatus$outboundSchema;
-}

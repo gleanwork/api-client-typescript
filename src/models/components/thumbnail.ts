@@ -27,7 +27,6 @@ export const Thumbnail$inboundSchema: z.ZodType<
   photoId: z.string().optional(),
   url: z.string().optional(),
 });
-
 /** @internal */
 export type Thumbnail$Outbound = {
   photoId?: string | undefined;
@@ -44,23 +43,9 @@ export const Thumbnail$outboundSchema: z.ZodType<
   url: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Thumbnail$ {
-  /** @deprecated use `Thumbnail$inboundSchema` instead. */
-  export const inboundSchema = Thumbnail$inboundSchema;
-  /** @deprecated use `Thumbnail$outboundSchema` instead. */
-  export const outboundSchema = Thumbnail$outboundSchema;
-  /** @deprecated use `Thumbnail$Outbound` instead. */
-  export type Outbound = Thumbnail$Outbound;
-}
-
 export function thumbnailToJSON(thumbnail: Thumbnail): string {
   return JSON.stringify(Thumbnail$outboundSchema.parse(thumbnail));
 }
-
 export function thumbnailFromJSON(
   jsonString: string,
 ): SafeParseResult<Thumbnail, SDKValidationError> {

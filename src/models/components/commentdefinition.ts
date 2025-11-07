@@ -3,18 +3,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContentDefinition,
-  ContentDefinition$inboundSchema,
   ContentDefinition$Outbound,
   ContentDefinition$outboundSchema,
 } from "./contentdefinition.js";
 import {
   UserReferenceDefinition,
-  UserReferenceDefinition$inboundSchema,
   UserReferenceDefinition$Outbound,
   UserReferenceDefinition$outboundSchema,
 } from "./userreferencedefinition.js";
@@ -50,20 +45,6 @@ export type CommentDefinition = {
 };
 
 /** @internal */
-export const CommentDefinition$inboundSchema: z.ZodType<
-  CommentDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  author: UserReferenceDefinition$inboundSchema.optional(),
-  content: ContentDefinition$inboundSchema.optional(),
-  createdAt: z.number().int().optional(),
-  updatedAt: z.number().int().optional(),
-  updatedBy: UserReferenceDefinition$inboundSchema.optional(),
-});
-
-/** @internal */
 export type CommentDefinition$Outbound = {
   id: string;
   author?: UserReferenceDefinition$Outbound | undefined;
@@ -87,33 +68,10 @@ export const CommentDefinition$outboundSchema: z.ZodType<
   updatedBy: UserReferenceDefinition$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommentDefinition$ {
-  /** @deprecated use `CommentDefinition$inboundSchema` instead. */
-  export const inboundSchema = CommentDefinition$inboundSchema;
-  /** @deprecated use `CommentDefinition$outboundSchema` instead. */
-  export const outboundSchema = CommentDefinition$outboundSchema;
-  /** @deprecated use `CommentDefinition$Outbound` instead. */
-  export type Outbound = CommentDefinition$Outbound;
-}
-
 export function commentDefinitionToJSON(
   commentDefinition: CommentDefinition,
 ): string {
   return JSON.stringify(
     CommentDefinition$outboundSchema.parse(commentDefinition),
-  );
-}
-
-export function commentDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<CommentDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CommentDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CommentDefinition' from JSON`,
   );
 }

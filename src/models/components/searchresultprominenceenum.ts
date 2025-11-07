@@ -28,19 +28,7 @@ export type SearchResultProminenceEnum = ClosedEnum<
 export const SearchResultProminenceEnum$inboundSchema: z.ZodNativeEnum<
   typeof SearchResultProminenceEnum
 > = z.nativeEnum(SearchResultProminenceEnum);
-
 /** @internal */
 export const SearchResultProminenceEnum$outboundSchema: z.ZodNativeEnum<
   typeof SearchResultProminenceEnum
 > = SearchResultProminenceEnum$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchResultProminenceEnum$ {
-  /** @deprecated use `SearchResultProminenceEnum$inboundSchema` instead. */
-  export const inboundSchema = SearchResultProminenceEnum$inboundSchema;
-  /** @deprecated use `SearchResultProminenceEnum$outboundSchema` instead. */
-  export const outboundSchema = SearchResultProminenceEnum$outboundSchema;
-}

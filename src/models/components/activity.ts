@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ActivityEvent,
-  ActivityEvent$inboundSchema,
   ActivityEvent$Outbound,
   ActivityEvent$outboundSchema,
 } from "./activityevent.js";
@@ -16,15 +12,6 @@ import {
 export type Activity = {
   events: Array<ActivityEvent>;
 };
-
-/** @internal */
-export const Activity$inboundSchema: z.ZodType<
-  Activity,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  events: z.array(ActivityEvent$inboundSchema),
-});
 
 /** @internal */
 export type Activity$Outbound = {
@@ -40,29 +27,6 @@ export const Activity$outboundSchema: z.ZodType<
   events: z.array(ActivityEvent$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Activity$ {
-  /** @deprecated use `Activity$inboundSchema` instead. */
-  export const inboundSchema = Activity$inboundSchema;
-  /** @deprecated use `Activity$outboundSchema` instead. */
-  export const outboundSchema = Activity$outboundSchema;
-  /** @deprecated use `Activity$Outbound` instead. */
-  export type Outbound = Activity$Outbound;
-}
-
 export function activityToJSON(activity: Activity): string {
   return JSON.stringify(Activity$outboundSchema.parse(activity));
-}
-
-export function activityFromJSON(
-  jsonString: string,
-): SafeParseResult<Activity, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Activity$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Activity' from JSON`,
-  );
 }

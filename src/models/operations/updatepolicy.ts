@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UpdatepolicyRequest = {
   /**
@@ -16,20 +13,6 @@ export type UpdatepolicyRequest = {
   id: string;
   updateDlpReportRequest: components.UpdateDlpReportRequest;
 };
-
-/** @internal */
-export const UpdatepolicyRequest$inboundSchema: z.ZodType<
-  UpdatepolicyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  UpdateDlpReportRequest: components.UpdateDlpReportRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UpdateDlpReportRequest": "updateDlpReportRequest",
-  });
-});
 
 /** @internal */
 export type UpdatepolicyRequest$Outbound = {
@@ -51,33 +34,10 @@ export const UpdatepolicyRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdatepolicyRequest$ {
-  /** @deprecated use `UpdatepolicyRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdatepolicyRequest$inboundSchema;
-  /** @deprecated use `UpdatepolicyRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdatepolicyRequest$outboundSchema;
-  /** @deprecated use `UpdatepolicyRequest$Outbound` instead. */
-  export type Outbound = UpdatepolicyRequest$Outbound;
-}
-
 export function updatepolicyRequestToJSON(
   updatepolicyRequest: UpdatepolicyRequest,
 ): string {
   return JSON.stringify(
     UpdatepolicyRequest$outboundSchema.parse(updatepolicyRequest),
-  );
-}
-
-export function updatepolicyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdatepolicyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdatepolicyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatepolicyRequest' from JSON`,
   );
 }

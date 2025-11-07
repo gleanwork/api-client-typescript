@@ -27,7 +27,6 @@ export const CustomFieldValueHyperlink$inboundSchema: z.ZodType<
   urlAnchor: z.string().optional(),
   urlLink: z.string().optional(),
 });
-
 /** @internal */
 export type CustomFieldValueHyperlink$Outbound = {
   urlAnchor?: string | undefined;
@@ -44,19 +43,6 @@ export const CustomFieldValueHyperlink$outboundSchema: z.ZodType<
   urlLink: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldValueHyperlink$ {
-  /** @deprecated use `CustomFieldValueHyperlink$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldValueHyperlink$inboundSchema;
-  /** @deprecated use `CustomFieldValueHyperlink$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldValueHyperlink$outboundSchema;
-  /** @deprecated use `CustomFieldValueHyperlink$Outbound` instead. */
-  export type Outbound = CustomFieldValueHyperlink$Outbound;
-}
-
 export function customFieldValueHyperlinkToJSON(
   customFieldValueHyperlink: CustomFieldValueHyperlink,
 ): string {
@@ -64,7 +50,6 @@ export function customFieldValueHyperlinkToJSON(
     CustomFieldValueHyperlink$outboundSchema.parse(customFieldValueHyperlink),
   );
 }
-
 export function customFieldValueHyperlinkFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldValueHyperlink, SDKValidationError> {

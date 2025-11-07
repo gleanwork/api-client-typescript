@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
 
 export type QueryInsight = {
   /**
@@ -41,47 +36,6 @@ export const QueryInsight$inboundSchema: z.ZodType<
   clickCount: CountInfo$inboundSchema.optional(),
   similarQueries: z.array(z.lazy(() => QueryInsight$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type QueryInsight$Outbound = {
-  query: string;
-  searchCount?: CountInfo$Outbound | undefined;
-  searchorCount?: CountInfo$Outbound | undefined;
-  searchWithClickCount?: CountInfo$Outbound | undefined;
-  clickCount?: CountInfo$Outbound | undefined;
-  similarQueries?: Array<QueryInsight$Outbound> | undefined;
-};
-
-/** @internal */
-export const QueryInsight$outboundSchema: z.ZodType<
-  QueryInsight$Outbound,
-  z.ZodTypeDef,
-  QueryInsight
-> = z.object({
-  query: z.string(),
-  searchCount: CountInfo$outboundSchema.optional(),
-  searchorCount: CountInfo$outboundSchema.optional(),
-  searchWithClickCount: CountInfo$outboundSchema.optional(),
-  clickCount: CountInfo$outboundSchema.optional(),
-  similarQueries: z.array(z.lazy(() => QueryInsight$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryInsight$ {
-  /** @deprecated use `QueryInsight$inboundSchema` instead. */
-  export const inboundSchema = QueryInsight$inboundSchema;
-  /** @deprecated use `QueryInsight$outboundSchema` instead. */
-  export const outboundSchema = QueryInsight$outboundSchema;
-  /** @deprecated use `QueryInsight$Outbound` instead. */
-  export type Outbound = QueryInsight$Outbound;
-}
-
-export function queryInsightToJSON(queryInsight: QueryInsight): string {
-  return JSON.stringify(QueryInsight$outboundSchema.parse(queryInsight));
-}
 
 export function queryInsightFromJSON(
   jsonString: string,

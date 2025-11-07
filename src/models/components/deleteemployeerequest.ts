@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /deleteemployee API call
@@ -20,16 +17,6 @@ export type DeleteEmployeeRequest = {
    */
   employeeEmail: string;
 };
-
-/** @internal */
-export const DeleteEmployeeRequest$inboundSchema: z.ZodType<
-  DeleteEmployeeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: z.number().int().optional(),
-  employeeEmail: z.string(),
-});
 
 /** @internal */
 export type DeleteEmployeeRequest$Outbound = {
@@ -47,33 +34,10 @@ export const DeleteEmployeeRequest$outboundSchema: z.ZodType<
   employeeEmail: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteEmployeeRequest$ {
-  /** @deprecated use `DeleteEmployeeRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteEmployeeRequest$inboundSchema;
-  /** @deprecated use `DeleteEmployeeRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteEmployeeRequest$outboundSchema;
-  /** @deprecated use `DeleteEmployeeRequest$Outbound` instead. */
-  export type Outbound = DeleteEmployeeRequest$Outbound;
-}
-
 export function deleteEmployeeRequestToJSON(
   deleteEmployeeRequest: DeleteEmployeeRequest,
 ): string {
   return JSON.stringify(
     DeleteEmployeeRequest$outboundSchema.parse(deleteEmployeeRequest),
-  );
-}
-
-export function deleteEmployeeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteEmployeeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteEmployeeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteEmployeeRequest' from JSON`,
   );
 }

@@ -22,6 +22,7 @@ generation:
     hoistGlobalSecurity: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   mockServer:
     disabled: false
   tests:
@@ -29,7 +30,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.13.3
+  version: 0.13.4
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -37,6 +38,7 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON: {}
   additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
   baseErrorName: GleanBaseError
   clientServerStatusCodesAsErrors: true
@@ -47,6 +49,7 @@ typescript:
   enableReactQuery: true
   enumFormat: union
   envVarPrefix: GLEAN
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
   generateExamples: true

@@ -39,7 +39,6 @@ export const CollectionPinnedMetadata$inboundSchema: z.ZodType<
   existingPins: z.array(CollectionPinTarget$inboundSchema).optional(),
   eligiblePins: z.array(CollectionPinMetadata$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CollectionPinnedMetadata$Outbound = {
   existingPins?: Array<CollectionPinTarget$Outbound> | undefined;
@@ -56,19 +55,6 @@ export const CollectionPinnedMetadata$outboundSchema: z.ZodType<
   eligiblePins: z.array(CollectionPinMetadata$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionPinnedMetadata$ {
-  /** @deprecated use `CollectionPinnedMetadata$inboundSchema` instead. */
-  export const inboundSchema = CollectionPinnedMetadata$inboundSchema;
-  /** @deprecated use `CollectionPinnedMetadata$outboundSchema` instead. */
-  export const outboundSchema = CollectionPinnedMetadata$outboundSchema;
-  /** @deprecated use `CollectionPinnedMetadata$Outbound` instead. */
-  export type Outbound = CollectionPinnedMetadata$Outbound;
-}
-
 export function collectionPinnedMetadataToJSON(
   collectionPinnedMetadata: CollectionPinnedMetadata,
 ): string {
@@ -76,7 +62,6 @@ export function collectionPinnedMetadataToJSON(
     CollectionPinnedMetadata$outboundSchema.parse(collectionPinnedMetadata),
   );
 }
-
 export function collectionPinnedMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<CollectionPinnedMetadata, SDKValidationError> {

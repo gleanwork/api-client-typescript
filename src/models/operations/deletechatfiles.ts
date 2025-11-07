@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeletechatfilesRequest = {
   /**
@@ -16,20 +13,6 @@ export type DeletechatfilesRequest = {
   timezoneOffset?: number | undefined;
   deleteChatFilesRequest: components.DeleteChatFilesRequest;
 };
-
-/** @internal */
-export const DeletechatfilesRequest$inboundSchema: z.ZodType<
-  DeletechatfilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  DeleteChatFilesRequest: components.DeleteChatFilesRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeleteChatFilesRequest": "deleteChatFilesRequest",
-  });
-});
 
 /** @internal */
 export type DeletechatfilesRequest$Outbound = {
@@ -51,33 +34,10 @@ export const DeletechatfilesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeletechatfilesRequest$ {
-  /** @deprecated use `DeletechatfilesRequest$inboundSchema` instead. */
-  export const inboundSchema = DeletechatfilesRequest$inboundSchema;
-  /** @deprecated use `DeletechatfilesRequest$outboundSchema` instead. */
-  export const outboundSchema = DeletechatfilesRequest$outboundSchema;
-  /** @deprecated use `DeletechatfilesRequest$Outbound` instead. */
-  export type Outbound = DeletechatfilesRequest$Outbound;
-}
-
 export function deletechatfilesRequestToJSON(
   deletechatfilesRequest: DeletechatfilesRequest,
 ): string {
   return JSON.stringify(
     DeletechatfilesRequest$outboundSchema.parse(deletechatfilesRequest),
-  );
-}
-
-export function deletechatfilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeletechatfilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeletechatfilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeletechatfilesRequest' from JSON`,
   );
 }

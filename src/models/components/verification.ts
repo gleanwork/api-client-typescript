@@ -39,21 +39,9 @@ export type Verification = {
 export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
   State,
 );
-
 /** @internal */
 export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
   State$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace State$ {
-  /** @deprecated use `State$inboundSchema` instead. */
-  export const inboundSchema = State$inboundSchema;
-  /** @deprecated use `State$outboundSchema` instead. */
-  export const outboundSchema = State$outboundSchema;
-}
 
 /** @internal */
 export const Verification$inboundSchema: z.ZodType<
@@ -64,7 +52,6 @@ export const Verification$inboundSchema: z.ZodType<
   state: State$inboundSchema,
   metadata: z.lazy(() => VerificationMetadata$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Verification$Outbound = {
   state: string;
@@ -81,23 +68,9 @@ export const Verification$outboundSchema: z.ZodType<
   metadata: z.lazy(() => VerificationMetadata$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Verification$ {
-  /** @deprecated use `Verification$inboundSchema` instead. */
-  export const inboundSchema = Verification$inboundSchema;
-  /** @deprecated use `Verification$outboundSchema` instead. */
-  export const outboundSchema = Verification$outboundSchema;
-  /** @deprecated use `Verification$Outbound` instead. */
-  export type Outbound = Verification$Outbound;
-}
-
 export function verificationToJSON(verification: Verification): string {
   return JSON.stringify(Verification$outboundSchema.parse(verification));
 }
-
 export function verificationFromJSON(
   jsonString: string,
 ): SafeParseResult<Verification, SDKValidationError> {

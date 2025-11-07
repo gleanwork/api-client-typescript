@@ -10,14 +10,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentExecutionStatus,
   AgentExecutionStatus$inboundSchema,
-  AgentExecutionStatus$outboundSchema,
 } from "./agentexecutionstatus.js";
-import {
-  Message,
-  Message$inboundSchema,
-  Message$Outbound,
-  Message$outboundSchema,
-} from "./message.js";
+import { Message, Message$inboundSchema } from "./message.js";
 
 /**
  * Payload for creating a run.
@@ -61,49 +55,6 @@ export const AgentRun$inboundSchema: z.ZodType<
     "agent_id": "agentId",
   });
 });
-
-/** @internal */
-export type AgentRun$Outbound = {
-  agent_id: string;
-  input?: { [k: string]: any } | undefined;
-  messages?: Array<Message$Outbound> | undefined;
-  metadata?: { [k: string]: any } | undefined;
-  status?: string | undefined;
-};
-
-/** @internal */
-export const AgentRun$outboundSchema: z.ZodType<
-  AgentRun$Outbound,
-  z.ZodTypeDef,
-  AgentRun
-> = z.object({
-  agentId: z.string(),
-  input: z.record(z.any()).optional(),
-  messages: z.array(Message$outboundSchema).optional(),
-  metadata: z.record(z.any()).optional(),
-  status: AgentExecutionStatus$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentRun$ {
-  /** @deprecated use `AgentRun$inboundSchema` instead. */
-  export const inboundSchema = AgentRun$inboundSchema;
-  /** @deprecated use `AgentRun$outboundSchema` instead. */
-  export const outboundSchema = AgentRun$outboundSchema;
-  /** @deprecated use `AgentRun$Outbound` instead. */
-  export type Outbound = AgentRun$Outbound;
-}
-
-export function agentRunToJSON(agentRun: AgentRun): string {
-  return JSON.stringify(AgentRun$outboundSchema.parse(agentRun));
-}
 
 export function agentRunFromJSON(
   jsonString: string,

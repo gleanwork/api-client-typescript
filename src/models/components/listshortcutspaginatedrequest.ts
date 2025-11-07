@@ -3,19 +3,14 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   SortOptions,
-  SortOptions$inboundSchema,
   SortOptions$Outbound,
   SortOptions$outboundSchema,
 } from "./sortoptions.js";
@@ -50,43 +45,9 @@ export type ListShortcutsPaginatedRequest = {
 };
 
 /** @internal */
-export const ListShortcutsPaginatedRequestIncludeField$inboundSchema:
+export const ListShortcutsPaginatedRequestIncludeField$outboundSchema:
   z.ZodNativeEnum<typeof ListShortcutsPaginatedRequestIncludeField> = z
     .nativeEnum(ListShortcutsPaginatedRequestIncludeField);
-
-/** @internal */
-export const ListShortcutsPaginatedRequestIncludeField$outboundSchema:
-  z.ZodNativeEnum<typeof ListShortcutsPaginatedRequestIncludeField> =
-    ListShortcutsPaginatedRequestIncludeField$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListShortcutsPaginatedRequestIncludeField$ {
-  /** @deprecated use `ListShortcutsPaginatedRequestIncludeField$inboundSchema` instead. */
-  export const inboundSchema =
-    ListShortcutsPaginatedRequestIncludeField$inboundSchema;
-  /** @deprecated use `ListShortcutsPaginatedRequestIncludeField$outboundSchema` instead. */
-  export const outboundSchema =
-    ListShortcutsPaginatedRequestIncludeField$outboundSchema;
-}
-
-/** @internal */
-export const ListShortcutsPaginatedRequest$inboundSchema: z.ZodType<
-  ListShortcutsPaginatedRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  includeFields: z.array(
-    ListShortcutsPaginatedRequestIncludeField$inboundSchema,
-  ).optional(),
-  pageSize: z.number().int(),
-  cursor: z.string().optional(),
-  filters: z.array(FacetFilter$inboundSchema).optional(),
-  sort: SortOptions$inboundSchema.optional(),
-  query: z.string().optional(),
-});
 
 /** @internal */
 export type ListShortcutsPaginatedRequest$Outbound = {
@@ -114,19 +75,6 @@ export const ListShortcutsPaginatedRequest$outboundSchema: z.ZodType<
   query: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListShortcutsPaginatedRequest$ {
-  /** @deprecated use `ListShortcutsPaginatedRequest$inboundSchema` instead. */
-  export const inboundSchema = ListShortcutsPaginatedRequest$inboundSchema;
-  /** @deprecated use `ListShortcutsPaginatedRequest$outboundSchema` instead. */
-  export const outboundSchema = ListShortcutsPaginatedRequest$outboundSchema;
-  /** @deprecated use `ListShortcutsPaginatedRequest$Outbound` instead. */
-  export type Outbound = ListShortcutsPaginatedRequest$Outbound;
-}
-
 export function listShortcutsPaginatedRequestToJSON(
   listShortcutsPaginatedRequest: ListShortcutsPaginatedRequest,
 ): string {
@@ -134,15 +82,5 @@ export function listShortcutsPaginatedRequestToJSON(
     ListShortcutsPaginatedRequest$outboundSchema.parse(
       listShortcutsPaginatedRequest,
     ),
-  );
-}
-
-export function listShortcutsPaginatedRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListShortcutsPaginatedRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListShortcutsPaginatedRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListShortcutsPaginatedRequest' from JSON`,
   );
 }

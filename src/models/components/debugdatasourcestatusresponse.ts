@@ -10,26 +10,18 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BulkUploadHistoryEvent,
   BulkUploadHistoryEvent$inboundSchema,
-  BulkUploadHistoryEvent$Outbound,
-  BulkUploadHistoryEvent$outboundSchema,
 } from "./bulkuploadhistoryevent.js";
 import {
   DatasourceObjectTypeDocumentCountEntry,
   DatasourceObjectTypeDocumentCountEntry$inboundSchema,
-  DatasourceObjectTypeDocumentCountEntry$Outbound,
-  DatasourceObjectTypeDocumentCountEntry$outboundSchema,
 } from "./datasourceobjecttypedocumentcountentry.js";
 import {
   DebugDatasourceStatusIdentityResponseComponent,
   DebugDatasourceStatusIdentityResponseComponent$inboundSchema,
-  DebugDatasourceStatusIdentityResponseComponent$Outbound,
-  DebugDatasourceStatusIdentityResponseComponent$outboundSchema,
 } from "./debugdatasourcestatusidentityresponsecomponent.js";
 import {
   ProcessingHistoryEvent,
   ProcessingHistoryEvent$inboundSchema,
-  ProcessingHistoryEvent$Outbound,
-  ProcessingHistoryEvent$outboundSchema,
 } from "./processinghistoryevent.js";
 
 export type DebugDatasourceStatusResponseCounts = {
@@ -104,49 +96,6 @@ export const DebugDatasourceStatusResponseCounts$inboundSchema: z.ZodType<
     .optional(),
 });
 
-/** @internal */
-export type DebugDatasourceStatusResponseCounts$Outbound = {
-  uploaded?: Array<DatasourceObjectTypeDocumentCountEntry$Outbound> | undefined;
-  indexed?: Array<DatasourceObjectTypeDocumentCountEntry$Outbound> | undefined;
-};
-
-/** @internal */
-export const DebugDatasourceStatusResponseCounts$outboundSchema: z.ZodType<
-  DebugDatasourceStatusResponseCounts$Outbound,
-  z.ZodTypeDef,
-  DebugDatasourceStatusResponseCounts
-> = z.object({
-  uploaded: z.array(DatasourceObjectTypeDocumentCountEntry$outboundSchema)
-    .optional(),
-  indexed: z.array(DatasourceObjectTypeDocumentCountEntry$outboundSchema)
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugDatasourceStatusResponseCounts$ {
-  /** @deprecated use `DebugDatasourceStatusResponseCounts$inboundSchema` instead. */
-  export const inboundSchema =
-    DebugDatasourceStatusResponseCounts$inboundSchema;
-  /** @deprecated use `DebugDatasourceStatusResponseCounts$outboundSchema` instead. */
-  export const outboundSchema =
-    DebugDatasourceStatusResponseCounts$outboundSchema;
-  /** @deprecated use `DebugDatasourceStatusResponseCounts$Outbound` instead. */
-  export type Outbound = DebugDatasourceStatusResponseCounts$Outbound;
-}
-
-export function debugDatasourceStatusResponseCountsToJSON(
-  debugDatasourceStatusResponseCounts: DebugDatasourceStatusResponseCounts,
-): string {
-  return JSON.stringify(
-    DebugDatasourceStatusResponseCounts$outboundSchema.parse(
-      debugDatasourceStatusResponseCounts,
-    ),
-  );
-}
-
 export function debugDatasourceStatusResponseCountsFromJSON(
   jsonString: string,
 ): SafeParseResult<DebugDatasourceStatusResponseCounts, SDKValidationError> {
@@ -169,42 +118,6 @@ export const Documents$inboundSchema: z.ZodType<
     .optional(),
   processingHistory: z.array(ProcessingHistoryEvent$inboundSchema).optional(),
 });
-
-/** @internal */
-export type Documents$Outbound = {
-  bulkUploadHistory?: Array<BulkUploadHistoryEvent$Outbound> | undefined;
-  counts?: DebugDatasourceStatusResponseCounts$Outbound | undefined;
-  processingHistory?: Array<ProcessingHistoryEvent$Outbound> | undefined;
-};
-
-/** @internal */
-export const Documents$outboundSchema: z.ZodType<
-  Documents$Outbound,
-  z.ZodTypeDef,
-  Documents
-> = z.object({
-  bulkUploadHistory: z.array(BulkUploadHistoryEvent$outboundSchema).optional(),
-  counts: z.lazy(() => DebugDatasourceStatusResponseCounts$outboundSchema)
-    .optional(),
-  processingHistory: z.array(ProcessingHistoryEvent$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Documents$ {
-  /** @deprecated use `Documents$inboundSchema` instead. */
-  export const inboundSchema = Documents$inboundSchema;
-  /** @deprecated use `Documents$outboundSchema` instead. */
-  export const outboundSchema = Documents$outboundSchema;
-  /** @deprecated use `Documents$Outbound` instead. */
-  export type Outbound = Documents$Outbound;
-}
-
-export function documentsToJSON(documents: Documents): string {
-  return JSON.stringify(Documents$outboundSchema.parse(documents));
-}
 
 export function documentsFromJSON(
   jsonString: string,
@@ -231,48 +144,6 @@ export const Identity$inboundSchema: z.ZodType<
     .optional(),
 });
 
-/** @internal */
-export type Identity$Outbound = {
-  processingHistory?: Array<ProcessingHistoryEvent$Outbound> | undefined;
-  users?: DebugDatasourceStatusIdentityResponseComponent$Outbound | undefined;
-  groups?: DebugDatasourceStatusIdentityResponseComponent$Outbound | undefined;
-  memberships?:
-    | DebugDatasourceStatusIdentityResponseComponent$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const Identity$outboundSchema: z.ZodType<
-  Identity$Outbound,
-  z.ZodTypeDef,
-  Identity
-> = z.object({
-  processingHistory: z.array(ProcessingHistoryEvent$outboundSchema).optional(),
-  users: DebugDatasourceStatusIdentityResponseComponent$outboundSchema
-    .optional(),
-  groups: DebugDatasourceStatusIdentityResponseComponent$outboundSchema
-    .optional(),
-  memberships: DebugDatasourceStatusIdentityResponseComponent$outboundSchema
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Identity$ {
-  /** @deprecated use `Identity$inboundSchema` instead. */
-  export const inboundSchema = Identity$inboundSchema;
-  /** @deprecated use `Identity$outboundSchema` instead. */
-  export const outboundSchema = Identity$outboundSchema;
-  /** @deprecated use `Identity$Outbound` instead. */
-  export type Outbound = Identity$Outbound;
-}
-
-export function identityToJSON(identity: Identity): string {
-  return JSON.stringify(Identity$outboundSchema.parse(identity));
-}
-
 export function identityFromJSON(
   jsonString: string,
 ): SafeParseResult<Identity, SDKValidationError> {
@@ -289,22 +160,6 @@ export const DatasourceVisibility$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(DatasourceVisibility);
 
 /** @internal */
-export const DatasourceVisibility$outboundSchema: z.ZodNativeEnum<
-  typeof DatasourceVisibility
-> = DatasourceVisibility$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceVisibility$ {
-  /** @deprecated use `DatasourceVisibility$inboundSchema` instead. */
-  export const inboundSchema = DatasourceVisibility$inboundSchema;
-  /** @deprecated use `DatasourceVisibility$outboundSchema` instead. */
-  export const outboundSchema = DatasourceVisibility$outboundSchema;
-}
-
-/** @internal */
 export const DebugDatasourceStatusResponse$inboundSchema: z.ZodType<
   DebugDatasourceStatusResponse,
   z.ZodTypeDef,
@@ -314,47 +169,6 @@ export const DebugDatasourceStatusResponse$inboundSchema: z.ZodType<
   identity: z.lazy(() => Identity$inboundSchema).optional(),
   datasourceVisibility: DatasourceVisibility$inboundSchema.optional(),
 });
-
-/** @internal */
-export type DebugDatasourceStatusResponse$Outbound = {
-  documents?: Documents$Outbound | undefined;
-  identity?: Identity$Outbound | undefined;
-  datasourceVisibility?: string | undefined;
-};
-
-/** @internal */
-export const DebugDatasourceStatusResponse$outboundSchema: z.ZodType<
-  DebugDatasourceStatusResponse$Outbound,
-  z.ZodTypeDef,
-  DebugDatasourceStatusResponse
-> = z.object({
-  documents: z.lazy(() => Documents$outboundSchema).optional(),
-  identity: z.lazy(() => Identity$outboundSchema).optional(),
-  datasourceVisibility: DatasourceVisibility$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugDatasourceStatusResponse$ {
-  /** @deprecated use `DebugDatasourceStatusResponse$inboundSchema` instead. */
-  export const inboundSchema = DebugDatasourceStatusResponse$inboundSchema;
-  /** @deprecated use `DebugDatasourceStatusResponse$outboundSchema` instead. */
-  export const outboundSchema = DebugDatasourceStatusResponse$outboundSchema;
-  /** @deprecated use `DebugDatasourceStatusResponse$Outbound` instead. */
-  export type Outbound = DebugDatasourceStatusResponse$Outbound;
-}
-
-export function debugDatasourceStatusResponseToJSON(
-  debugDatasourceStatusResponse: DebugDatasourceStatusResponse,
-): string {
-  return JSON.stringify(
-    DebugDatasourceStatusResponse$outboundSchema.parse(
-      debugDatasourceStatusResponse,
-    ),
-  );
-}
 
 export function debugDatasourceStatusResponseFromJSON(
   jsonString: string,

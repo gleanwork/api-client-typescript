@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CollectionItemDescriptor,
-  CollectionItemDescriptor$inboundSchema,
   CollectionItemDescriptor$Outbound,
   CollectionItemDescriptor$outboundSchema,
 } from "./collectionitemdescriptor.js";
@@ -23,18 +19,6 @@ export type AddCollectionItemsRequest = {
    */
   addedCollectionItemDescriptors?: Array<CollectionItemDescriptor> | undefined;
 };
-
-/** @internal */
-export const AddCollectionItemsRequest$inboundSchema: z.ZodType<
-  AddCollectionItemsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  collectionId: z.number(),
-  addedCollectionItemDescriptors: z.array(
-    CollectionItemDescriptor$inboundSchema,
-  ).optional(),
-});
 
 /** @internal */
 export type AddCollectionItemsRequest$Outbound = {
@@ -56,33 +40,10 @@ export const AddCollectionItemsRequest$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AddCollectionItemsRequest$ {
-  /** @deprecated use `AddCollectionItemsRequest$inboundSchema` instead. */
-  export const inboundSchema = AddCollectionItemsRequest$inboundSchema;
-  /** @deprecated use `AddCollectionItemsRequest$outboundSchema` instead. */
-  export const outboundSchema = AddCollectionItemsRequest$outboundSchema;
-  /** @deprecated use `AddCollectionItemsRequest$Outbound` instead. */
-  export type Outbound = AddCollectionItemsRequest$Outbound;
-}
-
 export function addCollectionItemsRequestToJSON(
   addCollectionItemsRequest: AddCollectionItemsRequest,
 ): string {
   return JSON.stringify(
     AddCollectionItemsRequest$outboundSchema.parse(addCollectionItemsRequest),
-  );
-}
-
-export function addCollectionItemsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AddCollectionItemsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AddCollectionItemsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddCollectionItemsRequest' from JSON`,
   );
 }

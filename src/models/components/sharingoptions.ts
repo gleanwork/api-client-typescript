@@ -60,7 +60,6 @@ export const SharingOptions$inboundSchema: z.ZodType<
   userAccessEnabled: z.boolean().optional(),
   userIds: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type SharingOptions$Outbound = {
   enabled?: boolean | undefined;
@@ -89,23 +88,9 @@ export const SharingOptions$outboundSchema: z.ZodType<
   userIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SharingOptions$ {
-  /** @deprecated use `SharingOptions$inboundSchema` instead. */
-  export const inboundSchema = SharingOptions$inboundSchema;
-  /** @deprecated use `SharingOptions$outboundSchema` instead. */
-  export const outboundSchema = SharingOptions$outboundSchema;
-  /** @deprecated use `SharingOptions$Outbound` instead. */
-  export type Outbound = SharingOptions$Outbound;
-}
-
 export function sharingOptionsToJSON(sharingOptions: SharingOptions): string {
   return JSON.stringify(SharingOptions$outboundSchema.parse(sharingOptions));
 }
-
 export function sharingOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<SharingOptions, SDKValidationError> {

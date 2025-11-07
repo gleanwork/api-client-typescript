@@ -31,21 +31,9 @@ export type FacetFilterValue = {
 /** @internal */
 export const RelationType$inboundSchema: z.ZodNativeEnum<typeof RelationType> =
   z.nativeEnum(RelationType);
-
 /** @internal */
 export const RelationType$outboundSchema: z.ZodNativeEnum<typeof RelationType> =
   RelationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RelationType$ {
-  /** @deprecated use `RelationType$inboundSchema` instead. */
-  export const inboundSchema = RelationType$inboundSchema;
-  /** @deprecated use `RelationType$outboundSchema` instead. */
-  export const outboundSchema = RelationType$outboundSchema;
-}
 
 /** @internal */
 export const FacetFilterValue$inboundSchema: z.ZodType<
@@ -57,7 +45,6 @@ export const FacetFilterValue$inboundSchema: z.ZodType<
   relationType: RelationType$inboundSchema.optional(),
   isNegated: z.boolean().optional(),
 });
-
 /** @internal */
 export type FacetFilterValue$Outbound = {
   value?: string | undefined;
@@ -76,19 +63,6 @@ export const FacetFilterValue$outboundSchema: z.ZodType<
   isNegated: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FacetFilterValue$ {
-  /** @deprecated use `FacetFilterValue$inboundSchema` instead. */
-  export const inboundSchema = FacetFilterValue$inboundSchema;
-  /** @deprecated use `FacetFilterValue$outboundSchema` instead. */
-  export const outboundSchema = FacetFilterValue$outboundSchema;
-  /** @deprecated use `FacetFilterValue$Outbound` instead. */
-  export type Outbound = FacetFilterValue$Outbound;
-}
-
 export function facetFilterValueToJSON(
   facetFilterValue: FacetFilterValue,
 ): string {
@@ -96,7 +70,6 @@ export function facetFilterValueToJSON(
     FacetFilterValue$outboundSchema.parse(facetFilterValue),
   );
 }
-
 export function facetFilterValueFromJSON(
   jsonString: string,
 ): SafeParseResult<FacetFilterValue, SDKValidationError> {

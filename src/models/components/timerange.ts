@@ -34,7 +34,6 @@ export const TimeRange$inboundSchema: z.ZodType<
     .optional(),
   lastNDaysValue: z.number().int().optional(),
 });
-
 /** @internal */
 export type TimeRange$Outbound = {
   startTime?: string | undefined;
@@ -53,23 +52,9 @@ export const TimeRange$outboundSchema: z.ZodType<
   lastNDaysValue: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeRange$ {
-  /** @deprecated use `TimeRange$inboundSchema` instead. */
-  export const inboundSchema = TimeRange$inboundSchema;
-  /** @deprecated use `TimeRange$outboundSchema` instead. */
-  export const outboundSchema = TimeRange$outboundSchema;
-  /** @deprecated use `TimeRange$Outbound` instead. */
-  export type Outbound = TimeRange$Outbound;
-}
-
 export function timeRangeToJSON(timeRange: TimeRange): string {
   return JSON.stringify(TimeRange$outboundSchema.parse(timeRange));
 }
-
 export function timeRangeFromJSON(
   jsonString: string,
 ): SafeParseResult<TimeRange, SDKValidationError> {

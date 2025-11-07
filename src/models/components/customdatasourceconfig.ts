@@ -172,7 +172,7 @@ export type CustomDatasourceConfig = {
    */
   stripFragmentInCanonicalUrl?: boolean | undefined;
   /**
-   * If the datasource uses another datasource for identity info, then the name of the datasource. The identity datasource must exist already.
+   * If the datasource uses another datasource for identity info, then the name of the datasource. The identity datasource must exist already and the datasource with identity info should have its visibility enabled for search results.
    */
   identityDatasourceName?: string | undefined;
   /**
@@ -197,66 +197,28 @@ export type CustomDatasourceConfig = {
 export const DatasourceCategory$inboundSchema: z.ZodNativeEnum<
   typeof DatasourceCategory
 > = z.nativeEnum(DatasourceCategory);
-
 /** @internal */
 export const DatasourceCategory$outboundSchema: z.ZodNativeEnum<
   typeof DatasourceCategory
 > = DatasourceCategory$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceCategory$ {
-  /** @deprecated use `DatasourceCategory$inboundSchema` instead. */
-  export const inboundSchema = DatasourceCategory$inboundSchema;
-  /** @deprecated use `DatasourceCategory$outboundSchema` instead. */
-  export const outboundSchema = DatasourceCategory$outboundSchema;
-}
-
 /** @internal */
 export const HideBuiltInFacet$inboundSchema: z.ZodNativeEnum<
   typeof HideBuiltInFacet
 > = z.nativeEnum(HideBuiltInFacet);
-
 /** @internal */
 export const HideBuiltInFacet$outboundSchema: z.ZodNativeEnum<
   typeof HideBuiltInFacet
 > = HideBuiltInFacet$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HideBuiltInFacet$ {
-  /** @deprecated use `HideBuiltInFacet$inboundSchema` instead. */
-  export const inboundSchema = HideBuiltInFacet$inboundSchema;
-  /** @deprecated use `HideBuiltInFacet$outboundSchema` instead. */
-  export const outboundSchema = HideBuiltInFacet$outboundSchema;
-}
-
 /** @internal */
 export const CustomDatasourceConfigConnectorType$inboundSchema: z.ZodNativeEnum<
   typeof CustomDatasourceConfigConnectorType
 > = z.nativeEnum(CustomDatasourceConfigConnectorType);
-
 /** @internal */
 export const CustomDatasourceConfigConnectorType$outboundSchema:
   z.ZodNativeEnum<typeof CustomDatasourceConfigConnectorType> =
     CustomDatasourceConfigConnectorType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomDatasourceConfigConnectorType$ {
-  /** @deprecated use `CustomDatasourceConfigConnectorType$inboundSchema` instead. */
-  export const inboundSchema =
-    CustomDatasourceConfigConnectorType$inboundSchema;
-  /** @deprecated use `CustomDatasourceConfigConnectorType$outboundSchema` instead. */
-  export const outboundSchema =
-    CustomDatasourceConfigConnectorType$outboundSchema;
-}
 
 /** @internal */
 export const CustomDatasourceConfig$inboundSchema: z.ZodType<
@@ -294,7 +256,6 @@ export const CustomDatasourceConfig$inboundSchema: z.ZodType<
   isEntityDatasource: z.boolean().default(false),
   isTestDatasource: z.boolean().default(false),
 });
-
 /** @internal */
 export type CustomDatasourceConfig$Outbound = {
   name: string;
@@ -367,19 +328,6 @@ export const CustomDatasourceConfig$outboundSchema: z.ZodType<
   isTestDatasource: z.boolean().default(false),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomDatasourceConfig$ {
-  /** @deprecated use `CustomDatasourceConfig$inboundSchema` instead. */
-  export const inboundSchema = CustomDatasourceConfig$inboundSchema;
-  /** @deprecated use `CustomDatasourceConfig$outboundSchema` instead. */
-  export const outboundSchema = CustomDatasourceConfig$outboundSchema;
-  /** @deprecated use `CustomDatasourceConfig$Outbound` instead. */
-  export type Outbound = CustomDatasourceConfig$Outbound;
-}
-
 export function customDatasourceConfigToJSON(
   customDatasourceConfig: CustomDatasourceConfig,
 ): string {
@@ -387,7 +335,6 @@ export function customDatasourceConfigToJSON(
     CustomDatasourceConfig$outboundSchema.parse(customDatasourceConfig),
   );
 }
-
 export function customDatasourceConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomDatasourceConfig, SDKValidationError> {

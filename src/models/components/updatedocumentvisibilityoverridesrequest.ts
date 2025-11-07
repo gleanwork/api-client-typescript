@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentVisibilityOverride,
-  DocumentVisibilityOverride$inboundSchema,
   DocumentVisibilityOverride$Outbound,
   DocumentVisibilityOverride$outboundSchema,
 } from "./documentvisibilityoverride.js";
@@ -16,16 +12,6 @@ import {
 export type UpdateDocumentVisibilityOverridesRequest = {
   visibilityOverrides?: Array<DocumentVisibilityOverride> | undefined;
 };
-
-/** @internal */
-export const UpdateDocumentVisibilityOverridesRequest$inboundSchema: z.ZodType<
-  UpdateDocumentVisibilityOverridesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  visibilityOverrides: z.array(DocumentVisibilityOverride$inboundSchema)
-    .optional(),
-});
 
 /** @internal */
 export type UpdateDocumentVisibilityOverridesRequest$Outbound = {
@@ -42,21 +28,6 @@ export const UpdateDocumentVisibilityOverridesRequest$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDocumentVisibilityOverridesRequest$ {
-  /** @deprecated use `UpdateDocumentVisibilityOverridesRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateDocumentVisibilityOverridesRequest$inboundSchema;
-  /** @deprecated use `UpdateDocumentVisibilityOverridesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDocumentVisibilityOverridesRequest$outboundSchema;
-  /** @deprecated use `UpdateDocumentVisibilityOverridesRequest$Outbound` instead. */
-  export type Outbound = UpdateDocumentVisibilityOverridesRequest$Outbound;
-}
-
 export function updateDocumentVisibilityOverridesRequestToJSON(
   updateDocumentVisibilityOverridesRequest:
     UpdateDocumentVisibilityOverridesRequest,
@@ -65,21 +36,5 @@ export function updateDocumentVisibilityOverridesRequestToJSON(
     UpdateDocumentVisibilityOverridesRequest$outboundSchema.parse(
       updateDocumentVisibilityOverridesRequest,
     ),
-  );
-}
-
-export function updateDocumentVisibilityOverridesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  UpdateDocumentVisibilityOverridesRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UpdateDocumentVisibilityOverridesRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'UpdateDocumentVisibilityOverridesRequest' from JSON`,
   );
 }

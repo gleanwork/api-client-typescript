@@ -28,6 +28,7 @@ export type IndexingPermissionsDeleteGroupMutationData = void;
  *
  * @remarks
  * Delete group from the datasource. Silently succeeds if group is not present.
+ * Note: All memberships associated with the deleted group will also be deleted.
  */
 export function useIndexingPermissionsDeleteGroupMutation(
   options?: MutationHookOptions<

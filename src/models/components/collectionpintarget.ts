@@ -42,7 +42,6 @@ export const CollectionPinTarget$inboundSchema: z.ZodType<
   value: z.string().optional(),
   target: CollectionPinnableTargets$inboundSchema.optional(),
 });
-
 /** @internal */
 export type CollectionPinTarget$Outbound = {
   category: string;
@@ -61,19 +60,6 @@ export const CollectionPinTarget$outboundSchema: z.ZodType<
   target: CollectionPinnableTargets$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionPinTarget$ {
-  /** @deprecated use `CollectionPinTarget$inboundSchema` instead. */
-  export const inboundSchema = CollectionPinTarget$inboundSchema;
-  /** @deprecated use `CollectionPinTarget$outboundSchema` instead. */
-  export const outboundSchema = CollectionPinTarget$outboundSchema;
-  /** @deprecated use `CollectionPinTarget$Outbound` instead. */
-  export type Outbound = CollectionPinTarget$Outbound;
-}
-
 export function collectionPinTargetToJSON(
   collectionPinTarget: CollectionPinTarget,
 ): string {
@@ -81,7 +67,6 @@ export function collectionPinTargetToJSON(
     CollectionPinTarget$outboundSchema.parse(collectionPinTarget),
   );
 }
-
 export function collectionPinTargetFromJSON(
   jsonString: string,
 ): SafeParseResult<CollectionPinTarget, SDKValidationError> {

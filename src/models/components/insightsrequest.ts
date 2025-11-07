@@ -3,46 +3,33 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentsInsightsV2Request,
-  AgentsInsightsV2Request$inboundSchema,
   AgentsInsightsV2Request$Outbound,
   AgentsInsightsV2Request$outboundSchema,
 } from "./agentsinsightsv2request.js";
 import {
   InsightsAgentsRequestOptions,
-  InsightsAgentsRequestOptions$inboundSchema,
   InsightsAgentsRequestOptions$Outbound,
   InsightsAgentsRequestOptions$outboundSchema,
 } from "./insightsagentsrequestoptions.js";
 import {
   InsightsAiAppRequestOptions,
-  InsightsAiAppRequestOptions$inboundSchema,
   InsightsAiAppRequestOptions$Outbound,
   InsightsAiAppRequestOptions$outboundSchema,
 } from "./insightsaiapprequestoptions.js";
 import {
   InsightsAssistantRequest,
-  InsightsAssistantRequest$inboundSchema,
   InsightsAssistantRequest$Outbound,
   InsightsAssistantRequest$outboundSchema,
 } from "./insightsassistantrequest.js";
 import {
   InsightsOverviewRequest,
-  InsightsOverviewRequest$inboundSchema,
   InsightsOverviewRequest$Outbound,
   InsightsOverviewRequest$outboundSchema,
 } from "./insightsoverviewrequest.js";
-import {
-  Period,
-  Period$inboundSchema,
-  Period$Outbound,
-  Period$outboundSchema,
-} from "./period.js";
+import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
 
 export const InsightsRequestCategory = {
   Agents: "AGENTS",
@@ -104,65 +91,14 @@ export type InsightsRequest = {
 };
 
 /** @internal */
-export const InsightsRequestCategory$inboundSchema: z.ZodNativeEnum<
+export const InsightsRequestCategory$outboundSchema: z.ZodNativeEnum<
   typeof InsightsRequestCategory
 > = z.nativeEnum(InsightsRequestCategory);
 
 /** @internal */
-export const InsightsRequestCategory$outboundSchema: z.ZodNativeEnum<
-  typeof InsightsRequestCategory
-> = InsightsRequestCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsRequestCategory$ {
-  /** @deprecated use `InsightsRequestCategory$inboundSchema` instead. */
-  export const inboundSchema = InsightsRequestCategory$inboundSchema;
-  /** @deprecated use `InsightsRequestCategory$outboundSchema` instead. */
-  export const outboundSchema = InsightsRequestCategory$outboundSchema;
-}
-
-/** @internal */
-export const AssistantActivityType$inboundSchema: z.ZodNativeEnum<
-  typeof AssistantActivityType
-> = z.nativeEnum(AssistantActivityType);
-
-/** @internal */
 export const AssistantActivityType$outboundSchema: z.ZodNativeEnum<
   typeof AssistantActivityType
-> = AssistantActivityType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssistantActivityType$ {
-  /** @deprecated use `AssistantActivityType$inboundSchema` instead. */
-  export const inboundSchema = AssistantActivityType$inboundSchema;
-  /** @deprecated use `AssistantActivityType$outboundSchema` instead. */
-  export const outboundSchema = AssistantActivityType$outboundSchema;
-}
-
-/** @internal */
-export const InsightsRequest$inboundSchema: z.ZodType<
-  InsightsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  overviewRequest: InsightsOverviewRequest$inboundSchema.optional(),
-  assistantRequest: InsightsAssistantRequest$inboundSchema.optional(),
-  agentsRequest: AgentsInsightsV2Request$inboundSchema.optional(),
-  disablePerUserInsights: z.boolean().optional(),
-  categories: z.array(InsightsRequestCategory$inboundSchema).optional(),
-  departments: z.array(z.string()).optional(),
-  dayRange: Period$inboundSchema.optional(),
-  aiAppRequestOptions: InsightsAiAppRequestOptions$inboundSchema.optional(),
-  agentsRequestOptions: InsightsAgentsRequestOptions$inboundSchema.optional(),
-  assistantActivityTypes: z.array(AssistantActivityType$inboundSchema)
-    .optional(),
-});
+> = z.nativeEnum(AssistantActivityType);
 
 /** @internal */
 export type InsightsRequest$Outbound = {
@@ -197,31 +133,8 @@ export const InsightsRequest$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsRequest$ {
-  /** @deprecated use `InsightsRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsRequest$inboundSchema;
-  /** @deprecated use `InsightsRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsRequest$outboundSchema;
-  /** @deprecated use `InsightsRequest$Outbound` instead. */
-  export type Outbound = InsightsRequest$Outbound;
-}
-
 export function insightsRequestToJSON(
   insightsRequest: InsightsRequest,
 ): string {
   return JSON.stringify(InsightsRequest$outboundSchema.parse(insightsRequest));
-}
-
-export function insightsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InsightsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InsightsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InsightsRequest' from JSON`,
-  );
 }

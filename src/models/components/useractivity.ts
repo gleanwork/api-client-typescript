@@ -7,18 +7,8 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 /**
  * The action for the activity
@@ -63,22 +53,6 @@ export const UserActivityAction$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserActivityAction);
 
 /** @internal */
-export const UserActivityAction$outboundSchema: z.ZodNativeEnum<
-  typeof UserActivityAction
-> = UserActivityAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserActivityAction$ {
-  /** @deprecated use `UserActivityAction$inboundSchema` instead. */
-  export const inboundSchema = UserActivityAction$inboundSchema;
-  /** @deprecated use `UserActivityAction$outboundSchema` instead. */
-  export const outboundSchema = UserActivityAction$outboundSchema;
-}
-
-/** @internal */
 export const UserActivity$inboundSchema: z.ZodType<
   UserActivity,
   z.ZodTypeDef,
@@ -89,43 +63,6 @@ export const UserActivity$inboundSchema: z.ZodType<
   action: UserActivityAction$inboundSchema.optional(),
   aggregateVisitCount: CountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type UserActivity$Outbound = {
-  actor?: Person$Outbound | undefined;
-  timestamp?: number | undefined;
-  action?: string | undefined;
-  aggregateVisitCount?: CountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const UserActivity$outboundSchema: z.ZodType<
-  UserActivity$Outbound,
-  z.ZodTypeDef,
-  UserActivity
-> = z.object({
-  actor: Person$outboundSchema.optional(),
-  timestamp: z.number().int().optional(),
-  action: UserActivityAction$outboundSchema.optional(),
-  aggregateVisitCount: CountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserActivity$ {
-  /** @deprecated use `UserActivity$inboundSchema` instead. */
-  export const inboundSchema = UserActivity$inboundSchema;
-  /** @deprecated use `UserActivity$outboundSchema` instead. */
-  export const outboundSchema = UserActivity$outboundSchema;
-  /** @deprecated use `UserActivity$Outbound` instead. */
-  export type Outbound = UserActivity$Outbound;
-}
-
-export function userActivityToJSON(userActivity: UserActivity): string {
-  return JSON.stringify(UserActivity$outboundSchema.parse(userActivity));
-}
 
 export function userActivityFromJSON(
   jsonString: string,

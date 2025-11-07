@@ -41,47 +41,6 @@ export const GetDocumentStatusResponse$inboundSchema: z.ZodType<
   lastIndexedAt: z.number().int().optional(),
 });
 
-/** @internal */
-export type GetDocumentStatusResponse$Outbound = {
-  uploadStatus?: string | undefined;
-  lastUploadedAt?: number | undefined;
-  indexingStatus?: string | undefined;
-  lastIndexedAt?: number | undefined;
-};
-
-/** @internal */
-export const GetDocumentStatusResponse$outboundSchema: z.ZodType<
-  GetDocumentStatusResponse$Outbound,
-  z.ZodTypeDef,
-  GetDocumentStatusResponse
-> = z.object({
-  uploadStatus: z.string().optional(),
-  lastUploadedAt: z.number().int().optional(),
-  indexingStatus: z.string().optional(),
-  lastIndexedAt: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentStatusResponse$ {
-  /** @deprecated use `GetDocumentStatusResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentStatusResponse$inboundSchema;
-  /** @deprecated use `GetDocumentStatusResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentStatusResponse$outboundSchema;
-  /** @deprecated use `GetDocumentStatusResponse$Outbound` instead. */
-  export type Outbound = GetDocumentStatusResponse$Outbound;
-}
-
-export function getDocumentStatusResponseToJSON(
-  getDocumentStatusResponse: GetDocumentStatusResponse,
-): string {
-  return JSON.stringify(
-    GetDocumentStatusResponse$outboundSchema.parse(getDocumentStatusResponse),
-  );
-}
-
 export function getDocumentStatusResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetDocumentStatusResponse, SDKValidationError> {

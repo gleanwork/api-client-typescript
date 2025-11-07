@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const CollectionItemDescriptorItemType = {
   Document: "DOCUMENT",
@@ -46,40 +43,9 @@ export type CollectionItemDescriptor = {
 };
 
 /** @internal */
-export const CollectionItemDescriptorItemType$inboundSchema: z.ZodNativeEnum<
-  typeof CollectionItemDescriptorItemType
-> = z.nativeEnum(CollectionItemDescriptorItemType);
-
-/** @internal */
 export const CollectionItemDescriptorItemType$outboundSchema: z.ZodNativeEnum<
   typeof CollectionItemDescriptorItemType
-> = CollectionItemDescriptorItemType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionItemDescriptorItemType$ {
-  /** @deprecated use `CollectionItemDescriptorItemType$inboundSchema` instead. */
-  export const inboundSchema = CollectionItemDescriptorItemType$inboundSchema;
-  /** @deprecated use `CollectionItemDescriptorItemType$outboundSchema` instead. */
-  export const outboundSchema = CollectionItemDescriptorItemType$outboundSchema;
-}
-
-/** @internal */
-export const CollectionItemDescriptor$inboundSchema: z.ZodType<
-  CollectionItemDescriptor,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  url: z.string().optional(),
-  documentId: z.string().optional(),
-  newNextItemId: z.string().optional(),
-  itemType: CollectionItemDescriptorItemType$inboundSchema.optional(),
-});
+> = z.nativeEnum(CollectionItemDescriptorItemType);
 
 /** @internal */
 export type CollectionItemDescriptor$Outbound = {
@@ -107,33 +73,10 @@ export const CollectionItemDescriptor$outboundSchema: z.ZodType<
   itemType: CollectionItemDescriptorItemType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionItemDescriptor$ {
-  /** @deprecated use `CollectionItemDescriptor$inboundSchema` instead. */
-  export const inboundSchema = CollectionItemDescriptor$inboundSchema;
-  /** @deprecated use `CollectionItemDescriptor$outboundSchema` instead. */
-  export const outboundSchema = CollectionItemDescriptor$outboundSchema;
-  /** @deprecated use `CollectionItemDescriptor$Outbound` instead. */
-  export type Outbound = CollectionItemDescriptor$Outbound;
-}
-
 export function collectionItemDescriptorToJSON(
   collectionItemDescriptor: CollectionItemDescriptor,
 ): string {
   return JSON.stringify(
     CollectionItemDescriptor$outboundSchema.parse(collectionItemDescriptor),
-  );
-}
-
-export function collectionItemDescriptorFromJSON(
-  jsonString: string,
-): SafeParseResult<CollectionItemDescriptor, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CollectionItemDescriptor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CollectionItemDescriptor' from JSON`,
   );
 }

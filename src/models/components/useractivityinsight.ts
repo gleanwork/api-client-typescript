@@ -7,18 +7,8 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 /**
  * Activity e.g. search, home page visit or all.
@@ -51,21 +41,6 @@ export const ActivityEnum$inboundSchema: z.ZodNativeEnum<typeof ActivityEnum> =
   z.nativeEnum(ActivityEnum);
 
 /** @internal */
-export const ActivityEnum$outboundSchema: z.ZodNativeEnum<typeof ActivityEnum> =
-  ActivityEnum$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActivityEnum$ {
-  /** @deprecated use `ActivityEnum$inboundSchema` instead. */
-  export const inboundSchema = ActivityEnum$inboundSchema;
-  /** @deprecated use `ActivityEnum$outboundSchema` instead. */
-  export const outboundSchema = ActivityEnum$outboundSchema;
-}
-
-/** @internal */
 export const UserActivityInsight$inboundSchema: z.ZodType<
   UserActivityInsight,
   z.ZodTypeDef,
@@ -77,49 +52,6 @@ export const UserActivityInsight$inboundSchema: z.ZodType<
   activityCount: CountInfo$inboundSchema.optional(),
   activeDayCount: CountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type UserActivityInsight$Outbound = {
-  user: Person$Outbound;
-  activity: string;
-  lastActivityTimestamp?: number | undefined;
-  activityCount?: CountInfo$Outbound | undefined;
-  activeDayCount?: CountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const UserActivityInsight$outboundSchema: z.ZodType<
-  UserActivityInsight$Outbound,
-  z.ZodTypeDef,
-  UserActivityInsight
-> = z.object({
-  user: Person$outboundSchema,
-  activity: ActivityEnum$outboundSchema,
-  lastActivityTimestamp: z.number().int().optional(),
-  activityCount: CountInfo$outboundSchema.optional(),
-  activeDayCount: CountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserActivityInsight$ {
-  /** @deprecated use `UserActivityInsight$inboundSchema` instead. */
-  export const inboundSchema = UserActivityInsight$inboundSchema;
-  /** @deprecated use `UserActivityInsight$outboundSchema` instead. */
-  export const outboundSchema = UserActivityInsight$outboundSchema;
-  /** @deprecated use `UserActivityInsight$Outbound` instead. */
-  export type Outbound = UserActivityInsight$Outbound;
-}
-
-export function userActivityInsightToJSON(
-  userActivityInsight: UserActivityInsight,
-): string {
-  return JSON.stringify(
-    UserActivityInsight$outboundSchema.parse(userActivityInsight),
-  );
-}
 
 export function userActivityInsightFromJSON(
   jsonString: string,

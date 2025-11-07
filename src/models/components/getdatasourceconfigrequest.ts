@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /getdatasourceconfig API call
@@ -16,15 +13,6 @@ export type GetDatasourceConfigRequest = {
    */
   datasource: string;
 };
-
-/** @internal */
-export const GetDatasourceConfigRequest$inboundSchema: z.ZodType<
-  GetDatasourceConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-});
 
 /** @internal */
 export type GetDatasourceConfigRequest$Outbound = {
@@ -40,33 +28,10 @@ export const GetDatasourceConfigRequest$outboundSchema: z.ZodType<
   datasource: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDatasourceConfigRequest$ {
-  /** @deprecated use `GetDatasourceConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDatasourceConfigRequest$inboundSchema;
-  /** @deprecated use `GetDatasourceConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDatasourceConfigRequest$outboundSchema;
-  /** @deprecated use `GetDatasourceConfigRequest$Outbound` instead. */
-  export type Outbound = GetDatasourceConfigRequest$Outbound;
-}
-
 export function getDatasourceConfigRequestToJSON(
   getDatasourceConfigRequest: GetDatasourceConfigRequest,
 ): string {
   return JSON.stringify(
     GetDatasourceConfigRequest$outboundSchema.parse(getDatasourceConfigRequest),
-  );
-}
-
-export function getDatasourceConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDatasourceConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDatasourceConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDatasourceConfigRequest' from JSON`,
   );
 }

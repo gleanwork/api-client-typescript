@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
 
 export type LabeledCountInfo = {
   /**
@@ -33,43 +28,6 @@ export const LabeledCountInfo$inboundSchema: z.ZodType<
   label: z.string(),
   countInfo: z.array(CountInfo$inboundSchema).optional(),
 });
-
-/** @internal */
-export type LabeledCountInfo$Outbound = {
-  label: string;
-  countInfo?: Array<CountInfo$Outbound> | undefined;
-};
-
-/** @internal */
-export const LabeledCountInfo$outboundSchema: z.ZodType<
-  LabeledCountInfo$Outbound,
-  z.ZodTypeDef,
-  LabeledCountInfo
-> = z.object({
-  label: z.string(),
-  countInfo: z.array(CountInfo$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LabeledCountInfo$ {
-  /** @deprecated use `LabeledCountInfo$inboundSchema` instead. */
-  export const inboundSchema = LabeledCountInfo$inboundSchema;
-  /** @deprecated use `LabeledCountInfo$outboundSchema` instead. */
-  export const outboundSchema = LabeledCountInfo$outboundSchema;
-  /** @deprecated use `LabeledCountInfo$Outbound` instead. */
-  export type Outbound = LabeledCountInfo$Outbound;
-}
-
-export function labeledCountInfoToJSON(
-  labeledCountInfo: LabeledCountInfo,
-): string {
-  return JSON.stringify(
-    LabeledCountInfo$outboundSchema.parse(labeledCountInfo),
-  );
-}
 
 export function labeledCountInfoFromJSON(
   jsonString: string,

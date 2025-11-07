@@ -43,24 +43,6 @@ export const DocumentVisibilityUpdateResultOverride$inboundSchema:
   );
 
 /** @internal */
-export const DocumentVisibilityUpdateResultOverride$outboundSchema:
-  z.ZodNativeEnum<typeof DocumentVisibilityUpdateResultOverride> =
-    DocumentVisibilityUpdateResultOverride$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentVisibilityUpdateResultOverride$ {
-  /** @deprecated use `DocumentVisibilityUpdateResultOverride$inboundSchema` instead. */
-  export const inboundSchema =
-    DocumentVisibilityUpdateResultOverride$inboundSchema;
-  /** @deprecated use `DocumentVisibilityUpdateResultOverride$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentVisibilityUpdateResultOverride$outboundSchema;
-}
-
-/** @internal */
 export const DocumentVisibilityUpdateResult$inboundSchema: z.ZodType<
   DocumentVisibilityUpdateResult,
   z.ZodTypeDef,
@@ -70,47 +52,6 @@ export const DocumentVisibilityUpdateResult$inboundSchema: z.ZodType<
   override: DocumentVisibilityUpdateResultOverride$inboundSchema.optional(),
   success: z.boolean().optional(),
 });
-
-/** @internal */
-export type DocumentVisibilityUpdateResult$Outbound = {
-  docId?: string | undefined;
-  override?: string | undefined;
-  success?: boolean | undefined;
-};
-
-/** @internal */
-export const DocumentVisibilityUpdateResult$outboundSchema: z.ZodType<
-  DocumentVisibilityUpdateResult$Outbound,
-  z.ZodTypeDef,
-  DocumentVisibilityUpdateResult
-> = z.object({
-  docId: z.string().optional(),
-  override: DocumentVisibilityUpdateResultOverride$outboundSchema.optional(),
-  success: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentVisibilityUpdateResult$ {
-  /** @deprecated use `DocumentVisibilityUpdateResult$inboundSchema` instead. */
-  export const inboundSchema = DocumentVisibilityUpdateResult$inboundSchema;
-  /** @deprecated use `DocumentVisibilityUpdateResult$outboundSchema` instead. */
-  export const outboundSchema = DocumentVisibilityUpdateResult$outboundSchema;
-  /** @deprecated use `DocumentVisibilityUpdateResult$Outbound` instead. */
-  export type Outbound = DocumentVisibilityUpdateResult$Outbound;
-}
-
-export function documentVisibilityUpdateResultToJSON(
-  documentVisibilityUpdateResult: DocumentVisibilityUpdateResult,
-): string {
-  return JSON.stringify(
-    DocumentVisibilityUpdateResult$outboundSchema.parse(
-      documentVisibilityUpdateResult,
-    ),
-  );
-}
 
 export function documentVisibilityUpdateResultFromJSON(
   jsonString: string,

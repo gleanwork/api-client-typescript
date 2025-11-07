@@ -28,43 +28,6 @@ export const CurrentActiveUsers$inboundSchema: z.ZodType<
   weeklyActiveUsers: z.number().int().optional(),
 });
 
-/** @internal */
-export type CurrentActiveUsers$Outbound = {
-  monthlyActiveUsers?: number | undefined;
-  weeklyActiveUsers?: number | undefined;
-};
-
-/** @internal */
-export const CurrentActiveUsers$outboundSchema: z.ZodType<
-  CurrentActiveUsers$Outbound,
-  z.ZodTypeDef,
-  CurrentActiveUsers
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CurrentActiveUsers$ {
-  /** @deprecated use `CurrentActiveUsers$inboundSchema` instead. */
-  export const inboundSchema = CurrentActiveUsers$inboundSchema;
-  /** @deprecated use `CurrentActiveUsers$outboundSchema` instead. */
-  export const outboundSchema = CurrentActiveUsers$outboundSchema;
-  /** @deprecated use `CurrentActiveUsers$Outbound` instead. */
-  export type Outbound = CurrentActiveUsers$Outbound;
-}
-
-export function currentActiveUsersToJSON(
-  currentActiveUsers: CurrentActiveUsers,
-): string {
-  return JSON.stringify(
-    CurrentActiveUsers$outboundSchema.parse(currentActiveUsers),
-  );
-}
-
 export function currentActiveUsersFromJSON(
   jsonString: string,
 ): SafeParseResult<CurrentActiveUsers, SDKValidationError> {

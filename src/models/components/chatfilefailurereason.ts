@@ -26,19 +26,7 @@ export type ChatFileFailureReason = ClosedEnum<typeof ChatFileFailureReason>;
 export const ChatFileFailureReason$inboundSchema: z.ZodNativeEnum<
   typeof ChatFileFailureReason
 > = z.nativeEnum(ChatFileFailureReason);
-
 /** @internal */
 export const ChatFileFailureReason$outboundSchema: z.ZodNativeEnum<
   typeof ChatFileFailureReason
 > = ChatFileFailureReason$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatFileFailureReason$ {
-  /** @deprecated use `ChatFileFailureReason$inboundSchema` instead. */
-  export const inboundSchema = ChatFileFailureReason$inboundSchema;
-  /** @deprecated use `ChatFileFailureReason$outboundSchema` instead. */
-  export const outboundSchema = ChatFileFailureReason$outboundSchema;
-}

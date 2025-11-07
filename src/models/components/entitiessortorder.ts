@@ -26,19 +26,3 @@ export type EntitiesSortOrder = ClosedEnum<typeof EntitiesSortOrder>;
 export const EntitiesSortOrder$inboundSchema: z.ZodNativeEnum<
   typeof EntitiesSortOrder
 > = z.nativeEnum(EntitiesSortOrder);
-
-/** @internal */
-export const EntitiesSortOrder$outboundSchema: z.ZodNativeEnum<
-  typeof EntitiesSortOrder
-> = EntitiesSortOrder$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntitiesSortOrder$ {
-  /** @deprecated use `EntitiesSortOrder$inboundSchema` instead. */
-  export const inboundSchema = EntitiesSortOrder$inboundSchema;
-  /** @deprecated use `EntitiesSortOrder$outboundSchema` instead. */
-  export const outboundSchema = EntitiesSortOrder$outboundSchema;
-}

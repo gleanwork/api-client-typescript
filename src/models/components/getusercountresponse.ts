@@ -26,41 +26,6 @@ export const GetUserCountResponse$inboundSchema: z.ZodType<
   userCount: z.number().int().optional(),
 });
 
-/** @internal */
-export type GetUserCountResponse$Outbound = {
-  userCount?: number | undefined;
-};
-
-/** @internal */
-export const GetUserCountResponse$outboundSchema: z.ZodType<
-  GetUserCountResponse$Outbound,
-  z.ZodTypeDef,
-  GetUserCountResponse
-> = z.object({
-  userCount: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserCountResponse$ {
-  /** @deprecated use `GetUserCountResponse$inboundSchema` instead. */
-  export const inboundSchema = GetUserCountResponse$inboundSchema;
-  /** @deprecated use `GetUserCountResponse$outboundSchema` instead. */
-  export const outboundSchema = GetUserCountResponse$outboundSchema;
-  /** @deprecated use `GetUserCountResponse$Outbound` instead. */
-  export type Outbound = GetUserCountResponse$Outbound;
-}
-
-export function getUserCountResponseToJSON(
-  getUserCountResponse: GetUserCountResponse,
-): string {
-  return JSON.stringify(
-    GetUserCountResponse$outboundSchema.parse(getUserCountResponse),
-  );
-}
-
 export function getUserCountResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetUserCountResponse, SDKValidationError> {

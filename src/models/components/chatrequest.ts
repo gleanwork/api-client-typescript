@@ -3,30 +3,23 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentConfig,
-  AgentConfig$inboundSchema,
   AgentConfig$Outbound,
   AgentConfig$outboundSchema,
 } from "./agentconfig.js";
 import {
   ChatMessage,
-  ChatMessage$inboundSchema,
   ChatMessage$Outbound,
   ChatMessage$outboundSchema,
 } from "./chatmessage.js";
 import {
   ChatRestrictionFilters,
-  ChatRestrictionFilters$inboundSchema,
   ChatRestrictionFilters$Outbound,
   ChatRestrictionFilters$outboundSchema,
 } from "./chatrestrictionfilters.js";
 import {
   SessionInfo,
-  SessionInfo$inboundSchema,
   SessionInfo$Outbound,
   SessionInfo$outboundSchema,
 } from "./sessioninfo.js";
@@ -73,25 +66,6 @@ export type ChatRequest = {
 };
 
 /** @internal */
-export const ChatRequest$inboundSchema: z.ZodType<
-  ChatRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  messages: z.array(ChatMessage$inboundSchema),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  saveChat: z.boolean().optional(),
-  chatId: z.string().optional(),
-  agentConfig: AgentConfig$inboundSchema.optional(),
-  inclusions: ChatRestrictionFilters$inboundSchema.optional(),
-  exclusions: ChatRestrictionFilters$inboundSchema.optional(),
-  timeoutMillis: z.number().int().optional(),
-  applicationId: z.string().optional(),
-  agentId: z.string().optional(),
-  stream: z.boolean().optional(),
-});
-
-/** @internal */
 export type ChatRequest$Outbound = {
   messages: Array<ChatMessage$Outbound>;
   sessionInfo?: SessionInfo$Outbound | undefined;
@@ -125,29 +99,6 @@ export const ChatRequest$outboundSchema: z.ZodType<
   stream: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatRequest$ {
-  /** @deprecated use `ChatRequest$inboundSchema` instead. */
-  export const inboundSchema = ChatRequest$inboundSchema;
-  /** @deprecated use `ChatRequest$outboundSchema` instead. */
-  export const outboundSchema = ChatRequest$outboundSchema;
-  /** @deprecated use `ChatRequest$Outbound` instead. */
-  export type Outbound = ChatRequest$Outbound;
-}
-
 export function chatRequestToJSON(chatRequest: ChatRequest): string {
   return JSON.stringify(ChatRequest$outboundSchema.parse(chatRequest));
-}
-
-export function chatRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ChatRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChatRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChatRequest' from JSON`,
-  );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InsightsAgentsRequestOptions = {
   /**
@@ -13,15 +10,6 @@ export type InsightsAgentsRequestOptions = {
    */
   agentIds?: Array<string> | undefined;
 };
-
-/** @internal */
-export const InsightsAgentsRequestOptions$inboundSchema: z.ZodType<
-  InsightsAgentsRequestOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  agentIds: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type InsightsAgentsRequestOptions$Outbound = {
@@ -37,19 +25,6 @@ export const InsightsAgentsRequestOptions$outboundSchema: z.ZodType<
   agentIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsAgentsRequestOptions$ {
-  /** @deprecated use `InsightsAgentsRequestOptions$inboundSchema` instead. */
-  export const inboundSchema = InsightsAgentsRequestOptions$inboundSchema;
-  /** @deprecated use `InsightsAgentsRequestOptions$outboundSchema` instead. */
-  export const outboundSchema = InsightsAgentsRequestOptions$outboundSchema;
-  /** @deprecated use `InsightsAgentsRequestOptions$Outbound` instead. */
-  export type Outbound = InsightsAgentsRequestOptions$Outbound;
-}
-
 export function insightsAgentsRequestOptionsToJSON(
   insightsAgentsRequestOptions: InsightsAgentsRequestOptions,
 ): string {
@@ -57,15 +32,5 @@ export function insightsAgentsRequestOptionsToJSON(
     InsightsAgentsRequestOptions$outboundSchema.parse(
       insightsAgentsRequestOptions,
     ),
-  );
-}
-
-export function insightsAgentsRequestOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<InsightsAgentsRequestOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InsightsAgentsRequestOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InsightsAgentsRequestOptions' from JSON`,
   );
 }

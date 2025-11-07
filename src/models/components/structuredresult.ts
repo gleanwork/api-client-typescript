@@ -206,42 +206,18 @@ export type StructuredResult = {
 /** @internal */
 export const Prominence$inboundSchema: z.ZodNativeEnum<typeof Prominence> = z
   .nativeEnum(Prominence);
-
 /** @internal */
 export const Prominence$outboundSchema: z.ZodNativeEnum<typeof Prominence> =
   Prominence$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Prominence$ {
-  /** @deprecated use `Prominence$inboundSchema` instead. */
-  export const inboundSchema = Prominence$inboundSchema;
-  /** @deprecated use `Prominence$outboundSchema` instead. */
-  export const outboundSchema = Prominence$outboundSchema;
-}
 
 /** @internal */
 export const StructuredResultSource$inboundSchema: z.ZodNativeEnum<
   typeof StructuredResultSource
 > = z.nativeEnum(StructuredResultSource);
-
 /** @internal */
 export const StructuredResultSource$outboundSchema: z.ZodNativeEnum<
   typeof StructuredResultSource
 > = StructuredResultSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StructuredResultSource$ {
-  /** @deprecated use `StructuredResultSource$inboundSchema` instead. */
-  export const inboundSchema = StructuredResultSource$inboundSchema;
-  /** @deprecated use `StructuredResultSource$outboundSchema` instead. */
-  export const outboundSchema = StructuredResultSource$outboundSchema;
-}
 
 /** @internal */
 export const StructuredResult$inboundSchema: z.ZodType<
@@ -274,7 +250,6 @@ export const StructuredResult$inboundSchema: z.ZodType<
   prominence: Prominence$inboundSchema.optional(),
   source: StructuredResultSource$inboundSchema.optional(),
 });
-
 /** @internal */
 export type StructuredResult$Outbound = {
   document?: Document$Outbound | undefined;
@@ -335,19 +310,6 @@ export const StructuredResult$outboundSchema: z.ZodType<
   source: StructuredResultSource$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StructuredResult$ {
-  /** @deprecated use `StructuredResult$inboundSchema` instead. */
-  export const inboundSchema = StructuredResult$inboundSchema;
-  /** @deprecated use `StructuredResult$outboundSchema` instead. */
-  export const outboundSchema = StructuredResult$outboundSchema;
-  /** @deprecated use `StructuredResult$Outbound` instead. */
-  export type Outbound = StructuredResult$Outbound;
-}
-
 export function structuredResultToJSON(
   structuredResult: StructuredResult,
 ): string {
@@ -355,7 +317,6 @@ export function structuredResultToJSON(
     StructuredResult$outboundSchema.parse(structuredResult),
   );
 }
-
 export function structuredResultFromJSON(
   jsonString: string,
 ): SafeParseResult<StructuredResult, SDKValidationError> {

@@ -18,18 +18,3 @@ export type UgcType = ClosedEnum<typeof UgcType>;
 /** @internal */
 export const UgcType$inboundSchema: z.ZodNativeEnum<typeof UgcType> = z
   .nativeEnum(UgcType);
-
-/** @internal */
-export const UgcType$outboundSchema: z.ZodNativeEnum<typeof UgcType> =
-  UgcType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UgcType$ {
-  /** @deprecated use `UgcType$inboundSchema` instead. */
-  export const inboundSchema = UgcType$inboundSchema;
-  /** @deprecated use `UgcType$outboundSchema` instead. */
-  export const outboundSchema = UgcType$outboundSchema;
-}

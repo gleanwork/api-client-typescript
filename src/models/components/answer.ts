@@ -152,22 +152,10 @@ export type Answer = {
 export const AnswerSourceType$inboundSchema: z.ZodNativeEnum<
   typeof AnswerSourceType
 > = z.nativeEnum(AnswerSourceType);
-
 /** @internal */
 export const AnswerSourceType$outboundSchema: z.ZodNativeEnum<
   typeof AnswerSourceType
 > = AnswerSourceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerSourceType$ {
-  /** @deprecated use `AnswerSourceType$inboundSchema` instead. */
-  export const inboundSchema = AnswerSourceType$inboundSchema;
-  /** @deprecated use `AnswerSourceType$outboundSchema` instead. */
-  export const outboundSchema = AnswerSourceType$outboundSchema;
-}
 
 /** @internal */
 export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
@@ -204,7 +192,6 @@ export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
     documentCategory: z.string().optional(),
     sourceDocument: z.lazy(() => Document$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Answer$Outbound = {
   id: number;
@@ -267,23 +254,9 @@ export const Answer$outboundSchema: z.ZodType<
   sourceDocument: z.lazy(() => Document$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Answer$ {
-  /** @deprecated use `Answer$inboundSchema` instead. */
-  export const inboundSchema = Answer$inboundSchema;
-  /** @deprecated use `Answer$outboundSchema` instead. */
-  export const outboundSchema = Answer$outboundSchema;
-  /** @deprecated use `Answer$Outbound` instead. */
-  export type Outbound = Answer$Outbound;
-}
-
 export function answerToJSON(answer: Answer): string {
   return JSON.stringify(Answer$outboundSchema.parse(answer));
 }
-
 export function answerFromJSON(
   jsonString: string,
 ): SafeParseResult<Answer, SDKValidationError> {

@@ -51,21 +51,9 @@ export type IconConfig = {
 /** @internal */
 export const IconType$inboundSchema: z.ZodNativeEnum<typeof IconType> = z
   .nativeEnum(IconType);
-
 /** @internal */
 export const IconType$outboundSchema: z.ZodNativeEnum<typeof IconType> =
   IconType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IconType$ {
-  /** @deprecated use `IconType$inboundSchema` instead. */
-  export const inboundSchema = IconType$inboundSchema;
-  /** @deprecated use `IconType$outboundSchema` instead. */
-  export const outboundSchema = IconType$outboundSchema;
-}
 
 /** @internal */
 export const IconConfig$inboundSchema: z.ZodType<
@@ -82,7 +70,6 @@ export const IconConfig$inboundSchema: z.ZodType<
   name: z.string().optional(),
   url: z.string().optional(),
 });
-
 /** @internal */
 export type IconConfig$Outbound = {
   generatedBackgroundColorKey?: string | undefined;
@@ -111,23 +98,9 @@ export const IconConfig$outboundSchema: z.ZodType<
   url: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IconConfig$ {
-  /** @deprecated use `IconConfig$inboundSchema` instead. */
-  export const inboundSchema = IconConfig$inboundSchema;
-  /** @deprecated use `IconConfig$outboundSchema` instead. */
-  export const outboundSchema = IconConfig$outboundSchema;
-  /** @deprecated use `IconConfig$Outbound` instead. */
-  export type Outbound = IconConfig$Outbound;
-}
-
 export function iconConfigToJSON(iconConfig: IconConfig): string {
   return JSON.stringify(IconConfig$outboundSchema.parse(iconConfig));
 }
-
 export function iconConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<IconConfig, SDKValidationError> {

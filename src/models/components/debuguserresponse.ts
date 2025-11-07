@@ -9,14 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceGroupDefinition,
   DatasourceGroupDefinition$inboundSchema,
-  DatasourceGroupDefinition$Outbound,
-  DatasourceGroupDefinition$outboundSchema,
 } from "./datasourcegroupdefinition.js";
 import {
   UserStatusResponse,
   UserStatusResponse$inboundSchema,
-  UserStatusResponse$Outbound,
-  UserStatusResponse$outboundSchema,
 } from "./userstatusresponse.js";
 
 /**
@@ -42,43 +38,6 @@ export const DebugUserResponse$inboundSchema: z.ZodType<
   status: UserStatusResponse$inboundSchema.optional(),
   uploadedGroups: z.array(DatasourceGroupDefinition$inboundSchema).optional(),
 });
-
-/** @internal */
-export type DebugUserResponse$Outbound = {
-  status?: UserStatusResponse$Outbound | undefined;
-  uploadedGroups?: Array<DatasourceGroupDefinition$Outbound> | undefined;
-};
-
-/** @internal */
-export const DebugUserResponse$outboundSchema: z.ZodType<
-  DebugUserResponse$Outbound,
-  z.ZodTypeDef,
-  DebugUserResponse
-> = z.object({
-  status: UserStatusResponse$outboundSchema.optional(),
-  uploadedGroups: z.array(DatasourceGroupDefinition$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugUserResponse$ {
-  /** @deprecated use `DebugUserResponse$inboundSchema` instead. */
-  export const inboundSchema = DebugUserResponse$inboundSchema;
-  /** @deprecated use `DebugUserResponse$outboundSchema` instead. */
-  export const outboundSchema = DebugUserResponse$outboundSchema;
-  /** @deprecated use `DebugUserResponse$Outbound` instead. */
-  export type Outbound = DebugUserResponse$Outbound;
-}
-
-export function debugUserResponseToJSON(
-  debugUserResponse: DebugUserResponse,
-): string {
-  return JSON.stringify(
-    DebugUserResponse$outboundSchema.parse(debugUserResponse),
-  );
-}
 
 export function debugUserResponseFromJSON(
   jsonString: string,

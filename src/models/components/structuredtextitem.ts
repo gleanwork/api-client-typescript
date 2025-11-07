@@ -40,7 +40,6 @@ export const StructuredTextItem$inboundSchema: z.ZodType<
   text: z.string().optional(),
   structuredResult: z.lazy(() => StructuredResult$inboundSchema).optional(),
 });
-
 /** @internal */
 export type StructuredTextItem$Outbound = {
   link?: string | undefined;
@@ -61,19 +60,6 @@ export const StructuredTextItem$outboundSchema: z.ZodType<
   structuredResult: z.lazy(() => StructuredResult$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StructuredTextItem$ {
-  /** @deprecated use `StructuredTextItem$inboundSchema` instead. */
-  export const inboundSchema = StructuredTextItem$inboundSchema;
-  /** @deprecated use `StructuredTextItem$outboundSchema` instead. */
-  export const outboundSchema = StructuredTextItem$outboundSchema;
-  /** @deprecated use `StructuredTextItem$Outbound` instead. */
-  export type Outbound = StructuredTextItem$Outbound;
-}
-
 export function structuredTextItemToJSON(
   structuredTextItem: StructuredTextItem,
 ): string {
@@ -81,7 +67,6 @@ export function structuredTextItemToJSON(
     StructuredTextItem$outboundSchema.parse(structuredTextItem),
   );
 }
-
 export function structuredTextItemFromJSON(
   jsonString: string,
 ): SafeParseResult<StructuredTextItem, SDKValidationError> {

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type EditCollectionItemRequest = {
   /**
@@ -31,19 +28,6 @@ export type EditCollectionItemRequest = {
 };
 
 /** @internal */
-export const EditCollectionItemRequest$inboundSchema: z.ZodType<
-  EditCollectionItemRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  collectionId: z.number().int(),
-  itemId: z.string(),
-});
-
-/** @internal */
 export type EditCollectionItemRequest$Outbound = {
   name?: string | undefined;
   description?: string | undefined;
@@ -65,33 +49,10 @@ export const EditCollectionItemRequest$outboundSchema: z.ZodType<
   itemId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditCollectionItemRequest$ {
-  /** @deprecated use `EditCollectionItemRequest$inboundSchema` instead. */
-  export const inboundSchema = EditCollectionItemRequest$inboundSchema;
-  /** @deprecated use `EditCollectionItemRequest$outboundSchema` instead. */
-  export const outboundSchema = EditCollectionItemRequest$outboundSchema;
-  /** @deprecated use `EditCollectionItemRequest$Outbound` instead. */
-  export type Outbound = EditCollectionItemRequest$Outbound;
-}
-
 export function editCollectionItemRequestToJSON(
   editCollectionItemRequest: EditCollectionItemRequest,
 ): string {
   return JSON.stringify(
     EditCollectionItemRequest$outboundSchema.parse(editCollectionItemRequest),
-  );
-}
-
-export function editCollectionItemRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<EditCollectionItemRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditCollectionItemRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditCollectionItemRequest' from JSON`,
   );
 }

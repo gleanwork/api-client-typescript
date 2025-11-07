@@ -53,7 +53,6 @@ export const ChannelInviteInfo$inboundSchema: z.ZodType<
     new Date(v)
   ).optional(),
 });
-
 /** @internal */
 export type ChannelInviteInfo$Outbound = {
   channel?: string | undefined;
@@ -76,19 +75,6 @@ export const ChannelInviteInfo$outboundSchema: z.ZodType<
   reminderTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChannelInviteInfo$ {
-  /** @deprecated use `ChannelInviteInfo$inboundSchema` instead. */
-  export const inboundSchema = ChannelInviteInfo$inboundSchema;
-  /** @deprecated use `ChannelInviteInfo$outboundSchema` instead. */
-  export const outboundSchema = ChannelInviteInfo$outboundSchema;
-  /** @deprecated use `ChannelInviteInfo$Outbound` instead. */
-  export type Outbound = ChannelInviteInfo$Outbound;
-}
-
 export function channelInviteInfoToJSON(
   channelInviteInfo: ChannelInviteInfo,
 ): string {
@@ -96,7 +82,6 @@ export function channelInviteInfoToJSON(
     ChannelInviteInfo$outboundSchema.parse(channelInviteInfo),
   );
 }
-
 export function channelInviteInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ChannelInviteInfo, SDKValidationError> {

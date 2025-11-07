@@ -170,83 +170,35 @@ export type ToolMetadata = {
 export const ToolMetadataType$inboundSchema: z.ZodNativeEnum<
   typeof ToolMetadataType
 > = z.nativeEnum(ToolMetadataType);
-
 /** @internal */
 export const ToolMetadataType$outboundSchema: z.ZodNativeEnum<
   typeof ToolMetadataType
 > = ToolMetadataType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolMetadataType$ {
-  /** @deprecated use `ToolMetadataType$inboundSchema` instead. */
-  export const inboundSchema = ToolMetadataType$inboundSchema;
-  /** @deprecated use `ToolMetadataType$outboundSchema` instead. */
-  export const outboundSchema = ToolMetadataType$outboundSchema;
-}
-
 /** @internal */
 export const KnowledgeType$inboundSchema: z.ZodNativeEnum<
   typeof KnowledgeType
 > = z.nativeEnum(KnowledgeType);
-
 /** @internal */
 export const KnowledgeType$outboundSchema: z.ZodNativeEnum<
   typeof KnowledgeType
 > = KnowledgeType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KnowledgeType$ {
-  /** @deprecated use `KnowledgeType$inboundSchema` instead. */
-  export const inboundSchema = KnowledgeType$inboundSchema;
-  /** @deprecated use `KnowledgeType$outboundSchema` instead. */
-  export const outboundSchema = KnowledgeType$outboundSchema;
-}
-
 /** @internal */
 export const WriteActionType$inboundSchema: z.ZodNativeEnum<
   typeof WriteActionType
 > = z.nativeEnum(WriteActionType);
-
 /** @internal */
 export const WriteActionType$outboundSchema: z.ZodNativeEnum<
   typeof WriteActionType
 > = WriteActionType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WriteActionType$ {
-  /** @deprecated use `WriteActionType$inboundSchema` instead. */
-  export const inboundSchema = WriteActionType$inboundSchema;
-  /** @deprecated use `WriteActionType$outboundSchema` instead. */
-  export const outboundSchema = WriteActionType$outboundSchema;
-}
-
 /** @internal */
 export const AuthType$inboundSchema: z.ZodNativeEnum<typeof AuthType> = z
   .nativeEnum(AuthType);
-
 /** @internal */
 export const AuthType$outboundSchema: z.ZodNativeEnum<typeof AuthType> =
   AuthType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthType$ {
-  /** @deprecated use `AuthType$inboundSchema` instead. */
-  export const inboundSchema = AuthType$inboundSchema;
-  /** @deprecated use `AuthType$outboundSchema` instead. */
-  export const outboundSchema = AuthType$outboundSchema;
-}
 
 /** @internal */
 export const ToolMetadata$inboundSchema: z.ZodType<
@@ -276,7 +228,6 @@ export const ToolMetadata$inboundSchema: z.ZodType<
   usageInstructions: z.string().optional(),
   isSetupFinished: z.boolean().optional(),
 });
-
 /** @internal */
 export type ToolMetadata$Outbound = {
   type: string;
@@ -325,23 +276,9 @@ export const ToolMetadata$outboundSchema: z.ZodType<
   isSetupFinished: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolMetadata$ {
-  /** @deprecated use `ToolMetadata$inboundSchema` instead. */
-  export const inboundSchema = ToolMetadata$inboundSchema;
-  /** @deprecated use `ToolMetadata$outboundSchema` instead. */
-  export const outboundSchema = ToolMetadata$outboundSchema;
-  /** @deprecated use `ToolMetadata$Outbound` instead. */
-  export type Outbound = ToolMetadata$Outbound;
-}
-
 export function toolMetadataToJSON(toolMetadata: ToolMetadata): string {
   return JSON.stringify(ToolMetadata$outboundSchema.parse(toolMetadata));
 }
-
 export function toolMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolMetadata, SDKValidationError> {

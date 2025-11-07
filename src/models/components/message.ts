@@ -37,7 +37,6 @@ export const MessageTextBlock$inboundSchema: z.ZodType<
   text: z.string(),
   type: ContentType$inboundSchema,
 });
-
 /** @internal */
 export type MessageTextBlock$Outbound = {
   text: string;
@@ -54,19 +53,6 @@ export const MessageTextBlock$outboundSchema: z.ZodType<
   type: ContentType$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessageTextBlock$ {
-  /** @deprecated use `MessageTextBlock$inboundSchema` instead. */
-  export const inboundSchema = MessageTextBlock$inboundSchema;
-  /** @deprecated use `MessageTextBlock$outboundSchema` instead. */
-  export const outboundSchema = MessageTextBlock$outboundSchema;
-  /** @deprecated use `MessageTextBlock$Outbound` instead. */
-  export type Outbound = MessageTextBlock$Outbound;
-}
-
 export function messageTextBlockToJSON(
   messageTextBlock: MessageTextBlock,
 ): string {
@@ -74,7 +60,6 @@ export function messageTextBlockToJSON(
     MessageTextBlock$outboundSchema.parse(messageTextBlock),
   );
 }
-
 export function messageTextBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<MessageTextBlock, SDKValidationError> {
@@ -91,7 +76,6 @@ export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
     role: z.string().optional(),
     content: z.array(z.lazy(() => MessageTextBlock$inboundSchema)).optional(),
   });
-
 /** @internal */
 export type Message$Outbound = {
   role?: string | undefined;
@@ -108,23 +92,9 @@ export const Message$outboundSchema: z.ZodType<
   content: z.array(z.lazy(() => MessageTextBlock$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Message$ {
-  /** @deprecated use `Message$inboundSchema` instead. */
-  export const inboundSchema = Message$inboundSchema;
-  /** @deprecated use `Message$outboundSchema` instead. */
-  export const outboundSchema = Message$outboundSchema;
-  /** @deprecated use `Message$Outbound` instead. */
-  export type Outbound = Message$Outbound;
-}
-
 export function messageToJSON(message: Message): string {
   return JSON.stringify(Message$outboundSchema.parse(message));
 }
-
 export function messageFromJSON(
   jsonString: string,
 ): SafeParseResult<Message, SDKValidationError> {

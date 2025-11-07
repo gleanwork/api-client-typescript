@@ -38,7 +38,6 @@ export const RelatedQuestion$inboundSchema: z.ZodType<
   answer: z.string().optional(),
   ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type RelatedQuestion$Outbound = {
   question?: string | undefined;
@@ -57,25 +56,11 @@ export const RelatedQuestion$outboundSchema: z.ZodType<
   ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RelatedQuestion$ {
-  /** @deprecated use `RelatedQuestion$inboundSchema` instead. */
-  export const inboundSchema = RelatedQuestion$inboundSchema;
-  /** @deprecated use `RelatedQuestion$outboundSchema` instead. */
-  export const outboundSchema = RelatedQuestion$outboundSchema;
-  /** @deprecated use `RelatedQuestion$Outbound` instead. */
-  export type Outbound = RelatedQuestion$Outbound;
-}
-
 export function relatedQuestionToJSON(
   relatedQuestion: RelatedQuestion,
 ): string {
   return JSON.stringify(RelatedQuestion$outboundSchema.parse(relatedQuestion));
 }
-
 export function relatedQuestionFromJSON(
   jsonString: string,
 ): SafeParseResult<RelatedQuestion, SDKValidationError> {

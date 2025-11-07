@@ -3,20 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DlpConfig,
-  DlpConfig$inboundSchema,
   DlpConfig$Outbound,
   DlpConfig$outboundSchema,
 } from "./dlpconfig.js";
-import {
-  DlpFrequency,
-  DlpFrequency$inboundSchema,
-  DlpFrequency$outboundSchema,
-} from "./dlpfrequency.js";
+import { DlpFrequency, DlpFrequency$outboundSchema } from "./dlpfrequency.js";
 
 export type CreateDlpReportRequest = {
   /**
@@ -38,18 +30,6 @@ export type CreateDlpReportRequest = {
 };
 
 /** @internal */
-export const CreateDlpReportRequest$inboundSchema: z.ZodType<
-  CreateDlpReportRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  config: DlpConfig$inboundSchema.optional(),
-  frequency: DlpFrequency$inboundSchema.optional(),
-  autoHideDocs: z.boolean().optional(),
-});
-
-/** @internal */
 export type CreateDlpReportRequest$Outbound = {
   name?: string | undefined;
   config?: DlpConfig$Outbound | undefined;
@@ -69,33 +49,10 @@ export const CreateDlpReportRequest$outboundSchema: z.ZodType<
   autoHideDocs: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDlpReportRequest$ {
-  /** @deprecated use `CreateDlpReportRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateDlpReportRequest$inboundSchema;
-  /** @deprecated use `CreateDlpReportRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateDlpReportRequest$outboundSchema;
-  /** @deprecated use `CreateDlpReportRequest$Outbound` instead. */
-  export type Outbound = CreateDlpReportRequest$Outbound;
-}
-
 export function createDlpReportRequestToJSON(
   createDlpReportRequest: CreateDlpReportRequest,
 ): string {
   return JSON.stringify(
     CreateDlpReportRequest$outboundSchema.parse(createDlpReportRequest),
-  );
-}
-
-export function createDlpReportRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateDlpReportRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateDlpReportRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateDlpReportRequest' from JSON`,
   );
 }

@@ -118,62 +118,26 @@ export type AuthConfig = {
 export const AuthConfigType$inboundSchema: z.ZodNativeEnum<
   typeof AuthConfigType
 > = z.nativeEnum(AuthConfigType);
-
 /** @internal */
 export const AuthConfigType$outboundSchema: z.ZodNativeEnum<
   typeof AuthConfigType
 > = AuthConfigType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthConfigType$ {
-  /** @deprecated use `AuthConfigType$inboundSchema` instead. */
-  export const inboundSchema = AuthConfigType$inboundSchema;
-  /** @deprecated use `AuthConfigType$outboundSchema` instead. */
-  export const outboundSchema = AuthConfigType$outboundSchema;
-}
-
 /** @internal */
 export const GrantType$inboundSchema: z.ZodNativeEnum<typeof GrantType> = z
   .nativeEnum(GrantType);
-
 /** @internal */
 export const GrantType$outboundSchema: z.ZodNativeEnum<typeof GrantType> =
   GrantType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GrantType$ {
-  /** @deprecated use `GrantType$inboundSchema` instead. */
-  export const inboundSchema = GrantType$inboundSchema;
-  /** @deprecated use `GrantType$outboundSchema` instead. */
-  export const outboundSchema = GrantType$outboundSchema;
-}
 
 /** @internal */
 export const AuthConfigStatus$inboundSchema: z.ZodNativeEnum<
   typeof AuthConfigStatus
 > = z.nativeEnum(AuthConfigStatus);
-
 /** @internal */
 export const AuthConfigStatus$outboundSchema: z.ZodNativeEnum<
   typeof AuthConfigStatus
 > = AuthConfigStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthConfigStatus$ {
-  /** @deprecated use `AuthConfigStatus$inboundSchema` instead. */
-  export const inboundSchema = AuthConfigStatus$inboundSchema;
-  /** @deprecated use `AuthConfigStatus$outboundSchema` instead. */
-  export const outboundSchema = AuthConfigStatus$outboundSchema;
-}
 
 /** @internal */
 export const AuthConfig$inboundSchema: z.ZodType<
@@ -199,7 +163,6 @@ export const AuthConfig$inboundSchema: z.ZodType<
     "authorization_url": "authorizationUrl",
   });
 });
-
 /** @internal */
 export type AuthConfig$Outbound = {
   isOnPrem?: boolean | undefined;
@@ -237,23 +200,9 @@ export const AuthConfig$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AuthConfig$ {
-  /** @deprecated use `AuthConfig$inboundSchema` instead. */
-  export const inboundSchema = AuthConfig$inboundSchema;
-  /** @deprecated use `AuthConfig$outboundSchema` instead. */
-  export const outboundSchema = AuthConfig$outboundSchema;
-  /** @deprecated use `AuthConfig$Outbound` instead. */
-  export type Outbound = AuthConfig$Outbound;
-}
-
 export function authConfigToJSON(authConfig: AuthConfig): string {
   return JSON.stringify(AuthConfig$outboundSchema.parse(authConfig));
 }
-
 export function authConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<AuthConfig, SDKValidationError> {

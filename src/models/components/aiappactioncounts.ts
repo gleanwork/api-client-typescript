@@ -3,7 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import {
   collectExtraKeys as collectExtraKeys$,
   safeParse,
@@ -59,60 +58,6 @@ export const AiAppActionCounts$inboundSchema: z.ZodType<
   "additionalProperties",
   true,
 );
-
-/** @internal */
-export type AiAppActionCounts$Outbound = {
-  totalSlackbotResponses?: number | undefined;
-  totalSlackbotResponsesShared?: number | undefined;
-  totalSlackbotResponsesNotHelpful?: number | undefined;
-  totalChatMessages?: number | undefined;
-  totalUpvotes?: number | undefined;
-  totalDownvotes?: number | undefined;
-  [additionalProperties: string]: unknown;
-};
-
-/** @internal */
-export const AiAppActionCounts$outboundSchema: z.ZodType<
-  AiAppActionCounts$Outbound,
-  z.ZodTypeDef,
-  AiAppActionCounts
-> = z.object({
-  totalSlackbotResponses: z.number().int().optional(),
-  totalSlackbotResponsesShared: z.number().int().optional(),
-  totalSlackbotResponsesNotHelpful: z.number().int().optional(),
-  totalChatMessages: z.number().int().optional(),
-  totalUpvotes: z.number().int().optional(),
-  totalDownvotes: z.number().int().optional(),
-  additionalProperties: z.record(z.number().int()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AiAppActionCounts$ {
-  /** @deprecated use `AiAppActionCounts$inboundSchema` instead. */
-  export const inboundSchema = AiAppActionCounts$inboundSchema;
-  /** @deprecated use `AiAppActionCounts$outboundSchema` instead. */
-  export const outboundSchema = AiAppActionCounts$outboundSchema;
-  /** @deprecated use `AiAppActionCounts$Outbound` instead. */
-  export type Outbound = AiAppActionCounts$Outbound;
-}
-
-export function aiAppActionCountsToJSON(
-  aiAppActionCounts: AiAppActionCounts,
-): string {
-  return JSON.stringify(
-    AiAppActionCounts$outboundSchema.parse(aiAppActionCounts),
-  );
-}
 
 export function aiAppActionCountsFromJSON(
   jsonString: string,

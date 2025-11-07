@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChatZeroStateSuggestionOptions = {
   /**
@@ -13,15 +10,6 @@ export type ChatZeroStateSuggestionOptions = {
    */
   applicationId?: string | undefined;
 };
-
-/** @internal */
-export const ChatZeroStateSuggestionOptions$inboundSchema: z.ZodType<
-  ChatZeroStateSuggestionOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  applicationId: z.string().optional(),
-});
 
 /** @internal */
 export type ChatZeroStateSuggestionOptions$Outbound = {
@@ -37,19 +25,6 @@ export const ChatZeroStateSuggestionOptions$outboundSchema: z.ZodType<
   applicationId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatZeroStateSuggestionOptions$ {
-  /** @deprecated use `ChatZeroStateSuggestionOptions$inboundSchema` instead. */
-  export const inboundSchema = ChatZeroStateSuggestionOptions$inboundSchema;
-  /** @deprecated use `ChatZeroStateSuggestionOptions$outboundSchema` instead. */
-  export const outboundSchema = ChatZeroStateSuggestionOptions$outboundSchema;
-  /** @deprecated use `ChatZeroStateSuggestionOptions$Outbound` instead. */
-  export type Outbound = ChatZeroStateSuggestionOptions$Outbound;
-}
-
 export function chatZeroStateSuggestionOptionsToJSON(
   chatZeroStateSuggestionOptions: ChatZeroStateSuggestionOptions,
 ): string {
@@ -57,15 +32,5 @@ export function chatZeroStateSuggestionOptionsToJSON(
     ChatZeroStateSuggestionOptions$outboundSchema.parse(
       chatZeroStateSuggestionOptions,
     ),
-  );
-}
-
-export function chatZeroStateSuggestionOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<ChatZeroStateSuggestionOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChatZeroStateSuggestionOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChatZeroStateSuggestionOptions' from JSON`,
   );
 }

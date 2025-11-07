@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetchatapplicationRequest = {
   /**
@@ -16,20 +13,6 @@ export type GetchatapplicationRequest = {
   timezoneOffset?: number | undefined;
   getChatApplicationRequest: components.GetChatApplicationRequest;
 };
-
-/** @internal */
-export const GetchatapplicationRequest$inboundSchema: z.ZodType<
-  GetchatapplicationRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  GetChatApplicationRequest: components.GetChatApplicationRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "GetChatApplicationRequest": "getChatApplicationRequest",
-  });
-});
 
 /** @internal */
 export type GetchatapplicationRequest$Outbound = {
@@ -52,33 +35,10 @@ export const GetchatapplicationRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetchatapplicationRequest$ {
-  /** @deprecated use `GetchatapplicationRequest$inboundSchema` instead. */
-  export const inboundSchema = GetchatapplicationRequest$inboundSchema;
-  /** @deprecated use `GetchatapplicationRequest$outboundSchema` instead. */
-  export const outboundSchema = GetchatapplicationRequest$outboundSchema;
-  /** @deprecated use `GetchatapplicationRequest$Outbound` instead. */
-  export type Outbound = GetchatapplicationRequest$Outbound;
-}
-
 export function getchatapplicationRequestToJSON(
   getchatapplicationRequest: GetchatapplicationRequest,
 ): string {
   return JSON.stringify(
     GetchatapplicationRequest$outboundSchema.parse(getchatapplicationRequest),
-  );
-}
-
-export function getchatapplicationRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetchatapplicationRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetchatapplicationRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetchatapplicationRequest' from JSON`,
   );
 }

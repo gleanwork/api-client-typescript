@@ -3,43 +3,34 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AdditionalFieldDefinition,
-  AdditionalFieldDefinition$inboundSchema,
   AdditionalFieldDefinition$Outbound,
   AdditionalFieldDefinition$outboundSchema,
 } from "./additionalfielddefinition.js";
 import {
   DatasourceProfile,
-  DatasourceProfile$inboundSchema,
   DatasourceProfile$Outbound,
   DatasourceProfile$outboundSchema,
 } from "./datasourceprofile.js";
 import {
   EmployeeTeamInfo,
-  EmployeeTeamInfo$inboundSchema,
   EmployeeTeamInfo$Outbound,
   EmployeeTeamInfo$outboundSchema,
 } from "./employeeteaminfo.js";
 import {
   EntityRelationship,
-  EntityRelationship$inboundSchema,
   EntityRelationship$Outbound,
   EntityRelationship$outboundSchema,
 } from "./entityrelationship.js";
 import {
   SocialNetworkDefinition,
-  SocialNetworkDefinition$inboundSchema,
   SocialNetworkDefinition$Outbound,
   SocialNetworkDefinition$outboundSchema,
 } from "./socialnetworkdefinition.js";
 import {
   StructuredLocation,
-  StructuredLocation$inboundSchema,
   StructuredLocation$Outbound,
   StructuredLocation$outboundSchema,
 } from "./structuredlocation.js";
@@ -169,41 +160,6 @@ export type EmployeeInfoDefinition = {
 };
 
 /** @internal */
-export const EmployeeInfoDefinition$inboundSchema: z.ZodType<
-  EmployeeInfoDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  preferredName: z.string().optional(),
-  id: z.string().optional(),
-  phoneNumber: z.string().optional(),
-  location: z.string().optional(),
-  structuredLocation: StructuredLocation$inboundSchema.optional(),
-  title: z.string().optional(),
-  photoUrl: z.string().optional(),
-  businessUnit: z.string().optional(),
-  department: z.string(),
-  datasourceProfiles: z.array(DatasourceProfile$inboundSchema).optional(),
-  teams: z.array(EmployeeTeamInfo$inboundSchema).optional(),
-  startDate: z.string().transform(v => new RFCDate(v)).optional(),
-  endDate: z.string().transform(v => new RFCDate(v)).optional(),
-  bio: z.string().optional(),
-  pronoun: z.string().optional(),
-  alsoKnownAs: z.array(z.string()).optional(),
-  profileUrl: z.string().optional(),
-  socialNetworks: z.array(SocialNetworkDefinition$inboundSchema).optional(),
-  managerEmail: z.string().optional(),
-  managerId: z.string().optional(),
-  type: z.string().default("FULL_TIME"),
-  relationships: z.array(EntityRelationship$inboundSchema).optional(),
-  status: z.string().default("CURRENT"),
-  additionalFields: z.array(AdditionalFieldDefinition$inboundSchema).optional(),
-});
-
-/** @internal */
 export type EmployeeInfoDefinition$Outbound = {
   email: string;
   firstName?: string | undefined;
@@ -270,33 +226,10 @@ export const EmployeeInfoDefinition$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeInfoDefinition$ {
-  /** @deprecated use `EmployeeInfoDefinition$inboundSchema` instead. */
-  export const inboundSchema = EmployeeInfoDefinition$inboundSchema;
-  /** @deprecated use `EmployeeInfoDefinition$outboundSchema` instead. */
-  export const outboundSchema = EmployeeInfoDefinition$outboundSchema;
-  /** @deprecated use `EmployeeInfoDefinition$Outbound` instead. */
-  export type Outbound = EmployeeInfoDefinition$Outbound;
-}
-
 export function employeeInfoDefinitionToJSON(
   employeeInfoDefinition: EmployeeInfoDefinition,
 ): string {
   return JSON.stringify(
     EmployeeInfoDefinition$outboundSchema.parse(employeeInfoDefinition),
-  );
-}
-
-export function employeeInfoDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<EmployeeInfoDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EmployeeInfoDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EmployeeInfoDefinition' from JSON`,
   );
 }

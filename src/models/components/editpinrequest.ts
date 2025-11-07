@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
@@ -29,17 +25,6 @@ export type EditPinRequest = {
 };
 
 /** @internal */
-export const EditPinRequest$inboundSchema: z.ZodType<
-  EditPinRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  queries: z.array(z.string()).optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  id: z.string().optional(),
-});
-
-/** @internal */
 export type EditPinRequest$Outbound = {
   queries?: Array<string> | undefined;
   audienceFilters?: Array<FacetFilter$Outbound> | undefined;
@@ -57,29 +42,6 @@ export const EditPinRequest$outboundSchema: z.ZodType<
   id: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditPinRequest$ {
-  /** @deprecated use `EditPinRequest$inboundSchema` instead. */
-  export const inboundSchema = EditPinRequest$inboundSchema;
-  /** @deprecated use `EditPinRequest$outboundSchema` instead. */
-  export const outboundSchema = EditPinRequest$outboundSchema;
-  /** @deprecated use `EditPinRequest$Outbound` instead. */
-  export type Outbound = EditPinRequest$Outbound;
-}
-
 export function editPinRequestToJSON(editPinRequest: EditPinRequest): string {
   return JSON.stringify(EditPinRequest$outboundSchema.parse(editPinRequest));
-}
-
-export function editPinRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<EditPinRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditPinRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditPinRequest' from JSON`,
-  );
 }

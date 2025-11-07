@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IndexingShortcut = {
   /**
@@ -47,23 +44,6 @@ export type IndexingShortcut = {
 };
 
 /** @internal */
-export const IndexingShortcut$inboundSchema: z.ZodType<
-  IndexingShortcut,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  inputAlias: z.string(),
-  description: z.string().optional(),
-  destinationUrl: z.string(),
-  createdBy: z.string(),
-  createTime: z.number().int().optional(),
-  updatedBy: z.string().optional(),
-  updateTime: z.number().int().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-});
-
-/** @internal */
 export type IndexingShortcut$Outbound = {
   inputAlias: string;
   description?: string | undefined;
@@ -93,33 +73,10 @@ export const IndexingShortcut$outboundSchema: z.ZodType<
   urlTemplate: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexingShortcut$ {
-  /** @deprecated use `IndexingShortcut$inboundSchema` instead. */
-  export const inboundSchema = IndexingShortcut$inboundSchema;
-  /** @deprecated use `IndexingShortcut$outboundSchema` instead. */
-  export const outboundSchema = IndexingShortcut$outboundSchema;
-  /** @deprecated use `IndexingShortcut$Outbound` instead. */
-  export type Outbound = IndexingShortcut$Outbound;
-}
-
 export function indexingShortcutToJSON(
   indexingShortcut: IndexingShortcut,
 ): string {
   return JSON.stringify(
     IndexingShortcut$outboundSchema.parse(indexingShortcut),
-  );
-}
-
-export function indexingShortcutFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexingShortcut, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexingShortcut$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexingShortcut' from JSON`,
   );
 }

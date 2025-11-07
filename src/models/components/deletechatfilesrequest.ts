@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteChatFilesRequest = {
   /**
@@ -13,15 +10,6 @@ export type DeleteChatFilesRequest = {
    */
   fileIds: Array<string>;
 };
-
-/** @internal */
-export const DeleteChatFilesRequest$inboundSchema: z.ZodType<
-  DeleteChatFilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fileIds: z.array(z.string()),
-});
 
 /** @internal */
 export type DeleteChatFilesRequest$Outbound = {
@@ -37,33 +25,10 @@ export const DeleteChatFilesRequest$outboundSchema: z.ZodType<
   fileIds: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteChatFilesRequest$ {
-  /** @deprecated use `DeleteChatFilesRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteChatFilesRequest$inboundSchema;
-  /** @deprecated use `DeleteChatFilesRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteChatFilesRequest$outboundSchema;
-  /** @deprecated use `DeleteChatFilesRequest$Outbound` instead. */
-  export type Outbound = DeleteChatFilesRequest$Outbound;
-}
-
 export function deleteChatFilesRequestToJSON(
   deleteChatFilesRequest: DeleteChatFilesRequest,
 ): string {
   return JSON.stringify(
     DeleteChatFilesRequest$outboundSchema.parse(deleteChatFilesRequest),
-  );
-}
-
-export function deleteChatFilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteChatFilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteChatFilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteChatFilesRequest' from JSON`,
   );
 }

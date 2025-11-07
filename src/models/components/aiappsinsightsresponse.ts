@@ -9,14 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AiAppActionCounts,
   AiAppActionCounts$inboundSchema,
-  AiAppActionCounts$Outbound,
-  AiAppActionCounts$outboundSchema,
 } from "./aiappactioncounts.js";
 import {
   UserActivityInsight,
   UserActivityInsight$inboundSchema,
-  UserActivityInsight$Outbound,
-  UserActivityInsight$outboundSchema,
 } from "./useractivityinsight.js";
 
 export type AiAppsInsightsResponse = {
@@ -51,49 +47,6 @@ export const AiAppsInsightsResponse$inboundSchema: z.ZodType<
   actionCounts: AiAppActionCounts$inboundSchema.optional(),
   departments: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type AiAppsInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  aiAppInsights?: Array<UserActivityInsight$Outbound> | undefined;
-  totalActiveUsers?: number | undefined;
-  actionCounts?: AiAppActionCounts$Outbound | undefined;
-  departments?: Array<string> | undefined;
-};
-
-/** @internal */
-export const AiAppsInsightsResponse$outboundSchema: z.ZodType<
-  AiAppsInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  AiAppsInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  aiAppInsights: z.array(UserActivityInsight$outboundSchema).optional(),
-  totalActiveUsers: z.number().int().optional(),
-  actionCounts: AiAppActionCounts$outboundSchema.optional(),
-  departments: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AiAppsInsightsResponse$ {
-  /** @deprecated use `AiAppsInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = AiAppsInsightsResponse$inboundSchema;
-  /** @deprecated use `AiAppsInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = AiAppsInsightsResponse$outboundSchema;
-  /** @deprecated use `AiAppsInsightsResponse$Outbound` instead. */
-  export type Outbound = AiAppsInsightsResponse$Outbound;
-}
-
-export function aiAppsInsightsResponseToJSON(
-  aiAppsInsightsResponse: AiAppsInsightsResponse,
-): string {
-  return JSON.stringify(
-    AiAppsInsightsResponse$outboundSchema.parse(aiAppsInsightsResponse),
-  );
-}
 
 export function aiAppsInsightsResponseFromJSON(
   jsonString: string,

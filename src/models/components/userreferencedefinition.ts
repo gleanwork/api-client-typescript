@@ -29,7 +29,6 @@ export const UserReferenceDefinition$inboundSchema: z.ZodType<
   datasourceUserId: z.string().optional(),
   name: z.string().optional(),
 });
-
 /** @internal */
 export type UserReferenceDefinition$Outbound = {
   email?: string | undefined;
@@ -48,19 +47,6 @@ export const UserReferenceDefinition$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserReferenceDefinition$ {
-  /** @deprecated use `UserReferenceDefinition$inboundSchema` instead. */
-  export const inboundSchema = UserReferenceDefinition$inboundSchema;
-  /** @deprecated use `UserReferenceDefinition$outboundSchema` instead. */
-  export const outboundSchema = UserReferenceDefinition$outboundSchema;
-  /** @deprecated use `UserReferenceDefinition$Outbound` instead. */
-  export type Outbound = UserReferenceDefinition$Outbound;
-}
-
 export function userReferenceDefinitionToJSON(
   userReferenceDefinition: UserReferenceDefinition,
 ): string {
@@ -68,7 +54,6 @@ export function userReferenceDefinitionToJSON(
     UserReferenceDefinition$outboundSchema.parse(userReferenceDefinition),
   );
 }
-
 export function userReferenceDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<UserReferenceDefinition, SDKValidationError> {

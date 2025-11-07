@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type UploadchatfilesRequest = {
   /**
@@ -16,20 +13,6 @@ export type UploadchatfilesRequest = {
   timezoneOffset?: number | undefined;
   uploadChatFilesRequest: components.UploadChatFilesRequest;
 };
-
-/** @internal */
-export const UploadchatfilesRequest$inboundSchema: z.ZodType<
-  UploadchatfilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  UploadChatFilesRequest: components.UploadChatFilesRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "UploadChatFilesRequest": "uploadChatFilesRequest",
-  });
-});
 
 /** @internal */
 export type UploadchatfilesRequest$Outbound = {
@@ -51,33 +34,10 @@ export const UploadchatfilesRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadchatfilesRequest$ {
-  /** @deprecated use `UploadchatfilesRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadchatfilesRequest$inboundSchema;
-  /** @deprecated use `UploadchatfilesRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadchatfilesRequest$outboundSchema;
-  /** @deprecated use `UploadchatfilesRequest$Outbound` instead. */
-  export type Outbound = UploadchatfilesRequest$Outbound;
-}
-
 export function uploadchatfilesRequestToJSON(
   uploadchatfilesRequest: UploadchatfilesRequest,
 ): string {
   return JSON.stringify(
     UploadchatfilesRequest$outboundSchema.parse(uploadchatfilesRequest),
-  );
-}
-
-export function uploadchatfilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadchatfilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadchatfilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadchatfilesRequest' from JSON`,
   );
 }

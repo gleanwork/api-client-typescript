@@ -31,22 +31,6 @@ export const CollectionErrorErrorCode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CollectionErrorErrorCode);
 
 /** @internal */
-export const CollectionErrorErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof CollectionErrorErrorCode
-> = CollectionErrorErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionErrorErrorCode$ {
-  /** @deprecated use `CollectionErrorErrorCode$inboundSchema` instead. */
-  export const inboundSchema = CollectionErrorErrorCode$inboundSchema;
-  /** @deprecated use `CollectionErrorErrorCode$outboundSchema` instead. */
-  export const outboundSchema = CollectionErrorErrorCode$outboundSchema;
-}
-
-/** @internal */
 export const CollectionError$inboundSchema: z.ZodType<
   CollectionError,
   z.ZodTypeDef,
@@ -54,39 +38,6 @@ export const CollectionError$inboundSchema: z.ZodType<
 > = z.object({
   errorCode: CollectionErrorErrorCode$inboundSchema,
 });
-
-/** @internal */
-export type CollectionError$Outbound = {
-  errorCode: string;
-};
-
-/** @internal */
-export const CollectionError$outboundSchema: z.ZodType<
-  CollectionError$Outbound,
-  z.ZodTypeDef,
-  CollectionError
-> = z.object({
-  errorCode: CollectionErrorErrorCode$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionError$ {
-  /** @deprecated use `CollectionError$inboundSchema` instead. */
-  export const inboundSchema = CollectionError$inboundSchema;
-  /** @deprecated use `CollectionError$outboundSchema` instead. */
-  export const outboundSchema = CollectionError$outboundSchema;
-  /** @deprecated use `CollectionError$Outbound` instead. */
-  export type Outbound = CollectionError$Outbound;
-}
-
-export function collectionErrorToJSON(
-  collectionError: CollectionError,
-): string {
-  return JSON.stringify(CollectionError$outboundSchema.parse(collectionError));
-}
 
 export function collectionErrorFromJSON(
   jsonString: string,

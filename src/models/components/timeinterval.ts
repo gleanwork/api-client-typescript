@@ -27,7 +27,6 @@ export const TimeInterval$inboundSchema: z.ZodType<
   start: z.string(),
   end: z.string(),
 });
-
 /** @internal */
 export type TimeInterval$Outbound = {
   start: string;
@@ -44,23 +43,9 @@ export const TimeInterval$outboundSchema: z.ZodType<
   end: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeInterval$ {
-  /** @deprecated use `TimeInterval$inboundSchema` instead. */
-  export const inboundSchema = TimeInterval$inboundSchema;
-  /** @deprecated use `TimeInterval$outboundSchema` instead. */
-  export const outboundSchema = TimeInterval$outboundSchema;
-  /** @deprecated use `TimeInterval$Outbound` instead. */
-  export type Outbound = TimeInterval$Outbound;
-}
-
 export function timeIntervalToJSON(timeInterval: TimeInterval): string {
   return JSON.stringify(TimeInterval$outboundSchema.parse(timeInterval));
 }
-
 export function timeIntervalFromJSON(
   jsonString: string,
 ): SafeParseResult<TimeInterval, SDKValidationError> {

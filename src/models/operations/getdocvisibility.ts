@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetdocvisibilityRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetdocvisibilityRequest = {
    */
   docIds?: Array<string> | undefined;
 };
-
-/** @internal */
-export const GetdocvisibilityRequest$inboundSchema: z.ZodType<
-  GetdocvisibilityRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  docIds: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetdocvisibilityRequest$Outbound = {
@@ -37,33 +25,10 @@ export const GetdocvisibilityRequest$outboundSchema: z.ZodType<
   docIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetdocvisibilityRequest$ {
-  /** @deprecated use `GetdocvisibilityRequest$inboundSchema` instead. */
-  export const inboundSchema = GetdocvisibilityRequest$inboundSchema;
-  /** @deprecated use `GetdocvisibilityRequest$outboundSchema` instead. */
-  export const outboundSchema = GetdocvisibilityRequest$outboundSchema;
-  /** @deprecated use `GetdocvisibilityRequest$Outbound` instead. */
-  export type Outbound = GetdocvisibilityRequest$Outbound;
-}
-
 export function getdocvisibilityRequestToJSON(
   getdocvisibilityRequest: GetdocvisibilityRequest,
 ): string {
   return JSON.stringify(
     GetdocvisibilityRequest$outboundSchema.parse(getdocvisibilityRequest),
-  );
-}
-
-export function getdocvisibilityRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetdocvisibilityRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetdocvisibilityRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetdocvisibilityRequest' from JSON`,
   );
 }

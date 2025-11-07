@@ -25,7 +25,6 @@ export const RelatedObjectEdge$inboundSchema: z.ZodType<
 > = z.object({
   objects: z.array(RelatedObject$inboundSchema).optional(),
 });
-
 /** @internal */
 export type RelatedObjectEdge$Outbound = {
   objects?: Array<RelatedObject$Outbound> | undefined;
@@ -40,19 +39,6 @@ export const RelatedObjectEdge$outboundSchema: z.ZodType<
   objects: z.array(RelatedObject$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RelatedObjectEdge$ {
-  /** @deprecated use `RelatedObjectEdge$inboundSchema` instead. */
-  export const inboundSchema = RelatedObjectEdge$inboundSchema;
-  /** @deprecated use `RelatedObjectEdge$outboundSchema` instead. */
-  export const outboundSchema = RelatedObjectEdge$outboundSchema;
-  /** @deprecated use `RelatedObjectEdge$Outbound` instead. */
-  export type Outbound = RelatedObjectEdge$Outbound;
-}
-
 export function relatedObjectEdgeToJSON(
   relatedObjectEdge: RelatedObjectEdge,
 ): string {
@@ -60,7 +46,6 @@ export function relatedObjectEdgeToJSON(
     RelatedObjectEdge$outboundSchema.parse(relatedObjectEdge),
   );
 }
-
 export function relatedObjectEdgeFromJSON(
   jsonString: string,
 ): SafeParseResult<RelatedObjectEdge, SDKValidationError> {

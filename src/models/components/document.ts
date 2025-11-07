@@ -83,7 +83,6 @@ export const Document$inboundSchema: z.ZodType<
   metadata: z.lazy(() => DocumentMetadata$inboundSchema).optional(),
   sections: z.array(DocumentSection$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Document$Outbound = {
   id?: string | undefined;
@@ -118,23 +117,9 @@ export const Document$outboundSchema: z.ZodType<
   sections: z.array(DocumentSection$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Document$ {
-  /** @deprecated use `Document$inboundSchema` instead. */
-  export const inboundSchema = Document$inboundSchema;
-  /** @deprecated use `Document$outboundSchema` instead. */
-  export const outboundSchema = Document$outboundSchema;
-  /** @deprecated use `Document$Outbound` instead. */
-  export type Outbound = Document$Outbound;
-}
-
 export function documentToJSON(document: Document): string {
   return JSON.stringify(Document$outboundSchema.parse(document));
 }
-
 export function documentFromJSON(
   jsonString: string,
 ): SafeParseResult<Document, SDKValidationError> {

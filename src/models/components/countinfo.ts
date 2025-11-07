@@ -35,7 +35,6 @@ export const CountInfo$inboundSchema: z.ZodType<
   period: Period$inboundSchema.optional(),
   org: z.string().optional(),
 });
-
 /** @internal */
 export type CountInfo$Outbound = {
   count: number;
@@ -54,23 +53,9 @@ export const CountInfo$outboundSchema: z.ZodType<
   org: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CountInfo$ {
-  /** @deprecated use `CountInfo$inboundSchema` instead. */
-  export const inboundSchema = CountInfo$inboundSchema;
-  /** @deprecated use `CountInfo$outboundSchema` instead. */
-  export const outboundSchema = CountInfo$outboundSchema;
-  /** @deprecated use `CountInfo$Outbound` instead. */
-  export type Outbound = CountInfo$Outbound;
-}
-
 export function countInfoToJSON(countInfo: CountInfo): string {
   return JSON.stringify(CountInfo$outboundSchema.parse(countInfo));
 }
-
 export function countInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<CountInfo, SDKValidationError> {

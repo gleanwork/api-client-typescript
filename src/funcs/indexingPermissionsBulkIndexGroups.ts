@@ -30,6 +30,7 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Replaces the groups in a datasource using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+ * Note: Any groups deleted from the existing set will have their associated memberships deleted as well.
  */
 export function indexingPermissionsBulkIndexGroups(
   client: GleanCore,

@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UserActivityInsight,
   UserActivityInsight$inboundSchema,
-  UserActivityInsight$Outbound,
-  UserActivityInsight$outboundSchema,
 } from "./useractivityinsight.js";
 
 export type AiInsightsResponse = {
@@ -80,63 +78,6 @@ export const AiInsightsResponse$inboundSchema: z.ZodType<
   totalGleanbotResponsesNotHelpful: z.number().int().optional(),
   departments: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type AiInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  assistantInsights?: Array<UserActivityInsight$Outbound> | undefined;
-  totalActiveAssistantUsers?: number | undefined;
-  totalChatMessages?: number | undefined;
-  totalAiSummarizations?: number | undefined;
-  totalAiAnswers?: number | undefined;
-  totalUpvotes?: number | undefined;
-  totalDownvotes?: number | undefined;
-  totalGleanbotResponses?: number | undefined;
-  totalGleanbotResponsesShared?: number | undefined;
-  totalGleanbotResponsesNotHelpful?: number | undefined;
-  departments?: Array<string> | undefined;
-};
-
-/** @internal */
-export const AiInsightsResponse$outboundSchema: z.ZodType<
-  AiInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  AiInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  assistantInsights: z.array(UserActivityInsight$outboundSchema).optional(),
-  totalActiveAssistantUsers: z.number().int().optional(),
-  totalChatMessages: z.number().int().optional(),
-  totalAiSummarizations: z.number().int().optional(),
-  totalAiAnswers: z.number().int().optional(),
-  totalUpvotes: z.number().int().optional(),
-  totalDownvotes: z.number().int().optional(),
-  totalGleanbotResponses: z.number().int().optional(),
-  totalGleanbotResponsesShared: z.number().int().optional(),
-  totalGleanbotResponsesNotHelpful: z.number().int().optional(),
-  departments: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AiInsightsResponse$ {
-  /** @deprecated use `AiInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = AiInsightsResponse$inboundSchema;
-  /** @deprecated use `AiInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = AiInsightsResponse$outboundSchema;
-  /** @deprecated use `AiInsightsResponse$Outbound` instead. */
-  export type Outbound = AiInsightsResponse$Outbound;
-}
-
-export function aiInsightsResponseToJSON(
-  aiInsightsResponse: AiInsightsResponse,
-): string {
-  return JSON.stringify(
-    AiInsightsResponse$outboundSchema.parse(aiInsightsResponse),
-  );
-}
 
 export function aiInsightsResponseFromJSON(
   jsonString: string,

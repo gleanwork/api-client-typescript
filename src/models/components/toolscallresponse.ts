@@ -28,43 +28,6 @@ export const ToolsCallResponse$inboundSchema: z.ZodType<
   error: z.string().optional(),
 });
 
-/** @internal */
-export type ToolsCallResponse$Outbound = {
-  rawResponse?: { [k: string]: any } | undefined;
-  error?: string | undefined;
-};
-
-/** @internal */
-export const ToolsCallResponse$outboundSchema: z.ZodType<
-  ToolsCallResponse$Outbound,
-  z.ZodTypeDef,
-  ToolsCallResponse
-> = z.object({
-  rawResponse: z.record(z.any()).optional(),
-  error: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolsCallResponse$ {
-  /** @deprecated use `ToolsCallResponse$inboundSchema` instead. */
-  export const inboundSchema = ToolsCallResponse$inboundSchema;
-  /** @deprecated use `ToolsCallResponse$outboundSchema` instead. */
-  export const outboundSchema = ToolsCallResponse$outboundSchema;
-  /** @deprecated use `ToolsCallResponse$Outbound` instead. */
-  export type Outbound = ToolsCallResponse$Outbound;
-}
-
-export function toolsCallResponseToJSON(
-  toolsCallResponse: ToolsCallResponse,
-): string {
-  return JSON.stringify(
-    ToolsCallResponse$outboundSchema.parse(toolsCallResponse),
-  );
-}
-
 export function toolsCallResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolsCallResponse, SDKValidationError> {

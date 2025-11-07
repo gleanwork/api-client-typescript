@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAgentSchemasRequest = {
   /**
@@ -18,20 +15,6 @@ export type GetAgentSchemasRequest = {
    */
   agentId: string;
 };
-
-/** @internal */
-export const GetAgentSchemasRequest$inboundSchema: z.ZodType<
-  GetAgentSchemasRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  agent_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-  });
-});
 
 /** @internal */
 export type GetAgentSchemasRequest$Outbound = {
@@ -53,33 +36,10 @@ export const GetAgentSchemasRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAgentSchemasRequest$ {
-  /** @deprecated use `GetAgentSchemasRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAgentSchemasRequest$inboundSchema;
-  /** @deprecated use `GetAgentSchemasRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAgentSchemasRequest$outboundSchema;
-  /** @deprecated use `GetAgentSchemasRequest$Outbound` instead. */
-  export type Outbound = GetAgentSchemasRequest$Outbound;
-}
-
 export function getAgentSchemasRequestToJSON(
   getAgentSchemasRequest: GetAgentSchemasRequest,
 ): string {
   return JSON.stringify(
     GetAgentSchemasRequest$outboundSchema.parse(getAgentSchemasRequest),
-  );
-}
-
-export function getAgentSchemasRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAgentSchemasRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAgentSchemasRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAgentSchemasRequest' from JSON`,
   );
 }

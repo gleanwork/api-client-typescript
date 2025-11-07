@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Employee's social network profile
@@ -26,17 +23,6 @@ export type SocialNetworkDefinition = {
 };
 
 /** @internal */
-export const SocialNetworkDefinition$inboundSchema: z.ZodType<
-  SocialNetworkDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  profileName: z.string().optional(),
-  profileUrl: z.string().optional(),
-});
-
-/** @internal */
 export type SocialNetworkDefinition$Outbound = {
   name?: string | undefined;
   profileName?: string | undefined;
@@ -54,33 +40,10 @@ export const SocialNetworkDefinition$outboundSchema: z.ZodType<
   profileUrl: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SocialNetworkDefinition$ {
-  /** @deprecated use `SocialNetworkDefinition$inboundSchema` instead. */
-  export const inboundSchema = SocialNetworkDefinition$inboundSchema;
-  /** @deprecated use `SocialNetworkDefinition$outboundSchema` instead. */
-  export const outboundSchema = SocialNetworkDefinition$outboundSchema;
-  /** @deprecated use `SocialNetworkDefinition$Outbound` instead. */
-  export type Outbound = SocialNetworkDefinition$Outbound;
-}
-
 export function socialNetworkDefinitionToJSON(
   socialNetworkDefinition: SocialNetworkDefinition,
 ): string {
   return JSON.stringify(
     SocialNetworkDefinition$outboundSchema.parse(socialNetworkDefinition),
-  );
-}
-
-export function socialNetworkDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<SocialNetworkDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SocialNetworkDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SocialNetworkDefinition' from JSON`,
   );
 }

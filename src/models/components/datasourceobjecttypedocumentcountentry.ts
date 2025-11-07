@@ -28,48 +28,6 @@ export const DatasourceObjectTypeDocumentCountEntry$inboundSchema: z.ZodType<
   count: z.number().int().optional(),
 });
 
-/** @internal */
-export type DatasourceObjectTypeDocumentCountEntry$Outbound = {
-  objectType?: string | undefined;
-  count?: number | undefined;
-};
-
-/** @internal */
-export const DatasourceObjectTypeDocumentCountEntry$outboundSchema: z.ZodType<
-  DatasourceObjectTypeDocumentCountEntry$Outbound,
-  z.ZodTypeDef,
-  DatasourceObjectTypeDocumentCountEntry
-> = z.object({
-  objectType: z.string().optional(),
-  count: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceObjectTypeDocumentCountEntry$ {
-  /** @deprecated use `DatasourceObjectTypeDocumentCountEntry$inboundSchema` instead. */
-  export const inboundSchema =
-    DatasourceObjectTypeDocumentCountEntry$inboundSchema;
-  /** @deprecated use `DatasourceObjectTypeDocumentCountEntry$outboundSchema` instead. */
-  export const outboundSchema =
-    DatasourceObjectTypeDocumentCountEntry$outboundSchema;
-  /** @deprecated use `DatasourceObjectTypeDocumentCountEntry$Outbound` instead. */
-  export type Outbound = DatasourceObjectTypeDocumentCountEntry$Outbound;
-}
-
-export function datasourceObjectTypeDocumentCountEntryToJSON(
-  datasourceObjectTypeDocumentCountEntry:
-    DatasourceObjectTypeDocumentCountEntry,
-): string {
-  return JSON.stringify(
-    DatasourceObjectTypeDocumentCountEntry$outboundSchema.parse(
-      datasourceObjectTypeDocumentCountEntry,
-    ),
-  );
-}
-
 export function datasourceObjectTypeDocumentCountEntryFromJSON(
   jsonString: string,
 ): SafeParseResult<DatasourceObjectTypeDocumentCountEntry, SDKValidationError> {

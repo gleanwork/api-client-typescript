@@ -46,49 +46,6 @@ export const DocumentStatusResponse$inboundSchema: z.ZodType<
   permissionIdentityStatus: z.string().optional(),
 });
 
-/** @internal */
-export type DocumentStatusResponse$Outbound = {
-  uploadStatus?: string | undefined;
-  lastUploadedAt?: string | undefined;
-  indexingStatus?: string | undefined;
-  lastIndexedAt?: string | undefined;
-  permissionIdentityStatus?: string | undefined;
-};
-
-/** @internal */
-export const DocumentStatusResponse$outboundSchema: z.ZodType<
-  DocumentStatusResponse$Outbound,
-  z.ZodTypeDef,
-  DocumentStatusResponse
-> = z.object({
-  uploadStatus: z.string().optional(),
-  lastUploadedAt: z.string().optional(),
-  indexingStatus: z.string().optional(),
-  lastIndexedAt: z.string().optional(),
-  permissionIdentityStatus: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentStatusResponse$ {
-  /** @deprecated use `DocumentStatusResponse$inboundSchema` instead. */
-  export const inboundSchema = DocumentStatusResponse$inboundSchema;
-  /** @deprecated use `DocumentStatusResponse$outboundSchema` instead. */
-  export const outboundSchema = DocumentStatusResponse$outboundSchema;
-  /** @deprecated use `DocumentStatusResponse$Outbound` instead. */
-  export type Outbound = DocumentStatusResponse$Outbound;
-}
-
-export function documentStatusResponseToJSON(
-  documentStatusResponse: DocumentStatusResponse,
-): string {
-  return JSON.stringify(
-    DocumentStatusResponse$outboundSchema.parse(documentStatusResponse),
-  );
-}
-
 export function documentStatusResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentStatusResponse, SDKValidationError> {

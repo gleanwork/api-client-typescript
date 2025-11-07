@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentOrErrorUnion,
   DocumentOrErrorUnion$inboundSchema,
-  DocumentOrErrorUnion$Outbound,
-  DocumentOrErrorUnion$outboundSchema,
 } from "./documentorerrorunion.js";
 
 export type GetDocumentsResponse = {
@@ -28,41 +26,6 @@ export const GetDocumentsResponse$inboundSchema: z.ZodType<
 > = z.object({
   documents: z.record(DocumentOrErrorUnion$inboundSchema).optional(),
 });
-
-/** @internal */
-export type GetDocumentsResponse$Outbound = {
-  documents?: { [k: string]: DocumentOrErrorUnion$Outbound } | undefined;
-};
-
-/** @internal */
-export const GetDocumentsResponse$outboundSchema: z.ZodType<
-  GetDocumentsResponse$Outbound,
-  z.ZodTypeDef,
-  GetDocumentsResponse
-> = z.object({
-  documents: z.record(DocumentOrErrorUnion$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentsResponse$ {
-  /** @deprecated use `GetDocumentsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentsResponse$inboundSchema;
-  /** @deprecated use `GetDocumentsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentsResponse$outboundSchema;
-  /** @deprecated use `GetDocumentsResponse$Outbound` instead. */
-  export type Outbound = GetDocumentsResponse$Outbound;
-}
-
-export function getDocumentsResponseToJSON(
-  getDocumentsResponse: GetDocumentsResponse,
-): string {
-  return JSON.stringify(
-    GetDocumentsResponse$outboundSchema.parse(getDocumentsResponse),
-  );
-}
 
 export function getDocumentsResponseFromJSON(
   jsonString: string,

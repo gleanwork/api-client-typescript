@@ -64,7 +64,6 @@ export const CustomEntity$inboundSchema: z.ZodType<
   metadata: CustomEntityMetadata$inboundSchema.optional(),
   roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type CustomEntity$Outbound = {
   permissions?: ObjectPermissions$Outbound | undefined;
@@ -91,23 +90,9 @@ export const CustomEntity$outboundSchema: z.ZodType<
   roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomEntity$ {
-  /** @deprecated use `CustomEntity$inboundSchema` instead. */
-  export const inboundSchema = CustomEntity$inboundSchema;
-  /** @deprecated use `CustomEntity$outboundSchema` instead. */
-  export const outboundSchema = CustomEntity$outboundSchema;
-  /** @deprecated use `CustomEntity$Outbound` instead. */
-  export type Outbound = CustomEntity$Outbound;
-}
-
 export function customEntityToJSON(customEntity: CustomEntity): string {
   return JSON.stringify(CustomEntity$outboundSchema.parse(customEntity));
 }
-
 export function customEntityFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomEntity, SDKValidationError> {

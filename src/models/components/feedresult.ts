@@ -7,12 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  FeedEntry,
-  FeedEntry$inboundSchema,
-  FeedEntry$Outbound,
-  FeedEntry$outboundSchema,
-} from "./feedentry.js";
+import { FeedEntry, FeedEntry$inboundSchema } from "./feedentry.js";
 
 /**
  * Category of the result, one of the requested categories in incoming request.
@@ -71,22 +66,6 @@ export const FeedResultCategory$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FeedResultCategory);
 
 /** @internal */
-export const FeedResultCategory$outboundSchema: z.ZodNativeEnum<
-  typeof FeedResultCategory
-> = FeedResultCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedResultCategory$ {
-  /** @deprecated use `FeedResultCategory$inboundSchema` instead. */
-  export const inboundSchema = FeedResultCategory$inboundSchema;
-  /** @deprecated use `FeedResultCategory$outboundSchema` instead. */
-  export const outboundSchema = FeedResultCategory$outboundSchema;
-}
-
-/** @internal */
 export const FeedResult$inboundSchema: z.ZodType<
   FeedResult,
   z.ZodTypeDef,
@@ -97,43 +76,6 @@ export const FeedResult$inboundSchema: z.ZodType<
   secondaryEntries: z.array(FeedEntry$inboundSchema).optional(),
   rank: z.number().int().optional(),
 });
-
-/** @internal */
-export type FeedResult$Outbound = {
-  category: string;
-  primaryEntry: FeedEntry$Outbound;
-  secondaryEntries?: Array<FeedEntry$Outbound> | undefined;
-  rank?: number | undefined;
-};
-
-/** @internal */
-export const FeedResult$outboundSchema: z.ZodType<
-  FeedResult$Outbound,
-  z.ZodTypeDef,
-  FeedResult
-> = z.object({
-  category: FeedResultCategory$outboundSchema,
-  primaryEntry: FeedEntry$outboundSchema,
-  secondaryEntries: z.array(FeedEntry$outboundSchema).optional(),
-  rank: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedResult$ {
-  /** @deprecated use `FeedResult$inboundSchema` instead. */
-  export const inboundSchema = FeedResult$inboundSchema;
-  /** @deprecated use `FeedResult$outboundSchema` instead. */
-  export const outboundSchema = FeedResult$outboundSchema;
-  /** @deprecated use `FeedResult$Outbound` instead. */
-  export type Outbound = FeedResult$Outbound;
-}
-
-export function feedResultToJSON(feedResult: FeedResult): string {
-  return JSON.stringify(FeedResult$outboundSchema.parse(feedResult));
-}
 
 export function feedResultFromJSON(
   jsonString: string,

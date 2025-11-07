@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * describes a user in the datasource
@@ -22,18 +19,6 @@ export type DatasourceUserDefinition = {
    */
   isActive?: boolean | undefined;
 };
-
-/** @internal */
-export const DatasourceUserDefinition$inboundSchema: z.ZodType<
-  DatasourceUserDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string(),
-  userId: z.string().optional(),
-  name: z.string(),
-  isActive: z.boolean().optional(),
-});
 
 /** @internal */
 export type DatasourceUserDefinition$Outbound = {
@@ -55,33 +40,10 @@ export const DatasourceUserDefinition$outboundSchema: z.ZodType<
   isActive: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceUserDefinition$ {
-  /** @deprecated use `DatasourceUserDefinition$inboundSchema` instead. */
-  export const inboundSchema = DatasourceUserDefinition$inboundSchema;
-  /** @deprecated use `DatasourceUserDefinition$outboundSchema` instead. */
-  export const outboundSchema = DatasourceUserDefinition$outboundSchema;
-  /** @deprecated use `DatasourceUserDefinition$Outbound` instead. */
-  export type Outbound = DatasourceUserDefinition$Outbound;
-}
-
 export function datasourceUserDefinitionToJSON(
   datasourceUserDefinition: DatasourceUserDefinition,
 ): string {
   return JSON.stringify(
     DatasourceUserDefinition$outboundSchema.parse(datasourceUserDefinition),
-  );
-}
-
-export function datasourceUserDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<DatasourceUserDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DatasourceUserDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DatasourceUserDefinition' from JSON`,
   );
 }

@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FeedbackRequest = {
   /**
@@ -16,20 +13,6 @@ export type FeedbackRequest = {
   feedbackQueryParameter?: string | undefined;
   feedback1?: components.Feedback | undefined;
 };
-
-/** @internal */
-export const FeedbackRequest$inboundSchema: z.ZodType<
-  FeedbackRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  feedbackQueryParameter: z.string().optional(),
-  Feedback1: components.Feedback$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "Feedback1": "feedback1",
-  });
-});
 
 /** @internal */
 export type FeedbackRequest$Outbound = {
@@ -51,31 +34,8 @@ export const FeedbackRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedbackRequest$ {
-  /** @deprecated use `FeedbackRequest$inboundSchema` instead. */
-  export const inboundSchema = FeedbackRequest$inboundSchema;
-  /** @deprecated use `FeedbackRequest$outboundSchema` instead. */
-  export const outboundSchema = FeedbackRequest$outboundSchema;
-  /** @deprecated use `FeedbackRequest$Outbound` instead. */
-  export type Outbound = FeedbackRequest$Outbound;
-}
-
 export function feedbackRequestToJSON(
   feedbackRequest: FeedbackRequest,
 ): string {
   return JSON.stringify(FeedbackRequest$outboundSchema.parse(feedbackRequest));
-}
-
-export function feedbackRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<FeedbackRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FeedbackRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FeedbackRequest' from JSON`,
-  );
 }

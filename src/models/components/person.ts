@@ -44,7 +44,6 @@ export const Person$inboundSchema: z.ZodType<Person, z.ZodTypeDef, unknown> = z
       .optional(),
     metadata: z.lazy(() => PersonMetadata$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Person$Outbound = {
   name: string;
@@ -66,23 +65,9 @@ export const Person$outboundSchema: z.ZodType<
   metadata: z.lazy(() => PersonMetadata$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Person$ {
-  /** @deprecated use `Person$inboundSchema` instead. */
-  export const inboundSchema = Person$inboundSchema;
-  /** @deprecated use `Person$outboundSchema` instead. */
-  export const outboundSchema = Person$outboundSchema;
-  /** @deprecated use `Person$Outbound` instead. */
-  export type Outbound = Person$Outbound;
-}
-
 export function personToJSON(person: Person): string {
   return JSON.stringify(Person$outboundSchema.parse(person));
 }
-
 export function personFromJSON(
   jsonString: string,
 ): SafeParseResult<Person, SDKValidationError> {

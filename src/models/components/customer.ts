@@ -80,7 +80,6 @@ export const Customer$inboundSchema: z.ZodType<
   contractAnnualRevenue: z.number().optional(),
   notes: z.string().optional(),
 });
-
 /** @internal */
 export type Customer$Outbound = {
   id: string;
@@ -113,23 +112,9 @@ export const Customer$outboundSchema: z.ZodType<
   notes: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Customer$ {
-  /** @deprecated use `Customer$inboundSchema` instead. */
-  export const inboundSchema = Customer$inboundSchema;
-  /** @deprecated use `Customer$outboundSchema` instead. */
-  export const outboundSchema = Customer$outboundSchema;
-  /** @deprecated use `Customer$Outbound` instead. */
-  export type Outbound = Customer$Outbound;
-}
-
 export function customerToJSON(customer: Customer): string {
   return JSON.stringify(Customer$outboundSchema.parse(customer));
 }
-
 export function customerFromJSON(
   jsonString: string,
 ): SafeParseResult<Customer, SDKValidationError> {

@@ -23,18 +23,6 @@ export type DlpFrequency = ClosedEnum<typeof DlpFrequency>;
 /** @internal */
 export const DlpFrequency$inboundSchema: z.ZodNativeEnum<typeof DlpFrequency> =
   z.nativeEnum(DlpFrequency);
-
 /** @internal */
 export const DlpFrequency$outboundSchema: z.ZodNativeEnum<typeof DlpFrequency> =
   DlpFrequency$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DlpFrequency$ {
-  /** @deprecated use `DlpFrequency$inboundSchema` instead. */
-  export const inboundSchema = DlpFrequency$inboundSchema;
-  /** @deprecated use `DlpFrequency$outboundSchema` instead. */
-  export const outboundSchema = DlpFrequency$outboundSchema;
-}

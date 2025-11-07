@@ -80,7 +80,6 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
     foundedDate: z.string().transform(v => new RFCDate(v)).optional(),
     about: z.string().optional(),
   });
-
 /** @internal */
 export type Company$Outbound = {
   name: string;
@@ -119,23 +118,9 @@ export const Company$outboundSchema: z.ZodType<
   about: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Company$ {
-  /** @deprecated use `Company$inboundSchema` instead. */
-  export const inboundSchema = Company$inboundSchema;
-  /** @deprecated use `Company$outboundSchema` instead. */
-  export const outboundSchema = Company$outboundSchema;
-  /** @deprecated use `Company$Outbound` instead. */
-  export type Outbound = Company$Outbound;
-}
-
 export function companyToJSON(company: Company): string {
   return JSON.stringify(Company$outboundSchema.parse(company));
 }
-
 export function companyFromJSON(
   jsonString: string,
 ): SafeParseResult<Company, SDKValidationError> {

@@ -42,7 +42,6 @@ export const DatasourceProfile$inboundSchema: z.ZodType<
   nativeAppUrl: z.string().optional(),
   isUserGenerated: z.boolean().optional(),
 });
-
 /** @internal */
 export type DatasourceProfile$Outbound = {
   datasource: string;
@@ -65,19 +64,6 @@ export const DatasourceProfile$outboundSchema: z.ZodType<
   isUserGenerated: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceProfile$ {
-  /** @deprecated use `DatasourceProfile$inboundSchema` instead. */
-  export const inboundSchema = DatasourceProfile$inboundSchema;
-  /** @deprecated use `DatasourceProfile$outboundSchema` instead. */
-  export const outboundSchema = DatasourceProfile$outboundSchema;
-  /** @deprecated use `DatasourceProfile$Outbound` instead. */
-  export type Outbound = DatasourceProfile$Outbound;
-}
-
 export function datasourceProfileToJSON(
   datasourceProfile: DatasourceProfile,
 ): string {
@@ -85,7 +71,6 @@ export function datasourceProfileToJSON(
     DatasourceProfile$outboundSchema.parse(datasourceProfile),
   );
 }
-
 export function datasourceProfileFromJSON(
   jsonString: string,
 ): SafeParseResult<DatasourceProfile, SDKValidationError> {

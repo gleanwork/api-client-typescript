@@ -51,7 +51,6 @@ export const UserRoleSpecification$inboundSchema: z.ZodType<
   group: Group$inboundSchema.optional(),
   role: UserRole$inboundSchema,
 });
-
 /** @internal */
 export type UserRoleSpecification$Outbound = {
   sourceDocumentSpec?: DocumentSpecUnion$Outbound | undefined;
@@ -72,19 +71,6 @@ export const UserRoleSpecification$outboundSchema: z.ZodType<
   role: UserRole$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserRoleSpecification$ {
-  /** @deprecated use `UserRoleSpecification$inboundSchema` instead. */
-  export const inboundSchema = UserRoleSpecification$inboundSchema;
-  /** @deprecated use `UserRoleSpecification$outboundSchema` instead. */
-  export const outboundSchema = UserRoleSpecification$outboundSchema;
-  /** @deprecated use `UserRoleSpecification$Outbound` instead. */
-  export type Outbound = UserRoleSpecification$Outbound;
-}
-
 export function userRoleSpecificationToJSON(
   userRoleSpecification: UserRoleSpecification,
 ): string {
@@ -92,7 +78,6 @@ export function userRoleSpecificationToJSON(
     UserRoleSpecification$outboundSchema.parse(userRoleSpecification),
   );
 }
-
 export function userRoleSpecificationFromJSON(
   jsonString: string,
 ): SafeParseResult<UserRoleSpecification, SDKValidationError> {

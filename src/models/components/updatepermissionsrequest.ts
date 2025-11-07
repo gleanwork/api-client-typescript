@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentPermissionsDefinition,
-  DocumentPermissionsDefinition$inboundSchema,
   DocumentPermissionsDefinition$Outbound,
   DocumentPermissionsDefinition$outboundSchema,
 } from "./documentpermissionsdefinition.js";
@@ -39,19 +35,6 @@ export type UpdatePermissionsRequest = {
 };
 
 /** @internal */
-export const UpdatePermissionsRequest$inboundSchema: z.ZodType<
-  UpdatePermissionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-  objectType: z.string().optional(),
-  id: z.string().optional(),
-  viewURL: z.string().optional(),
-  permissions: DocumentPermissionsDefinition$inboundSchema,
-});
-
-/** @internal */
 export type UpdatePermissionsRequest$Outbound = {
   datasource: string;
   objectType?: string | undefined;
@@ -73,33 +56,10 @@ export const UpdatePermissionsRequest$outboundSchema: z.ZodType<
   permissions: DocumentPermissionsDefinition$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdatePermissionsRequest$ {
-  /** @deprecated use `UpdatePermissionsRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdatePermissionsRequest$inboundSchema;
-  /** @deprecated use `UpdatePermissionsRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdatePermissionsRequest$outboundSchema;
-  /** @deprecated use `UpdatePermissionsRequest$Outbound` instead. */
-  export type Outbound = UpdatePermissionsRequest$Outbound;
-}
-
 export function updatePermissionsRequestToJSON(
   updatePermissionsRequest: UpdatePermissionsRequest,
 ): string {
   return JSON.stringify(
     UpdatePermissionsRequest$outboundSchema.parse(updatePermissionsRequest),
-  );
-}
-
-export function updatePermissionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdatePermissionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdatePermissionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdatePermissionsRequest' from JSON`,
   );
 }

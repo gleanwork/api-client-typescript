@@ -33,7 +33,6 @@ export const QuerySuggestionList$inboundSchema: z.ZodType<
   suggestions: z.array(z.lazy(() => QuerySuggestion$inboundSchema)).optional(),
   person: z.lazy(() => Person$inboundSchema).optional(),
 });
-
 /** @internal */
 export type QuerySuggestionList$Outbound = {
   suggestions?: Array<QuerySuggestion$Outbound> | undefined;
@@ -50,19 +49,6 @@ export const QuerySuggestionList$outboundSchema: z.ZodType<
   person: z.lazy(() => Person$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QuerySuggestionList$ {
-  /** @deprecated use `QuerySuggestionList$inboundSchema` instead. */
-  export const inboundSchema = QuerySuggestionList$inboundSchema;
-  /** @deprecated use `QuerySuggestionList$outboundSchema` instead. */
-  export const outboundSchema = QuerySuggestionList$outboundSchema;
-  /** @deprecated use `QuerySuggestionList$Outbound` instead. */
-  export type Outbound = QuerySuggestionList$Outbound;
-}
-
 export function querySuggestionListToJSON(
   querySuggestionList: QuerySuggestionList,
 ): string {
@@ -70,7 +56,6 @@ export function querySuggestionListToJSON(
     QuerySuggestionList$outboundSchema.parse(querySuggestionList),
   );
 }
-
 export function querySuggestionListFromJSON(
   jsonString: string,
 ): SafeParseResult<QuerySuggestionList, SDKValidationError> {

@@ -40,7 +40,6 @@ export const Disambiguation$inboundSchema: z.ZodType<
   id: z.string().optional(),
   type: EntityType$inboundSchema.optional(),
 });
-
 /** @internal */
 export type Disambiguation$Outbound = {
   name?: string | undefined;
@@ -59,23 +58,9 @@ export const Disambiguation$outboundSchema: z.ZodType<
   type: EntityType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Disambiguation$ {
-  /** @deprecated use `Disambiguation$inboundSchema` instead. */
-  export const inboundSchema = Disambiguation$inboundSchema;
-  /** @deprecated use `Disambiguation$outboundSchema` instead. */
-  export const outboundSchema = Disambiguation$outboundSchema;
-  /** @deprecated use `Disambiguation$Outbound` instead. */
-  export type Outbound = Disambiguation$Outbound;
-}
-
 export function disambiguationToJSON(disambiguation: Disambiguation): string {
   return JSON.stringify(Disambiguation$outboundSchema.parse(disambiguation));
 }
-
 export function disambiguationFromJSON(
   jsonString: string,
 ): SafeParseResult<Disambiguation, SDKValidationError> {

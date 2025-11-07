@@ -4,12 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Message,
-  Message$inboundSchema,
   Message$Outbound,
   Message$outboundSchema,
 } from "./message.js";
@@ -37,22 +33,6 @@ export type AgentRunCreate = {
 };
 
 /** @internal */
-export const AgentRunCreate$inboundSchema: z.ZodType<
-  AgentRunCreate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  agent_id: z.string(),
-  input: z.record(z.any()).optional(),
-  messages: z.array(Message$inboundSchema).optional(),
-  metadata: z.record(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-  });
-});
-
-/** @internal */
 export type AgentRunCreate$Outbound = {
   agent_id: string;
   input?: { [k: string]: any } | undefined;
@@ -76,29 +56,6 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentRunCreate$ {
-  /** @deprecated use `AgentRunCreate$inboundSchema` instead. */
-  export const inboundSchema = AgentRunCreate$inboundSchema;
-  /** @deprecated use `AgentRunCreate$outboundSchema` instead. */
-  export const outboundSchema = AgentRunCreate$outboundSchema;
-  /** @deprecated use `AgentRunCreate$Outbound` instead. */
-  export type Outbound = AgentRunCreate$Outbound;
-}
-
 export function agentRunCreateToJSON(agentRunCreate: AgentRunCreate): string {
   return JSON.stringify(AgentRunCreate$outboundSchema.parse(agentRunCreate));
-}
-
-export function agentRunCreateFromJSON(
-  jsonString: string,
-): SafeParseResult<AgentRunCreate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AgentRunCreate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AgentRunCreate' from JSON`,
-  );
 }

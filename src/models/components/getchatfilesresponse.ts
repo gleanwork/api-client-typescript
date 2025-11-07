@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ChatFile,
-  ChatFile$inboundSchema,
-  ChatFile$Outbound,
-  ChatFile$outboundSchema,
-} from "./chatfile.js";
+import { ChatFile, ChatFile$inboundSchema } from "./chatfile.js";
 
 export type GetChatFilesResponse = {
   /**
@@ -28,41 +23,6 @@ export const GetChatFilesResponse$inboundSchema: z.ZodType<
 > = z.object({
   files: z.record(ChatFile$inboundSchema).optional(),
 });
-
-/** @internal */
-export type GetChatFilesResponse$Outbound = {
-  files?: { [k: string]: ChatFile$Outbound } | undefined;
-};
-
-/** @internal */
-export const GetChatFilesResponse$outboundSchema: z.ZodType<
-  GetChatFilesResponse$Outbound,
-  z.ZodTypeDef,
-  GetChatFilesResponse
-> = z.object({
-  files: z.record(ChatFile$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetChatFilesResponse$ {
-  /** @deprecated use `GetChatFilesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetChatFilesResponse$inboundSchema;
-  /** @deprecated use `GetChatFilesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetChatFilesResponse$outboundSchema;
-  /** @deprecated use `GetChatFilesResponse$Outbound` instead. */
-  export type Outbound = GetChatFilesResponse$Outbound;
-}
-
-export function getChatFilesResponseToJSON(
-  getChatFilesResponse: GetChatFilesResponse,
-): string {
-  return JSON.stringify(
-    GetChatFilesResponse$outboundSchema.parse(getChatFilesResponse),
-  );
-}
 
 export function getChatFilesResponseFromJSON(
   jsonString: string,

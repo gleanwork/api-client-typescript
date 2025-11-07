@@ -77,21 +77,9 @@ export type RelatedDocuments = {
 /** @internal */
 export const Relation$inboundSchema: z.ZodNativeEnum<typeof Relation> = z
   .nativeEnum(Relation);
-
 /** @internal */
 export const Relation$outboundSchema: z.ZodNativeEnum<typeof Relation> =
   Relation$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Relation$ {
-  /** @deprecated use `Relation$inboundSchema` instead. */
-  export const inboundSchema = Relation$inboundSchema;
-  /** @deprecated use `Relation$outboundSchema` instead. */
-  export const outboundSchema = Relation$outboundSchema;
-}
 
 /** @internal */
 export const RelatedDocuments$inboundSchema: z.ZodType<
@@ -105,7 +93,6 @@ export const RelatedDocuments$inboundSchema: z.ZodType<
   documents: z.array(z.lazy(() => Document$inboundSchema)).optional(),
   results: z.array(z.lazy(() => SearchResult$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type RelatedDocuments$Outbound = {
   relation?: string | undefined;
@@ -128,19 +115,6 @@ export const RelatedDocuments$outboundSchema: z.ZodType<
   results: z.array(z.lazy(() => SearchResult$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RelatedDocuments$ {
-  /** @deprecated use `RelatedDocuments$inboundSchema` instead. */
-  export const inboundSchema = RelatedDocuments$inboundSchema;
-  /** @deprecated use `RelatedDocuments$outboundSchema` instead. */
-  export const outboundSchema = RelatedDocuments$outboundSchema;
-  /** @deprecated use `RelatedDocuments$Outbound` instead. */
-  export type Outbound = RelatedDocuments$Outbound;
-}
-
 export function relatedDocumentsToJSON(
   relatedDocuments: RelatedDocuments,
 ): string {
@@ -148,7 +122,6 @@ export function relatedDocumentsToJSON(
     RelatedDocuments$outboundSchema.parse(relatedDocuments),
   );
 }
-
 export function relatedDocumentsFromJSON(
   jsonString: string,
 ): SafeParseResult<RelatedDocuments, SDKValidationError> {

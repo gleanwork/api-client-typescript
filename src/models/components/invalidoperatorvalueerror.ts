@@ -28,43 +28,6 @@ export const InvalidOperatorValueError$inboundSchema: z.ZodType<
   value: z.string().optional(),
 });
 
-/** @internal */
-export type InvalidOperatorValueError$Outbound = {
-  key?: string | undefined;
-  value?: string | undefined;
-};
-
-/** @internal */
-export const InvalidOperatorValueError$outboundSchema: z.ZodType<
-  InvalidOperatorValueError$Outbound,
-  z.ZodTypeDef,
-  InvalidOperatorValueError
-> = z.object({
-  key: z.string().optional(),
-  value: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InvalidOperatorValueError$ {
-  /** @deprecated use `InvalidOperatorValueError$inboundSchema` instead. */
-  export const inboundSchema = InvalidOperatorValueError$inboundSchema;
-  /** @deprecated use `InvalidOperatorValueError$outboundSchema` instead. */
-  export const outboundSchema = InvalidOperatorValueError$outboundSchema;
-  /** @deprecated use `InvalidOperatorValueError$Outbound` instead. */
-  export type Outbound = InvalidOperatorValueError$Outbound;
-}
-
-export function invalidOperatorValueErrorToJSON(
-  invalidOperatorValueError: InvalidOperatorValueError,
-): string {
-  return JSON.stringify(
-    InvalidOperatorValueError$outboundSchema.parse(invalidOperatorValueError),
-  );
-}
-
 export function invalidOperatorValueErrorFromJSON(
   jsonString: string,
 ): SafeParseResult<InvalidOperatorValueError, SDKValidationError> {

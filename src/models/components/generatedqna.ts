@@ -77,22 +77,10 @@ export type GeneratedQna = {
 export const GeneratedQnaStatus$inboundSchema: z.ZodNativeEnum<
   typeof GeneratedQnaStatus
 > = z.nativeEnum(GeneratedQnaStatus);
-
 /** @internal */
 export const GeneratedQnaStatus$outboundSchema: z.ZodNativeEnum<
   typeof GeneratedQnaStatus
 > = GeneratedQnaStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GeneratedQnaStatus$ {
-  /** @deprecated use `GeneratedQnaStatus$inboundSchema` instead. */
-  export const inboundSchema = GeneratedQnaStatus$inboundSchema;
-  /** @deprecated use `GeneratedQnaStatus$outboundSchema` instead. */
-  export const outboundSchema = GeneratedQnaStatus$outboundSchema;
-}
 
 /** @internal */
 export const GeneratedQna$inboundSchema: z.ZodType<
@@ -109,7 +97,6 @@ export const GeneratedQna$inboundSchema: z.ZodType<
   cursor: z.string().optional(),
   trackingToken: z.string().optional(),
 });
-
 /** @internal */
 export type GeneratedQna$Outbound = {
   question?: string | undefined;
@@ -138,23 +125,9 @@ export const GeneratedQna$outboundSchema: z.ZodType<
   trackingToken: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GeneratedQna$ {
-  /** @deprecated use `GeneratedQna$inboundSchema` instead. */
-  export const inboundSchema = GeneratedQna$inboundSchema;
-  /** @deprecated use `GeneratedQna$outboundSchema` instead. */
-  export const outboundSchema = GeneratedQna$outboundSchema;
-  /** @deprecated use `GeneratedQna$Outbound` instead. */
-  export type Outbound = GeneratedQna$Outbound;
-}
-
 export function generatedQnaToJSON(generatedQna: GeneratedQna): string {
   return JSON.stringify(GeneratedQna$outboundSchema.parse(generatedQna));
 }
-
 export function generatedQnaFromJSON(
   jsonString: string,
 ): SafeParseResult<GeneratedQna, SDKValidationError> {
