@@ -30,19 +30,7 @@ export type ClusterTypeEnum = ClosedEnum<typeof ClusterTypeEnum>;
 export const ClusterTypeEnum$inboundSchema: z.ZodNativeEnum<
   typeof ClusterTypeEnum
 > = z.nativeEnum(ClusterTypeEnum);
-
 /** @internal */
 export const ClusterTypeEnum$outboundSchema: z.ZodNativeEnum<
   typeof ClusterTypeEnum
 > = ClusterTypeEnum$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ClusterTypeEnum$ {
-  /** @deprecated use `ClusterTypeEnum$inboundSchema` instead. */
-  export const inboundSchema = ClusterTypeEnum$inboundSchema;
-  /** @deprecated use `ClusterTypeEnum$outboundSchema` instead. */
-  export const outboundSchema = ClusterTypeEnum$outboundSchema;
-}

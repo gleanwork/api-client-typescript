@@ -23,19 +23,7 @@ export type CollectionPinnableTargets = ClosedEnum<
 export const CollectionPinnableTargets$inboundSchema: z.ZodNativeEnum<
   typeof CollectionPinnableTargets
 > = z.nativeEnum(CollectionPinnableTargets);
-
 /** @internal */
 export const CollectionPinnableTargets$outboundSchema: z.ZodNativeEnum<
   typeof CollectionPinnableTargets
 > = CollectionPinnableTargets$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionPinnableTargets$ {
-  /** @deprecated use `CollectionPinnableTargets$inboundSchema` instead. */
-  export const inboundSchema = CollectionPinnableTargets$inboundSchema;
-  /** @deprecated use `CollectionPinnableTargets$outboundSchema` instead. */
-  export const outboundSchema = CollectionPinnableTargets$outboundSchema;
-}

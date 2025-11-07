@@ -144,21 +144,9 @@ export type Team = {
 /** @internal */
 export const TeamStatus$inboundSchema: z.ZodNativeEnum<typeof TeamStatus> = z
   .nativeEnum(TeamStatus);
-
 /** @internal */
 export const TeamStatus$outboundSchema: z.ZodNativeEnum<typeof TeamStatus> =
   TeamStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamStatus$ {
-  /** @deprecated use `TeamStatus$inboundSchema` instead. */
-  export const inboundSchema = TeamStatus$inboundSchema;
-  /** @deprecated use `TeamStatus$outboundSchema` instead. */
-  export const outboundSchema = TeamStatus$outboundSchema;
-}
 
 /** @internal */
 export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z
@@ -189,7 +177,6 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z
     canBeDeleted: z.boolean().default(true),
     loggingId: z.string().optional(),
   });
-
 /** @internal */
 export type Team$Outbound = {
   relatedObjects?: { [k: string]: RelatedObjectEdge$Outbound } | undefined;
@@ -243,23 +230,9 @@ export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
     loggingId: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Team$ {
-  /** @deprecated use `Team$inboundSchema` instead. */
-  export const inboundSchema = Team$inboundSchema;
-  /** @deprecated use `Team$outboundSchema` instead. */
-  export const outboundSchema = Team$outboundSchema;
-  /** @deprecated use `Team$Outbound` instead. */
-  export type Outbound = Team$Outbound;
-}
-
 export function teamToJSON(team: Team): string {
   return JSON.stringify(Team$outboundSchema.parse(team));
 }
-
 export function teamFromJSON(
   jsonString: string,
 ): SafeParseResult<Team, SDKValidationError> {

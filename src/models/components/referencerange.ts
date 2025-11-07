@@ -39,7 +39,6 @@ export const ReferenceRange$inboundSchema: z.ZodType<
   textRange: TextRange$inboundSchema.optional(),
   snippets: z.array(SearchResultSnippet$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ReferenceRange$Outbound = {
   textRange?: TextRange$Outbound | undefined;
@@ -56,23 +55,9 @@ export const ReferenceRange$outboundSchema: z.ZodType<
   snippets: z.array(SearchResultSnippet$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReferenceRange$ {
-  /** @deprecated use `ReferenceRange$inboundSchema` instead. */
-  export const inboundSchema = ReferenceRange$inboundSchema;
-  /** @deprecated use `ReferenceRange$outboundSchema` instead. */
-  export const outboundSchema = ReferenceRange$outboundSchema;
-  /** @deprecated use `ReferenceRange$Outbound` instead. */
-  export type Outbound = ReferenceRange$Outbound;
-}
-
 export function referenceRangeToJSON(referenceRange: ReferenceRange): string {
   return JSON.stringify(ReferenceRange$outboundSchema.parse(referenceRange));
 }
-
 export function referenceRangeFromJSON(
   jsonString: string,
 ): SafeParseResult<ReferenceRange, SDKValidationError> {

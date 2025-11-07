@@ -3,30 +3,23 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AdditionalFieldDefinition,
-  AdditionalFieldDefinition$inboundSchema,
   AdditionalFieldDefinition$Outbound,
   AdditionalFieldDefinition$outboundSchema,
 } from "./additionalfielddefinition.js";
 import {
   DatasourceProfile,
-  DatasourceProfile$inboundSchema,
   DatasourceProfile$Outbound,
   DatasourceProfile$outboundSchema,
 } from "./datasourceprofile.js";
 import {
   TeamEmail,
-  TeamEmail$inboundSchema,
   TeamEmail$Outbound,
   TeamEmail$outboundSchema,
 } from "./teamemail.js";
 import {
   TeamMember,
-  TeamMember$inboundSchema,
   TeamMember$Outbound,
   TeamMember$outboundSchema,
 } from "./teammember.js";
@@ -84,25 +77,6 @@ export type TeamInfoDefinition = {
 };
 
 /** @internal */
-export const TeamInfoDefinition$inboundSchema: z.ZodType<
-  TeamInfoDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  businessUnit: z.string().optional(),
-  department: z.string().optional(),
-  photoUrl: z.string().optional(),
-  externalLink: z.string().optional(),
-  emails: z.array(TeamEmail$inboundSchema).optional(),
-  datasourceProfiles: z.array(DatasourceProfile$inboundSchema).optional(),
-  members: z.array(TeamMember$inboundSchema),
-  additionalFields: z.array(AdditionalFieldDefinition$inboundSchema).optional(),
-});
-
-/** @internal */
 export type TeamInfoDefinition$Outbound = {
   id: string;
   name: string;
@@ -137,33 +111,10 @@ export const TeamInfoDefinition$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamInfoDefinition$ {
-  /** @deprecated use `TeamInfoDefinition$inboundSchema` instead. */
-  export const inboundSchema = TeamInfoDefinition$inboundSchema;
-  /** @deprecated use `TeamInfoDefinition$outboundSchema` instead. */
-  export const outboundSchema = TeamInfoDefinition$outboundSchema;
-  /** @deprecated use `TeamInfoDefinition$Outbound` instead. */
-  export type Outbound = TeamInfoDefinition$Outbound;
-}
-
 export function teamInfoDefinitionToJSON(
   teamInfoDefinition: TeamInfoDefinition,
 ): string {
   return JSON.stringify(
     TeamInfoDefinition$outboundSchema.parse(teamInfoDefinition),
-  );
-}
-
-export function teamInfoDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamInfoDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamInfoDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamInfoDefinition' from JSON`,
   );
 }

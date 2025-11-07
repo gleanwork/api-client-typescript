@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 import {
   RelatedDocuments,
   RelatedDocuments$inboundSchema,
-  RelatedDocuments$Outbound,
-  RelatedDocuments$outboundSchema,
 } from "./relateddocuments.js";
 
 export type PeopleResponse = {
@@ -44,41 +37,6 @@ export const PeopleResponse$inboundSchema: z.ZodType<
   relatedDocuments: z.array(RelatedDocuments$inboundSchema).optional(),
   errors: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type PeopleResponse$Outbound = {
-  results?: Array<Person$Outbound> | undefined;
-  relatedDocuments?: Array<RelatedDocuments$Outbound> | undefined;
-  errors?: Array<string> | undefined;
-};
-
-/** @internal */
-export const PeopleResponse$outboundSchema: z.ZodType<
-  PeopleResponse$Outbound,
-  z.ZodTypeDef,
-  PeopleResponse
-> = z.object({
-  results: z.array(Person$outboundSchema).optional(),
-  relatedDocuments: z.array(RelatedDocuments$outboundSchema).optional(),
-  errors: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PeopleResponse$ {
-  /** @deprecated use `PeopleResponse$inboundSchema` instead. */
-  export const inboundSchema = PeopleResponse$inboundSchema;
-  /** @deprecated use `PeopleResponse$outboundSchema` instead. */
-  export const outboundSchema = PeopleResponse$outboundSchema;
-  /** @deprecated use `PeopleResponse$Outbound` instead. */
-  export type Outbound = PeopleResponse$Outbound;
-}
-
-export function peopleResponseToJSON(peopleResponse: PeopleResponse): string {
-  return JSON.stringify(PeopleResponse$outboundSchema.parse(peopleResponse));
-}
 
 export function peopleResponseFromJSON(
   jsonString: string,

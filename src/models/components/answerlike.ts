@@ -31,7 +31,6 @@ export const AnswerLike$inboundSchema: z.ZodType<
   createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 });
-
 /** @internal */
 export type AnswerLike$Outbound = {
   user?: Person$Outbound | undefined;
@@ -48,23 +47,9 @@ export const AnswerLike$outboundSchema: z.ZodType<
   createTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerLike$ {
-  /** @deprecated use `AnswerLike$inboundSchema` instead. */
-  export const inboundSchema = AnswerLike$inboundSchema;
-  /** @deprecated use `AnswerLike$outboundSchema` instead. */
-  export const outboundSchema = AnswerLike$outboundSchema;
-  /** @deprecated use `AnswerLike$Outbound` instead. */
-  export type Outbound = AnswerLike$Outbound;
-}
-
 export function answerLikeToJSON(answerLike: AnswerLike): string {
   return JSON.stringify(AnswerLike$outboundSchema.parse(answerLike));
 }
-
 export function answerLikeFromJSON(
   jsonString: string,
 ): SafeParseResult<AnswerLike, SDKValidationError> {

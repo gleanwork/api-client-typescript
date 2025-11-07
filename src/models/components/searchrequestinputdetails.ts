@@ -22,7 +22,6 @@ export const SearchRequestInputDetails$inboundSchema: z.ZodType<
 > = z.object({
   hasCopyPaste: z.boolean().optional(),
 });
-
 /** @internal */
 export type SearchRequestInputDetails$Outbound = {
   hasCopyPaste?: boolean | undefined;
@@ -37,19 +36,6 @@ export const SearchRequestInputDetails$outboundSchema: z.ZodType<
   hasCopyPaste: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchRequestInputDetails$ {
-  /** @deprecated use `SearchRequestInputDetails$inboundSchema` instead. */
-  export const inboundSchema = SearchRequestInputDetails$inboundSchema;
-  /** @deprecated use `SearchRequestInputDetails$outboundSchema` instead. */
-  export const outboundSchema = SearchRequestInputDetails$outboundSchema;
-  /** @deprecated use `SearchRequestInputDetails$Outbound` instead. */
-  export type Outbound = SearchRequestInputDetails$Outbound;
-}
-
 export function searchRequestInputDetailsToJSON(
   searchRequestInputDetails: SearchRequestInputDetails,
 ): string {
@@ -57,7 +43,6 @@ export function searchRequestInputDetailsToJSON(
     SearchRequestInputDetails$outboundSchema.parse(searchRequestInputDetails),
   );
 }
-
 export function searchRequestInputDetailsFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchRequestInputDetails, SDKValidationError> {

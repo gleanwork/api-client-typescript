@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * describes the membership row of a group. Only one of memberUserId and memberGroupName can be specified.
@@ -26,17 +23,6 @@ export type DatasourceMembershipDefinition = {
 };
 
 /** @internal */
-export const DatasourceMembershipDefinition$inboundSchema: z.ZodType<
-  DatasourceMembershipDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  groupName: z.string(),
-  memberUserId: z.string().optional(),
-  memberGroupName: z.string().optional(),
-});
-
-/** @internal */
 export type DatasourceMembershipDefinition$Outbound = {
   groupName: string;
   memberUserId?: string | undefined;
@@ -54,19 +40,6 @@ export const DatasourceMembershipDefinition$outboundSchema: z.ZodType<
   memberGroupName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceMembershipDefinition$ {
-  /** @deprecated use `DatasourceMembershipDefinition$inboundSchema` instead. */
-  export const inboundSchema = DatasourceMembershipDefinition$inboundSchema;
-  /** @deprecated use `DatasourceMembershipDefinition$outboundSchema` instead. */
-  export const outboundSchema = DatasourceMembershipDefinition$outboundSchema;
-  /** @deprecated use `DatasourceMembershipDefinition$Outbound` instead. */
-  export type Outbound = DatasourceMembershipDefinition$Outbound;
-}
-
 export function datasourceMembershipDefinitionToJSON(
   datasourceMembershipDefinition: DatasourceMembershipDefinition,
 ): string {
@@ -74,15 +47,5 @@ export function datasourceMembershipDefinitionToJSON(
     DatasourceMembershipDefinition$outboundSchema.parse(
       datasourceMembershipDefinition,
     ),
-  );
-}
-
-export function datasourceMembershipDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<DatasourceMembershipDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DatasourceMembershipDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DatasourceMembershipDefinition' from JSON`,
   );
 }

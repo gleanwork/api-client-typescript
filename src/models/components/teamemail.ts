@@ -30,7 +30,6 @@ export const TeamEmail$inboundSchema: z.ZodType<
   email: z.string(),
   type: z.string().default("OTHER"),
 });
-
 /** @internal */
 export type TeamEmail$Outbound = {
   email: string;
@@ -47,23 +46,9 @@ export const TeamEmail$outboundSchema: z.ZodType<
   type: z.string().default("OTHER"),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TeamEmail$ {
-  /** @deprecated use `TeamEmail$inboundSchema` instead. */
-  export const inboundSchema = TeamEmail$inboundSchema;
-  /** @deprecated use `TeamEmail$outboundSchema` instead. */
-  export const outboundSchema = TeamEmail$outboundSchema;
-  /** @deprecated use `TeamEmail$Outbound` instead. */
-  export type Outbound = TeamEmail$Outbound;
-}
-
 export function teamEmailToJSON(teamEmail: TeamEmail): string {
   return JSON.stringify(TeamEmail$outboundSchema.parse(teamEmail));
 }
-
 export function teamEmailFromJSON(
   jsonString: string,
 ): SafeParseResult<TeamEmail, SDKValidationError> {

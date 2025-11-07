@@ -31,7 +31,6 @@ export const IndexStatus$inboundSchema: z.ZodType<
     new Date(v)
   ).optional(),
 });
-
 /** @internal */
 export type IndexStatus$Outbound = {
   lastCrawledTime?: string | undefined;
@@ -48,23 +47,9 @@ export const IndexStatus$outboundSchema: z.ZodType<
   lastIndexedTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexStatus$ {
-  /** @deprecated use `IndexStatus$inboundSchema` instead. */
-  export const inboundSchema = IndexStatus$inboundSchema;
-  /** @deprecated use `IndexStatus$outboundSchema` instead. */
-  export const outboundSchema = IndexStatus$outboundSchema;
-  /** @deprecated use `IndexStatus$Outbound` instead. */
-  export type Outbound = IndexStatus$Outbound;
-}
-
 export function indexStatusToJSON(indexStatus: IndexStatus): string {
   return JSON.stringify(IndexStatus$outboundSchema.parse(indexStatus));
 }
-
 export function indexStatusFromJSON(
   jsonString: string,
 ): SafeParseResult<IndexStatus, SDKValidationError> {

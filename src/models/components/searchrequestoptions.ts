@@ -118,21 +118,9 @@ export type SearchRequestOptions = {
 /** @internal */
 export const ResponseHint$inboundSchema: z.ZodNativeEnum<typeof ResponseHint> =
   z.nativeEnum(ResponseHint);
-
 /** @internal */
 export const ResponseHint$outboundSchema: z.ZodNativeEnum<typeof ResponseHint> =
   ResponseHint$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseHint$ {
-  /** @deprecated use `ResponseHint$inboundSchema` instead. */
-  export const inboundSchema = ResponseHint$inboundSchema;
-  /** @deprecated use `ResponseHint$outboundSchema` instead. */
-  export const outboundSchema = ResponseHint$outboundSchema;
-}
 
 /** @internal */
 export const SearchRequestOptions$inboundSchema: z.ZodType<
@@ -158,7 +146,6 @@ export const SearchRequestOptions$inboundSchema: z.ZodType<
   inclusions: RestrictionFilters$inboundSchema.optional(),
   exclusions: RestrictionFilters$inboundSchema.optional(),
 });
-
 /** @internal */
 export type SearchRequestOptions$Outbound = {
   datasourceFilter?: string | undefined;
@@ -205,19 +192,6 @@ export const SearchRequestOptions$outboundSchema: z.ZodType<
   exclusions: RestrictionFilters$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchRequestOptions$ {
-  /** @deprecated use `SearchRequestOptions$inboundSchema` instead. */
-  export const inboundSchema = SearchRequestOptions$inboundSchema;
-  /** @deprecated use `SearchRequestOptions$outboundSchema` instead. */
-  export const outboundSchema = SearchRequestOptions$outboundSchema;
-  /** @deprecated use `SearchRequestOptions$Outbound` instead. */
-  export type Outbound = SearchRequestOptions$Outbound;
-}
-
 export function searchRequestOptionsToJSON(
   searchRequestOptions: SearchRequestOptions,
 ): string {
@@ -225,7 +199,6 @@ export function searchRequestOptionsToJSON(
     SearchRequestOptions$outboundSchema.parse(searchRequestOptions),
   );
 }
-
 export function searchRequestOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchRequestOptions, SDKValidationError> {

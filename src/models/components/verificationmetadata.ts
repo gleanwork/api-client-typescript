@@ -72,7 +72,6 @@ export const VerificationMetadata$inboundSchema: z.ZodType<
   visitorCount: z.array(CountInfo$inboundSchema).optional(),
   candidateVerifiers: z.array(z.lazy(() => Person$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type VerificationMetadata$Outbound = {
   lastVerifier?: Person$Outbound | undefined;
@@ -101,19 +100,6 @@ export const VerificationMetadata$outboundSchema: z.ZodType<
   candidateVerifiers: z.array(z.lazy(() => Person$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerificationMetadata$ {
-  /** @deprecated use `VerificationMetadata$inboundSchema` instead. */
-  export const inboundSchema = VerificationMetadata$inboundSchema;
-  /** @deprecated use `VerificationMetadata$outboundSchema` instead. */
-  export const outboundSchema = VerificationMetadata$outboundSchema;
-  /** @deprecated use `VerificationMetadata$Outbound` instead. */
-  export type Outbound = VerificationMetadata$Outbound;
-}
-
 export function verificationMetadataToJSON(
   verificationMetadata: VerificationMetadata,
 ): string {
@@ -121,7 +107,6 @@ export function verificationMetadataToJSON(
     VerificationMetadata$outboundSchema.parse(verificationMetadata),
   );
 }
-
 export function verificationMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<VerificationMetadata, SDKValidationError> {

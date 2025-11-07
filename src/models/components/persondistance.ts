@@ -32,7 +32,6 @@ export const PersonDistance$inboundSchema: z.ZodType<
   obfuscatedId: z.string(),
   distance: z.number(),
 });
-
 /** @internal */
 export type PersonDistance$Outbound = {
   name: string;
@@ -51,23 +50,9 @@ export const PersonDistance$outboundSchema: z.ZodType<
   distance: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonDistance$ {
-  /** @deprecated use `PersonDistance$inboundSchema` instead. */
-  export const inboundSchema = PersonDistance$inboundSchema;
-  /** @deprecated use `PersonDistance$outboundSchema` instead. */
-  export const outboundSchema = PersonDistance$outboundSchema;
-  /** @deprecated use `PersonDistance$Outbound` instead. */
-  export type Outbound = PersonDistance$Outbound;
-}
-
 export function personDistanceToJSON(personDistance: PersonDistance): string {
   return JSON.stringify(PersonDistance$outboundSchema.parse(personDistance));
 }
-
 export function personDistanceFromJSON(
   jsonString: string,
 ): SafeParseResult<PersonDistance, SDKValidationError> {

@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceMembershipDefinition,
-  DatasourceMembershipDefinition$inboundSchema,
   DatasourceMembershipDefinition$Outbound,
   DatasourceMembershipDefinition$outboundSchema,
 } from "./datasourcemembershipdefinition.js";
@@ -32,17 +28,6 @@ export type IndexMembershipRequest = {
 };
 
 /** @internal */
-export const IndexMembershipRequest$inboundSchema: z.ZodType<
-  IndexMembershipRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  membership: DatasourceMembershipDefinition$inboundSchema,
-});
-
-/** @internal */
 export type IndexMembershipRequest$Outbound = {
   version?: number | undefined;
   datasource: string;
@@ -60,33 +45,10 @@ export const IndexMembershipRequest$outboundSchema: z.ZodType<
   membership: DatasourceMembershipDefinition$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexMembershipRequest$ {
-  /** @deprecated use `IndexMembershipRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexMembershipRequest$inboundSchema;
-  /** @deprecated use `IndexMembershipRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexMembershipRequest$outboundSchema;
-  /** @deprecated use `IndexMembershipRequest$Outbound` instead. */
-  export type Outbound = IndexMembershipRequest$Outbound;
-}
-
 export function indexMembershipRequestToJSON(
   indexMembershipRequest: IndexMembershipRequest,
 ): string {
   return JSON.stringify(
     IndexMembershipRequest$outboundSchema.parse(indexMembershipRequest),
-  );
-}
-
-export function indexMembershipRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexMembershipRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexMembershipRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexMembershipRequest' from JSON`,
   );
 }

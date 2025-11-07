@@ -58,7 +58,6 @@ export const CalendarAttendees$inboundSchema: z.ZodType<
   numNoResponse: z.number().int().optional(),
   numTentative: z.number().int().optional(),
 });
-
 /** @internal */
 export type CalendarAttendees$Outbound = {
   people?: Array<CalendarAttendee$Outbound> | undefined;
@@ -85,19 +84,6 @@ export const CalendarAttendees$outboundSchema: z.ZodType<
   numTentative: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CalendarAttendees$ {
-  /** @deprecated use `CalendarAttendees$inboundSchema` instead. */
-  export const inboundSchema = CalendarAttendees$inboundSchema;
-  /** @deprecated use `CalendarAttendees$outboundSchema` instead. */
-  export const outboundSchema = CalendarAttendees$outboundSchema;
-  /** @deprecated use `CalendarAttendees$Outbound` instead. */
-  export type Outbound = CalendarAttendees$Outbound;
-}
-
 export function calendarAttendeesToJSON(
   calendarAttendees: CalendarAttendees,
 ): string {
@@ -105,7 +91,6 @@ export function calendarAttendeesToJSON(
     CalendarAttendees$outboundSchema.parse(calendarAttendees),
   );
 }
-
 export function calendarAttendeesFromJSON(
   jsonString: string,
 ): SafeParseResult<CalendarAttendees, SDKValidationError> {

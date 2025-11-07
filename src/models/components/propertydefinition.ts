@@ -71,40 +71,16 @@ export type PropertyDefinition = {
 /** @internal */
 export const PropertyType$inboundSchema: z.ZodNativeEnum<typeof PropertyType> =
   z.nativeEnum(PropertyType);
-
 /** @internal */
 export const PropertyType$outboundSchema: z.ZodNativeEnum<typeof PropertyType> =
   PropertyType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertyType$ {
-  /** @deprecated use `PropertyType$inboundSchema` instead. */
-  export const inboundSchema = PropertyType$inboundSchema;
-  /** @deprecated use `PropertyType$outboundSchema` instead. */
-  export const outboundSchema = PropertyType$outboundSchema;
-}
-
 /** @internal */
 export const UiOptions$inboundSchema: z.ZodNativeEnum<typeof UiOptions> = z
   .nativeEnum(UiOptions);
-
 /** @internal */
 export const UiOptions$outboundSchema: z.ZodNativeEnum<typeof UiOptions> =
   UiOptions$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiOptions$ {
-  /** @deprecated use `UiOptions$inboundSchema` instead. */
-  export const inboundSchema = UiOptions$inboundSchema;
-  /** @deprecated use `UiOptions$outboundSchema` instead. */
-  export const outboundSchema = UiOptions$outboundSchema;
-}
 
 /** @internal */
 export const PropertyDefinition$inboundSchema: z.ZodType<
@@ -122,7 +98,6 @@ export const PropertyDefinition$inboundSchema: z.ZodType<
   skipIndexing: z.boolean().optional(),
   group: z.string().optional(),
 });
-
 /** @internal */
 export type PropertyDefinition$Outbound = {
   name?: string | undefined;
@@ -153,19 +128,6 @@ export const PropertyDefinition$outboundSchema: z.ZodType<
   group: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertyDefinition$ {
-  /** @deprecated use `PropertyDefinition$inboundSchema` instead. */
-  export const inboundSchema = PropertyDefinition$inboundSchema;
-  /** @deprecated use `PropertyDefinition$outboundSchema` instead. */
-  export const outboundSchema = PropertyDefinition$outboundSchema;
-  /** @deprecated use `PropertyDefinition$Outbound` instead. */
-  export type Outbound = PropertyDefinition$Outbound;
-}
-
 export function propertyDefinitionToJSON(
   propertyDefinition: PropertyDefinition,
 ): string {
@@ -173,7 +135,6 @@ export function propertyDefinitionToJSON(
     PropertyDefinition$outboundSchema.parse(propertyDefinition),
   );
 }
-
 export function propertyDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertyDefinition, SDKValidationError> {

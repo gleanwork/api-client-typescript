@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetpolicyRequest = {
   /**
@@ -17,16 +14,6 @@ export type GetpolicyRequest = {
    */
   version?: number | undefined;
 };
-
-/** @internal */
-export const GetpolicyRequest$inboundSchema: z.ZodType<
-  GetpolicyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  version: z.number().int().optional(),
-});
 
 /** @internal */
 export type GetpolicyRequest$Outbound = {
@@ -44,33 +31,10 @@ export const GetpolicyRequest$outboundSchema: z.ZodType<
   version: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetpolicyRequest$ {
-  /** @deprecated use `GetpolicyRequest$inboundSchema` instead. */
-  export const inboundSchema = GetpolicyRequest$inboundSchema;
-  /** @deprecated use `GetpolicyRequest$outboundSchema` instead. */
-  export const outboundSchema = GetpolicyRequest$outboundSchema;
-  /** @deprecated use `GetpolicyRequest$Outbound` instead. */
-  export type Outbound = GetpolicyRequest$Outbound;
-}
-
 export function getpolicyRequestToJSON(
   getpolicyRequest: GetpolicyRequest,
 ): string {
   return JSON.stringify(
     GetpolicyRequest$outboundSchema.parse(getpolicyRequest),
-  );
-}
-
-export function getpolicyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetpolicyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetpolicyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetpolicyRequest' from JSON`,
   );
 }

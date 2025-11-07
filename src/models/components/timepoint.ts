@@ -27,7 +27,6 @@ export const TimePoint$inboundSchema: z.ZodType<
   epochSeconds: z.number().int().optional(),
   daysFromNow: z.number().int().optional(),
 });
-
 /** @internal */
 export type TimePoint$Outbound = {
   epochSeconds?: number | undefined;
@@ -44,23 +43,9 @@ export const TimePoint$outboundSchema: z.ZodType<
   daysFromNow: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimePoint$ {
-  /** @deprecated use `TimePoint$inboundSchema` instead. */
-  export const inboundSchema = TimePoint$inboundSchema;
-  /** @deprecated use `TimePoint$outboundSchema` instead. */
-  export const outboundSchema = TimePoint$outboundSchema;
-  /** @deprecated use `TimePoint$Outbound` instead. */
-  export type Outbound = TimePoint$Outbound;
-}
-
 export function timePointToJSON(timePoint: TimePoint): string {
   return JSON.stringify(TimePoint$outboundSchema.parse(timePoint));
 }
-
 export function timePointFromJSON(
   jsonString: string,
 ): SafeParseResult<TimePoint, SDKValidationError> {

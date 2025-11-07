@@ -35,7 +35,6 @@ export const FacetFilter$inboundSchema: z.ZodType<
   values: z.array(FacetFilterValue$inboundSchema).optional(),
   groupName: z.string().optional(),
 });
-
 /** @internal */
 export type FacetFilter$Outbound = {
   fieldName?: string | undefined;
@@ -54,23 +53,9 @@ export const FacetFilter$outboundSchema: z.ZodType<
   groupName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FacetFilter$ {
-  /** @deprecated use `FacetFilter$inboundSchema` instead. */
-  export const inboundSchema = FacetFilter$inboundSchema;
-  /** @deprecated use `FacetFilter$outboundSchema` instead. */
-  export const outboundSchema = FacetFilter$outboundSchema;
-  /** @deprecated use `FacetFilter$Outbound` instead. */
-  export type Outbound = FacetFilter$Outbound;
-}
-
 export function facetFilterToJSON(facetFilter: FacetFilter): string {
   return JSON.stringify(FacetFilter$outboundSchema.parse(facetFilter));
 }
-
 export function facetFilterFromJSON(
   jsonString: string,
 ): SafeParseResult<FacetFilter, SDKValidationError> {

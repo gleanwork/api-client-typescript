@@ -76,43 +76,19 @@ export type InputOptions = {
 export const DatasourcesType$inboundSchema: z.ZodNativeEnum<
   typeof DatasourcesType
 > = z.nativeEnum(DatasourcesType);
-
 /** @internal */
 export const DatasourcesType$outboundSchema: z.ZodNativeEnum<
   typeof DatasourcesType
 > = DatasourcesType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourcesType$ {
-  /** @deprecated use `DatasourcesType$inboundSchema` instead. */
-  export const inboundSchema = DatasourcesType$inboundSchema;
-  /** @deprecated use `DatasourcesType$outboundSchema` instead. */
-  export const outboundSchema = DatasourcesType$outboundSchema;
-}
-
 /** @internal */
 export const TimePeriodType$inboundSchema: z.ZodNativeEnum<
   typeof TimePeriodType
 > = z.nativeEnum(TimePeriodType);
-
 /** @internal */
 export const TimePeriodType$outboundSchema: z.ZodNativeEnum<
   typeof TimePeriodType
 > = TimePeriodType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimePeriodType$ {
-  /** @deprecated use `TimePeriodType$inboundSchema` instead. */
-  export const inboundSchema = TimePeriodType$inboundSchema;
-  /** @deprecated use `TimePeriodType$outboundSchema` instead. */
-  export const outboundSchema = TimePeriodType$outboundSchema;
-}
 
 /** @internal */
 export const InputOptions$inboundSchema: z.ZodType<
@@ -127,7 +103,6 @@ export const InputOptions$inboundSchema: z.ZodType<
   timePeriodType: TimePeriodType$inboundSchema.optional(),
   customTimeRange: TimeRange$inboundSchema.optional(),
 });
-
 /** @internal */
 export type InputOptions$Outbound = {
   urlGreenlist?: Array<string> | undefined;
@@ -152,23 +127,9 @@ export const InputOptions$outboundSchema: z.ZodType<
   customTimeRange: TimeRange$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InputOptions$ {
-  /** @deprecated use `InputOptions$inboundSchema` instead. */
-  export const inboundSchema = InputOptions$inboundSchema;
-  /** @deprecated use `InputOptions$outboundSchema` instead. */
-  export const outboundSchema = InputOptions$outboundSchema;
-  /** @deprecated use `InputOptions$Outbound` instead. */
-  export type Outbound = InputOptions$Outbound;
-}
-
 export function inputOptionsToJSON(inputOptions: InputOptions): string {
   return JSON.stringify(InputOptions$outboundSchema.parse(inputOptions));
 }
-
 export function inputOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<InputOptions, SDKValidationError> {

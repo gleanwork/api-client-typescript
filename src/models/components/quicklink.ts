@@ -57,21 +57,9 @@ export type Quicklink = {
 export const Scope$inboundSchema: z.ZodNativeEnum<typeof Scope> = z.nativeEnum(
   Scope,
 );
-
 /** @internal */
 export const Scope$outboundSchema: z.ZodNativeEnum<typeof Scope> =
   Scope$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Scope$ {
-  /** @deprecated use `Scope$inboundSchema` instead. */
-  export const inboundSchema = Scope$inboundSchema;
-  /** @deprecated use `Scope$outboundSchema` instead. */
-  export const outboundSchema = Scope$outboundSchema;
-}
 
 /** @internal */
 export const Quicklink$inboundSchema: z.ZodType<
@@ -86,7 +74,6 @@ export const Quicklink$inboundSchema: z.ZodType<
   id: z.string().optional(),
   scopes: z.array(Scope$inboundSchema).optional(),
 });
-
 /** @internal */
 export type Quicklink$Outbound = {
   name?: string | undefined;
@@ -111,23 +98,9 @@ export const Quicklink$outboundSchema: z.ZodType<
   scopes: z.array(Scope$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Quicklink$ {
-  /** @deprecated use `Quicklink$inboundSchema` instead. */
-  export const inboundSchema = Quicklink$inboundSchema;
-  /** @deprecated use `Quicklink$outboundSchema` instead. */
-  export const outboundSchema = Quicklink$outboundSchema;
-  /** @deprecated use `Quicklink$Outbound` instead. */
-  export type Outbound = Quicklink$Outbound;
-}
-
 export function quicklinkToJSON(quicklink: Quicklink): string {
   return JSON.stringify(Quicklink$outboundSchema.parse(quicklink));
 }
-
 export function quicklinkFromJSON(
   jsonString: string,
 ): SafeParseResult<Quicklink, SDKValidationError> {

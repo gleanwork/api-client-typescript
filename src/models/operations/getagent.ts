@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAgentRequest = {
   /**
@@ -18,20 +15,6 @@ export type GetAgentRequest = {
    */
   agentId: string;
 };
-
-/** @internal */
-export const GetAgentRequest$inboundSchema: z.ZodType<
-  GetAgentRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  agent_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-  });
-});
 
 /** @internal */
 export type GetAgentRequest$Outbound = {
@@ -53,31 +36,8 @@ export const GetAgentRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAgentRequest$ {
-  /** @deprecated use `GetAgentRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAgentRequest$inboundSchema;
-  /** @deprecated use `GetAgentRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAgentRequest$outboundSchema;
-  /** @deprecated use `GetAgentRequest$Outbound` instead. */
-  export type Outbound = GetAgentRequest$Outbound;
-}
-
 export function getAgentRequestToJSON(
   getAgentRequest: GetAgentRequest,
 ): string {
   return JSON.stringify(GetAgentRequest$outboundSchema.parse(getAgentRequest));
-}
-
-export function getAgentRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAgentRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAgentRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAgentRequest' from JSON`,
-  );
 }

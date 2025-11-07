@@ -15,19 +15,7 @@ export type CommunicationChannel = ClosedEnum<typeof CommunicationChannel>;
 export const CommunicationChannel$inboundSchema: z.ZodNativeEnum<
   typeof CommunicationChannel
 > = z.nativeEnum(CommunicationChannel);
-
 /** @internal */
 export const CommunicationChannel$outboundSchema: z.ZodNativeEnum<
   typeof CommunicationChannel
 > = CommunicationChannel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CommunicationChannel$ {
-  /** @deprecated use `CommunicationChannel$inboundSchema` instead. */
-  export const inboundSchema = CommunicationChannel$inboundSchema;
-  /** @deprecated use `CommunicationChannel$outboundSchema` instead. */
-  export const outboundSchema = CommunicationChannel$outboundSchema;
-}

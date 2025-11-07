@@ -33,7 +33,6 @@ export const Code$inboundSchema: z.ZodType<Code, z.ZodTypeDef, unknown> = z
     lines: z.array(z.lazy(() => CodeLine$inboundSchema)).optional(),
     isLastMatch: z.boolean().optional(),
   });
-
 /** @internal */
 export type Code$Outbound = {
   repoName?: string | undefined;
@@ -53,23 +52,9 @@ export const Code$outboundSchema: z.ZodType<Code$Outbound, z.ZodTypeDef, Code> =
     isLastMatch: z.boolean().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Code$ {
-  /** @deprecated use `Code$inboundSchema` instead. */
-  export const inboundSchema = Code$inboundSchema;
-  /** @deprecated use `Code$outboundSchema` instead. */
-  export const outboundSchema = Code$outboundSchema;
-  /** @deprecated use `Code$Outbound` instead. */
-  export type Outbound = Code$Outbound;
-}
-
 export function codeToJSON(code: Code): string {
   return JSON.stringify(Code$outboundSchema.parse(code));
 }
-
 export function codeFromJSON(
   jsonString: string,
 ): SafeParseResult<Code, SDKValidationError> {

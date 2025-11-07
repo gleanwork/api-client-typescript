@@ -3,13 +3,9 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ActivityEventParams,
-  ActivityEventParams$inboundSchema,
   ActivityEventParams$Outbound,
   ActivityEventParams$outboundSchema,
 } from "./activityeventparams.js";
@@ -52,38 +48,9 @@ export type ActivityEvent = {
 };
 
 /** @internal */
-export const ActivityEventAction$inboundSchema: z.ZodNativeEnum<
-  typeof ActivityEventAction
-> = z.nativeEnum(ActivityEventAction);
-
-/** @internal */
 export const ActivityEventAction$outboundSchema: z.ZodNativeEnum<
   typeof ActivityEventAction
-> = ActivityEventAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActivityEventAction$ {
-  /** @deprecated use `ActivityEventAction$inboundSchema` instead. */
-  export const inboundSchema = ActivityEventAction$inboundSchema;
-  /** @deprecated use `ActivityEventAction$outboundSchema` instead. */
-  export const outboundSchema = ActivityEventAction$outboundSchema;
-}
-
-/** @internal */
-export const ActivityEvent$inboundSchema: z.ZodType<
-  ActivityEvent,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string().optional(),
-  action: ActivityEventAction$inboundSchema,
-  params: ActivityEventParams$inboundSchema.optional(),
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  url: z.string(),
-});
+> = z.nativeEnum(ActivityEventAction);
 
 /** @internal */
 export type ActivityEvent$Outbound = {
@@ -107,29 +74,6 @@ export const ActivityEvent$outboundSchema: z.ZodType<
   url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ActivityEvent$ {
-  /** @deprecated use `ActivityEvent$inboundSchema` instead. */
-  export const inboundSchema = ActivityEvent$inboundSchema;
-  /** @deprecated use `ActivityEvent$outboundSchema` instead. */
-  export const outboundSchema = ActivityEvent$outboundSchema;
-  /** @deprecated use `ActivityEvent$Outbound` instead. */
-  export type Outbound = ActivityEvent$Outbound;
-}
-
 export function activityEventToJSON(activityEvent: ActivityEvent): string {
   return JSON.stringify(ActivityEvent$outboundSchema.parse(activityEvent));
-}
-
-export function activityEventFromJSON(
-  jsonString: string,
-): SafeParseResult<ActivityEvent, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ActivityEvent$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ActivityEvent' from JSON`,
-  );
 }

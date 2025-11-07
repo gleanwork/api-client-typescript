@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetchatRequest = {
   /**
@@ -16,20 +13,6 @@ export type GetchatRequest = {
   timezoneOffset?: number | undefined;
   getChatRequest: components.GetChatRequest;
 };
-
-/** @internal */
-export const GetchatRequest$inboundSchema: z.ZodType<
-  GetchatRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  GetChatRequest: components.GetChatRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "GetChatRequest": "getChatRequest",
-  });
-});
 
 /** @internal */
 export type GetchatRequest$Outbound = {
@@ -51,29 +34,6 @@ export const GetchatRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetchatRequest$ {
-  /** @deprecated use `GetchatRequest$inboundSchema` instead. */
-  export const inboundSchema = GetchatRequest$inboundSchema;
-  /** @deprecated use `GetchatRequest$outboundSchema` instead. */
-  export const outboundSchema = GetchatRequest$outboundSchema;
-  /** @deprecated use `GetchatRequest$Outbound` instead. */
-  export type Outbound = GetchatRequest$Outbound;
-}
-
 export function getchatRequestToJSON(getchatRequest: GetchatRequest): string {
   return JSON.stringify(GetchatRequest$outboundSchema.parse(getchatRequest));
-}
-
-export function getchatRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetchatRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetchatRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetchatRequest' from JSON`,
-  );
 }

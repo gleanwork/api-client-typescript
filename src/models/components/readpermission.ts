@@ -30,7 +30,6 @@ export const ReadPermission$inboundSchema: z.ZodType<
 > = z.object({
   scopeType: ScopeType$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ReadPermission$Outbound = {
   scopeType?: string | undefined;
@@ -45,23 +44,9 @@ export const ReadPermission$outboundSchema: z.ZodType<
   scopeType: ScopeType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReadPermission$ {
-  /** @deprecated use `ReadPermission$inboundSchema` instead. */
-  export const inboundSchema = ReadPermission$inboundSchema;
-  /** @deprecated use `ReadPermission$outboundSchema` instead. */
-  export const outboundSchema = ReadPermission$outboundSchema;
-  /** @deprecated use `ReadPermission$Outbound` instead. */
-  export type Outbound = ReadPermission$Outbound;
-}
-
 export function readPermissionToJSON(readPermission: ReadPermission): string {
   return JSON.stringify(ReadPermission$outboundSchema.parse(readPermission));
 }
-
 export function readPermissionFromJSON(
   jsonString: string,
 ): SafeParseResult<ReadPermission, SDKValidationError> {

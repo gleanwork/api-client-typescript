@@ -37,7 +37,6 @@ export const Reaction$inboundSchema: z.ZodType<
   reactors: z.array(z.lazy(() => Person$inboundSchema)).optional(),
   reactedByViewer: z.boolean().optional(),
 });
-
 /** @internal */
 export type Reaction$Outbound = {
   type?: string | undefined;
@@ -58,23 +57,9 @@ export const Reaction$outboundSchema: z.ZodType<
   reactedByViewer: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Reaction$ {
-  /** @deprecated use `Reaction$inboundSchema` instead. */
-  export const inboundSchema = Reaction$inboundSchema;
-  /** @deprecated use `Reaction$outboundSchema` instead. */
-  export const outboundSchema = Reaction$outboundSchema;
-  /** @deprecated use `Reaction$Outbound` instead. */
-  export type Outbound = Reaction$Outbound;
-}
-
 export function reactionToJSON(reaction: Reaction): string {
   return JSON.stringify(Reaction$outboundSchema.parse(reaction));
 }
-
 export function reactionFromJSON(
   jsonString: string,
 ): SafeParseResult<Reaction, SDKValidationError> {

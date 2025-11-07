@@ -22,19 +22,3 @@ export type EventClassificationName = ClosedEnum<
 export const EventClassificationName$inboundSchema: z.ZodNativeEnum<
   typeof EventClassificationName
 > = z.nativeEnum(EventClassificationName);
-
-/** @internal */
-export const EventClassificationName$outboundSchema: z.ZodNativeEnum<
-  typeof EventClassificationName
-> = EventClassificationName$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventClassificationName$ {
-  /** @deprecated use `EventClassificationName$inboundSchema` instead. */
-  export const inboundSchema = EventClassificationName$inboundSchema;
-  /** @deprecated use `EventClassificationName$outboundSchema` instead. */
-  export const outboundSchema = EventClassificationName$outboundSchema;
-}

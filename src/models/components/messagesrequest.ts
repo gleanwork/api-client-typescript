@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Type of the id in the incoming request.
@@ -84,77 +81,16 @@ export type MessagesRequest = {
 };
 
 /** @internal */
-export const IdType$inboundSchema: z.ZodNativeEnum<typeof IdType> = z
+export const IdType$outboundSchema: z.ZodNativeEnum<typeof IdType> = z
   .nativeEnum(IdType);
 
 /** @internal */
-export const IdType$outboundSchema: z.ZodNativeEnum<typeof IdType> =
-  IdType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IdType$ {
-  /** @deprecated use `IdType$inboundSchema` instead. */
-  export const inboundSchema = IdType$inboundSchema;
-  /** @deprecated use `IdType$outboundSchema` instead. */
-  export const outboundSchema = IdType$outboundSchema;
-}
-
-/** @internal */
-export const Direction$inboundSchema: z.ZodNativeEnum<typeof Direction> = z
+export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = z
   .nativeEnum(Direction);
 
 /** @internal */
-export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> =
-  Direction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Direction$ {
-  /** @deprecated use `Direction$inboundSchema` instead. */
-  export const inboundSchema = Direction$inboundSchema;
-  /** @deprecated use `Direction$outboundSchema` instead. */
-  export const outboundSchema = Direction$outboundSchema;
-}
-
-/** @internal */
-export const Datasource$inboundSchema: z.ZodNativeEnum<typeof Datasource> = z
+export const Datasource$outboundSchema: z.ZodNativeEnum<typeof Datasource> = z
   .nativeEnum(Datasource);
-
-/** @internal */
-export const Datasource$outboundSchema: z.ZodNativeEnum<typeof Datasource> =
-  Datasource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Datasource$ {
-  /** @deprecated use `Datasource$inboundSchema` instead. */
-  export const inboundSchema = Datasource$inboundSchema;
-  /** @deprecated use `Datasource$outboundSchema` instead. */
-  export const outboundSchema = Datasource$outboundSchema;
-}
-
-/** @internal */
-export const MessagesRequest$inboundSchema: z.ZodType<
-  MessagesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  idType: IdType$inboundSchema,
-  id: z.string(),
-  workspaceId: z.string().optional(),
-  direction: Direction$inboundSchema.optional(),
-  timestampMillis: z.number().int().optional(),
-  includeRootMessage: z.boolean().optional(),
-  datasource: Datasource$inboundSchema,
-  datasourceInstanceDisplayName: z.string().optional(),
-});
 
 /** @internal */
 export type MessagesRequest$Outbound = {
@@ -184,31 +120,8 @@ export const MessagesRequest$outboundSchema: z.ZodType<
   datasourceInstanceDisplayName: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessagesRequest$ {
-  /** @deprecated use `MessagesRequest$inboundSchema` instead. */
-  export const inboundSchema = MessagesRequest$inboundSchema;
-  /** @deprecated use `MessagesRequest$outboundSchema` instead. */
-  export const outboundSchema = MessagesRequest$outboundSchema;
-  /** @deprecated use `MessagesRequest$Outbound` instead. */
-  export type Outbound = MessagesRequest$Outbound;
-}
-
 export function messagesRequestToJSON(
   messagesRequest: MessagesRequest,
 ): string {
   return JSON.stringify(MessagesRequest$outboundSchema.parse(messagesRequest));
-}
-
-export function messagesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<MessagesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MessagesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MessagesRequest' from JSON`,
-  );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body for /getdocumentstatus API call
@@ -26,17 +23,6 @@ export type GetDocumentStatusRequest = {
 };
 
 /** @internal */
-export const GetDocumentStatusRequest$inboundSchema: z.ZodType<
-  GetDocumentStatusRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-  objectType: z.string(),
-  docId: z.string(),
-});
-
-/** @internal */
 export type GetDocumentStatusRequest$Outbound = {
   datasource: string;
   objectType: string;
@@ -54,33 +40,10 @@ export const GetDocumentStatusRequest$outboundSchema: z.ZodType<
   docId: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentStatusRequest$ {
-  /** @deprecated use `GetDocumentStatusRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentStatusRequest$inboundSchema;
-  /** @deprecated use `GetDocumentStatusRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentStatusRequest$outboundSchema;
-  /** @deprecated use `GetDocumentStatusRequest$Outbound` instead. */
-  export type Outbound = GetDocumentStatusRequest$Outbound;
-}
-
 export function getDocumentStatusRequestToJSON(
   getDocumentStatusRequest: GetDocumentStatusRequest,
 ): string {
   return JSON.stringify(
     GetDocumentStatusRequest$outboundSchema.parse(getDocumentStatusRequest),
-  );
-}
-
-export function getDocumentStatusRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDocumentStatusRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDocumentStatusRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDocumentStatusRequest' from JSON`,
   );
 }

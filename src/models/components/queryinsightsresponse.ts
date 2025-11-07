@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  QueryInsight,
-  QueryInsight$inboundSchema,
-  QueryInsight$Outbound,
-  QueryInsight$outboundSchema,
-} from "./queryinsight.js";
+import { QueryInsight, QueryInsight$inboundSchema } from "./queryinsight.js";
 
 export type QueryInsightsResponse = {
   /**
@@ -48,49 +43,6 @@ export const QueryInsightsResponse$inboundSchema: z.ZodType<
   departments: z.array(z.string()).optional(),
   minVisitorThreshold: z.number().int().optional(),
 });
-
-/** @internal */
-export type QueryInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  queryInsights?: Array<QueryInsight$Outbound> | undefined;
-  lowPerformingQueryInsights?: Array<QueryInsight$Outbound> | undefined;
-  departments?: Array<string> | undefined;
-  minVisitorThreshold?: number | undefined;
-};
-
-/** @internal */
-export const QueryInsightsResponse$outboundSchema: z.ZodType<
-  QueryInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  QueryInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  queryInsights: z.array(QueryInsight$outboundSchema).optional(),
-  lowPerformingQueryInsights: z.array(QueryInsight$outboundSchema).optional(),
-  departments: z.array(z.string()).optional(),
-  minVisitorThreshold: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QueryInsightsResponse$ {
-  /** @deprecated use `QueryInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = QueryInsightsResponse$inboundSchema;
-  /** @deprecated use `QueryInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = QueryInsightsResponse$outboundSchema;
-  /** @deprecated use `QueryInsightsResponse$Outbound` instead. */
-  export type Outbound = QueryInsightsResponse$Outbound;
-}
-
-export function queryInsightsResponseToJSON(
-  queryInsightsResponse: QueryInsightsResponse,
-): string {
-  return JSON.stringify(
-    QueryInsightsResponse$outboundSchema.parse(queryInsightsResponse),
-  );
-}
 
 export function queryInsightsResponseFromJSON(
   jsonString: string,

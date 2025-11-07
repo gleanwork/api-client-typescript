@@ -38,43 +38,6 @@ export const ResultTab$inboundSchema: z.ZodType<
   datasourceInstance: z.string().optional(),
 });
 
-/** @internal */
-export type ResultTab$Outbound = {
-  id?: string | undefined;
-  count?: number | undefined;
-  datasource?: string | undefined;
-  datasourceInstance?: string | undefined;
-};
-
-/** @internal */
-export const ResultTab$outboundSchema: z.ZodType<
-  ResultTab$Outbound,
-  z.ZodTypeDef,
-  ResultTab
-> = z.object({
-  id: z.string().optional(),
-  count: z.number().int().optional(),
-  datasource: z.string().optional(),
-  datasourceInstance: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResultTab$ {
-  /** @deprecated use `ResultTab$inboundSchema` instead. */
-  export const inboundSchema = ResultTab$inboundSchema;
-  /** @deprecated use `ResultTab$outboundSchema` instead. */
-  export const outboundSchema = ResultTab$outboundSchema;
-  /** @deprecated use `ResultTab$Outbound` instead. */
-  export type Outbound = ResultTab$Outbound;
-}
-
-export function resultTabToJSON(resultTab: ResultTab): string {
-  return JSON.stringify(ResultTab$outboundSchema.parse(resultTab));
-}
-
 export function resultTabFromJSON(
   jsonString: string,
 ): SafeParseResult<ResultTab, SDKValidationError> {

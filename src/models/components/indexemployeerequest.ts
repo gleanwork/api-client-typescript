@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   EmployeeInfoDefinition,
-  EmployeeInfoDefinition$inboundSchema,
   EmployeeInfoDefinition$Outbound,
   EmployeeInfoDefinition$outboundSchema,
 } from "./employeeinfodefinition.js";
@@ -28,16 +24,6 @@ export type IndexEmployeeRequest = {
 };
 
 /** @internal */
-export const IndexEmployeeRequest$inboundSchema: z.ZodType<
-  IndexEmployeeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  employee: EmployeeInfoDefinition$inboundSchema,
-  version: z.number().int().optional(),
-});
-
-/** @internal */
 export type IndexEmployeeRequest$Outbound = {
   employee: EmployeeInfoDefinition$Outbound;
   version?: number | undefined;
@@ -53,33 +39,10 @@ export const IndexEmployeeRequest$outboundSchema: z.ZodType<
   version: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexEmployeeRequest$ {
-  /** @deprecated use `IndexEmployeeRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexEmployeeRequest$inboundSchema;
-  /** @deprecated use `IndexEmployeeRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexEmployeeRequest$outboundSchema;
-  /** @deprecated use `IndexEmployeeRequest$Outbound` instead. */
-  export type Outbound = IndexEmployeeRequest$Outbound;
-}
-
 export function indexEmployeeRequestToJSON(
   indexEmployeeRequest: IndexEmployeeRequest,
 ): string {
   return JSON.stringify(
     IndexEmployeeRequest$outboundSchema.parse(indexEmployeeRequest),
-  );
-}
-
-export function indexEmployeeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexEmployeeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexEmployeeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexEmployeeRequest' from JSON`,
   );
 }

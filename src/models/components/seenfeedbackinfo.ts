@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SeenFeedbackInfo = {
   /**
@@ -13,15 +10,6 @@ export type SeenFeedbackInfo = {
    */
   isExplicit?: boolean | undefined;
 };
-
-/** @internal */
-export const SeenFeedbackInfo$inboundSchema: z.ZodType<
-  SeenFeedbackInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  isExplicit: z.boolean().optional(),
-});
 
 /** @internal */
 export type SeenFeedbackInfo$Outbound = {
@@ -37,33 +25,10 @@ export const SeenFeedbackInfo$outboundSchema: z.ZodType<
   isExplicit: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SeenFeedbackInfo$ {
-  /** @deprecated use `SeenFeedbackInfo$inboundSchema` instead. */
-  export const inboundSchema = SeenFeedbackInfo$inboundSchema;
-  /** @deprecated use `SeenFeedbackInfo$outboundSchema` instead. */
-  export const outboundSchema = SeenFeedbackInfo$outboundSchema;
-  /** @deprecated use `SeenFeedbackInfo$Outbound` instead. */
-  export type Outbound = SeenFeedbackInfo$Outbound;
-}
-
 export function seenFeedbackInfoToJSON(
   seenFeedbackInfo: SeenFeedbackInfo,
 ): string {
   return JSON.stringify(
     SeenFeedbackInfo$outboundSchema.parse(seenFeedbackInfo),
-  );
-}
-
-export function seenFeedbackInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<SeenFeedbackInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SeenFeedbackInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeenFeedbackInfo' from JSON`,
   );
 }

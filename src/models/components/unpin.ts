@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Unpin = {
   /**
@@ -13,12 +10,6 @@ export type Unpin = {
    */
   id?: string | undefined;
 };
-
-/** @internal */
-export const Unpin$inboundSchema: z.ZodType<Unpin, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string().optional(),
-  });
 
 /** @internal */
 export type Unpin$Outbound = {
@@ -34,29 +25,6 @@ export const Unpin$outboundSchema: z.ZodType<
   id: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Unpin$ {
-  /** @deprecated use `Unpin$inboundSchema` instead. */
-  export const inboundSchema = Unpin$inboundSchema;
-  /** @deprecated use `Unpin$outboundSchema` instead. */
-  export const outboundSchema = Unpin$outboundSchema;
-  /** @deprecated use `Unpin$Outbound` instead. */
-  export type Outbound = Unpin$Outbound;
-}
-
 export function unpinToJSON(unpin: Unpin): string {
   return JSON.stringify(Unpin$outboundSchema.parse(unpin));
-}
-
-export function unpinFromJSON(
-  jsonString: string,
-): SafeParseResult<Unpin, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Unpin$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Unpin' from JSON`,
-  );
 }

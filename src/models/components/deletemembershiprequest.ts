@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceMembershipDefinition,
-  DatasourceMembershipDefinition$inboundSchema,
   DatasourceMembershipDefinition$Outbound,
   DatasourceMembershipDefinition$outboundSchema,
 } from "./datasourcemembershipdefinition.js";
@@ -32,17 +28,6 @@ export type DeleteMembershipRequest = {
 };
 
 /** @internal */
-export const DeleteMembershipRequest$inboundSchema: z.ZodType<
-  DeleteMembershipRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  membership: DatasourceMembershipDefinition$inboundSchema,
-});
-
-/** @internal */
 export type DeleteMembershipRequest$Outbound = {
   version?: number | undefined;
   datasource: string;
@@ -60,33 +45,10 @@ export const DeleteMembershipRequest$outboundSchema: z.ZodType<
   membership: DatasourceMembershipDefinition$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteMembershipRequest$ {
-  /** @deprecated use `DeleteMembershipRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteMembershipRequest$inboundSchema;
-  /** @deprecated use `DeleteMembershipRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteMembershipRequest$outboundSchema;
-  /** @deprecated use `DeleteMembershipRequest$Outbound` instead. */
-  export type Outbound = DeleteMembershipRequest$Outbound;
-}
-
 export function deleteMembershipRequestToJSON(
   deleteMembershipRequest: DeleteMembershipRequest,
 ): string {
   return JSON.stringify(
     DeleteMembershipRequest$outboundSchema.parse(deleteMembershipRequest),
-  );
-}
-
-export function deleteMembershipRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteMembershipRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteMembershipRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteMembershipRequest' from JSON`,
   );
 }

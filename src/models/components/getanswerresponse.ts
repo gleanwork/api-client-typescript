@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  AnswerResult,
-  AnswerResult$inboundSchema,
-  AnswerResult$Outbound,
-  AnswerResult$outboundSchema,
-} from "./answerresult.js";
+import { AnswerResult, AnswerResult$inboundSchema } from "./answerresult.js";
 import {
   GetAnswerError,
   GetAnswerError$inboundSchema,
-  GetAnswerError$Outbound,
-  GetAnswerError$outboundSchema,
 } from "./getanswererror.js";
 
 export type GetAnswerResponse = {
@@ -33,43 +26,6 @@ export const GetAnswerResponse$inboundSchema: z.ZodType<
   answerResult: AnswerResult$inboundSchema.optional(),
   error: GetAnswerError$inboundSchema.optional(),
 });
-
-/** @internal */
-export type GetAnswerResponse$Outbound = {
-  answerResult?: AnswerResult$Outbound | undefined;
-  error?: GetAnswerError$Outbound | undefined;
-};
-
-/** @internal */
-export const GetAnswerResponse$outboundSchema: z.ZodType<
-  GetAnswerResponse$Outbound,
-  z.ZodTypeDef,
-  GetAnswerResponse
-> = z.object({
-  answerResult: AnswerResult$outboundSchema.optional(),
-  error: GetAnswerError$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAnswerResponse$ {
-  /** @deprecated use `GetAnswerResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAnswerResponse$inboundSchema;
-  /** @deprecated use `GetAnswerResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAnswerResponse$outboundSchema;
-  /** @deprecated use `GetAnswerResponse$Outbound` instead. */
-  export type Outbound = GetAnswerResponse$Outbound;
-}
-
-export function getAnswerResponseToJSON(
-  getAnswerResponse: GetAnswerResponse,
-): string {
-  return JSON.stringify(
-    GetAnswerResponse$outboundSchema.parse(getAnswerResponse),
-  );
-}
 
 export function getAnswerResponseFromJSON(
   jsonString: string,

@@ -3,24 +3,18 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   Thumbnail,
-  Thumbnail$inboundSchema,
   Thumbnail$Outbound,
   Thumbnail$outboundSchema,
 } from "./thumbnail.js";
 import {
   UserRoleSpecification,
-  UserRoleSpecification$inboundSchema,
   UserRoleSpecification$Outbound,
   UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
@@ -70,25 +64,6 @@ export type CreateCollectionRequest = {
 };
 
 /** @internal */
-export const CreateCollectionRequest$inboundSchema: z.ZodType<
-  CreateCollectionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  newNextItemId: z.string().optional(),
-});
-
-/** @internal */
 export type CreateCollectionRequest$Outbound = {
   name: string;
   description?: string | undefined;
@@ -122,33 +97,10 @@ export const CreateCollectionRequest$outboundSchema: z.ZodType<
   newNextItemId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCollectionRequest$ {
-  /** @deprecated use `CreateCollectionRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateCollectionRequest$inboundSchema;
-  /** @deprecated use `CreateCollectionRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateCollectionRequest$outboundSchema;
-  /** @deprecated use `CreateCollectionRequest$Outbound` instead. */
-  export type Outbound = CreateCollectionRequest$Outbound;
-}
-
 export function createCollectionRequestToJSON(
   createCollectionRequest: CreateCollectionRequest,
 ): string {
   return JSON.stringify(
     CreateCollectionRequest$outboundSchema.parse(createCollectionRequest),
-  );
-}
-
-export function createCollectionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateCollectionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateCollectionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateCollectionRequest' from JSON`,
   );
 }

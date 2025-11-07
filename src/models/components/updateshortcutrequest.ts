@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UserRoleSpecification,
-  UserRoleSpecification$inboundSchema,
   UserRoleSpecification$Outbound,
   UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
@@ -53,23 +49,6 @@ export type UpdateShortcutRequest = {
 };
 
 /** @internal */
-export const UpdateShortcutRequest$inboundSchema: z.ZodType<
-  UpdateShortcutRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.number().int(),
-  inputAlias: z.string().optional(),
-  destinationUrl: z.string().optional(),
-  destinationDocumentId: z.string().optional(),
-  description: z.string().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-});
-
-/** @internal */
 export type UpdateShortcutRequest$Outbound = {
   id: number;
   inputAlias?: string | undefined;
@@ -99,33 +78,10 @@ export const UpdateShortcutRequest$outboundSchema: z.ZodType<
   removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateShortcutRequest$ {
-  /** @deprecated use `UpdateShortcutRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateShortcutRequest$inboundSchema;
-  /** @deprecated use `UpdateShortcutRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateShortcutRequest$outboundSchema;
-  /** @deprecated use `UpdateShortcutRequest$Outbound` instead. */
-  export type Outbound = UpdateShortcutRequest$Outbound;
-}
-
 export function updateShortcutRequestToJSON(
   updateShortcutRequest: UpdateShortcutRequest,
 ): string {
   return JSON.stringify(
     UpdateShortcutRequest$outboundSchema.parse(updateShortcutRequest),
-  );
-}
-
-export function updateShortcutRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateShortcutRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateShortcutRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateShortcutRequest' from JSON`,
   );
 }

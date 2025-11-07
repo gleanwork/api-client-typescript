@@ -39,21 +39,9 @@ export type ViewerInfo = {
 export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
   Role,
 );
-
 /** @internal */
 export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
   Role$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Role$ {
-  /** @deprecated use `Role$inboundSchema` instead. */
-  export const inboundSchema = Role$inboundSchema;
-  /** @deprecated use `Role$outboundSchema` instead. */
-  export const outboundSchema = Role$outboundSchema;
-}
 
 /** @internal */
 export const ViewerInfo$inboundSchema: z.ZodType<
@@ -66,7 +54,6 @@ export const ViewerInfo$inboundSchema: z.ZodType<
     new Date(v)
   ).optional(),
 });
-
 /** @internal */
 export type ViewerInfo$Outbound = {
   role?: string | undefined;
@@ -83,23 +70,9 @@ export const ViewerInfo$outboundSchema: z.ZodType<
   lastViewedTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ViewerInfo$ {
-  /** @deprecated use `ViewerInfo$inboundSchema` instead. */
-  export const inboundSchema = ViewerInfo$inboundSchema;
-  /** @deprecated use `ViewerInfo$outboundSchema` instead. */
-  export const outboundSchema = ViewerInfo$outboundSchema;
-  /** @deprecated use `ViewerInfo$Outbound` instead. */
-  export type Outbound = ViewerInfo$Outbound;
-}
-
 export function viewerInfoToJSON(viewerInfo: ViewerInfo): string {
   return JSON.stringify(ViewerInfo$outboundSchema.parse(viewerInfo));
 }
-
 export function viewerInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ViewerInfo, SDKValidationError> {

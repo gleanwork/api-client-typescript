@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
+import { Document, Document$inboundSchema } from "./document.js";
 
 export type DocumentInsight = {
   document: Document;
@@ -35,43 +25,6 @@ export const DocumentInsight$inboundSchema: z.ZodType<
   viewCount: CountInfo$inboundSchema.optional(),
   visitorCount: CountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type DocumentInsight$Outbound = {
-  document: Document$Outbound;
-  viewCount?: CountInfo$Outbound | undefined;
-  visitorCount?: CountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const DocumentInsight$outboundSchema: z.ZodType<
-  DocumentInsight$Outbound,
-  z.ZodTypeDef,
-  DocumentInsight
-> = z.object({
-  document: Document$outboundSchema,
-  viewCount: CountInfo$outboundSchema.optional(),
-  visitorCount: CountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentInsight$ {
-  /** @deprecated use `DocumentInsight$inboundSchema` instead. */
-  export const inboundSchema = DocumentInsight$inboundSchema;
-  /** @deprecated use `DocumentInsight$outboundSchema` instead. */
-  export const outboundSchema = DocumentInsight$outboundSchema;
-  /** @deprecated use `DocumentInsight$Outbound` instead. */
-  export type Outbound = DocumentInsight$Outbound;
-}
-
-export function documentInsightToJSON(
-  documentInsight: DocumentInsight,
-): string {
-  return JSON.stringify(DocumentInsight$outboundSchema.parse(documentInsight));
-}
 
 export function documentInsightFromJSON(
   jsonString: string,

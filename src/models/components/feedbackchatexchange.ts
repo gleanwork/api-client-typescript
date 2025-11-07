@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ResultDocument = {
   title?: string | undefined;
@@ -37,16 +34,6 @@ export type FeedbackChatExchange = {
 };
 
 /** @internal */
-export const ResultDocument$inboundSchema: z.ZodType<
-  ResultDocument,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  title: z.string().optional(),
-  url: z.string().optional(),
-});
-
-/** @internal */
 export type ResultDocument$Outbound = {
   title?: string | undefined;
   url?: string | undefined;
@@ -62,47 +49,9 @@ export const ResultDocument$outboundSchema: z.ZodType<
   url: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResultDocument$ {
-  /** @deprecated use `ResultDocument$inboundSchema` instead. */
-  export const inboundSchema = ResultDocument$inboundSchema;
-  /** @deprecated use `ResultDocument$outboundSchema` instead. */
-  export const outboundSchema = ResultDocument$outboundSchema;
-  /** @deprecated use `ResultDocument$Outbound` instead. */
-  export type Outbound = ResultDocument$Outbound;
-}
-
 export function resultDocumentToJSON(resultDocument: ResultDocument): string {
   return JSON.stringify(ResultDocument$outboundSchema.parse(resultDocument));
 }
-
-export function resultDocumentFromJSON(
-  jsonString: string,
-): SafeParseResult<ResultDocument, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResultDocument$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResultDocument' from JSON`,
-  );
-}
-
-/** @internal */
-export const FeedbackChatExchange$inboundSchema: z.ZodType<
-  FeedbackChatExchange,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timestamp: z.number().int().optional(),
-  agent: z.string().optional(),
-  userQuery: z.string().optional(),
-  searchQuery: z.string().optional(),
-  resultDocuments: z.array(z.lazy(() => ResultDocument$inboundSchema))
-    .optional(),
-  response: z.string().optional(),
-});
 
 /** @internal */
 export type FeedbackChatExchange$Outbound = {
@@ -129,33 +78,10 @@ export const FeedbackChatExchange$outboundSchema: z.ZodType<
   response: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedbackChatExchange$ {
-  /** @deprecated use `FeedbackChatExchange$inboundSchema` instead. */
-  export const inboundSchema = FeedbackChatExchange$inboundSchema;
-  /** @deprecated use `FeedbackChatExchange$outboundSchema` instead. */
-  export const outboundSchema = FeedbackChatExchange$outboundSchema;
-  /** @deprecated use `FeedbackChatExchange$Outbound` instead. */
-  export type Outbound = FeedbackChatExchange$Outbound;
-}
-
 export function feedbackChatExchangeToJSON(
   feedbackChatExchange: FeedbackChatExchange,
 ): string {
   return JSON.stringify(
     FeedbackChatExchange$outboundSchema.parse(feedbackChatExchange),
-  );
-}
-
-export function feedbackChatExchangeFromJSON(
-  jsonString: string,
-): SafeParseResult<FeedbackChatExchange, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FeedbackChatExchange$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FeedbackChatExchange' from JSON`,
   );
 }

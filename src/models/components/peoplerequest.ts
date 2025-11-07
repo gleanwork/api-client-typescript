@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const PeopleRequestIncludeField = {
   Badges: "BADGES",
@@ -58,58 +55,13 @@ export type PeopleRequest = {
 };
 
 /** @internal */
-export const PeopleRequestIncludeField$inboundSchema: z.ZodNativeEnum<
+export const PeopleRequestIncludeField$outboundSchema: z.ZodNativeEnum<
   typeof PeopleRequestIncludeField
 > = z.nativeEnum(PeopleRequestIncludeField);
 
 /** @internal */
-export const PeopleRequestIncludeField$outboundSchema: z.ZodNativeEnum<
-  typeof PeopleRequestIncludeField
-> = PeopleRequestIncludeField$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PeopleRequestIncludeField$ {
-  /** @deprecated use `PeopleRequestIncludeField$inboundSchema` instead. */
-  export const inboundSchema = PeopleRequestIncludeField$inboundSchema;
-  /** @deprecated use `PeopleRequestIncludeField$outboundSchema` instead. */
-  export const outboundSchema = PeopleRequestIncludeField$outboundSchema;
-}
-
-/** @internal */
-export const IncludeType$inboundSchema: z.ZodNativeEnum<typeof IncludeType> = z
+export const IncludeType$outboundSchema: z.ZodNativeEnum<typeof IncludeType> = z
   .nativeEnum(IncludeType);
-
-/** @internal */
-export const IncludeType$outboundSchema: z.ZodNativeEnum<typeof IncludeType> =
-  IncludeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IncludeType$ {
-  /** @deprecated use `IncludeType$inboundSchema` instead. */
-  export const inboundSchema = IncludeType$inboundSchema;
-  /** @deprecated use `IncludeType$outboundSchema` instead. */
-  export const outboundSchema = IncludeType$outboundSchema;
-}
-
-/** @internal */
-export const PeopleRequest$inboundSchema: z.ZodType<
-  PeopleRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  obfuscatedIds: z.array(z.string()).optional(),
-  emailIds: z.array(z.string()).optional(),
-  includeFields: z.array(PeopleRequestIncludeField$inboundSchema).optional(),
-  includeTypes: z.array(IncludeType$inboundSchema).optional(),
-  source: z.string().optional(),
-});
 
 /** @internal */
 export type PeopleRequest$Outbound = {
@@ -135,29 +87,6 @@ export const PeopleRequest$outboundSchema: z.ZodType<
   source: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PeopleRequest$ {
-  /** @deprecated use `PeopleRequest$inboundSchema` instead. */
-  export const inboundSchema = PeopleRequest$inboundSchema;
-  /** @deprecated use `PeopleRequest$outboundSchema` instead. */
-  export const outboundSchema = PeopleRequest$outboundSchema;
-  /** @deprecated use `PeopleRequest$Outbound` instead. */
-  export type Outbound = PeopleRequest$Outbound;
-}
-
 export function peopleRequestToJSON(peopleRequest: PeopleRequest): string {
   return JSON.stringify(PeopleRequest$outboundSchema.parse(peopleRequest));
-}
-
-export function peopleRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PeopleRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PeopleRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PeopleRequest' from JSON`,
-  );
 }

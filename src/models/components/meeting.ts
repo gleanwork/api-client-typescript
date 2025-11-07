@@ -36,7 +36,6 @@ export const Meeting$inboundSchema: z.ZodType<Meeting, z.ZodTypeDef, unknown> =
       .optional(),
     attendees: z.lazy(() => CalendarAttendees$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Meeting$Outbound = {
   id?: string | undefined;
@@ -63,23 +62,9 @@ export const Meeting$outboundSchema: z.ZodType<
   attendees: z.lazy(() => CalendarAttendees$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Meeting$ {
-  /** @deprecated use `Meeting$inboundSchema` instead. */
-  export const inboundSchema = Meeting$inboundSchema;
-  /** @deprecated use `Meeting$outboundSchema` instead. */
-  export const outboundSchema = Meeting$outboundSchema;
-  /** @deprecated use `Meeting$Outbound` instead. */
-  export type Outbound = Meeting$Outbound;
-}
-
 export function meetingToJSON(meeting: Meeting): string {
   return JSON.stringify(Meeting$outboundSchema.parse(meeting));
 }
-
 export function meetingFromJSON(
   jsonString: string,
 ): SafeParseResult<Meeting, SDKValidationError> {

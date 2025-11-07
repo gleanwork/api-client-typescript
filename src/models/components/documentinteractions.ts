@@ -61,7 +61,6 @@ export const DocumentInteractions$inboundSchema: z.ZodType<
   shares: z.array(z.lazy(() => Share$inboundSchema)).optional(),
   visitorCount: CountInfo$inboundSchema.optional(),
 });
-
 /** @internal */
 export type DocumentInteractions$Outbound = {
   numComments?: number | undefined;
@@ -86,19 +85,6 @@ export const DocumentInteractions$outboundSchema: z.ZodType<
   visitorCount: CountInfo$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentInteractions$ {
-  /** @deprecated use `DocumentInteractions$inboundSchema` instead. */
-  export const inboundSchema = DocumentInteractions$inboundSchema;
-  /** @deprecated use `DocumentInteractions$outboundSchema` instead. */
-  export const outboundSchema = DocumentInteractions$outboundSchema;
-  /** @deprecated use `DocumentInteractions$Outbound` instead. */
-  export type Outbound = DocumentInteractions$Outbound;
-}
-
 export function documentInteractionsToJSON(
   documentInteractions: DocumentInteractions,
 ): string {
@@ -106,7 +92,6 @@ export function documentInteractionsToJSON(
     DocumentInteractions$outboundSchema.parse(documentInteractions),
   );
 }
-
 export function documentInteractionsFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentInteractions, SDKValidationError> {

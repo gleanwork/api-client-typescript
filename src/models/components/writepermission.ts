@@ -45,7 +45,6 @@ export const WritePermission$inboundSchema: z.ZodType<
   update: z.boolean().optional(),
   delete: z.boolean().optional(),
 });
-
 /** @internal */
 export type WritePermission$Outbound = {
   scopeType?: string | undefined;
@@ -66,25 +65,11 @@ export const WritePermission$outboundSchema: z.ZodType<
   delete: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WritePermission$ {
-  /** @deprecated use `WritePermission$inboundSchema` instead. */
-  export const inboundSchema = WritePermission$inboundSchema;
-  /** @deprecated use `WritePermission$outboundSchema` instead. */
-  export const outboundSchema = WritePermission$outboundSchema;
-  /** @deprecated use `WritePermission$Outbound` instead. */
-  export type Outbound = WritePermission$Outbound;
-}
-
 export function writePermissionToJSON(
   writePermission: WritePermission,
 ): string {
   return JSON.stringify(WritePermission$outboundSchema.parse(writePermission));
 }
-
 export function writePermissionFromJSON(
   jsonString: string,
 ): SafeParseResult<WritePermission, SDKValidationError> {

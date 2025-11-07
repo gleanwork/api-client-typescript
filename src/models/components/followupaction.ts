@@ -55,7 +55,6 @@ export const FollowupAction$inboundSchema: z.ZodType<
   actionLabel: z.string().optional(),
   userConfirmationRequired: z.boolean().optional(),
 });
-
 /** @internal */
 export type FollowupAction$Outbound = {
   actionRunId?: string | undefined;
@@ -82,23 +81,9 @@ export const FollowupAction$outboundSchema: z.ZodType<
   userConfirmationRequired: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FollowupAction$ {
-  /** @deprecated use `FollowupAction$inboundSchema` instead. */
-  export const inboundSchema = FollowupAction$inboundSchema;
-  /** @deprecated use `FollowupAction$outboundSchema` instead. */
-  export const outboundSchema = FollowupAction$outboundSchema;
-  /** @deprecated use `FollowupAction$Outbound` instead. */
-  export type Outbound = FollowupAction$Outbound;
-}
-
 export function followupActionToJSON(followupAction: FollowupAction): string {
   return JSON.stringify(FollowupAction$outboundSchema.parse(followupAction));
 }
-
 export function followupActionFromJSON(
   jsonString: string,
 ): SafeParseResult<FollowupAction, SDKValidationError> {

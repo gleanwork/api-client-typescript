@@ -9,7 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   UploadStatusEnum,
   UploadStatusEnum$inboundSchema,
-  UploadStatusEnum$outboundSchema,
 } from "./uploadstatusenum.js";
 
 /**
@@ -40,45 +39,6 @@ export const UserStatusResponse$inboundSchema: z.ZodType<
   uploadStatus: UploadStatusEnum$inboundSchema.optional(),
   lastUploadedAt: z.string().optional(),
 });
-
-/** @internal */
-export type UserStatusResponse$Outbound = {
-  isActiveUser?: boolean | undefined;
-  uploadStatus?: string | undefined;
-  lastUploadedAt?: string | undefined;
-};
-
-/** @internal */
-export const UserStatusResponse$outboundSchema: z.ZodType<
-  UserStatusResponse$Outbound,
-  z.ZodTypeDef,
-  UserStatusResponse
-> = z.object({
-  isActiveUser: z.boolean().optional(),
-  uploadStatus: UploadStatusEnum$outboundSchema.optional(),
-  lastUploadedAt: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UserStatusResponse$ {
-  /** @deprecated use `UserStatusResponse$inboundSchema` instead. */
-  export const inboundSchema = UserStatusResponse$inboundSchema;
-  /** @deprecated use `UserStatusResponse$outboundSchema` instead. */
-  export const outboundSchema = UserStatusResponse$outboundSchema;
-  /** @deprecated use `UserStatusResponse$Outbound` instead. */
-  export type Outbound = UserStatusResponse$Outbound;
-}
-
-export function userStatusResponseToJSON(
-  userStatusResponse: UserStatusResponse,
-): string {
-  return JSON.stringify(
-    UserStatusResponse$outboundSchema.parse(userStatusResponse),
-  );
-}
 
 export function userStatusResponseFromJSON(
   jsonString: string,

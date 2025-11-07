@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetCollectionRequest = {
   /**
@@ -27,18 +24,6 @@ export type GetCollectionRequest = {
 };
 
 /** @internal */
-export const GetCollectionRequest$inboundSchema: z.ZodType<
-  GetCollectionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.number().int(),
-  withItems: z.boolean().optional(),
-  withHierarchy: z.boolean().optional(),
-  allowedDatasource: z.string().optional(),
-});
-
-/** @internal */
 export type GetCollectionRequest$Outbound = {
   id: number;
   withItems?: boolean | undefined;
@@ -58,33 +43,10 @@ export const GetCollectionRequest$outboundSchema: z.ZodType<
   allowedDatasource: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCollectionRequest$ {
-  /** @deprecated use `GetCollectionRequest$inboundSchema` instead. */
-  export const inboundSchema = GetCollectionRequest$inboundSchema;
-  /** @deprecated use `GetCollectionRequest$outboundSchema` instead. */
-  export const outboundSchema = GetCollectionRequest$outboundSchema;
-  /** @deprecated use `GetCollectionRequest$Outbound` instead. */
-  export type Outbound = GetCollectionRequest$Outbound;
-}
-
 export function getCollectionRequestToJSON(
   getCollectionRequest: GetCollectionRequest,
 ): string {
   return JSON.stringify(
     GetCollectionRequest$outboundSchema.parse(getCollectionRequest),
-  );
-}
-
-export function getCollectionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetCollectionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetCollectionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetCollectionRequest' from JSON`,
   );
 }

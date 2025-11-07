@@ -28,7 +28,6 @@ export const ObjectPermissions$inboundSchema: z.ZodType<
 > = z.object({
   write: WritePermission$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ObjectPermissions$Outbound = {
   write?: WritePermission$Outbound | undefined;
@@ -43,19 +42,6 @@ export const ObjectPermissions$outboundSchema: z.ZodType<
   write: WritePermission$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ObjectPermissions$ {
-  /** @deprecated use `ObjectPermissions$inboundSchema` instead. */
-  export const inboundSchema = ObjectPermissions$inboundSchema;
-  /** @deprecated use `ObjectPermissions$outboundSchema` instead. */
-  export const outboundSchema = ObjectPermissions$outboundSchema;
-  /** @deprecated use `ObjectPermissions$Outbound` instead. */
-  export type Outbound = ObjectPermissions$Outbound;
-}
-
 export function objectPermissionsToJSON(
   objectPermissions: ObjectPermissions,
 ): string {
@@ -63,7 +49,6 @@ export function objectPermissionsToJSON(
     ObjectPermissions$outboundSchema.parse(objectPermissions),
   );
 }
-
 export function objectPermissionsFromJSON(
   jsonString: string,
 ): SafeParseResult<ObjectPermissions, SDKValidationError> {

@@ -9,27 +9,13 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   QuerySuggestion,
   QuerySuggestion$inboundSchema,
-  QuerySuggestion$Outbound,
-  QuerySuggestion$outboundSchema,
 } from "./querysuggestion.js";
 import {
   QuerySuggestionList,
   QuerySuggestionList$inboundSchema,
-  QuerySuggestionList$Outbound,
-  QuerySuggestionList$outboundSchema,
 } from "./querysuggestionlist.js";
-import {
-  SearchWarning,
-  SearchWarning$inboundSchema,
-  SearchWarning$Outbound,
-  SearchWarning$outboundSchema,
-} from "./searchwarning.js";
-import {
-  TextRange,
-  TextRange$inboundSchema,
-  TextRange$Outbound,
-  TextRange$outboundSchema,
-} from "./textrange.js";
+import { SearchWarning, SearchWarning$inboundSchema } from "./searchwarning.js";
+import { TextRange, TextRange$inboundSchema } from "./textrange.js";
 
 export type SearchResponseMetadata = {
   /**
@@ -97,65 +83,6 @@ export const SearchResponseMetadata$inboundSchema: z.ZodType<
   triggeredExpertDetection: z.boolean().optional(),
   isNoQuotesSuggestion: z.boolean().optional(),
 });
-
-/** @internal */
-export type SearchResponseMetadata$Outbound = {
-  rewrittenQuery?: string | undefined;
-  searchedQuery?: string | undefined;
-  searchedQueryWithoutNegation?: string | undefined;
-  searchedQueryRanges?: Array<TextRange$Outbound> | undefined;
-  originalQuery?: string | undefined;
-  querySuggestion?: QuerySuggestion$Outbound | undefined;
-  additionalQuerySuggestions?: QuerySuggestionList$Outbound | undefined;
-  negatedTerms?: Array<string> | undefined;
-  modifiedQueryWasUsed?: boolean | undefined;
-  originalQueryHadNoResults?: boolean | undefined;
-  searchWarning?: SearchWarning$Outbound | undefined;
-  triggeredExpertDetection?: boolean | undefined;
-  isNoQuotesSuggestion?: boolean | undefined;
-};
-
-/** @internal */
-export const SearchResponseMetadata$outboundSchema: z.ZodType<
-  SearchResponseMetadata$Outbound,
-  z.ZodTypeDef,
-  SearchResponseMetadata
-> = z.object({
-  rewrittenQuery: z.string().optional(),
-  searchedQuery: z.string().optional(),
-  searchedQueryWithoutNegation: z.string().optional(),
-  searchedQueryRanges: z.array(TextRange$outboundSchema).optional(),
-  originalQuery: z.string().optional(),
-  querySuggestion: QuerySuggestion$outboundSchema.optional(),
-  additionalQuerySuggestions: QuerySuggestionList$outboundSchema.optional(),
-  negatedTerms: z.array(z.string()).optional(),
-  modifiedQueryWasUsed: z.boolean().optional(),
-  originalQueryHadNoResults: z.boolean().optional(),
-  searchWarning: SearchWarning$outboundSchema.optional(),
-  triggeredExpertDetection: z.boolean().optional(),
-  isNoQuotesSuggestion: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchResponseMetadata$ {
-  /** @deprecated use `SearchResponseMetadata$inboundSchema` instead. */
-  export const inboundSchema = SearchResponseMetadata$inboundSchema;
-  /** @deprecated use `SearchResponseMetadata$outboundSchema` instead. */
-  export const outboundSchema = SearchResponseMetadata$outboundSchema;
-  /** @deprecated use `SearchResponseMetadata$Outbound` instead. */
-  export type Outbound = SearchResponseMetadata$Outbound;
-}
-
-export function searchResponseMetadataToJSON(
-  searchResponseMetadata: SearchResponseMetadata,
-): string {
-  return JSON.stringify(
-    SearchResponseMetadata$outboundSchema.parse(searchResponseMetadata),
-  );
-}
 
 export function searchResponseMetadataFromJSON(
   jsonString: string,

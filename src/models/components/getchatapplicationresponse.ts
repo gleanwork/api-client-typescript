@@ -20,41 +20,6 @@ export const GetChatApplicationResponse$inboundSchema: z.ZodType<
   application: z.any().optional(),
 });
 
-/** @internal */
-export type GetChatApplicationResponse$Outbound = {
-  application?: any | undefined;
-};
-
-/** @internal */
-export const GetChatApplicationResponse$outboundSchema: z.ZodType<
-  GetChatApplicationResponse$Outbound,
-  z.ZodTypeDef,
-  GetChatApplicationResponse
-> = z.object({
-  application: z.any().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetChatApplicationResponse$ {
-  /** @deprecated use `GetChatApplicationResponse$inboundSchema` instead. */
-  export const inboundSchema = GetChatApplicationResponse$inboundSchema;
-  /** @deprecated use `GetChatApplicationResponse$outboundSchema` instead. */
-  export const outboundSchema = GetChatApplicationResponse$outboundSchema;
-  /** @deprecated use `GetChatApplicationResponse$Outbound` instead. */
-  export type Outbound = GetChatApplicationResponse$Outbound;
-}
-
-export function getChatApplicationResponseToJSON(
-  getChatApplicationResponse: GetChatApplicationResponse,
-): string {
-  return JSON.stringify(
-    GetChatApplicationResponse$outboundSchema.parse(getChatApplicationResponse),
-  );
-}
-
 export function getChatApplicationResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<GetChatApplicationResponse, SDKValidationError> {

@@ -9,26 +9,15 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChatRestrictionFilters,
   ChatRestrictionFilters$inboundSchema,
-  ChatRestrictionFilters$Outbound,
-  ChatRestrictionFilters$outboundSchema,
 } from "./chatrestrictionfilters.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
-  ObjectPermissions$Outbound,
-  ObjectPermissions$outboundSchema,
 } from "./objectpermissions.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 import {
   UserRoleSpecification,
   UserRoleSpecification$inboundSchema,
-  UserRoleSpecification$Outbound,
-  UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
 
 export type PromptTemplate = {
@@ -94,61 +83,6 @@ export const PromptTemplate$inboundSchema: z.ZodType<
   lastUpdatedBy: Person$inboundSchema.optional(),
   roles: z.array(UserRoleSpecification$inboundSchema).optional(),
 });
-
-/** @internal */
-export type PromptTemplate$Outbound = {
-  name?: string | undefined;
-  template: string;
-  applicationId?: string | undefined;
-  inclusions?: ChatRestrictionFilters$Outbound | undefined;
-  addedRoles?: Array<UserRoleSpecification$Outbound> | undefined;
-  removedRoles?: Array<UserRoleSpecification$Outbound> | undefined;
-  permissions?: ObjectPermissions$Outbound | undefined;
-  id?: string | undefined;
-  author?: Person$Outbound | undefined;
-  createTimestamp?: number | undefined;
-  lastUpdateTimestamp?: number | undefined;
-  lastUpdatedBy?: Person$Outbound | undefined;
-  roles?: Array<UserRoleSpecification$Outbound> | undefined;
-};
-
-/** @internal */
-export const PromptTemplate$outboundSchema: z.ZodType<
-  PromptTemplate$Outbound,
-  z.ZodTypeDef,
-  PromptTemplate
-> = z.object({
-  name: z.string().optional(),
-  template: z.string(),
-  applicationId: z.string().optional(),
-  inclusions: ChatRestrictionFilters$outboundSchema.optional(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  id: z.string().optional(),
-  author: Person$outboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  lastUpdatedBy: Person$outboundSchema.optional(),
-  roles: z.array(UserRoleSpecification$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptTemplate$ {
-  /** @deprecated use `PromptTemplate$inboundSchema` instead. */
-  export const inboundSchema = PromptTemplate$inboundSchema;
-  /** @deprecated use `PromptTemplate$outboundSchema` instead. */
-  export const outboundSchema = PromptTemplate$outboundSchema;
-  /** @deprecated use `PromptTemplate$Outbound` instead. */
-  export type Outbound = PromptTemplate$Outbound;
-}
-
-export function promptTemplateToJSON(promptTemplate: PromptTemplate): string {
-  return JSON.stringify(PromptTemplate$outboundSchema.parse(promptTemplate));
-}
 
 export function promptTemplateFromJSON(
   jsonString: string,

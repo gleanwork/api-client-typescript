@@ -25,7 +25,6 @@ export const CustomFieldValuePerson$inboundSchema: z.ZodType<
 > = z.object({
   person: z.lazy(() => Person$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CustomFieldValuePerson$Outbound = {
   person?: Person$Outbound | undefined;
@@ -40,19 +39,6 @@ export const CustomFieldValuePerson$outboundSchema: z.ZodType<
   person: z.lazy(() => Person$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldValuePerson$ {
-  /** @deprecated use `CustomFieldValuePerson$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldValuePerson$inboundSchema;
-  /** @deprecated use `CustomFieldValuePerson$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldValuePerson$outboundSchema;
-  /** @deprecated use `CustomFieldValuePerson$Outbound` instead. */
-  export type Outbound = CustomFieldValuePerson$Outbound;
-}
-
 export function customFieldValuePersonToJSON(
   customFieldValuePerson: CustomFieldValuePerson,
 ): string {
@@ -60,7 +46,6 @@ export function customFieldValuePersonToJSON(
     CustomFieldValuePerson$outboundSchema.parse(customFieldValuePerson),
   );
 }
-
 export function customFieldValuePersonFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldValuePerson, SDKValidationError> {

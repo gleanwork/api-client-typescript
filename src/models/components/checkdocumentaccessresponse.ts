@@ -26,43 +26,6 @@ export const CheckDocumentAccessResponse$inboundSchema: z.ZodType<
   hasAccess: z.boolean().optional(),
 });
 
-/** @internal */
-export type CheckDocumentAccessResponse$Outbound = {
-  hasAccess?: boolean | undefined;
-};
-
-/** @internal */
-export const CheckDocumentAccessResponse$outboundSchema: z.ZodType<
-  CheckDocumentAccessResponse$Outbound,
-  z.ZodTypeDef,
-  CheckDocumentAccessResponse
-> = z.object({
-  hasAccess: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDocumentAccessResponse$ {
-  /** @deprecated use `CheckDocumentAccessResponse$inboundSchema` instead. */
-  export const inboundSchema = CheckDocumentAccessResponse$inboundSchema;
-  /** @deprecated use `CheckDocumentAccessResponse$outboundSchema` instead. */
-  export const outboundSchema = CheckDocumentAccessResponse$outboundSchema;
-  /** @deprecated use `CheckDocumentAccessResponse$Outbound` instead. */
-  export type Outbound = CheckDocumentAccessResponse$Outbound;
-}
-
-export function checkDocumentAccessResponseToJSON(
-  checkDocumentAccessResponse: CheckDocumentAccessResponse,
-): string {
-  return JSON.stringify(
-    CheckDocumentAccessResponse$outboundSchema.parse(
-      checkDocumentAccessResponse,
-    ),
-  );
-}
-
 export function checkDocumentAccessResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<CheckDocumentAccessResponse, SDKValidationError> {

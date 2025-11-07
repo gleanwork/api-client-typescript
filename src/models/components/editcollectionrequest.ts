@@ -3,24 +3,18 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   Thumbnail,
-  Thumbnail$inboundSchema,
   Thumbnail$Outbound,
   Thumbnail$outboundSchema,
 } from "./thumbnail.js";
 import {
   UserRoleSpecification,
-  UserRoleSpecification$inboundSchema,
   UserRoleSpecification$Outbound,
   UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
@@ -70,25 +64,6 @@ export type EditCollectionRequest = {
 };
 
 /** @internal */
-export const EditCollectionRequest$inboundSchema: z.ZodType<
-  EditCollectionRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  id: z.number().int(),
-});
-
-/** @internal */
 export type EditCollectionRequest$Outbound = {
   name: string;
   description?: string | undefined;
@@ -122,33 +97,10 @@ export const EditCollectionRequest$outboundSchema: z.ZodType<
   id: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditCollectionRequest$ {
-  /** @deprecated use `EditCollectionRequest$inboundSchema` instead. */
-  export const inboundSchema = EditCollectionRequest$inboundSchema;
-  /** @deprecated use `EditCollectionRequest$outboundSchema` instead. */
-  export const outboundSchema = EditCollectionRequest$outboundSchema;
-  /** @deprecated use `EditCollectionRequest$Outbound` instead. */
-  export type Outbound = EditCollectionRequest$Outbound;
-}
-
 export function editCollectionRequestToJSON(
   editCollectionRequest: EditCollectionRequest,
 ): string {
   return JSON.stringify(
     EditCollectionRequest$outboundSchema.parse(editCollectionRequest),
-  );
-}
-
-export function editCollectionRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<EditCollectionRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditCollectionRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditCollectionRequest' from JSON`,
   );
 }

@@ -3,19 +3,14 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   SortOptions,
-  SortOptions$inboundSchema,
   SortOptions$Outbound,
   SortOptions$outboundSchema,
 } from "./sortoptions.js";
@@ -94,84 +89,18 @@ export type ListEntitiesRequest = {
 };
 
 /** @internal */
-export const ListEntitiesRequestEntityType$inboundSchema: z.ZodNativeEnum<
+export const ListEntitiesRequestEntityType$outboundSchema: z.ZodNativeEnum<
   typeof ListEntitiesRequestEntityType
 > = z.nativeEnum(ListEntitiesRequestEntityType);
 
 /** @internal */
-export const ListEntitiesRequestEntityType$outboundSchema: z.ZodNativeEnum<
-  typeof ListEntitiesRequestEntityType
-> = ListEntitiesRequestEntityType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEntitiesRequestEntityType$ {
-  /** @deprecated use `ListEntitiesRequestEntityType$inboundSchema` instead. */
-  export const inboundSchema = ListEntitiesRequestEntityType$inboundSchema;
-  /** @deprecated use `ListEntitiesRequestEntityType$outboundSchema` instead. */
-  export const outboundSchema = ListEntitiesRequestEntityType$outboundSchema;
-}
-
-/** @internal */
-export const ListEntitiesRequestIncludeField$inboundSchema: z.ZodNativeEnum<
+export const ListEntitiesRequestIncludeField$outboundSchema: z.ZodNativeEnum<
   typeof ListEntitiesRequestIncludeField
 > = z.nativeEnum(ListEntitiesRequestIncludeField);
 
 /** @internal */
-export const ListEntitiesRequestIncludeField$outboundSchema: z.ZodNativeEnum<
-  typeof ListEntitiesRequestIncludeField
-> = ListEntitiesRequestIncludeField$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEntitiesRequestIncludeField$ {
-  /** @deprecated use `ListEntitiesRequestIncludeField$inboundSchema` instead. */
-  export const inboundSchema = ListEntitiesRequestIncludeField$inboundSchema;
-  /** @deprecated use `ListEntitiesRequestIncludeField$outboundSchema` instead. */
-  export const outboundSchema = ListEntitiesRequestIncludeField$outboundSchema;
-}
-
-/** @internal */
-export const RequestType$inboundSchema: z.ZodNativeEnum<typeof RequestType> = z
+export const RequestType$outboundSchema: z.ZodNativeEnum<typeof RequestType> = z
   .nativeEnum(RequestType);
-
-/** @internal */
-export const RequestType$outboundSchema: z.ZodNativeEnum<typeof RequestType> =
-  RequestType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RequestType$ {
-  /** @deprecated use `RequestType$inboundSchema` instead. */
-  export const inboundSchema = RequestType$inboundSchema;
-  /** @deprecated use `RequestType$outboundSchema` instead. */
-  export const outboundSchema = RequestType$outboundSchema;
-}
-
-/** @internal */
-export const ListEntitiesRequest$inboundSchema: z.ZodType<
-  ListEntitiesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  filter: z.array(FacetFilter$inboundSchema).optional(),
-  sort: z.array(SortOptions$inboundSchema).optional(),
-  entityType: ListEntitiesRequestEntityType$inboundSchema.default("PEOPLE"),
-  datasource: z.string().optional(),
-  query: z.string().optional(),
-  includeFields: z.array(ListEntitiesRequestIncludeField$inboundSchema)
-    .optional(),
-  pageSize: z.number().int().optional(),
-  cursor: z.string().optional(),
-  source: z.string().optional(),
-  requestType: RequestType$inboundSchema.default("STANDARD"),
-});
 
 /** @internal */
 export type ListEntitiesRequest$Outbound = {
@@ -206,33 +135,10 @@ export const ListEntitiesRequest$outboundSchema: z.ZodType<
   requestType: RequestType$outboundSchema.default("STANDARD"),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEntitiesRequest$ {
-  /** @deprecated use `ListEntitiesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListEntitiesRequest$inboundSchema;
-  /** @deprecated use `ListEntitiesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListEntitiesRequest$outboundSchema;
-  /** @deprecated use `ListEntitiesRequest$Outbound` instead. */
-  export type Outbound = ListEntitiesRequest$Outbound;
-}
-
 export function listEntitiesRequestToJSON(
   listEntitiesRequest: ListEntitiesRequest,
 ): string {
   return JSON.stringify(
     ListEntitiesRequest$outboundSchema.parse(listEntitiesRequest),
-  );
-}
-
-export function listEntitiesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListEntitiesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListEntitiesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListEntitiesRequest' from JSON`,
   );
 }

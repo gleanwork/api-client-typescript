@@ -9,32 +9,22 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CurrentActiveUsers,
   CurrentActiveUsers$inboundSchema,
-  CurrentActiveUsers$Outbound,
-  CurrentActiveUsers$outboundSchema,
 } from "./currentactiveusers.js";
 import {
   InsightsChatSummary,
   InsightsChatSummary$inboundSchema,
-  InsightsChatSummary$Outbound,
-  InsightsChatSummary$outboundSchema,
 } from "./insightschatsummary.js";
 import {
   InsightsSearchSummary,
   InsightsSearchSummary$inboundSchema,
-  InsightsSearchSummary$Outbound,
-  InsightsSearchSummary$outboundSchema,
 } from "./insightssearchsummary.js";
 import {
   LabeledCountInfo,
   LabeledCountInfo$inboundSchema,
-  LabeledCountInfo$Outbound,
-  LabeledCountInfo$outboundSchema,
 } from "./labeledcountinfo.js";
 import {
   PerUserInsight,
   PerUserInsight$inboundSchema,
-  PerUserInsight$Outbound,
-  PerUserInsight$outboundSchema,
 } from "./peruserinsight.js";
 
 export type EngagementBreakdown = {
@@ -119,47 +109,6 @@ export const EngagementBreakdown$inboundSchema: z.ZodType<
   powerUsers: z.number().int().optional(),
 });
 
-/** @internal */
-export type EngagementBreakdown$Outbound = {
-  nonUsers?: number | undefined;
-  dormantUsers?: number | undefined;
-  regularUsers?: number | undefined;
-  powerUsers?: number | undefined;
-};
-
-/** @internal */
-export const EngagementBreakdown$outboundSchema: z.ZodType<
-  EngagementBreakdown$Outbound,
-  z.ZodTypeDef,
-  EngagementBreakdown
-> = z.object({
-  nonUsers: z.number().int().optional(),
-  dormantUsers: z.number().int().optional(),
-  regularUsers: z.number().int().optional(),
-  powerUsers: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EngagementBreakdown$ {
-  /** @deprecated use `EngagementBreakdown$inboundSchema` instead. */
-  export const inboundSchema = EngagementBreakdown$inboundSchema;
-  /** @deprecated use `EngagementBreakdown$outboundSchema` instead. */
-  export const outboundSchema = EngagementBreakdown$outboundSchema;
-  /** @deprecated use `EngagementBreakdown$Outbound` instead. */
-  export type Outbound = EngagementBreakdown$Outbound;
-}
-
-export function engagementBreakdownToJSON(
-  engagementBreakdown: EngagementBreakdown,
-): string {
-  return JSON.stringify(
-    EngagementBreakdown$outboundSchema.parse(engagementBreakdown),
-  );
-}
-
 export function engagementBreakdownFromJSON(
   jsonString: string,
 ): SafeParseResult<EngagementBreakdown, SDKValidationError> {
@@ -196,76 +145,6 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   engagementBreakdown: z.lazy(() => EngagementBreakdown$inboundSchema)
     .optional(),
 });
-
-/** @internal */
-export type InsightsOverviewResponse$Outbound = {
-  monthlyActiveUsers?: number | undefined;
-  weeklyActiveUsers?: number | undefined;
-  departments?: Array<string> | undefined;
-  employeeCount?: number | undefined;
-  totalSignups?: number | undefined;
-  searchSummary?: InsightsSearchSummary$Outbound | undefined;
-  chatSummary?: InsightsChatSummary$Outbound | undefined;
-  extensionSummary?: CurrentActiveUsers$Outbound | undefined;
-  ugcSummary?: CurrentActiveUsers$Outbound | undefined;
-  lastUpdatedTs?: number | undefined;
-  searchSessionSatisfaction?: number | undefined;
-  monthlyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  weeklyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  dailyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  searchDatasourceCounts?: { [k: string]: number } | undefined;
-  chatDatasourceCounts?: { [k: string]: number } | undefined;
-  perUserInsights?: Array<PerUserInsight$Outbound> | undefined;
-  engagementBreakdown?: EngagementBreakdown$Outbound | undefined;
-};
-
-/** @internal */
-export const InsightsOverviewResponse$outboundSchema: z.ZodType<
-  InsightsOverviewResponse$Outbound,
-  z.ZodTypeDef,
-  InsightsOverviewResponse
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  departments: z.array(z.string()).optional(),
-  employeeCount: z.number().int().optional(),
-  totalSignups: z.number().int().optional(),
-  searchSummary: InsightsSearchSummary$outboundSchema.optional(),
-  chatSummary: InsightsChatSummary$outboundSchema.optional(),
-  extensionSummary: CurrentActiveUsers$outboundSchema.optional(),
-  ugcSummary: CurrentActiveUsers$outboundSchema.optional(),
-  lastUpdatedTs: z.number().int().optional(),
-  searchSessionSatisfaction: z.number().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  searchDatasourceCounts: z.record(z.number().int()).optional(),
-  chatDatasourceCounts: z.record(z.number().int()).optional(),
-  perUserInsights: z.array(PerUserInsight$outboundSchema).optional(),
-  engagementBreakdown: z.lazy(() => EngagementBreakdown$outboundSchema)
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsOverviewResponse$ {
-  /** @deprecated use `InsightsOverviewResponse$inboundSchema` instead. */
-  export const inboundSchema = InsightsOverviewResponse$inboundSchema;
-  /** @deprecated use `InsightsOverviewResponse$outboundSchema` instead. */
-  export const outboundSchema = InsightsOverviewResponse$outboundSchema;
-  /** @deprecated use `InsightsOverviewResponse$Outbound` instead. */
-  export type Outbound = InsightsOverviewResponse$Outbound;
-}
-
-export function insightsOverviewResponseToJSON(
-  insightsOverviewResponse: InsightsOverviewResponse,
-): string {
-  return JSON.stringify(
-    InsightsOverviewResponse$outboundSchema.parse(insightsOverviewResponse),
-  );
-}
 
 export function insightsOverviewResponseFromJSON(
   jsonString: string,

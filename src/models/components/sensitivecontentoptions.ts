@@ -47,7 +47,6 @@ export const SensitiveContentOptions$inboundSchema: z.ZodType<
   sensitiveTerms: z.array(SensitiveExpression$inboundSchema).optional(),
   sensitiveRegexes: z.array(SensitiveExpression$inboundSchema).optional(),
 });
-
 /** @internal */
 export type SensitiveContentOptions$Outbound = {
   sensitiveInfoTypes?: Array<SensitiveInfoType$Outbound> | undefined;
@@ -66,19 +65,6 @@ export const SensitiveContentOptions$outboundSchema: z.ZodType<
   sensitiveRegexes: z.array(SensitiveExpression$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SensitiveContentOptions$ {
-  /** @deprecated use `SensitiveContentOptions$inboundSchema` instead. */
-  export const inboundSchema = SensitiveContentOptions$inboundSchema;
-  /** @deprecated use `SensitiveContentOptions$outboundSchema` instead. */
-  export const outboundSchema = SensitiveContentOptions$outboundSchema;
-  /** @deprecated use `SensitiveContentOptions$Outbound` instead. */
-  export type Outbound = SensitiveContentOptions$Outbound;
-}
-
 export function sensitiveContentOptionsToJSON(
   sensitiveContentOptions: SensitiveContentOptions,
 ): string {
@@ -86,7 +72,6 @@ export function sensitiveContentOptionsToJSON(
     SensitiveContentOptions$outboundSchema.parse(sensitiveContentOptions),
   );
 }
-
 export function sensitiveContentOptionsFromJSON(
   jsonString: string,
 ): SafeParseResult<SensitiveContentOptions, SDKValidationError> {

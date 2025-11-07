@@ -63,7 +63,6 @@ export const ChatMessageCitation$inboundSchema: z.ZodType<
   sourcePerson: Person$inboundSchema.optional(),
   referenceRanges: z.array(ReferenceRange$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ChatMessageCitation$Outbound = {
   trackingToken?: string | undefined;
@@ -86,19 +85,6 @@ export const ChatMessageCitation$outboundSchema: z.ZodType<
   referenceRanges: z.array(ReferenceRange$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatMessageCitation$ {
-  /** @deprecated use `ChatMessageCitation$inboundSchema` instead. */
-  export const inboundSchema = ChatMessageCitation$inboundSchema;
-  /** @deprecated use `ChatMessageCitation$outboundSchema` instead. */
-  export const outboundSchema = ChatMessageCitation$outboundSchema;
-  /** @deprecated use `ChatMessageCitation$Outbound` instead. */
-  export type Outbound = ChatMessageCitation$Outbound;
-}
-
 export function chatMessageCitationToJSON(
   chatMessageCitation: ChatMessageCitation,
 ): string {
@@ -106,7 +92,6 @@ export function chatMessageCitationToJSON(
     ChatMessageCitation$outboundSchema.parse(chatMessageCitation),
   );
 }
-
 export function chatMessageCitationFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatMessageCitation, SDKValidationError> {

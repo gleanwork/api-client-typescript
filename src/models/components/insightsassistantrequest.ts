@@ -3,15 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Period,
-  Period$inboundSchema,
-  Period$Outbound,
-  Period$outboundSchema,
-} from "./period.js";
+import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
 
 export type InsightsAssistantRequest = {
   /**
@@ -20,16 +12,6 @@ export type InsightsAssistantRequest = {
   departments?: Array<string> | undefined;
   dayRange?: Period | undefined;
 };
-
-/** @internal */
-export const InsightsAssistantRequest$inboundSchema: z.ZodType<
-  InsightsAssistantRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  departments: z.array(z.string()).optional(),
-  dayRange: Period$inboundSchema.optional(),
-});
 
 /** @internal */
 export type InsightsAssistantRequest$Outbound = {
@@ -47,33 +29,10 @@ export const InsightsAssistantRequest$outboundSchema: z.ZodType<
   dayRange: Period$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsAssistantRequest$ {
-  /** @deprecated use `InsightsAssistantRequest$inboundSchema` instead. */
-  export const inboundSchema = InsightsAssistantRequest$inboundSchema;
-  /** @deprecated use `InsightsAssistantRequest$outboundSchema` instead. */
-  export const outboundSchema = InsightsAssistantRequest$outboundSchema;
-  /** @deprecated use `InsightsAssistantRequest$Outbound` instead. */
-  export type Outbound = InsightsAssistantRequest$Outbound;
-}
-
 export function insightsAssistantRequestToJSON(
   insightsAssistantRequest: InsightsAssistantRequest,
 ): string {
   return JSON.stringify(
     InsightsAssistantRequest$outboundSchema.parse(insightsAssistantRequest),
-  );
-}
-
-export function insightsAssistantRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<InsightsAssistantRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InsightsAssistantRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InsightsAssistantRequest' from JSON`,
   );
 }

@@ -3,15 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Period,
-  Period$inboundSchema,
-  Period$Outbound,
-  Period$outboundSchema,
-} from "./period.js";
+import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
 
 export type AgentsInsightsV2Request = {
   /**
@@ -24,17 +16,6 @@ export type AgentsInsightsV2Request = {
   departments?: Array<string> | undefined;
   dayRange?: Period | undefined;
 };
-
-/** @internal */
-export const AgentsInsightsV2Request$inboundSchema: z.ZodType<
-  AgentsInsightsV2Request,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  agentIds: z.array(z.string()).optional(),
-  departments: z.array(z.string()).optional(),
-  dayRange: Period$inboundSchema.optional(),
-});
 
 /** @internal */
 export type AgentsInsightsV2Request$Outbound = {
@@ -54,33 +35,10 @@ export const AgentsInsightsV2Request$outboundSchema: z.ZodType<
   dayRange: Period$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentsInsightsV2Request$ {
-  /** @deprecated use `AgentsInsightsV2Request$inboundSchema` instead. */
-  export const inboundSchema = AgentsInsightsV2Request$inboundSchema;
-  /** @deprecated use `AgentsInsightsV2Request$outboundSchema` instead. */
-  export const outboundSchema = AgentsInsightsV2Request$outboundSchema;
-  /** @deprecated use `AgentsInsightsV2Request$Outbound` instead. */
-  export type Outbound = AgentsInsightsV2Request$Outbound;
-}
-
 export function agentsInsightsV2RequestToJSON(
   agentsInsightsV2Request: AgentsInsightsV2Request,
 ): string {
   return JSON.stringify(
     AgentsInsightsV2Request$outboundSchema.parse(agentsInsightsV2Request),
-  );
-}
-
-export function agentsInsightsV2RequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AgentsInsightsV2Request, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AgentsInsightsV2Request$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AgentsInsightsV2Request' from JSON`,
   );
 }

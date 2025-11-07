@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FileT = {
   fileName: string;
@@ -18,18 +15,6 @@ export type UploadChatFilesRequest = {
    */
   files: Array<FileT>;
 };
-
-/** @internal */
-export const FileT$inboundSchema: z.ZodType<FileT, z.ZodTypeDef, unknown> = z
-  .object({
-    fileName: z.string(),
-    content: z.union([
-      z.instanceof(ReadableStream<Uint8Array>),
-      z.instanceof(Blob),
-      z.instanceof(ArrayBuffer),
-      z.instanceof(Uint8Array),
-    ]),
-  });
 
 /** @internal */
 export type FileT$Outbound = {
@@ -52,41 +37,9 @@ export const FileT$outboundSchema: z.ZodType<
   ]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FileT$ {
-  /** @deprecated use `FileT$inboundSchema` instead. */
-  export const inboundSchema = FileT$inboundSchema;
-  /** @deprecated use `FileT$outboundSchema` instead. */
-  export const outboundSchema = FileT$outboundSchema;
-  /** @deprecated use `FileT$Outbound` instead. */
-  export type Outbound = FileT$Outbound;
-}
-
 export function fileToJSON(fileT: FileT): string {
   return JSON.stringify(FileT$outboundSchema.parse(fileT));
 }
-
-export function fileFromJSON(
-  jsonString: string,
-): SafeParseResult<FileT, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FileT$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FileT' from JSON`,
-  );
-}
-
-/** @internal */
-export const UploadChatFilesRequest$inboundSchema: z.ZodType<
-  UploadChatFilesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  files: z.array(z.lazy(() => FileT$inboundSchema)),
-});
 
 /** @internal */
 export type UploadChatFilesRequest$Outbound = {
@@ -102,33 +55,10 @@ export const UploadChatFilesRequest$outboundSchema: z.ZodType<
   files: z.array(z.lazy(() => FileT$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadChatFilesRequest$ {
-  /** @deprecated use `UploadChatFilesRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadChatFilesRequest$inboundSchema;
-  /** @deprecated use `UploadChatFilesRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadChatFilesRequest$outboundSchema;
-  /** @deprecated use `UploadChatFilesRequest$Outbound` instead. */
-  export type Outbound = UploadChatFilesRequest$Outbound;
-}
-
 export function uploadChatFilesRequestToJSON(
   uploadChatFilesRequest: UploadChatFilesRequest,
 ): string {
   return JSON.stringify(
     UploadChatFilesRequest$outboundSchema.parse(uploadChatFilesRequest),
-  );
-}
-
-export function uploadChatFilesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadChatFilesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadChatFilesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadChatFilesRequest' from JSON`,
   );
 }

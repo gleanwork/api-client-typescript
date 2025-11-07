@@ -35,40 +35,9 @@ export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
   .nativeEnum(Provider);
 
 /** @internal */
-export const Provider$outboundSchema: z.ZodNativeEnum<typeof Provider> =
-  Provider$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Provider$ {
-  /** @deprecated use `Provider$inboundSchema` instead. */
-  export const inboundSchema = Provider$inboundSchema;
-  /** @deprecated use `Provider$outboundSchema` instead. */
-  export const outboundSchema = Provider$outboundSchema;
-}
-
-/** @internal */
 export const ConferenceDataSource$inboundSchema: z.ZodNativeEnum<
   typeof ConferenceDataSource
 > = z.nativeEnum(ConferenceDataSource);
-
-/** @internal */
-export const ConferenceDataSource$outboundSchema: z.ZodNativeEnum<
-  typeof ConferenceDataSource
-> = ConferenceDataSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConferenceDataSource$ {
-  /** @deprecated use `ConferenceDataSource$inboundSchema` instead. */
-  export const inboundSchema = ConferenceDataSource$inboundSchema;
-  /** @deprecated use `ConferenceDataSource$outboundSchema` instead. */
-  export const outboundSchema = ConferenceDataSource$outboundSchema;
-}
 
 /** @internal */
 export const ConferenceData$inboundSchema: z.ZodType<
@@ -80,41 +49,6 @@ export const ConferenceData$inboundSchema: z.ZodType<
   uri: z.string(),
   source: ConferenceDataSource$inboundSchema.optional(),
 });
-
-/** @internal */
-export type ConferenceData$Outbound = {
-  provider: string;
-  uri: string;
-  source?: string | undefined;
-};
-
-/** @internal */
-export const ConferenceData$outboundSchema: z.ZodType<
-  ConferenceData$Outbound,
-  z.ZodTypeDef,
-  ConferenceData
-> = z.object({
-  provider: Provider$outboundSchema,
-  uri: z.string(),
-  source: ConferenceDataSource$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConferenceData$ {
-  /** @deprecated use `ConferenceData$inboundSchema` instead. */
-  export const inboundSchema = ConferenceData$inboundSchema;
-  /** @deprecated use `ConferenceData$outboundSchema` instead. */
-  export const outboundSchema = ConferenceData$outboundSchema;
-  /** @deprecated use `ConferenceData$Outbound` instead. */
-  export type Outbound = ConferenceData$Outbound;
-}
-
-export function conferenceDataToJSON(conferenceData: ConferenceData): string {
-  return JSON.stringify(ConferenceData$outboundSchema.parse(conferenceData));
-}
 
 export function conferenceDataFromJSON(
   jsonString: string,

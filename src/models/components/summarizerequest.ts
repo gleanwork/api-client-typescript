@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentSpecUnion,
-  DocumentSpecUnion$inboundSchema,
   DocumentSpecUnion$Outbound,
   DocumentSpecUnion$outboundSchema,
 } from "./documentspecunion.js";
@@ -40,20 +36,6 @@ export type SummarizeRequest = {
 };
 
 /** @internal */
-export const SummarizeRequest$inboundSchema: z.ZodType<
-  SummarizeRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timestamp: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  query: z.string().optional(),
-  preferredSummaryLength: z.number().int().optional(),
-  documentSpecs: z.array(DocumentSpecUnion$inboundSchema),
-  trackingToken: z.string().optional(),
-});
-
-/** @internal */
 export type SummarizeRequest$Outbound = {
   timestamp?: string | undefined;
   query?: string | undefined;
@@ -75,33 +57,10 @@ export const SummarizeRequest$outboundSchema: z.ZodType<
   trackingToken: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SummarizeRequest$ {
-  /** @deprecated use `SummarizeRequest$inboundSchema` instead. */
-  export const inboundSchema = SummarizeRequest$inboundSchema;
-  /** @deprecated use `SummarizeRequest$outboundSchema` instead. */
-  export const outboundSchema = SummarizeRequest$outboundSchema;
-  /** @deprecated use `SummarizeRequest$Outbound` instead. */
-  export type Outbound = SummarizeRequest$Outbound;
-}
-
 export function summarizeRequestToJSON(
   summarizeRequest: SummarizeRequest,
 ): string {
   return JSON.stringify(
     SummarizeRequest$outboundSchema.parse(summarizeRequest),
-  );
-}
-
-export function summarizeRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SummarizeRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SummarizeRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SummarizeRequest' from JSON`,
   );
 }

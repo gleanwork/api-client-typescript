@@ -37,7 +37,6 @@ export const AppResult$inboundSchema: z.ZodType<
   mimeType: z.string().optional(),
   iconUrl: z.string().optional(),
 });
-
 /** @internal */
 export type AppResult$Outbound = {
   datasource: string;
@@ -58,23 +57,9 @@ export const AppResult$outboundSchema: z.ZodType<
   iconUrl: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AppResult$ {
-  /** @deprecated use `AppResult$inboundSchema` instead. */
-  export const inboundSchema = AppResult$inboundSchema;
-  /** @deprecated use `AppResult$outboundSchema` instead. */
-  export const outboundSchema = AppResult$outboundSchema;
-  /** @deprecated use `AppResult$Outbound` instead. */
-  export type Outbound = AppResult$Outbound;
-}
-
 export function appResultToJSON(appResult: AppResult): string {
   return JSON.stringify(AppResult$outboundSchema.parse(appResult));
 }
-
 export function appResultFromJSON(
   jsonString: string,
 ): SafeParseResult<AppResult, SDKValidationError> {

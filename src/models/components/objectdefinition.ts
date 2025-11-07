@@ -78,21 +78,9 @@ export type ObjectDefinition = {
 /** @internal */
 export const DocCategory$inboundSchema: z.ZodNativeEnum<typeof DocCategory> = z
   .nativeEnum(DocCategory);
-
 /** @internal */
 export const DocCategory$outboundSchema: z.ZodNativeEnum<typeof DocCategory> =
   DocCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocCategory$ {
-  /** @deprecated use `DocCategory$inboundSchema` instead. */
-  export const inboundSchema = DocCategory$inboundSchema;
-  /** @deprecated use `DocCategory$outboundSchema` instead. */
-  export const outboundSchema = DocCategory$outboundSchema;
-}
 
 /** @internal */
 export const ObjectDefinition$inboundSchema: z.ZodType<
@@ -107,7 +95,6 @@ export const ObjectDefinition$inboundSchema: z.ZodType<
   propertyGroups: z.array(PropertyGroup$inboundSchema).optional(),
   summarizable: z.boolean().optional(),
 });
-
 /** @internal */
 export type ObjectDefinition$Outbound = {
   name?: string | undefined;
@@ -132,19 +119,6 @@ export const ObjectDefinition$outboundSchema: z.ZodType<
   summarizable: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ObjectDefinition$ {
-  /** @deprecated use `ObjectDefinition$inboundSchema` instead. */
-  export const inboundSchema = ObjectDefinition$inboundSchema;
-  /** @deprecated use `ObjectDefinition$outboundSchema` instead. */
-  export const outboundSchema = ObjectDefinition$outboundSchema;
-  /** @deprecated use `ObjectDefinition$Outbound` instead. */
-  export type Outbound = ObjectDefinition$Outbound;
-}
-
 export function objectDefinitionToJSON(
   objectDefinition: ObjectDefinition,
 ): string {
@@ -152,7 +126,6 @@ export function objectDefinitionToJSON(
     ObjectDefinition$outboundSchema.parse(objectDefinition),
   );
 }
-
 export function objectDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<ObjectDefinition, SDKValidationError> {

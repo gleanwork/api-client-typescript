@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListAnswersRequest = {
   /**
@@ -13,15 +10,6 @@ export type ListAnswersRequest = {
    */
   boardId?: number | undefined;
 };
-
-/** @internal */
-export const ListAnswersRequest$inboundSchema: z.ZodType<
-  ListAnswersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  boardId: z.number().int().optional(),
-});
 
 /** @internal */
 export type ListAnswersRequest$Outbound = {
@@ -37,33 +25,10 @@ export const ListAnswersRequest$outboundSchema: z.ZodType<
   boardId: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAnswersRequest$ {
-  /** @deprecated use `ListAnswersRequest$inboundSchema` instead. */
-  export const inboundSchema = ListAnswersRequest$inboundSchema;
-  /** @deprecated use `ListAnswersRequest$outboundSchema` instead. */
-  export const outboundSchema = ListAnswersRequest$outboundSchema;
-  /** @deprecated use `ListAnswersRequest$Outbound` instead. */
-  export type Outbound = ListAnswersRequest$Outbound;
-}
-
 export function listAnswersRequestToJSON(
   listAnswersRequest: ListAnswersRequest,
 ): string {
   return JSON.stringify(
     ListAnswersRequest$outboundSchema.parse(listAnswersRequest),
-  );
-}
-
-export function listAnswersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListAnswersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListAnswersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListAnswersRequest' from JSON`,
   );
 }

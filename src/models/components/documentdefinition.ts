@@ -3,42 +3,33 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CommentDefinition,
-  CommentDefinition$inboundSchema,
   CommentDefinition$Outbound,
   CommentDefinition$outboundSchema,
 } from "./commentdefinition.js";
 import {
   ContentDefinition,
-  ContentDefinition$inboundSchema,
   ContentDefinition$Outbound,
   ContentDefinition$outboundSchema,
 } from "./contentdefinition.js";
 import {
   CustomProperty,
-  CustomProperty$inboundSchema,
   CustomProperty$Outbound,
   CustomProperty$outboundSchema,
 } from "./customproperty.js";
 import {
   DocumentInteractionsDefinition,
-  DocumentInteractionsDefinition$inboundSchema,
   DocumentInteractionsDefinition$Outbound,
   DocumentInteractionsDefinition$outboundSchema,
 } from "./documentinteractionsdefinition.js";
 import {
   DocumentPermissionsDefinition,
-  DocumentPermissionsDefinition$inboundSchema,
   DocumentPermissionsDefinition$Outbound,
   DocumentPermissionsDefinition$outboundSchema,
 } from "./documentpermissionsdefinition.js";
 import {
   UserReferenceDefinition,
-  UserReferenceDefinition$inboundSchema,
   UserReferenceDefinition$Outbound,
   UserReferenceDefinition$outboundSchema,
 } from "./userreferencedefinition.js";
@@ -138,37 +129,6 @@ export type DocumentDefinition = {
 };
 
 /** @internal */
-export const DocumentDefinition$inboundSchema: z.ZodType<
-  DocumentDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  title: z.string().optional(),
-  filename: z.string().optional(),
-  container: z.string().optional(),
-  containerDatasourceId: z.string().optional(),
-  containerObjectType: z.string().optional(),
-  datasource: z.string(),
-  objectType: z.string().optional(),
-  viewURL: z.string().optional(),
-  id: z.string().optional(),
-  summary: ContentDefinition$inboundSchema.optional(),
-  body: ContentDefinition$inboundSchema.optional(),
-  author: UserReferenceDefinition$inboundSchema.optional(),
-  owner: UserReferenceDefinition$inboundSchema.optional(),
-  permissions: DocumentPermissionsDefinition$inboundSchema.optional(),
-  createdAt: z.number().int().optional(),
-  updatedAt: z.number().int().optional(),
-  updatedBy: UserReferenceDefinition$inboundSchema.optional(),
-  tags: z.array(z.string()).optional(),
-  interactions: DocumentInteractionsDefinition$inboundSchema.optional(),
-  status: z.string().optional(),
-  additionalUrls: z.array(z.string()).optional(),
-  comments: z.array(CommentDefinition$inboundSchema).optional(),
-  customProperties: z.array(CustomProperty$inboundSchema).optional(),
-});
-
-/** @internal */
 export type DocumentDefinition$Outbound = {
   title?: string | undefined;
   filename?: string | undefined;
@@ -226,33 +186,10 @@ export const DocumentDefinition$outboundSchema: z.ZodType<
   customProperties: z.array(CustomProperty$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentDefinition$ {
-  /** @deprecated use `DocumentDefinition$inboundSchema` instead. */
-  export const inboundSchema = DocumentDefinition$inboundSchema;
-  /** @deprecated use `DocumentDefinition$outboundSchema` instead. */
-  export const outboundSchema = DocumentDefinition$outboundSchema;
-  /** @deprecated use `DocumentDefinition$Outbound` instead. */
-  export type Outbound = DocumentDefinition$Outbound;
-}
-
 export function documentDefinitionToJSON(
   documentDefinition: DocumentDefinition,
 ): string {
   return JSON.stringify(
     DocumentDefinition$outboundSchema.parse(documentDefinition),
-  );
-}
-
-export function documentDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentDefinition' from JSON`,
   );
 }

@@ -26,18 +26,6 @@ export type GroupType = ClosedEnum<typeof GroupType>;
 /** @internal */
 export const GroupType$inboundSchema: z.ZodNativeEnum<typeof GroupType> = z
   .nativeEnum(GroupType);
-
 /** @internal */
 export const GroupType$outboundSchema: z.ZodNativeEnum<typeof GroupType> =
   GroupType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GroupType$ {
-  /** @deprecated use `GroupType$inboundSchema` instead. */
-  export const inboundSchema = GroupType$inboundSchema;
-  /** @deprecated use `GroupType$outboundSchema` instead. */
-  export const outboundSchema = GroupType$outboundSchema;
-}

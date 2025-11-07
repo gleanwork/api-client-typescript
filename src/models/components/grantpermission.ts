@@ -30,7 +30,6 @@ export const GrantPermission$inboundSchema: z.ZodType<
 > = z.object({
   scopeType: ScopeType$inboundSchema.optional(),
 });
-
 /** @internal */
 export type GrantPermission$Outbound = {
   scopeType?: string | undefined;
@@ -45,25 +44,11 @@ export const GrantPermission$outboundSchema: z.ZodType<
   scopeType: ScopeType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GrantPermission$ {
-  /** @deprecated use `GrantPermission$inboundSchema` instead. */
-  export const inboundSchema = GrantPermission$inboundSchema;
-  /** @deprecated use `GrantPermission$outboundSchema` instead. */
-  export const outboundSchema = GrantPermission$outboundSchema;
-  /** @deprecated use `GrantPermission$Outbound` instead. */
-  export type Outbound = GrantPermission$Outbound;
-}
-
 export function grantPermissionToJSON(
   grantPermission: GrantPermission,
 ): string {
   return JSON.stringify(GrantPermission$outboundSchema.parse(grantPermission));
 }
-
 export function grantPermissionFromJSON(
   jsonString: string,
 ): SafeParseResult<GrantPermission, SDKValidationError> {

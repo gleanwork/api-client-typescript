@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Where the feedback of the workflow originated from
@@ -31,34 +28,9 @@ export type WorkflowFeedbackInfo = {
 };
 
 /** @internal */
-export const WorkflowFeedbackInfoSource$inboundSchema: z.ZodNativeEnum<
-  typeof WorkflowFeedbackInfoSource
-> = z.nativeEnum(WorkflowFeedbackInfoSource);
-
-/** @internal */
 export const WorkflowFeedbackInfoSource$outboundSchema: z.ZodNativeEnum<
   typeof WorkflowFeedbackInfoSource
-> = WorkflowFeedbackInfoSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkflowFeedbackInfoSource$ {
-  /** @deprecated use `WorkflowFeedbackInfoSource$inboundSchema` instead. */
-  export const inboundSchema = WorkflowFeedbackInfoSource$inboundSchema;
-  /** @deprecated use `WorkflowFeedbackInfoSource$outboundSchema` instead. */
-  export const outboundSchema = WorkflowFeedbackInfoSource$outboundSchema;
-}
-
-/** @internal */
-export const WorkflowFeedbackInfo$inboundSchema: z.ZodType<
-  WorkflowFeedbackInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source: WorkflowFeedbackInfoSource$inboundSchema.optional(),
-});
+> = z.nativeEnum(WorkflowFeedbackInfoSource);
 
 /** @internal */
 export type WorkflowFeedbackInfo$Outbound = {
@@ -74,33 +46,10 @@ export const WorkflowFeedbackInfo$outboundSchema: z.ZodType<
   source: WorkflowFeedbackInfoSource$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkflowFeedbackInfo$ {
-  /** @deprecated use `WorkflowFeedbackInfo$inboundSchema` instead. */
-  export const inboundSchema = WorkflowFeedbackInfo$inboundSchema;
-  /** @deprecated use `WorkflowFeedbackInfo$outboundSchema` instead. */
-  export const outboundSchema = WorkflowFeedbackInfo$outboundSchema;
-  /** @deprecated use `WorkflowFeedbackInfo$Outbound` instead. */
-  export type Outbound = WorkflowFeedbackInfo$Outbound;
-}
-
 export function workflowFeedbackInfoToJSON(
   workflowFeedbackInfo: WorkflowFeedbackInfo,
 ): string {
   return JSON.stringify(
     WorkflowFeedbackInfo$outboundSchema.parse(workflowFeedbackInfo),
-  );
-}
-
-export function workflowFeedbackInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<WorkflowFeedbackInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => WorkflowFeedbackInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WorkflowFeedbackInfo' from JSON`,
   );
 }

@@ -38,7 +38,6 @@ export const SessionInfo$inboundSchema: z.ZodType<
     .optional(),
   lastQuery: z.string().optional(),
 });
-
 /** @internal */
 export type SessionInfo$Outbound = {
   sessionTrackingToken?: string | undefined;
@@ -59,23 +58,9 @@ export const SessionInfo$outboundSchema: z.ZodType<
   lastQuery: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SessionInfo$ {
-  /** @deprecated use `SessionInfo$inboundSchema` instead. */
-  export const inboundSchema = SessionInfo$inboundSchema;
-  /** @deprecated use `SessionInfo$outboundSchema` instead. */
-  export const outboundSchema = SessionInfo$outboundSchema;
-  /** @deprecated use `SessionInfo$Outbound` instead. */
-  export type Outbound = SessionInfo$Outbound;
-}
-
 export function sessionInfoToJSON(sessionInfo: SessionInfo): string {
   return JSON.stringify(SessionInfo$outboundSchema.parse(sessionInfo));
 }
-
 export function sessionInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<SessionInfo, SDKValidationError> {

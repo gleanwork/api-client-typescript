@@ -62,7 +62,6 @@ export const InviteInfo$inboundSchema: z.ZodType<
     new Date(v)
   ).optional(),
 });
-
 /** @internal */
 export type InviteInfo$Outbound = {
   signUpTime?: string | undefined;
@@ -85,23 +84,9 @@ export const InviteInfo$outboundSchema: z.ZodType<
   reminderTime: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InviteInfo$ {
-  /** @deprecated use `InviteInfo$inboundSchema` instead. */
-  export const inboundSchema = InviteInfo$inboundSchema;
-  /** @deprecated use `InviteInfo$outboundSchema` instead. */
-  export const outboundSchema = InviteInfo$outboundSchema;
-  /** @deprecated use `InviteInfo$Outbound` instead. */
-  export type Outbound = InviteInfo$Outbound;
-}
-
 export function inviteInfoToJSON(inviteInfo: InviteInfo): string {
   return JSON.stringify(InviteInfo$outboundSchema.parse(inviteInfo));
 }
-
 export function inviteInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<InviteInfo, SDKValidationError> {

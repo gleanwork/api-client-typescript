@@ -28,19 +28,3 @@ export type EventStrategyName = ClosedEnum<typeof EventStrategyName>;
 export const EventStrategyName$inboundSchema: z.ZodNativeEnum<
   typeof EventStrategyName
 > = z.nativeEnum(EventStrategyName);
-
-/** @internal */
-export const EventStrategyName$outboundSchema: z.ZodNativeEnum<
-  typeof EventStrategyName
-> = EventStrategyName$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EventStrategyName$ {
-  /** @deprecated use `EventStrategyName$inboundSchema` instead. */
-  export const inboundSchema = EventStrategyName$inboundSchema;
-  /** @deprecated use `EventStrategyName$outboundSchema` instead. */
-  export const outboundSchema = EventStrategyName$outboundSchema;
-}

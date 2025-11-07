@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DlpConfig,
-  DlpConfig$inboundSchema,
   DlpConfig$Outbound,
   DlpConfig$outboundSchema,
 } from "./dlpconfig.js";
@@ -23,16 +19,6 @@ export type UpdateDlpConfigRequest = {
    */
   frequency?: string | undefined;
 };
-
-/** @internal */
-export const UpdateDlpConfigRequest$inboundSchema: z.ZodType<
-  UpdateDlpConfigRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  config: DlpConfig$inboundSchema.optional(),
-  frequency: z.string().optional(),
-});
 
 /** @internal */
 export type UpdateDlpConfigRequest$Outbound = {
@@ -50,33 +36,10 @@ export const UpdateDlpConfigRequest$outboundSchema: z.ZodType<
   frequency: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDlpConfigRequest$ {
-  /** @deprecated use `UpdateDlpConfigRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateDlpConfigRequest$inboundSchema;
-  /** @deprecated use `UpdateDlpConfigRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateDlpConfigRequest$outboundSchema;
-  /** @deprecated use `UpdateDlpConfigRequest$Outbound` instead. */
-  export type Outbound = UpdateDlpConfigRequest$Outbound;
-}
-
 export function updateDlpConfigRequestToJSON(
   updateDlpConfigRequest: UpdateDlpConfigRequest,
 ): string {
   return JSON.stringify(
     UpdateDlpConfigRequest$outboundSchema.parse(updateDlpConfigRequest),
-  );
-}
-
-export function updateDlpConfigRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateDlpConfigRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateDlpConfigRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateDlpConfigRequest' from JSON`,
   );
 }

@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  IconConfig,
-  IconConfig$inboundSchema,
-  IconConfig$Outbound,
-  IconConfig$outboundSchema,
-} from "./iconconfig.js";
+import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
 
 export type FacetValue = {
   /**
@@ -40,43 +35,6 @@ export const FacetValue$inboundSchema: z.ZodType<
   displayLabel: z.string().optional(),
   iconConfig: IconConfig$inboundSchema.optional(),
 });
-
-/** @internal */
-export type FacetValue$Outbound = {
-  stringValue?: string | undefined;
-  integerValue?: number | undefined;
-  displayLabel?: string | undefined;
-  iconConfig?: IconConfig$Outbound | undefined;
-};
-
-/** @internal */
-export const FacetValue$outboundSchema: z.ZodType<
-  FacetValue$Outbound,
-  z.ZodTypeDef,
-  FacetValue
-> = z.object({
-  stringValue: z.string().optional(),
-  integerValue: z.number().int().optional(),
-  displayLabel: z.string().optional(),
-  iconConfig: IconConfig$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FacetValue$ {
-  /** @deprecated use `FacetValue$inboundSchema` instead. */
-  export const inboundSchema = FacetValue$inboundSchema;
-  /** @deprecated use `FacetValue$outboundSchema` instead. */
-  export const outboundSchema = FacetValue$outboundSchema;
-  /** @deprecated use `FacetValue$Outbound` instead. */
-  export type Outbound = FacetValue$Outbound;
-}
-
-export function facetValueToJSON(facetValue: FacetValue): string {
-  return JSON.stringify(FacetValue$outboundSchema.parse(facetValue));
-}
 
 export function facetValueFromJSON(
   jsonString: string,

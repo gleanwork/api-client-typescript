@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Collection,
-  Collection$inboundSchema,
-  Collection$Outbound,
-  Collection$outboundSchema,
-} from "./collection.js";
+import { Collection, Collection$inboundSchema } from "./collection.js";
 
 export type EditCollectionItemResponse = {
   collection?: Collection | undefined;
@@ -25,41 +20,6 @@ export const EditCollectionItemResponse$inboundSchema: z.ZodType<
 > = z.object({
   collection: Collection$inboundSchema.optional(),
 });
-
-/** @internal */
-export type EditCollectionItemResponse$Outbound = {
-  collection?: Collection$Outbound | undefined;
-};
-
-/** @internal */
-export const EditCollectionItemResponse$outboundSchema: z.ZodType<
-  EditCollectionItemResponse$Outbound,
-  z.ZodTypeDef,
-  EditCollectionItemResponse
-> = z.object({
-  collection: Collection$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditCollectionItemResponse$ {
-  /** @deprecated use `EditCollectionItemResponse$inboundSchema` instead. */
-  export const inboundSchema = EditCollectionItemResponse$inboundSchema;
-  /** @deprecated use `EditCollectionItemResponse$outboundSchema` instead. */
-  export const outboundSchema = EditCollectionItemResponse$outboundSchema;
-  /** @deprecated use `EditCollectionItemResponse$Outbound` instead. */
-  export type Outbound = EditCollectionItemResponse$Outbound;
-}
-
-export function editCollectionItemResponseToJSON(
-  editCollectionItemResponse: EditCollectionItemResponse,
-): string {
-  return JSON.stringify(
-    EditCollectionItemResponse$outboundSchema.parse(editCollectionItemResponse),
-  );
-}
 
 export function editCollectionItemResponseFromJSON(
   jsonString: string,

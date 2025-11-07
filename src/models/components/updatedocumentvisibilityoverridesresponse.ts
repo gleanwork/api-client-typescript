@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentVisibilityUpdateResult,
   DocumentVisibilityUpdateResult$inboundSchema,
-  DocumentVisibilityUpdateResult$Outbound,
-  DocumentVisibilityUpdateResult$outboundSchema,
 } from "./documentvisibilityupdateresult.js";
 
 export type UpdateDocumentVisibilityOverridesResponse = {
@@ -28,47 +26,6 @@ export const UpdateDocumentVisibilityOverridesResponse$inboundSchema: z.ZodType<
 > = z.object({
   results: z.array(DocumentVisibilityUpdateResult$inboundSchema).optional(),
 });
-
-/** @internal */
-export type UpdateDocumentVisibilityOverridesResponse$Outbound = {
-  results?: Array<DocumentVisibilityUpdateResult$Outbound> | undefined;
-};
-
-/** @internal */
-export const UpdateDocumentVisibilityOverridesResponse$outboundSchema:
-  z.ZodType<
-    UpdateDocumentVisibilityOverridesResponse$Outbound,
-    z.ZodTypeDef,
-    UpdateDocumentVisibilityOverridesResponse
-  > = z.object({
-    results: z.array(DocumentVisibilityUpdateResult$outboundSchema).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDocumentVisibilityOverridesResponse$ {
-  /** @deprecated use `UpdateDocumentVisibilityOverridesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    UpdateDocumentVisibilityOverridesResponse$inboundSchema;
-  /** @deprecated use `UpdateDocumentVisibilityOverridesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateDocumentVisibilityOverridesResponse$outboundSchema;
-  /** @deprecated use `UpdateDocumentVisibilityOverridesResponse$Outbound` instead. */
-  export type Outbound = UpdateDocumentVisibilityOverridesResponse$Outbound;
-}
-
-export function updateDocumentVisibilityOverridesResponseToJSON(
-  updateDocumentVisibilityOverridesResponse:
-    UpdateDocumentVisibilityOverridesResponse,
-): string {
-  return JSON.stringify(
-    UpdateDocumentVisibilityOverridesResponse$outboundSchema.parse(
-      updateDocumentVisibilityOverridesResponse,
-    ),
-  );
-}
 
 export function updateDocumentVisibilityOverridesResponseFromJSON(
   jsonString: string,

@@ -21,18 +21,3 @@ export type SectionType = ClosedEnum<typeof SectionType>;
 /** @internal */
 export const SectionType$inboundSchema: z.ZodNativeEnum<typeof SectionType> = z
   .nativeEnum(SectionType);
-
-/** @internal */
-export const SectionType$outboundSchema: z.ZodNativeEnum<typeof SectionType> =
-  SectionType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SectionType$ {
-  /** @deprecated use `SectionType$inboundSchema` instead. */
-  export const inboundSchema = SectionType$inboundSchema;
-  /** @deprecated use `SectionType$outboundSchema` instead. */
-  export const outboundSchema = SectionType$outboundSchema;
-}

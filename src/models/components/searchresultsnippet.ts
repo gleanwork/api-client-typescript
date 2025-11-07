@@ -55,7 +55,6 @@ export const SearchResultSnippet$inboundSchema: z.ZodType<
   url: z.string().optional(),
   snippet: z.string(),
 });
-
 /** @internal */
 export type SearchResultSnippet$Outbound = {
   mimeType?: string | undefined;
@@ -80,19 +79,6 @@ export const SearchResultSnippet$outboundSchema: z.ZodType<
   snippet: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchResultSnippet$ {
-  /** @deprecated use `SearchResultSnippet$inboundSchema` instead. */
-  export const inboundSchema = SearchResultSnippet$inboundSchema;
-  /** @deprecated use `SearchResultSnippet$outboundSchema` instead. */
-  export const outboundSchema = SearchResultSnippet$outboundSchema;
-  /** @deprecated use `SearchResultSnippet$Outbound` instead. */
-  export type Outbound = SearchResultSnippet$Outbound;
-}
-
 export function searchResultSnippetToJSON(
   searchResultSnippet: SearchResultSnippet,
 ): string {
@@ -100,7 +86,6 @@ export function searchResultSnippetToJSON(
     SearchResultSnippet$outboundSchema.parse(searchResultSnippet),
   );
 }
-
 export function searchResultSnippetFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchResultSnippet, SDKValidationError> {

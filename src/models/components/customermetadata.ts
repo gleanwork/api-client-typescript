@@ -33,7 +33,6 @@ export const CustomerMetadata$inboundSchema: z.ZodType<
   datasourceId: z.string().optional(),
   customData: z.record(CustomDataValue$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CustomerMetadata$Outbound = {
   datasourceId?: string | undefined;
@@ -50,19 +49,6 @@ export const CustomerMetadata$outboundSchema: z.ZodType<
   customData: z.record(CustomDataValue$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomerMetadata$ {
-  /** @deprecated use `CustomerMetadata$inboundSchema` instead. */
-  export const inboundSchema = CustomerMetadata$inboundSchema;
-  /** @deprecated use `CustomerMetadata$outboundSchema` instead. */
-  export const outboundSchema = CustomerMetadata$outboundSchema;
-  /** @deprecated use `CustomerMetadata$Outbound` instead. */
-  export type Outbound = CustomerMetadata$Outbound;
-}
-
 export function customerMetadataToJSON(
   customerMetadata: CustomerMetadata,
 ): string {
@@ -70,7 +56,6 @@ export function customerMetadataToJSON(
     CustomerMetadata$outboundSchema.parse(customerMetadata),
   );
 }
-
 export function customerMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomerMetadata, SDKValidationError> {

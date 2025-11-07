@@ -30,6 +30,7 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Delete the user from the datasource. Silently succeeds if user is not present.
+ * Note: All memberships associated with the deleted user will also be deleted.
  */
 export function indexingPermissionsDeleteUser(
   client: GleanCore,

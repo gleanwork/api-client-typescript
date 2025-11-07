@@ -32,7 +32,6 @@ export const SearchProviderInfo$inboundSchema: z.ZodType<
   logoUrl: z.string().optional(),
   searchLinkUrlTemplate: z.string().optional(),
 });
-
 /** @internal */
 export type SearchProviderInfo$Outbound = {
   name?: string | undefined;
@@ -51,19 +50,6 @@ export const SearchProviderInfo$outboundSchema: z.ZodType<
   searchLinkUrlTemplate: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchProviderInfo$ {
-  /** @deprecated use `SearchProviderInfo$inboundSchema` instead. */
-  export const inboundSchema = SearchProviderInfo$inboundSchema;
-  /** @deprecated use `SearchProviderInfo$outboundSchema` instead. */
-  export const outboundSchema = SearchProviderInfo$outboundSchema;
-  /** @deprecated use `SearchProviderInfo$Outbound` instead. */
-  export type Outbound = SearchProviderInfo$Outbound;
-}
-
 export function searchProviderInfoToJSON(
   searchProviderInfo: SearchProviderInfo,
 ): string {
@@ -71,7 +57,6 @@ export function searchProviderInfoToJSON(
     SearchProviderInfo$outboundSchema.parse(searchProviderInfo),
   );
 }
-
 export function searchProviderInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<SearchProviderInfo, SDKValidationError> {

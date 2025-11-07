@@ -49,21 +49,6 @@ export const WarningType$inboundSchema: z.ZodNativeEnum<typeof WarningType> = z
   .nativeEnum(WarningType);
 
 /** @internal */
-export const WarningType$outboundSchema: z.ZodNativeEnum<typeof WarningType> =
-  WarningType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WarningType$ {
-  /** @deprecated use `WarningType$inboundSchema` instead. */
-  export const inboundSchema = WarningType$inboundSchema;
-  /** @deprecated use `WarningType$outboundSchema` instead. */
-  export const outboundSchema = WarningType$outboundSchema;
-}
-
-/** @internal */
 export const SearchWarning$inboundSchema: z.ZodType<
   SearchWarning,
   z.ZodTypeDef,
@@ -74,43 +59,6 @@ export const SearchWarning$inboundSchema: z.ZodType<
   quotesIgnoredQuery: z.string().optional(),
   ignoredTerms: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type SearchWarning$Outbound = {
-  warningType: string;
-  lastUsedTerm?: string | undefined;
-  quotesIgnoredQuery?: string | undefined;
-  ignoredTerms?: Array<string> | undefined;
-};
-
-/** @internal */
-export const SearchWarning$outboundSchema: z.ZodType<
-  SearchWarning$Outbound,
-  z.ZodTypeDef,
-  SearchWarning
-> = z.object({
-  warningType: WarningType$outboundSchema,
-  lastUsedTerm: z.string().optional(),
-  quotesIgnoredQuery: z.string().optional(),
-  ignoredTerms: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchWarning$ {
-  /** @deprecated use `SearchWarning$inboundSchema` instead. */
-  export const inboundSchema = SearchWarning$inboundSchema;
-  /** @deprecated use `SearchWarning$outboundSchema` instead. */
-  export const outboundSchema = SearchWarning$outboundSchema;
-  /** @deprecated use `SearchWarning$Outbound` instead. */
-  export type Outbound = SearchWarning$Outbound;
-}
-
-export function searchWarningToJSON(searchWarning: SearchWarning): string {
-  return JSON.stringify(SearchWarning$outboundSchema.parse(searchWarning));
-}
 
 export function searchWarningFromJSON(
   jsonString: string,

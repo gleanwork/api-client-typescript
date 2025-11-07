@@ -99,40 +99,16 @@ export type ChatMessage = {
 /** @internal */
 export const Author$inboundSchema: z.ZodNativeEnum<typeof Author> = z
   .nativeEnum(Author);
-
 /** @internal */
 export const Author$outboundSchema: z.ZodNativeEnum<typeof Author> =
   Author$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Author$ {
-  /** @deprecated use `Author$inboundSchema` instead. */
-  export const inboundSchema = Author$inboundSchema;
-  /** @deprecated use `Author$outboundSchema` instead. */
-  export const outboundSchema = Author$outboundSchema;
-}
-
 /** @internal */
 export const MessageType$inboundSchema: z.ZodNativeEnum<typeof MessageType> = z
   .nativeEnum(MessageType);
-
 /** @internal */
 export const MessageType$outboundSchema: z.ZodNativeEnum<typeof MessageType> =
   MessageType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MessageType$ {
-  /** @deprecated use `MessageType$inboundSchema` instead. */
-  export const inboundSchema = MessageType$inboundSchema;
-  /** @deprecated use `MessageType$outboundSchema` instead. */
-  export const outboundSchema = MessageType$outboundSchema;
-}
 
 /** @internal */
 export const ChatMessage$inboundSchema: z.ZodType<
@@ -151,7 +127,6 @@ export const ChatMessage$inboundSchema: z.ZodType<
   messageType: MessageType$inboundSchema.default("CONTENT"),
   hasMoreFragments: z.boolean().optional(),
 });
-
 /** @internal */
 export type ChatMessage$Outbound = {
   agentConfig?: AgentConfig$Outbound | undefined;
@@ -184,23 +159,9 @@ export const ChatMessage$outboundSchema: z.ZodType<
   hasMoreFragments: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatMessage$ {
-  /** @deprecated use `ChatMessage$inboundSchema` instead. */
-  export const inboundSchema = ChatMessage$inboundSchema;
-  /** @deprecated use `ChatMessage$outboundSchema` instead. */
-  export const outboundSchema = ChatMessage$outboundSchema;
-  /** @deprecated use `ChatMessage$Outbound` instead. */
-  export type Outbound = ChatMessage$Outbound;
-}
-
 export function chatMessageToJSON(chatMessage: ChatMessage): string {
   return JSON.stringify(ChatMessage$outboundSchema.parse(chatMessage));
 }
-
 export function chatMessageFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatMessage, SDKValidationError> {

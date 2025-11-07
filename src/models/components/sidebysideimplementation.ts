@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Metadata about the response (e.g., latency, token count).
@@ -49,17 +46,6 @@ export type SideBySideImplementation = {
 };
 
 /** @internal */
-export const ResponseMetadata$inboundSchema: z.ZodType<
-  ResponseMetadata,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  latencyMs: z.number().int().optional(),
-  tokenCount: z.number().int().optional(),
-  modelUsed: z.string().optional(),
-});
-
-/** @internal */
 export type ResponseMetadata$Outbound = {
   latencyMs?: number | undefined;
   tokenCount?: number | undefined;
@@ -77,19 +63,6 @@ export const ResponseMetadata$outboundSchema: z.ZodType<
   modelUsed: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResponseMetadata$ {
-  /** @deprecated use `ResponseMetadata$inboundSchema` instead. */
-  export const inboundSchema = ResponseMetadata$inboundSchema;
-  /** @deprecated use `ResponseMetadata$outboundSchema` instead. */
-  export const outboundSchema = ResponseMetadata$outboundSchema;
-  /** @deprecated use `ResponseMetadata$Outbound` instead. */
-  export type Outbound = ResponseMetadata$Outbound;
-}
-
 export function responseMetadataToJSON(
   responseMetadata: ResponseMetadata,
 ): string {
@@ -97,29 +70,6 @@ export function responseMetadataToJSON(
     ResponseMetadata$outboundSchema.parse(responseMetadata),
   );
 }
-
-export function responseMetadataFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseMetadata, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseMetadata' from JSON`,
-  );
-}
-
-/** @internal */
-export const SideBySideImplementation$inboundSchema: z.ZodType<
-  SideBySideImplementation,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  implementationId: z.string().optional(),
-  implementationName: z.string().optional(),
-  searchParams: z.record(z.string()).optional(),
-  response: z.string().optional(),
-  responseMetadata: z.lazy(() => ResponseMetadata$inboundSchema).optional(),
-});
 
 /** @internal */
 export type SideBySideImplementation$Outbound = {
@@ -143,33 +93,10 @@ export const SideBySideImplementation$outboundSchema: z.ZodType<
   responseMetadata: z.lazy(() => ResponseMetadata$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SideBySideImplementation$ {
-  /** @deprecated use `SideBySideImplementation$inboundSchema` instead. */
-  export const inboundSchema = SideBySideImplementation$inboundSchema;
-  /** @deprecated use `SideBySideImplementation$outboundSchema` instead. */
-  export const outboundSchema = SideBySideImplementation$outboundSchema;
-  /** @deprecated use `SideBySideImplementation$Outbound` instead. */
-  export type Outbound = SideBySideImplementation$Outbound;
-}
-
 export function sideBySideImplementationToJSON(
   sideBySideImplementation: SideBySideImplementation,
 ): string {
   return JSON.stringify(
     SideBySideImplementation$outboundSchema.parse(sideBySideImplementation),
-  );
-}
-
-export function sideBySideImplementationFromJSON(
-  jsonString: string,
-): SafeParseResult<SideBySideImplementation, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SideBySideImplementation$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SideBySideImplementation' from JSON`,
   );
 }

@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  FacetValue,
-  FacetValue$inboundSchema,
-  FacetValue$Outbound,
-  FacetValue$outboundSchema,
-} from "./facetvalue.js";
+import { FacetValue, FacetValue$inboundSchema } from "./facetvalue.js";
 
 export type FacetBucket = {
   /**
@@ -40,43 +35,6 @@ export const FacetBucket$inboundSchema: z.ZodType<
   percentage: z.number().int().optional(),
   value: FacetValue$inboundSchema.optional(),
 });
-
-/** @internal */
-export type FacetBucket$Outbound = {
-  count?: number | undefined;
-  datasource?: string | undefined;
-  percentage?: number | undefined;
-  value?: FacetValue$Outbound | undefined;
-};
-
-/** @internal */
-export const FacetBucket$outboundSchema: z.ZodType<
-  FacetBucket$Outbound,
-  z.ZodTypeDef,
-  FacetBucket
-> = z.object({
-  count: z.number().int().optional(),
-  datasource: z.string().optional(),
-  percentage: z.number().int().optional(),
-  value: FacetValue$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FacetBucket$ {
-  /** @deprecated use `FacetBucket$inboundSchema` instead. */
-  export const inboundSchema = FacetBucket$inboundSchema;
-  /** @deprecated use `FacetBucket$outboundSchema` instead. */
-  export const outboundSchema = FacetBucket$outboundSchema;
-  /** @deprecated use `FacetBucket$Outbound` instead. */
-  export type Outbound = FacetBucket$Outbound;
-}
-
-export function facetBucketToJSON(facetBucket: FacetBucket): string {
-  return JSON.stringify(FacetBucket$outboundSchema.parse(facetBucket));
-}
 
 export function facetBucketFromJSON(
   jsonString: string,

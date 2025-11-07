@@ -3,24 +3,18 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Document,
-  Document$inboundSchema,
   Document$Outbound,
   Document$outboundSchema,
 } from "./document.js";
 import {
   FacetFilterSet,
-  FacetFilterSet$inboundSchema,
   FacetFilterSet$Outbound,
   FacetFilterSet$outboundSchema,
 } from "./facetfilterset.js";
 import {
   SearchResultProminenceEnum,
-  SearchResultProminenceEnum$inboundSchema,
   SearchResultProminenceEnum$outboundSchema,
 } from "./searchresultprominenceenum.js";
 
@@ -45,20 +39,6 @@ export type RecommendationsRequestOptions = {
 };
 
 /** @internal */
-export const RecommendationsRequestOptions$inboundSchema: z.ZodType<
-  RecommendationsRequestOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasourceFilter: z.string().optional(),
-  datasourcesFilter: z.array(z.string()).optional(),
-  facetFilterSets: z.array(FacetFilterSet$inboundSchema).optional(),
-  context: Document$inboundSchema.optional(),
-  resultProminence: z.array(SearchResultProminenceEnum$inboundSchema)
-    .optional(),
-});
-
-/** @internal */
 export type RecommendationsRequestOptions$Outbound = {
   datasourceFilter?: string | undefined;
   datasourcesFilter?: Array<string> | undefined;
@@ -81,19 +61,6 @@ export const RecommendationsRequestOptions$outboundSchema: z.ZodType<
     .optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RecommendationsRequestOptions$ {
-  /** @deprecated use `RecommendationsRequestOptions$inboundSchema` instead. */
-  export const inboundSchema = RecommendationsRequestOptions$inboundSchema;
-  /** @deprecated use `RecommendationsRequestOptions$outboundSchema` instead. */
-  export const outboundSchema = RecommendationsRequestOptions$outboundSchema;
-  /** @deprecated use `RecommendationsRequestOptions$Outbound` instead. */
-  export type Outbound = RecommendationsRequestOptions$Outbound;
-}
-
 export function recommendationsRequestOptionsToJSON(
   recommendationsRequestOptions: RecommendationsRequestOptions,
 ): string {
@@ -101,15 +68,5 @@ export function recommendationsRequestOptionsToJSON(
     RecommendationsRequestOptions$outboundSchema.parse(
       recommendationsRequestOptions,
     ),
-  );
-}
-
-export function recommendationsRequestOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<RecommendationsRequestOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => RecommendationsRequestOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RecommendationsRequestOptions' from JSON`,
   );
 }

@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
+import { Document, Document$inboundSchema } from "./document.js";
 
 export type DocumentOrError = {
   /**
@@ -30,39 +25,6 @@ export const DocumentOrError$inboundSchema: z.ZodType<
 > = z.object({
   error: z.string(),
 });
-
-/** @internal */
-export type DocumentOrError$Outbound = {
-  error: string;
-};
-
-/** @internal */
-export const DocumentOrError$outboundSchema: z.ZodType<
-  DocumentOrError$Outbound,
-  z.ZodTypeDef,
-  DocumentOrError
-> = z.object({
-  error: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentOrError$ {
-  /** @deprecated use `DocumentOrError$inboundSchema` instead. */
-  export const inboundSchema = DocumentOrError$inboundSchema;
-  /** @deprecated use `DocumentOrError$outboundSchema` instead. */
-  export const outboundSchema = DocumentOrError$outboundSchema;
-  /** @deprecated use `DocumentOrError$Outbound` instead. */
-  export type Outbound = DocumentOrError$Outbound;
-}
-
-export function documentOrErrorToJSON(
-  documentOrError: DocumentOrError,
-): string {
-  return JSON.stringify(DocumentOrError$outboundSchema.parse(documentOrError));
-}
 
 export function documentOrErrorFromJSON(
   jsonString: string,
@@ -83,42 +45,6 @@ export const DocumentOrErrorUnion$inboundSchema: z.ZodType<
   z.lazy(() => DocumentOrError$inboundSchema),
   Document$inboundSchema,
 ]);
-
-/** @internal */
-export type DocumentOrErrorUnion$Outbound =
-  | DocumentOrError$Outbound
-  | Document$Outbound;
-
-/** @internal */
-export const DocumentOrErrorUnion$outboundSchema: z.ZodType<
-  DocumentOrErrorUnion$Outbound,
-  z.ZodTypeDef,
-  DocumentOrErrorUnion
-> = z.union([
-  z.lazy(() => DocumentOrError$outboundSchema),
-  Document$outboundSchema,
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentOrErrorUnion$ {
-  /** @deprecated use `DocumentOrErrorUnion$inboundSchema` instead. */
-  export const inboundSchema = DocumentOrErrorUnion$inboundSchema;
-  /** @deprecated use `DocumentOrErrorUnion$outboundSchema` instead. */
-  export const outboundSchema = DocumentOrErrorUnion$outboundSchema;
-  /** @deprecated use `DocumentOrErrorUnion$Outbound` instead. */
-  export type Outbound = DocumentOrErrorUnion$Outbound;
-}
-
-export function documentOrErrorUnionToJSON(
-  documentOrErrorUnion: DocumentOrErrorUnion,
-): string {
-  return JSON.stringify(
-    DocumentOrErrorUnion$outboundSchema.parse(documentOrErrorUnion),
-  );
-}
 
 export function documentOrErrorUnionFromJSON(
   jsonString: string,

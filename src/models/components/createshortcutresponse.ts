@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Shortcut,
-  Shortcut$inboundSchema,
-  Shortcut$Outbound,
-  Shortcut$outboundSchema,
-} from "./shortcut.js";
-import {
-  ShortcutError,
-  ShortcutError$inboundSchema,
-  ShortcutError$Outbound,
-  ShortcutError$outboundSchema,
-} from "./shortcuterror.js";
+import { Shortcut, Shortcut$inboundSchema } from "./shortcut.js";
+import { ShortcutError, ShortcutError$inboundSchema } from "./shortcuterror.js";
 
 export type CreateShortcutResponse = {
   shortcut?: Shortcut | undefined;
@@ -33,43 +23,6 @@ export const CreateShortcutResponse$inboundSchema: z.ZodType<
   shortcut: Shortcut$inboundSchema.optional(),
   error: ShortcutError$inboundSchema.optional(),
 });
-
-/** @internal */
-export type CreateShortcutResponse$Outbound = {
-  shortcut?: Shortcut$Outbound | undefined;
-  error?: ShortcutError$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateShortcutResponse$outboundSchema: z.ZodType<
-  CreateShortcutResponse$Outbound,
-  z.ZodTypeDef,
-  CreateShortcutResponse
-> = z.object({
-  shortcut: Shortcut$outboundSchema.optional(),
-  error: ShortcutError$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateShortcutResponse$ {
-  /** @deprecated use `CreateShortcutResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateShortcutResponse$inboundSchema;
-  /** @deprecated use `CreateShortcutResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateShortcutResponse$outboundSchema;
-  /** @deprecated use `CreateShortcutResponse$Outbound` instead. */
-  export type Outbound = CreateShortcutResponse$Outbound;
-}
-
-export function createShortcutResponseToJSON(
-  createShortcutResponse: CreateShortcutResponse,
-): string {
-  return JSON.stringify(
-    CreateShortcutResponse$outboundSchema.parse(createShortcutResponse),
-  );
-}
 
 export function createShortcutResponseFromJSON(
   jsonString: string,

@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceGroupDefinition,
-  DatasourceGroupDefinition$inboundSchema,
   DatasourceGroupDefinition$Outbound,
   DatasourceGroupDefinition$outboundSchema,
 } from "./datasourcegroupdefinition.js";
@@ -48,21 +44,6 @@ export type BulkIndexGroupsRequest = {
 };
 
 /** @internal */
-export const BulkIndexGroupsRequest$inboundSchema: z.ZodType<
-  BulkIndexGroupsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  datasource: z.string(),
-  groups: z.array(DatasourceGroupDefinition$inboundSchema),
-  disableStaleDataDeletionCheck: z.boolean().optional(),
-});
-
-/** @internal */
 export type BulkIndexGroupsRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -88,33 +69,10 @@ export const BulkIndexGroupsRequest$outboundSchema: z.ZodType<
   disableStaleDataDeletionCheck: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkIndexGroupsRequest$ {
-  /** @deprecated use `BulkIndexGroupsRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkIndexGroupsRequest$inboundSchema;
-  /** @deprecated use `BulkIndexGroupsRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkIndexGroupsRequest$outboundSchema;
-  /** @deprecated use `BulkIndexGroupsRequest$Outbound` instead. */
-  export type Outbound = BulkIndexGroupsRequest$Outbound;
-}
-
 export function bulkIndexGroupsRequestToJSON(
   bulkIndexGroupsRequest: BulkIndexGroupsRequest,
 ): string {
   return JSON.stringify(
     BulkIndexGroupsRequest$outboundSchema.parse(bulkIndexGroupsRequest),
-  );
-}
-
-export function bulkIndexGroupsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkIndexGroupsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkIndexGroupsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkIndexGroupsRequest' from JSON`,
   );
 }

@@ -40,7 +40,6 @@ export const CustomFieldValue$inboundSchema: z.ZodType<
   CustomFieldValueHyperlink$inboundSchema,
   z.lazy(() => CustomFieldValuePerson$inboundSchema),
 ]);
-
 /** @internal */
 export type CustomFieldValue$Outbound =
   | CustomFieldValueStr$Outbound
@@ -58,19 +57,6 @@ export const CustomFieldValue$outboundSchema: z.ZodType<
   z.lazy(() => CustomFieldValuePerson$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldValue$ {
-  /** @deprecated use `CustomFieldValue$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldValue$inboundSchema;
-  /** @deprecated use `CustomFieldValue$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldValue$outboundSchema;
-  /** @deprecated use `CustomFieldValue$Outbound` instead. */
-  export type Outbound = CustomFieldValue$Outbound;
-}
-
 export function customFieldValueToJSON(
   customFieldValue: CustomFieldValue,
 ): string {
@@ -78,7 +64,6 @@ export function customFieldValueToJSON(
     CustomFieldValue$outboundSchema.parse(customFieldValue),
   );
 }
-
 export function customFieldValueFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldValue, SDKValidationError> {

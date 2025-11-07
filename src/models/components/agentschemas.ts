@@ -43,33 +43,6 @@ export const InputSchema$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type InputSchema$Outbound = {};
-
-/** @internal */
-export const InputSchema$outboundSchema: z.ZodType<
-  InputSchema$Outbound,
-  z.ZodTypeDef,
-  InputSchema
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InputSchema$ {
-  /** @deprecated use `InputSchema$inboundSchema` instead. */
-  export const inboundSchema = InputSchema$inboundSchema;
-  /** @deprecated use `InputSchema$outboundSchema` instead. */
-  export const outboundSchema = InputSchema$outboundSchema;
-  /** @deprecated use `InputSchema$Outbound` instead. */
-  export type Outbound = InputSchema$Outbound;
-}
-
-export function inputSchemaToJSON(inputSchema: InputSchema): string {
-  return JSON.stringify(InputSchema$outboundSchema.parse(inputSchema));
-}
-
 export function inputSchemaFromJSON(
   jsonString: string,
 ): SafeParseResult<InputSchema, SDKValidationError> {
@@ -86,33 +59,6 @@ export const OutputSchema$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({});
-
-/** @internal */
-export type OutputSchema$Outbound = {};
-
-/** @internal */
-export const OutputSchema$outboundSchema: z.ZodType<
-  OutputSchema$Outbound,
-  z.ZodTypeDef,
-  OutputSchema
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OutputSchema$ {
-  /** @deprecated use `OutputSchema$inboundSchema` instead. */
-  export const inboundSchema = OutputSchema$inboundSchema;
-  /** @deprecated use `OutputSchema$outboundSchema` instead. */
-  export const outboundSchema = OutputSchema$outboundSchema;
-  /** @deprecated use `OutputSchema$Outbound` instead. */
-  export type Outbound = OutputSchema$Outbound;
-}
-
-export function outputSchemaToJSON(outputSchema: OutputSchema): string {
-  return JSON.stringify(OutputSchema$outboundSchema.parse(outputSchema));
-}
 
 export function outputSchemaFromJSON(
   jsonString: string,
@@ -140,47 +86,6 @@ export const AgentSchemas$inboundSchema: z.ZodType<
     "output_schema": "outputSchema",
   });
 });
-
-/** @internal */
-export type AgentSchemas$Outbound = {
-  agent_id: string;
-  input_schema: InputSchema$Outbound;
-  output_schema: OutputSchema$Outbound;
-};
-
-/** @internal */
-export const AgentSchemas$outboundSchema: z.ZodType<
-  AgentSchemas$Outbound,
-  z.ZodTypeDef,
-  AgentSchemas
-> = z.object({
-  agentId: z.string(),
-  inputSchema: z.lazy(() => InputSchema$outboundSchema),
-  outputSchema: z.lazy(() => OutputSchema$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-    inputSchema: "input_schema",
-    outputSchema: "output_schema",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentSchemas$ {
-  /** @deprecated use `AgentSchemas$inboundSchema` instead. */
-  export const inboundSchema = AgentSchemas$inboundSchema;
-  /** @deprecated use `AgentSchemas$outboundSchema` instead. */
-  export const outboundSchema = AgentSchemas$outboundSchema;
-  /** @deprecated use `AgentSchemas$Outbound` instead. */
-  export type Outbound = AgentSchemas$Outbound;
-}
-
-export function agentSchemasToJSON(agentSchemas: AgentSchemas): string {
-  return JSON.stringify(AgentSchemas$outboundSchema.parse(agentSchemas));
-}
 
 export function agentSchemasFromJSON(
   jsonString: string,

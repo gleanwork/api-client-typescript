@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Tool,
-  Tool$inboundSchema,
-  Tool$Outbound,
-  Tool$outboundSchema,
-} from "./tool.js";
+import { Tool, Tool$inboundSchema } from "./tool.js";
 
 export type ToolsListResponse = {
   tools?: Array<Tool> | undefined;
@@ -25,41 +20,6 @@ export const ToolsListResponse$inboundSchema: z.ZodType<
 > = z.object({
   tools: z.array(Tool$inboundSchema).optional(),
 });
-
-/** @internal */
-export type ToolsListResponse$Outbound = {
-  tools?: Array<Tool$Outbound> | undefined;
-};
-
-/** @internal */
-export const ToolsListResponse$outboundSchema: z.ZodType<
-  ToolsListResponse$Outbound,
-  z.ZodTypeDef,
-  ToolsListResponse
-> = z.object({
-  tools: z.array(Tool$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolsListResponse$ {
-  /** @deprecated use `ToolsListResponse$inboundSchema` instead. */
-  export const inboundSchema = ToolsListResponse$inboundSchema;
-  /** @deprecated use `ToolsListResponse$outboundSchema` instead. */
-  export const outboundSchema = ToolsListResponse$outboundSchema;
-  /** @deprecated use `ToolsListResponse$Outbound` instead. */
-  export type Outbound = ToolsListResponse$Outbound;
-}
-
-export function toolsListResponseToJSON(
-  toolsListResponse: ToolsListResponse,
-): string {
-  return JSON.stringify(
-    ToolsListResponse$outboundSchema.parse(toolsListResponse),
-  );
-}
 
 export function toolsListResponseFromJSON(
   jsonString: string,

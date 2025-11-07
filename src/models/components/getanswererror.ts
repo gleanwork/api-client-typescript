@@ -7,12 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 export const GetAnswerErrorErrorType = {
   NoPermission: "NO_PERMISSION",
@@ -33,22 +28,6 @@ export const GetAnswerErrorErrorType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAnswerErrorErrorType);
 
 /** @internal */
-export const GetAnswerErrorErrorType$outboundSchema: z.ZodNativeEnum<
-  typeof GetAnswerErrorErrorType
-> = GetAnswerErrorErrorType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAnswerErrorErrorType$ {
-  /** @deprecated use `GetAnswerErrorErrorType$inboundSchema` instead. */
-  export const inboundSchema = GetAnswerErrorErrorType$inboundSchema;
-  /** @deprecated use `GetAnswerErrorErrorType$outboundSchema` instead. */
-  export const outboundSchema = GetAnswerErrorErrorType$outboundSchema;
-}
-
-/** @internal */
 export const GetAnswerError$inboundSchema: z.ZodType<
   GetAnswerError,
   z.ZodTypeDef,
@@ -57,39 +36,6 @@ export const GetAnswerError$inboundSchema: z.ZodType<
   errorType: GetAnswerErrorErrorType$inboundSchema.optional(),
   answerAuthor: Person$inboundSchema.optional(),
 });
-
-/** @internal */
-export type GetAnswerError$Outbound = {
-  errorType?: string | undefined;
-  answerAuthor?: Person$Outbound | undefined;
-};
-
-/** @internal */
-export const GetAnswerError$outboundSchema: z.ZodType<
-  GetAnswerError$Outbound,
-  z.ZodTypeDef,
-  GetAnswerError
-> = z.object({
-  errorType: GetAnswerErrorErrorType$outboundSchema.optional(),
-  answerAuthor: Person$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAnswerError$ {
-  /** @deprecated use `GetAnswerError$inboundSchema` instead. */
-  export const inboundSchema = GetAnswerError$inboundSchema;
-  /** @deprecated use `GetAnswerError$outboundSchema` instead. */
-  export const outboundSchema = GetAnswerError$outboundSchema;
-  /** @deprecated use `GetAnswerError$Outbound` instead. */
-  export type Outbound = GetAnswerError$Outbound;
-}
-
-export function getAnswerErrorToJSON(getAnswerError: GetAnswerError): string {
-  return JSON.stringify(GetAnswerError$outboundSchema.parse(getAnswerError));
-}
 
 export function getAnswerErrorFromJSON(
   jsonString: string,

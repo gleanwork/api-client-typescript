@@ -38,47 +38,6 @@ export const InsightsSearchSummary$inboundSchema: z.ZodType<
   numSearchUsers: z.number().int().optional(),
 });
 
-/** @internal */
-export type InsightsSearchSummary$Outbound = {
-  monthlyActiveUsers?: number | undefined;
-  weeklyActiveUsers?: number | undefined;
-  numSearches?: number | undefined;
-  numSearchUsers?: number | undefined;
-};
-
-/** @internal */
-export const InsightsSearchSummary$outboundSchema: z.ZodType<
-  InsightsSearchSummary$Outbound,
-  z.ZodTypeDef,
-  InsightsSearchSummary
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  numSearches: z.number().int().optional(),
-  numSearchUsers: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsSearchSummary$ {
-  /** @deprecated use `InsightsSearchSummary$inboundSchema` instead. */
-  export const inboundSchema = InsightsSearchSummary$inboundSchema;
-  /** @deprecated use `InsightsSearchSummary$outboundSchema` instead. */
-  export const outboundSchema = InsightsSearchSummary$outboundSchema;
-  /** @deprecated use `InsightsSearchSummary$Outbound` instead. */
-  export type Outbound = InsightsSearchSummary$Outbound;
-}
-
-export function insightsSearchSummaryToJSON(
-  insightsSearchSummary: InsightsSearchSummary,
-): string {
-  return JSON.stringify(
-    InsightsSearchSummary$outboundSchema.parse(insightsSearchSummary),
-  );
-}
-
 export function insightsSearchSummaryFromJSON(
   jsonString: string,
 ): SafeParseResult<InsightsSearchSummary, SDKValidationError> {

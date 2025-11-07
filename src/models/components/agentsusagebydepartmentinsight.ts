@@ -48,53 +48,6 @@ export const AgentsUsageByDepartmentInsight$inboundSchema: z.ZodType<
   agentName: z.string().optional(),
 });
 
-/** @internal */
-export type AgentsUsageByDepartmentInsight$Outbound = {
-  department?: string | undefined;
-  agentAdoptionRate?: number | undefined;
-  userCount?: number | undefined;
-  runCount?: number | undefined;
-  agentId?: string | undefined;
-  agentName?: string | undefined;
-};
-
-/** @internal */
-export const AgentsUsageByDepartmentInsight$outboundSchema: z.ZodType<
-  AgentsUsageByDepartmentInsight$Outbound,
-  z.ZodTypeDef,
-  AgentsUsageByDepartmentInsight
-> = z.object({
-  department: z.string().optional(),
-  agentAdoptionRate: z.number().optional(),
-  userCount: z.number().int().optional(),
-  runCount: z.number().int().optional(),
-  agentId: z.string().optional(),
-  agentName: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentsUsageByDepartmentInsight$ {
-  /** @deprecated use `AgentsUsageByDepartmentInsight$inboundSchema` instead. */
-  export const inboundSchema = AgentsUsageByDepartmentInsight$inboundSchema;
-  /** @deprecated use `AgentsUsageByDepartmentInsight$outboundSchema` instead. */
-  export const outboundSchema = AgentsUsageByDepartmentInsight$outboundSchema;
-  /** @deprecated use `AgentsUsageByDepartmentInsight$Outbound` instead. */
-  export type Outbound = AgentsUsageByDepartmentInsight$Outbound;
-}
-
-export function agentsUsageByDepartmentInsightToJSON(
-  agentsUsageByDepartmentInsight: AgentsUsageByDepartmentInsight,
-): string {
-  return JSON.stringify(
-    AgentsUsageByDepartmentInsight$outboundSchema.parse(
-      agentsUsageByDepartmentInsight,
-    ),
-  );
-}
-
 export function agentsUsageByDepartmentInsightFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentsUsageByDepartmentInsight, SDKValidationError> {

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /processalldocuments API call
@@ -16,15 +13,6 @@ export type ProcessAllDocumentsRequest = {
    */
   datasource?: string | undefined;
 };
-
-/** @internal */
-export const ProcessAllDocumentsRequest$inboundSchema: z.ZodType<
-  ProcessAllDocumentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string().optional(),
-});
 
 /** @internal */
 export type ProcessAllDocumentsRequest$Outbound = {
@@ -40,33 +28,10 @@ export const ProcessAllDocumentsRequest$outboundSchema: z.ZodType<
   datasource: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessAllDocumentsRequest$ {
-  /** @deprecated use `ProcessAllDocumentsRequest$inboundSchema` instead. */
-  export const inboundSchema = ProcessAllDocumentsRequest$inboundSchema;
-  /** @deprecated use `ProcessAllDocumentsRequest$outboundSchema` instead. */
-  export const outboundSchema = ProcessAllDocumentsRequest$outboundSchema;
-  /** @deprecated use `ProcessAllDocumentsRequest$Outbound` instead. */
-  export type Outbound = ProcessAllDocumentsRequest$Outbound;
-}
-
 export function processAllDocumentsRequestToJSON(
   processAllDocumentsRequest: ProcessAllDocumentsRequest,
 ): string {
   return JSON.stringify(
     ProcessAllDocumentsRequest$outboundSchema.parse(processAllDocumentsRequest),
-  );
-}
-
-export function processAllDocumentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ProcessAllDocumentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ProcessAllDocumentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProcessAllDocumentsRequest' from JSON`,
   );
 }

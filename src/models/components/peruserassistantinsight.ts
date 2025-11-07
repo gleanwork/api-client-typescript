@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 export type PerUserAssistantInsight = {
   person?: Person | undefined;
@@ -50,51 +45,6 @@ export const PerUserAssistantInsight$inboundSchema: z.ZodType<
   numGleanbotInteractions: z.number().int().optional(),
   numDaysActive: z.number().int().optional(),
 });
-
-/** @internal */
-export type PerUserAssistantInsight$Outbound = {
-  person?: Person$Outbound | undefined;
-  numChatMessages?: number | undefined;
-  numSummarizations?: number | undefined;
-  numAiAnswers?: number | undefined;
-  numGleanbotInteractions?: number | undefined;
-  numDaysActive?: number | undefined;
-};
-
-/** @internal */
-export const PerUserAssistantInsight$outboundSchema: z.ZodType<
-  PerUserAssistantInsight$Outbound,
-  z.ZodTypeDef,
-  PerUserAssistantInsight
-> = z.object({
-  person: Person$outboundSchema.optional(),
-  numChatMessages: z.number().int().optional(),
-  numSummarizations: z.number().int().optional(),
-  numAiAnswers: z.number().int().optional(),
-  numGleanbotInteractions: z.number().int().optional(),
-  numDaysActive: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PerUserAssistantInsight$ {
-  /** @deprecated use `PerUserAssistantInsight$inboundSchema` instead. */
-  export const inboundSchema = PerUserAssistantInsight$inboundSchema;
-  /** @deprecated use `PerUserAssistantInsight$outboundSchema` instead. */
-  export const outboundSchema = PerUserAssistantInsight$outboundSchema;
-  /** @deprecated use `PerUserAssistantInsight$Outbound` instead. */
-  export type Outbound = PerUserAssistantInsight$Outbound;
-}
-
-export function perUserAssistantInsightToJSON(
-  perUserAssistantInsight: PerUserAssistantInsight,
-): string {
-  return JSON.stringify(
-    PerUserAssistantInsight$outboundSchema.parse(perUserAssistantInsight),
-  );
-}
 
 export function perUserAssistantInsightFromJSON(
   jsonString: string,

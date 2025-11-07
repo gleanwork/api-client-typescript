@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteCollectionItemRequest = {
   /**
@@ -21,17 +18,6 @@ export type DeleteCollectionItemRequest = {
    */
   documentId?: string | undefined;
 };
-
-/** @internal */
-export const DeleteCollectionItemRequest$inboundSchema: z.ZodType<
-  DeleteCollectionItemRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  collectionId: z.number(),
-  itemId: z.string(),
-  documentId: z.string().optional(),
-});
 
 /** @internal */
 export type DeleteCollectionItemRequest$Outbound = {
@@ -51,19 +37,6 @@ export const DeleteCollectionItemRequest$outboundSchema: z.ZodType<
   documentId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteCollectionItemRequest$ {
-  /** @deprecated use `DeleteCollectionItemRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteCollectionItemRequest$inboundSchema;
-  /** @deprecated use `DeleteCollectionItemRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteCollectionItemRequest$outboundSchema;
-  /** @deprecated use `DeleteCollectionItemRequest$Outbound` instead. */
-  export type Outbound = DeleteCollectionItemRequest$Outbound;
-}
-
 export function deleteCollectionItemRequestToJSON(
   deleteCollectionItemRequest: DeleteCollectionItemRequest,
 ): string {
@@ -71,15 +44,5 @@ export function deleteCollectionItemRequestToJSON(
     DeleteCollectionItemRequest$outboundSchema.parse(
       deleteCollectionItemRequest,
     ),
-  );
-}
-
-export function deleteCollectionItemRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteCollectionItemRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteCollectionItemRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteCollectionItemRequest' from JSON`,
   );
 }

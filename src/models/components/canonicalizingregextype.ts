@@ -30,7 +30,6 @@ export const CanonicalizingRegexType$inboundSchema: z.ZodType<
   matchRegex: z.string().optional(),
   rewriteRegex: z.string().optional(),
 });
-
 /** @internal */
 export type CanonicalizingRegexType$Outbound = {
   matchRegex?: string | undefined;
@@ -47,19 +46,6 @@ export const CanonicalizingRegexType$outboundSchema: z.ZodType<
   rewriteRegex: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CanonicalizingRegexType$ {
-  /** @deprecated use `CanonicalizingRegexType$inboundSchema` instead. */
-  export const inboundSchema = CanonicalizingRegexType$inboundSchema;
-  /** @deprecated use `CanonicalizingRegexType$outboundSchema` instead. */
-  export const outboundSchema = CanonicalizingRegexType$outboundSchema;
-  /** @deprecated use `CanonicalizingRegexType$Outbound` instead. */
-  export type Outbound = CanonicalizingRegexType$Outbound;
-}
-
 export function canonicalizingRegexTypeToJSON(
   canonicalizingRegexType: CanonicalizingRegexType,
 ): string {
@@ -67,7 +53,6 @@ export function canonicalizingRegexTypeToJSON(
     CanonicalizingRegexType$outboundSchema.parse(canonicalizingRegexType),
   );
 }
-
 export function canonicalizingRegexTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<CanonicalizingRegexType, SDKValidationError> {

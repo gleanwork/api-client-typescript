@@ -7,12 +7,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  OperatorScope,
-  OperatorScope$inboundSchema,
-  OperatorScope$Outbound,
-  OperatorScope$outboundSchema,
-} from "./operatorscope.js";
+import { OperatorScope, OperatorScope$inboundSchema } from "./operatorscope.js";
 
 export const OperatorType = {
   Text: "TEXT",
@@ -46,21 +41,6 @@ export const OperatorType$inboundSchema: z.ZodNativeEnum<typeof OperatorType> =
   z.nativeEnum(OperatorType);
 
 /** @internal */
-export const OperatorType$outboundSchema: z.ZodNativeEnum<typeof OperatorType> =
-  OperatorType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OperatorType$ {
-  /** @deprecated use `OperatorType$inboundSchema` instead. */
-  export const inboundSchema = OperatorType$inboundSchema;
-  /** @deprecated use `OperatorType$outboundSchema` instead. */
-  export const outboundSchema = OperatorType$outboundSchema;
-}
-
-/** @internal */
 export const OperatorMetadata$inboundSchema: z.ZodType<
   OperatorMetadata,
   z.ZodTypeDef,
@@ -74,53 +54,6 @@ export const OperatorMetadata$inboundSchema: z.ZodType<
   value: z.string().optional(),
   displayValue: z.string().optional(),
 });
-
-/** @internal */
-export type OperatorMetadata$Outbound = {
-  name: string;
-  isCustom?: boolean | undefined;
-  operatorType?: string | undefined;
-  helpText?: string | undefined;
-  scopes?: Array<OperatorScope$Outbound> | undefined;
-  value?: string | undefined;
-  displayValue?: string | undefined;
-};
-
-/** @internal */
-export const OperatorMetadata$outboundSchema: z.ZodType<
-  OperatorMetadata$Outbound,
-  z.ZodTypeDef,
-  OperatorMetadata
-> = z.object({
-  name: z.string(),
-  isCustom: z.boolean().optional(),
-  operatorType: OperatorType$outboundSchema.optional(),
-  helpText: z.string().optional(),
-  scopes: z.array(OperatorScope$outboundSchema).optional(),
-  value: z.string().optional(),
-  displayValue: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace OperatorMetadata$ {
-  /** @deprecated use `OperatorMetadata$inboundSchema` instead. */
-  export const inboundSchema = OperatorMetadata$inboundSchema;
-  /** @deprecated use `OperatorMetadata$outboundSchema` instead. */
-  export const outboundSchema = OperatorMetadata$outboundSchema;
-  /** @deprecated use `OperatorMetadata$Outbound` instead. */
-  export type Outbound = OperatorMetadata$Outbound;
-}
-
-export function operatorMetadataToJSON(
-  operatorMetadata: OperatorMetadata,
-): string {
-  return JSON.stringify(
-    OperatorMetadata$outboundSchema.parse(operatorMetadata),
-  );
-}
 
 export function operatorMetadataFromJSON(
   jsonString: string,

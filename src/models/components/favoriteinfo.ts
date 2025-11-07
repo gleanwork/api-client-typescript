@@ -6,11 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  UgcType,
-  UgcType$inboundSchema,
-  UgcType$outboundSchema,
-} from "./ugctype.js";
+import { UgcType, UgcType$inboundSchema } from "./ugctype.js";
 
 export type FavoriteInfo = {
   ugcType?: UgcType | undefined;
@@ -39,43 +35,6 @@ export const FavoriteInfo$inboundSchema: z.ZodType<
   count: z.number().int().optional(),
   favoritedByUser: z.boolean().optional(),
 });
-
-/** @internal */
-export type FavoriteInfo$Outbound = {
-  ugcType?: string | undefined;
-  id?: string | undefined;
-  count?: number | undefined;
-  favoritedByUser?: boolean | undefined;
-};
-
-/** @internal */
-export const FavoriteInfo$outboundSchema: z.ZodType<
-  FavoriteInfo$Outbound,
-  z.ZodTypeDef,
-  FavoriteInfo
-> = z.object({
-  ugcType: UgcType$outboundSchema.optional(),
-  id: z.string().optional(),
-  count: z.number().int().optional(),
-  favoritedByUser: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FavoriteInfo$ {
-  /** @deprecated use `FavoriteInfo$inboundSchema` instead. */
-  export const inboundSchema = FavoriteInfo$inboundSchema;
-  /** @deprecated use `FavoriteInfo$outboundSchema` instead. */
-  export const outboundSchema = FavoriteInfo$outboundSchema;
-  /** @deprecated use `FavoriteInfo$Outbound` instead. */
-  export type Outbound = FavoriteInfo$Outbound;
-}
-
-export function favoriteInfoToJSON(favoriteInfo: FavoriteInfo): string {
-  return JSON.stringify(FavoriteInfo$outboundSchema.parse(favoriteInfo));
-}
 
 export function favoriteInfoFromJSON(
   jsonString: string,

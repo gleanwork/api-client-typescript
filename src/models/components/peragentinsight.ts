@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  IconConfig,
-  IconConfig$inboundSchema,
-  IconConfig$Outbound,
-  IconConfig$outboundSchema,
-} from "./iconconfig.js";
+import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
 
 export type PerAgentInsight = {
   /**
@@ -58,51 +53,6 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
   upvoteCount: z.number().int().optional(),
   downvoteCount: z.number().int().optional(),
 });
-
-/** @internal */
-export type PerAgentInsight$Outbound = {
-  agentId?: string | undefined;
-  agentName?: string | undefined;
-  icon?: IconConfig$Outbound | undefined;
-  userCount?: number | undefined;
-  runCount?: number | undefined;
-  upvoteCount?: number | undefined;
-  downvoteCount?: number | undefined;
-};
-
-/** @internal */
-export const PerAgentInsight$outboundSchema: z.ZodType<
-  PerAgentInsight$Outbound,
-  z.ZodTypeDef,
-  PerAgentInsight
-> = z.object({
-  agentId: z.string().optional(),
-  agentName: z.string().optional(),
-  icon: IconConfig$outboundSchema.optional(),
-  userCount: z.number().int().optional(),
-  runCount: z.number().int().optional(),
-  upvoteCount: z.number().int().optional(),
-  downvoteCount: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PerAgentInsight$ {
-  /** @deprecated use `PerAgentInsight$inboundSchema` instead. */
-  export const inboundSchema = PerAgentInsight$inboundSchema;
-  /** @deprecated use `PerAgentInsight$outboundSchema` instead. */
-  export const outboundSchema = PerAgentInsight$outboundSchema;
-  /** @deprecated use `PerAgentInsight$Outbound` instead. */
-  export type Outbound = PerAgentInsight$Outbound;
-}
-
-export function perAgentInsightToJSON(
-  perAgentInsight: PerAgentInsight,
-): string {
-  return JSON.stringify(PerAgentInsight$outboundSchema.parse(perAgentInsight));
-}
 
 export function perAgentInsightFromJSON(
   jsonString: string,

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListpoliciesRequest = {
   /**
@@ -17,16 +14,6 @@ export type ListpoliciesRequest = {
    */
   frequency?: string | undefined;
 };
-
-/** @internal */
-export const ListpoliciesRequest$inboundSchema: z.ZodType<
-  ListpoliciesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  autoHide: z.boolean().optional(),
-  frequency: z.string().optional(),
-});
 
 /** @internal */
 export type ListpoliciesRequest$Outbound = {
@@ -44,33 +31,10 @@ export const ListpoliciesRequest$outboundSchema: z.ZodType<
   frequency: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListpoliciesRequest$ {
-  /** @deprecated use `ListpoliciesRequest$inboundSchema` instead. */
-  export const inboundSchema = ListpoliciesRequest$inboundSchema;
-  /** @deprecated use `ListpoliciesRequest$outboundSchema` instead. */
-  export const outboundSchema = ListpoliciesRequest$outboundSchema;
-  /** @deprecated use `ListpoliciesRequest$Outbound` instead. */
-  export type Outbound = ListpoliciesRequest$Outbound;
-}
-
 export function listpoliciesRequestToJSON(
   listpoliciesRequest: ListpoliciesRequest,
 ): string {
   return JSON.stringify(
     ListpoliciesRequest$outboundSchema.parse(listpoliciesRequest),
-  );
-}
-
-export function listpoliciesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListpoliciesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListpoliciesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListpoliciesRequest' from JSON`,
   );
 }

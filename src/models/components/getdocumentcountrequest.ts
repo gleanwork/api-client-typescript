@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /getdocumentcount API call
@@ -16,15 +13,6 @@ export type GetDocumentCountRequest = {
    */
   datasource: string;
 };
-
-/** @internal */
-export const GetDocumentCountRequest$inboundSchema: z.ZodType<
-  GetDocumentCountRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-});
 
 /** @internal */
 export type GetDocumentCountRequest$Outbound = {
@@ -40,33 +28,10 @@ export const GetDocumentCountRequest$outboundSchema: z.ZodType<
   datasource: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentCountRequest$ {
-  /** @deprecated use `GetDocumentCountRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentCountRequest$inboundSchema;
-  /** @deprecated use `GetDocumentCountRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentCountRequest$outboundSchema;
-  /** @deprecated use `GetDocumentCountRequest$Outbound` instead. */
-  export type Outbound = GetDocumentCountRequest$Outbound;
-}
-
 export function getDocumentCountRequestToJSON(
   getDocumentCountRequest: GetDocumentCountRequest,
 ): string {
   return JSON.stringify(
     GetDocumentCountRequest$outboundSchema.parse(getDocumentCountRequest),
-  );
-}
-
-export function getDocumentCountRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDocumentCountRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDocumentCountRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDocumentCountRequest' from JSON`,
   );
 }

@@ -49,32 +49,3 @@ export const CollectionError$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type CollectionError$Outbound = {
-  errorCode: string;
-};
-
-/** @internal */
-export const CollectionError$outboundSchema: z.ZodType<
-  CollectionError$Outbound,
-  z.ZodTypeDef,
-  CollectionError
-> = z.instanceof(CollectionError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    errorCode: components.CollectionErrorErrorCode$outboundSchema,
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionError$ {
-  /** @deprecated use `CollectionError$inboundSchema` instead. */
-  export const inboundSchema = CollectionError$inboundSchema;
-  /** @deprecated use `CollectionError$outboundSchema` instead. */
-  export const outboundSchema = CollectionError$outboundSchema;
-  /** @deprecated use `CollectionError$Outbound` instead. */
-  export type Outbound = CollectionError$Outbound;
-}

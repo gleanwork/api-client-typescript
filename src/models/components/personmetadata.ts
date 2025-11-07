@@ -263,22 +263,10 @@ export type PersonMetadata = {
 export const PersonMetadataType$inboundSchema: z.ZodNativeEnum<
   typeof PersonMetadataType
 > = z.nativeEnum(PersonMetadataType);
-
 /** @internal */
 export const PersonMetadataType$outboundSchema: z.ZodNativeEnum<
   typeof PersonMetadataType
 > = PersonMetadataType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonMetadataType$ {
-  /** @deprecated use `PersonMetadataType$inboundSchema` instead. */
-  export const inboundSchema = PersonMetadataType$inboundSchema;
-  /** @deprecated use `PersonMetadataType$outboundSchema` instead. */
-  export const outboundSchema = PersonMetadataType$outboundSchema;
-}
 
 /** @internal */
 export const PersonMetadata$inboundSchema: z.ZodType<
@@ -333,7 +321,6 @@ export const PersonMetadata$inboundSchema: z.ZodType<
   badges: z.array(Badge$inboundSchema).optional(),
   isOrgRoot: z.boolean().optional(),
 });
-
 /** @internal */
 export type PersonMetadata$Outbound = {
   type?: string | undefined;
@@ -435,23 +422,9 @@ export const PersonMetadata$outboundSchema: z.ZodType<
   isOrgRoot: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PersonMetadata$ {
-  /** @deprecated use `PersonMetadata$inboundSchema` instead. */
-  export const inboundSchema = PersonMetadata$inboundSchema;
-  /** @deprecated use `PersonMetadata$outboundSchema` instead. */
-  export const outboundSchema = PersonMetadata$outboundSchema;
-  /** @deprecated use `PersonMetadata$Outbound` instead. */
-  export type Outbound = PersonMetadata$Outbound;
-}
-
 export function personMetadataToJSON(personMetadata: PersonMetadata): string {
   return JSON.stringify(PersonMetadata$outboundSchema.parse(personMetadata));
 }
-
 export function personMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<PersonMetadata, SDKValidationError> {

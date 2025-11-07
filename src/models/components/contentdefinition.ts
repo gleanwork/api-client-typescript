@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes text content or base64 encoded binary content
@@ -21,17 +18,6 @@ export type ContentDefinition = {
    */
   binaryContent?: string | undefined;
 };
-
-/** @internal */
-export const ContentDefinition$inboundSchema: z.ZodType<
-  ContentDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  mimeType: z.string(),
-  textContent: z.string().optional(),
-  binaryContent: z.string().optional(),
-});
 
 /** @internal */
 export type ContentDefinition$Outbound = {
@@ -51,33 +37,10 @@ export const ContentDefinition$outboundSchema: z.ZodType<
   binaryContent: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentDefinition$ {
-  /** @deprecated use `ContentDefinition$inboundSchema` instead. */
-  export const inboundSchema = ContentDefinition$inboundSchema;
-  /** @deprecated use `ContentDefinition$outboundSchema` instead. */
-  export const outboundSchema = ContentDefinition$outboundSchema;
-  /** @deprecated use `ContentDefinition$Outbound` instead. */
-  export type Outbound = ContentDefinition$Outbound;
-}
-
 export function contentDefinitionToJSON(
   contentDefinition: ContentDefinition,
 ): string {
   return JSON.stringify(
     ContentDefinition$outboundSchema.parse(contentDefinition),
-  );
-}
-
-export function contentDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<ContentDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ContentDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ContentDefinition' from JSON`,
   );
 }

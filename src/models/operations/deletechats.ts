@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeletechatsRequest = {
   /**
@@ -16,20 +13,6 @@ export type DeletechatsRequest = {
   timezoneOffset?: number | undefined;
   deleteChatsRequest: components.DeleteChatsRequest;
 };
-
-/** @internal */
-export const DeletechatsRequest$inboundSchema: z.ZodType<
-  DeletechatsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  DeleteChatsRequest: components.DeleteChatsRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeleteChatsRequest": "deleteChatsRequest",
-  });
-});
 
 /** @internal */
 export type DeletechatsRequest$Outbound = {
@@ -51,33 +34,10 @@ export const DeletechatsRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeletechatsRequest$ {
-  /** @deprecated use `DeletechatsRequest$inboundSchema` instead. */
-  export const inboundSchema = DeletechatsRequest$inboundSchema;
-  /** @deprecated use `DeletechatsRequest$outboundSchema` instead. */
-  export const outboundSchema = DeletechatsRequest$outboundSchema;
-  /** @deprecated use `DeletechatsRequest$Outbound` instead. */
-  export type Outbound = DeletechatsRequest$Outbound;
-}
-
 export function deletechatsRequestToJSON(
   deletechatsRequest: DeletechatsRequest,
 ): string {
   return JSON.stringify(
     DeletechatsRequest$outboundSchema.parse(deletechatsRequest),
-  );
-}
-
-export function deletechatsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeletechatsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeletechatsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeletechatsRequest' from JSON`,
   );
 }

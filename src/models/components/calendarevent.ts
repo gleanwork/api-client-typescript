@@ -10,33 +10,20 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CalendarAttendees,
   CalendarAttendees$inboundSchema,
-  CalendarAttendees$Outbound,
-  CalendarAttendees$outboundSchema,
 } from "./calendarattendees.js";
 import {
   ConferenceData,
   ConferenceData$inboundSchema,
-  ConferenceData$Outbound,
-  ConferenceData$outboundSchema,
 } from "./conferencedata.js";
 import {
   EventClassification,
   EventClassification$inboundSchema,
-  EventClassification$Outbound,
-  EventClassification$outboundSchema,
 } from "./eventclassification.js";
 import {
   GeneratedAttachment,
   GeneratedAttachment$inboundSchema,
-  GeneratedAttachment$Outbound,
-  GeneratedAttachment$outboundSchema,
 } from "./generatedattachment.js";
-import {
-  TimeInterval,
-  TimeInterval$inboundSchema,
-  TimeInterval$Outbound,
-  TimeInterval$outboundSchema,
-} from "./timeinterval.js";
+import { TimeInterval, TimeInterval$inboundSchema } from "./timeinterval.js";
 
 /**
  * The nature of the event, for example "out of office".
@@ -99,22 +86,6 @@ export const CalendarEventEventType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CalendarEventEventType);
 
 /** @internal */
-export const CalendarEventEventType$outboundSchema: z.ZodNativeEnum<
-  typeof CalendarEventEventType
-> = CalendarEventEventType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CalendarEventEventType$ {
-  /** @deprecated use `CalendarEventEventType$inboundSchema` instead. */
-  export const inboundSchema = CalendarEventEventType$inboundSchema;
-  /** @deprecated use `CalendarEventEventType$outboundSchema` instead. */
-  export const outboundSchema = CalendarEventEventType$outboundSchema;
-}
-
-/** @internal */
 export const CalendarEvent$inboundSchema: z.ZodType<
   CalendarEvent,
   z.ZodTypeDef,
@@ -134,61 +105,6 @@ export const CalendarEvent$inboundSchema: z.ZodType<
   classifications: z.array(EventClassification$inboundSchema).optional(),
   generatedAttachments: z.array(GeneratedAttachment$inboundSchema).optional(),
 });
-
-/** @internal */
-export type CalendarEvent$Outbound = {
-  time?: TimeInterval$Outbound | undefined;
-  eventType?: string | undefined;
-  id: string;
-  url: string;
-  attendees?: CalendarAttendees$Outbound | undefined;
-  location?: string | undefined;
-  conferenceData?: ConferenceData$Outbound | undefined;
-  description?: string | undefined;
-  datasource?: string | undefined;
-  hasTranscript?: boolean | undefined;
-  transcriptUrl?: string | undefined;
-  classifications?: Array<EventClassification$Outbound> | undefined;
-  generatedAttachments?: Array<GeneratedAttachment$Outbound> | undefined;
-};
-
-/** @internal */
-export const CalendarEvent$outboundSchema: z.ZodType<
-  CalendarEvent$Outbound,
-  z.ZodTypeDef,
-  CalendarEvent
-> = z.object({
-  time: TimeInterval$outboundSchema.optional(),
-  eventType: CalendarEventEventType$outboundSchema.optional(),
-  id: z.string(),
-  url: z.string(),
-  attendees: CalendarAttendees$outboundSchema.optional(),
-  location: z.string().optional(),
-  conferenceData: ConferenceData$outboundSchema.optional(),
-  description: z.string().optional(),
-  datasource: z.string().optional(),
-  hasTranscript: z.boolean().optional(),
-  transcriptUrl: z.string().optional(),
-  classifications: z.array(EventClassification$outboundSchema).optional(),
-  generatedAttachments: z.array(GeneratedAttachment$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CalendarEvent$ {
-  /** @deprecated use `CalendarEvent$inboundSchema` instead. */
-  export const inboundSchema = CalendarEvent$inboundSchema;
-  /** @deprecated use `CalendarEvent$outboundSchema` instead. */
-  export const outboundSchema = CalendarEvent$outboundSchema;
-  /** @deprecated use `CalendarEvent$Outbound` instead. */
-  export type Outbound = CalendarEvent$Outbound;
-}
-
-export function calendarEventToJSON(calendarEvent: CalendarEvent): string {
-  return JSON.stringify(CalendarEvent$outboundSchema.parse(calendarEvent));
-}
 
 export function calendarEventFromJSON(
   jsonString: string,

@@ -9,14 +9,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LabeledCountInfo,
   LabeledCountInfo$inboundSchema,
-  LabeledCountInfo$Outbound,
-  LabeledCountInfo$outboundSchema,
 } from "./labeledcountinfo.js";
 import {
   PerUserAssistantInsight,
   PerUserAssistantInsight$inboundSchema,
-  PerUserAssistantInsight$Outbound,
-  PerUserAssistantInsight$outboundSchema,
 } from "./peruserassistantinsight.js";
 
 export type AssistantInsightsResponse = {
@@ -69,67 +65,6 @@ export const AssistantInsightsResponse$inboundSchema: z.ZodType<
   upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
   downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type AssistantInsightsResponse$Outbound = {
-  monthlyActiveUsers?: number | undefined;
-  weeklyActiveUsers?: number | undefined;
-  lastUpdatedTs?: number | undefined;
-  monthlyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  weeklyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  dailyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  totalSignups?: number | undefined;
-  chatMessagesTimeseries?: LabeledCountInfo$Outbound | undefined;
-  summarizationsTimeseries?: LabeledCountInfo$Outbound | undefined;
-  aiAnswersTimeseries?: LabeledCountInfo$Outbound | undefined;
-  gleanbotInteractionsTimeseries?: LabeledCountInfo$Outbound | undefined;
-  perUserInsights?: Array<PerUserAssistantInsight$Outbound> | undefined;
-  upvotesTimeseries?: LabeledCountInfo$Outbound | undefined;
-  downvotesTimeseries?: LabeledCountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const AssistantInsightsResponse$outboundSchema: z.ZodType<
-  AssistantInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  AssistantInsightsResponse
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  lastUpdatedTs: z.number().int().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  totalSignups: z.number().int().optional(),
-  chatMessagesTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  summarizationsTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  aiAnswersTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  gleanbotInteractionsTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  perUserInsights: z.array(PerUserAssistantInsight$outboundSchema).optional(),
-  upvotesTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  downvotesTimeseries: LabeledCountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssistantInsightsResponse$ {
-  /** @deprecated use `AssistantInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = AssistantInsightsResponse$inboundSchema;
-  /** @deprecated use `AssistantInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = AssistantInsightsResponse$outboundSchema;
-  /** @deprecated use `AssistantInsightsResponse$Outbound` instead. */
-  export type Outbound = AssistantInsightsResponse$Outbound;
-}
-
-export function assistantInsightsResponseToJSON(
-  assistantInsightsResponse: AssistantInsightsResponse,
-): string {
-  return JSON.stringify(
-    AssistantInsightsResponse$outboundSchema.parse(assistantInsightsResponse),
-  );
-}
 
 export function assistantInsightsResponseFromJSON(
   jsonString: string,

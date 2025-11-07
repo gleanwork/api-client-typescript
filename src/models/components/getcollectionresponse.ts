@@ -6,17 +6,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Collection,
-  Collection$inboundSchema,
-  Collection$Outbound,
-  Collection$outboundSchema,
-} from "./collection.js";
+import { Collection, Collection$inboundSchema } from "./collection.js";
 import {
   CollectionError,
   CollectionError$inboundSchema,
-  CollectionError$Outbound,
-  CollectionError$outboundSchema,
 } from "./collectionerror.js";
 
 export type GetCollectionResponse = {
@@ -40,47 +33,6 @@ export const GetCollectionResponse$inboundSchema: z.ZodType<
   trackingToken: z.string().optional(),
   error: CollectionError$inboundSchema.optional(),
 });
-
-/** @internal */
-export type GetCollectionResponse$Outbound = {
-  collection?: Collection$Outbound | undefined;
-  rootCollection?: Collection$Outbound | undefined;
-  trackingToken?: string | undefined;
-  error?: CollectionError$Outbound | undefined;
-};
-
-/** @internal */
-export const GetCollectionResponse$outboundSchema: z.ZodType<
-  GetCollectionResponse$Outbound,
-  z.ZodTypeDef,
-  GetCollectionResponse
-> = z.object({
-  collection: Collection$outboundSchema.optional(),
-  rootCollection: Collection$outboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  error: CollectionError$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCollectionResponse$ {
-  /** @deprecated use `GetCollectionResponse$inboundSchema` instead. */
-  export const inboundSchema = GetCollectionResponse$inboundSchema;
-  /** @deprecated use `GetCollectionResponse$outboundSchema` instead. */
-  export const outboundSchema = GetCollectionResponse$outboundSchema;
-  /** @deprecated use `GetCollectionResponse$Outbound` instead. */
-  export type Outbound = GetCollectionResponse$Outbound;
-}
-
-export function getCollectionResponseToJSON(
-  getCollectionResponse: GetCollectionResponse,
-): string {
-  return JSON.stringify(
-    GetCollectionResponse$outboundSchema.parse(getCollectionResponse),
-  );
-}
 
 export function getCollectionResponseFromJSON(
   jsonString: string,

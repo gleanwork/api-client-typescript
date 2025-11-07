@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DatasourceUserDefinition,
-  DatasourceUserDefinition$inboundSchema,
   DatasourceUserDefinition$Outbound,
   DatasourceUserDefinition$outboundSchema,
 } from "./datasourceuserdefinition.js";
@@ -32,17 +28,6 @@ export type IndexUserRequest = {
 };
 
 /** @internal */
-export const IndexUserRequest$inboundSchema: z.ZodType<
-  IndexUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  user: DatasourceUserDefinition$inboundSchema,
-});
-
-/** @internal */
 export type IndexUserRequest$Outbound = {
   version?: number | undefined;
   datasource: string;
@@ -60,33 +45,10 @@ export const IndexUserRequest$outboundSchema: z.ZodType<
   user: DatasourceUserDefinition$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexUserRequest$ {
-  /** @deprecated use `IndexUserRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexUserRequest$inboundSchema;
-  /** @deprecated use `IndexUserRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexUserRequest$outboundSchema;
-  /** @deprecated use `IndexUserRequest$Outbound` instead. */
-  export type Outbound = IndexUserRequest$Outbound;
-}
-
 export function indexUserRequestToJSON(
   indexUserRequest: IndexUserRequest,
 ): string {
   return JSON.stringify(
     IndexUserRequest$outboundSchema.parse(indexUserRequest),
-  );
-}
-
-export function indexUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexUserRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexUserRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexUserRequest' from JSON`,
   );
 }

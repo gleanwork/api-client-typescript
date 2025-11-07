@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAnswerRequest = {
   /**
@@ -17,16 +14,6 @@ export type GetAnswerRequest = {
    */
   docId?: string | undefined;
 };
-
-/** @internal */
-export const GetAnswerRequest$inboundSchema: z.ZodType<
-  GetAnswerRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.number().int().optional(),
-  docId: z.string().optional(),
-});
 
 /** @internal */
 export type GetAnswerRequest$Outbound = {
@@ -44,33 +31,10 @@ export const GetAnswerRequest$outboundSchema: z.ZodType<
   docId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAnswerRequest$ {
-  /** @deprecated use `GetAnswerRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAnswerRequest$inboundSchema;
-  /** @deprecated use `GetAnswerRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAnswerRequest$outboundSchema;
-  /** @deprecated use `GetAnswerRequest$Outbound` instead. */
-  export type Outbound = GetAnswerRequest$Outbound;
-}
-
 export function getAnswerRequestToJSON(
   getAnswerRequest: GetAnswerRequest,
 ): string {
   return JSON.stringify(
     GetAnswerRequest$outboundSchema.parse(getAnswerRequest),
-  );
-}
-
-export function getAnswerRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAnswerRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAnswerRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAnswerRequest' from JSON`,
   );
 }

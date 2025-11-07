@@ -69,7 +69,6 @@ export const ChatMetadata$inboundSchema: z.ZodType<
   applicationName: z.string().optional(),
   icon: IconConfig$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ChatMetadata$Outbound = {
   id?: string | undefined;
@@ -98,23 +97,9 @@ export const ChatMetadata$outboundSchema: z.ZodType<
   icon: IconConfig$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatMetadata$ {
-  /** @deprecated use `ChatMetadata$inboundSchema` instead. */
-  export const inboundSchema = ChatMetadata$inboundSchema;
-  /** @deprecated use `ChatMetadata$outboundSchema` instead. */
-  export const outboundSchema = ChatMetadata$outboundSchema;
-  /** @deprecated use `ChatMetadata$Outbound` instead. */
-  export type Outbound = ChatMetadata$Outbound;
-}
-
 export function chatMetadataToJSON(chatMetadata: ChatMetadata): string {
   return JSON.stringify(ChatMetadata$outboundSchema.parse(chatMetadata));
 }
-
 export function chatMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatMetadata, SDKValidationError> {

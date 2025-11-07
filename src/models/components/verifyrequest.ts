@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The verification action requested.
@@ -33,35 +30,9 @@ export type VerifyRequest = {
 };
 
 /** @internal */
-export const VerifyRequestAction$inboundSchema: z.ZodNativeEnum<
-  typeof VerifyRequestAction
-> = z.nativeEnum(VerifyRequestAction);
-
-/** @internal */
 export const VerifyRequestAction$outboundSchema: z.ZodNativeEnum<
   typeof VerifyRequestAction
-> = VerifyRequestAction$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerifyRequestAction$ {
-  /** @deprecated use `VerifyRequestAction$inboundSchema` instead. */
-  export const inboundSchema = VerifyRequestAction$inboundSchema;
-  /** @deprecated use `VerifyRequestAction$outboundSchema` instead. */
-  export const outboundSchema = VerifyRequestAction$outboundSchema;
-}
-
-/** @internal */
-export const VerifyRequest$inboundSchema: z.ZodType<
-  VerifyRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  documentId: z.string(),
-  action: VerifyRequestAction$inboundSchema.optional(),
-});
+> = z.nativeEnum(VerifyRequestAction);
 
 /** @internal */
 export type VerifyRequest$Outbound = {
@@ -79,29 +50,6 @@ export const VerifyRequest$outboundSchema: z.ZodType<
   action: VerifyRequestAction$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerifyRequest$ {
-  /** @deprecated use `VerifyRequest$inboundSchema` instead. */
-  export const inboundSchema = VerifyRequest$inboundSchema;
-  /** @deprecated use `VerifyRequest$outboundSchema` instead. */
-  export const outboundSchema = VerifyRequest$outboundSchema;
-  /** @deprecated use `VerifyRequest$Outbound` instead. */
-  export type Outbound = VerifyRequest$Outbound;
-}
-
 export function verifyRequestToJSON(verifyRequest: VerifyRequest): string {
   return JSON.stringify(VerifyRequest$outboundSchema.parse(verifyRequest));
-}
-
-export function verifyRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<VerifyRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VerifyRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VerifyRequest' from JSON`,
-  );
 }

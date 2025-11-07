@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TeamInfoDefinition,
-  TeamInfoDefinition$inboundSchema,
   TeamInfoDefinition$Outbound,
   TeamInfoDefinition$outboundSchema,
 } from "./teaminfodefinition.js";
@@ -40,19 +36,6 @@ export type BulkIndexTeamsRequest = {
 };
 
 /** @internal */
-export const BulkIndexTeamsRequest$inboundSchema: z.ZodType<
-  BulkIndexTeamsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  teams: z.array(TeamInfoDefinition$inboundSchema),
-});
-
-/** @internal */
 export type BulkIndexTeamsRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -74,33 +57,10 @@ export const BulkIndexTeamsRequest$outboundSchema: z.ZodType<
   teams: z.array(TeamInfoDefinition$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkIndexTeamsRequest$ {
-  /** @deprecated use `BulkIndexTeamsRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkIndexTeamsRequest$inboundSchema;
-  /** @deprecated use `BulkIndexTeamsRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkIndexTeamsRequest$outboundSchema;
-  /** @deprecated use `BulkIndexTeamsRequest$Outbound` instead. */
-  export type Outbound = BulkIndexTeamsRequest$Outbound;
-}
-
 export function bulkIndexTeamsRequestToJSON(
   bulkIndexTeamsRequest: BulkIndexTeamsRequest,
 ): string {
   return JSON.stringify(
     BulkIndexTeamsRequest$outboundSchema.parse(bulkIndexTeamsRequest),
-  );
-}
-
-export function bulkIndexTeamsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkIndexTeamsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkIndexTeamsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkIndexTeamsRequest' from JSON`,
   );
 }

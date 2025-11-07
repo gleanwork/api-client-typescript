@@ -61,7 +61,6 @@ export const DocumentPermissionsDefinition$inboundSchema: z.ZodType<
   allowAnonymousAccess: z.boolean().optional(),
   allowAllDatasourceUsersAccess: z.boolean().optional(),
 });
-
 /** @internal */
 export type DocumentPermissionsDefinition$Outbound = {
   allowedUsers?: Array<UserReferenceDefinition$Outbound> | undefined;
@@ -88,19 +87,6 @@ export const DocumentPermissionsDefinition$outboundSchema: z.ZodType<
   allowAllDatasourceUsersAccess: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentPermissionsDefinition$ {
-  /** @deprecated use `DocumentPermissionsDefinition$inboundSchema` instead. */
-  export const inboundSchema = DocumentPermissionsDefinition$inboundSchema;
-  /** @deprecated use `DocumentPermissionsDefinition$outboundSchema` instead. */
-  export const outboundSchema = DocumentPermissionsDefinition$outboundSchema;
-  /** @deprecated use `DocumentPermissionsDefinition$Outbound` instead. */
-  export type Outbound = DocumentPermissionsDefinition$Outbound;
-}
-
 export function documentPermissionsDefinitionToJSON(
   documentPermissionsDefinition: DocumentPermissionsDefinition,
 ): string {
@@ -110,7 +96,6 @@ export function documentPermissionsDefinitionToJSON(
     ),
   );
 }
-
 export function documentPermissionsDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentPermissionsDefinition, SDKValidationError> {

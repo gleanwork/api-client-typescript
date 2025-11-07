@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /betausers API call
@@ -20,16 +17,6 @@ export type GreenlistUsersRequest = {
    */
   emails: Array<string>;
 };
-
-/** @internal */
-export const GreenlistUsersRequest$inboundSchema: z.ZodType<
-  GreenlistUsersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-  emails: z.array(z.string()),
-});
 
 /** @internal */
 export type GreenlistUsersRequest$Outbound = {
@@ -47,33 +34,10 @@ export const GreenlistUsersRequest$outboundSchema: z.ZodType<
   emails: z.array(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GreenlistUsersRequest$ {
-  /** @deprecated use `GreenlistUsersRequest$inboundSchema` instead. */
-  export const inboundSchema = GreenlistUsersRequest$inboundSchema;
-  /** @deprecated use `GreenlistUsersRequest$outboundSchema` instead. */
-  export const outboundSchema = GreenlistUsersRequest$outboundSchema;
-  /** @deprecated use `GreenlistUsersRequest$Outbound` instead. */
-  export type Outbound = GreenlistUsersRequest$Outbound;
-}
-
 export function greenlistUsersRequestToJSON(
   greenlistUsersRequest: GreenlistUsersRequest,
 ): string {
   return JSON.stringify(
     GreenlistUsersRequest$outboundSchema.parse(greenlistUsersRequest),
-  );
-}
-
-export function greenlistUsersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GreenlistUsersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GreenlistUsersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GreenlistUsersRequest' from JSON`,
   );
 }

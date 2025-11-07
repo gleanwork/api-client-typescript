@@ -6,17 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  DigestUpdate,
-  DigestUpdate$inboundSchema,
-  DigestUpdate$Outbound,
-  DigestUpdate$outboundSchema,
-} from "./digestupdate.js";
-import {
-  SectionType,
-  SectionType$inboundSchema,
-  SectionType$outboundSchema,
-} from "./sectiontype.js";
+import { DigestUpdate, DigestUpdate$inboundSchema } from "./digestupdate.js";
+import { SectionType, SectionType$inboundSchema } from "./sectiontype.js";
 
 export type DigestSection = {
   /**
@@ -71,51 +62,6 @@ export const DigestSection$inboundSchema: z.ZodType<
   url: z.string().optional(),
   updates: z.array(DigestUpdate$inboundSchema),
 });
-
-/** @internal */
-export type DigestSection$Outbound = {
-  id: string;
-  type: string;
-  displayName?: string | undefined;
-  channelName?: string | undefined;
-  channelType?: string | undefined;
-  instanceId?: string | undefined;
-  url?: string | undefined;
-  updates: Array<DigestUpdate$Outbound>;
-};
-
-/** @internal */
-export const DigestSection$outboundSchema: z.ZodType<
-  DigestSection$Outbound,
-  z.ZodTypeDef,
-  DigestSection
-> = z.object({
-  id: z.string(),
-  type: SectionType$outboundSchema,
-  displayName: z.string().optional(),
-  channelName: z.string().optional(),
-  channelType: z.string().optional(),
-  instanceId: z.string().optional(),
-  url: z.string().optional(),
-  updates: z.array(DigestUpdate$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DigestSection$ {
-  /** @deprecated use `DigestSection$inboundSchema` instead. */
-  export const inboundSchema = DigestSection$inboundSchema;
-  /** @deprecated use `DigestSection$outboundSchema` instead. */
-  export const outboundSchema = DigestSection$outboundSchema;
-  /** @deprecated use `DigestSection$Outbound` instead. */
-  export type Outbound = DigestSection$Outbound;
-}
-
-export function digestSectionToJSON(digestSection: DigestSection): string {
-  return JSON.stringify(DigestSection$outboundSchema.parse(digestSection));
-}
 
 export function digestSectionFromJSON(
   jsonString: string,

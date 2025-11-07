@@ -3,19 +3,14 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AuthToken,
-  AuthToken$inboundSchema,
   AuthToken$Outbound,
   AuthToken$outboundSchema,
 } from "./authtoken.js";
 import {
   SessionInfo,
-  SessionInfo$inboundSchema,
   SessionInfo$Outbound,
   SessionInfo$outboundSchema,
 } from "./sessioninfo.js";
@@ -72,41 +67,9 @@ export type AutocompleteRequest = {
 };
 
 /** @internal */
-export const AutocompleteRequestResultType$inboundSchema: z.ZodNativeEnum<
-  typeof AutocompleteRequestResultType
-> = z.nativeEnum(AutocompleteRequestResultType);
-
-/** @internal */
 export const AutocompleteRequestResultType$outboundSchema: z.ZodNativeEnum<
   typeof AutocompleteRequestResultType
-> = AutocompleteRequestResultType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutocompleteRequestResultType$ {
-  /** @deprecated use `AutocompleteRequestResultType$inboundSchema` instead. */
-  export const inboundSchema = AutocompleteRequestResultType$inboundSchema;
-  /** @deprecated use `AutocompleteRequestResultType$outboundSchema` instead. */
-  export const outboundSchema = AutocompleteRequestResultType$outboundSchema;
-}
-
-/** @internal */
-export const AutocompleteRequest$inboundSchema: z.ZodType<
-  AutocompleteRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  query: z.string().optional(),
-  datasourcesFilter: z.array(z.string()).optional(),
-  datasource: z.string().optional(),
-  resultTypes: z.array(AutocompleteRequestResultType$inboundSchema).optional(),
-  resultSize: z.number().int().optional(),
-  authTokens: z.array(AuthToken$inboundSchema).optional(),
-});
+> = z.nativeEnum(AutocompleteRequestResultType);
 
 /** @internal */
 export type AutocompleteRequest$Outbound = {
@@ -136,33 +99,10 @@ export const AutocompleteRequest$outboundSchema: z.ZodType<
   authTokens: z.array(AuthToken$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutocompleteRequest$ {
-  /** @deprecated use `AutocompleteRequest$inboundSchema` instead. */
-  export const inboundSchema = AutocompleteRequest$inboundSchema;
-  /** @deprecated use `AutocompleteRequest$outboundSchema` instead. */
-  export const outboundSchema = AutocompleteRequest$outboundSchema;
-  /** @deprecated use `AutocompleteRequest$Outbound` instead. */
-  export type Outbound = AutocompleteRequest$Outbound;
-}
-
 export function autocompleteRequestToJSON(
   autocompleteRequest: AutocompleteRequest,
 ): string {
   return JSON.stringify(
     AutocompleteRequest$outboundSchema.parse(autocompleteRequest),
-  );
-}
-
-export function autocompleteRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<AutocompleteRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AutocompleteRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AutocompleteRequest' from JSON`,
   );
 }

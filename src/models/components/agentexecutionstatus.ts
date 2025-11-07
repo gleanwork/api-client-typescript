@@ -21,19 +21,3 @@ export type AgentExecutionStatus = ClosedEnum<typeof AgentExecutionStatus>;
 export const AgentExecutionStatus$inboundSchema: z.ZodNativeEnum<
   typeof AgentExecutionStatus
 > = z.nativeEnum(AgentExecutionStatus);
-
-/** @internal */
-export const AgentExecutionStatus$outboundSchema: z.ZodNativeEnum<
-  typeof AgentExecutionStatus
-> = AgentExecutionStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentExecutionStatus$ {
-  /** @deprecated use `AgentExecutionStatus$inboundSchema` instead. */
-  export const inboundSchema = AgentExecutionStatus$inboundSchema;
-  /** @deprecated use `AgentExecutionStatus$outboundSchema` instead. */
-  export const outboundSchema = AgentExecutionStatus$outboundSchema;
-}

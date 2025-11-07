@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetPinRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetPinRequest = {
    */
   id?: string | undefined;
 };
-
-/** @internal */
-export const GetPinRequest$inboundSchema: z.ZodType<
-  GetPinRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string().optional(),
-});
 
 /** @internal */
 export type GetPinRequest$Outbound = {
@@ -37,29 +25,6 @@ export const GetPinRequest$outboundSchema: z.ZodType<
   id: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetPinRequest$ {
-  /** @deprecated use `GetPinRequest$inboundSchema` instead. */
-  export const inboundSchema = GetPinRequest$inboundSchema;
-  /** @deprecated use `GetPinRequest$outboundSchema` instead. */
-  export const outboundSchema = GetPinRequest$outboundSchema;
-  /** @deprecated use `GetPinRequest$Outbound` instead. */
-  export type Outbound = GetPinRequest$Outbound;
-}
-
 export function getPinRequestToJSON(getPinRequest: GetPinRequest): string {
   return JSON.stringify(GetPinRequest$outboundSchema.parse(getPinRequest));
-}
-
-export function getPinRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetPinRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetPinRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetPinRequest' from JSON`,
-  );
 }

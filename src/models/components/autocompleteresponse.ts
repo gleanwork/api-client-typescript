@@ -10,27 +10,16 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AutocompleteResult,
   AutocompleteResult$inboundSchema,
-  AutocompleteResult$Outbound,
-  AutocompleteResult$outboundSchema,
 } from "./autocompleteresult.js";
 import {
   AutocompleteResultGroup,
   AutocompleteResultGroup$inboundSchema,
-  AutocompleteResultGroup$Outbound,
-  AutocompleteResultGroup$outboundSchema,
 } from "./autocompleteresultgroup.js";
 import {
   GleanDataError,
   GleanDataError$inboundSchema,
-  GleanDataError$Outbound,
-  GleanDataError$outboundSchema,
 } from "./gleandataerror.js";
-import {
-  SessionInfo,
-  SessionInfo$inboundSchema,
-  SessionInfo$Outbound,
-  SessionInfo$outboundSchema,
-} from "./sessioninfo.js";
+import { SessionInfo, SessionInfo$inboundSchema } from "./sessioninfo.js";
 
 export type AutocompleteResponse = {
   /**
@@ -72,57 +61,6 @@ export const AutocompleteResponse$inboundSchema: z.ZodType<
     "errorInfo": "gleanDataError",
   });
 });
-
-/** @internal */
-export type AutocompleteResponse$Outbound = {
-  experimentIds?: Array<number> | undefined;
-  trackingToken?: string | undefined;
-  sessionInfo?: SessionInfo$Outbound | undefined;
-  results?: Array<AutocompleteResult$Outbound> | undefined;
-  groups?: Array<AutocompleteResultGroup$Outbound> | undefined;
-  errorInfo?: GleanDataError$Outbound | undefined;
-  backendTimeMillis?: number | undefined;
-};
-
-/** @internal */
-export const AutocompleteResponse$outboundSchema: z.ZodType<
-  AutocompleteResponse$Outbound,
-  z.ZodTypeDef,
-  AutocompleteResponse
-> = z.object({
-  experimentIds: z.array(z.number().int()).optional(),
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  results: z.array(AutocompleteResult$outboundSchema).optional(),
-  groups: z.array(AutocompleteResultGroup$outboundSchema).optional(),
-  gleanDataError: GleanDataError$outboundSchema.optional(),
-  backendTimeMillis: z.number().int().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    gleanDataError: "errorInfo",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutocompleteResponse$ {
-  /** @deprecated use `AutocompleteResponse$inboundSchema` instead. */
-  export const inboundSchema = AutocompleteResponse$inboundSchema;
-  /** @deprecated use `AutocompleteResponse$outboundSchema` instead. */
-  export const outboundSchema = AutocompleteResponse$outboundSchema;
-  /** @deprecated use `AutocompleteResponse$Outbound` instead. */
-  export type Outbound = AutocompleteResponse$Outbound;
-}
-
-export function autocompleteResponseToJSON(
-  autocompleteResponse: AutocompleteResponse,
-): string {
-  return JSON.stringify(
-    AutocompleteResponse$outboundSchema.parse(autocompleteResponse),
-  );
-}
 
 export function autocompleteResponseFromJSON(
   jsonString: string,

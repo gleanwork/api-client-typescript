@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentDefinition,
-  DocumentDefinition$inboundSchema,
   DocumentDefinition$Outbound,
   DocumentDefinition$outboundSchema,
 } from "./documentdefinition.js";
@@ -32,17 +28,6 @@ export type IndexDocumentsRequest = {
 };
 
 /** @internal */
-export const IndexDocumentsRequest$inboundSchema: z.ZodType<
-  IndexDocumentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string().optional(),
-  datasource: z.string(),
-  documents: z.array(DocumentDefinition$inboundSchema),
-});
-
-/** @internal */
 export type IndexDocumentsRequest$Outbound = {
   uploadId?: string | undefined;
   datasource: string;
@@ -60,33 +45,10 @@ export const IndexDocumentsRequest$outboundSchema: z.ZodType<
   documents: z.array(DocumentDefinition$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexDocumentsRequest$ {
-  /** @deprecated use `IndexDocumentsRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexDocumentsRequest$inboundSchema;
-  /** @deprecated use `IndexDocumentsRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexDocumentsRequest$outboundSchema;
-  /** @deprecated use `IndexDocumentsRequest$Outbound` instead. */
-  export type Outbound = IndexDocumentsRequest$Outbound;
-}
-
 export function indexDocumentsRequestToJSON(
   indexDocumentsRequest: IndexDocumentsRequest,
 ): string {
   return JSON.stringify(
     IndexDocumentsRequest$outboundSchema.parse(indexDocumentsRequest),
-  );
-}
-
-export function indexDocumentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexDocumentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexDocumentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexDocumentsRequest' from JSON`,
   );
 }

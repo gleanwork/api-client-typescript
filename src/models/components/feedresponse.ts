@@ -6,18 +6,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  FacetResult,
-  FacetResult$inboundSchema,
-  FacetResult$Outbound,
-  FacetResult$outboundSchema,
-} from "./facetresult.js";
-import {
-  FeedResult,
-  FeedResult$inboundSchema,
-  FeedResult$Outbound,
-  FeedResult$outboundSchema,
-} from "./feedresult.js";
+import { FacetResult, FacetResult$inboundSchema } from "./facetresult.js";
+import { FeedResult, FeedResult$inboundSchema } from "./feedresult.js";
 
 export type FeedResponse = {
   /**
@@ -56,47 +46,6 @@ export const FeedResponse$inboundSchema: z.ZodType<
   facetResults: z.record(z.array(FacetResult$inboundSchema)).optional(),
   mentionsTimeWindowInHours: z.number().int().optional(),
 });
-
-/** @internal */
-export type FeedResponse$Outbound = {
-  experimentIds?: Array<number> | undefined;
-  trackingToken?: string | undefined;
-  serverTimestamp: number;
-  results?: Array<FeedResult$Outbound> | undefined;
-  facetResults?: { [k: string]: Array<FacetResult$Outbound> } | undefined;
-  mentionsTimeWindowInHours?: number | undefined;
-};
-
-/** @internal */
-export const FeedResponse$outboundSchema: z.ZodType<
-  FeedResponse$Outbound,
-  z.ZodTypeDef,
-  FeedResponse
-> = z.object({
-  experimentIds: z.array(z.number().int()).optional(),
-  trackingToken: z.string().optional(),
-  serverTimestamp: z.number().int(),
-  results: z.array(FeedResult$outboundSchema).optional(),
-  facetResults: z.record(z.array(FacetResult$outboundSchema)).optional(),
-  mentionsTimeWindowInHours: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedResponse$ {
-  /** @deprecated use `FeedResponse$inboundSchema` instead. */
-  export const inboundSchema = FeedResponse$inboundSchema;
-  /** @deprecated use `FeedResponse$outboundSchema` instead. */
-  export const outboundSchema = FeedResponse$outboundSchema;
-  /** @deprecated use `FeedResponse$Outbound` instead. */
-  export type Outbound = FeedResponse$Outbound;
-}
-
-export function feedResponseToJSON(feedResponse: FeedResponse): string {
-  return JSON.stringify(FeedResponse$outboundSchema.parse(feedResponse));
-}
 
 export function feedResponseFromJSON(
   jsonString: string,

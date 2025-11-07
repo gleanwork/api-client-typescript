@@ -9,7 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DlpSimpleResult,
   DlpSimpleResult$inboundSchema,
-  DlpSimpleResult$outboundSchema,
 } from "./dlpsimpleresult.js";
 
 export type UpdateDlpConfigResponse = {
@@ -29,43 +28,6 @@ export const UpdateDlpConfigResponse$inboundSchema: z.ZodType<
   result: DlpSimpleResult$inboundSchema.optional(),
   reportId: z.string().optional(),
 });
-
-/** @internal */
-export type UpdateDlpConfigResponse$Outbound = {
-  result?: string | undefined;
-  reportId?: string | undefined;
-};
-
-/** @internal */
-export const UpdateDlpConfigResponse$outboundSchema: z.ZodType<
-  UpdateDlpConfigResponse$Outbound,
-  z.ZodTypeDef,
-  UpdateDlpConfigResponse
-> = z.object({
-  result: DlpSimpleResult$outboundSchema.optional(),
-  reportId: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateDlpConfigResponse$ {
-  /** @deprecated use `UpdateDlpConfigResponse$inboundSchema` instead. */
-  export const inboundSchema = UpdateDlpConfigResponse$inboundSchema;
-  /** @deprecated use `UpdateDlpConfigResponse$outboundSchema` instead. */
-  export const outboundSchema = UpdateDlpConfigResponse$outboundSchema;
-  /** @deprecated use `UpdateDlpConfigResponse$Outbound` instead. */
-  export type Outbound = UpdateDlpConfigResponse$Outbound;
-}
-
-export function updateDlpConfigResponseToJSON(
-  updateDlpConfigResponse: UpdateDlpConfigResponse,
-): string {
-  return JSON.stringify(
-    UpdateDlpConfigResponse$outboundSchema.parse(updateDlpConfigResponse),
-  );
-}
 
 export function updateDlpConfigResponseFromJSON(
   jsonString: string,

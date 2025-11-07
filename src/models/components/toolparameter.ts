@@ -57,22 +57,6 @@ export const ToolParameterType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ToolParameterType);
 
 /** @internal */
-export const ToolParameterType$outboundSchema: z.ZodNativeEnum<
-  typeof ToolParameterType
-> = ToolParameterType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolParameterType$ {
-  /** @deprecated use `ToolParameterType$inboundSchema` instead. */
-  export const inboundSchema = ToolParameterType$inboundSchema;
-  /** @deprecated use `ToolParameterType$outboundSchema` instead. */
-  export const outboundSchema = ToolParameterType$outboundSchema;
-}
-
-/** @internal */
 export const ToolParameter$inboundSchema: z.ZodType<
   ToolParameter,
   z.ZodTypeDef,
@@ -86,49 +70,6 @@ export const ToolParameter$inboundSchema: z.ZodType<
   items: z.lazy(() => ToolParameter$inboundSchema).optional(),
   properties: z.record(z.lazy(() => ToolParameter$inboundSchema)).optional(),
 });
-
-/** @internal */
-export type ToolParameter$Outbound = {
-  type?: string | undefined;
-  name?: string | undefined;
-  description?: string | undefined;
-  isRequired?: boolean | undefined;
-  possibleValues?: Array<string> | undefined;
-  items?: ToolParameter$Outbound | undefined;
-  properties?: { [k: string]: ToolParameter$Outbound } | undefined;
-};
-
-/** @internal */
-export const ToolParameter$outboundSchema: z.ZodType<
-  ToolParameter$Outbound,
-  z.ZodTypeDef,
-  ToolParameter
-> = z.object({
-  type: ToolParameterType$outboundSchema.optional(),
-  name: z.string().optional(),
-  description: z.string().optional(),
-  isRequired: z.boolean().optional(),
-  possibleValues: z.array(z.string()).optional(),
-  items: z.lazy(() => ToolParameter$outboundSchema).optional(),
-  properties: z.record(z.lazy(() => ToolParameter$outboundSchema)).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolParameter$ {
-  /** @deprecated use `ToolParameter$inboundSchema` instead. */
-  export const inboundSchema = ToolParameter$inboundSchema;
-  /** @deprecated use `ToolParameter$outboundSchema` instead. */
-  export const outboundSchema = ToolParameter$outboundSchema;
-  /** @deprecated use `ToolParameter$Outbound` instead. */
-  export type Outbound = ToolParameter$Outbound;
-}
-
-export function toolParameterToJSON(toolParameter: ToolParameter): string {
-  return JSON.stringify(ToolParameter$outboundSchema.parse(toolParameter));
-}
 
 export function toolParameterFromJSON(
   jsonString: string,

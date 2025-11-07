@@ -126,7 +126,6 @@ export const DlpConfig$inboundSchema: z.ZodType<
   autoHideDocs: z.boolean().optional(),
   allowlistOptions: AllowlistOptions$inboundSchema.optional(),
 });
-
 /** @internal */
 export type DlpConfig$Outbound = {
   version?: number | undefined;
@@ -165,23 +164,9 @@ export const DlpConfig$outboundSchema: z.ZodType<
   allowlistOptions: AllowlistOptions$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DlpConfig$ {
-  /** @deprecated use `DlpConfig$inboundSchema` instead. */
-  export const inboundSchema = DlpConfig$inboundSchema;
-  /** @deprecated use `DlpConfig$outboundSchema` instead. */
-  export const outboundSchema = DlpConfig$outboundSchema;
-  /** @deprecated use `DlpConfig$Outbound` instead. */
-  export type Outbound = DlpConfig$Outbound;
-}
-
 export function dlpConfigToJSON(dlpConfig: DlpConfig): string {
   return JSON.stringify(DlpConfig$outboundSchema.parse(dlpConfig));
 }
-
 export function dlpConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<DlpConfig, SDKValidationError> {

@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentInsight,
   DocumentInsight$inboundSchema,
-  DocumentInsight$Outbound,
-  DocumentInsight$outboundSchema,
 } from "./documentinsight.js";
 
 export type ContentInsightsResponse = {
@@ -48,49 +46,6 @@ export const ContentInsightsResponse$inboundSchema: z.ZodType<
   minDepartmentSizeThreshold: z.number().int().optional(),
   minVisitorThreshold: z.number().int().optional(),
 });
-
-/** @internal */
-export type ContentInsightsResponse$Outbound = {
-  lastLogTimestamp?: number | undefined;
-  documentInsights?: Array<DocumentInsight$Outbound> | undefined;
-  departments?: Array<string> | undefined;
-  minDepartmentSizeThreshold?: number | undefined;
-  minVisitorThreshold?: number | undefined;
-};
-
-/** @internal */
-export const ContentInsightsResponse$outboundSchema: z.ZodType<
-  ContentInsightsResponse$Outbound,
-  z.ZodTypeDef,
-  ContentInsightsResponse
-> = z.object({
-  lastLogTimestamp: z.number().int().optional(),
-  documentInsights: z.array(DocumentInsight$outboundSchema).optional(),
-  departments: z.array(z.string()).optional(),
-  minDepartmentSizeThreshold: z.number().int().optional(),
-  minVisitorThreshold: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentInsightsResponse$ {
-  /** @deprecated use `ContentInsightsResponse$inboundSchema` instead. */
-  export const inboundSchema = ContentInsightsResponse$inboundSchema;
-  /** @deprecated use `ContentInsightsResponse$outboundSchema` instead. */
-  export const outboundSchema = ContentInsightsResponse$outboundSchema;
-  /** @deprecated use `ContentInsightsResponse$Outbound` instead. */
-  export type Outbound = ContentInsightsResponse$Outbound;
-}
-
-export function contentInsightsResponseToJSON(
-  contentInsightsResponse: ContentInsightsResponse,
-): string {
-  return JSON.stringify(
-    ContentInsightsResponse$outboundSchema.parse(contentInsightsResponse),
-  );
-}
 
 export function contentInsightsResponseFromJSON(
   jsonString: string,

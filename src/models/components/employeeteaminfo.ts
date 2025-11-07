@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Information about which team an employee belongs to
@@ -26,17 +23,6 @@ export type EmployeeTeamInfo = {
 };
 
 /** @internal */
-export const EmployeeTeamInfo$inboundSchema: z.ZodType<
-  EmployeeTeamInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  url: z.string().optional(),
-});
-
-/** @internal */
 export type EmployeeTeamInfo$Outbound = {
   id?: string | undefined;
   name?: string | undefined;
@@ -54,33 +40,10 @@ export const EmployeeTeamInfo$outboundSchema: z.ZodType<
   url: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeTeamInfo$ {
-  /** @deprecated use `EmployeeTeamInfo$inboundSchema` instead. */
-  export const inboundSchema = EmployeeTeamInfo$inboundSchema;
-  /** @deprecated use `EmployeeTeamInfo$outboundSchema` instead. */
-  export const outboundSchema = EmployeeTeamInfo$outboundSchema;
-  /** @deprecated use `EmployeeTeamInfo$Outbound` instead. */
-  export type Outbound = EmployeeTeamInfo$Outbound;
-}
-
 export function employeeTeamInfoToJSON(
   employeeTeamInfo: EmployeeTeamInfo,
 ): string {
   return JSON.stringify(
     EmployeeTeamInfo$outboundSchema.parse(employeeTeamInfo),
-  );
-}
-
-export function employeeTeamInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<EmployeeTeamInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EmployeeTeamInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EmployeeTeamInfo' from JSON`,
   );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PostApiIndexV1DebugDatasourceStatusRequest = {
   /**
@@ -13,13 +10,6 @@ export type PostApiIndexV1DebugDatasourceStatusRequest = {
    */
   datasource: string;
 };
-
-/** @internal */
-export const PostApiIndexV1DebugDatasourceStatusRequest$inboundSchema:
-  z.ZodType<PostApiIndexV1DebugDatasourceStatusRequest, z.ZodTypeDef, unknown> =
-    z.object({
-      datasource: z.string(),
-    });
 
 /** @internal */
 export type PostApiIndexV1DebugDatasourceStatusRequest$Outbound = {
@@ -36,21 +26,6 @@ export const PostApiIndexV1DebugDatasourceStatusRequest$outboundSchema:
     datasource: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostApiIndexV1DebugDatasourceStatusRequest$ {
-  /** @deprecated use `PostApiIndexV1DebugDatasourceStatusRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostApiIndexV1DebugDatasourceStatusRequest$inboundSchema;
-  /** @deprecated use `PostApiIndexV1DebugDatasourceStatusRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostApiIndexV1DebugDatasourceStatusRequest$outboundSchema;
-  /** @deprecated use `PostApiIndexV1DebugDatasourceStatusRequest$Outbound` instead. */
-  export type Outbound = PostApiIndexV1DebugDatasourceStatusRequest$Outbound;
-}
-
 export function postApiIndexV1DebugDatasourceStatusRequestToJSON(
   postApiIndexV1DebugDatasourceStatusRequest:
     PostApiIndexV1DebugDatasourceStatusRequest,
@@ -59,21 +34,5 @@ export function postApiIndexV1DebugDatasourceStatusRequestToJSON(
     PostApiIndexV1DebugDatasourceStatusRequest$outboundSchema.parse(
       postApiIndexV1DebugDatasourceStatusRequest,
     ),
-  );
-}
-
-export function postApiIndexV1DebugDatasourceStatusRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostApiIndexV1DebugDatasourceStatusRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostApiIndexV1DebugDatasourceStatusRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostApiIndexV1DebugDatasourceStatusRequest' from JSON`,
   );
 }

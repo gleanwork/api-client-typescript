@@ -35,7 +35,6 @@ export const CustomFieldData$inboundSchema: z.ZodType<
   values: z.array(z.lazy(() => CustomFieldValue$inboundSchema)),
   displayable: z.boolean().default(true),
 });
-
 /** @internal */
 export type CustomFieldData$Outbound = {
   label: string;
@@ -54,25 +53,11 @@ export const CustomFieldData$outboundSchema: z.ZodType<
   displayable: z.boolean().default(true),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomFieldData$ {
-  /** @deprecated use `CustomFieldData$inboundSchema` instead. */
-  export const inboundSchema = CustomFieldData$inboundSchema;
-  /** @deprecated use `CustomFieldData$outboundSchema` instead. */
-  export const outboundSchema = CustomFieldData$outboundSchema;
-  /** @deprecated use `CustomFieldData$Outbound` instead. */
-  export type Outbound = CustomFieldData$Outbound;
-}
-
 export function customFieldDataToJSON(
   customFieldData: CustomFieldData,
 ): string {
   return JSON.stringify(CustomFieldData$outboundSchema.parse(customFieldData));
 }
-
 export function customFieldDataFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomFieldData, SDKValidationError> {

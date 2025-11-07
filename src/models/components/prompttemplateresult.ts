@@ -6,23 +6,11 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
-import {
-  FavoriteInfo,
-  FavoriteInfo$inboundSchema,
-  FavoriteInfo$Outbound,
-  FavoriteInfo$outboundSchema,
-} from "./favoriteinfo.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
+import { FavoriteInfo, FavoriteInfo$inboundSchema } from "./favoriteinfo.js";
 import {
   PromptTemplate,
   PromptTemplate$inboundSchema,
-  PromptTemplate$Outbound,
-  PromptTemplate$outboundSchema,
 } from "./prompttemplate.js";
 
 export type PromptTemplateResult = {
@@ -46,47 +34,6 @@ export const PromptTemplateResult$inboundSchema: z.ZodType<
   favoriteInfo: FavoriteInfo$inboundSchema.optional(),
   runCount: CountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type PromptTemplateResult$Outbound = {
-  promptTemplate?: PromptTemplate$Outbound | undefined;
-  trackingToken?: string | undefined;
-  favoriteInfo?: FavoriteInfo$Outbound | undefined;
-  runCount?: CountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const PromptTemplateResult$outboundSchema: z.ZodType<
-  PromptTemplateResult$Outbound,
-  z.ZodTypeDef,
-  PromptTemplateResult
-> = z.object({
-  promptTemplate: PromptTemplate$outboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  favoriteInfo: FavoriteInfo$outboundSchema.optional(),
-  runCount: CountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PromptTemplateResult$ {
-  /** @deprecated use `PromptTemplateResult$inboundSchema` instead. */
-  export const inboundSchema = PromptTemplateResult$inboundSchema;
-  /** @deprecated use `PromptTemplateResult$outboundSchema` instead. */
-  export const outboundSchema = PromptTemplateResult$outboundSchema;
-  /** @deprecated use `PromptTemplateResult$Outbound` instead. */
-  export type Outbound = PromptTemplateResult$Outbound;
-}
-
-export function promptTemplateResultToJSON(
-  promptTemplateResult: PromptTemplateResult,
-): string {
-  return JSON.stringify(
-    PromptTemplateResult$outboundSchema.parse(promptTemplateResult),
-  );
-}
 
 export function promptTemplateResultFromJSON(
   jsonString: string,

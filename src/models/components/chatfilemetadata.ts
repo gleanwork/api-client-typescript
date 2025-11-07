@@ -55,7 +55,6 @@ export const ChatFileMetadata$inboundSchema: z.ZodType<
   failureReason: ChatFileFailureReason$inboundSchema.optional(),
   mimeType: z.string().optional(),
 });
-
 /** @internal */
 export type ChatFileMetadata$Outbound = {
   status?: string | undefined;
@@ -78,19 +77,6 @@ export const ChatFileMetadata$outboundSchema: z.ZodType<
   mimeType: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatFileMetadata$ {
-  /** @deprecated use `ChatFileMetadata$inboundSchema` instead. */
-  export const inboundSchema = ChatFileMetadata$inboundSchema;
-  /** @deprecated use `ChatFileMetadata$outboundSchema` instead. */
-  export const outboundSchema = ChatFileMetadata$outboundSchema;
-  /** @deprecated use `ChatFileMetadata$Outbound` instead. */
-  export type Outbound = ChatFileMetadata$Outbound;
-}
-
 export function chatFileMetadataToJSON(
   chatFileMetadata: ChatFileMetadata,
 ): string {
@@ -98,7 +84,6 @@ export function chatFileMetadataToJSON(
     ChatFileMetadata$outboundSchema.parse(chatFileMetadata),
   );
 }
-
 export function chatFileMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatFileMetadata, SDKValidationError> {

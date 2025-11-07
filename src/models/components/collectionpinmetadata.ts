@@ -30,7 +30,6 @@ export const CollectionPinMetadata$inboundSchema: z.ZodType<
   id: z.number().int(),
   target: CollectionPinTarget$inboundSchema,
 });
-
 /** @internal */
 export type CollectionPinMetadata$Outbound = {
   id: number;
@@ -47,19 +46,6 @@ export const CollectionPinMetadata$outboundSchema: z.ZodType<
   target: CollectionPinTarget$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CollectionPinMetadata$ {
-  /** @deprecated use `CollectionPinMetadata$inboundSchema` instead. */
-  export const inboundSchema = CollectionPinMetadata$inboundSchema;
-  /** @deprecated use `CollectionPinMetadata$outboundSchema` instead. */
-  export const outboundSchema = CollectionPinMetadata$outboundSchema;
-  /** @deprecated use `CollectionPinMetadata$Outbound` instead. */
-  export type Outbound = CollectionPinMetadata$Outbound;
-}
-
 export function collectionPinMetadataToJSON(
   collectionPinMetadata: CollectionPinMetadata,
 ): string {
@@ -67,7 +53,6 @@ export function collectionPinMetadataToJSON(
     CollectionPinMetadata$outboundSchema.parse(collectionPinMetadata),
   );
 }
-
 export function collectionPinMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<CollectionPinMetadata, SDKValidationError> {

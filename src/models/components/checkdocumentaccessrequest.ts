@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /checkdocumentaccess API call
@@ -30,18 +27,6 @@ export type CheckDocumentAccessRequest = {
 };
 
 /** @internal */
-export const CheckDocumentAccessRequest$inboundSchema: z.ZodType<
-  CheckDocumentAccessRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string(),
-  objectType: z.string(),
-  docId: z.string(),
-  userEmail: z.string(),
-});
-
-/** @internal */
 export type CheckDocumentAccessRequest$Outbound = {
   datasource: string;
   objectType: string;
@@ -61,33 +46,10 @@ export const CheckDocumentAccessRequest$outboundSchema: z.ZodType<
   userEmail: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CheckDocumentAccessRequest$ {
-  /** @deprecated use `CheckDocumentAccessRequest$inboundSchema` instead. */
-  export const inboundSchema = CheckDocumentAccessRequest$inboundSchema;
-  /** @deprecated use `CheckDocumentAccessRequest$outboundSchema` instead. */
-  export const outboundSchema = CheckDocumentAccessRequest$outboundSchema;
-  /** @deprecated use `CheckDocumentAccessRequest$Outbound` instead. */
-  export type Outbound = CheckDocumentAccessRequest$Outbound;
-}
-
 export function checkDocumentAccessRequestToJSON(
   checkDocumentAccessRequest: CheckDocumentAccessRequest,
 ): string {
   return JSON.stringify(
     CheckDocumentAccessRequest$outboundSchema.parse(checkDocumentAccessRequest),
-  );
-}
-
-export function checkDocumentAccessRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CheckDocumentAccessRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CheckDocumentAccessRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CheckDocumentAccessRequest' from JSON`,
   );
 }

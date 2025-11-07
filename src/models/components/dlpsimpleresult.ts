@@ -15,19 +15,3 @@ export type DlpSimpleResult = ClosedEnum<typeof DlpSimpleResult>;
 export const DlpSimpleResult$inboundSchema: z.ZodNativeEnum<
   typeof DlpSimpleResult
 > = z.nativeEnum(DlpSimpleResult);
-
-/** @internal */
-export const DlpSimpleResult$outboundSchema: z.ZodNativeEnum<
-  typeof DlpSimpleResult
-> = DlpSimpleResult$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DlpSimpleResult$ {
-  /** @deprecated use `DlpSimpleResult$inboundSchema` instead. */
-  export const inboundSchema = DlpSimpleResult$inboundSchema;
-  /** @deprecated use `DlpSimpleResult$outboundSchema` instead. */
-  export const outboundSchema = DlpSimpleResult$outboundSchema;
-}

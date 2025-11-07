@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  IconConfig,
-  IconConfig$inboundSchema,
-  IconConfig$Outbound,
-  IconConfig$outboundSchema,
-} from "./iconconfig.js";
+import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
 
 /**
  * The display configuration for a link.
@@ -41,41 +36,6 @@ export const StructuredLink$inboundSchema: z.ZodType<
   url: z.string().optional(),
   iconConfig: IconConfig$inboundSchema.optional(),
 });
-
-/** @internal */
-export type StructuredLink$Outbound = {
-  name?: string | undefined;
-  url?: string | undefined;
-  iconConfig?: IconConfig$Outbound | undefined;
-};
-
-/** @internal */
-export const StructuredLink$outboundSchema: z.ZodType<
-  StructuredLink$Outbound,
-  z.ZodTypeDef,
-  StructuredLink
-> = z.object({
-  name: z.string().optional(),
-  url: z.string().optional(),
-  iconConfig: IconConfig$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StructuredLink$ {
-  /** @deprecated use `StructuredLink$inboundSchema` instead. */
-  export const inboundSchema = StructuredLink$inboundSchema;
-  /** @deprecated use `StructuredLink$outboundSchema` instead. */
-  export const outboundSchema = StructuredLink$outboundSchema;
-  /** @deprecated use `StructuredLink$Outbound` instead. */
-  export type Outbound = StructuredLink$Outbound;
-}
-
-export function structuredLinkToJSON(structuredLink: StructuredLink): string {
-  return JSON.stringify(StructuredLink$outboundSchema.parse(structuredLink));
-}
 
 export function structuredLinkFromJSON(
   jsonString: string,

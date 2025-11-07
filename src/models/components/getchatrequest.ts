@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetChatRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetChatRequest = {
    */
   id: string;
 };
-
-/** @internal */
-export const GetChatRequest$inboundSchema: z.ZodType<
-  GetChatRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-});
 
 /** @internal */
 export type GetChatRequest$Outbound = {
@@ -37,29 +25,6 @@ export const GetChatRequest$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetChatRequest$ {
-  /** @deprecated use `GetChatRequest$inboundSchema` instead. */
-  export const inboundSchema = GetChatRequest$inboundSchema;
-  /** @deprecated use `GetChatRequest$outboundSchema` instead. */
-  export const outboundSchema = GetChatRequest$outboundSchema;
-  /** @deprecated use `GetChatRequest$Outbound` instead. */
-  export type Outbound = GetChatRequest$Outbound;
-}
-
 export function getChatRequestToJSON(getChatRequest: GetChatRequest): string {
   return JSON.stringify(GetChatRequest$outboundSchema.parse(getChatRequest));
-}
-
-export function getChatRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetChatRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetChatRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetChatRequest' from JSON`,
-  );
 }

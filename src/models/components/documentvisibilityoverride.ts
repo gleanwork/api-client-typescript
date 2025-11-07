@@ -36,23 +36,10 @@ export type DocumentVisibilityOverride = {
 export const DocumentVisibilityOverrideOverride$inboundSchema: z.ZodNativeEnum<
   typeof DocumentVisibilityOverrideOverride
 > = z.nativeEnum(DocumentVisibilityOverrideOverride);
-
 /** @internal */
 export const DocumentVisibilityOverrideOverride$outboundSchema: z.ZodNativeEnum<
   typeof DocumentVisibilityOverrideOverride
 > = DocumentVisibilityOverrideOverride$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentVisibilityOverrideOverride$ {
-  /** @deprecated use `DocumentVisibilityOverrideOverride$inboundSchema` instead. */
-  export const inboundSchema = DocumentVisibilityOverrideOverride$inboundSchema;
-  /** @deprecated use `DocumentVisibilityOverrideOverride$outboundSchema` instead. */
-  export const outboundSchema =
-    DocumentVisibilityOverrideOverride$outboundSchema;
-}
 
 /** @internal */
 export const DocumentVisibilityOverride$inboundSchema: z.ZodType<
@@ -63,7 +50,6 @@ export const DocumentVisibilityOverride$inboundSchema: z.ZodType<
   docId: z.string().optional(),
   override: DocumentVisibilityOverrideOverride$inboundSchema.optional(),
 });
-
 /** @internal */
 export type DocumentVisibilityOverride$Outbound = {
   docId?: string | undefined;
@@ -80,19 +66,6 @@ export const DocumentVisibilityOverride$outboundSchema: z.ZodType<
   override: DocumentVisibilityOverrideOverride$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentVisibilityOverride$ {
-  /** @deprecated use `DocumentVisibilityOverride$inboundSchema` instead. */
-  export const inboundSchema = DocumentVisibilityOverride$inboundSchema;
-  /** @deprecated use `DocumentVisibilityOverride$outboundSchema` instead. */
-  export const outboundSchema = DocumentVisibilityOverride$outboundSchema;
-  /** @deprecated use `DocumentVisibilityOverride$Outbound` instead. */
-  export type Outbound = DocumentVisibilityOverride$Outbound;
-}
-
 export function documentVisibilityOverrideToJSON(
   documentVisibilityOverride: DocumentVisibilityOverride,
 ): string {
@@ -100,7 +73,6 @@ export function documentVisibilityOverrideToJSON(
     DocumentVisibilityOverride$outboundSchema.parse(documentVisibilityOverride),
   );
 }
-
 export function documentVisibilityOverrideFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentVisibilityOverride, SDKValidationError> {

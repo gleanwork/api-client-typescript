@@ -30,7 +30,6 @@ export const PossibleValue$inboundSchema: z.ZodType<
   value: z.string().optional(),
   label: z.string().optional(),
 });
-
 /** @internal */
 export type PossibleValue$Outbound = {
   value?: string | undefined;
@@ -47,23 +46,9 @@ export const PossibleValue$outboundSchema: z.ZodType<
   label: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PossibleValue$ {
-  /** @deprecated use `PossibleValue$inboundSchema` instead. */
-  export const inboundSchema = PossibleValue$inboundSchema;
-  /** @deprecated use `PossibleValue$outboundSchema` instead. */
-  export const outboundSchema = PossibleValue$outboundSchema;
-  /** @deprecated use `PossibleValue$Outbound` instead. */
-  export type Outbound = PossibleValue$Outbound;
-}
-
 export function possibleValueToJSON(possibleValue: PossibleValue): string {
   return JSON.stringify(PossibleValue$outboundSchema.parse(possibleValue));
 }
-
 export function possibleValueFromJSON(
   jsonString: string,
 ): SafeParseResult<PossibleValue, SDKValidationError> {

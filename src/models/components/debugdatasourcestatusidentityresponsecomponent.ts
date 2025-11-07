@@ -9,8 +9,6 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   BulkUploadHistoryEvent,
   BulkUploadHistoryEvent$inboundSchema,
-  BulkUploadHistoryEvent$Outbound,
-  BulkUploadHistoryEvent$outboundSchema,
 } from "./bulkuploadhistoryevent.js";
 
 export type DebugDatasourceStatusIdentityResponseComponentCounts = {
@@ -37,48 +35,6 @@ export const DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema:
   > = z.object({
     uploaded: z.number().int().optional(),
   });
-
-/** @internal */
-export type DebugDatasourceStatusIdentityResponseComponentCounts$Outbound = {
-  uploaded?: number | undefined;
-};
-
-/** @internal */
-export const DebugDatasourceStatusIdentityResponseComponentCounts$outboundSchema:
-  z.ZodType<
-    DebugDatasourceStatusIdentityResponseComponentCounts$Outbound,
-    z.ZodTypeDef,
-    DebugDatasourceStatusIdentityResponseComponentCounts
-  > = z.object({
-    uploaded: z.number().int().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugDatasourceStatusIdentityResponseComponentCounts$ {
-  /** @deprecated use `DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema` instead. */
-  export const inboundSchema =
-    DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema;
-  /** @deprecated use `DebugDatasourceStatusIdentityResponseComponentCounts$outboundSchema` instead. */
-  export const outboundSchema =
-    DebugDatasourceStatusIdentityResponseComponentCounts$outboundSchema;
-  /** @deprecated use `DebugDatasourceStatusIdentityResponseComponentCounts$Outbound` instead. */
-  export type Outbound =
-    DebugDatasourceStatusIdentityResponseComponentCounts$Outbound;
-}
-
-export function debugDatasourceStatusIdentityResponseComponentCountsToJSON(
-  debugDatasourceStatusIdentityResponseComponentCounts:
-    DebugDatasourceStatusIdentityResponseComponentCounts,
-): string {
-  return JSON.stringify(
-    DebugDatasourceStatusIdentityResponseComponentCounts$outboundSchema.parse(
-      debugDatasourceStatusIdentityResponseComponentCounts,
-    ),
-  );
-}
 
 export function debugDatasourceStatusIdentityResponseComponentCountsFromJSON(
   jsonString: string,
@@ -108,55 +64,6 @@ export const DebugDatasourceStatusIdentityResponseComponent$inboundSchema:
       DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema
     ).optional(),
   });
-
-/** @internal */
-export type DebugDatasourceStatusIdentityResponseComponent$Outbound = {
-  bulkUploadHistory?: Array<BulkUploadHistoryEvent$Outbound> | undefined;
-  counts?:
-    | DebugDatasourceStatusIdentityResponseComponentCounts$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const DebugDatasourceStatusIdentityResponseComponent$outboundSchema:
-  z.ZodType<
-    DebugDatasourceStatusIdentityResponseComponent$Outbound,
-    z.ZodTypeDef,
-    DebugDatasourceStatusIdentityResponseComponent
-  > = z.object({
-    bulkUploadHistory: z.array(BulkUploadHistoryEvent$outboundSchema)
-      .optional(),
-    counts: z.lazy(() =>
-      DebugDatasourceStatusIdentityResponseComponentCounts$outboundSchema
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugDatasourceStatusIdentityResponseComponent$ {
-  /** @deprecated use `DebugDatasourceStatusIdentityResponseComponent$inboundSchema` instead. */
-  export const inboundSchema =
-    DebugDatasourceStatusIdentityResponseComponent$inboundSchema;
-  /** @deprecated use `DebugDatasourceStatusIdentityResponseComponent$outboundSchema` instead. */
-  export const outboundSchema =
-    DebugDatasourceStatusIdentityResponseComponent$outboundSchema;
-  /** @deprecated use `DebugDatasourceStatusIdentityResponseComponent$Outbound` instead. */
-  export type Outbound =
-    DebugDatasourceStatusIdentityResponseComponent$Outbound;
-}
-
-export function debugDatasourceStatusIdentityResponseComponentToJSON(
-  debugDatasourceStatusIdentityResponseComponent:
-    DebugDatasourceStatusIdentityResponseComponent,
-): string {
-  return JSON.stringify(
-    DebugDatasourceStatusIdentityResponseComponent$outboundSchema.parse(
-      debugDatasourceStatusIdentityResponseComponent,
-    ),
-  );
-}
 
 export function debugDatasourceStatusIdentityResponseComponentFromJSON(
   jsonString: string,

@@ -71,33 +71,6 @@ export const AgentMetadata$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type AgentMetadata$Outbound = {};
-
-/** @internal */
-export const AgentMetadata$outboundSchema: z.ZodType<
-  AgentMetadata$Outbound,
-  z.ZodTypeDef,
-  AgentMetadata
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentMetadata$ {
-  /** @deprecated use `AgentMetadata$inboundSchema` instead. */
-  export const inboundSchema = AgentMetadata$inboundSchema;
-  /** @deprecated use `AgentMetadata$outboundSchema` instead. */
-  export const outboundSchema = AgentMetadata$outboundSchema;
-  /** @deprecated use `AgentMetadata$Outbound` instead. */
-  export type Outbound = AgentMetadata$Outbound;
-}
-
-export function agentMetadataToJSON(agentMetadata: AgentMetadata): string {
-  return JSON.stringify(AgentMetadata$outboundSchema.parse(agentMetadata));
-}
-
 export function agentMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentMetadata, SDKValidationError> {
@@ -127,54 +100,6 @@ export const AgentCapabilities$inboundSchema: z.ZodType<
   });
 });
 
-/** @internal */
-export type AgentCapabilities$Outbound = {
-  "ap.io.messages"?: boolean | undefined;
-  "ap.io.streaming"?: boolean | undefined;
-  [additionalProperties: string]: unknown;
-};
-
-/** @internal */
-export const AgentCapabilities$outboundSchema: z.ZodType<
-  AgentCapabilities$Outbound,
-  z.ZodTypeDef,
-  AgentCapabilities
-> = z.object({
-  apIoMessages: z.boolean().optional(),
-  apIoStreaming: z.boolean().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      apIoMessages: "ap.io.messages",
-      apIoStreaming: "ap.io.streaming",
-      additionalProperties: null,
-    }),
-  };
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentCapabilities$ {
-  /** @deprecated use `AgentCapabilities$inboundSchema` instead. */
-  export const inboundSchema = AgentCapabilities$inboundSchema;
-  /** @deprecated use `AgentCapabilities$outboundSchema` instead. */
-  export const outboundSchema = AgentCapabilities$outboundSchema;
-  /** @deprecated use `AgentCapabilities$Outbound` instead. */
-  export type Outbound = AgentCapabilities$Outbound;
-}
-
-export function agentCapabilitiesToJSON(
-  agentCapabilities: AgentCapabilities,
-): string {
-  return JSON.stringify(
-    AgentCapabilities$outboundSchema.parse(agentCapabilities),
-  );
-}
-
 export function agentCapabilitiesFromJSON(
   jsonString: string,
 ): SafeParseResult<AgentCapabilities, SDKValidationError> {
@@ -198,49 +123,6 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
       "agent_id": "agentId",
     });
   });
-
-/** @internal */
-export type Agent$Outbound = {
-  agent_id: string;
-  name: string;
-  description?: string | undefined;
-  metadata?: AgentMetadata$Outbound | undefined;
-  capabilities: AgentCapabilities$Outbound;
-};
-
-/** @internal */
-export const Agent$outboundSchema: z.ZodType<
-  Agent$Outbound,
-  z.ZodTypeDef,
-  Agent
-> = z.object({
-  agentId: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  metadata: z.lazy(() => AgentMetadata$outboundSchema).optional(),
-  capabilities: z.lazy(() => AgentCapabilities$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Agent$ {
-  /** @deprecated use `Agent$inboundSchema` instead. */
-  export const inboundSchema = Agent$inboundSchema;
-  /** @deprecated use `Agent$outboundSchema` instead. */
-  export const outboundSchema = Agent$outboundSchema;
-  /** @deprecated use `Agent$Outbound` instead. */
-  export type Outbound = Agent$Outbound;
-}
-
-export function agentToJSON(agent: Agent): string {
-  return JSON.stringify(Agent$outboundSchema.parse(agent));
-}
 
 export function agentFromJSON(
   jsonString: string,

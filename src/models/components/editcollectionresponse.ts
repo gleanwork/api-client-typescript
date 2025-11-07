@@ -7,59 +7,29 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Collection,
-  Collection$inboundSchema,
-  Collection$Outbound,
-  Collection$outboundSchema,
-} from "./collection.js";
+import { Collection, Collection$inboundSchema } from "./collection.js";
 import {
   CollectionError,
   CollectionError$inboundSchema,
-  CollectionError$Outbound,
-  CollectionError$outboundSchema,
 } from "./collectionerror.js";
 import {
   CollectionItem,
   CollectionItem$inboundSchema,
-  CollectionItem$Outbound,
-  CollectionItem$outboundSchema,
 } from "./collectionitem.js";
 import {
   CollectionPinnedMetadata,
   CollectionPinnedMetadata$inboundSchema,
-  CollectionPinnedMetadata$Outbound,
-  CollectionPinnedMetadata$outboundSchema,
 } from "./collectionpinnedmetadata.js";
-import {
-  FacetFilter,
-  FacetFilter$inboundSchema,
-  FacetFilter$Outbound,
-  FacetFilter$outboundSchema,
-} from "./facetfilter.js";
+import { FacetFilter, FacetFilter$inboundSchema } from "./facetfilter.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
-  ObjectPermissions$Outbound,
-  ObjectPermissions$outboundSchema,
 } from "./objectpermissions.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
-import {
-  Thumbnail,
-  Thumbnail$inboundSchema,
-  Thumbnail$Outbound,
-  Thumbnail$outboundSchema,
-} from "./thumbnail.js";
+import { Person, Person$inboundSchema } from "./person.js";
+import { Thumbnail, Thumbnail$inboundSchema } from "./thumbnail.js";
 import {
   UserRoleSpecification,
   UserRoleSpecification$inboundSchema,
-  UserRoleSpecification$Outbound,
-  UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
 
 export const EditCollectionResponseErrorCode = {
@@ -158,22 +128,6 @@ export const EditCollectionResponseErrorCode$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(EditCollectionResponseErrorCode);
 
 /** @internal */
-export const EditCollectionResponseErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof EditCollectionResponseErrorCode
-> = EditCollectionResponseErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditCollectionResponseErrorCode$ {
-  /** @deprecated use `EditCollectionResponseErrorCode$inboundSchema` instead. */
-  export const inboundSchema = EditCollectionResponseErrorCode$inboundSchema;
-  /** @deprecated use `EditCollectionResponseErrorCode$outboundSchema` instead. */
-  export const outboundSchema = EditCollectionResponseErrorCode$outboundSchema;
-}
-
-/** @internal */
 export const EditCollectionResponse$inboundSchema: z.ZodType<
   EditCollectionResponse,
   z.ZodTypeDef,
@@ -208,91 +162,6 @@ export const EditCollectionResponse$inboundSchema: z.ZodType<
   collection: Collection$inboundSchema.optional(),
   error: CollectionError$inboundSchema.optional(),
 });
-
-/** @internal */
-export type EditCollectionResponse$Outbound = {
-  name: string;
-  description: string;
-  addedRoles?: Array<UserRoleSpecification$Outbound> | undefined;
-  removedRoles?: Array<UserRoleSpecification$Outbound> | undefined;
-  audienceFilters?: Array<FacetFilter$Outbound> | undefined;
-  icon?: string | undefined;
-  adminLocked?: boolean | undefined;
-  parentId?: number | undefined;
-  thumbnail?: Thumbnail$Outbound | undefined;
-  allowedDatasource?: string | undefined;
-  permissions?: ObjectPermissions$Outbound | undefined;
-  id: number;
-  createTime?: string | undefined;
-  updateTime?: string | undefined;
-  creator?: Person$Outbound | undefined;
-  updatedBy?: Person$Outbound | undefined;
-  itemCount?: number | undefined;
-  childCount?: number | undefined;
-  items?: Array<CollectionItem$Outbound> | undefined;
-  pinMetadata?: CollectionPinnedMetadata$Outbound | undefined;
-  shortcuts?: Array<string> | undefined;
-  children?: Array<Collection$Outbound> | undefined;
-  roles?: Array<UserRoleSpecification$Outbound> | undefined;
-  errorCode: string;
-  collection?: Collection$Outbound | undefined;
-  error?: CollectionError$Outbound | undefined;
-};
-
-/** @internal */
-export const EditCollectionResponse$outboundSchema: z.ZodType<
-  EditCollectionResponse$Outbound,
-  z.ZodTypeDef,
-  EditCollectionResponse
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$outboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  id: z.number().int(),
-  createTime: z.date().transform(v => v.toISOString()).optional(),
-  updateTime: z.date().transform(v => v.toISOString()).optional(),
-  creator: Person$outboundSchema.optional(),
-  updatedBy: Person$outboundSchema.optional(),
-  itemCount: z.number().int().optional(),
-  childCount: z.number().int().optional(),
-  items: z.array(CollectionItem$outboundSchema).optional(),
-  pinMetadata: CollectionPinnedMetadata$outboundSchema.optional(),
-  shortcuts: z.array(z.string()).optional(),
-  children: z.array(Collection$outboundSchema).optional(),
-  roles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  errorCode: EditCollectionResponseErrorCode$outboundSchema,
-  collection: Collection$outboundSchema.optional(),
-  error: CollectionError$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditCollectionResponse$ {
-  /** @deprecated use `EditCollectionResponse$inboundSchema` instead. */
-  export const inboundSchema = EditCollectionResponse$inboundSchema;
-  /** @deprecated use `EditCollectionResponse$outboundSchema` instead. */
-  export const outboundSchema = EditCollectionResponse$outboundSchema;
-  /** @deprecated use `EditCollectionResponse$Outbound` instead. */
-  export type Outbound = EditCollectionResponse$Outbound;
-}
-
-export function editCollectionResponseToJSON(
-  editCollectionResponse: EditCollectionResponse,
-): string {
-  return JSON.stringify(
-    EditCollectionResponse$outboundSchema.parse(editCollectionResponse),
-  );
-}
 
 export function editCollectionResponseFromJSON(
   jsonString: string,

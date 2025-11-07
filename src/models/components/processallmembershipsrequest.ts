@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /processallmemberships API call
@@ -16,15 +13,6 @@ export type ProcessAllMembershipsRequest = {
    */
   datasource?: string | undefined;
 };
-
-/** @internal */
-export const ProcessAllMembershipsRequest$inboundSchema: z.ZodType<
-  ProcessAllMembershipsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasource: z.string().optional(),
-});
 
 /** @internal */
 export type ProcessAllMembershipsRequest$Outbound = {
@@ -40,19 +28,6 @@ export const ProcessAllMembershipsRequest$outboundSchema: z.ZodType<
   datasource: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ProcessAllMembershipsRequest$ {
-  /** @deprecated use `ProcessAllMembershipsRequest$inboundSchema` instead. */
-  export const inboundSchema = ProcessAllMembershipsRequest$inboundSchema;
-  /** @deprecated use `ProcessAllMembershipsRequest$outboundSchema` instead. */
-  export const outboundSchema = ProcessAllMembershipsRequest$outboundSchema;
-  /** @deprecated use `ProcessAllMembershipsRequest$Outbound` instead. */
-  export type Outbound = ProcessAllMembershipsRequest$Outbound;
-}
-
 export function processAllMembershipsRequestToJSON(
   processAllMembershipsRequest: ProcessAllMembershipsRequest,
 ): string {
@@ -60,15 +35,5 @@ export function processAllMembershipsRequestToJSON(
     ProcessAllMembershipsRequest$outboundSchema.parse(
       processAllMembershipsRequest,
     ),
-  );
-}
-
-export function processAllMembershipsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ProcessAllMembershipsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ProcessAllMembershipsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ProcessAllMembershipsRequest' from JSON`,
   );
 }

@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ShortcutMutableProperties,
-  ShortcutMutableProperties$inboundSchema,
   ShortcutMutableProperties$Outbound,
   ShortcutMutableProperties$outboundSchema,
 } from "./shortcutmutableproperties.js";
@@ -16,15 +12,6 @@ import {
 export type CreateShortcutRequest = {
   data: ShortcutMutableProperties;
 };
-
-/** @internal */
-export const CreateShortcutRequest$inboundSchema: z.ZodType<
-  CreateShortcutRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: ShortcutMutableProperties$inboundSchema,
-});
 
 /** @internal */
 export type CreateShortcutRequest$Outbound = {
@@ -40,33 +27,10 @@ export const CreateShortcutRequest$outboundSchema: z.ZodType<
   data: ShortcutMutableProperties$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateShortcutRequest$ {
-  /** @deprecated use `CreateShortcutRequest$inboundSchema` instead. */
-  export const inboundSchema = CreateShortcutRequest$inboundSchema;
-  /** @deprecated use `CreateShortcutRequest$outboundSchema` instead. */
-  export const outboundSchema = CreateShortcutRequest$outboundSchema;
-  /** @deprecated use `CreateShortcutRequest$Outbound` instead. */
-  export type Outbound = CreateShortcutRequest$Outbound;
-}
-
 export function createShortcutRequestToJSON(
   createShortcutRequest: CreateShortcutRequest,
 ): string {
   return JSON.stringify(
     CreateShortcutRequest$outboundSchema.parse(createShortcutRequest),
-  );
-}
-
-export function createShortcutRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateShortcutRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateShortcutRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateShortcutRequest' from JSON`,
   );
 }

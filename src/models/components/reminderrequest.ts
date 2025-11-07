@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ReminderRequest = {
   /**
@@ -27,18 +24,6 @@ export type ReminderRequest = {
 };
 
 /** @internal */
-export const ReminderRequest$inboundSchema: z.ZodType<
-  ReminderRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  documentId: z.string(),
-  assignee: z.string().optional(),
-  remindInDays: z.number().int().optional(),
-  reason: z.string().optional(),
-});
-
-/** @internal */
 export type ReminderRequest$Outbound = {
   documentId: string;
   assignee?: string | undefined;
@@ -58,31 +43,8 @@ export const ReminderRequest$outboundSchema: z.ZodType<
   reason: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReminderRequest$ {
-  /** @deprecated use `ReminderRequest$inboundSchema` instead. */
-  export const inboundSchema = ReminderRequest$inboundSchema;
-  /** @deprecated use `ReminderRequest$outboundSchema` instead. */
-  export const outboundSchema = ReminderRequest$outboundSchema;
-  /** @deprecated use `ReminderRequest$Outbound` instead. */
-  export type Outbound = ReminderRequest$Outbound;
-}
-
 export function reminderRequestToJSON(
   reminderRequest: ReminderRequest,
 ): string {
   return JSON.stringify(ReminderRequest$outboundSchema.parse(reminderRequest));
-}
-
-export function reminderRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ReminderRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ReminderRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ReminderRequest' from JSON`,
-  );
 }

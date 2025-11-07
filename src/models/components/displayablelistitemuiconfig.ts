@@ -26,43 +26,6 @@ export const DisplayableListItemUIConfig$inboundSchema: z.ZodType<
   showNewIndicator: z.boolean().optional(),
 });
 
-/** @internal */
-export type DisplayableListItemUIConfig$Outbound = {
-  showNewIndicator?: boolean | undefined;
-};
-
-/** @internal */
-export const DisplayableListItemUIConfig$outboundSchema: z.ZodType<
-  DisplayableListItemUIConfig$Outbound,
-  z.ZodTypeDef,
-  DisplayableListItemUIConfig
-> = z.object({
-  showNewIndicator: z.boolean().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisplayableListItemUIConfig$ {
-  /** @deprecated use `DisplayableListItemUIConfig$inboundSchema` instead. */
-  export const inboundSchema = DisplayableListItemUIConfig$inboundSchema;
-  /** @deprecated use `DisplayableListItemUIConfig$outboundSchema` instead. */
-  export const outboundSchema = DisplayableListItemUIConfig$outboundSchema;
-  /** @deprecated use `DisplayableListItemUIConfig$Outbound` instead. */
-  export type Outbound = DisplayableListItemUIConfig$Outbound;
-}
-
-export function displayableListItemUIConfigToJSON(
-  displayableListItemUIConfig: DisplayableListItemUIConfig,
-): string {
-  return JSON.stringify(
-    DisplayableListItemUIConfig$outboundSchema.parse(
-      displayableListItemUIConfig,
-    ),
-  );
-}
-
 export function displayableListItemUIConfigFromJSON(
   jsonString: string,
 ): SafeParseResult<DisplayableListItemUIConfig, SDKValidationError> {

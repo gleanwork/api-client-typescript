@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListCollectionsRequest = {
   /**
@@ -26,17 +23,6 @@ export type ListCollectionsRequest = {
 };
 
 /** @internal */
-export const ListCollectionsRequest$inboundSchema: z.ZodType<
-  ListCollectionsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  includeAudience: z.boolean().optional(),
-  includeRoles: z.boolean().optional(),
-  allowedDatasource: z.string().optional(),
-});
-
-/** @internal */
 export type ListCollectionsRequest$Outbound = {
   includeAudience?: boolean | undefined;
   includeRoles?: boolean | undefined;
@@ -54,33 +40,10 @@ export const ListCollectionsRequest$outboundSchema: z.ZodType<
   allowedDatasource: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListCollectionsRequest$ {
-  /** @deprecated use `ListCollectionsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListCollectionsRequest$inboundSchema;
-  /** @deprecated use `ListCollectionsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListCollectionsRequest$outboundSchema;
-  /** @deprecated use `ListCollectionsRequest$Outbound` instead. */
-  export type Outbound = ListCollectionsRequest$Outbound;
-}
-
 export function listCollectionsRequestToJSON(
   listCollectionsRequest: ListCollectionsRequest,
 ): string {
   return JSON.stringify(
     ListCollectionsRequest$outboundSchema.parse(listCollectionsRequest),
-  );
-}
-
-export function listCollectionsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListCollectionsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListCollectionsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListCollectionsRequest' from JSON`,
   );
 }

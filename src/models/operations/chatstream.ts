@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChatStreamRequest = {
   /**
@@ -19,20 +16,6 @@ export type ChatStreamRequest = {
    */
   chatRequest: components.ChatRequest;
 };
-
-/** @internal */
-export const ChatStreamRequest$inboundSchema: z.ZodType<
-  ChatStreamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  timezoneOffset: z.number().int().optional(),
-  ChatRequest: components.ChatRequest$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "ChatRequest": "chatRequest",
-  });
-});
 
 /** @internal */
 export type ChatStreamRequest$Outbound = {
@@ -54,33 +37,10 @@ export const ChatStreamRequest$outboundSchema: z.ZodType<
   });
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatStreamRequest$ {
-  /** @deprecated use `ChatStreamRequest$inboundSchema` instead. */
-  export const inboundSchema = ChatStreamRequest$inboundSchema;
-  /** @deprecated use `ChatStreamRequest$outboundSchema` instead. */
-  export const outboundSchema = ChatStreamRequest$outboundSchema;
-  /** @deprecated use `ChatStreamRequest$Outbound` instead. */
-  export type Outbound = ChatStreamRequest$Outbound;
-}
-
 export function chatStreamRequestToJSON(
   chatStreamRequest: ChatStreamRequest,
 ): string {
   return JSON.stringify(
     ChatStreamRequest$outboundSchema.parse(chatStreamRequest),
-  );
-}
-
-export function chatStreamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ChatStreamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ChatStreamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChatStreamRequest' from JSON`,
   );
 }

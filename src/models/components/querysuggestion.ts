@@ -72,7 +72,6 @@ export const QuerySuggestion$inboundSchema: z.ZodType<
   ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
   inputDetails: SearchRequestInputDetails$inboundSchema.optional(),
 });
-
 /** @internal */
 export type QuerySuggestion$Outbound = {
   missingTerm?: string | undefined;
@@ -101,25 +100,11 @@ export const QuerySuggestion$outboundSchema: z.ZodType<
   inputDetails: SearchRequestInputDetails$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QuerySuggestion$ {
-  /** @deprecated use `QuerySuggestion$inboundSchema` instead. */
-  export const inboundSchema = QuerySuggestion$inboundSchema;
-  /** @deprecated use `QuerySuggestion$outboundSchema` instead. */
-  export const outboundSchema = QuerySuggestion$outboundSchema;
-  /** @deprecated use `QuerySuggestion$Outbound` instead. */
-  export type Outbound = QuerySuggestion$Outbound;
-}
-
 export function querySuggestionToJSON(
   querySuggestion: QuerySuggestion,
 ): string {
   return JSON.stringify(QuerySuggestion$outboundSchema.parse(querySuggestion));
 }
-
 export function querySuggestionFromJSON(
   jsonString: string,
 ): SafeParseResult<QuerySuggestion, SDKValidationError> {

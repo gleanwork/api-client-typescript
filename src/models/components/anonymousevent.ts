@@ -43,22 +43,10 @@ export type AnonymousEvent = {
 export const AnonymousEventEventType$inboundSchema: z.ZodNativeEnum<
   typeof AnonymousEventEventType
 > = z.nativeEnum(AnonymousEventEventType);
-
 /** @internal */
 export const AnonymousEventEventType$outboundSchema: z.ZodNativeEnum<
   typeof AnonymousEventEventType
 > = AnonymousEventEventType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnonymousEventEventType$ {
-  /** @deprecated use `AnonymousEventEventType$inboundSchema` instead. */
-  export const inboundSchema = AnonymousEventEventType$inboundSchema;
-  /** @deprecated use `AnonymousEventEventType$outboundSchema` instead. */
-  export const outboundSchema = AnonymousEventEventType$outboundSchema;
-}
 
 /** @internal */
 export const AnonymousEvent$inboundSchema: z.ZodType<
@@ -69,7 +57,6 @@ export const AnonymousEvent$inboundSchema: z.ZodType<
   time: TimeInterval$inboundSchema.optional(),
   eventType: AnonymousEventEventType$inboundSchema.optional(),
 });
-
 /** @internal */
 export type AnonymousEvent$Outbound = {
   time?: TimeInterval$Outbound | undefined;
@@ -86,23 +73,9 @@ export const AnonymousEvent$outboundSchema: z.ZodType<
   eventType: AnonymousEventEventType$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnonymousEvent$ {
-  /** @deprecated use `AnonymousEvent$inboundSchema` instead. */
-  export const inboundSchema = AnonymousEvent$inboundSchema;
-  /** @deprecated use `AnonymousEvent$outboundSchema` instead. */
-  export const outboundSchema = AnonymousEvent$outboundSchema;
-  /** @deprecated use `AnonymousEvent$Outbound` instead. */
-  export type Outbound = AnonymousEvent$Outbound;
-}
-
 export function anonymousEventToJSON(anonymousEvent: AnonymousEvent): string {
   return JSON.stringify(AnonymousEvent$outboundSchema.parse(anonymousEvent));
 }
-
 export function anonymousEventFromJSON(
   jsonString: string,
 ): SafeParseResult<AnonymousEvent, SDKValidationError> {

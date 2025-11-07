@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * describes the interactions on the document
@@ -15,17 +12,6 @@ export type DocumentInteractionsDefinition = {
   numLikes?: number | undefined;
   numComments?: number | undefined;
 };
-
-/** @internal */
-export const DocumentInteractionsDefinition$inboundSchema: z.ZodType<
-  DocumentInteractionsDefinition,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  numViews: z.number().int().optional(),
-  numLikes: z.number().int().optional(),
-  numComments: z.number().int().optional(),
-});
 
 /** @internal */
 export type DocumentInteractionsDefinition$Outbound = {
@@ -45,19 +31,6 @@ export const DocumentInteractionsDefinition$outboundSchema: z.ZodType<
   numComments: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentInteractionsDefinition$ {
-  /** @deprecated use `DocumentInteractionsDefinition$inboundSchema` instead. */
-  export const inboundSchema = DocumentInteractionsDefinition$inboundSchema;
-  /** @deprecated use `DocumentInteractionsDefinition$outboundSchema` instead. */
-  export const outboundSchema = DocumentInteractionsDefinition$outboundSchema;
-  /** @deprecated use `DocumentInteractionsDefinition$Outbound` instead. */
-  export type Outbound = DocumentInteractionsDefinition$Outbound;
-}
-
 export function documentInteractionsDefinitionToJSON(
   documentInteractionsDefinition: DocumentInteractionsDefinition,
 ): string {
@@ -65,15 +38,5 @@ export function documentInteractionsDefinitionToJSON(
     DocumentInteractionsDefinition$outboundSchema.parse(
       documentInteractionsDefinition,
     ),
-  );
-}
-
-export function documentInteractionsDefinitionFromJSON(
-  jsonString: string,
-): SafeParseResult<DocumentInteractionsDefinition, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DocumentInteractionsDefinition$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DocumentInteractionsDefinition' from JSON`,
   );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ListverificationsRequest = {
   /**
@@ -13,15 +10,6 @@ export type ListverificationsRequest = {
    */
   count?: number | undefined;
 };
-
-/** @internal */
-export const ListverificationsRequest$inboundSchema: z.ZodType<
-  ListverificationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  count: z.number().int().optional(),
-});
 
 /** @internal */
 export type ListverificationsRequest$Outbound = {
@@ -37,33 +25,10 @@ export const ListverificationsRequest$outboundSchema: z.ZodType<
   count: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListverificationsRequest$ {
-  /** @deprecated use `ListverificationsRequest$inboundSchema` instead. */
-  export const inboundSchema = ListverificationsRequest$inboundSchema;
-  /** @deprecated use `ListverificationsRequest$outboundSchema` instead. */
-  export const outboundSchema = ListverificationsRequest$outboundSchema;
-  /** @deprecated use `ListverificationsRequest$Outbound` instead. */
-  export type Outbound = ListverificationsRequest$Outbound;
-}
-
 export function listverificationsRequestToJSON(
   listverificationsRequest: ListverificationsRequest,
 ): string {
   return JSON.stringify(
     ListverificationsRequest$outboundSchema.parse(listverificationsRequest),
-  );
-}
-
-export function listverificationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<ListverificationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ListverificationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ListverificationsRequest' from JSON`,
   );
 }

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteShortcutRequest = {
   /**
@@ -13,15 +10,6 @@ export type DeleteShortcutRequest = {
    */
   id: number;
 };
-
-/** @internal */
-export const DeleteShortcutRequest$inboundSchema: z.ZodType<
-  DeleteShortcutRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.number().int(),
-});
 
 /** @internal */
 export type DeleteShortcutRequest$Outbound = {
@@ -37,33 +25,10 @@ export const DeleteShortcutRequest$outboundSchema: z.ZodType<
   id: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteShortcutRequest$ {
-  /** @deprecated use `DeleteShortcutRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteShortcutRequest$inboundSchema;
-  /** @deprecated use `DeleteShortcutRequest$outboundSchema` instead. */
-  export const outboundSchema = DeleteShortcutRequest$outboundSchema;
-  /** @deprecated use `DeleteShortcutRequest$Outbound` instead. */
-  export type Outbound = DeleteShortcutRequest$Outbound;
-}
-
 export function deleteShortcutRequestToJSON(
   deleteShortcutRequest: DeleteShortcutRequest,
 ): string {
   return JSON.stringify(
     DeleteShortcutRequest$outboundSchema.parse(deleteShortcutRequest),
-  );
-}
-
-export function deleteShortcutRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteShortcutRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteShortcutRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteShortcutRequest' from JSON`,
   );
 }

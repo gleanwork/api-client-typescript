@@ -95,7 +95,6 @@ export const AnswerBoard$inboundSchema: z.ZodType<
   itemCount: z.number().int().optional(),
   roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type AnswerBoard$Outbound = {
   name: string;
@@ -136,23 +135,9 @@ export const AnswerBoard$outboundSchema: z.ZodType<
   roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerBoard$ {
-  /** @deprecated use `AnswerBoard$inboundSchema` instead. */
-  export const inboundSchema = AnswerBoard$inboundSchema;
-  /** @deprecated use `AnswerBoard$outboundSchema` instead. */
-  export const outboundSchema = AnswerBoard$outboundSchema;
-  /** @deprecated use `AnswerBoard$Outbound` instead. */
-  export type Outbound = AnswerBoard$Outbound;
-}
-
 export function answerBoardToJSON(answerBoard: AnswerBoard): string {
   return JSON.stringify(AnswerBoard$outboundSchema.parse(answerBoard));
 }
-
 export function answerBoardFromJSON(
   jsonString: string,
 ): SafeParseResult<AnswerBoard, SDKValidationError> {

@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Verification,
-  Verification$inboundSchema,
-  Verification$Outbound,
-  Verification$outboundSchema,
-} from "./verification.js";
+import { Verification, Verification$inboundSchema } from "./verification.js";
 
 export type VerificationFeed = {
   /**
@@ -28,41 +23,6 @@ export const VerificationFeed$inboundSchema: z.ZodType<
 > = z.object({
   documents: z.array(Verification$inboundSchema).optional(),
 });
-
-/** @internal */
-export type VerificationFeed$Outbound = {
-  documents?: Array<Verification$Outbound> | undefined;
-};
-
-/** @internal */
-export const VerificationFeed$outboundSchema: z.ZodType<
-  VerificationFeed$Outbound,
-  z.ZodTypeDef,
-  VerificationFeed
-> = z.object({
-  documents: z.array(Verification$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace VerificationFeed$ {
-  /** @deprecated use `VerificationFeed$inboundSchema` instead. */
-  export const inboundSchema = VerificationFeed$inboundSchema;
-  /** @deprecated use `VerificationFeed$outboundSchema` instead. */
-  export const outboundSchema = VerificationFeed$outboundSchema;
-  /** @deprecated use `VerificationFeed$Outbound` instead. */
-  export type Outbound = VerificationFeed$Outbound;
-}
-
-export function verificationFeedToJSON(
-  verificationFeed: VerificationFeed,
-): string {
-  return JSON.stringify(
-    VerificationFeed$outboundSchema.parse(verificationFeed),
-  );
-}
 
 export function verificationFeedFromJSON(
   jsonString: string,

@@ -21,18 +21,6 @@ export type EntityType = ClosedEnum<typeof EntityType>;
 /** @internal */
 export const EntityType$inboundSchema: z.ZodNativeEnum<typeof EntityType> = z
   .nativeEnum(EntityType);
-
 /** @internal */
 export const EntityType$outboundSchema: z.ZodNativeEnum<typeof EntityType> =
   EntityType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntityType$ {
-  /** @deprecated use `EntityType$inboundSchema` instead. */
-  export const inboundSchema = EntityType$inboundSchema;
-  /** @deprecated use `EntityType$outboundSchema` instead. */
-  export const outboundSchema = EntityType$outboundSchema;
-}

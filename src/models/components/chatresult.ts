@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Chat,
-  Chat$inboundSchema,
-  Chat$Outbound,
-  Chat$outboundSchema,
-} from "./chat.js";
+import { Chat, Chat$inboundSchema } from "./chat.js";
 
 export type ChatResult = {
   /**
@@ -33,39 +28,6 @@ export const ChatResult$inboundSchema: z.ZodType<
   chat: Chat$inboundSchema.optional(),
   trackingToken: z.string().optional(),
 });
-
-/** @internal */
-export type ChatResult$Outbound = {
-  chat?: Chat$Outbound | undefined;
-  trackingToken?: string | undefined;
-};
-
-/** @internal */
-export const ChatResult$outboundSchema: z.ZodType<
-  ChatResult$Outbound,
-  z.ZodTypeDef,
-  ChatResult
-> = z.object({
-  chat: Chat$outboundSchema.optional(),
-  trackingToken: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatResult$ {
-  /** @deprecated use `ChatResult$inboundSchema` instead. */
-  export const inboundSchema = ChatResult$inboundSchema;
-  /** @deprecated use `ChatResult$outboundSchema` instead. */
-  export const outboundSchema = ChatResult$outboundSchema;
-  /** @deprecated use `ChatResult$Outbound` instead. */
-  export type Outbound = ChatResult$Outbound;
-}
-
-export function chatResultToJSON(chatResult: ChatResult): string {
-  return JSON.stringify(ChatResult$outboundSchema.parse(chatResult));
-}
 
 export function chatResultFromJSON(
   jsonString: string,

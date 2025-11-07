@@ -46,7 +46,6 @@ export const ChatFile$inboundSchema: z.ZodType<
   name: z.string().optional(),
   metadata: ChatFileMetadata$inboundSchema.optional(),
 });
-
 /** @internal */
 export type ChatFile$Outbound = {
   id?: string | undefined;
@@ -67,23 +66,9 @@ export const ChatFile$outboundSchema: z.ZodType<
   metadata: ChatFileMetadata$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatFile$ {
-  /** @deprecated use `ChatFile$inboundSchema` instead. */
-  export const inboundSchema = ChatFile$inboundSchema;
-  /** @deprecated use `ChatFile$outboundSchema` instead. */
-  export const outboundSchema = ChatFile$outboundSchema;
-  /** @deprecated use `ChatFile$Outbound` instead. */
-  export type Outbound = ChatFile$Outbound;
-}
-
 export function chatFileToJSON(chatFile: ChatFile): string {
   return JSON.stringify(ChatFile$outboundSchema.parse(chatFile));
 }
-
 export function chatFileFromJSON(
   jsonString: string,
 ): SafeParseResult<ChatFile, SDKValidationError> {

@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   TeamInfoDefinition,
-  TeamInfoDefinition$inboundSchema,
   TeamInfoDefinition$Outbound,
   TeamInfoDefinition$outboundSchema,
 } from "./teaminfodefinition.js";
@@ -28,16 +24,6 @@ export type IndexTeamRequest = {
 };
 
 /** @internal */
-export const IndexTeamRequest$inboundSchema: z.ZodType<
-  IndexTeamRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  team: TeamInfoDefinition$inboundSchema,
-  version: z.number().int().optional(),
-});
-
-/** @internal */
 export type IndexTeamRequest$Outbound = {
   team: TeamInfoDefinition$Outbound;
   version?: number | undefined;
@@ -53,33 +39,10 @@ export const IndexTeamRequest$outboundSchema: z.ZodType<
   version: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IndexTeamRequest$ {
-  /** @deprecated use `IndexTeamRequest$inboundSchema` instead. */
-  export const inboundSchema = IndexTeamRequest$inboundSchema;
-  /** @deprecated use `IndexTeamRequest$outboundSchema` instead. */
-  export const outboundSchema = IndexTeamRequest$outboundSchema;
-  /** @deprecated use `IndexTeamRequest$Outbound` instead. */
-  export type Outbound = IndexTeamRequest$Outbound;
-}
-
 export function indexTeamRequestToJSON(
   indexTeamRequest: IndexTeamRequest,
 ): string {
   return JSON.stringify(
     IndexTeamRequest$outboundSchema.parse(indexTeamRequest),
-  );
-}
-
-export function indexTeamRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<IndexTeamRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => IndexTeamRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'IndexTeamRequest' from JSON`,
   );
 }

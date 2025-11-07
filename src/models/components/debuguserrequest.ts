@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the request body of the /debug/{datasource}/user API call
@@ -16,15 +13,6 @@ export type DebugUserRequest = {
    */
   email: string;
 };
-
-/** @internal */
-export const DebugUserRequest$inboundSchema: z.ZodType<
-  DebugUserRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string(),
-});
 
 /** @internal */
 export type DebugUserRequest$Outbound = {
@@ -40,33 +28,10 @@ export const DebugUserRequest$outboundSchema: z.ZodType<
   email: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DebugUserRequest$ {
-  /** @deprecated use `DebugUserRequest$inboundSchema` instead. */
-  export const inboundSchema = DebugUserRequest$inboundSchema;
-  /** @deprecated use `DebugUserRequest$outboundSchema` instead. */
-  export const outboundSchema = DebugUserRequest$outboundSchema;
-  /** @deprecated use `DebugUserRequest$Outbound` instead. */
-  export type Outbound = DebugUserRequest$Outbound;
-}
-
 export function debugUserRequestToJSON(
   debugUserRequest: DebugUserRequest,
 ): string {
   return JSON.stringify(
     DebugUserRequest$outboundSchema.parse(debugUserRequest),
-  );
-}
-
-export function debugUserRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DebugUserRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DebugUserRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DebugUserRequest' from JSON`,
   );
 }

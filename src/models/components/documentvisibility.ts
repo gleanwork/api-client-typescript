@@ -25,19 +25,7 @@ export type DocumentVisibility = ClosedEnum<typeof DocumentVisibility>;
 export const DocumentVisibility$inboundSchema: z.ZodNativeEnum<
   typeof DocumentVisibility
 > = z.nativeEnum(DocumentVisibility);
-
 /** @internal */
 export const DocumentVisibility$outboundSchema: z.ZodNativeEnum<
   typeof DocumentVisibility
 > = DocumentVisibility$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentVisibility$ {
-  /** @deprecated use `DocumentVisibility$inboundSchema` instead. */
-  export const inboundSchema = DocumentVisibility$inboundSchema;
-  /** @deprecated use `DocumentVisibility$outboundSchema` instead. */
-  export const outboundSchema = DocumentVisibility$outboundSchema;
-}

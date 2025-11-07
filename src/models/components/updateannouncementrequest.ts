@@ -3,25 +3,19 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   StructuredText,
-  StructuredText$inboundSchema,
   StructuredText$Outbound,
   StructuredText$outboundSchema,
 } from "./structuredtext.js";
 import {
   Thumbnail,
-  Thumbnail$inboundSchema,
   Thumbnail$Outbound,
   Thumbnail$outboundSchema,
 } from "./thumbnail.js";
@@ -109,70 +103,14 @@ export type UpdateAnnouncementRequest = {
 };
 
 /** @internal */
-export const UpdateAnnouncementRequestChannel$inboundSchema: z.ZodNativeEnum<
+export const UpdateAnnouncementRequestChannel$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAnnouncementRequestChannel
 > = z.nativeEnum(UpdateAnnouncementRequestChannel);
 
 /** @internal */
-export const UpdateAnnouncementRequestChannel$outboundSchema: z.ZodNativeEnum<
-  typeof UpdateAnnouncementRequestChannel
-> = UpdateAnnouncementRequestChannel$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAnnouncementRequestChannel$ {
-  /** @deprecated use `UpdateAnnouncementRequestChannel$inboundSchema` instead. */
-  export const inboundSchema = UpdateAnnouncementRequestChannel$inboundSchema;
-  /** @deprecated use `UpdateAnnouncementRequestChannel$outboundSchema` instead. */
-  export const outboundSchema = UpdateAnnouncementRequestChannel$outboundSchema;
-}
-
-/** @internal */
-export const UpdateAnnouncementRequestPostType$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateAnnouncementRequestPostType
-> = z.nativeEnum(UpdateAnnouncementRequestPostType);
-
-/** @internal */
 export const UpdateAnnouncementRequestPostType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAnnouncementRequestPostType
-> = UpdateAnnouncementRequestPostType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAnnouncementRequestPostType$ {
-  /** @deprecated use `UpdateAnnouncementRequestPostType$inboundSchema` instead. */
-  export const inboundSchema = UpdateAnnouncementRequestPostType$inboundSchema;
-  /** @deprecated use `UpdateAnnouncementRequestPostType$outboundSchema` instead. */
-  export const outboundSchema =
-    UpdateAnnouncementRequestPostType$outboundSchema;
-}
-
-/** @internal */
-export const UpdateAnnouncementRequest$inboundSchema: z.ZodType<
-  UpdateAnnouncementRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  startTime: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  endTime: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  title: z.string(),
-  body: StructuredText$inboundSchema.optional(),
-  emoji: z.string().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  banner: Thumbnail$inboundSchema.optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  sourceDocumentId: z.string().optional(),
-  hideAttribution: z.boolean().optional(),
-  channel: UpdateAnnouncementRequestChannel$inboundSchema.optional(),
-  postType: UpdateAnnouncementRequestPostType$inboundSchema.optional(),
-  isPrioritized: z.boolean().optional(),
-  viewUrl: z.string().optional(),
-  id: z.number().int(),
-});
+> = z.nativeEnum(UpdateAnnouncementRequestPostType);
 
 /** @internal */
 export type UpdateAnnouncementRequest$Outbound = {
@@ -216,33 +154,10 @@ export const UpdateAnnouncementRequest$outboundSchema: z.ZodType<
   id: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UpdateAnnouncementRequest$ {
-  /** @deprecated use `UpdateAnnouncementRequest$inboundSchema` instead. */
-  export const inboundSchema = UpdateAnnouncementRequest$inboundSchema;
-  /** @deprecated use `UpdateAnnouncementRequest$outboundSchema` instead. */
-  export const outboundSchema = UpdateAnnouncementRequest$outboundSchema;
-  /** @deprecated use `UpdateAnnouncementRequest$Outbound` instead. */
-  export type Outbound = UpdateAnnouncementRequest$Outbound;
-}
-
 export function updateAnnouncementRequestToJSON(
   updateAnnouncementRequest: UpdateAnnouncementRequest,
 ): string {
   return JSON.stringify(
     UpdateAnnouncementRequest$outboundSchema.parse(updateAnnouncementRequest),
-  );
-}
-
-export function updateAnnouncementRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateAnnouncementRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateAnnouncementRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateAnnouncementRequest' from JSON`,
   );
 }

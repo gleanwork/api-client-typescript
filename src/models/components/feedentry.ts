@@ -7,95 +7,35 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Announcement,
-  Announcement$inboundSchema,
-  Announcement$Outbound,
-  Announcement$outboundSchema,
-} from "./announcement.js";
-import {
-  AppResult,
-  AppResult$inboundSchema,
-  AppResult$Outbound,
-  AppResult$outboundSchema,
-} from "./appresult.js";
-import {
-  CalendarEvent,
-  CalendarEvent$inboundSchema,
-  CalendarEvent$Outbound,
-  CalendarEvent$outboundSchema,
-} from "./calendarevent.js";
+import { Announcement, Announcement$inboundSchema } from "./announcement.js";
+import { AppResult, AppResult$inboundSchema } from "./appresult.js";
+import { CalendarEvent, CalendarEvent$inboundSchema } from "./calendarevent.js";
 import {
   ChatSuggestion,
   ChatSuggestion$inboundSchema,
-  ChatSuggestion$Outbound,
-  ChatSuggestion$outboundSchema,
 } from "./chatsuggestion.js";
-import {
-  Collection,
-  Collection$inboundSchema,
-  Collection$Outbound,
-  Collection$outboundSchema,
-} from "./collection.js";
+import { Collection, Collection$inboundSchema } from "./collection.js";
 import {
   CollectionItem,
   CollectionItem$inboundSchema,
-  CollectionItem$Outbound,
-  CollectionItem$outboundSchema,
 } from "./collectionitem.js";
-import {
-  CountInfo,
-  CountInfo$inboundSchema,
-  CountInfo$Outbound,
-  CountInfo$outboundSchema,
-} from "./countinfo.js";
-import {
-  Digest,
-  Digest$inboundSchema,
-  Digest$Outbound,
-  Digest$outboundSchema,
-} from "./digest.js";
+import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
+import { Digest, Digest$inboundSchema } from "./digest.js";
 import {
   DisplayableListItemUIConfig,
   DisplayableListItemUIConfig$inboundSchema,
-  DisplayableListItemUIConfig$Outbound,
-  DisplayableListItemUIConfig$outboundSchema,
 } from "./displayablelistitemuiconfig.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Document, Document$inboundSchema } from "./document.js";
+import { Person, Person$inboundSchema } from "./person.js";
 import {
   PromptTemplateResult,
   PromptTemplateResult$inboundSchema,
-  PromptTemplateResult$Outbound,
-  PromptTemplateResult$outboundSchema,
 } from "./prompttemplateresult.js";
-import {
-  Thumbnail,
-  Thumbnail$inboundSchema,
-  Thumbnail$Outbound,
-  Thumbnail$outboundSchema,
-} from "./thumbnail.js";
-import {
-  UserActivity,
-  UserActivity$inboundSchema,
-  UserActivity$Outbound,
-  UserActivity$outboundSchema,
-} from "./useractivity.js";
+import { Thumbnail, Thumbnail$inboundSchema } from "./thumbnail.js";
+import { UserActivity, UserActivity$inboundSchema } from "./useractivity.js";
 import {
   WorkflowResult,
   WorkflowResult$inboundSchema,
-  WorkflowResult$Outbound,
-  WorkflowResult$outboundSchema,
 } from "./workflowresult.js";
 
 /**
@@ -215,21 +155,6 @@ export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> = z
   .nativeEnum(Format);
 
 /** @internal */
-export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> =
-  Format$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Format$ {
-  /** @deprecated use `Format$inboundSchema` instead. */
-  export const inboundSchema = Format$inboundSchema;
-  /** @deprecated use `Format$outboundSchema` instead. */
-  export const outboundSchema = Format$outboundSchema;
-}
-
-/** @internal */
 export const UiConfig$inboundSchema: z.ZodType<
   UiConfig,
   z.ZodTypeDef,
@@ -238,39 +163,6 @@ export const UiConfig$inboundSchema: z.ZodType<
   format: Format$inboundSchema.optional(),
   additionalFlags: DisplayableListItemUIConfig$inboundSchema.optional(),
 });
-
-/** @internal */
-export type UiConfig$Outbound = {
-  format?: string | undefined;
-  additionalFlags?: DisplayableListItemUIConfig$Outbound | undefined;
-};
-
-/** @internal */
-export const UiConfig$outboundSchema: z.ZodType<
-  UiConfig$Outbound,
-  z.ZodTypeDef,
-  UiConfig
-> = z.object({
-  format: Format$outboundSchema.optional(),
-  additionalFlags: DisplayableListItemUIConfig$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UiConfig$ {
-  /** @deprecated use `UiConfig$inboundSchema` instead. */
-  export const inboundSchema = UiConfig$inboundSchema;
-  /** @deprecated use `UiConfig$outboundSchema` instead. */
-  export const outboundSchema = UiConfig$outboundSchema;
-  /** @deprecated use `UiConfig$Outbound` instead. */
-  export type Outbound = UiConfig$Outbound;
-}
-
-export function uiConfigToJSON(uiConfig: UiConfig): string {
-  return JSON.stringify(UiConfig$outboundSchema.parse(uiConfig));
-}
 
 export function uiConfigFromJSON(
   jsonString: string,
@@ -286,22 +178,6 @@ export function uiConfigFromJSON(
 export const JustificationType$inboundSchema: z.ZodNativeEnum<
   typeof JustificationType
 > = z.nativeEnum(JustificationType);
-
-/** @internal */
-export const JustificationType$outboundSchema: z.ZodNativeEnum<
-  typeof JustificationType
-> = JustificationType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JustificationType$ {
-  /** @deprecated use `JustificationType$inboundSchema` instead. */
-  export const inboundSchema = JustificationType$inboundSchema;
-  /** @deprecated use `JustificationType$outboundSchema` instead. */
-  export const outboundSchema = JustificationType$outboundSchema;
-}
 
 /** @internal */
 export const FeedEntry$inboundSchema: z.ZodType<
@@ -332,79 +208,6 @@ export const FeedEntry$inboundSchema: z.ZodType<
   activities: z.array(UserActivity$inboundSchema).optional(),
   documentVisitorCount: CountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type FeedEntry$Outbound = {
-  entryId?: string | undefined;
-  title: string;
-  thumbnail?: Thumbnail$Outbound | undefined;
-  createdBy?: Person$Outbound | undefined;
-  uiConfig?: UiConfig$Outbound | undefined;
-  justificationType?: string | undefined;
-  justification?: string | undefined;
-  trackingToken?: string | undefined;
-  viewUrl?: string | undefined;
-  document?: Document$Outbound | undefined;
-  event?: CalendarEvent$Outbound | undefined;
-  announcement?: Announcement$Outbound | undefined;
-  digest?: Digest$Outbound | undefined;
-  collection?: Collection$Outbound | undefined;
-  collectionItem?: CollectionItem$Outbound | undefined;
-  person?: Person$Outbound | undefined;
-  app?: AppResult$Outbound | undefined;
-  chatSuggestion?: ChatSuggestion$Outbound | undefined;
-  promptTemplate?: PromptTemplateResult$Outbound | undefined;
-  workflow?: WorkflowResult$Outbound | undefined;
-  activities?: Array<UserActivity$Outbound> | undefined;
-  documentVisitorCount?: CountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const FeedEntry$outboundSchema: z.ZodType<
-  FeedEntry$Outbound,
-  z.ZodTypeDef,
-  FeedEntry
-> = z.object({
-  entryId: z.string().optional(),
-  title: z.string(),
-  thumbnail: Thumbnail$outboundSchema.optional(),
-  createdBy: Person$outboundSchema.optional(),
-  uiConfig: z.lazy(() => UiConfig$outboundSchema).optional(),
-  justificationType: JustificationType$outboundSchema.optional(),
-  justification: z.string().optional(),
-  trackingToken: z.string().optional(),
-  viewUrl: z.string().optional(),
-  document: Document$outboundSchema.optional(),
-  event: CalendarEvent$outboundSchema.optional(),
-  announcement: Announcement$outboundSchema.optional(),
-  digest: Digest$outboundSchema.optional(),
-  collection: Collection$outboundSchema.optional(),
-  collectionItem: CollectionItem$outboundSchema.optional(),
-  person: Person$outboundSchema.optional(),
-  app: AppResult$outboundSchema.optional(),
-  chatSuggestion: ChatSuggestion$outboundSchema.optional(),
-  promptTemplate: PromptTemplateResult$outboundSchema.optional(),
-  workflow: WorkflowResult$outboundSchema.optional(),
-  activities: z.array(UserActivity$outboundSchema).optional(),
-  documentVisitorCount: CountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeedEntry$ {
-  /** @deprecated use `FeedEntry$inboundSchema` instead. */
-  export const inboundSchema = FeedEntry$inboundSchema;
-  /** @deprecated use `FeedEntry$outboundSchema` instead. */
-  export const outboundSchema = FeedEntry$outboundSchema;
-  /** @deprecated use `FeedEntry$Outbound` instead. */
-  export type Outbound = FeedEntry$Outbound;
-}
-
-export function feedEntryToJSON(feedEntry: FeedEntry): string {
-  return JSON.stringify(FeedEntry$outboundSchema.parse(feedEntry));
-}
 
 export function feedEntryFromJSON(
   jsonString: string,

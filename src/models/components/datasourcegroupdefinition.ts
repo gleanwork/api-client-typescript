@@ -25,7 +25,6 @@ export const DatasourceGroupDefinition$inboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
 });
-
 /** @internal */
 export type DatasourceGroupDefinition$Outbound = {
   name: string;
@@ -40,19 +39,6 @@ export const DatasourceGroupDefinition$outboundSchema: z.ZodType<
   name: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DatasourceGroupDefinition$ {
-  /** @deprecated use `DatasourceGroupDefinition$inboundSchema` instead. */
-  export const inboundSchema = DatasourceGroupDefinition$inboundSchema;
-  /** @deprecated use `DatasourceGroupDefinition$outboundSchema` instead. */
-  export const outboundSchema = DatasourceGroupDefinition$outboundSchema;
-  /** @deprecated use `DatasourceGroupDefinition$Outbound` instead. */
-  export type Outbound = DatasourceGroupDefinition$Outbound;
-}
-
 export function datasourceGroupDefinitionToJSON(
   datasourceGroupDefinition: DatasourceGroupDefinition,
 ): string {
@@ -60,7 +46,6 @@ export function datasourceGroupDefinitionToJSON(
     DatasourceGroupDefinition$outboundSchema.parse(datasourceGroupDefinition),
   );
 }
-
 export function datasourceGroupDefinitionFromJSON(
   jsonString: string,
 ): SafeParseResult<DatasourceGroupDefinition, SDKValidationError> {

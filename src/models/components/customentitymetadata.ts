@@ -28,7 +28,6 @@ export const CustomEntityMetadata$inboundSchema: z.ZodType<
 > = z.object({
   customData: z.record(CustomDataValue$inboundSchema).optional(),
 });
-
 /** @internal */
 export type CustomEntityMetadata$Outbound = {
   customData?: { [k: string]: CustomDataValue$Outbound } | undefined;
@@ -43,19 +42,6 @@ export const CustomEntityMetadata$outboundSchema: z.ZodType<
   customData: z.record(CustomDataValue$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomEntityMetadata$ {
-  /** @deprecated use `CustomEntityMetadata$inboundSchema` instead. */
-  export const inboundSchema = CustomEntityMetadata$inboundSchema;
-  /** @deprecated use `CustomEntityMetadata$outboundSchema` instead. */
-  export const outboundSchema = CustomEntityMetadata$outboundSchema;
-  /** @deprecated use `CustomEntityMetadata$Outbound` instead. */
-  export type Outbound = CustomEntityMetadata$Outbound;
-}
-
 export function customEntityMetadataToJSON(
   customEntityMetadata: CustomEntityMetadata,
 ): string {
@@ -63,7 +49,6 @@ export function customEntityMetadataToJSON(
     CustomEntityMetadata$outboundSchema.parse(customEntityMetadata),
   );
 }
-
 export function customEntityMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<CustomEntityMetadata, SDKValidationError> {

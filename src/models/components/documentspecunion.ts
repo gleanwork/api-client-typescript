@@ -92,22 +92,10 @@ export type DocumentSpecUnion =
 export const DocumentSpecUgcType2$inboundSchema: z.ZodNativeEnum<
   typeof DocumentSpecUgcType2
 > = z.nativeEnum(DocumentSpecUgcType2);
-
 /** @internal */
 export const DocumentSpecUgcType2$outboundSchema: z.ZodNativeEnum<
   typeof DocumentSpecUgcType2
 > = DocumentSpecUgcType2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpecUgcType2$ {
-  /** @deprecated use `DocumentSpecUgcType2$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpecUgcType2$inboundSchema;
-  /** @deprecated use `DocumentSpecUgcType2$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpecUgcType2$outboundSchema;
-}
 
 /** @internal */
 export const DocumentSpec4$inboundSchema: z.ZodType<
@@ -119,7 +107,6 @@ export const DocumentSpec4$inboundSchema: z.ZodType<
   ugcId: z.string(),
   docType: z.string().optional(),
 });
-
 /** @internal */
 export type DocumentSpec4$Outbound = {
   ugcType: string;
@@ -138,23 +125,9 @@ export const DocumentSpec4$outboundSchema: z.ZodType<
   docType: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpec4$ {
-  /** @deprecated use `DocumentSpec4$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpec4$inboundSchema;
-  /** @deprecated use `DocumentSpec4$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpec4$outboundSchema;
-  /** @deprecated use `DocumentSpec4$Outbound` instead. */
-  export type Outbound = DocumentSpec4$Outbound;
-}
-
 export function documentSpec4ToJSON(documentSpec4: DocumentSpec4): string {
   return JSON.stringify(DocumentSpec4$outboundSchema.parse(documentSpec4));
 }
-
 export function documentSpec4FromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentSpec4, SDKValidationError> {
@@ -169,22 +142,10 @@ export function documentSpec4FromJSON(
 export const DocumentSpecUgcType1$inboundSchema: z.ZodNativeEnum<
   typeof DocumentSpecUgcType1
 > = z.nativeEnum(DocumentSpecUgcType1);
-
 /** @internal */
 export const DocumentSpecUgcType1$outboundSchema: z.ZodNativeEnum<
   typeof DocumentSpecUgcType1
 > = DocumentSpecUgcType1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpecUgcType1$ {
-  /** @deprecated use `DocumentSpecUgcType1$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpecUgcType1$inboundSchema;
-  /** @deprecated use `DocumentSpecUgcType1$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpecUgcType1$outboundSchema;
-}
 
 /** @internal */
 export const DocumentSpec3$inboundSchema: z.ZodType<
@@ -196,7 +157,6 @@ export const DocumentSpec3$inboundSchema: z.ZodType<
   contentId: z.number().int(),
   docType: z.string().optional(),
 });
-
 /** @internal */
 export type DocumentSpec3$Outbound = {
   ugcType: string;
@@ -215,23 +175,9 @@ export const DocumentSpec3$outboundSchema: z.ZodType<
   docType: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpec3$ {
-  /** @deprecated use `DocumentSpec3$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpec3$inboundSchema;
-  /** @deprecated use `DocumentSpec3$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpec3$outboundSchema;
-  /** @deprecated use `DocumentSpec3$Outbound` instead. */
-  export type Outbound = DocumentSpec3$Outbound;
-}
-
 export function documentSpec3ToJSON(documentSpec3: DocumentSpec3): string {
   return JSON.stringify(DocumentSpec3$outboundSchema.parse(documentSpec3));
 }
-
 export function documentSpec3FromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentSpec3, SDKValidationError> {
@@ -250,7 +196,6 @@ export const DocumentSpec2$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
 });
-
 /** @internal */
 export type DocumentSpec2$Outbound = {
   id: string;
@@ -265,23 +210,9 @@ export const DocumentSpec2$outboundSchema: z.ZodType<
   id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpec2$ {
-  /** @deprecated use `DocumentSpec2$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpec2$inboundSchema;
-  /** @deprecated use `DocumentSpec2$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpec2$outboundSchema;
-  /** @deprecated use `DocumentSpec2$Outbound` instead. */
-  export type Outbound = DocumentSpec2$Outbound;
-}
-
 export function documentSpec2ToJSON(documentSpec2: DocumentSpec2): string {
   return JSON.stringify(DocumentSpec2$outboundSchema.parse(documentSpec2));
 }
-
 export function documentSpec2FromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentSpec2, SDKValidationError> {
@@ -300,7 +231,6 @@ export const DocumentSpec1$inboundSchema: z.ZodType<
 > = z.object({
   url: z.string(),
 });
-
 /** @internal */
 export type DocumentSpec1$Outbound = {
   url: string;
@@ -315,23 +245,9 @@ export const DocumentSpec1$outboundSchema: z.ZodType<
   url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpec1$ {
-  /** @deprecated use `DocumentSpec1$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpec1$inboundSchema;
-  /** @deprecated use `DocumentSpec1$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpec1$outboundSchema;
-  /** @deprecated use `DocumentSpec1$Outbound` instead. */
-  export type Outbound = DocumentSpec1$Outbound;
-}
-
 export function documentSpec1ToJSON(documentSpec1: DocumentSpec1): string {
   return JSON.stringify(DocumentSpec1$outboundSchema.parse(documentSpec1));
 }
-
 export function documentSpec1FromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentSpec1, SDKValidationError> {
@@ -353,7 +269,6 @@ export const DocumentSpecUnion$inboundSchema: z.ZodType<
   z.lazy(() => DocumentSpec1$inboundSchema),
   z.lazy(() => DocumentSpec2$inboundSchema),
 ]);
-
 /** @internal */
 export type DocumentSpecUnion$Outbound =
   | DocumentSpec3$Outbound
@@ -373,19 +288,6 @@ export const DocumentSpecUnion$outboundSchema: z.ZodType<
   z.lazy(() => DocumentSpec2$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentSpecUnion$ {
-  /** @deprecated use `DocumentSpecUnion$inboundSchema` instead. */
-  export const inboundSchema = DocumentSpecUnion$inboundSchema;
-  /** @deprecated use `DocumentSpecUnion$outboundSchema` instead. */
-  export const outboundSchema = DocumentSpecUnion$outboundSchema;
-  /** @deprecated use `DocumentSpecUnion$Outbound` instead. */
-  export type Outbound = DocumentSpecUnion$Outbound;
-}
-
 export function documentSpecUnionToJSON(
   documentSpecUnion: DocumentSpecUnion,
 ): string {
@@ -393,7 +295,6 @@ export function documentSpecUnionToJSON(
     DocumentSpecUnion$outboundSchema.parse(documentSpecUnion),
   );
 }
-
 export function documentSpecUnionFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentSpecUnion, SDKValidationError> {

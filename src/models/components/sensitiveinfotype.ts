@@ -35,22 +35,10 @@ export type SensitiveInfoType = {
 export const LikelihoodThreshold$inboundSchema: z.ZodNativeEnum<
   typeof LikelihoodThreshold
 > = z.nativeEnum(LikelihoodThreshold);
-
 /** @internal */
 export const LikelihoodThreshold$outboundSchema: z.ZodNativeEnum<
   typeof LikelihoodThreshold
 > = LikelihoodThreshold$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LikelihoodThreshold$ {
-  /** @deprecated use `LikelihoodThreshold$inboundSchema` instead. */
-  export const inboundSchema = LikelihoodThreshold$inboundSchema;
-  /** @deprecated use `LikelihoodThreshold$outboundSchema` instead. */
-  export const outboundSchema = LikelihoodThreshold$outboundSchema;
-}
 
 /** @internal */
 export const SensitiveInfoType$inboundSchema: z.ZodType<
@@ -61,7 +49,6 @@ export const SensitiveInfoType$inboundSchema: z.ZodType<
   likelihoodThreshold: LikelihoodThreshold$inboundSchema.optional(),
   infoType: z.string().optional(),
 });
-
 /** @internal */
 export type SensitiveInfoType$Outbound = {
   likelihoodThreshold?: string | undefined;
@@ -78,19 +65,6 @@ export const SensitiveInfoType$outboundSchema: z.ZodType<
   infoType: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SensitiveInfoType$ {
-  /** @deprecated use `SensitiveInfoType$inboundSchema` instead. */
-  export const inboundSchema = SensitiveInfoType$inboundSchema;
-  /** @deprecated use `SensitiveInfoType$outboundSchema` instead. */
-  export const outboundSchema = SensitiveInfoType$outboundSchema;
-  /** @deprecated use `SensitiveInfoType$Outbound` instead. */
-  export type Outbound = SensitiveInfoType$Outbound;
-}
-
 export function sensitiveInfoTypeToJSON(
   sensitiveInfoType: SensitiveInfoType,
 ): string {
@@ -98,7 +72,6 @@ export function sensitiveInfoTypeToJSON(
     SensitiveInfoType$outboundSchema.parse(sensitiveInfoType),
   );
 }
-
 export function sensitiveInfoTypeFromJSON(
   jsonString: string,
 ): SafeParseResult<SensitiveInfoType, SDKValidationError> {

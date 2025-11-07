@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentDefinition,
-  DocumentDefinition$inboundSchema,
   DocumentDefinition$Outbound,
   DocumentDefinition$outboundSchema,
 } from "./documentdefinition.js";
@@ -48,21 +44,6 @@ export type BulkIndexDocumentsRequest = {
 };
 
 /** @internal */
-export const BulkIndexDocumentsRequest$inboundSchema: z.ZodType<
-  BulkIndexDocumentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  datasource: z.string(),
-  documents: z.array(DocumentDefinition$inboundSchema),
-  disableStaleDocumentDeletionCheck: z.boolean().optional(),
-});
-
-/** @internal */
 export type BulkIndexDocumentsRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -88,33 +69,10 @@ export const BulkIndexDocumentsRequest$outboundSchema: z.ZodType<
   disableStaleDocumentDeletionCheck: z.boolean().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BulkIndexDocumentsRequest$ {
-  /** @deprecated use `BulkIndexDocumentsRequest$inboundSchema` instead. */
-  export const inboundSchema = BulkIndexDocumentsRequest$inboundSchema;
-  /** @deprecated use `BulkIndexDocumentsRequest$outboundSchema` instead. */
-  export const outboundSchema = BulkIndexDocumentsRequest$outboundSchema;
-  /** @deprecated use `BulkIndexDocumentsRequest$Outbound` instead. */
-  export type Outbound = BulkIndexDocumentsRequest$Outbound;
-}
-
 export function bulkIndexDocumentsRequestToJSON(
   bulkIndexDocumentsRequest: BulkIndexDocumentsRequest,
 ): string {
   return JSON.stringify(
     BulkIndexDocumentsRequest$outboundSchema.parse(bulkIndexDocumentsRequest),
-  );
-}
-
-export function bulkIndexDocumentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<BulkIndexDocumentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => BulkIndexDocumentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'BulkIndexDocumentsRequest' from JSON`,
   );
 }

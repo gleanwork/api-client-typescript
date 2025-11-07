@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 export type AgentUsersInsight = {
   person?: Person | undefined;
@@ -50,51 +45,6 @@ export const AgentUsersInsight$inboundSchema: z.ZodType<
   agentsCreatedCount: z.number().int().optional(),
   runCount: z.number().int().optional(),
 });
-
-/** @internal */
-export type AgentUsersInsight$Outbound = {
-  person?: Person$Outbound | undefined;
-  departmentName?: string | undefined;
-  agentsUsedCount?: number | undefined;
-  averageRunsPerDayCount?: number | undefined;
-  agentsCreatedCount?: number | undefined;
-  runCount?: number | undefined;
-};
-
-/** @internal */
-export const AgentUsersInsight$outboundSchema: z.ZodType<
-  AgentUsersInsight$Outbound,
-  z.ZodTypeDef,
-  AgentUsersInsight
-> = z.object({
-  person: Person$outboundSchema.optional(),
-  departmentName: z.string().optional(),
-  agentsUsedCount: z.number().int().optional(),
-  averageRunsPerDayCount: z.number().optional(),
-  agentsCreatedCount: z.number().int().optional(),
-  runCount: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentUsersInsight$ {
-  /** @deprecated use `AgentUsersInsight$inboundSchema` instead. */
-  export const inboundSchema = AgentUsersInsight$inboundSchema;
-  /** @deprecated use `AgentUsersInsight$outboundSchema` instead. */
-  export const outboundSchema = AgentUsersInsight$outboundSchema;
-  /** @deprecated use `AgentUsersInsight$Outbound` instead. */
-  export type Outbound = AgentUsersInsight$Outbound;
-}
-
-export function agentUsersInsightToJSON(
-  agentUsersInsight: AgentUsersInsight,
-): string {
-  return JSON.stringify(
-    AgentUsersInsight$outboundSchema.parse(agentUsersInsight),
-  );
-}
 
 export function agentUsersInsightFromJSON(
   jsonString: string,

@@ -32,7 +32,6 @@ export const CodeLine$inboundSchema: z.ZodType<
   content: z.string().optional(),
   ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type CodeLine$Outbound = {
   lineNumber?: number | undefined;
@@ -51,23 +50,9 @@ export const CodeLine$outboundSchema: z.ZodType<
   ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CodeLine$ {
-  /** @deprecated use `CodeLine$inboundSchema` instead. */
-  export const inboundSchema = CodeLine$inboundSchema;
-  /** @deprecated use `CodeLine$outboundSchema` instead. */
-  export const outboundSchema = CodeLine$outboundSchema;
-  /** @deprecated use `CodeLine$Outbound` instead. */
-  export type Outbound = CodeLine$Outbound;
-}
-
 export function codeLineToJSON(codeLine: CodeLine): string {
   return JSON.stringify(CodeLine$outboundSchema.parse(codeLine));
 }
-
 export function codeLineFromJSON(
   jsonString: string,
 ): SafeParseResult<CodeLine, SDKValidationError> {

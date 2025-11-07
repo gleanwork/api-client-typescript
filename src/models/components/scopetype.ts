@@ -20,18 +20,6 @@ export type ScopeType = ClosedEnum<typeof ScopeType>;
 /** @internal */
 export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> = z
   .nativeEnum(ScopeType);
-
 /** @internal */
 export const ScopeType$outboundSchema: z.ZodNativeEnum<typeof ScopeType> =
   ScopeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScopeType$ {
-  /** @deprecated use `ScopeType$inboundSchema` instead. */
-  export const inboundSchema = ScopeType$inboundSchema;
-  /** @deprecated use `ScopeType$outboundSchema` instead. */
-  export const outboundSchema = ScopeType$outboundSchema;
-}

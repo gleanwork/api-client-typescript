@@ -3,13 +3,9 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FeedbackChatExchange,
-  FeedbackChatExchange$inboundSchema,
   FeedbackChatExchange$Outbound,
   FeedbackChatExchange$outboundSchema,
 } from "./feedbackchatexchange.js";
@@ -150,91 +146,19 @@ export type ManualFeedbackInfo = {
 };
 
 /** @internal */
-export const ManualFeedbackInfoSource$inboundSchema: z.ZodNativeEnum<
+export const ManualFeedbackInfoSource$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackInfoSource
 > = z.nativeEnum(ManualFeedbackInfoSource);
 
 /** @internal */
-export const ManualFeedbackInfoSource$outboundSchema: z.ZodNativeEnum<
-  typeof ManualFeedbackInfoSource
-> = ManualFeedbackInfoSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualFeedbackInfoSource$ {
-  /** @deprecated use `ManualFeedbackInfoSource$inboundSchema` instead. */
-  export const inboundSchema = ManualFeedbackInfoSource$inboundSchema;
-  /** @deprecated use `ManualFeedbackInfoSource$outboundSchema` instead. */
-  export const outboundSchema = ManualFeedbackInfoSource$outboundSchema;
-}
-
-/** @internal */
-export const Issue$inboundSchema: z.ZodNativeEnum<typeof Issue> = z.nativeEnum(
+export const Issue$outboundSchema: z.ZodNativeEnum<typeof Issue> = z.nativeEnum(
   Issue,
 );
 
 /** @internal */
-export const Issue$outboundSchema: z.ZodNativeEnum<typeof Issue> =
-  Issue$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Issue$ {
-  /** @deprecated use `Issue$inboundSchema` instead. */
-  export const inboundSchema = Issue$inboundSchema;
-  /** @deprecated use `Issue$outboundSchema` instead. */
-  export const outboundSchema = Issue$outboundSchema;
-}
-
-/** @internal */
-export const ManualFeedbackInfoVote$inboundSchema: z.ZodNativeEnum<
-  typeof ManualFeedbackInfoVote
-> = z.nativeEnum(ManualFeedbackInfoVote);
-
-/** @internal */
 export const ManualFeedbackInfoVote$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackInfoVote
-> = ManualFeedbackInfoVote$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualFeedbackInfoVote$ {
-  /** @deprecated use `ManualFeedbackInfoVote$inboundSchema` instead. */
-  export const inboundSchema = ManualFeedbackInfoVote$inboundSchema;
-  /** @deprecated use `ManualFeedbackInfoVote$outboundSchema` instead. */
-  export const outboundSchema = ManualFeedbackInfoVote$outboundSchema;
-}
-
-/** @internal */
-export const ManualFeedbackInfo$inboundSchema: z.ZodType<
-  ManualFeedbackInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string().optional(),
-  source: ManualFeedbackInfoSource$inboundSchema.optional(),
-  issue: z.string().optional(),
-  issues: z.array(Issue$inboundSchema).optional(),
-  imageUrls: z.array(z.string()).optional(),
-  query: z.string().optional(),
-  obscuredQuery: z.string().optional(),
-  activeTab: z.string().optional(),
-  comments: z.string().optional(),
-  searchResults: z.array(z.string()).optional(),
-  previousMessages: z.array(z.string()).optional(),
-  chatTranscript: z.array(FeedbackChatExchange$inboundSchema).optional(),
-  numQueriesFromFirstRun: z.number().int().optional(),
-  vote: ManualFeedbackInfoVote$inboundSchema.optional(),
-  rating: z.number().int().optional(),
-  ratingKey: z.string().optional(),
-  ratingScale: z.number().int().optional(),
-});
+> = z.nativeEnum(ManualFeedbackInfoVote);
 
 /** @internal */
 export type ManualFeedbackInfo$Outbound = {
@@ -282,33 +206,10 @@ export const ManualFeedbackInfo$outboundSchema: z.ZodType<
   ratingScale: z.number().int().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualFeedbackInfo$ {
-  /** @deprecated use `ManualFeedbackInfo$inboundSchema` instead. */
-  export const inboundSchema = ManualFeedbackInfo$inboundSchema;
-  /** @deprecated use `ManualFeedbackInfo$outboundSchema` instead. */
-  export const outboundSchema = ManualFeedbackInfo$outboundSchema;
-  /** @deprecated use `ManualFeedbackInfo$Outbound` instead. */
-  export type Outbound = ManualFeedbackInfo$Outbound;
-}
-
 export function manualFeedbackInfoToJSON(
   manualFeedbackInfo: ManualFeedbackInfo,
 ): string {
   return JSON.stringify(
     ManualFeedbackInfo$outboundSchema.parse(manualFeedbackInfo),
-  );
-}
-
-export function manualFeedbackInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<ManualFeedbackInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ManualFeedbackInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ManualFeedbackInfo' from JSON`,
   );
 }

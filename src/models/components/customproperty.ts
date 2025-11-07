@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Describes the custom properties of the object.
@@ -17,16 +14,6 @@ export type CustomProperty = {
    */
   value?: any | undefined;
 };
-
-/** @internal */
-export const CustomProperty$inboundSchema: z.ZodType<
-  CustomProperty,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-  value: z.any().optional(),
-});
 
 /** @internal */
 export type CustomProperty$Outbound = {
@@ -44,29 +31,6 @@ export const CustomProperty$outboundSchema: z.ZodType<
   value: z.any().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CustomProperty$ {
-  /** @deprecated use `CustomProperty$inboundSchema` instead. */
-  export const inboundSchema = CustomProperty$inboundSchema;
-  /** @deprecated use `CustomProperty$outboundSchema` instead. */
-  export const outboundSchema = CustomProperty$outboundSchema;
-  /** @deprecated use `CustomProperty$Outbound` instead. */
-  export type Outbound = CustomProperty$Outbound;
-}
-
 export function customPropertyToJSON(customProperty: CustomProperty): string {
   return JSON.stringify(CustomProperty$outboundSchema.parse(customProperty));
-}
-
-export function customPropertyFromJSON(
-  jsonString: string,
-): SafeParseResult<CustomProperty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CustomProperty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CustomProperty' from JSON`,
-  );
 }

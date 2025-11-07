@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SearchAgentsRequest = {
   /**
@@ -13,15 +10,6 @@ export type SearchAgentsRequest = {
    */
   name?: string | undefined;
 };
-
-/** @internal */
-export const SearchAgentsRequest$inboundSchema: z.ZodType<
-  SearchAgentsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-});
 
 /** @internal */
 export type SearchAgentsRequest$Outbound = {
@@ -37,33 +25,10 @@ export const SearchAgentsRequest$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SearchAgentsRequest$ {
-  /** @deprecated use `SearchAgentsRequest$inboundSchema` instead. */
-  export const inboundSchema = SearchAgentsRequest$inboundSchema;
-  /** @deprecated use `SearchAgentsRequest$outboundSchema` instead. */
-  export const outboundSchema = SearchAgentsRequest$outboundSchema;
-  /** @deprecated use `SearchAgentsRequest$Outbound` instead. */
-  export type Outbound = SearchAgentsRequest$Outbound;
-}
-
 export function searchAgentsRequestToJSON(
   searchAgentsRequest: SearchAgentsRequest,
 ): string {
   return JSON.stringify(
     SearchAgentsRequest$outboundSchema.parse(searchAgentsRequest),
-  );
-}
-
-export function searchAgentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<SearchAgentsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SearchAgentsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SearchAgentsRequest' from JSON`,
   );
 }

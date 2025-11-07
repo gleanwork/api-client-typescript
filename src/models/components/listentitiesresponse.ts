@@ -6,35 +6,14 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  CustomEntity,
-  CustomEntity$inboundSchema,
-  CustomEntity$Outbound,
-  CustomEntity$outboundSchema,
-} from "./customentity.js";
+import { CustomEntity, CustomEntity$inboundSchema } from "./customentity.js";
 import {
   EntitiesSortOrder,
   EntitiesSortOrder$inboundSchema,
-  EntitiesSortOrder$outboundSchema,
 } from "./entitiessortorder.js";
-import {
-  FacetResult,
-  FacetResult$inboundSchema,
-  FacetResult$Outbound,
-  FacetResult$outboundSchema,
-} from "./facetresult.js";
-import {
-  Person,
-  Person$inboundSchema,
-  Person$Outbound,
-  Person$outboundSchema,
-} from "./person.js";
-import {
-  Team,
-  Team$inboundSchema,
-  Team$Outbound,
-  Team$outboundSchema,
-} from "./team.js";
+import { FacetResult, FacetResult$inboundSchema } from "./facetresult.js";
+import { Person, Person$inboundSchema } from "./person.js";
+import { Team, Team$inboundSchema } from "./team.js";
 
 export type ListEntitiesResponse = {
   results?: Array<Person> | undefined;
@@ -79,57 +58,6 @@ export const ListEntitiesResponse$inboundSchema: z.ZodType<
   sortOptions: z.array(EntitiesSortOrder$inboundSchema).optional(),
   customFacetNames: z.array(z.string()).optional(),
 });
-
-/** @internal */
-export type ListEntitiesResponse$Outbound = {
-  results?: Array<Person$Outbound> | undefined;
-  teamResults?: Array<Team$Outbound> | undefined;
-  customEntityResults?: Array<CustomEntity$Outbound> | undefined;
-  facetResults?: Array<FacetResult$Outbound> | undefined;
-  cursor?: string | undefined;
-  totalCount?: number | undefined;
-  hasMoreResults?: boolean | undefined;
-  sortOptions?: Array<string> | undefined;
-  customFacetNames?: Array<string> | undefined;
-};
-
-/** @internal */
-export const ListEntitiesResponse$outboundSchema: z.ZodType<
-  ListEntitiesResponse$Outbound,
-  z.ZodTypeDef,
-  ListEntitiesResponse
-> = z.object({
-  results: z.array(Person$outboundSchema).optional(),
-  teamResults: z.array(Team$outboundSchema).optional(),
-  customEntityResults: z.array(CustomEntity$outboundSchema).optional(),
-  facetResults: z.array(FacetResult$outboundSchema).optional(),
-  cursor: z.string().optional(),
-  totalCount: z.number().int().optional(),
-  hasMoreResults: z.boolean().optional(),
-  sortOptions: z.array(EntitiesSortOrder$outboundSchema).optional(),
-  customFacetNames: z.array(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListEntitiesResponse$ {
-  /** @deprecated use `ListEntitiesResponse$inboundSchema` instead. */
-  export const inboundSchema = ListEntitiesResponse$inboundSchema;
-  /** @deprecated use `ListEntitiesResponse$outboundSchema` instead. */
-  export const outboundSchema = ListEntitiesResponse$outboundSchema;
-  /** @deprecated use `ListEntitiesResponse$Outbound` instead. */
-  export type Outbound = ListEntitiesResponse$Outbound;
-}
-
-export function listEntitiesResponseToJSON(
-  listEntitiesResponse: ListEntitiesResponse,
-): string {
-  return JSON.stringify(
-    ListEntitiesResponse$outboundSchema.parse(listEntitiesResponse),
-  );
-}
 
 export function listEntitiesResponseFromJSON(
   jsonString: string,

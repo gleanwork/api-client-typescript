@@ -38,7 +38,6 @@ export const Share$inboundSchema: z.ZodType<Share, z.ZodTypeDef, unknown> = z
     sharer: z.lazy(() => Person$inboundSchema).optional(),
     sharingDocument: z.lazy(() => Document$inboundSchema).optional(),
   });
-
 /** @internal */
 export type Share$Outbound = {
   numDaysAgo: number;
@@ -57,23 +56,9 @@ export const Share$outboundSchema: z.ZodType<
   sharingDocument: z.lazy(() => Document$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Share$ {
-  /** @deprecated use `Share$inboundSchema` instead. */
-  export const inboundSchema = Share$inboundSchema;
-  /** @deprecated use `Share$outboundSchema` instead. */
-  export const outboundSchema = Share$outboundSchema;
-  /** @deprecated use `Share$Outbound` instead. */
-  export type Outbound = Share$Outbound;
-}
-
 export function shareToJSON(share: Share): string {
   return JSON.stringify(Share$outboundSchema.parse(share));
 }
-
 export function shareFromJSON(
   jsonString: string,
 ): SafeParseResult<Share, SDKValidationError> {

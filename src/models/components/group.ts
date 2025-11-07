@@ -44,7 +44,6 @@ export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> = z
     datasourceInstance: z.string().optional(),
     provisioningId: z.string().optional(),
   });
-
 /** @internal */
 export type Group$Outbound = {
   type: string;
@@ -67,23 +66,9 @@ export const Group$outboundSchema: z.ZodType<
   provisioningId: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Group$ {
-  /** @deprecated use `Group$inboundSchema` instead. */
-  export const inboundSchema = Group$inboundSchema;
-  /** @deprecated use `Group$outboundSchema` instead. */
-  export const outboundSchema = Group$outboundSchema;
-  /** @deprecated use `Group$Outbound` instead. */
-  export type Outbound = Group$Outbound;
-}
-
 export function groupToJSON(group: Group): string {
   return JSON.stringify(Group$outboundSchema.parse(group));
 }
-
 export function groupFromJSON(
   jsonString: string,
 ): SafeParseResult<Group, SDKValidationError> {

@@ -9,26 +9,18 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AgentsUsageByDepartmentInsight,
   AgentsUsageByDepartmentInsight$inboundSchema,
-  AgentsUsageByDepartmentInsight$Outbound,
-  AgentsUsageByDepartmentInsight$outboundSchema,
 } from "./agentsusagebydepartmentinsight.js";
 import {
   AgentUsersInsight,
   AgentUsersInsight$inboundSchema,
-  AgentUsersInsight$Outbound,
-  AgentUsersInsight$outboundSchema,
 } from "./agentusersinsight.js";
 import {
   LabeledCountInfo,
   LabeledCountInfo$inboundSchema,
-  LabeledCountInfo$Outbound,
-  LabeledCountInfo$outboundSchema,
 } from "./labeledcountinfo.js";
 import {
   PerAgentInsight,
   PerAgentInsight$inboundSchema,
-  PerAgentInsight$Outbound,
-  PerAgentInsight$outboundSchema,
 } from "./peragentinsight.js";
 
 export type AgentsInsightsV2Response = {
@@ -78,67 +70,6 @@ export const AgentsInsightsV2Response$inboundSchema: z.ZodType<
   upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
   downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
 });
-
-/** @internal */
-export type AgentsInsightsV2Response$Outbound = {
-  monthlyActiveUsers?: number | undefined;
-  weeklyActiveUsers?: number | undefined;
-  monthlyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  weeklyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  dailyActiveUserTimeseries?: LabeledCountInfo$Outbound | undefined;
-  sharedAgentsCount?: number | undefined;
-  topAgentsInsights?: Array<PerAgentInsight$Outbound> | undefined;
-  agentsUsageByDepartmentInsights?:
-    | Array<AgentsUsageByDepartmentInsight$Outbound>
-    | undefined;
-  agentUsersInsights?: Array<AgentUsersInsight$Outbound> | undefined;
-  dailyAgentRunsTimeseries?: LabeledCountInfo$Outbound | undefined;
-  upvotesTimeseries?: LabeledCountInfo$Outbound | undefined;
-  downvotesTimeseries?: LabeledCountInfo$Outbound | undefined;
-};
-
-/** @internal */
-export const AgentsInsightsV2Response$outboundSchema: z.ZodType<
-  AgentsInsightsV2Response$Outbound,
-  z.ZodTypeDef,
-  AgentsInsightsV2Response
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  sharedAgentsCount: z.number().int().optional(),
-  topAgentsInsights: z.array(PerAgentInsight$outboundSchema).optional(),
-  agentsUsageByDepartmentInsights: z.array(
-    AgentsUsageByDepartmentInsight$outboundSchema,
-  ).optional(),
-  agentUsersInsights: z.array(AgentUsersInsight$outboundSchema).optional(),
-  dailyAgentRunsTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  upvotesTimeseries: LabeledCountInfo$outboundSchema.optional(),
-  downvotesTimeseries: LabeledCountInfo$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AgentsInsightsV2Response$ {
-  /** @deprecated use `AgentsInsightsV2Response$inboundSchema` instead. */
-  export const inboundSchema = AgentsInsightsV2Response$inboundSchema;
-  /** @deprecated use `AgentsInsightsV2Response$outboundSchema` instead. */
-  export const outboundSchema = AgentsInsightsV2Response$outboundSchema;
-  /** @deprecated use `AgentsInsightsV2Response$Outbound` instead. */
-  export type Outbound = AgentsInsightsV2Response$Outbound;
-}
-
-export function agentsInsightsV2ResponseToJSON(
-  agentsInsightsV2Response: AgentsInsightsV2Response,
-): string {
-  return JSON.stringify(
-    AgentsInsightsV2Response$outboundSchema.parse(agentsInsightsV2Response),
-  );
-}
 
 export function agentsInsightsV2ResponseFromJSON(
   jsonString: string,

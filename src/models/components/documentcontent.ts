@@ -22,7 +22,6 @@ export const DocumentContent$inboundSchema: z.ZodType<
 > = z.object({
   fullTextList: z.array(z.string()).optional(),
 });
-
 /** @internal */
 export type DocumentContent$Outbound = {
   fullTextList?: Array<string> | undefined;
@@ -37,25 +36,11 @@ export const DocumentContent$outboundSchema: z.ZodType<
   fullTextList: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentContent$ {
-  /** @deprecated use `DocumentContent$inboundSchema` instead. */
-  export const inboundSchema = DocumentContent$inboundSchema;
-  /** @deprecated use `DocumentContent$outboundSchema` instead. */
-  export const outboundSchema = DocumentContent$outboundSchema;
-  /** @deprecated use `DocumentContent$Outbound` instead. */
-  export type Outbound = DocumentContent$Outbound;
-}
-
 export function documentContentToJSON(
   documentContent: DocumentContent,
 ): string {
   return JSON.stringify(DocumentContent$outboundSchema.parse(documentContent));
 }
-
 export function documentContentFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentContent, SDKValidationError> {

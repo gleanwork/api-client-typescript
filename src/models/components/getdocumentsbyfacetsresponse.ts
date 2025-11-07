@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
+import { Document, Document$inboundSchema } from "./document.js";
 
 export type GetDocumentsByFacetsResponse = {
   /**
@@ -38,47 +33,6 @@ export const GetDocumentsByFacetsResponse$inboundSchema: z.ZodType<
   hasMoreResults: z.boolean().optional(),
   cursor: z.string().optional(),
 });
-
-/** @internal */
-export type GetDocumentsByFacetsResponse$Outbound = {
-  documents?: Array<Document$Outbound> | undefined;
-  hasMoreResults?: boolean | undefined;
-  cursor?: string | undefined;
-};
-
-/** @internal */
-export const GetDocumentsByFacetsResponse$outboundSchema: z.ZodType<
-  GetDocumentsByFacetsResponse$Outbound,
-  z.ZodTypeDef,
-  GetDocumentsByFacetsResponse
-> = z.object({
-  documents: z.array(Document$outboundSchema).optional(),
-  hasMoreResults: z.boolean().optional(),
-  cursor: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentsByFacetsResponse$ {
-  /** @deprecated use `GetDocumentsByFacetsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentsByFacetsResponse$inboundSchema;
-  /** @deprecated use `GetDocumentsByFacetsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentsByFacetsResponse$outboundSchema;
-  /** @deprecated use `GetDocumentsByFacetsResponse$Outbound` instead. */
-  export type Outbound = GetDocumentsByFacetsResponse$Outbound;
-}
-
-export function getDocumentsByFacetsResponseToJSON(
-  getDocumentsByFacetsResponse: GetDocumentsByFacetsResponse,
-): string {
-  return JSON.stringify(
-    GetDocumentsByFacetsResponse$outboundSchema.parse(
-      getDocumentsByFacetsResponse,
-    ),
-  );
-}
 
 export function getDocumentsByFacetsResponseFromJSON(
   jsonString: string,

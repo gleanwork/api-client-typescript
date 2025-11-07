@@ -254,7 +254,6 @@ export const DocumentMetadata$inboundSchema: z.ZodType<
   indexStatus: IndexStatus$inboundSchema.optional(),
   ancestors: z.array(z.lazy(() => Document$inboundSchema)).optional(),
 });
-
 /** @internal */
 export type DocumentMetadata$Outbound = {
   datasource?: string | undefined;
@@ -347,19 +346,6 @@ export const DocumentMetadata$outboundSchema: z.ZodType<
   ancestors: z.array(z.lazy(() => Document$outboundSchema)).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DocumentMetadata$ {
-  /** @deprecated use `DocumentMetadata$inboundSchema` instead. */
-  export const inboundSchema = DocumentMetadata$inboundSchema;
-  /** @deprecated use `DocumentMetadata$outboundSchema` instead. */
-  export const outboundSchema = DocumentMetadata$outboundSchema;
-  /** @deprecated use `DocumentMetadata$Outbound` instead. */
-  export type Outbound = DocumentMetadata$Outbound;
-}
-
 export function documentMetadataToJSON(
   documentMetadata: DocumentMetadata,
 ): string {
@@ -367,7 +353,6 @@ export function documentMetadataToJSON(
     DocumentMetadata$outboundSchema.parse(documentMetadata),
   );
 }
-
 export function documentMetadataFromJSON(
   jsonString: string,
 ): SafeParseResult<DocumentMetadata, SDKValidationError> {

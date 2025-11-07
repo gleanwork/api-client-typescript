@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PostApiIndexV1DebugDatasourceDocumentsRequest = {
   /**
@@ -16,21 +13,6 @@ export type PostApiIndexV1DebugDatasourceDocumentsRequest = {
   datasource: string;
   debugDocumentsRequest: components.DebugDocumentsRequest;
 };
-
-/** @internal */
-export const PostApiIndexV1DebugDatasourceDocumentsRequest$inboundSchema:
-  z.ZodType<
-    PostApiIndexV1DebugDatasourceDocumentsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    datasource: z.string(),
-    DebugDocumentsRequest: components.DebugDocumentsRequest$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "DebugDocumentsRequest": "debugDocumentsRequest",
-    });
-  });
 
 /** @internal */
 export type PostApiIndexV1DebugDatasourceDocumentsRequest$Outbound = {
@@ -53,21 +35,6 @@ export const PostApiIndexV1DebugDatasourceDocumentsRequest$outboundSchema:
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostApiIndexV1DebugDatasourceDocumentsRequest$ {
-  /** @deprecated use `PostApiIndexV1DebugDatasourceDocumentsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostApiIndexV1DebugDatasourceDocumentsRequest$inboundSchema;
-  /** @deprecated use `PostApiIndexV1DebugDatasourceDocumentsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostApiIndexV1DebugDatasourceDocumentsRequest$outboundSchema;
-  /** @deprecated use `PostApiIndexV1DebugDatasourceDocumentsRequest$Outbound` instead. */
-  export type Outbound = PostApiIndexV1DebugDatasourceDocumentsRequest$Outbound;
-}
-
 export function postApiIndexV1DebugDatasourceDocumentsRequestToJSON(
   postApiIndexV1DebugDatasourceDocumentsRequest:
     PostApiIndexV1DebugDatasourceDocumentsRequest,
@@ -76,21 +43,5 @@ export function postApiIndexV1DebugDatasourceDocumentsRequestToJSON(
     PostApiIndexV1DebugDatasourceDocumentsRequest$outboundSchema.parse(
       postApiIndexV1DebugDatasourceDocumentsRequest,
     ),
-  );
-}
-
-export function postApiIndexV1DebugDatasourceDocumentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostApiIndexV1DebugDatasourceDocumentsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostApiIndexV1DebugDatasourceDocumentsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostApiIndexV1DebugDatasourceDocumentsRequest' from JSON`,
   );
 }

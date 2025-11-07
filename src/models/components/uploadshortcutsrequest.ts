@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IndexingShortcut,
-  IndexingShortcut$inboundSchema,
   IndexingShortcut$Outbound,
   IndexingShortcut$outboundSchema,
 } from "./indexingshortcut.js";
@@ -40,19 +36,6 @@ export type UploadShortcutsRequest = {
 };
 
 /** @internal */
-export const UploadShortcutsRequest$inboundSchema: z.ZodType<
-  UploadShortcutsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  shortcuts: z.array(IndexingShortcut$inboundSchema),
-});
-
-/** @internal */
 export type UploadShortcutsRequest$Outbound = {
   uploadId: string;
   isFirstPage?: boolean | undefined;
@@ -74,33 +57,10 @@ export const UploadShortcutsRequest$outboundSchema: z.ZodType<
   shortcuts: z.array(IndexingShortcut$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace UploadShortcutsRequest$ {
-  /** @deprecated use `UploadShortcutsRequest$inboundSchema` instead. */
-  export const inboundSchema = UploadShortcutsRequest$inboundSchema;
-  /** @deprecated use `UploadShortcutsRequest$outboundSchema` instead. */
-  export const outboundSchema = UploadShortcutsRequest$outboundSchema;
-  /** @deprecated use `UploadShortcutsRequest$Outbound` instead. */
-  export type Outbound = UploadShortcutsRequest$Outbound;
-}
-
 export function uploadShortcutsRequestToJSON(
   uploadShortcutsRequest: UploadShortcutsRequest,
 ): string {
   return JSON.stringify(
     UploadShortcutsRequest$outboundSchema.parse(uploadShortcutsRequest),
-  );
-}
-
-export function uploadShortcutsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadShortcutsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadShortcutsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadShortcutsRequest' from JSON`,
   );
 }

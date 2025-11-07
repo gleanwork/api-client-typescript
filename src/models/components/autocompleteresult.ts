@@ -7,36 +7,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Document,
-  Document$inboundSchema,
-  Document$Outbound,
-  Document$outboundSchema,
-} from "./document.js";
+import { Document, Document$inboundSchema } from "./document.js";
 import {
   OperatorMetadata,
   OperatorMetadata$inboundSchema,
-  OperatorMetadata$Outbound,
-  OperatorMetadata$outboundSchema,
 } from "./operatormetadata.js";
-import {
-  Quicklink,
-  Quicklink$inboundSchema,
-  Quicklink$Outbound,
-  Quicklink$outboundSchema,
-} from "./quicklink.js";
+import { Quicklink, Quicklink$inboundSchema } from "./quicklink.js";
 import {
   StructuredResult,
   StructuredResult$inboundSchema,
-  StructuredResult$Outbound,
-  StructuredResult$outboundSchema,
 } from "./structuredresult.js";
-import {
-  TextRange,
-  TextRange$inboundSchema,
-  TextRange$Outbound,
-  TextRange$outboundSchema,
-} from "./textrange.js";
+import { TextRange, TextRange$inboundSchema } from "./textrange.js";
 
 export const AutocompleteResultResultType = {
   AdditionalDocument: "ADDITIONAL_DOCUMENT",
@@ -96,22 +77,6 @@ export const AutocompleteResultResultType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(AutocompleteResultResultType);
 
 /** @internal */
-export const AutocompleteResultResultType$outboundSchema: z.ZodNativeEnum<
-  typeof AutocompleteResultResultType
-> = AutocompleteResultResultType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutocompleteResultResultType$ {
-  /** @deprecated use `AutocompleteResultResultType$inboundSchema` instead. */
-  export const inboundSchema = AutocompleteResultResultType$inboundSchema;
-  /** @deprecated use `AutocompleteResultResultType$outboundSchema` instead. */
-  export const outboundSchema = AutocompleteResultResultType$outboundSchema;
-}
-
-/** @internal */
 export const AutocompleteResult$inboundSchema: z.ZodType<
   AutocompleteResult,
   z.ZodTypeDef,
@@ -129,61 +94,6 @@ export const AutocompleteResult$inboundSchema: z.ZodType<
   trackingToken: z.string().optional(),
   ranges: z.array(TextRange$inboundSchema).optional(),
 });
-
-/** @internal */
-export type AutocompleteResult$Outbound = {
-  result: string;
-  keywords?: Array<string> | undefined;
-  resultType?: string | undefined;
-  score?: number | undefined;
-  operatorMetadata?: OperatorMetadata$Outbound | undefined;
-  quicklink?: Quicklink$Outbound | undefined;
-  document?: Document$Outbound | undefined;
-  url?: string | undefined;
-  structuredResult?: StructuredResult$Outbound | undefined;
-  trackingToken?: string | undefined;
-  ranges?: Array<TextRange$Outbound> | undefined;
-};
-
-/** @internal */
-export const AutocompleteResult$outboundSchema: z.ZodType<
-  AutocompleteResult$Outbound,
-  z.ZodTypeDef,
-  AutocompleteResult
-> = z.object({
-  result: z.string(),
-  keywords: z.array(z.string()).optional(),
-  resultType: AutocompleteResultResultType$outboundSchema.optional(),
-  score: z.number().optional(),
-  operatorMetadata: OperatorMetadata$outboundSchema.optional(),
-  quicklink: Quicklink$outboundSchema.optional(),
-  document: Document$outboundSchema.optional(),
-  url: z.string().optional(),
-  structuredResult: StructuredResult$outboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  ranges: z.array(TextRange$outboundSchema).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AutocompleteResult$ {
-  /** @deprecated use `AutocompleteResult$inboundSchema` instead. */
-  export const inboundSchema = AutocompleteResult$inboundSchema;
-  /** @deprecated use `AutocompleteResult$outboundSchema` instead. */
-  export const outboundSchema = AutocompleteResult$outboundSchema;
-  /** @deprecated use `AutocompleteResult$Outbound` instead. */
-  export type Outbound = AutocompleteResult$Outbound;
-}
-
-export function autocompleteResultToJSON(
-  autocompleteResult: AutocompleteResult,
-): string {
-  return JSON.stringify(
-    AutocompleteResult$outboundSchema.parse(autocompleteResult),
-  );
-}
 
 export function autocompleteResultFromJSON(
   jsonString: string,

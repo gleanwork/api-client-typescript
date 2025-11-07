@@ -3,13 +3,9 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SideBySideImplementation,
-  SideBySideImplementation$inboundSchema,
   SideBySideImplementation$Outbound,
   SideBySideImplementation$outboundSchema,
 } from "./sidebysideimplementation.js";
@@ -80,63 +76,14 @@ export type ManualFeedbackSideBySideInfo = {
 };
 
 /** @internal */
-export const ManualFeedbackSideBySideInfoSource$inboundSchema: z.ZodNativeEnum<
+export const ManualFeedbackSideBySideInfoSource$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackSideBySideInfoSource
 > = z.nativeEnum(ManualFeedbackSideBySideInfoSource);
 
 /** @internal */
-export const ManualFeedbackSideBySideInfoSource$outboundSchema: z.ZodNativeEnum<
-  typeof ManualFeedbackSideBySideInfoSource
-> = ManualFeedbackSideBySideInfoSource$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualFeedbackSideBySideInfoSource$ {
-  /** @deprecated use `ManualFeedbackSideBySideInfoSource$inboundSchema` instead. */
-  export const inboundSchema = ManualFeedbackSideBySideInfoSource$inboundSchema;
-  /** @deprecated use `ManualFeedbackSideBySideInfoSource$outboundSchema` instead. */
-  export const outboundSchema =
-    ManualFeedbackSideBySideInfoSource$outboundSchema;
-}
-
-/** @internal */
-export const ManualFeedbackSideBySideInfoVote$inboundSchema: z.ZodNativeEnum<
-  typeof ManualFeedbackSideBySideInfoVote
-> = z.nativeEnum(ManualFeedbackSideBySideInfoVote);
-
-/** @internal */
 export const ManualFeedbackSideBySideInfoVote$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackSideBySideInfoVote
-> = ManualFeedbackSideBySideInfoVote$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualFeedbackSideBySideInfoVote$ {
-  /** @deprecated use `ManualFeedbackSideBySideInfoVote$inboundSchema` instead. */
-  export const inboundSchema = ManualFeedbackSideBySideInfoVote$inboundSchema;
-  /** @deprecated use `ManualFeedbackSideBySideInfoVote$outboundSchema` instead. */
-  export const outboundSchema = ManualFeedbackSideBySideInfoVote$outboundSchema;
-}
-
-/** @internal */
-export const ManualFeedbackSideBySideInfo$inboundSchema: z.ZodType<
-  ManualFeedbackSideBySideInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: z.string().optional(),
-  source: ManualFeedbackSideBySideInfoSource$inboundSchema.optional(),
-  query: z.string().optional(),
-  implementations: z.array(SideBySideImplementation$inboundSchema).optional(),
-  evaluationSessionId: z.string().optional(),
-  implementationId: z.string().optional(),
-  vote: ManualFeedbackSideBySideInfoVote$inboundSchema.optional(),
-  comments: z.string().optional(),
-});
+> = z.nativeEnum(ManualFeedbackSideBySideInfoVote);
 
 /** @internal */
 export type ManualFeedbackSideBySideInfo$Outbound = {
@@ -166,19 +113,6 @@ export const ManualFeedbackSideBySideInfo$outboundSchema: z.ZodType<
   comments: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManualFeedbackSideBySideInfo$ {
-  /** @deprecated use `ManualFeedbackSideBySideInfo$inboundSchema` instead. */
-  export const inboundSchema = ManualFeedbackSideBySideInfo$inboundSchema;
-  /** @deprecated use `ManualFeedbackSideBySideInfo$outboundSchema` instead. */
-  export const outboundSchema = ManualFeedbackSideBySideInfo$outboundSchema;
-  /** @deprecated use `ManualFeedbackSideBySideInfo$Outbound` instead. */
-  export type Outbound = ManualFeedbackSideBySideInfo$Outbound;
-}
-
 export function manualFeedbackSideBySideInfoToJSON(
   manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo,
 ): string {
@@ -186,15 +120,5 @@ export function manualFeedbackSideBySideInfoToJSON(
     ManualFeedbackSideBySideInfo$outboundSchema.parse(
       manualFeedbackSideBySideInfo,
     ),
-  );
-}
-
-export function manualFeedbackSideBySideInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<ManualFeedbackSideBySideInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ManualFeedbackSideBySideInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ManualFeedbackSideBySideInfo' from JSON`,
   );
 }

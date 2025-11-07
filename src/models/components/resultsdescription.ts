@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  IconConfig,
-  IconConfig$inboundSchema,
-  IconConfig$Outbound,
-  IconConfig$outboundSchema,
-} from "./iconconfig.js";
+import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
 
 export type ResultsDescription = {
   /**
@@ -33,43 +28,6 @@ export const ResultsDescription$inboundSchema: z.ZodType<
   text: z.string().optional(),
   iconConfig: IconConfig$inboundSchema.optional(),
 });
-
-/** @internal */
-export type ResultsDescription$Outbound = {
-  text?: string | undefined;
-  iconConfig?: IconConfig$Outbound | undefined;
-};
-
-/** @internal */
-export const ResultsDescription$outboundSchema: z.ZodType<
-  ResultsDescription$Outbound,
-  z.ZodTypeDef,
-  ResultsDescription
-> = z.object({
-  text: z.string().optional(),
-  iconConfig: IconConfig$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ResultsDescription$ {
-  /** @deprecated use `ResultsDescription$inboundSchema` instead. */
-  export const inboundSchema = ResultsDescription$inboundSchema;
-  /** @deprecated use `ResultsDescription$outboundSchema` instead. */
-  export const outboundSchema = ResultsDescription$outboundSchema;
-  /** @deprecated use `ResultsDescription$Outbound` instead. */
-  export type Outbound = ResultsDescription$Outbound;
-}
-
-export function resultsDescriptionToJSON(
-  resultsDescription: ResultsDescription,
-): string {
-  return JSON.stringify(
-    ResultsDescription$outboundSchema.parse(resultsDescription),
-  );
-}
 
 export function resultsDescriptionFromJSON(
   jsonString: string,

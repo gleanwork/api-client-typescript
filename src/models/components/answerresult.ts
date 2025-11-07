@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  Answer,
-  Answer$inboundSchema,
-  Answer$Outbound,
-  Answer$outboundSchema,
-} from "./answer.js";
+import { Answer, Answer$inboundSchema } from "./answer.js";
 
 export type AnswerResult = {
   answer: Answer;
@@ -30,39 +25,6 @@ export const AnswerResult$inboundSchema: z.ZodType<
   answer: Answer$inboundSchema,
   trackingToken: z.string().optional(),
 });
-
-/** @internal */
-export type AnswerResult$Outbound = {
-  answer: Answer$Outbound;
-  trackingToken?: string | undefined;
-};
-
-/** @internal */
-export const AnswerResult$outboundSchema: z.ZodType<
-  AnswerResult$Outbound,
-  z.ZodTypeDef,
-  AnswerResult
-> = z.object({
-  answer: Answer$outboundSchema,
-  trackingToken: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerResult$ {
-  /** @deprecated use `AnswerResult$inboundSchema` instead. */
-  export const inboundSchema = AnswerResult$inboundSchema;
-  /** @deprecated use `AnswerResult$outboundSchema` instead. */
-  export const outboundSchema = AnswerResult$outboundSchema;
-  /** @deprecated use `AnswerResult$Outbound` instead. */
-  export type Outbound = AnswerResult$Outbound;
-}
-
-export function answerResultToJSON(answerResult: AnswerResult): string {
-  return JSON.stringify(AnswerResult$outboundSchema.parse(answerResult));
-}
 
 export function answerResultFromJSON(
   jsonString: string,

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InsightsAiAppRequestOptions = {
   /**
@@ -13,15 +10,6 @@ export type InsightsAiAppRequestOptions = {
    */
   aiAppIds?: Array<string> | undefined;
 };
-
-/** @internal */
-export const InsightsAiAppRequestOptions$inboundSchema: z.ZodType<
-  InsightsAiAppRequestOptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  aiAppIds: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type InsightsAiAppRequestOptions$Outbound = {
@@ -37,19 +25,6 @@ export const InsightsAiAppRequestOptions$outboundSchema: z.ZodType<
   aiAppIds: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InsightsAiAppRequestOptions$ {
-  /** @deprecated use `InsightsAiAppRequestOptions$inboundSchema` instead. */
-  export const inboundSchema = InsightsAiAppRequestOptions$inboundSchema;
-  /** @deprecated use `InsightsAiAppRequestOptions$outboundSchema` instead. */
-  export const outboundSchema = InsightsAiAppRequestOptions$outboundSchema;
-  /** @deprecated use `InsightsAiAppRequestOptions$Outbound` instead. */
-  export type Outbound = InsightsAiAppRequestOptions$Outbound;
-}
-
 export function insightsAiAppRequestOptionsToJSON(
   insightsAiAppRequestOptions: InsightsAiAppRequestOptions,
 ): string {
@@ -57,15 +32,5 @@ export function insightsAiAppRequestOptionsToJSON(
     InsightsAiAppRequestOptions$outboundSchema.parse(
       insightsAiAppRequestOptions,
     ),
-  );
-}
-
-export function insightsAiAppRequestOptionsFromJSON(
-  jsonString: string,
-): SafeParseResult<InsightsAiAppRequestOptions, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => InsightsAiAppRequestOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'InsightsAiAppRequestOptions' from JSON`,
   );
 }

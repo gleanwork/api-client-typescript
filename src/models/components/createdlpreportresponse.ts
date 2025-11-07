@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  DlpReport,
-  DlpReport$inboundSchema,
-  DlpReport$Outbound,
-  DlpReport$outboundSchema,
-} from "./dlpreport.js";
+import { DlpReport, DlpReport$inboundSchema } from "./dlpreport.js";
 
 export type CreateDlpReportResponse = {
   /**
@@ -28,41 +23,6 @@ export const CreateDlpReportResponse$inboundSchema: z.ZodType<
 > = z.object({
   report: DlpReport$inboundSchema.optional(),
 });
-
-/** @internal */
-export type CreateDlpReportResponse$Outbound = {
-  report?: DlpReport$Outbound | undefined;
-};
-
-/** @internal */
-export const CreateDlpReportResponse$outboundSchema: z.ZodType<
-  CreateDlpReportResponse$Outbound,
-  z.ZodTypeDef,
-  CreateDlpReportResponse
-> = z.object({
-  report: DlpReport$outboundSchema.optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateDlpReportResponse$ {
-  /** @deprecated use `CreateDlpReportResponse$inboundSchema` instead. */
-  export const inboundSchema = CreateDlpReportResponse$inboundSchema;
-  /** @deprecated use `CreateDlpReportResponse$outboundSchema` instead. */
-  export const outboundSchema = CreateDlpReportResponse$outboundSchema;
-  /** @deprecated use `CreateDlpReportResponse$Outbound` instead. */
-  export type Outbound = CreateDlpReportResponse$Outbound;
-}
-
-export function createDlpReportResponseToJSON(
-  createDlpReportResponse: CreateDlpReportResponse,
-): string {
-  return JSON.stringify(
-    CreateDlpReportResponse$outboundSchema.parse(createDlpReportResponse),
-  );
-}
 
 export function createDlpReportResponseFromJSON(
   jsonString: string,

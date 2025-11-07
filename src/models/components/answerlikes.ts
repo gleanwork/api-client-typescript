@@ -35,7 +35,6 @@ export const AnswerLikes$inboundSchema: z.ZodType<
   likedByUser: z.boolean(),
   numLikes: z.number().int(),
 });
-
 /** @internal */
 export type AnswerLikes$Outbound = {
   likedBy: Array<AnswerLike$Outbound>;
@@ -54,23 +53,9 @@ export const AnswerLikes$outboundSchema: z.ZodType<
   numLikes: z.number().int(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AnswerLikes$ {
-  /** @deprecated use `AnswerLikes$inboundSchema` instead. */
-  export const inboundSchema = AnswerLikes$inboundSchema;
-  /** @deprecated use `AnswerLikes$outboundSchema` instead. */
-  export const outboundSchema = AnswerLikes$outboundSchema;
-  /** @deprecated use `AnswerLikes$Outbound` instead. */
-  export type Outbound = AnswerLikes$Outbound;
-}
-
 export function answerLikesToJSON(answerLikes: AnswerLikes): string {
   return JSON.stringify(AnswerLikes$outboundSchema.parse(answerLikes));
 }
-
 export function answerLikesFromJSON(
   jsonString: string,
 ): SafeParseResult<AnswerLikes, SDKValidationError> {

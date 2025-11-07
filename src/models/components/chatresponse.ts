@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  ChatMessage,
-  ChatMessage$inboundSchema,
-  ChatMessage$Outbound,
-  ChatMessage$outboundSchema,
-} from "./chatmessage.js";
+import { ChatMessage, ChatMessage$inboundSchema } from "./chatmessage.js";
 
 /**
  * A single response from the /chat backend.
@@ -48,45 +43,6 @@ export const ChatResponse$inboundSchema: z.ZodType<
   backendTimeMillis: z.number().int().optional(),
   chatSessionTrackingToken: z.string().optional(),
 });
-
-/** @internal */
-export type ChatResponse$Outbound = {
-  messages?: Array<ChatMessage$Outbound> | undefined;
-  chatId?: string | undefined;
-  followUpPrompts?: Array<string> | undefined;
-  backendTimeMillis?: number | undefined;
-  chatSessionTrackingToken?: string | undefined;
-};
-
-/** @internal */
-export const ChatResponse$outboundSchema: z.ZodType<
-  ChatResponse$Outbound,
-  z.ZodTypeDef,
-  ChatResponse
-> = z.object({
-  messages: z.array(ChatMessage$outboundSchema).optional(),
-  chatId: z.string().optional(),
-  followUpPrompts: z.array(z.string()).optional(),
-  backendTimeMillis: z.number().int().optional(),
-  chatSessionTrackingToken: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChatResponse$ {
-  /** @deprecated use `ChatResponse$inboundSchema` instead. */
-  export const inboundSchema = ChatResponse$inboundSchema;
-  /** @deprecated use `ChatResponse$outboundSchema` instead. */
-  export const outboundSchema = ChatResponse$outboundSchema;
-  /** @deprecated use `ChatResponse$Outbound` instead. */
-  export type Outbound = ChatResponse$Outbound;
-}
-
-export function chatResponseToJSON(chatResponse: ChatResponse): string {
-  return JSON.stringify(ChatResponse$outboundSchema.parse(chatResponse));
-}
 
 export function chatResponseFromJSON(
   jsonString: string,

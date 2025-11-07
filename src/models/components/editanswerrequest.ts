@@ -3,31 +3,24 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   DocumentSpecUnion,
-  DocumentSpecUnion$inboundSchema,
   DocumentSpecUnion$Outbound,
   DocumentSpecUnion$outboundSchema,
 } from "./documentspecunion.js";
 import {
   FacetFilter,
-  FacetFilter$inboundSchema,
   FacetFilter$Outbound,
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
   StructuredTextMutableProperties,
-  StructuredTextMutableProperties$inboundSchema,
   StructuredTextMutableProperties$Outbound,
   StructuredTextMutableProperties$outboundSchema,
 } from "./structuredtextmutableproperties.js";
 import {
   UserRoleSpecification,
-  UserRoleSpecification$inboundSchema,
   UserRoleSpecification$Outbound,
   UserRoleSpecification$outboundSchema,
 } from "./userrolespecification.js";
@@ -94,48 +87,9 @@ export type EditAnswerRequest = {
 };
 
 /** @internal */
-export const EditAnswerRequestSourceType$inboundSchema: z.ZodNativeEnum<
-  typeof EditAnswerRequestSourceType
-> = z.nativeEnum(EditAnswerRequestSourceType);
-
-/** @internal */
 export const EditAnswerRequestSourceType$outboundSchema: z.ZodNativeEnum<
   typeof EditAnswerRequestSourceType
-> = EditAnswerRequestSourceType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditAnswerRequestSourceType$ {
-  /** @deprecated use `EditAnswerRequestSourceType$inboundSchema` instead. */
-  export const inboundSchema = EditAnswerRequestSourceType$inboundSchema;
-  /** @deprecated use `EditAnswerRequestSourceType$outboundSchema` instead. */
-  export const outboundSchema = EditAnswerRequestSourceType$outboundSchema;
-}
-
-/** @internal */
-export const EditAnswerRequest$inboundSchema: z.ZodType<
-  EditAnswerRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.number().int(),
-  docId: z.string().optional(),
-  question: z.string().optional(),
-  questionVariations: z.array(z.string()).optional(),
-  bodyText: z.string().optional(),
-  boardId: z.number().int().optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  roles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
-  sourceType: EditAnswerRequestSourceType$inboundSchema.optional(),
-  addedCollections: z.array(z.number().int()).optional(),
-  removedCollections: z.array(z.number().int()).optional(),
-  combinedAnswerText: StructuredTextMutableProperties$inboundSchema.optional(),
-});
+> = z.nativeEnum(EditAnswerRequestSourceType);
 
 /** @internal */
 export type EditAnswerRequest$Outbound = {
@@ -179,33 +133,10 @@ export const EditAnswerRequest$outboundSchema: z.ZodType<
   combinedAnswerText: StructuredTextMutableProperties$outboundSchema.optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EditAnswerRequest$ {
-  /** @deprecated use `EditAnswerRequest$inboundSchema` instead. */
-  export const inboundSchema = EditAnswerRequest$inboundSchema;
-  /** @deprecated use `EditAnswerRequest$outboundSchema` instead. */
-  export const outboundSchema = EditAnswerRequest$outboundSchema;
-  /** @deprecated use `EditAnswerRequest$Outbound` instead. */
-  export type Outbound = EditAnswerRequest$Outbound;
-}
-
 export function editAnswerRequestToJSON(
   editAnswerRequest: EditAnswerRequest,
 ): string {
   return JSON.stringify(
     EditAnswerRequest$outboundSchema.parse(editAnswerRequest),
-  );
-}
-
-export function editAnswerRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<EditAnswerRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EditAnswerRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EditAnswerRequest' from JSON`,
   );
 }

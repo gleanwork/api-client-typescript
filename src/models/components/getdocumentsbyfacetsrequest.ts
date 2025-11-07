@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   FacetFilterSet,
-  FacetFilterSet$inboundSchema,
   FacetFilterSet$Outbound,
   FacetFilterSet$outboundSchema,
 } from "./facetfilterset.js";
@@ -29,17 +25,6 @@ export type GetDocumentsByFacetsRequest = {
 };
 
 /** @internal */
-export const GetDocumentsByFacetsRequest$inboundSchema: z.ZodType<
-  GetDocumentsByFacetsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  datasourcesFilter: z.array(z.string()).optional(),
-  filterSets: z.array(FacetFilterSet$inboundSchema),
-  cursor: z.string().optional(),
-});
-
-/** @internal */
 export type GetDocumentsByFacetsRequest$Outbound = {
   datasourcesFilter?: Array<string> | undefined;
   filterSets: Array<FacetFilterSet$Outbound>;
@@ -57,19 +42,6 @@ export const GetDocumentsByFacetsRequest$outboundSchema: z.ZodType<
   cursor: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetDocumentsByFacetsRequest$ {
-  /** @deprecated use `GetDocumentsByFacetsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetDocumentsByFacetsRequest$inboundSchema;
-  /** @deprecated use `GetDocumentsByFacetsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetDocumentsByFacetsRequest$outboundSchema;
-  /** @deprecated use `GetDocumentsByFacetsRequest$Outbound` instead. */
-  export type Outbound = GetDocumentsByFacetsRequest$Outbound;
-}
-
 export function getDocumentsByFacetsRequestToJSON(
   getDocumentsByFacetsRequest: GetDocumentsByFacetsRequest,
 ): string {
@@ -77,15 +49,5 @@ export function getDocumentsByFacetsRequestToJSON(
     GetDocumentsByFacetsRequest$outboundSchema.parse(
       getDocumentsByFacetsRequest,
     ),
-  );
-}
-
-export function getDocumentsByFacetsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDocumentsByFacetsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDocumentsByFacetsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDocumentsByFacetsRequest' from JSON`,
   );
 }

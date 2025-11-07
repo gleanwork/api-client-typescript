@@ -39,7 +39,6 @@ export const ToolInfo$inboundSchema: z.ZodType<
   metadata: ToolMetadata$inboundSchema.optional(),
   parameters: z.record(WriteActionParameter$inboundSchema).optional(),
 });
-
 /** @internal */
 export type ToolInfo$Outbound = {
   metadata?: ToolMetadata$Outbound | undefined;
@@ -56,23 +55,9 @@ export const ToolInfo$outboundSchema: z.ZodType<
   parameters: z.record(WriteActionParameter$outboundSchema).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ToolInfo$ {
-  /** @deprecated use `ToolInfo$inboundSchema` instead. */
-  export const inboundSchema = ToolInfo$inboundSchema;
-  /** @deprecated use `ToolInfo$outboundSchema` instead. */
-  export const outboundSchema = ToolInfo$outboundSchema;
-  /** @deprecated use `ToolInfo$Outbound` instead. */
-  export type Outbound = ToolInfo$Outbound;
-}
-
 export function toolInfoToJSON(toolInfo: ToolInfo): string {
   return JSON.stringify(ToolInfo$outboundSchema.parse(toolInfo));
 }
-
 export function toolInfoFromJSON(
   jsonString: string,
 ): SafeParseResult<ToolInfo, SDKValidationError> {

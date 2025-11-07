@@ -6,12 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  AnswerResult,
-  AnswerResult$inboundSchema,
-  AnswerResult$Outbound,
-  AnswerResult$outboundSchema,
-} from "./answerresult.js";
+import { AnswerResult, AnswerResult$inboundSchema } from "./answerresult.js";
 
 export type ListAnswersResponse = {
   /**
@@ -28,41 +23,6 @@ export const ListAnswersResponse$inboundSchema: z.ZodType<
 > = z.object({
   answerResults: z.array(AnswerResult$inboundSchema),
 });
-
-/** @internal */
-export type ListAnswersResponse$Outbound = {
-  answerResults: Array<AnswerResult$Outbound>;
-};
-
-/** @internal */
-export const ListAnswersResponse$outboundSchema: z.ZodType<
-  ListAnswersResponse$Outbound,
-  z.ZodTypeDef,
-  ListAnswersResponse
-> = z.object({
-  answerResults: z.array(AnswerResult$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ListAnswersResponse$ {
-  /** @deprecated use `ListAnswersResponse$inboundSchema` instead. */
-  export const inboundSchema = ListAnswersResponse$inboundSchema;
-  /** @deprecated use `ListAnswersResponse$outboundSchema` instead. */
-  export const outboundSchema = ListAnswersResponse$outboundSchema;
-  /** @deprecated use `ListAnswersResponse$Outbound` instead. */
-  export type Outbound = ListAnswersResponse$Outbound;
-}
-
-export function listAnswersResponseToJSON(
-  listAnswersResponse: ListAnswersResponse,
-): string {
-  return JSON.stringify(
-    ListAnswersResponse$outboundSchema.parse(listAnswersResponse),
-  );
-}
 
 export function listAnswersResponseFromJSON(
   jsonString: string,
