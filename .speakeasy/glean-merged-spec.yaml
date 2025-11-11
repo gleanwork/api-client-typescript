@@ -4206,6 +4206,12 @@ components:
                         - LT
                         - GT
                         - NOT_EQUALS
+                    x-enumDescriptions:
+                        EQUALS: The value is equal to the specified value.
+                        ID_EQUALS: The value is equal to the specified ID.
+                        LT: The value is less than the specified value.
+                        GT: The value is greater than the specified value.
+                        NOT_EQUALS: The value is not equal to the specified value.
                     example: EQUALS
                 isNegated:
                     type: boolean
