@@ -9,11 +9,29 @@ import { ClosedEnum } from "../../types/enums.js";
  * The level of visibility of the document as understood by our system.
  */
 export const DocumentVisibility = {
+  /**
+   * Only one person is able to see the document.
+   */
   Private: "PRIVATE",
+  /**
+   * Only specific people and/or groups can see the document.
+   */
   SpecificPeopleAndGroups: "SPECIFIC_PEOPLE_AND_GROUPS",
+  /**
+   * Anyone in the domain with the link can see the document.
+   */
   DomainLink: "DOMAIN_LINK",
+  /**
+   * Anyone in the domain can search for the document.
+   */
   DomainVisible: "DOMAIN_VISIBLE",
+  /**
+   * Anyone with the link can see the document.
+   */
   PublicLink: "PUBLIC_LINK",
+  /**
+   * Anyone on the internet can search for the document.
+   */
   PublicVisible: "PUBLIC_VISIBLE",
 } as const;
 /**

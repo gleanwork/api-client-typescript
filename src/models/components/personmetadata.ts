@@ -82,9 +82,21 @@ import {
 } from "./structuredlocation.js";
 
 export const PersonMetadataType = {
+  /**
+   * The person is a current full-time employee of the company.
+   */
   FullTime: "FULL_TIME",
+  /**
+   * The person is a current contractor of the company.
+   */
   Contractor: "CONTRACTOR",
+  /**
+   * The person object represents a non-human actor such as a service or admin account.
+   */
   NonEmployee: "NON_EMPLOYEE",
+  /**
+   * The person is a previous employee of the company.
+   */
   FormerEmployee: "FORMER_EMPLOYEE",
 } as const;
 export type PersonMetadataType = ClosedEnum<typeof PersonMetadataType>;

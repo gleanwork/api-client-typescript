@@ -36,14 +36,41 @@ export type Author = ClosedEnum<typeof Author>;
  * Semantically groups content of a certain type. It can be used for purposes such as differential UI treatment. USER authored messages should be of type CONTENT and do not need `messageType` specified.
  */
 export const MessageType = {
+  /**
+   * An intermediate state message for progress updates.
+   */
   Update: "UPDATE",
+  /**
+   * A user query or response message.
+   */
   Content: "CONTENT",
+  /**
+   * A message providing context in addition to the user query.
+   */
   Context: "CONTEXT",
+  /**
+   * A debug message. Strictly used internally.
+   */
   Debug: "DEBUG",
+  /**
+   * A debug message to be used while debugging Action creation.
+   */
   DebugExternal: "DEBUG_EXTERNAL",
+  /**
+   * A message that describes an error while processing the request.
+   */
   Error: "ERROR",
+  /**
+   * A heading message used to distinguish different sections of the holistic response.
+   */
   Heading: "HEADING",
+  /**
+   * A warning message to be shown to the user.
+   */
   Warning: "WARNING",
+  /**
+   * A message used to for server-side tool auth/use, for request and response.
+   */
   ServerTool: "SERVER_TOOL",
 } as const;
 /**

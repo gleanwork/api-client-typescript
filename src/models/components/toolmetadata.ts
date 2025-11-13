@@ -52,14 +52,15 @@ export const KnowledgeType = {
 export type KnowledgeType = ClosedEnum<typeof KnowledgeType>;
 
 /**
- * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action.
+ * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action. MCP - Send a tools/call request to an MCP server to execute the action.
  */
 export const WriteActionType = {
   Redirect: "REDIRECT",
   Execution: "EXECUTION",
+  Mcp: "MCP",
 } as const;
 /**
- * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action.
+ * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action. MCP - Send a tools/call request to an MCP server to execute the action.
  */
 export type WriteActionType = ClosedEnum<typeof WriteActionType>;
 
@@ -138,7 +139,7 @@ export type ToolMetadata = {
    */
   lastUpdatedAt?: Date | undefined;
   /**
-   * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action.
+   * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action. MCP - Send a tools/call request to an MCP server to execute the action.
    */
   writeActionType?: WriteActionType | undefined;
   /**

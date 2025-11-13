@@ -9,7 +9,13 @@ import { ClosedEnum } from "../../types/enums.js";
  * Optional type classification for the update.
  */
 export const UpdateType = {
+  /**
+   * Updates that require user attention or action
+   */
   Actionable: "ACTIONABLE",
+  /**
+   * Updates that are purely informational
+   */
   Informative: "INFORMATIVE",
 } as const;
 /**
