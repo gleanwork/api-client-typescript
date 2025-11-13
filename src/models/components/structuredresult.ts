@@ -132,8 +132,17 @@ import {
  * The level of visual distinction that should be given to a result.
  */
 export const Prominence = {
+  /**
+   * A high-confidence result that should feature prominently on the page.
+   */
   Hero: "HERO",
+  /**
+   * May not be the best result but should be given additional visual distinction.
+   */
   Promoted: "PROMOTED",
+  /**
+   * Should not be distinct from any other results.
+   */
   Standard: "STANDARD",
 } as const;
 /**

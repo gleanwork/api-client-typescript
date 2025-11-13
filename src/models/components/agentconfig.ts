@@ -18,10 +18,25 @@ import {
  * Name of the agent.
  */
 export const AgentEnum = {
+  /**
+   * Integrates with your company's knowledge. This will soon be deprecated in favor of the FAST and ADVANCED `agent` values
+   */
   Default: "DEFAULT",
+  /**
+   * Communicates directly with the LLM. This will soon be deprecated in favor of the FAST and ADVANCED `agent` values
+   */
   Gpt: "GPT",
+  /**
+   * Uses both company and web knowledge. This will soon be deprecated in favor of the FAST and ADVANCED `agent` values
+   */
   Universal: "UNIVERSAL",
+  /**
+   * Uses an agent powered by the agentic engine that responds faster but may have lower quality results. Requires the agentic engine to be enabled in the deployment.
+   */
   Fast: "FAST",
+  /**
+   * Uses an agent powered by the agentic engine that thinks for longer and potentially makes more LLM calls to return higher quality results. Requires the agentic engine to be enabled in the deployment.
+   */
   Advanced: "ADVANCED",
 } as const;
 /**
@@ -33,7 +48,13 @@ export type AgentEnum = ClosedEnum<typeof AgentEnum>;
  * Top level modes to run GleanChat in.
  */
 export const Mode = {
+  /**
+   * Used if no mode supplied.
+   */
   Default: "DEFAULT",
+  /**
+   * Deprecated.
+   */
   Quick: "QUICK",
 } as const;
 /**

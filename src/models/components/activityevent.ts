@@ -14,12 +14,33 @@ import {
  * The type of activity this represents.
  */
 export const ActivityEventAction = {
+  /**
+   * Represents a visit to the given `url`.
+   */
   View: "VIEW",
+  /**
+   * Represents an edit of the document represented by the `url`.
+   */
   Edit: "EDIT",
+  /**
+   * Represents a search performed at the given `url`.
+   */
   Search: "SEARCH",
+  /**
+   * Represents a comment on the document represented by the `url`.
+   */
   Comment: "COMMENT",
+  /**
+   * Represents an explicit request to index the given `url` along with associated attributes in this payload.
+   */
   Crawl: "CRAWL",
+  /**
+   * Represents a search performed at the given `url` as indicated by the user's history.
+   */
   HistoricalSearch: "HISTORICAL_SEARCH",
+  /**
+   * Represents a visit to the given `url` as indicated by the user's history.
+   */
   HistoricalView: "HISTORICAL_VIEW",
 } as const;
 /**

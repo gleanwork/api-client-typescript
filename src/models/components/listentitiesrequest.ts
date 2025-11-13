@@ -43,7 +43,13 @@ export type ListEntitiesRequestIncludeField = ClosedEnum<
  * The type of request being made.
  */
 export const RequestType = {
+  /**
+   * Used by default for all requests and satisfies all standard use cases for list requests. Limited to 10000 entities.
+   */
   Standard: "STANDARD",
+  /**
+   * Used exclusively to return a comprehensive list of all people entities in the organization, typically for audit like purposes. The recommended approach is to sort by FIRST_NAME or LAST_NAME, and use pagination for large organizations.
+   */
   FullDirectory: "FULL_DIRECTORY",
 } as const;
 /**

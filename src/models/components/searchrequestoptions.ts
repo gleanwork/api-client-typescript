@@ -42,10 +42,25 @@ import {
  * Hints for the response content.
  */
 export const ResponseHint = {
+  /**
+   * Return result counts for each result set which has non-zero results, even when the request itself is limited to a subset.
+   */
   AllResultCounts: "ALL_RESULT_COUNTS",
+  /**
+   * Return only facet results.
+   */
   FacetResults: "FACET_RESULTS",
+  /**
+   * Returns result counts for each result set which has non-zero results, as well as other information about the search such as suggested spelling corrections.
+   */
   QueryMetadata: "QUERY_METADATA",
+  /**
+   * Return search result documents.
+   */
   Results: "RESULTS",
+  /**
+   * Return metadata pertaining to spellcheck results.
+   */
   SpellcheckMetadata: "SPELLCHECK_METADATA",
 } as const;
 /**

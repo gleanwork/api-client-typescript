@@ -31,6 +31,9 @@ import {
  */
 export const Relation = {
   Attachment: "ATTACHMENT",
+  /**
+   * Canonical documents for the entity, such as overview docs, architecture docs elastic.
+   */
   Canonical: "CANONICAL",
   Case: "CASE",
   ContactLower: "contact",

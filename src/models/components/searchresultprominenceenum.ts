@@ -11,8 +11,17 @@ import { ClosedEnum } from "../../types/enums.js";
  * @remarks
  */
 export const SearchResultProminenceEnum = {
+  /**
+   * A high-confidence result that should feature prominently on the page.
+   */
   Hero: "HERO",
+  /**
+   * May not be the best result but should be given additional visual distinction.
+   */
   Promoted: "PROMOTED",
+  /**
+   * Should not be distinct from any other results.
+   */
   Standard: "STANDARD",
 } as const;
 /**

@@ -9,10 +9,25 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const RelationType = {
+  /**
+   * The value is equal to the specified value.
+   */
   Equals: "EQUALS",
+  /**
+   * The value is equal to the specified ID.
+   */
   IdEquals: "ID_EQUALS",
+  /**
+   * The value is less than the specified value.
+   */
   Lt: "LT",
+  /**
+   * The value is greater than the specified value.
+   */
   Gt: "GT",
+  /**
+   * The value is not equal to the specified value.
+   */
   NotEquals: "NOT_EQUALS",
 } as const;
 export type RelationType = ClosedEnum<typeof RelationType>;

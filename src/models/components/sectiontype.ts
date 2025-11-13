@@ -9,8 +9,17 @@ import { ClosedEnum } from "../../types/enums.js";
  * Type of the section. This defines how the section should be interpreted and rendered in the digest.
  */
 export const SectionType = {
+  /**
+   * A standard section for channel-based digests (e.g. from Slack, Teams).
+   */
   Channel: "CHANNEL",
+  /**
+   * A dedicated section that surfaces user mentions (actionable, informative, or all).
+   */
   Mentions: "MENTIONS",
+  /**
+   * A section driven by a generic topic, not tied to any specific channel or instance.
+   */
   Topic: "TOPIC",
 } as const;
 /**
