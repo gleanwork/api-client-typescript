@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 0ac885f7072adae50d62b33db76f5bb4
+  docChecksum: 09ae73bbaebb3968dc7590f295580164
   docVersion: 0.9.0
-  speakeasyVersion: 1.656.1
-  generationVersion: 2.753.1
-  releaseVersion: 0.13.6
-  configChecksum: 0384c8a68e056c6065736cc82ccb1873
+  speakeasyVersion: 1.656.2
+  generationVersion: 2.753.6
+  releaseVersion: 0.13.7
+  configChecksum: f00f30e4b9c88666040e4282ec4fd2c8
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -2979,3 +2979,4 @@ generatedTests:
   createpolicy: "2025-06-09T18:05:10Z"
   createreport: "2025-06-09T18:05:10Z"
   setdocvisibility: "2025-06-09T18:05:10Z"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `glean.client.chat.retrieveFiles()`: \n  *  `request.getchatfilesrequest.chatId` **Removed** **Breaking** :warning:\n"
