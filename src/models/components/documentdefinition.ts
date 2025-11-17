@@ -70,7 +70,9 @@ export type DocumentDefinition = {
    */
   viewURL?: string | undefined;
   /**
-   * The datasource specific id for the document. This field is case insensitive and should not be more than 200 characters in length.
+   * The datasource specific id for the document. This field is case insensitive and should not be more than 200 characters in length. Note: id is a required field for datasources created after 1st March 2025
+   *
+   * @remarks
    */
   id?: string | undefined;
   /**
