@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 648d674fdd05aad794f8dd9965d820b5
+  docChecksum: 3e5657019a4816420ae24bbe0aa55deb
   docVersion: 0.9.0
-  speakeasyVersion: 1.658.1
-  generationVersion: 2.755.6
-  releaseVersion: 0.13.10
-  configChecksum: ea240db399714d539be9318556838f6f
+  speakeasyVersion: 1.659.0
+  generationVersion: 2.755.9
+  releaseVersion: 0.13.11
+  configChecksum: e7ce9ddf950385cd9b0016138e2e45aa
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
@@ -274,7 +274,6 @@ generatedFiles:
   - docs/models/components/editpinrequest.md
   - docs/models/components/employeeinfodefinition.md
   - docs/models/components/employeeteaminfo.md
-  - docs/models/components/engagementbreakdown.md
   - docs/models/components/entitiessortorder.md
   - docs/models/components/entityrelationship.md
   - docs/models/components/entitytype.md
@@ -2979,3 +2978,6 @@ generatedTests:
   createpolicy: "2025-06-09T18:05:10Z"
   createreport: "2025-06-09T18:05:10Z"
   setdocvisibility: "2025-06-09T18:05:10Z"
+releaseNotes: |
+  ## Typescript SDK Changes Detected:
+  * `glean.client.insights.retrieve()`:  `response` **Changed** **Breaking** :warning:

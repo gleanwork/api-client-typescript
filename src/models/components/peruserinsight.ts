@@ -18,6 +18,18 @@ export type PerUserInsight = {
    * Total number of chats by this user over the specified time period.
    */
   numChats?: number | undefined;
+  /**
+   * Total number of active sessions by this user in a Glean client over the specified time period.
+   */
+  numActiveSessions?: number | undefined;
+  /**
+   * Total number of Gleanbot responses marked useful by this user over the specified time period.
+   */
+  numGleanbotUsefulResponses?: number | undefined;
+  /**
+   * Total number of days this user was an Active User over the specified time period.
+   */
+  numDaysActive?: number | undefined;
 };
 
 /** @internal */
@@ -29,6 +41,9 @@ export const PerUserInsight$inboundSchema: z.ZodType<
   person: Person$inboundSchema.optional(),
   numSearches: z.number().int().optional(),
   numChats: z.number().int().optional(),
+  numActiveSessions: z.number().int().optional(),
+  numGleanbotUsefulResponses: z.number().int().optional(),
+  numDaysActive: z.number().int().optional(),
 });
 
 export function perUserInsightFromJSON(

@@ -27,25 +27,6 @@ import {
   PerUserInsight$inboundSchema,
 } from "./peruserinsight.js";
 
-export type EngagementBreakdown = {
-  /**
-   * Number of non-user employees in the specified departments.
-   */
-  nonUsers?: number | undefined;
-  /**
-   * Number of currently dormant users in the specified departments.
-   */
-  dormantUsers?: number | undefined;
-  /**
-   * Number of currently regular users in the specified departments.
-   */
-  regularUsers?: number | undefined;
-  /**
-   * Number of currently power users in the specified departments.
-   */
-  powerUsers?: number | undefined;
-};
-
 export type InsightsOverviewResponse = {
   /**
    * Number of current Monthly Active Users, in the specified departments.
@@ -91,33 +72,10 @@ export type InsightsOverviewResponse = {
    */
   chatDatasourceCounts?: { [k: string]: number } | undefined;
   /**
-   * Top power users, over the specified time period in the specified departments.
+   * Per-user insights, over the specified time period in the specified departments. All current users in the organization who have signed into Glean at least once are included.
    */
   perUserInsights?: Array<PerUserInsight> | undefined;
-  engagementBreakdown?: EngagementBreakdown | undefined;
 };
-
-/** @internal */
-export const EngagementBreakdown$inboundSchema: z.ZodType<
-  EngagementBreakdown,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  nonUsers: z.number().int().optional(),
-  dormantUsers: z.number().int().optional(),
-  regularUsers: z.number().int().optional(),
-  powerUsers: z.number().int().optional(),
-});
-
-export function engagementBreakdownFromJSON(
-  jsonString: string,
-): SafeParseResult<EngagementBreakdown, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EngagementBreakdown$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EngagementBreakdown' from JSON`,
-  );
-}
 
 /** @internal */
 export const InsightsOverviewResponse$inboundSchema: z.ZodType<
@@ -142,8 +100,6 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   searchDatasourceCounts: z.record(z.number().int()).optional(),
   chatDatasourceCounts: z.record(z.number().int()).optional(),
   perUserInsights: z.array(PerUserInsight$inboundSchema).optional(),
-  engagementBreakdown: z.lazy(() => EngagementBreakdown$inboundSchema)
-    .optional(),
 });
 
 export function insightsOverviewResponseFromJSON(

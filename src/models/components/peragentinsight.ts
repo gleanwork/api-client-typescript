@@ -22,6 +22,10 @@ export type PerAgentInsight = {
    */
   icon?: IconConfig | undefined;
   /**
+   * Indicates whether the agent has been deleted
+   */
+  isDeleted?: boolean | undefined;
+  /**
    * Total number of users for this agent over the specified time period.
    */
   userCount?: number | undefined;
@@ -48,6 +52,7 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
   agentId: z.string().optional(),
   agentName: z.string().optional(),
   icon: IconConfig$inboundSchema.optional(),
+  isDeleted: z.boolean().optional(),
   userCount: z.number().int().optional(),
   runCount: z.number().int().optional(),
   upvoteCount: z.number().int().optional(),

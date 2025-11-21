@@ -23,11 +23,11 @@ export type PerUserAssistantInsight = {
    */
   numAiAnswers?: number | undefined;
   /**
-   * Total number of Gleanbot interacted with by this user over the specified time period.
+   * Total number of Gleanbot responses marked useful by this user over the specified time period.
    */
   numGleanbotInteractions?: number | undefined;
   /**
-   * Total number of days this user was active over the specified time period.
+   * Total number of days this user was active on the Assistant over the specified time period.
    */
   numDaysActive?: number | undefined;
 };
