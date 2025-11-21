@@ -1,16 +1,15 @@
 # Agents
-
-(_client.agents_)
+(*client.agents*)
 
 ## Overview
 
 ### Available Operations
 
-- [retrieve](#retrieve) - Retrieve an agent
-- [retrieveSchemas](#retrieveschemas) - List an agent's schemas
-- [list](#list) - Search agents
-- [runStream](#runstream) - Create an agent run and stream the response
-- [run](#run) - Create an agent run and wait for the response
+* [retrieve](#retrieve) - Retrieve an agent
+* [retrieveSchemas](#retrieveschemas) - List an agent's schemas
+* [list](#list) - Search agents
+* [runStream](#runstream) - Create an agent run and stream the response
+* [run](#run) - Create an agent run and wait for the response
 
 ## retrieve
 
@@ -19,16 +18,15 @@ Returns details of an [agent](https://developers.glean.com/agents/agents-api) cr
 ### Example Usage
 
 <!-- UsageSnippet language="typescript" operationID="getAgent" method="get" path="/rest/api/v1/agents/{agent_id}" -->
-
 ```typescript
-import { Glean } from '@gleanwork/api-client';
+import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
-  const result = await glean.client.agents.retrieve('<id>');
+  const result = await glean.client.agents.retrieve("<id>");
 
   console.log(result);
 }
@@ -41,22 +39,22 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { GleanCore } from '@gleanwork/api-client/core.js';
-import { clientAgentsRetrieve } from '@gleanwork/api-client/funcs/clientAgentsRetrieve.js';
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientAgentsRetrieve } from "@gleanwork/api-client/funcs/clientAgentsRetrieve.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
-  const res = await clientAgentsRetrieve(glean, '<id>');
+  const res = await clientAgentsRetrieve(glean, "<id>");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log('clientAgentsRetrieve failed:', res.error);
+    console.log("clientAgentsRetrieve failed:", res.error);
   }
 }
 
@@ -83,23 +81,23 @@ import {
   // Server Components that will be immediately available to client components
   // using the hooks.
   prefetchClientAgentsRetrieve,
-
+  
   // Utilities to invalidate the query cache for this query in response to
   // mutations and other user actions.
   invalidateClientAgentsRetrieve,
   invalidateAllClientAgentsRetrieve,
-} from '@gleanwork/api-client/react-query/clientAgentsRetrieve.js';
+} from "@gleanwork/api-client/react-query/clientAgentsRetrieve.js";
 ```
 
 ### Parameters
 
-| Parameter              | Type                                                                                    | Required           | Description                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `agentId`              | _string_                                                                                | :heavy_check_mark: | The ID of the agent.                                                                                                                                                           |
-| `timezoneOffset`       | _number_                                                                                | :heavy_minus_sign: | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
-| `options`              | RequestOptions                                                                          | :heavy_minus_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy_minus_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.md)                                           | :heavy_minus_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the agent.                                                                                                                                                           |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -107,9 +105,9 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code | Content Type |
-| ----------------- | ----------- | ------------ |
-| errors.GleanError | 4XX, 5XX    | \*/\*        |
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
 
 ## retrieveSchemas
 
@@ -118,16 +116,15 @@ Return [agent](https://developers.glean.com/agents/agents-api)'s input and outpu
 ### Example Usage
 
 <!-- UsageSnippet language="typescript" operationID="getAgentSchemas" method="get" path="/rest/api/v1/agents/{agent_id}/schemas" -->
-
 ```typescript
-import { Glean } from '@gleanwork/api-client';
+import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
-  const result = await glean.client.agents.retrieveSchemas('<id>');
+  const result = await glean.client.agents.retrieveSchemas("<id>");
 
   console.log(result);
 }
@@ -140,22 +137,22 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { GleanCore } from '@gleanwork/api-client/core.js';
-import { clientAgentsRetrieveSchemas } from '@gleanwork/api-client/funcs/clientAgentsRetrieveSchemas.js';
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientAgentsRetrieveSchemas } from "@gleanwork/api-client/funcs/clientAgentsRetrieveSchemas.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
-  const res = await clientAgentsRetrieveSchemas(glean, '<id>');
+  const res = await clientAgentsRetrieveSchemas(glean, "<id>");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log('clientAgentsRetrieveSchemas failed:', res.error);
+    console.log("clientAgentsRetrieveSchemas failed:", res.error);
   }
 }
 
@@ -182,23 +179,23 @@ import {
   // Server Components that will be immediately available to client components
   // using the hooks.
   prefetchClientAgentsRetrieveSchemas,
-
+  
   // Utilities to invalidate the query cache for this query in response to
   // mutations and other user actions.
   invalidateClientAgentsRetrieveSchemas,
   invalidateAllClientAgentsRetrieveSchemas,
-} from '@gleanwork/api-client/react-query/clientAgentsRetrieveSchemas.js';
+} from "@gleanwork/api-client/react-query/clientAgentsRetrieveSchemas.js";
 ```
 
 ### Parameters
 
-| Parameter              | Type                                                                                    | Required           | Description                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `agentId`              | _string_                                                                                | :heavy_check_mark: | The ID of the agent.                                                                                                                                                           |
-| `timezoneOffset`       | _number_                                                                                | :heavy_minus_sign: | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
-| `options`              | RequestOptions                                                                          | :heavy_minus_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy_minus_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.md)                                           | :heavy_minus_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the agent.                                                                                                                                                           |
+| `timezoneOffset`                                                                                                                                                               | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -206,9 +203,9 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code | Content Type |
-| ----------------- | ----------- | ------------ |
-| errors.GleanError | 4XX, 5XX    | \*/\*        |
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
 
 ## list
 
@@ -217,17 +214,16 @@ Search for [agents](https://developers.glean.com/agents/agents-api) by agent nam
 ### Example Usage
 
 <!-- UsageSnippet language="typescript" operationID="searchAgents" method="post" path="/rest/api/v1/agents/search" -->
-
 ```typescript
-import { Glean } from '@gleanwork/api-client';
+import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
   const result = await glean.client.agents.list({
-    name: 'HR Policy Agent',
+    name: "HR Policy Agent",
   });
 
   console.log(result);
@@ -241,24 +237,24 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { GleanCore } from '@gleanwork/api-client/core.js';
-import { clientAgentsList } from '@gleanwork/api-client/funcs/clientAgentsList.js';
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientAgentsList } from "@gleanwork/api-client/funcs/clientAgentsList.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
   const res = await clientAgentsList(glean, {
-    name: 'HR Policy Agent',
+    name: "HR Policy Agent",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log('clientAgentsList failed:', res.error);
+    console.log("clientAgentsList failed:", res.error);
   }
 }
 
@@ -278,18 +274,18 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientAgentsListMutation,
-} from '@gleanwork/api-client/react-query/clientAgentsList.js';
+  useClientAgentsListMutation
+} from "@gleanwork/api-client/react-query/clientAgentsList.js";
 ```
 
 ### Parameters
 
-| Parameter              | Type                                                                                    | Required           | Description                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [components.SearchAgentsRequest](../../models/components/searchagentsrequest.md)        | :heavy_check_mark: | The request object to use for the request.                                                                                                                                     |
-| `options`              | RequestOptions                                                                          | :heavy_minus_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy_minus_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.md)                                           | :heavy_minus_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.SearchAgentsRequest](../../models/components/searchagentsrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -297,9 +293,9 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code | Content Type |
-| ----------------- | ----------- | ------------ |
-| errors.GleanError | 4XX, 5XX    | \*/\*        |
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
 
 ## runStream
 
@@ -308,20 +304,19 @@ Executes an [agent](https://developers.glean.com/agents/agents-api) run and retu
 ### Example Usage
 
 <!-- UsageSnippet language="typescript" operationID="createAndStreamRun" method="post" path="/rest/api/v1/agents/runs/stream" -->
-
 ```typescript
-import { Glean } from '@gleanwork/api-client';
+import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
   const result = await glean.client.agents.runStream({
-    agentId: '<id>',
+    agentId: "<id>",
     messages: [
       {
-        role: 'USER',
+        role: "USER",
       },
     ],
   });
@@ -337,21 +332,21 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { GleanCore } from '@gleanwork/api-client/core.js';
-import { clientAgentsRunStream } from '@gleanwork/api-client/funcs/clientAgentsRunStream.js';
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientAgentsRunStream } from "@gleanwork/api-client/funcs/clientAgentsRunStream.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
   const res = await clientAgentsRunStream(glean, {
-    agentId: '<id>',
+    agentId: "<id>",
     messages: [
       {
-        role: 'USER',
+        role: "USER",
       },
     ],
   });
@@ -359,7 +354,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log('clientAgentsRunStream failed:', res.error);
+    console.log("clientAgentsRunStream failed:", res.error);
   }
 }
 
@@ -379,18 +374,18 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientAgentsRunStreamMutation,
-} from '@gleanwork/api-client/react-query/clientAgentsRunStream.js';
+  useClientAgentsRunStreamMutation
+} from "@gleanwork/api-client/react-query/clientAgentsRunStream.js";
 ```
 
 ### Parameters
 
-| Parameter              | Type                                                                                    | Required           | Description                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [components.AgentRunCreate](../../models/components/agentruncreate.md)                  | :heavy_check_mark: | The request object to use for the request.                                                                                                                                     |
-| `options`              | RequestOptions                                                                          | :heavy_minus_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy_minus_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.md)                                           | :heavy_minus_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.AgentRunCreate](../../models/components/agentruncreate.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -398,9 +393,9 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code | Content Type |
-| ----------------- | ----------- | ------------ |
-| errors.GleanError | 4XX, 5XX    | \*/\*        |
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
 
 ## run
 
@@ -409,20 +404,19 @@ Executes an [agent](https://developers.glean.com/agents/agents-api) run and retu
 ### Example Usage
 
 <!-- UsageSnippet language="typescript" operationID="createAndWaitRun" method="post" path="/rest/api/v1/agents/runs/wait" -->
-
 ```typescript
-import { Glean } from '@gleanwork/api-client';
+import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
   const result = await glean.client.agents.run({
-    agentId: '<id>',
+    agentId: "<id>",
     messages: [
       {
-        role: 'USER',
+        role: "USER",
       },
     ],
   });
@@ -438,21 +432,21 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { GleanCore } from '@gleanwork/api-client/core.js';
-import { clientAgentsRun } from '@gleanwork/api-client/funcs/clientAgentsRun.js';
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientAgentsRun } from "@gleanwork/api-client/funcs/clientAgentsRun.js";
 
 // Use `GleanCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const glean = new GleanCore({
-  apiToken: process.env['GLEAN_API_TOKEN'] ?? '',
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
 });
 
 async function run() {
   const res = await clientAgentsRun(glean, {
-    agentId: '<id>',
+    agentId: "<id>",
     messages: [
       {
-        role: 'USER',
+        role: "USER",
       },
     ],
   });
@@ -460,7 +454,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log('clientAgentsRun failed:', res.error);
+    console.log("clientAgentsRun failed:", res.error);
   }
 }
 
@@ -480,18 +474,18 @@ associated utilities.
 ```tsx
 import {
   // Mutation hook for triggering the API call.
-  useClientAgentsRunMutation,
-} from '@gleanwork/api-client/react-query/clientAgentsRun.js';
+  useClientAgentsRunMutation
+} from "@gleanwork/api-client/react-query/clientAgentsRun.js";
 ```
 
 ### Parameters
 
-| Parameter              | Type                                                                                    | Required           | Description                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [components.AgentRunCreate](../../models/components/agentruncreate.md)                  | :heavy_check_mark: | The request object to use for the request.                                                                                                                                     |
-| `options`              | RequestOptions                                                                          | :heavy_minus_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy_minus_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](../../lib/utils/retryconfig.md)                                           | :heavy_minus_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.AgentRunCreate](../../models/components/agentruncreate.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -499,37 +493,6 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code | Content Type |
-| ----------------- | ----------- | ------------ |
-| errors.GleanError | 4XX, 5XX    | \*/\*        |
-
-## Working with File Inputs
-
-When using agents that require file inputs, you must use a two-step process. The `agents.run` endpoint does not support direct file uploads. Instead, you must:
-
-1. Upload the files using `client.chat.uploadFiles()`
-2. Pass the returned file IDs in the input field
-
-> **Warning**: Do NOT pass `Blob` or `File` objects directly to `agents.run()`. This will cause a 400 error with a misleading "Not enough user permissions" message.
-
-### Example
-
-```typescript
-// 1. First, upload the file
-const uploadResult = await glean.client.chat.uploadFiles({
-  files: [new Blob(['content'], { type: 'text/plain' })],
-});
-
-const fileId = uploadResult.files[0].id;
-
-// 2. Then pass the file ID to the agent
-const result = await glean.client.agents.run({
-  agentId: '<agent-id>',
-  input: {
-    my_file_input: fileId, // ✅ Use the file ID
-    // my_file_input: fileBlob // ❌ Do NOT do this
-  },
-});
-```
-
-For a complete working example, see [examples/src/agentWithFileUpload.example.ts](../../../examples/src/agentWithFileUpload.example.ts).
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
