@@ -7,11 +7,11 @@
 ```typescript
 import { LikelihoodThreshold } from "@gleanwork/api-client/models/components";
 
-let value: LikelihoodThreshold = "LIKELY";
+let value: LikelihoodThreshold = "POSSIBLE";
 ```
 
 ## Values
 
 ```typescript
-"LIKELY" | "VERY_LIKELY"
+"LIKELY" | "VERY_LIKELY" | "POSSIBLE" | "UNLIKELY" | "VERY_UNLIKELY"
 ```

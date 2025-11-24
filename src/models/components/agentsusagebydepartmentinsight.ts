@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
 
 export type AgentsUsageByDepartmentInsight = {
   /**
@@ -32,6 +33,14 @@ export type AgentsUsageByDepartmentInsight = {
    * Name of the agent to be shown in the agent column in this department over the specified time period.
    */
   agentName?: string | undefined;
+  /**
+   * Defines how to render an icon
+   */
+  icon?: IconConfig | undefined;
+  /**
+   * Indicates whether the agent has been deleted
+   */
+  isDeleted?: boolean | undefined;
 };
 
 /** @internal */
@@ -46,6 +55,8 @@ export const AgentsUsageByDepartmentInsight$inboundSchema: z.ZodType<
   runCount: z.number().int().optional(),
   agentId: z.string().optional(),
   agentName: z.string().optional(),
+  icon: IconConfig$inboundSchema.optional(),
+  isDeleted: z.boolean().optional(),
 });
 
 export function agentsUsageByDepartmentInsightFromJSON(
