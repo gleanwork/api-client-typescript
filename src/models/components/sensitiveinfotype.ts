@@ -14,6 +14,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const LikelihoodThreshold = {
   Likely: "LIKELY",
   VeryLikely: "VERY_LIKELY",
+  Possible: "POSSIBLE",
+  Unlikely: "UNLIKELY",
+  VeryUnlikely: "VERY_UNLIKELY",
 } as const;
 /**
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
