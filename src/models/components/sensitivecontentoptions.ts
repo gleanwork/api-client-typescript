@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CustomSensitiveExpression,
+  CustomSensitiveExpression$inboundSchema,
+  CustomSensitiveExpression$Outbound,
+  CustomSensitiveExpression$outboundSchema,
+} from "./customsensitiveexpression.js";
+import {
   SensitiveExpression,
   SensitiveExpression$inboundSchema,
   SensitiveExpression$Outbound,
@@ -24,17 +30,27 @@ import {
  */
 export type SensitiveContentOptions = {
   /**
-   * Predefined categories of terms to consider as sensitive content. See https://cloud.google.com/dlp/docs/infotypes-reference for available types.
+   * DEPRECATED - use 'customSensitiveExpressions' instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   sensitiveInfoTypes?: Array<SensitiveInfoType> | undefined;
   /**
-   * list of words and phrases to consider as sensitive content
+   * DEPRECATED - use 'customSensitiveExpressions' instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   sensitiveTerms?: Array<SensitiveExpression> | undefined;
   /**
-   * list of regular expressions to consider as sensitive content
+   * DEPRECATED - use 'customSensitiveExpressions' instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   sensitiveRegexes?: Array<SensitiveExpression> | undefined;
+  /**
+   * list of custom sensitive expressions to consider as sensitive content
+   */
+  customSensitiveExpressions?: Array<CustomSensitiveExpression> | undefined;
 };
 
 /** @internal */
@@ -46,12 +62,17 @@ export const SensitiveContentOptions$inboundSchema: z.ZodType<
   sensitiveInfoTypes: z.array(SensitiveInfoType$inboundSchema).optional(),
   sensitiveTerms: z.array(SensitiveExpression$inboundSchema).optional(),
   sensitiveRegexes: z.array(SensitiveExpression$inboundSchema).optional(),
+  customSensitiveExpressions: z.array(CustomSensitiveExpression$inboundSchema)
+    .optional(),
 });
 /** @internal */
 export type SensitiveContentOptions$Outbound = {
   sensitiveInfoTypes?: Array<SensitiveInfoType$Outbound> | undefined;
   sensitiveTerms?: Array<SensitiveExpression$Outbound> | undefined;
   sensitiveRegexes?: Array<SensitiveExpression$Outbound> | undefined;
+  customSensitiveExpressions?:
+    | Array<CustomSensitiveExpression$Outbound>
+    | undefined;
 };
 
 /** @internal */
@@ -63,6 +84,8 @@ export const SensitiveContentOptions$outboundSchema: z.ZodType<
   sensitiveInfoTypes: z.array(SensitiveInfoType$outboundSchema).optional(),
   sensitiveTerms: z.array(SensitiveExpression$outboundSchema).optional(),
   sensitiveRegexes: z.array(SensitiveExpression$outboundSchema).optional(),
+  customSensitiveExpressions: z.array(CustomSensitiveExpression$outboundSchema)
+    .optional(),
 });
 
 export function sensitiveContentOptionsToJSON(

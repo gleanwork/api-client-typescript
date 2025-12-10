@@ -10,10 +10,10 @@ import { Answers } from "./answers.js";
 import { Chat } from "./chat.js";
 import { ClientAuthentication } from "./clientauthentication.js";
 import { ClientDocuments } from "./clientdocuments.js";
+import { ClientGovernance } from "./clientgovernance.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
 import { Collections } from "./collections.js";
 import { Entities } from "./entities.js";
-import { Governance } from "./governance.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
@@ -102,8 +102,8 @@ export class Client extends ClientSDK {
     return (this._tools ??= new Tools(this._options));
   }
 
-  private _governance?: Governance;
-  get governance(): Governance {
-    return (this._governance ??= new Governance(this._options));
+  private _governance?: ClientGovernance;
+  get governance(): ClientGovernance {
+    return (this._governance ??= new ClientGovernance(this._options));
   }
 }

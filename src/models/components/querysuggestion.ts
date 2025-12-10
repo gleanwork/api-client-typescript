@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  ResultTab,
+  ResultTab$inboundSchema,
+  ResultTab$Outbound,
+  ResultTab$outboundSchema,
+} from "./resulttab.js";
+import {
   SearchProviderInfo,
   SearchProviderInfo$inboundSchema,
   SearchProviderInfo$Outbound,
@@ -49,6 +55,7 @@ export type QuerySuggestion = {
    * The datasource associated with the suggestion.
    */
   datasource?: string | undefined;
+  resultTab?: ResultTab | undefined;
   requestOptions?: SearchRequestOptions | undefined;
   /**
    * The bolded ranges within the query of the QuerySuggestion.
@@ -68,6 +75,7 @@ export const QuerySuggestion$inboundSchema: z.ZodType<
   searchProviderInfo: SearchProviderInfo$inboundSchema.optional(),
   label: z.string().optional(),
   datasource: z.string().optional(),
+  resultTab: ResultTab$inboundSchema.optional(),
   requestOptions: SearchRequestOptions$inboundSchema.optional(),
   ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
   inputDetails: SearchRequestInputDetails$inboundSchema.optional(),
@@ -79,6 +87,7 @@ export type QuerySuggestion$Outbound = {
   searchProviderInfo?: SearchProviderInfo$Outbound | undefined;
   label?: string | undefined;
   datasource?: string | undefined;
+  resultTab?: ResultTab$Outbound | undefined;
   requestOptions?: SearchRequestOptions$Outbound | undefined;
   ranges?: Array<TextRange$Outbound> | undefined;
   inputDetails?: SearchRequestInputDetails$Outbound | undefined;
@@ -95,6 +104,7 @@ export const QuerySuggestion$outboundSchema: z.ZodType<
   searchProviderInfo: SearchProviderInfo$outboundSchema.optional(),
   label: z.string().optional(),
   datasource: z.string().optional(),
+  resultTab: ResultTab$outboundSchema.optional(),
   requestOptions: SearchRequestOptions$outboundSchema.optional(),
   ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
   inputDetails: SearchRequestInputDetails$outboundSchema.optional(),

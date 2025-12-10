@@ -1,5 +1,4 @@
-# Chat
-(*client.chat*)
+# Client.Chat
 
 ## Overview
 

@@ -8,6 +8,8 @@ export * from "./createcollection.js";
 export * from "./deleteallchats.js";
 export * from "./deletechatfiles.js";
 export * from "./deletechats.js";
+export * from "./deletefindingsexport.js";
+export * from "./downloadfindingsexport.js";
 export * from "./downloadpolicycsv.js";
 export * from "./downloadreportcsv.js";
 export * from "./feedback.js";

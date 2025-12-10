@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export const LikelihoodThreshold = {
+export const SensitiveInfoTypeLikelihoodThreshold = {
   Likely: "LIKELY",
   VeryLikely: "VERY_LIKELY",
   Possible: "POSSIBLE",
@@ -21,13 +21,15 @@ export const LikelihoodThreshold = {
 /**
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export type LikelihoodThreshold = ClosedEnum<typeof LikelihoodThreshold>;
+export type SensitiveInfoTypeLikelihoodThreshold = ClosedEnum<
+  typeof SensitiveInfoTypeLikelihoodThreshold
+>;
 
 export type SensitiveInfoType = {
   /**
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  likelihoodThreshold?: LikelihoodThreshold | undefined;
+  likelihoodThreshold?: SensitiveInfoTypeLikelihoodThreshold | undefined;
   /**
    * Text representation of an info-type to scan for.
    */
@@ -35,13 +37,14 @@ export type SensitiveInfoType = {
 };
 
 /** @internal */
-export const LikelihoodThreshold$inboundSchema: z.ZodNativeEnum<
-  typeof LikelihoodThreshold
-> = z.nativeEnum(LikelihoodThreshold);
+export const SensitiveInfoTypeLikelihoodThreshold$inboundSchema:
+  z.ZodNativeEnum<typeof SensitiveInfoTypeLikelihoodThreshold> = z.nativeEnum(
+    SensitiveInfoTypeLikelihoodThreshold,
+  );
 /** @internal */
-export const LikelihoodThreshold$outboundSchema: z.ZodNativeEnum<
-  typeof LikelihoodThreshold
-> = LikelihoodThreshold$inboundSchema;
+export const SensitiveInfoTypeLikelihoodThreshold$outboundSchema:
+  z.ZodNativeEnum<typeof SensitiveInfoTypeLikelihoodThreshold> =
+    SensitiveInfoTypeLikelihoodThreshold$inboundSchema;
 
 /** @internal */
 export const SensitiveInfoType$inboundSchema: z.ZodType<
@@ -49,7 +52,8 @@ export const SensitiveInfoType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  likelihoodThreshold: LikelihoodThreshold$inboundSchema.optional(),
+  likelihoodThreshold: SensitiveInfoTypeLikelihoodThreshold$inboundSchema
+    .optional(),
   infoType: z.string().optional(),
 });
 /** @internal */
@@ -64,7 +68,8 @@ export const SensitiveInfoType$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SensitiveInfoType
 > = z.object({
-  likelihoodThreshold: LikelihoodThreshold$outboundSchema.optional(),
+  likelihoodThreshold: SensitiveInfoTypeLikelihoodThreshold$outboundSchema
+    .optional(),
   infoType: z.string().optional(),
 });
 

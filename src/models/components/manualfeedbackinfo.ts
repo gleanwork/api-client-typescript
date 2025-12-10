@@ -35,6 +35,7 @@ export const ManualFeedbackInfoSource = {
   Sidebar: "SIDEBAR",
   Summary: "SUMMARY",
   Tasks: "TASKS",
+  TaskExecution: "TASK_EXECUTION",
 } as const;
 /**
  * The source associated with the Feedback.event.MANUAL_FEEDBACK event.

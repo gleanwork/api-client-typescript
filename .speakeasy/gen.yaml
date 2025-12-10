@@ -25,12 +25,13 @@ generation:
   requestBodyFieldName: ""
   mockServer:
     disabled: false
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.13.14
+  version: 0.13.15
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -42,7 +43,7 @@ typescript:
   author: Speakeasy
   baseErrorName: GleanBaseError
   clientServerStatusCodesAsErrors: true
-  constFieldsAlwaysOptional: true
+  constFieldsAlwaysOptional: false
   defaultErrorName: GleanError
   enableCustomCodeRegions: false
   enableMCPServer: false
@@ -52,7 +53,9 @@ typescript:
   exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
+  formStringArrayEncodeMode: encoded-string
   forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   generateExamples: true
   imports:
     option: openapi
@@ -62,6 +65,7 @@ typescript:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: true
   inputModelSuffix: input
   jsonpath: rfc9535
   laxMode: strict
@@ -69,8 +73,10 @@ typescript:
   methodArguments: require-security-and-request
   modelPropertyCasing: camel
   moduleFormat: dual
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
+  preApplyUnionDiscriminators: true
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

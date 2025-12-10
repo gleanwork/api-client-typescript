@@ -37,7 +37,29 @@ export const ResultTab$inboundSchema: z.ZodType<
   datasource: z.string().optional(),
   datasourceInstance: z.string().optional(),
 });
+/** @internal */
+export type ResultTab$Outbound = {
+  id?: string | undefined;
+  count?: number | undefined;
+  datasource?: string | undefined;
+  datasourceInstance?: string | undefined;
+};
 
+/** @internal */
+export const ResultTab$outboundSchema: z.ZodType<
+  ResultTab$Outbound,
+  z.ZodTypeDef,
+  ResultTab
+> = z.object({
+  id: z.string().optional(),
+  count: z.number().int().optional(),
+  datasource: z.string().optional(),
+  datasourceInstance: z.string().optional(),
+});
+
+export function resultTabToJSON(resultTab: ResultTab): string {
+  return JSON.stringify(ResultTab$outboundSchema.parse(resultTab));
+}
 export function resultTabFromJSON(
   jsonString: string,
 ): SafeParseResult<ResultTab, SDKValidationError> {
