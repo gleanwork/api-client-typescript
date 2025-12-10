@@ -30,6 +30,18 @@ export type PerUserInsight = {
    * Total number of days this user was an Active User over the specified time period.
    */
   numDaysActive?: number | undefined;
+  /**
+   * Total number of summarized items by this user over the specified time period.
+   */
+  numSummarizations?: number | undefined;
+  /**
+   * Total number of AI Answers interacted with by this user over the specified time period.
+   */
+  numAiAnswers?: number | undefined;
+  /**
+   * Total number of agent runs for this user over the specified time period.
+   */
+  numAgentRuns?: number | undefined;
 };
 
 /** @internal */
@@ -44,6 +56,9 @@ export const PerUserInsight$inboundSchema: z.ZodType<
   numActiveSessions: z.number().int().optional(),
   numGleanbotUsefulResponses: z.number().int().optional(),
   numDaysActive: z.number().int().optional(),
+  numSummarizations: z.number().int().optional(),
+  numAiAnswers: z.number().int().optional(),
+  numAgentRuns: z.number().int().optional(),
 });
 
 export function perUserInsightFromJSON(

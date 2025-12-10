@@ -29,7 +29,7 @@ export type DatasourcesType = ClosedEnum<typeof DatasourcesType>;
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
  */
-export const TimePeriodType = {
+export const InputOptionsTimePeriodType = {
   AllTime: "ALL_TIME",
   PastYear: "PAST_YEAR",
   PastDay: "PAST_DAY",
@@ -39,7 +39,9 @@ export const TimePeriodType = {
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
  */
-export type TimePeriodType = ClosedEnum<typeof TimePeriodType>;
+export type InputOptionsTimePeriodType = ClosedEnum<
+  typeof InputOptionsTimePeriodType
+>;
 
 /**
  * Controls which data-sources and what time-range to include in scans.
@@ -68,7 +70,7 @@ export type InputOptions = {
   /**
    * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
    */
-  timePeriodType?: TimePeriodType | undefined;
+  timePeriodType?: InputOptionsTimePeriodType | undefined;
   customTimeRange?: TimeRange | undefined;
 };
 
@@ -82,13 +84,13 @@ export const DatasourcesType$outboundSchema: z.ZodNativeEnum<
 > = DatasourcesType$inboundSchema;
 
 /** @internal */
-export const TimePeriodType$inboundSchema: z.ZodNativeEnum<
-  typeof TimePeriodType
-> = z.nativeEnum(TimePeriodType);
+export const InputOptionsTimePeriodType$inboundSchema: z.ZodNativeEnum<
+  typeof InputOptionsTimePeriodType
+> = z.nativeEnum(InputOptionsTimePeriodType);
 /** @internal */
-export const TimePeriodType$outboundSchema: z.ZodNativeEnum<
-  typeof TimePeriodType
-> = TimePeriodType$inboundSchema;
+export const InputOptionsTimePeriodType$outboundSchema: z.ZodNativeEnum<
+  typeof InputOptionsTimePeriodType
+> = InputOptionsTimePeriodType$inboundSchema;
 
 /** @internal */
 export const InputOptions$inboundSchema: z.ZodType<
@@ -100,7 +102,7 @@ export const InputOptions$inboundSchema: z.ZodType<
   datasourcesType: DatasourcesType$inboundSchema.optional(),
   datasources: z.array(z.string()).optional(),
   datasourceInstances: z.array(z.string()).optional(),
-  timePeriodType: TimePeriodType$inboundSchema.optional(),
+  timePeriodType: InputOptionsTimePeriodType$inboundSchema.optional(),
   customTimeRange: TimeRange$inboundSchema.optional(),
 });
 /** @internal */
@@ -123,7 +125,7 @@ export const InputOptions$outboundSchema: z.ZodType<
   datasourcesType: DatasourcesType$outboundSchema.optional(),
   datasources: z.array(z.string()).optional(),
   datasourceInstances: z.array(z.string()).optional(),
-  timePeriodType: TimePeriodType$outboundSchema.optional(),
+  timePeriodType: InputOptionsTimePeriodType$outboundSchema.optional(),
   customTimeRange: TimeRange$outboundSchema.optional(),
 });
 
