@@ -73,7 +73,7 @@ typescript:
   methodArguments: require-security-and-request
   modelPropertyCasing: camel
   moduleFormat: dual
-  multipartArrayFormat: legacy
+  multipartArrayFormat: standard
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
   preApplyUnionDiscriminators: true
