@@ -18,8 +18,7 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        ugcType: "SHORTCUTS",
-        contentId: 544883,
+        url: "https://dim-glider.com/",
       },
       {
         id: "<id>",

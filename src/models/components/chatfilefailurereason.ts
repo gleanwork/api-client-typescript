@@ -16,6 +16,10 @@ export const ChatFileFailureReason = {
   FileExtensionUnsupported: "FILE_EXTENSION_UNSUPPORTED",
   FileMetadataValidationFail: "FILE_METADATA_VALIDATION_FAIL",
   FileProcessingTimedOut: "FILE_PROCESSING_TIMED_OUT",
+  OauthNeeded: "OAUTH_NEEDED",
+  UrlFetchFailed: "URL_FETCH_FAILED",
+  EmptyContent: "EMPTY_CONTENT",
+  AuthRequired: "AUTH_REQUIRED",
 } as const;
 /**
  * Reason for failed status.

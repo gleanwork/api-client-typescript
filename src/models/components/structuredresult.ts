@@ -156,6 +156,8 @@ export type Prominence = ClosedEnum<typeof Prominence>;
 export const StructuredResultSource = {
   ExpertDetection: "EXPERT_DETECTION",
   EntityNlq: "ENTITY_NLQ",
+  CalendarEvent: "CALENDAR_EVENT",
+  Agent: "AGENT",
 } as const;
 /**
  * Source context for this result. Possible values depend on the result type.
