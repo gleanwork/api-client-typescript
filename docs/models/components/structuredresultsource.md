@@ -7,11 +7,11 @@ Source context for this result. Possible values depend on the result type.
 ```typescript
 import { StructuredResultSource } from "@gleanwork/api-client/models/components";
 
-let value: StructuredResultSource = "EXPERT_DETECTION";
+let value: StructuredResultSource = "ENTITY_NLQ";
 ```
 
 ## Values
 
 ```typescript
-"EXPERT_DETECTION" | "ENTITY_NLQ"
+"EXPERT_DETECTION" | "ENTITY_NLQ" | "CALENDAR_EVENT" | "AGENT"
 ```
