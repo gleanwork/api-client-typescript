@@ -52,6 +52,10 @@ export type ExportInfo = {
    * The status of the export
    */
   status?: ExportInfoStatus | undefined;
+  /**
+   * The size of the exported file in bytes
+   */
+  exportSize?: number | undefined;
 };
 
 /** @internal */
@@ -72,6 +76,7 @@ export const ExportInfo$inboundSchema: z.ZodType<
   fileName: z.string().optional(),
   filter: DlpFindingFilter$inboundSchema.optional(),
   status: ExportInfoStatus$inboundSchema.optional(),
+  exportSize: z.number().int().optional(),
 });
 
 export function exportInfoFromJSON(
