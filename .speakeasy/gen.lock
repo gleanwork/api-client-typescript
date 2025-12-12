@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 74646e230b3f40b8ae92d641bbb73b26
+  docChecksum: 155a8a099a04ddbed1268d2c31ba186a
   docVersion: 0.9.0
   speakeasyVersion: 1.675.4
   generationVersion: 2.779.2
-  releaseVersion: 0.13.17
-  configChecksum: a5a540f336893515b451edd1f24c2509
+  releaseVersion: 0.13.18
+  configChecksum: 76c23d58af9240a60a24cca5406f12f8
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: 47b6be80-6ebf-4de6-983c-d810af839d7b
-  pristine_commit_hash: 21d9c6549055e39c5ab836b01e887d2ca184c6bb
-  pristine_tree_hash: 03201e61664c5581cb2c241518107e6695b9e0d4
+  generation_id: 53057ce5-bacc-4f4f-9212-1cd4c2a6a551
+  pristine_commit_hash: feae8d0e2a12f1a29080b732bcf531f0dbbbc9e8
+  pristine_tree_hash: 8a05a3b96b34298c0806189ced408445efcf0929
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1052,8 +1052,8 @@ trackedFiles:
     pristine_git_object: 54ed1421fbb6a0efafe82f3732055da716d26d5c
   docs/models/components/exportinfo.md:
     id: 7b4a50bf6885
-    last_write_checksum: sha1:2296bf9f532a474c9213d3600c7bede77dba52fe
-    pristine_git_object: de455b1a9161e0621da4f73ca654c4e2dd7fa05e
+    last_write_checksum: sha1:dbe8030c82b83c42a93d1ac3ac122cbf64d5898e
+    pristine_git_object: 2c5aad40dae9a1921ed02b25a22d94bdf4f83212
   docs/models/components/exportinfostatus.md:
     id: aad464e2f4e7
     last_write_checksum: sha1:c8c96d6dcecdac0c4e551a3265a8259d3abb4b96
@@ -2632,12 +2632,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:e7f55b81b811c202eca4fb565b24d8b40a1f1767
-    pristine_git_object: 99dae8bcfb02410c91d58a83bd3e922088cd7b82
+    last_write_checksum: sha1:d1edca251eec3d354a939ff7260d1b04a441bed1
+    pristine_git_object: bde71ffa5805530bb46ae433db24299ed3a96134
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:88e482b196110588ea574e82a7a7f69f5011ebf7
-    pristine_git_object: 559191ada2af5f699bb93fd427c803b7f0ba82ed
+    last_write_checksum: sha1:62106ea6e219bb7d26525758024002c9589e91ea
+    pristine_git_object: df56d94d809052887f102c4270a731af0f045cca
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:967fae9ee4ae9dd9ee8383b2ce261d26d05d9873
@@ -3331,7 +3331,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/sdk/models/components/eventstrategyname.go:
     last_write_checksum: sha1:acecfa3fb469871561d21b30275631ced4a4a11c
   src/__tests__/mockserver/internal/sdk/models/components/exportinfo.go:
-    last_write_checksum: sha1:0fd962ff58d720caf13e09ce08624617485a4dcd
+    last_write_checksum: sha1:a211dd685d03fa0b8d7e0186d15abf9756d1bf4e
   src/__tests__/mockserver/internal/sdk/models/components/externalsharingoptions.go:
     last_write_checksum: sha1:82c4ead1f0d347a66103a3c44c8232b1a6f78243
   src/__tests__/mockserver/internal/sdk/models/components/externalshortcut.go:
@@ -4120,8 +4120,8 @@ trackedFiles:
     pristine_git_object: 6471c989c852287b210470481dda5853db47ec58
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:160431c499f848da9e93d32c2586e3920ce937b5
-    pristine_git_object: 7c2057b787870dfe9cd556ae648d1bb75755ff72
+    last_write_checksum: sha1:4eaacb52f3595e5a41792020e4506e91d2f42d38
+    pristine_git_object: 8eaa849f1fc34250a0356502eb99c57262f91225
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:a62cc200f8a9f9c0310ce1b8ba6392d480ab5569
@@ -4616,8 +4616,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:e9bf6afe7448274b42d6b440532b0b81f9b16dc7
-    pristine_git_object: 51c43a42b12f45d12cead476d639fd7302d21a51
+    last_write_checksum: sha1:fe776c779428b380edea8a1a299c670f109d8ec8
+    pristine_git_object: 9766dd9a1fe897b07d328ab0d8196352091a89c6
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5436,8 +5436,8 @@ trackedFiles:
     pristine_git_object: c21e8a2f5f3e471418daaf946bebe2fc42d16dd9
   src/models/components/exportinfo.ts:
     id: 2bacc39472b8
-    last_write_checksum: sha1:9cd9dd9ea13d64808a18838dc04b9b1dae975387
-    pristine_git_object: 6a8a965bb22beebe3bb07a75e1d4709c265d84f7
+    last_write_checksum: sha1:4bfa3cc38cda464b64fe6104eb77340371423999
+    pristine_git_object: d63ef0eedb296b825d4c1bbc123530c6a25a0615
   src/models/components/externalsharingoptions.ts:
     id: 289a624274ca
     last_write_checksum: sha1:52f78940ac3a5d1e0b1676dae3849e0e86583d25
@@ -8115,6 +8115,10 @@ generatedTests:
   setdocvisibility: "2025-06-09T18:05:10Z"
   listfindingsexports: "2025-12-10T18:23:24Z"
   downloadfindingsexport: "2025-12-10T18:23:24Z"
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `glean.governance.createfindingsexport()`:  `response.exportsize` **Added**
+  * `glean.governance.listfindingsexports()`:  `response.exports.[].exportSize` **Added**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
