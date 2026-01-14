@@ -424,39 +424,11 @@ let value: Answer = {
                 ],
               },
             },
-            board: {
-              name: "<value>",
-              description:
-                "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 782149,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-            },
             collections: [
               {
                 name: "<value>",
-                description: "because times times",
+                description:
+                  "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -472,7 +444,7 @@ let value: Answer = {
                     ],
                   },
                 ],
-                id: 592299,
+                id: 782149,
                 creator: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -483,7 +455,7 @@ let value: Answer = {
                 },
                 items: [
                   {
-                    collectionId: 795342,
+                    collectionId: 30842,
                     createdBy: {
                       name: "George Clooney",
                       obfuscatedId: "abc123",
@@ -646,7 +618,7 @@ let value: Answer = {
                     collection: {
                       name: "<value>",
                       description:
-                        "feline charming fast vibraphone immediately viciously creator",
+                        "impanel importance pale parody towards wildly elementary unbearably",
                       audienceFilters: [
                         {
                           fieldName: "type",
@@ -662,7 +634,7 @@ let value: Answer = {
                           ],
                         },
                       ],
-                      id: 278414,
+                      id: 390864,
                       creator: {
                         name: "George Clooney",
                         obfuscatedId: "abc123",
@@ -674,7 +646,8 @@ let value: Answer = {
                       children: [
                         {
                           name: "<value>",
-                          description: "design cappelletti kettledrum",
+                          description:
+                            "viciously creator incidentally hole pecan",
                           audienceFilters: [
                             {
                               fieldName: "type",
@@ -690,7 +663,7 @@ let value: Answer = {
                               ],
                             },
                           ],
-                          id: 635422,
+                          id: 581341,
                           creator: {
                             name: "George Clooney",
                             obfuscatedId: "abc123",
@@ -702,7 +675,7 @@ let value: Answer = {
                         },
                       ],
                     },
-                    itemType: "URL",
+                    itemType: "TEXT",
                   },
                 ],
               },
@@ -783,7 +756,7 @@ let value: Answer = {
           generatedQna: {
             ranges: [
               {
-                startIndex: 851363,
+                startIndex: 635422,
                 document: {
                   containerDocument: {
                     metadata: {
@@ -908,7 +881,7 @@ let value: Answer = {
           collection: {
             name: "<value>",
             description:
-              "feline charming fast vibraphone immediately viciously creator",
+              "impanel importance pale parody towards wildly elementary unbearably",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -924,7 +897,7 @@ let value: Answer = {
                 ],
               },
             ],
-            id: 278414,
+            id: 390864,
             creator: {
               name: "George Clooney",
               obfuscatedId: "abc123",
@@ -936,7 +909,7 @@ let value: Answer = {
             children: [
               {
                 name: "<value>",
-                description: "design cappelletti kettledrum",
+                description: "viciously creator incidentally hole pecan",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -952,7 +925,7 @@ let value: Answer = {
                     ],
                   },
                 ],
-                id: 635422,
+                id: 581341,
                 creator: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -963,35 +936,6 @@ let value: Answer = {
                 },
               },
             ],
-          },
-          answerBoard: {
-            name: "<value>",
-            description:
-              "um verbally till like provided recklessly yowza plus boohoo weary",
-            audienceFilters: [
-              {
-                fieldName: "type",
-                values: [
-                  {
-                    value: "Spreadsheet",
-                    relationType: "EQUALS",
-                  },
-                  {
-                    value: "Presentation",
-                    relationType: "EQUALS",
-                  },
-                ],
-              },
-            ],
-            id: 70559,
-            creator: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
-            updatedBy: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
           },
           code: {
             repoName: "scio",
@@ -1255,39 +1199,11 @@ let value: Answer = {
       ],
     },
   },
-  board: {
-    name: "<value>",
-    description:
-      "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    id: 782149,
-    creator: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-  },
   collections: [
     {
       name: "<value>",
-      description: "because times times",
+      description:
+        "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
       audienceFilters: [
         {
           fieldName: "type",
@@ -1303,7 +1219,7 @@ let value: Answer = {
           ],
         },
       ],
-      id: 592299,
+      id: 782149,
       creator: {
         name: "George Clooney",
         obfuscatedId: "abc123",
@@ -1314,7 +1230,7 @@ let value: Answer = {
       },
       items: [
         {
-          collectionId: 795342,
+          collectionId: 30842,
           createdBy: {
             name: "George Clooney",
             obfuscatedId: "abc123",
@@ -1477,7 +1393,7 @@ let value: Answer = {
           collection: {
             name: "<value>",
             description:
-              "feline charming fast vibraphone immediately viciously creator",
+              "impanel importance pale parody towards wildly elementary unbearably",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -1493,7 +1409,7 @@ let value: Answer = {
                 ],
               },
             ],
-            id: 278414,
+            id: 390864,
             creator: {
               name: "George Clooney",
               obfuscatedId: "abc123",
@@ -1505,7 +1421,7 @@ let value: Answer = {
             children: [
               {
                 name: "<value>",
-                description: "design cappelletti kettledrum",
+                description: "viciously creator incidentally hole pecan",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -1521,7 +1437,7 @@ let value: Answer = {
                     ],
                   },
                 ],
-                id: 635422,
+                id: 581341,
                 creator: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -1533,7 +1449,7 @@ let value: Answer = {
               },
             ],
           },
-          itemType: "URL",
+          itemType: "TEXT",
         },
       ],
     },
@@ -1637,7 +1553,6 @@ let value: Answer = {
 | `updateTime`                                                                                                                                                                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                                   | The time the answer was last updated in ISO format (ISO 8601).                                                                                                                                                                                       |                                                                                                                                                                                                                                                      |
 | `updatedBy`                                                                                                                                                                                                                                          | [components.Person](../../models/components/person.md)                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                  | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}                                                                                                                                                                                   |
 | `verification`                                                                                                                                                                                                                                       | [components.Verification](../../models/components/verification.md)                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                      |
-| `board`                                                                                                                                                                                                                                              | [components.AnswerBoard](../../models/components/answerboard.md)                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                      |
 | `collections`                                                                                                                                                                                                                                        | [components.Collection](../../models/components/collection.md)[]                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                   | The collections to which the answer belongs.                                                                                                                                                                                                         |                                                                                                                                                                                                                                                      |
 | `documentCategory`                                                                                                                                                                                                                                   | *string*                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                   | The document's document_category(.proto).                                                                                                                                                                                                            |                                                                                                                                                                                                                                                      |
 | `sourceDocument`                                                                                                                                                                                                                                     | [components.Document](../../models/components/document.md)                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                      |

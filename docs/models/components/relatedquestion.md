@@ -8,7 +8,7 @@ import { RelatedQuestion } from "@gleanwork/api-client/models/components";
 let value: RelatedQuestion = {
   ranges: [
     {
-      startIndex: 851363,
+      startIndex: 635422,
       document: {
         containerDocument: {
           metadata: {

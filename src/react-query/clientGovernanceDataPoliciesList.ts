@@ -5,28 +5,29 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { clientGovernanceDataPoliciesList } from "../funcs/clientGovernanceDataPoliciesList.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
   SuspenseQueryHookOptions,
   TupleToPrefixes,
 } from "./_types.js";
-
-export type ClientGovernanceDataPoliciesListQueryData =
-  components.ListDlpReportsResponse;
+import {
+  buildClientGovernanceDataPoliciesListQuery,
+  ClientGovernanceDataPoliciesListQueryData,
+  prefetchClientGovernanceDataPoliciesList,
+  queryKeyClientGovernanceDataPoliciesList,
+} from "./clientGovernanceDataPoliciesList.core.js";
+export {
+  buildClientGovernanceDataPoliciesListQuery,
+  type ClientGovernanceDataPoliciesListQueryData,
+  prefetchClientGovernanceDataPoliciesList,
+  queryKeyClientGovernanceDataPoliciesList,
+};
 
 /**
  * Lists policies
@@ -74,21 +75,6 @@ export function useClientGovernanceDataPoliciesListSuspense(
   });
 }
 
-export function prefetchClientGovernanceDataPoliciesList(
-  queryClient: QueryClient,
-  client$: GleanCore,
-  autoHide?: boolean | undefined,
-  frequency?: string | undefined,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildClientGovernanceDataPoliciesListQuery(
-      client$,
-      autoHide,
-      frequency,
-    ),
-  });
-}
-
 export function setClientGovernanceDataPoliciesListData(
   client: QueryClient,
   queryKeyBase: [
@@ -131,45 +117,4 @@ export function invalidateAllClientGovernanceDataPoliciesList(
     ...filters,
     queryKey: ["@gleanwork/api-client", "policies", "list"],
   });
-}
-
-export function buildClientGovernanceDataPoliciesListQuery(
-  client$: GleanCore,
-  autoHide?: boolean | undefined,
-  frequency?: string | undefined,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<ClientGovernanceDataPoliciesListQueryData>;
-} {
-  return {
-    queryKey: queryKeyClientGovernanceDataPoliciesList({ autoHide, frequency }),
-    queryFn: async function clientGovernanceDataPoliciesListQueryFn(
-      ctx,
-    ): Promise<ClientGovernanceDataPoliciesListQueryData> {
-      const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-      const mergedOptions = {
-        ...options,
-        fetchOptions: { ...options?.fetchOptions, signal: sig },
-      };
-
-      return unwrapAsync(clientGovernanceDataPoliciesList(
-        client$,
-        autoHide,
-        frequency,
-        mergedOptions,
-      ));
-    },
-  };
-}
-
-export function queryKeyClientGovernanceDataPoliciesList(
-  parameters: {
-    autoHide?: boolean | undefined;
-    frequency?: string | undefined;
-  },
-): QueryKey {
-  return ["@gleanwork/api-client", "policies", "list", parameters];
 }

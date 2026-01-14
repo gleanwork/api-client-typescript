@@ -5,26 +5,29 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { clientGovernanceDataPoliciesDownload } from "../funcs/clientGovernanceDataPoliciesDownload.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
   SuspenseQueryHookOptions,
   TupleToPrefixes,
 } from "./_types.js";
-
-export type ClientGovernanceDataPoliciesDownloadQueryData = string;
+import {
+  buildClientGovernanceDataPoliciesDownloadQuery,
+  ClientGovernanceDataPoliciesDownloadQueryData,
+  prefetchClientGovernanceDataPoliciesDownload,
+  queryKeyClientGovernanceDataPoliciesDownload,
+} from "./clientGovernanceDataPoliciesDownload.core.js";
+export {
+  buildClientGovernanceDataPoliciesDownloadQuery,
+  type ClientGovernanceDataPoliciesDownloadQueryData,
+  prefetchClientGovernanceDataPoliciesDownload,
+  queryKeyClientGovernanceDataPoliciesDownload,
+};
 
 /**
  * Downloads violations CSV for policy
@@ -73,19 +76,6 @@ export function useClientGovernanceDataPoliciesDownloadSuspense(
   });
 }
 
-export function prefetchClientGovernanceDataPoliciesDownload(
-  queryClient: QueryClient,
-  client$: GleanCore,
-  id: string,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildClientGovernanceDataPoliciesDownloadQuery(
-      client$,
-      id,
-    ),
-  });
-}
-
 export function setClientGovernanceDataPoliciesDownloadData(
   client: QueryClient,
   queryKeyBase: [id: string],
@@ -123,40 +113,4 @@ export function invalidateAllClientGovernanceDataPoliciesDownload(
     ...filters,
     queryKey: ["@gleanwork/api-client", "policies", "download"],
   });
-}
-
-export function buildClientGovernanceDataPoliciesDownloadQuery(
-  client$: GleanCore,
-  id: string,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<ClientGovernanceDataPoliciesDownloadQueryData>;
-} {
-  return {
-    queryKey: queryKeyClientGovernanceDataPoliciesDownload(id),
-    queryFn: async function clientGovernanceDataPoliciesDownloadQueryFn(
-      ctx,
-    ): Promise<ClientGovernanceDataPoliciesDownloadQueryData> {
-      const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-      const mergedOptions = {
-        ...options,
-        fetchOptions: { ...options?.fetchOptions, signal: sig },
-      };
-
-      return unwrapAsync(clientGovernanceDataPoliciesDownload(
-        client$,
-        id,
-        mergedOptions,
-      ));
-    },
-  };
-}
-
-export function queryKeyClientGovernanceDataPoliciesDownload(
-  id: string,
-): QueryKey {
-  return ["@gleanwork/api-client", "policies", "download", id];
 }

@@ -28,6 +28,8 @@ export type ClientAnswersListMutationData = components.ListAnswersResponse;
  *
  * @remarks
  * List Answers created by the current user.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function useClientAnswersListMutation(
   options?: MutationHookOptions<

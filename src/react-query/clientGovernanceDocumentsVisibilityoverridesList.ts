@@ -5,28 +5,29 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { clientGovernanceDocumentsVisibilityoverridesList } from "../funcs/clientGovernanceDocumentsVisibilityoverridesList.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
   SuspenseQueryHookOptions,
   TupleToPrefixes,
 } from "./_types.js";
-
-export type ClientGovernanceDocumentsVisibilityoverridesListQueryData =
-  components.GetDocumentVisibilityOverridesResponse;
+import {
+  buildClientGovernanceDocumentsVisibilityoverridesListQuery,
+  ClientGovernanceDocumentsVisibilityoverridesListQueryData,
+  prefetchClientGovernanceDocumentsVisibilityoverridesList,
+  queryKeyClientGovernanceDocumentsVisibilityoverridesList,
+} from "./clientGovernanceDocumentsVisibilityoverridesList.core.js";
+export {
+  buildClientGovernanceDocumentsVisibilityoverridesListQuery,
+  type ClientGovernanceDocumentsVisibilityoverridesListQueryData,
+  prefetchClientGovernanceDocumentsVisibilityoverridesList,
+  queryKeyClientGovernanceDocumentsVisibilityoverridesList,
+};
 
 /**
  * Fetches documents visibility
@@ -80,19 +81,6 @@ export function useClientGovernanceDocumentsVisibilityoverridesListSuspense(
   });
 }
 
-export function prefetchClientGovernanceDocumentsVisibilityoverridesList(
-  queryClient: QueryClient,
-  client$: GleanCore,
-  docIds?: Array<string> | undefined,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildClientGovernanceDocumentsVisibilityoverridesListQuery(
-      client$,
-      docIds,
-    ),
-  });
-}
-
 export function setClientGovernanceDocumentsVisibilityoverridesListData(
   client: QueryClient,
   queryKeyBase: [parameters: { docIds?: Array<string> | undefined }],
@@ -133,43 +121,4 @@ export function invalidateAllClientGovernanceDocumentsVisibilityoverridesList(
     ...filters,
     queryKey: ["@gleanwork/api-client", "visibilityoverrides", "list"],
   });
-}
-
-export function buildClientGovernanceDocumentsVisibilityoverridesListQuery(
-  client$: GleanCore,
-  docIds?: Array<string> | undefined,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<ClientGovernanceDocumentsVisibilityoverridesListQueryData>;
-} {
-  return {
-    queryKey: queryKeyClientGovernanceDocumentsVisibilityoverridesList({
-      docIds,
-    }),
-    queryFn:
-      async function clientGovernanceDocumentsVisibilityoverridesListQueryFn(
-        ctx,
-      ): Promise<ClientGovernanceDocumentsVisibilityoverridesListQueryData> {
-        const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-        const mergedOptions = {
-          ...options,
-          fetchOptions: { ...options?.fetchOptions, signal: sig },
-        };
-
-        return unwrapAsync(clientGovernanceDocumentsVisibilityoverridesList(
-          client$,
-          docIds,
-          mergedOptions,
-        ));
-      },
-  };
-}
-
-export function queryKeyClientGovernanceDocumentsVisibilityoverridesList(
-  parameters: { docIds?: Array<string> | undefined },
-): QueryKey {
-  return ["@gleanwork/api-client", "visibilityoverrides", "list", parameters];
 }

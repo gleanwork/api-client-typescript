@@ -14,12 +14,6 @@ import {
   Answer$outboundSchema,
 } from "./answer.js";
 import {
-  AnswerBoard,
-  AnswerBoard$inboundSchema,
-  AnswerBoard$Outbound,
-  AnswerBoard$outboundSchema,
-} from "./answerboard.js";
-import {
   AppResult,
   AppResult$inboundSchema,
   AppResult$Outbound,
@@ -179,7 +173,6 @@ export type StructuredResult = {
   meeting?: Meeting | undefined;
   app?: AppResult | undefined;
   collection?: Collection | undefined;
-  answerBoard?: AnswerBoard | undefined;
   code?: Code | undefined;
   shortcut?: Shortcut | undefined;
   querySuggestions?: QuerySuggestionList | undefined;
@@ -247,7 +240,6 @@ export const StructuredResult$inboundSchema: z.ZodType<
   meeting: z.lazy(() => Meeting$inboundSchema).optional(),
   app: AppResult$inboundSchema.optional(),
   collection: z.lazy(() => Collection$inboundSchema).optional(),
-  answerBoard: z.lazy(() => AnswerBoard$inboundSchema).optional(),
   code: z.lazy(() => Code$inboundSchema).optional(),
   shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema).optional(),
@@ -274,7 +266,6 @@ export type StructuredResult$Outbound = {
   meeting?: Meeting$Outbound | undefined;
   app?: AppResult$Outbound | undefined;
   collection?: Collection$Outbound | undefined;
-  answerBoard?: AnswerBoard$Outbound | undefined;
   code?: Code$Outbound | undefined;
   shortcut?: Shortcut$Outbound | undefined;
   querySuggestions?: QuerySuggestionList$Outbound | undefined;
@@ -305,7 +296,6 @@ export const StructuredResult$outboundSchema: z.ZodType<
   meeting: z.lazy(() => Meeting$outboundSchema).optional(),
   app: AppResult$outboundSchema.optional(),
   collection: z.lazy(() => Collection$outboundSchema).optional(),
-  answerBoard: z.lazy(() => AnswerBoard$outboundSchema).optional(),
   code: z.lazy(() => Code$outboundSchema).optional(),
   shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
   querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema).optional(),

@@ -27,7 +27,6 @@ export * from "./allowlistoptions.js";
 export * from "./announcement.js";
 export * from "./anonymousevent.js";
 export * from "./answer.js";
-export * from "./answerboard.js";
 export * from "./answercreationdata.js";
 export * from "./answerlike.js";
 export * from "./answerlikes.js";

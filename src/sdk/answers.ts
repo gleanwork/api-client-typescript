@@ -85,6 +85,8 @@ export class Answers extends ClientSDK {
    *
    * @remarks
    * List Answers created by the current user.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async list(
     request: components.ListAnswersRequest,

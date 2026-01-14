@@ -29,6 +29,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * List Answers created by the current user.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function clientAnswersList(
   client: GleanCore,

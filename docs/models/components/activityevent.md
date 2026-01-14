@@ -7,7 +7,7 @@ import { ActivityEvent } from "@gleanwork/api-client/models/components";
 
 let value: ActivityEvent = {
   action: "COMMENT",
-  timestamp: new Date("2024-08-18T11:58:39.675Z"),
+  timestamp: new Date("2025-08-18T11:58:39.675Z"),
   url: "https://mammoth-premium.com",
 };
 ```

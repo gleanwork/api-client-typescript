@@ -559,39 +559,11 @@ let value: StructuredResult = {
                   ],
                 },
               },
-              board: {
-                name: "<value>",
-                description:
-                  "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
-                audienceFilters: [
-                  {
-                    fieldName: "type",
-                    values: [
-                      {
-                        value: "Spreadsheet",
-                        relationType: "EQUALS",
-                      },
-                      {
-                        value: "Presentation",
-                        relationType: "EQUALS",
-                      },
-                    ],
-                  },
-                ],
-                id: 782149,
-                creator: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-                updatedBy: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
-              },
               collections: [
                 {
                   name: "<value>",
-                  description: "because times times",
+                  description:
+                    "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -607,7 +579,7 @@ let value: StructuredResult = {
                       ],
                     },
                   ],
-                  id: 592299,
+                  id: 782149,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -618,7 +590,7 @@ let value: StructuredResult = {
                   },
                   items: [
                     {
-                      collectionId: 795342,
+                      collectionId: 30842,
                       createdBy: {
                         name: "George Clooney",
                         obfuscatedId: "abc123",
@@ -781,7 +753,7 @@ let value: StructuredResult = {
                       collection: {
                         name: "<value>",
                         description:
-                          "feline charming fast vibraphone immediately viciously creator",
+                          "impanel importance pale parody towards wildly elementary unbearably",
                         audienceFilters: [
                           {
                             fieldName: "type",
@@ -797,7 +769,7 @@ let value: StructuredResult = {
                             ],
                           },
                         ],
-                        id: 278414,
+                        id: 390864,
                         creator: {
                           name: "George Clooney",
                           obfuscatedId: "abc123",
@@ -809,7 +781,8 @@ let value: StructuredResult = {
                         children: [
                           {
                             name: "<value>",
-                            description: "design cappelletti kettledrum",
+                            description:
+                              "viciously creator incidentally hole pecan",
                             audienceFilters: [
                               {
                                 fieldName: "type",
@@ -825,7 +798,7 @@ let value: StructuredResult = {
                                 ],
                               },
                             ],
-                            id: 635422,
+                            id: 581341,
                             creator: {
                               name: "George Clooney",
                               obfuscatedId: "abc123",
@@ -837,7 +810,7 @@ let value: StructuredResult = {
                           },
                         ],
                       },
-                      itemType: "URL",
+                      itemType: "TEXT",
                     },
                   ],
                 },
@@ -918,7 +891,7 @@ let value: StructuredResult = {
             generatedQna: {
               ranges: [
                 {
-                  startIndex: 851363,
+                  startIndex: 635422,
                   document: {
                     containerDocument: {
                       metadata: {
@@ -1043,7 +1016,7 @@ let value: StructuredResult = {
             collection: {
               name: "<value>",
               description:
-                "feline charming fast vibraphone immediately viciously creator",
+                "impanel importance pale parody towards wildly elementary unbearably",
               audienceFilters: [
                 {
                   fieldName: "type",
@@ -1059,7 +1032,7 @@ let value: StructuredResult = {
                   ],
                 },
               ],
-              id: 278414,
+              id: 390864,
               creator: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
@@ -1071,7 +1044,7 @@ let value: StructuredResult = {
               children: [
                 {
                   name: "<value>",
-                  description: "design cappelletti kettledrum",
+                  description: "viciously creator incidentally hole pecan",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -1087,7 +1060,7 @@ let value: StructuredResult = {
                       ],
                     },
                   ],
-                  id: 635422,
+                  id: 581341,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -1098,35 +1071,6 @@ let value: StructuredResult = {
                   },
                 },
               ],
-            },
-            answerBoard: {
-              name: "<value>",
-              description:
-                "um verbally till like provided recklessly yowza plus boohoo weary",
-              audienceFilters: [
-                {
-                  fieldName: "type",
-                  values: [
-                    {
-                      value: "Spreadsheet",
-                      relationType: "EQUALS",
-                    },
-                    {
-                      value: "Presentation",
-                      relationType: "EQUALS",
-                    },
-                  ],
-                },
-              ],
-              id: 70559,
-              creator: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
-              updatedBy: {
-                name: "George Clooney",
-                obfuscatedId: "abc123",
-              },
             },
             code: {
               repoName: "scio",
@@ -1390,35 +1334,6 @@ let value: StructuredResult = {
         ],
       },
     },
-    board: {
-      name: "<value>",
-      description:
-        "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 782149,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    },
     sourceDocument: {
       containerDocument: {
         metadata: {
@@ -1495,7 +1410,7 @@ let value: StructuredResult = {
   generatedQna: {
     ranges: [
       {
-        startIndex: 851363,
+        startIndex: 635422,
         document: {
           containerDocument: {
             metadata: {
@@ -1620,7 +1535,7 @@ let value: StructuredResult = {
   collection: {
     name: "<value>",
     description:
-      "feline charming fast vibraphone immediately viciously creator",
+      "impanel importance pale parody towards wildly elementary unbearably",
     audienceFilters: [
       {
         fieldName: "type",
@@ -1636,7 +1551,7 @@ let value: StructuredResult = {
         ],
       },
     ],
-    id: 278414,
+    id: 390864,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -1648,7 +1563,7 @@ let value: StructuredResult = {
     children: [
       {
         name: "<value>",
-        description: "design cappelletti kettledrum",
+        description: "viciously creator incidentally hole pecan",
         audienceFilters: [
           {
             fieldName: "type",
@@ -1664,7 +1579,7 @@ let value: StructuredResult = {
             ],
           },
         ],
-        id: 635422,
+        id: 581341,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -1675,35 +1590,6 @@ let value: StructuredResult = {
         },
       },
     ],
-  },
-  answerBoard: {
-    name: "<value>",
-    description:
-      "um verbally till like provided recklessly yowza plus boohoo weary",
-    audienceFilters: [
-      {
-        fieldName: "type",
-        values: [
-          {
-            value: "Spreadsheet",
-            relationType: "EQUALS",
-          },
-          {
-            value: "Presentation",
-            relationType: "EQUALS",
-          },
-        ],
-      },
-    ],
-    id: 70559,
-    creator: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
-    updatedBy: {
-      name: "George Clooney",
-      obfuscatedId: "abc123",
-    },
   },
   code: {
     repoName: "scio",
@@ -1829,7 +1715,6 @@ let value: StructuredResult = {
 | `meeting`                                                                                                                                                                                                                                                                                                                                                            | [components.Meeting](../../models/components/meeting.md)                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                      |
 | `app`                                                                                                                                                                                                                                                                                                                                                                | [components.AppResult](../../models/components/appresult.md)                                                                                                                                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                      |
 | `collection`                                                                                                                                                                                                                                                                                                                                                         | [components.Collection](../../models/components/collection.md)                                                                                                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                      |
-| `answerBoard`                                                                                                                                                                                                                                                                                                                                                        | [components.AnswerBoard](../../models/components/answerboard.md)                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                      |
 | `code`                                                                                                                                                                                                                                                                                                                                                               | [components.Code](../../models/components/code.md)                                                                                                                                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  | {<br/>"repoName": "scio",<br/>"fileName": "README.md",<br/>"matches": [<br/>{<br/>"lineNumber": 1,<br/>"content": "Welcome to the beginning",<br/>"ranges": []<br/>},<br/>{<br/>"lineNumber": 2,<br/>"content": "Second line of the file",<br/>"ranges": []<br/>},<br/>{<br/>"lineNumber": 3,<br/>"content": "hello world hello world",<br/>"ranges": [<br/>{<br/>"startindex": 0,<br/>"endIndex": 5<br/>},<br/>{<br/>"startIndex": 12,<br/>"endIndex": 17<br/>}<br/>]<br/>}<br/>]<br/>} |
 | `shortcut`                                                                                                                                                                                                                                                                                                                                                           | [components.Shortcut](../../models/components/shortcut.md)                                                                                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                      |
 | `querySuggestions`                                                                                                                                                                                                                                                                                                                                                   | [components.QuerySuggestionList](../../models/components/querysuggestionlist.md)                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                      |

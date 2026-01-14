@@ -8,12 +8,6 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AnswerBoard,
-  AnswerBoard$inboundSchema,
-  AnswerBoard$Outbound,
-  AnswerBoard$outboundSchema,
-} from "./answerboard.js";
-import {
   AnswerLikes,
   AnswerLikes$inboundSchema,
   AnswerLikes$Outbound,
@@ -136,7 +130,6 @@ export type Answer = {
   updateTime?: Date | undefined;
   updatedBy?: Person | undefined;
   verification?: Verification | undefined;
-  board?: AnswerBoard | undefined;
   /**
    * The collections to which the answer belongs.
    */
@@ -187,7 +180,6 @@ export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
     ).optional(),
     updatedBy: z.lazy(() => Person$inboundSchema).optional(),
     verification: z.lazy(() => Verification$inboundSchema).optional(),
-    board: z.lazy(() => AnswerBoard$inboundSchema).optional(),
     collections: z.array(z.lazy(() => Collection$inboundSchema)).optional(),
     documentCategory: z.string().optional(),
     sourceDocument: z.lazy(() => Document$inboundSchema).optional(),
@@ -214,7 +206,6 @@ export type Answer$Outbound = {
   updateTime?: string | undefined;
   updatedBy?: Person$Outbound | undefined;
   verification?: Verification$Outbound | undefined;
-  board?: AnswerBoard$Outbound | undefined;
   collections?: Array<Collection$Outbound> | undefined;
   documentCategory?: string | undefined;
   sourceDocument?: Document$Outbound | undefined;
@@ -248,7 +239,6 @@ export const Answer$outboundSchema: z.ZodType<
   updateTime: z.date().transform(v => v.toISOString()).optional(),
   updatedBy: z.lazy(() => Person$outboundSchema).optional(),
   verification: z.lazy(() => Verification$outboundSchema).optional(),
-  board: z.lazy(() => AnswerBoard$outboundSchema).optional(),
   collections: z.array(z.lazy(() => Collection$outboundSchema)).optional(),
   documentCategory: z.string().optional(),
   sourceDocument: z.lazy(() => Document$outboundSchema).optional(),
