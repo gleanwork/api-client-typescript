@@ -31,6 +31,7 @@ export type DlpFindingFilter = {
   severity?: DlpSeverity | undefined;
   documentSeverity?: Array<DlpSeverity> | undefined;
   timeRange?: TimeRangeFilter | undefined;
+  archived?: boolean | undefined;
 };
 
 /** @internal */
@@ -48,6 +49,7 @@ export const DlpFindingFilter$inboundSchema: z.ZodType<
   severity: DlpSeverity$inboundSchema.optional(),
   documentSeverity: z.array(DlpSeverity$inboundSchema).optional(),
   timeRange: TimeRangeFilter$inboundSchema.optional(),
+  archived: z.boolean().optional(),
 });
 /** @internal */
 export type DlpFindingFilter$Outbound = {
@@ -60,6 +62,7 @@ export type DlpFindingFilter$Outbound = {
   severity?: string | undefined;
   documentSeverity?: Array<string> | undefined;
   timeRange?: TimeRangeFilter$Outbound | undefined;
+  archived?: boolean | undefined;
 };
 
 /** @internal */
@@ -77,6 +80,7 @@ export const DlpFindingFilter$outboundSchema: z.ZodType<
   severity: DlpSeverity$outboundSchema.optional(),
   documentSeverity: z.array(DlpSeverity$outboundSchema).optional(),
   timeRange: TimeRangeFilter$outboundSchema.optional(),
+  archived: z.boolean().optional(),
 });
 
 export function dlpFindingFilterToJSON(

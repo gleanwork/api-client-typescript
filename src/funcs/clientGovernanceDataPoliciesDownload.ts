@@ -141,7 +141,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["403", "4XX", "500", "5XX"],
+    errorCodes: ["400", "403", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -162,7 +162,7 @@ async function $do(
     | SDKValidationError
   >(
     M.text(200, z.string(), { ctype: "text/csv; charset=UTF-8" }),
-    M.fail([403, "4XX"]),
+    M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {

@@ -304,7 +304,7 @@ For more information on obtaining the appropriate token type, please contact you
 * [delete](docs/sdks/answers/README.md#delete) - Delete Answer
 * [update](docs/sdks/answers/README.md#update) - Update Answer
 * [retrieve](docs/sdks/answers/README.md#retrieve) - Read Answer
-* [list](docs/sdks/answers/README.md#list) - List Answers
+* [~~list~~](docs/sdks/answers/README.md#list) - List Answers :warning: **Deprecated**
 
 ### [Client.Authentication](docs/sdks/clientauthentication/README.md)
 
@@ -507,7 +507,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`clientAnswersCreate`](docs/sdks/answers/README.md#create) - Create Answer
 - [`clientAnswersDelete`](docs/sdks/answers/README.md#delete) - Delete Answer
-- [`clientAnswersList`](docs/sdks/answers/README.md#list) - List Answers
 - [`clientAnswersRetrieve`](docs/sdks/answers/README.md#retrieve) - Read Answer
 - [`clientAnswersUpdate`](docs/sdks/answers/README.md#update) - Update Answer
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
@@ -609,6 +608,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
 - ~~[`indexingPeopleCount`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
@@ -650,7 +650,6 @@ To learn about this feature and how to get started, check
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement
 - [`useClientAnswersCreateMutation`](docs/sdks/answers/README.md#create) - Create Answer
 - [`useClientAnswersDeleteMutation`](docs/sdks/answers/README.md#delete) - Delete Answer
-- [`useClientAnswersListMutation`](docs/sdks/answers/README.md#list) - List Answers
 - [`useClientAnswersRetrieveMutation`](docs/sdks/answers/README.md#retrieve) - Read Answer
 - [`useClientAnswersUpdateMutation`](docs/sdks/answers/README.md#update) - Update Answer
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
@@ -752,6 +751,7 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
 - ~~[`useIndexingPeopleCountMutation`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**

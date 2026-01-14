@@ -63,6 +63,18 @@ export type InsightsOverviewResponse = {
   monthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
   weeklyActiveUserTimeseries?: LabeledCountInfo | undefined;
   dailyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  searchMonthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  searchWeeklyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  searchDailyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  assistantMonthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  assistantWeeklyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  assistantDailyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  agentsMonthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  agentsWeeklyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  agentsDailyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  searchesTimeseries?: LabeledCountInfo | undefined;
+  assistantInteractionsTimeseries?: LabeledCountInfo | undefined;
+  agentRunsTimeseries?: LabeledCountInfo | undefined;
   /**
    * Counts of search result clicks, by datasource, over the specified time period in the specified departments.
    */
@@ -97,6 +109,20 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  searchMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  searchWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  searchDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  assistantMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+    .optional(),
+  assistantWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+    .optional(),
+  assistantDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  agentsMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  agentsWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  agentsDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  searchesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  assistantInteractionsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  agentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
   searchDatasourceCounts: z.record(z.number().int()).optional(),
   chatDatasourceCounts: z.record(z.number().int()).optional(),
   perUserInsights: z.array(PerUserInsight$inboundSchema).optional(),

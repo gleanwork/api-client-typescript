@@ -5,28 +5,29 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { clientGovernanceDataPoliciesRetrieve } from "../funcs/clientGovernanceDataPoliciesRetrieve.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
   SuspenseQueryHookOptions,
   TupleToPrefixes,
 } from "./_types.js";
-
-export type ClientGovernanceDataPoliciesRetrieveQueryData =
-  components.GetDlpReportResponse;
+import {
+  buildClientGovernanceDataPoliciesRetrieveQuery,
+  ClientGovernanceDataPoliciesRetrieveQueryData,
+  prefetchClientGovernanceDataPoliciesRetrieve,
+  queryKeyClientGovernanceDataPoliciesRetrieve,
+} from "./clientGovernanceDataPoliciesRetrieve.core.js";
+export {
+  buildClientGovernanceDataPoliciesRetrieveQuery,
+  type ClientGovernanceDataPoliciesRetrieveQueryData,
+  prefetchClientGovernanceDataPoliciesRetrieve,
+  queryKeyClientGovernanceDataPoliciesRetrieve,
+};
 
 /**
  * Gets specified policy
@@ -79,21 +80,6 @@ export function useClientGovernanceDataPoliciesRetrieveSuspense(
   });
 }
 
-export function prefetchClientGovernanceDataPoliciesRetrieve(
-  queryClient: QueryClient,
-  client$: GleanCore,
-  id: string,
-  version?: number | undefined,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildClientGovernanceDataPoliciesRetrieveQuery(
-      client$,
-      id,
-      version,
-    ),
-  });
-}
-
 export function setClientGovernanceDataPoliciesRetrieveData(
   client: QueryClient,
   queryKeyBase: [id: string, parameters: { version?: number | undefined }],
@@ -133,43 +119,4 @@ export function invalidateAllClientGovernanceDataPoliciesRetrieve(
     ...filters,
     queryKey: ["@gleanwork/api-client", "policies", "retrieve"],
   });
-}
-
-export function buildClientGovernanceDataPoliciesRetrieveQuery(
-  client$: GleanCore,
-  id: string,
-  version?: number | undefined,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<ClientGovernanceDataPoliciesRetrieveQueryData>;
-} {
-  return {
-    queryKey: queryKeyClientGovernanceDataPoliciesRetrieve(id, { version }),
-    queryFn: async function clientGovernanceDataPoliciesRetrieveQueryFn(
-      ctx,
-    ): Promise<ClientGovernanceDataPoliciesRetrieveQueryData> {
-      const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-      const mergedOptions = {
-        ...options,
-        fetchOptions: { ...options?.fetchOptions, signal: sig },
-      };
-
-      return unwrapAsync(clientGovernanceDataPoliciesRetrieve(
-        client$,
-        id,
-        version,
-        mergedOptions,
-      ));
-    },
-  };
-}
-
-export function queryKeyClientGovernanceDataPoliciesRetrieve(
-  id: string,
-  parameters: { version?: number | undefined },
-): QueryKey {
-  return ["@gleanwork/api-client", "policies", "retrieve", id, parameters];
 }

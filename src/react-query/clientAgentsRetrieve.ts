@@ -5,27 +5,29 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { clientAgentsRetrieve } from "../funcs/clientAgentsRetrieve.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
   SuspenseQueryHookOptions,
   TupleToPrefixes,
 } from "./_types.js";
-
-export type ClientAgentsRetrieveQueryData = components.Agent;
+import {
+  buildClientAgentsRetrieveQuery,
+  ClientAgentsRetrieveQueryData,
+  prefetchClientAgentsRetrieve,
+  queryKeyClientAgentsRetrieve,
+} from "./clientAgentsRetrieve.core.js";
+export {
+  buildClientAgentsRetrieveQuery,
+  type ClientAgentsRetrieveQueryData,
+  prefetchClientAgentsRetrieve,
+  queryKeyClientAgentsRetrieve,
+};
 
 /**
  * Retrieve an agent
@@ -73,21 +75,6 @@ export function useClientAgentsRetrieveSuspense(
   });
 }
 
-export function prefetchClientAgentsRetrieve(
-  queryClient: QueryClient,
-  client$: GleanCore,
-  agentId: string,
-  timezoneOffset?: number | undefined,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildClientAgentsRetrieveQuery(
-      client$,
-      agentId,
-      timezoneOffset,
-    ),
-  });
-}
-
 export function setClientAgentsRetrieveData(
   client: QueryClient,
   queryKeyBase: [
@@ -122,43 +109,4 @@ export function invalidateAllClientAgentsRetrieve(
     ...filters,
     queryKey: ["@gleanwork/api-client", "agents", "retrieve"],
   });
-}
-
-export function buildClientAgentsRetrieveQuery(
-  client$: GleanCore,
-  agentId: string,
-  timezoneOffset?: number | undefined,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<ClientAgentsRetrieveQueryData>;
-} {
-  return {
-    queryKey: queryKeyClientAgentsRetrieve(agentId, { timezoneOffset }),
-    queryFn: async function clientAgentsRetrieveQueryFn(
-      ctx,
-    ): Promise<ClientAgentsRetrieveQueryData> {
-      const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-      const mergedOptions = {
-        ...options,
-        fetchOptions: { ...options?.fetchOptions, signal: sig },
-      };
-
-      return unwrapAsync(clientAgentsRetrieve(
-        client$,
-        agentId,
-        timezoneOffset,
-        mergedOptions,
-      ));
-    },
-  };
-}
-
-export function queryKeyClientAgentsRetrieve(
-  agentId: string,
-  parameters: { timezoneOffset?: number | undefined },
-): QueryKey {
-  return ["@gleanwork/api-client", "agents", "retrieve", agentId, parameters];
 }

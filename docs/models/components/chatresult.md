@@ -767,39 +767,11 @@ let value: ChatResult = {
                                 ],
                               },
                             },
-                            board: {
-                              name: "<value>",
-                              description:
-                                "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
-                              audienceFilters: [
-                                {
-                                  fieldName: "type",
-                                  values: [
-                                    {
-                                      value: "Spreadsheet",
-                                      relationType: "EQUALS",
-                                    },
-                                    {
-                                      value: "Presentation",
-                                      relationType: "EQUALS",
-                                    },
-                                  ],
-                                },
-                              ],
-                              id: 782149,
-                              creator: {
-                                name: "George Clooney",
-                                obfuscatedId: "abc123",
-                              },
-                              updatedBy: {
-                                name: "George Clooney",
-                                obfuscatedId: "abc123",
-                              },
-                            },
                             collections: [
                               {
                                 name: "<value>",
-                                description: "because times times",
+                                description:
+                                  "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
                                 audienceFilters: [
                                   {
                                     fieldName: "type",
@@ -815,7 +787,7 @@ let value: ChatResult = {
                                     ],
                                   },
                                 ],
-                                id: 592299,
+                                id: 782149,
                                 creator: {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
@@ -826,7 +798,7 @@ let value: ChatResult = {
                                 },
                                 items: [
                                   {
-                                    collectionId: 795342,
+                                    collectionId: 30842,
                                     createdBy: {
                                       name: "George Clooney",
                                       obfuscatedId: "abc123",
@@ -1013,7 +985,7 @@ let value: ChatResult = {
                                     collection: {
                                       name: "<value>",
                                       description:
-                                        "feline charming fast vibraphone immediately viciously creator",
+                                        "impanel importance pale parody towards wildly elementary unbearably",
                                       audienceFilters: [
                                         {
                                           fieldName: "type",
@@ -1029,7 +1001,7 @@ let value: ChatResult = {
                                           ],
                                         },
                                       ],
-                                      id: 278414,
+                                      id: 390864,
                                       creator: {
                                         name: "George Clooney",
                                         obfuscatedId: "abc123",
@@ -1042,7 +1014,7 @@ let value: ChatResult = {
                                         {
                                           name: "<value>",
                                           description:
-                                            "design cappelletti kettledrum",
+                                            "viciously creator incidentally hole pecan",
                                           audienceFilters: [
                                             {
                                               fieldName: "type",
@@ -1058,7 +1030,7 @@ let value: ChatResult = {
                                               ],
                                             },
                                           ],
-                                          id: 635422,
+                                          id: 581341,
                                           creator: {
                                             name: "George Clooney",
                                             obfuscatedId: "abc123",
@@ -1070,7 +1042,7 @@ let value: ChatResult = {
                                         },
                                       ],
                                     },
-                                    itemType: "URL",
+                                    itemType: "TEXT",
                                   },
                                 ],
                               },
@@ -1163,7 +1135,7 @@ let value: ChatResult = {
                           generatedQna: {
                             ranges: [
                               {
-                                startIndex: 851363,
+                                startIndex: 635422,
                                 document: {
                                   containerDocument: {
                                     metadata: {
@@ -1301,7 +1273,7 @@ let value: ChatResult = {
                           collection: {
                             name: "<value>",
                             description:
-                              "feline charming fast vibraphone immediately viciously creator",
+                              "impanel importance pale parody towards wildly elementary unbearably",
                             audienceFilters: [
                               {
                                 fieldName: "type",
@@ -1317,7 +1289,7 @@ let value: ChatResult = {
                                 ],
                               },
                             ],
-                            id: 278414,
+                            id: 390864,
                             creator: {
                               name: "George Clooney",
                               obfuscatedId: "abc123",
@@ -1329,7 +1301,8 @@ let value: ChatResult = {
                             children: [
                               {
                                 name: "<value>",
-                                description: "design cappelletti kettledrum",
+                                description:
+                                  "viciously creator incidentally hole pecan",
                                 audienceFilters: [
                                   {
                                     fieldName: "type",
@@ -1345,7 +1318,7 @@ let value: ChatResult = {
                                     ],
                                   },
                                 ],
-                                id: 635422,
+                                id: 581341,
                                 creator: {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
@@ -1356,35 +1329,6 @@ let value: ChatResult = {
                                 },
                               },
                             ],
-                          },
-                          answerBoard: {
-                            name: "<value>",
-                            description:
-                              "um verbally till like provided recklessly yowza plus boohoo weary",
-                            audienceFilters: [
-                              {
-                                fieldName: "type",
-                                values: [
-                                  {
-                                    value: "Spreadsheet",
-                                    relationType: "EQUALS",
-                                  },
-                                  {
-                                    value: "Presentation",
-                                    relationType: "EQUALS",
-                                  },
-                                ],
-                              },
-                            ],
-                            id: 70559,
-                            creator: {
-                              name: "George Clooney",
-                              obfuscatedId: "abc123",
-                            },
-                            updatedBy: {
-                              name: "George Clooney",
-                              obfuscatedId: "abc123",
-                            },
                           },
                           code: {
                             repoName: "scio",
@@ -1660,35 +1604,6 @@ let value: ChatResult = {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 782149,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     containerDocument: {
                       metadata: {
@@ -1765,7 +1680,7 @@ let value: ChatResult = {
                 generatedQna: {
                   ranges: [
                     {
-                      startIndex: 851363,
+                      startIndex: 635422,
                       document: {
                         containerDocument: {
                           metadata: {
@@ -1890,7 +1805,7 @@ let value: ChatResult = {
                 collection: {
                   name: "<value>",
                   description:
-                    "feline charming fast vibraphone immediately viciously creator",
+                    "impanel importance pale parody towards wildly elementary unbearably",
                   audienceFilters: [
                     {
                       fieldName: "type",
@@ -1906,7 +1821,7 @@ let value: ChatResult = {
                       ],
                     },
                   ],
-                  id: 278414,
+                  id: 390864,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -1918,7 +1833,7 @@ let value: ChatResult = {
                   children: [
                     {
                       name: "<value>",
-                      description: "design cappelletti kettledrum",
+                      description: "viciously creator incidentally hole pecan",
                       audienceFilters: [
                         {
                           fieldName: "type",
@@ -1934,7 +1849,7 @@ let value: ChatResult = {
                           ],
                         },
                       ],
-                      id: 635422,
+                      id: 581341,
                       creator: {
                         name: "George Clooney",
                         obfuscatedId: "abc123",
@@ -1945,35 +1860,6 @@ let value: ChatResult = {
                       },
                     },
                   ],
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "um verbally till like provided recklessly yowza plus boohoo weary",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 70559,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
                 },
                 code: {
                   repoName: "scio",

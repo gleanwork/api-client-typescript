@@ -5,24 +5,25 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { governanceListfindingsexports } from "../funcs/governanceListfindingsexports.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { QueryHookOptions, SuspenseQueryHookOptions } from "./_types.js";
-
-export type GovernanceListfindingsexportsQueryData =
-  components.ListDlpFindingsExportsResponse;
+import {
+  buildGovernanceListfindingsexportsQuery,
+  GovernanceListfindingsexportsQueryData,
+  prefetchGovernanceListfindingsexports,
+  queryKeyGovernanceListfindingsexports,
+} from "./governanceListfindingsexports.core.js";
+export {
+  buildGovernanceListfindingsexportsQuery,
+  type GovernanceListfindingsexportsQueryData,
+  prefetchGovernanceListfindingsexports,
+  queryKeyGovernanceListfindingsexports,
+};
 
 /**
  * Lists findings exports
@@ -62,17 +63,6 @@ export function useGovernanceListfindingsexportsSuspense(
   });
 }
 
-export function prefetchGovernanceListfindingsexports(
-  queryClient: QueryClient,
-  client$: GleanCore,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildGovernanceListfindingsexportsQuery(
-      client$,
-    ),
-  });
-}
-
 export function setGovernanceListfindingsexportsData(
   client: QueryClient,
   data: GovernanceListfindingsexportsQueryData,
@@ -90,36 +80,4 @@ export function invalidateAllGovernanceListfindingsexports(
     ...filters,
     queryKey: ["@gleanwork/api-client", "Governance", "listfindingsexports"],
   });
-}
-
-export function buildGovernanceListfindingsexportsQuery(
-  client$: GleanCore,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<GovernanceListfindingsexportsQueryData>;
-} {
-  return {
-    queryKey: queryKeyGovernanceListfindingsexports(),
-    queryFn: async function governanceListfindingsexportsQueryFn(
-      ctx,
-    ): Promise<GovernanceListfindingsexportsQueryData> {
-      const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-      const mergedOptions = {
-        ...options,
-        fetchOptions: { ...options?.fetchOptions, signal: sig },
-      };
-
-      return unwrapAsync(governanceListfindingsexports(
-        client$,
-        mergedOptions,
-      ));
-    },
-  };
-}
-
-export function queryKeyGovernanceListfindingsexports(): QueryKey {
-  return ["@gleanwork/api-client", "Governance", "listfindingsexports"];
 }

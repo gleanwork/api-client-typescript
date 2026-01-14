@@ -52,7 +52,7 @@ let value: EditCollectionResponse = {
   },
   items: [
     {
-      collectionId: 795342,
+      collectionId: 30842,
       createdBy: {
         name: "George Clooney",
         obfuscatedId: "abc123",
@@ -215,7 +215,7 @@ let value: EditCollectionResponse = {
       collection: {
         name: "<value>",
         description:
-          "feline charming fast vibraphone immediately viciously creator",
+          "impanel importance pale parody towards wildly elementary unbearably",
         audienceFilters: [
           {
             fieldName: "type",
@@ -231,7 +231,7 @@ let value: EditCollectionResponse = {
             ],
           },
         ],
-        id: 278414,
+        id: 390864,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -243,7 +243,7 @@ let value: EditCollectionResponse = {
         children: [
           {
             name: "<value>",
-            description: "design cappelletti kettledrum",
+            description: "viciously creator incidentally hole pecan",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -259,7 +259,7 @@ let value: EditCollectionResponse = {
                 ],
               },
             ],
-            id: 635422,
+            id: 581341,
             creator: {
               name: "George Clooney",
               obfuscatedId: "abc123",
@@ -271,13 +271,13 @@ let value: EditCollectionResponse = {
           },
         ],
       },
-      itemType: "URL",
+      itemType: "TEXT",
     },
   ],
   children: [
     {
       name: "<value>",
-      description: "design cappelletti kettledrum",
+      description: "viciously creator incidentally hole pecan",
       audienceFilters: [
         {
           fieldName: "type",
@@ -293,7 +293,7 @@ let value: EditCollectionResponse = {
           ],
         },
       ],
-      id: 635422,
+      id: 581341,
       creator: {
         name: "George Clooney",
         obfuscatedId: "abc123",
@@ -317,7 +317,7 @@ let value: EditCollectionResponse = {
   collection: {
     name: "<value>",
     description:
-      "feline charming fast vibraphone immediately viciously creator",
+      "impanel importance pale parody towards wildly elementary unbearably",
     audienceFilters: [
       {
         fieldName: "type",
@@ -333,7 +333,7 @@ let value: EditCollectionResponse = {
         ],
       },
     ],
-    id: 278414,
+    id: 390864,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -345,7 +345,7 @@ let value: EditCollectionResponse = {
     children: [
       {
         name: "<value>",
-        description: "design cappelletti kettledrum",
+        description: "viciously creator incidentally hole pecan",
         audienceFilters: [
           {
             fieldName: "type",
@@ -361,7 +361,7 @@ let value: EditCollectionResponse = {
             ],
           },
         ],
-        id: 635422,
+        id: 581341,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",

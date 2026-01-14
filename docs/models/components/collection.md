@@ -52,7 +52,7 @@ let value: Collection = {
   },
   items: [
     {
-      collectionId: 795342,
+      collectionId: 30842,
       createdBy: {
         name: "George Clooney",
         obfuscatedId: "abc123",
@@ -215,7 +215,7 @@ let value: Collection = {
       collection: {
         name: "<value>",
         description:
-          "feline charming fast vibraphone immediately viciously creator",
+          "impanel importance pale parody towards wildly elementary unbearably",
         audienceFilters: [
           {
             fieldName: "type",
@@ -231,7 +231,7 @@ let value: Collection = {
             ],
           },
         ],
-        id: 278414,
+        id: 390864,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -243,7 +243,7 @@ let value: Collection = {
         children: [
           {
             name: "<value>",
-            description: "design cappelletti kettledrum",
+            description: "viciously creator incidentally hole pecan",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -259,7 +259,7 @@ let value: Collection = {
                 ],
               },
             ],
-            id: 635422,
+            id: 581341,
             creator: {
               name: "George Clooney",
               obfuscatedId: "abc123",
@@ -271,13 +271,13 @@ let value: Collection = {
           },
         ],
       },
-      itemType: "URL",
+      itemType: "TEXT",
     },
   ],
   children: [
     {
       name: "<value>",
-      description: "design cappelletti kettledrum",
+      description: "viciously creator incidentally hole pecan",
       audienceFilters: [
         {
           fieldName: "type",
@@ -293,7 +293,7 @@ let value: Collection = {
           ],
         },
       ],
-      id: 635422,
+      id: 581341,
       creator: {
         name: "George Clooney",
         obfuscatedId: "abc123",

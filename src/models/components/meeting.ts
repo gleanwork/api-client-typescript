@@ -21,6 +21,26 @@ export type Meeting = {
   startTime?: Date | undefined;
   endTime?: Date | undefined;
   attendees?: CalendarAttendees | undefined;
+  /**
+   * Whether the meeting has been cancelled
+   */
+  isCancelled?: boolean | undefined;
+  /**
+   * The location/venue of the meeting
+   */
+  location?: string | undefined;
+  /**
+   * The current user's response status (accepted, declined, tentativelyAccepted, none)
+   */
+  responseStatus?: string | undefined;
+  /**
+   * The meeting join link (Teams, Zoom, etc.)
+   */
+  conferenceUri?: string | undefined;
+  /**
+   * The conference provider (e.g., "Microsoft Teams", "Zoom")
+   */
+  conferenceProvider?: string | undefined;
 };
 
 /** @internal */
@@ -35,6 +55,11 @@ export const Meeting$inboundSchema: z.ZodType<Meeting, z.ZodTypeDef, unknown> =
     endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
       .optional(),
     attendees: z.lazy(() => CalendarAttendees$inboundSchema).optional(),
+    isCancelled: z.boolean().optional(),
+    location: z.string().optional(),
+    responseStatus: z.string().optional(),
+    conferenceUri: z.string().optional(),
+    conferenceProvider: z.string().optional(),
   });
 /** @internal */
 export type Meeting$Outbound = {
@@ -45,6 +70,11 @@ export type Meeting$Outbound = {
   startTime?: string | undefined;
   endTime?: string | undefined;
   attendees?: CalendarAttendees$Outbound | undefined;
+  isCancelled?: boolean | undefined;
+  location?: string | undefined;
+  responseStatus?: string | undefined;
+  conferenceUri?: string | undefined;
+  conferenceProvider?: string | undefined;
 };
 
 /** @internal */
@@ -60,6 +90,11 @@ export const Meeting$outboundSchema: z.ZodType<
   startTime: z.date().transform(v => v.toISOString()).optional(),
   endTime: z.date().transform(v => v.toISOString()).optional(),
   attendees: z.lazy(() => CalendarAttendees$outboundSchema).optional(),
+  isCancelled: z.boolean().optional(),
+  location: z.string().optional(),
+  responseStatus: z.string().optional(),
+  conferenceUri: z.string().optional(),
+  conferenceProvider: z.string().optional(),
 });
 
 export function meetingToJSON(meeting: Meeting): string {

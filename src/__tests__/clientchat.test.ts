@@ -679,35 +679,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "stage atop minion which best sturdy enormously afore circumference duh",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 647529,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [
                     {
                       name: "<value>",
@@ -979,34 +950,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 79387,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "after er grouchy stained plus buck",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 668238,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -1290,34 +1233,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "finally waist inasmuch woot ignorance",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 291881,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -1373,35 +1288,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 833343,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "geez huzzah oof webbed certainly degenerate along inure cow zowie",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 656491,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -1622,35 +1508,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "the across instead into aching where descent shark lest times",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 760885,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -1705,35 +1562,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 750557,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "impanel hydrant spectacles justly hence absolve after sleet drat",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 603732,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -1927,34 +1755,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "amongst uh-huh reassemble upset concrete",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 911324,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -2009,34 +1809,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 146903,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "psst um devil gazebo save",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 45693,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -2226,34 +1998,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "except gadzooks geez",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 567840,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -2309,34 +2053,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 376424,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "surprise outside whether ack",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 621220,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -2880,34 +2596,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "short-term suffice why rightfully",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 974132,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -2962,35 +2650,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 186567,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "er reconsideration triumphantly meaty yearly fragrant delightfully though painfully robust",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 804940,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -3184,35 +2843,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "planula presume mismatch of commandeer ready mortally although",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 711093,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -3267,35 +2897,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 365383,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "rundown recklessly favorite supposing dull politely soon ignorant",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 171217,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -3489,35 +3090,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "striking confound wilderness but rapid an convection scoop litter than",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 569913,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -3573,34 +3145,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 123250,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "meaty impure round",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 31007,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -3817,35 +3361,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "intrigue psst furthermore personalise actually showboat eek punctuation ownership ah",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 785749,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -3901,34 +3416,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 362665,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "colorfully aha where",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 673010,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -4126,34 +3613,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "hence inquisitively proud meh yahoo",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 165945,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -4208,35 +3667,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 52239,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "excluding severe amongst bump farm zowie prickly why",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 617911,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -4434,35 +3864,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "approach hm gadzooks yahoo shameless underneath negative",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 111255,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -4518,35 +3919,6 @@ test("Client Chat Chat Stream Update Response", async () => {
                     },
                   ],
                   id: 656993,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "guidance zen cross-contamination ick pry mundane thoroughly oof ha",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 474526,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -5208,34 +4580,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       ],
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "extent emotional white oil buck",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 392138,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   collections: [
                     {
                       name: "<value>",
@@ -5566,35 +4910,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     obfuscatedId: "abc123",
                   },
                 },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "communicate prudent powerful considering quietly with tromp spring brr",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 595008,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
                 code: {
                   repoName: "scio",
                   fileName: "README.md",
@@ -5878,34 +5193,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "materialise likewise ew bah scarper instead",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 291792,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -5960,34 +5247,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 535445,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "heavenly status yippee whose blushing",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 983667,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -6177,34 +5436,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "manipulate explode out",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 605176,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -6259,35 +5490,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 512474,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "complete help um live beyond for huzzah rowdy foot cross",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 402862,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -6477,34 +5679,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "lobotomise below psst duh interchange poetry",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 521402,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -6560,34 +5734,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 175510,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "fashion bleakly thankfully indeed fully",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 723852,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -6956,35 +6102,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "minus oof dazzling ew for forearm utterly hm onto unexpectedly",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 808814,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -7039,35 +6156,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 999094,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "elderly since boohoo appropriate righteously vice following complete impartial sans",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 315292,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -7265,34 +6353,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "netsuke stump terrorise ugh zowie",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 942095,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -7348,34 +6408,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 65448,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "abaft tightly blah redound qua",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 843154,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -7565,35 +6597,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "gratefully failing square consequently discourse since",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 139991,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -7649,35 +6652,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 455101,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "able mockingly boo entice softly furthermore woeful",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 33669,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -8260,35 +7234,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "affiliate who lamp blushing plait after violent",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 55380,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -8344,34 +7289,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 420468,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "gee edge scholarship",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 632878,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -8565,34 +7482,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "rust forenenst phew immediately",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 277574,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -8647,34 +7536,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 377350,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "blah lowball who moor following folklore as or",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 115719,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -8872,34 +7733,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "among under although ack gee atop horn",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 170010,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -8954,34 +7787,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 754074,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "finally jaggedly nightlife surface",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 435267,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -9198,34 +8003,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "ah once gee",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 785222,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -9280,34 +8057,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 655575,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "godparent before colorize",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 624868,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -9501,35 +8250,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description:
-                      "uh-huh ha notwithstanding so near troubled onto volunteer hm",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 38370,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -9584,34 +8304,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 816883,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description: "meanwhile instead colorfully overheard",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 209097,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
@@ -9809,34 +8501,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                       },
                     },
                   },
-                  board: {
-                    name: "<value>",
-                    description: "indelible aha yuck loyally",
-                    audienceFilters: [
-                      {
-                        fieldName: "type",
-                        values: [
-                          {
-                            value: "Spreadsheet",
-                            relationType: "EQUALS",
-                          },
-                          {
-                            value: "Presentation",
-                            relationType: "EQUALS",
-                          },
-                        ],
-                      },
-                    ],
-                    id: 278807,
-                    creator: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                    updatedBy: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
-                  },
                   sourceDocument: {
                     metadata: {
                       datasource: "datasource",
@@ -9892,35 +8556,6 @@ test("Client Chat Chat Stream Citation Response", async () => {
                     },
                   ],
                   id: 316354,
-                  creator: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                  updatedBy: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
-                },
-                answerBoard: {
-                  name: "<value>",
-                  description:
-                    "frequent aw above ultimate into till pish husky wetly agitated",
-                  audienceFilters: [
-                    {
-                      fieldName: "type",
-                      values: [
-                        {
-                          value: "Spreadsheet",
-                          relationType: "EQUALS",
-                        },
-                        {
-                          value: "Presentation",
-                          relationType: "EQUALS",
-                        },
-                      ],
-                    },
-                  ],
-                  id: 744434,
                   creator: {
                     name: "George Clooney",
                     obfuscatedId: "abc123",

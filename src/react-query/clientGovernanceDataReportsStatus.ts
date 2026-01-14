@@ -5,28 +5,29 @@
 import {
   InvalidateQueryFilters,
   QueryClient,
-  QueryFunctionContext,
-  QueryKey,
   useQuery,
   UseQueryResult,
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { GleanCore } from "../core.js";
-import { clientGovernanceDataReportsStatus } from "../funcs/clientGovernanceDataReportsStatus.js";
-import { combineSignals } from "../lib/primitives.js";
-import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
   SuspenseQueryHookOptions,
   TupleToPrefixes,
 } from "./_types.js";
-
-export type ClientGovernanceDataReportsStatusQueryData =
-  components.ReportStatusResponse;
+import {
+  buildClientGovernanceDataReportsStatusQuery,
+  ClientGovernanceDataReportsStatusQueryData,
+  prefetchClientGovernanceDataReportsStatus,
+  queryKeyClientGovernanceDataReportsStatus,
+} from "./clientGovernanceDataReportsStatus.core.js";
+export {
+  buildClientGovernanceDataReportsStatusQuery,
+  type ClientGovernanceDataReportsStatusQueryData,
+  prefetchClientGovernanceDataReportsStatus,
+  queryKeyClientGovernanceDataReportsStatus,
+};
 
 /**
  * Fetches report run status
@@ -72,19 +73,6 @@ export function useClientGovernanceDataReportsStatusSuspense(
   });
 }
 
-export function prefetchClientGovernanceDataReportsStatus(
-  queryClient: QueryClient,
-  client$: GleanCore,
-  id: string,
-): Promise<void> {
-  return queryClient.prefetchQuery({
-    ...buildClientGovernanceDataReportsStatusQuery(
-      client$,
-      id,
-    ),
-  });
-}
-
 export function setClientGovernanceDataReportsStatusData(
   client: QueryClient,
   queryKeyBase: [id: string],
@@ -117,40 +105,4 @@ export function invalidateAllClientGovernanceDataReportsStatus(
     ...filters,
     queryKey: ["@gleanwork/api-client", "reports", "status"],
   });
-}
-
-export function buildClientGovernanceDataReportsStatusQuery(
-  client$: GleanCore,
-  id: string,
-  options?: RequestOptions,
-): {
-  queryKey: QueryKey;
-  queryFn: (
-    context: QueryFunctionContext,
-  ) => Promise<ClientGovernanceDataReportsStatusQueryData>;
-} {
-  return {
-    queryKey: queryKeyClientGovernanceDataReportsStatus(id),
-    queryFn: async function clientGovernanceDataReportsStatusQueryFn(
-      ctx,
-    ): Promise<ClientGovernanceDataReportsStatusQueryData> {
-      const sig = combineSignals(ctx.signal, options?.fetchOptions?.signal);
-      const mergedOptions = {
-        ...options,
-        fetchOptions: { ...options?.fetchOptions, signal: sig },
-      };
-
-      return unwrapAsync(clientGovernanceDataReportsStatus(
-        client$,
-        id,
-        mergedOptions,
-      ));
-    },
-  };
-}
-
-export function queryKeyClientGovernanceDataReportsStatus(
-  id: string,
-): QueryKey {
-  return ["@gleanwork/api-client", "reports", "status", id];
 }

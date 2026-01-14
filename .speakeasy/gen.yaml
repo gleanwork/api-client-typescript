@@ -31,7 +31,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.13.18
+  version: 0.13.19
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -51,6 +51,7 @@ typescript:
   enumFormat: union
   envVarPrefix: GLEAN
   exportZodModelNamespace: false
+  flatAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
   formStringArrayEncodeMode: encoded-string
@@ -77,6 +78,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
   preApplyUnionDiscriminators: true
+  preserveModelFieldNames: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
