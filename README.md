@@ -1152,8 +1152,8 @@ You can configure these options either via environment variables or SDK construc
 
 ```typescript
 // Set environment variables before initializing the SDK
-process.env.X_Glean_Exclude_Deprecated_After = '2026-10-15';
-process.env.X_Glean_Include_Experimental = 'true';
+process.env.X_GLEAN_EXCLUDE_DEPRECATED_AFTER = '2026-10-15';
+process.env.X_GLEAN_INCLUDE_EXPERIMENTAL = 'true';
 
 import { Glean } from "@gleanwork/api-client";
 
@@ -1180,8 +1180,8 @@ const glean = new Glean({
 
 | Option | Environment Variable | Type | Description |
 | ------ | -------------------- | ---- | ----------- |
-| `excludeDeprecatedAfter` | `X_Glean_Exclude_Deprecated_After` | `string` (date) | Exclude API endpoints that will be deprecated after this date (format: `YYYY-MM-DD`). Use this to test your integration against upcoming deprecations. |
-| `includeExperimental` | `X_Glean_Include_Experimental` | `boolean` | When `true`, enables experimental API features that are not yet generally available. Use this to preview and test new functionality. |
+| `excludeDeprecatedAfter` | `X_GLEAN_EXCLUDE_DEPRECATED_AFTER` | `string` (date) | Exclude API endpoints that will be deprecated after this date (format: `YYYY-MM-DD`). Use this to test your integration against upcoming deprecations. |
+| `includeExperimental` | `X_GLEAN_INCLUDE_EXPERIMENTAL` | `boolean` | When `true`, enables experimental API features that are not yet generally available. Use this to preview and test new functionality. |
 
 > [!NOTE]
 > Environment variables take precedence over SDK constructor options when both are set.

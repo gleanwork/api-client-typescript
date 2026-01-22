@@ -15,12 +15,12 @@ function getFirstValue(
 export class XGlean implements BeforeRequestHook {
   beforeRequest(hookCtx: BeforeRequestContext, request: Request): Request {
     const deprecatedValue = getFirstValue(
-      process.env["X_Glean_Exclude_Deprecated_After"],
+      process.env["X_GLEAN_EXCLUDE_DEPRECATED_AFTER"],
       hookCtx.options.excludeDeprecatedAfter,
     );
 
     const experimentalValue = getFirstValue(
-      process.env["X_Glean_Include_Experimental"],
+      process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"],
       hookCtx.options.includeExperimental === true ? "true" : undefined,
     );
 

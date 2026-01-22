@@ -44,6 +44,8 @@ export type SDKOptions = {
    * Exclude API endpoints that will be deprecated after this date.
    * Use this to test your integration against upcoming deprecations.
    * Format: YYYY-MM-DD (e.g., '2026-10-15')
+   *
+   * More information: https://developers.glean.com/deprecations/overview
    */
   excludeDeprecatedAfter?: string | undefined;
   /**
