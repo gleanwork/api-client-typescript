@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -32,7 +33,8 @@ import { Result } from "../types/fp.js";
  */
 export function clientCollectionsDeleteItem(
   client: GleanCore,
-  request: components.DeleteCollectionItemRequest,
+  deleteCollectionItemRequest: components.DeleteCollectionItemRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -49,14 +51,16 @@ export function clientCollectionsDeleteItem(
 > {
   return new APIPromise($do(
     client,
-    request,
+    deleteCollectionItemRequest,
+    locale,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: components.DeleteCollectionItemRequest,
+  deleteCollectionItemRequest: components.DeleteCollectionItemRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -74,19 +78,30 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.DeletecollectionitemRequest = {
+    deleteCollectionItemRequest: deleteCollectionItemRequest,
+    locale: locale,
+  };
+
   const parsed = safeParse(
-    request,
+    input,
     (value) =>
-      components.DeleteCollectionItemRequest$outboundSchema.parse(value),
+      operations.DeletecollectionitemRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.DeleteCollectionItemRequest, {
+    explode: true,
+  });
 
   const path = pathToFunc("/rest/api/v1/deletecollectionitem")();
+
+  const query = encodeFormQuery({
+    "locale": payload.locale,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -118,6 +133,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

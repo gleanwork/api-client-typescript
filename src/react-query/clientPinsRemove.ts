@@ -12,16 +12,37 @@ import { clientPinsRemove } from "../funcs/clientPinsRemove.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsRemoveMutationVariables = {
-  request: components.Unpin;
+  unpin: components.Unpin;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientPinsRemoveMutationData = void;
+
+export type ClientPinsRemoveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Delete pin
@@ -32,12 +53,12 @@ export type ClientPinsRemoveMutationData = void;
 export function useClientPinsRemoveMutation(
   options?: MutationHookOptions<
     ClientPinsRemoveMutationData,
-    Error,
+    ClientPinsRemoveMutationError,
     ClientPinsRemoveMutationVariables
   >,
 ): UseMutationResult<
   ClientPinsRemoveMutationData,
-  Error,
+  ClientPinsRemoveMutationError,
   ClientPinsRemoveMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientPinsRemoveMutation(
   return {
     mutationKey: mutationKeyClientPinsRemove(),
     mutationFn: function clientPinsRemoveMutationFn({
-      request,
+      unpin,
+      locale,
       options,
     }): Promise<ClientPinsRemoveMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientPinsRemoveMutation(
       };
       return unwrapAsync(clientPinsRemove(
         client$,
-        request,
+        unpin,
+        locale,
         mergedOptions,
       ));
     },

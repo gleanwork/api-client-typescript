@@ -18,12 +18,14 @@ export class ClientDocuments extends ClientSDK {
    * Read the emails of all users who have access to the given document.
    */
   async retrievePermissions(
-    request: components.GetDocPermissionsRequest,
+    getDocPermissionsRequest: components.GetDocPermissionsRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocPermissionsResponse> {
     return unwrapAsync(clientDocumentsRetrievePermissions(
       this,
-      request,
+      getDocPermissionsRequest,
+      locale,
       options,
     ));
   }
@@ -35,12 +37,14 @@ export class ClientDocuments extends ClientSDK {
    * Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) for the given list of Glean Document IDs or URLs specified in the request.
    */
   async retrieve(
-    request?: components.GetDocumentsRequest | undefined,
+    getDocumentsRequest?: components.GetDocumentsRequest | undefined,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocumentsResponse> {
     return unwrapAsync(clientDocumentsRetrieve(
       this,
-      request,
+      getDocumentsRequest,
+      locale,
       options,
     ));
   }
@@ -52,12 +56,16 @@ export class ClientDocuments extends ClientSDK {
    * Read the documents including metadata (does not include enhanced metadata via `/documentmetadata`) macthing the given facet conditions.
    */
   async retrieveByFacets(
-    request?: components.GetDocumentsByFacetsRequest | undefined,
+    getDocumentsByFacetsRequest?:
+      | components.GetDocumentsByFacetsRequest
+      | undefined,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetDocumentsByFacetsResponse> {
     return unwrapAsync(clientDocumentsRetrieveByFacets(
       this,
-      request,
+      getDocumentsByFacetsRequest,
+      locale,
       options,
     ));
   }
@@ -69,12 +77,14 @@ export class ClientDocuments extends ClientSDK {
    * Generate an AI summary of the requested documents.
    */
   async summarize(
-    request: components.SummarizeRequest,
+    summarizeRequest: components.SummarizeRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.SummarizeResponse> {
     return unwrapAsync(clientDocumentsSummarize(
       this,
-      request,
+      summarizeRequest,
+      locale,
       options,
     ));
   }

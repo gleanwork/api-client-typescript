@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientGovernanceDataReportsStatus,
 };
 
+export type ClientGovernanceDataReportsStatusQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Fetches report run status
  *
@@ -37,8 +57,14 @@ export {
  */
 export function useClientGovernanceDataReportsStatus(
   id: string,
-  options?: QueryHookOptions<ClientGovernanceDataReportsStatusQueryData>,
-): UseQueryResult<ClientGovernanceDataReportsStatusQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientGovernanceDataReportsStatusQueryData,
+    ClientGovernanceDataReportsStatusQueryError
+  >,
+): UseQueryResult<
+  ClientGovernanceDataReportsStatusQueryData,
+  ClientGovernanceDataReportsStatusQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientGovernanceDataReportsStatusQuery(
@@ -59,9 +85,13 @@ export function useClientGovernanceDataReportsStatus(
 export function useClientGovernanceDataReportsStatusSuspense(
   id: string,
   options?: SuspenseQueryHookOptions<
-    ClientGovernanceDataReportsStatusQueryData
+    ClientGovernanceDataReportsStatusQueryData,
+    ClientGovernanceDataReportsStatusQueryError
   >,
-): UseSuspenseQueryResult<ClientGovernanceDataReportsStatusQueryData, Error> {
+): UseSuspenseQueryResult<
+  ClientGovernanceDataReportsStatusQueryData,
+  ClientGovernanceDataReportsStatusQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildClientGovernanceDataReportsStatusQuery(

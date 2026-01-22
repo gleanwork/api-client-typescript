@@ -12,18 +12,39 @@ import { clientChatRetrieveApplication } from "../funcs/clientChatRetrieveApplic
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatRetrieveApplicationMutationVariables = {
   getChatApplicationRequest: components.GetChatApplicationRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatRetrieveApplicationMutationData =
   components.GetChatApplicationResponse;
+
+export type ClientChatRetrieveApplicationMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Gets the metadata for a custom Chat application
@@ -34,12 +55,12 @@ export type ClientChatRetrieveApplicationMutationData =
 export function useClientChatRetrieveApplicationMutation(
   options?: MutationHookOptions<
     ClientChatRetrieveApplicationMutationData,
-    Error,
+    ClientChatRetrieveApplicationMutationError,
     ClientChatRetrieveApplicationMutationVariables
   >,
 ): UseMutationResult<
   ClientChatRetrieveApplicationMutationData,
-  Error,
+  ClientChatRetrieveApplicationMutationError,
   ClientChatRetrieveApplicationMutationVariables
 > {
   const client = useGleanContext();
@@ -66,6 +87,7 @@ export function buildClientChatRetrieveApplicationMutation(
     mutationKey: mutationKeyClientChatRetrieveApplication(),
     mutationFn: function clientChatRetrieveApplicationMutationFn({
       getChatApplicationRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatRetrieveApplicationMutationData> {
@@ -84,6 +106,7 @@ export function buildClientChatRetrieveApplicationMutation(
       return unwrapAsync(clientChatRetrieveApplication(
         client$,
         getChatApplicationRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

@@ -12,16 +12,39 @@ import { clientSearchQueryAsAdmin } from "../funcs/clientSearchQueryAsAdmin.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchQueryAsAdminMutationVariables = {
-  request: components.SearchRequest;
+  searchRequest: components.SearchRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientSearchQueryAsAdminMutationData = components.SearchResponse;
+
+export type ClientSearchQueryAsAdminMutationError =
+  | errors.GleanDataError
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Search the index (admin)
@@ -32,12 +55,12 @@ export type ClientSearchQueryAsAdminMutationData = components.SearchResponse;
 export function useClientSearchQueryAsAdminMutation(
   options?: MutationHookOptions<
     ClientSearchQueryAsAdminMutationData,
-    Error,
+    ClientSearchQueryAsAdminMutationError,
     ClientSearchQueryAsAdminMutationVariables
   >,
 ): UseMutationResult<
   ClientSearchQueryAsAdminMutationData,
-  Error,
+  ClientSearchQueryAsAdminMutationError,
   ClientSearchQueryAsAdminMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +86,8 @@ export function buildClientSearchQueryAsAdminMutation(
   return {
     mutationKey: mutationKeyClientSearchQueryAsAdmin(),
     mutationFn: function clientSearchQueryAsAdminMutationFn({
-      request,
+      searchRequest,
+      locale,
       options,
     }): Promise<ClientSearchQueryAsAdminMutationData> {
       const mergedOptions = {
@@ -80,7 +104,8 @@ export function buildClientSearchQueryAsAdminMutation(
       };
       return unwrapAsync(clientSearchQueryAsAdmin(
         client$,
-        request,
+        searchRequest,
+        locale,
         mergedOptions,
       ));
     },

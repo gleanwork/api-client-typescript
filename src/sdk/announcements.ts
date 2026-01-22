@@ -17,12 +17,14 @@ export class Announcements extends ClientSDK {
    * Create a textual announcement visible to some set of users based on department and location.
    */
   async create(
-    request: components.CreateAnnouncementRequest,
+    createAnnouncementRequest: components.CreateAnnouncementRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Announcement> {
     return unwrapAsync(clientAnnouncementsCreate(
       this,
-      request,
+      createAnnouncementRequest,
+      locale,
       options,
     ));
   }
@@ -34,12 +36,14 @@ export class Announcements extends ClientSDK {
    * Delete an existing user-generated announcement.
    */
   async delete(
-    request: components.DeleteAnnouncementRequest,
+    deleteAnnouncementRequest: components.DeleteAnnouncementRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientAnnouncementsDelete(
       this,
-      request,
+      deleteAnnouncementRequest,
+      locale,
       options,
     ));
   }
@@ -51,12 +55,14 @@ export class Announcements extends ClientSDK {
    * Update a textual announcement visible to some set of users based on department and location.
    */
   async update(
-    request: components.UpdateAnnouncementRequest,
+    updateAnnouncementRequest: components.UpdateAnnouncementRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Announcement> {
     return unwrapAsync(clientAnnouncementsUpdate(
       this,
-      request,
+      updateAnnouncementRequest,
+      locale,
       options,
     ));
   }

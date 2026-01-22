@@ -34,6 +34,7 @@ import { Result } from "../types/fp.js";
 export function clientVerificationList(
   client: GleanCore,
   count?: number | undefined,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -51,6 +52,7 @@ export function clientVerificationList(
   return new APIPromise($do(
     client,
     count,
+    locale,
     options,
   ));
 }
@@ -58,6 +60,7 @@ export function clientVerificationList(
 async function $do(
   client: GleanCore,
   count?: number | undefined,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,6 +80,7 @@ async function $do(
 > {
   const input: operations.ListverificationsRequest = {
     count: count,
+    locale: locale,
   };
 
   const parsed = safeParse(
@@ -94,6 +98,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "count": payload.count,
+    "locale": payload.locale,
   });
 
   const headers = new Headers(compactMap({

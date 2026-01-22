@@ -12,16 +12,37 @@ import { clientPinsRetrieve } from "../funcs/clientPinsRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsRetrieveMutationVariables = {
-  request: components.GetPinRequest;
+  getPinRequest: components.GetPinRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientPinsRetrieveMutationData = components.GetPinResponse;
+
+export type ClientPinsRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read pin
@@ -32,12 +53,12 @@ export type ClientPinsRetrieveMutationData = components.GetPinResponse;
 export function useClientPinsRetrieveMutation(
   options?: MutationHookOptions<
     ClientPinsRetrieveMutationData,
-    Error,
+    ClientPinsRetrieveMutationError,
     ClientPinsRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientPinsRetrieveMutationData,
-  Error,
+  ClientPinsRetrieveMutationError,
   ClientPinsRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientPinsRetrieveMutation(
   return {
     mutationKey: mutationKeyClientPinsRetrieve(),
     mutationFn: function clientPinsRetrieveMutationFn({
-      request,
+      getPinRequest,
+      locale,
       options,
     }): Promise<ClientPinsRetrieveMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientPinsRetrieveMutation(
       };
       return unwrapAsync(clientPinsRetrieve(
         client$,
-        request,
+        getPinRequest,
+        locale,
         mergedOptions,
       ));
     },

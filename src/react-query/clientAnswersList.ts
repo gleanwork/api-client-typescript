@@ -12,16 +12,37 @@ import { clientAnswersList } from "../funcs/clientAnswersList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnswersListMutationVariables = {
-  request: components.ListAnswersRequest;
+  listAnswersRequest: components.ListAnswersRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientAnswersListMutationData = components.ListAnswersResponse;
+
+export type ClientAnswersListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * List Answers
@@ -29,17 +50,17 @@ export type ClientAnswersListMutationData = components.ListAnswersResponse;
  * @remarks
  * List Answers created by the current user.
  *
- * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated method: Deprecated on 2026-01-21, removal scheduled for 2026-10-15: Answer boards have been removed and this endpoint no longer serves a purpose.
  */
 export function useClientAnswersListMutation(
   options?: MutationHookOptions<
     ClientAnswersListMutationData,
-    Error,
+    ClientAnswersListMutationError,
     ClientAnswersListMutationVariables
   >,
 ): UseMutationResult<
   ClientAnswersListMutationData,
-  Error,
+  ClientAnswersListMutationError,
   ClientAnswersListMutationVariables
 > {
   const client = useGleanContext();
@@ -65,7 +86,8 @@ export function buildClientAnswersListMutation(
   return {
     mutationKey: mutationKeyClientAnswersList(),
     mutationFn: function clientAnswersListMutationFn({
-      request,
+      listAnswersRequest,
+      locale,
       options,
     }): Promise<ClientAnswersListMutationData> {
       const mergedOptions = {
@@ -82,7 +104,8 @@ export function buildClientAnswersListMutation(
       };
       return unwrapAsync(clientAnswersList(
         client$,
-        request,
+        listAnswersRequest,
+        locale,
         mergedOptions,
       ));
     },

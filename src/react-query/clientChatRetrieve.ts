@@ -12,17 +12,38 @@ import { clientChatRetrieve } from "../funcs/clientChatRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatRetrieveMutationVariables = {
   getChatRequest: components.GetChatRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatRetrieveMutationData = components.GetChatResponse;
+
+export type ClientChatRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Retrieves a Chat
@@ -33,12 +54,12 @@ export type ClientChatRetrieveMutationData = components.GetChatResponse;
 export function useClientChatRetrieveMutation(
   options?: MutationHookOptions<
     ClientChatRetrieveMutationData,
-    Error,
+    ClientChatRetrieveMutationError,
     ClientChatRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientChatRetrieveMutationData,
-  Error,
+  ClientChatRetrieveMutationError,
   ClientChatRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -65,6 +86,7 @@ export function buildClientChatRetrieveMutation(
     mutationKey: mutationKeyClientChatRetrieve(),
     mutationFn: function clientChatRetrieveMutationFn({
       getChatRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatRetrieveMutationData> {
@@ -83,6 +105,7 @@ export function buildClientChatRetrieveMutation(
       return unwrapAsync(clientChatRetrieve(
         client$,
         getChatRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

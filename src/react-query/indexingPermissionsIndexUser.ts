@@ -12,6 +12,16 @@ import { indexingPermissionsIndexUser } from "../funcs/indexingPermissionsIndexU
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingPermissionsIndexUserMutationVariables = {
 
 export type IndexingPermissionsIndexUserMutationData = void;
 
+export type IndexingPermissionsIndexUserMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Index user
  *
@@ -32,12 +52,12 @@ export type IndexingPermissionsIndexUserMutationData = void;
 export function useIndexingPermissionsIndexUserMutation(
   options?: MutationHookOptions<
     IndexingPermissionsIndexUserMutationData,
-    Error,
+    IndexingPermissionsIndexUserMutationError,
     IndexingPermissionsIndexUserMutationVariables
   >,
 ): UseMutationResult<
   IndexingPermissionsIndexUserMutationData,
-  Error,
+  IndexingPermissionsIndexUserMutationError,
   IndexingPermissionsIndexUserMutationVariables
 > {
   const client = useGleanContext();

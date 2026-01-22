@@ -3,10 +3,22 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export type CreatecollectionRequest = {
+  /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
+   * Collection content plus any additional metadata for the request.
+   */
+  createCollectionRequest: components.CreateCollectionRequest;
+};
 
 export type ResponseBody2 = {
   collection?: components.Collection | undefined;
@@ -22,6 +34,34 @@ export type ResponseBody1 = {
  * OK
  */
 export type CreatecollectionResponse = ResponseBody1 | ResponseBody2;
+
+/** @internal */
+export type CreatecollectionRequest$Outbound = {
+  locale?: string | undefined;
+  CreateCollectionRequest: components.CreateCollectionRequest$Outbound;
+};
+
+/** @internal */
+export const CreatecollectionRequest$outboundSchema: z.ZodType<
+  CreatecollectionRequest$Outbound,
+  z.ZodTypeDef,
+  CreatecollectionRequest
+> = z.object({
+  locale: z.string().optional(),
+  createCollectionRequest: components.CreateCollectionRequest$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    createCollectionRequest: "CreateCollectionRequest",
+  });
+});
+
+export function createcollectionRequestToJSON(
+  createcollectionRequest: CreatecollectionRequest,
+): string {
+  return JSON.stringify(
+    CreatecollectionRequest$outboundSchema.parse(createcollectionRequest),
+  );
+}
 
 /** @internal */
 export const ResponseBody2$inboundSchema: z.ZodType<

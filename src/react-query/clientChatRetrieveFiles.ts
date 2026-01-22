@@ -12,18 +12,39 @@ import { clientChatRetrieveFiles } from "../funcs/clientChatRetrieveFiles.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatRetrieveFilesMutationVariables = {
   getChatFilesRequest: components.GetChatFilesRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatRetrieveFilesMutationData =
   components.GetChatFilesResponse;
+
+export type ClientChatRetrieveFilesMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Get files uploaded by a user for Chat.
@@ -34,12 +55,12 @@ export type ClientChatRetrieveFilesMutationData =
 export function useClientChatRetrieveFilesMutation(
   options?: MutationHookOptions<
     ClientChatRetrieveFilesMutationData,
-    Error,
+    ClientChatRetrieveFilesMutationError,
     ClientChatRetrieveFilesMutationVariables
   >,
 ): UseMutationResult<
   ClientChatRetrieveFilesMutationData,
-  Error,
+  ClientChatRetrieveFilesMutationError,
   ClientChatRetrieveFilesMutationVariables
 > {
   const client = useGleanContext();
@@ -66,6 +87,7 @@ export function buildClientChatRetrieveFilesMutation(
     mutationKey: mutationKeyClientChatRetrieveFiles(),
     mutationFn: function clientChatRetrieveFilesMutationFn({
       getChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatRetrieveFilesMutationData> {
@@ -84,6 +106,7 @@ export function buildClientChatRetrieveFilesMutation(
       return unwrapAsync(clientChatRetrieveFiles(
         client$,
         getChatFilesRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

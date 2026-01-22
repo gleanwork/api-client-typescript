@@ -12,6 +12,16 @@ import { indexingShortcutsUpload } from "../funcs/indexingShortcutsUpload.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingShortcutsUploadMutationVariables = {
 
 export type IndexingShortcutsUploadMutationData = void;
 
+export type IndexingShortcutsUploadMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Upload shortcuts
  *
@@ -32,12 +52,12 @@ export type IndexingShortcutsUploadMutationData = void;
 export function useIndexingShortcutsUploadMutation(
   options?: MutationHookOptions<
     IndexingShortcutsUploadMutationData,
-    Error,
+    IndexingShortcutsUploadMutationError,
     IndexingShortcutsUploadMutationVariables
   >,
 ): UseMutationResult<
   IndexingShortcutsUploadMutationData,
-  Error,
+  IndexingShortcutsUploadMutationError,
   IndexingShortcutsUploadMutationVariables
 > {
   const client = useGleanContext();

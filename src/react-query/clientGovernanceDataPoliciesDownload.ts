@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientGovernanceDataPoliciesDownload,
 };
 
+export type ClientGovernanceDataPoliciesDownloadQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Downloads violations CSV for policy
  *
@@ -37,8 +57,14 @@ export {
  */
 export function useClientGovernanceDataPoliciesDownload(
   id: string,
-  options?: QueryHookOptions<ClientGovernanceDataPoliciesDownloadQueryData>,
-): UseQueryResult<ClientGovernanceDataPoliciesDownloadQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientGovernanceDataPoliciesDownloadQueryData,
+    ClientGovernanceDataPoliciesDownloadQueryError
+  >,
+): UseQueryResult<
+  ClientGovernanceDataPoliciesDownloadQueryData,
+  ClientGovernanceDataPoliciesDownloadQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientGovernanceDataPoliciesDownloadQuery(
@@ -59,11 +85,12 @@ export function useClientGovernanceDataPoliciesDownload(
 export function useClientGovernanceDataPoliciesDownloadSuspense(
   id: string,
   options?: SuspenseQueryHookOptions<
-    ClientGovernanceDataPoliciesDownloadQueryData
+    ClientGovernanceDataPoliciesDownloadQueryData,
+    ClientGovernanceDataPoliciesDownloadQueryError
   >,
 ): UseSuspenseQueryResult<
   ClientGovernanceDataPoliciesDownloadQueryData,
-  Error
+  ClientGovernanceDataPoliciesDownloadQueryError
 > {
   const client = useGleanContext();
   return useSuspenseQuery({

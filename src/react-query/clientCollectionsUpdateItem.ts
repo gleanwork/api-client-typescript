@@ -12,17 +12,38 @@ import { clientCollectionsUpdateItem } from "../funcs/clientCollectionsUpdateIte
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsUpdateItemMutationVariables = {
-  request: components.EditCollectionItemRequest;
+  editCollectionItemRequest: components.EditCollectionItemRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientCollectionsUpdateItemMutationData =
   components.EditCollectionItemResponse;
+
+export type ClientCollectionsUpdateItemMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Update Collection item
@@ -33,12 +54,12 @@ export type ClientCollectionsUpdateItemMutationData =
 export function useClientCollectionsUpdateItemMutation(
   options?: MutationHookOptions<
     ClientCollectionsUpdateItemMutationData,
-    Error,
+    ClientCollectionsUpdateItemMutationError,
     ClientCollectionsUpdateItemMutationVariables
   >,
 ): UseMutationResult<
   ClientCollectionsUpdateItemMutationData,
-  Error,
+  ClientCollectionsUpdateItemMutationError,
   ClientCollectionsUpdateItemMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientCollectionsUpdateItemMutation(
   return {
     mutationKey: mutationKeyClientCollectionsUpdateItem(),
     mutationFn: function clientCollectionsUpdateItemMutationFn({
-      request,
+      editCollectionItemRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsUpdateItemMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientCollectionsUpdateItemMutation(
       };
       return unwrapAsync(clientCollectionsUpdateItem(
         client$,
-        request,
+        editCollectionItemRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientGovernanceDocumentsVisibilityoverridesList,
 };
 
+export type ClientGovernanceDocumentsVisibilityoverridesListQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Fetches documents visibility
  *
@@ -38,11 +58,12 @@ export {
 export function useClientGovernanceDocumentsVisibilityoverridesList(
   docIds?: Array<string> | undefined,
   options?: QueryHookOptions<
-    ClientGovernanceDocumentsVisibilityoverridesListQueryData
+    ClientGovernanceDocumentsVisibilityoverridesListQueryData,
+    ClientGovernanceDocumentsVisibilityoverridesListQueryError
   >,
 ): UseQueryResult<
   ClientGovernanceDocumentsVisibilityoverridesListQueryData,
-  Error
+  ClientGovernanceDocumentsVisibilityoverridesListQueryError
 > {
   const client = useGleanContext();
   return useQuery({
@@ -64,11 +85,12 @@ export function useClientGovernanceDocumentsVisibilityoverridesList(
 export function useClientGovernanceDocumentsVisibilityoverridesListSuspense(
   docIds?: Array<string> | undefined,
   options?: SuspenseQueryHookOptions<
-    ClientGovernanceDocumentsVisibilityoverridesListQueryData
+    ClientGovernanceDocumentsVisibilityoverridesListQueryData,
+    ClientGovernanceDocumentsVisibilityoverridesListQueryError
   >,
 ): UseSuspenseQueryResult<
   ClientGovernanceDocumentsVisibilityoverridesListQueryData,
-  Error
+  ClientGovernanceDocumentsVisibilityoverridesListQueryError
 > {
   const client = useGleanContext();
   return useSuspenseQuery({

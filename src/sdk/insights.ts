@@ -15,12 +15,14 @@ export class Insights extends ClientSDK {
    * Gets the aggregate usage insights data displayed in the Insights Dashboards.
    */
   async retrieve(
-    request: components.InsightsRequest,
+    insightsRequest: components.InsightsRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.InsightsResponse> {
     return unwrapAsync(clientInsightsRetrieve(
       this,
-      request,
+      insightsRequest,
+      locale,
       options,
     ));
   }

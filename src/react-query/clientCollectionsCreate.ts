@@ -12,18 +12,41 @@ import { clientCollectionsCreate } from "../funcs/clientCollectionsCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsCreateMutationVariables = {
-  request: components.CreateCollectionRequest;
+  createCollectionRequest: components.CreateCollectionRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientCollectionsCreateMutationData =
   operations.CreatecollectionResponse;
+
+export type ClientCollectionsCreateMutationError =
+  | errors.CollectionError
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Create Collection
@@ -34,12 +57,12 @@ export type ClientCollectionsCreateMutationData =
 export function useClientCollectionsCreateMutation(
   options?: MutationHookOptions<
     ClientCollectionsCreateMutationData,
-    Error,
+    ClientCollectionsCreateMutationError,
     ClientCollectionsCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientCollectionsCreateMutationData,
-  Error,
+  ClientCollectionsCreateMutationError,
   ClientCollectionsCreateMutationVariables
 > {
   const client = useGleanContext();
@@ -65,7 +88,8 @@ export function buildClientCollectionsCreateMutation(
   return {
     mutationKey: mutationKeyClientCollectionsCreate(),
     mutationFn: function clientCollectionsCreateMutationFn({
-      request,
+      createCollectionRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsCreateMutationData> {
       const mergedOptions = {
@@ -82,7 +106,8 @@ export function buildClientCollectionsCreateMutation(
       };
       return unwrapAsync(clientCollectionsCreate(
         client$,
-        request,
+        createCollectionRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -17,12 +17,14 @@ export class Verification extends ClientSDK {
    * Creates a verification reminder for the document. Users can create verification reminders from different product surfaces.
    */
   async addReminder(
-    request: components.ReminderRequest,
+    reminderRequest: components.ReminderRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Verification> {
     return unwrapAsync(clientVerificationAddReminder(
       this,
-      request,
+      reminderRequest,
+      locale,
       options,
     ));
   }
@@ -35,11 +37,13 @@ export class Verification extends ClientSDK {
    */
   async list(
     count?: number | undefined,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.VerificationFeed> {
     return unwrapAsync(clientVerificationList(
       this,
       count,
+      locale,
       options,
     ));
   }
@@ -51,12 +55,14 @@ export class Verification extends ClientSDK {
    * Verify documents to keep the knowledge up to date within customer corpus.
    */
   async verify(
-    request: components.VerifyRequest,
+    verifyRequest: components.VerifyRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Verification> {
     return unwrapAsync(clientVerificationVerify(
       this,
-      request,
+      verifyRequest,
+      locale,
       options,
     ));
   }

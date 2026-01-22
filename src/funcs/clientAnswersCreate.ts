@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -32,7 +33,8 @@ import { Result } from "../types/fp.js";
  */
 export function clientAnswersCreate(
   client: GleanCore,
-  request: components.CreateAnswerRequest,
+  createAnswerRequest: components.CreateAnswerRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -49,14 +51,16 @@ export function clientAnswersCreate(
 > {
   return new APIPromise($do(
     client,
-    request,
+    createAnswerRequest,
+    locale,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: components.CreateAnswerRequest,
+  createAnswerRequest: components.CreateAnswerRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -74,18 +78,29 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.CreateanswerRequest = {
+    createAnswerRequest: createAnswerRequest,
+    locale: locale,
+  };
+
   const parsed = safeParse(
-    request,
-    (value) => components.CreateAnswerRequest$outboundSchema.parse(value),
+    input,
+    (value) => operations.CreateanswerRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.CreateAnswerRequest, {
+    explode: true,
+  });
 
   const path = pathToFunc("/rest/api/v1/createanswer")();
+
+  const query = encodeFormQuery({
+    "locale": payload.locale,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -117,6 +132,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

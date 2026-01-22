@@ -12,17 +12,38 @@ import { clientChatDelete } from "../funcs/clientChatDelete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteMutationVariables = {
   deleteChatsRequest: components.DeleteChatsRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatDeleteMutationData = void;
+
+export type ClientChatDeleteMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Deletes saved Chats
@@ -33,12 +54,12 @@ export type ClientChatDeleteMutationData = void;
 export function useClientChatDeleteMutation(
   options?: MutationHookOptions<
     ClientChatDeleteMutationData,
-    Error,
+    ClientChatDeleteMutationError,
     ClientChatDeleteMutationVariables
   >,
 ): UseMutationResult<
   ClientChatDeleteMutationData,
-  Error,
+  ClientChatDeleteMutationError,
   ClientChatDeleteMutationVariables
 > {
   const client = useGleanContext();
@@ -65,6 +86,7 @@ export function buildClientChatDeleteMutation(
     mutationKey: mutationKeyClientChatDelete(),
     mutationFn: function clientChatDeleteMutationFn({
       deleteChatsRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteMutationData> {
@@ -83,6 +105,7 @@ export function buildClientChatDeleteMutation(
       return unwrapAsync(clientChatDelete(
         client$,
         deleteChatsRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

@@ -7,6 +7,10 @@ import { remap as remap$ } from "../../lib/primitives.js";
 
 export type GetAgentSchemasRequest = {
   /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -18,6 +22,7 @@ export type GetAgentSchemasRequest = {
 
 /** @internal */
 export type GetAgentSchemasRequest$Outbound = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   agent_id: string;
 };
@@ -28,6 +33,7 @@ export const GetAgentSchemasRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAgentSchemasRequest
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   agentId: z.string(),
 }).transform((v) => {

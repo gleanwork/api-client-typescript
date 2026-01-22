@@ -12,17 +12,38 @@ import { clientShortcutsRetrieve } from "../funcs/clientShortcutsRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsRetrieveMutationVariables = {
-  request: components.GetShortcutRequestUnion;
+  getShortcutRequest: components.GetShortcutRequestUnion;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientShortcutsRetrieveMutationData =
   components.GetShortcutResponse;
+
+export type ClientShortcutsRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read shortcut
@@ -33,12 +54,12 @@ export type ClientShortcutsRetrieveMutationData =
 export function useClientShortcutsRetrieveMutation(
   options?: MutationHookOptions<
     ClientShortcutsRetrieveMutationData,
-    Error,
+    ClientShortcutsRetrieveMutationError,
     ClientShortcutsRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientShortcutsRetrieveMutationData,
-  Error,
+  ClientShortcutsRetrieveMutationError,
   ClientShortcutsRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientShortcutsRetrieveMutation(
   return {
     mutationKey: mutationKeyClientShortcutsRetrieve(),
     mutationFn: function clientShortcutsRetrieveMutationFn({
-      request,
+      getShortcutRequest,
+      locale,
       options,
     }): Promise<ClientShortcutsRetrieveMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientShortcutsRetrieveMutation(
       };
       return unwrapAsync(clientShortcutsRetrieve(
         client$,
-        request,
+        getShortcutRequest,
+        locale,
         mergedOptions,
       ));
     },

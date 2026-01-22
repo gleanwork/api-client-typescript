@@ -12,17 +12,38 @@ import { clientShortcutsList } from "../funcs/clientShortcutsList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsListMutationVariables = {
-  request: components.ListShortcutsPaginatedRequest;
+  listShortcutsPaginatedRequest: components.ListShortcutsPaginatedRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientShortcutsListMutationData =
   components.ListShortcutsPaginatedResponse;
+
+export type ClientShortcutsListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * List shortcuts
@@ -33,12 +54,12 @@ export type ClientShortcutsListMutationData =
 export function useClientShortcutsListMutation(
   options?: MutationHookOptions<
     ClientShortcutsListMutationData,
-    Error,
+    ClientShortcutsListMutationError,
     ClientShortcutsListMutationVariables
   >,
 ): UseMutationResult<
   ClientShortcutsListMutationData,
-  Error,
+  ClientShortcutsListMutationError,
   ClientShortcutsListMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientShortcutsListMutation(
   return {
     mutationKey: mutationKeyClientShortcutsList(),
     mutationFn: function clientShortcutsListMutationFn({
-      request,
+      listShortcutsPaginatedRequest,
+      locale,
       options,
     }): Promise<ClientShortcutsListMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientShortcutsListMutation(
       };
       return unwrapAsync(clientShortcutsList(
         client$,
-        request,
+        listShortcutsPaginatedRequest,
+        locale,
         mergedOptions,
       ));
     },

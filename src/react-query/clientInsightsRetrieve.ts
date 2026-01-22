@@ -12,16 +12,37 @@ import { clientInsightsRetrieve } from "../funcs/clientInsightsRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientInsightsRetrieveMutationVariables = {
-  request: components.InsightsRequest;
+  insightsRequest: components.InsightsRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientInsightsRetrieveMutationData = components.InsightsResponse;
+
+export type ClientInsightsRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Get insights
@@ -32,12 +53,12 @@ export type ClientInsightsRetrieveMutationData = components.InsightsResponse;
 export function useClientInsightsRetrieveMutation(
   options?: MutationHookOptions<
     ClientInsightsRetrieveMutationData,
-    Error,
+    ClientInsightsRetrieveMutationError,
     ClientInsightsRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientInsightsRetrieveMutationData,
-  Error,
+  ClientInsightsRetrieveMutationError,
   ClientInsightsRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientInsightsRetrieveMutation(
   return {
     mutationKey: mutationKeyClientInsightsRetrieve(),
     mutationFn: function clientInsightsRetrieveMutationFn({
-      request,
+      insightsRequest,
+      locale,
       options,
     }): Promise<ClientInsightsRetrieveMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientInsightsRetrieveMutation(
       };
       return unwrapAsync(clientInsightsRetrieve(
         client$,
-        request,
+        insightsRequest,
+        locale,
         mergedOptions,
       ));
     },

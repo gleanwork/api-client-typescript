@@ -3,21 +3,61 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../../lib/primitives.js";
 
 /**
  * List pins request
  */
-export type ListpinsRequest = {};
+export type ListpinsRequestBody = {};
+
+export type ListpinsRequest = {
+  /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
+   * List pins request
+   */
+  requestBody: ListpinsRequestBody;
+};
 
 /** @internal */
-export type ListpinsRequest$Outbound = {};
+export type ListpinsRequestBody$Outbound = {};
+
+/** @internal */
+export const ListpinsRequestBody$outboundSchema: z.ZodType<
+  ListpinsRequestBody$Outbound,
+  z.ZodTypeDef,
+  ListpinsRequestBody
+> = z.object({});
+
+export function listpinsRequestBodyToJSON(
+  listpinsRequestBody: ListpinsRequestBody,
+): string {
+  return JSON.stringify(
+    ListpinsRequestBody$outboundSchema.parse(listpinsRequestBody),
+  );
+}
+
+/** @internal */
+export type ListpinsRequest$Outbound = {
+  locale?: string | undefined;
+  RequestBody: ListpinsRequestBody$Outbound;
+};
 
 /** @internal */
 export const ListpinsRequest$outboundSchema: z.ZodType<
   ListpinsRequest$Outbound,
   z.ZodTypeDef,
   ListpinsRequest
-> = z.object({});
+> = z.object({
+  locale: z.string().optional(),
+  requestBody: z.lazy(() => ListpinsRequestBody$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
+});
 
 export function listpinsRequestToJSON(
   listpinsRequest: ListpinsRequest,

@@ -20,12 +20,14 @@ export class Pins extends ClientSDK {
    * Update an existing user-generated pin.
    */
   async update(
-    request: components.EditPinRequest,
+    editPinRequest: components.EditPinRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.PinDocument> {
     return unwrapAsync(clientPinsUpdate(
       this,
-      request,
+      editPinRequest,
+      locale,
       options,
     ));
   }
@@ -37,12 +39,14 @@ export class Pins extends ClientSDK {
    * Read pin details given its ID.
    */
   async retrieve(
-    request: components.GetPinRequest,
+    getPinRequest: components.GetPinRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetPinResponse> {
     return unwrapAsync(clientPinsRetrieve(
       this,
-      request,
+      getPinRequest,
+      locale,
       options,
     ));
   }
@@ -54,12 +58,14 @@ export class Pins extends ClientSDK {
    * Lists all pins.
    */
   async list(
-    request: operations.ListpinsRequest,
+    requestBody: operations.ListpinsRequestBody,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ListPinsResponse> {
     return unwrapAsync(clientPinsList(
       this,
-      request,
+      requestBody,
+      locale,
       options,
     ));
   }
@@ -71,12 +77,14 @@ export class Pins extends ClientSDK {
    * Pin a document as a result for a given search query.Pin results that are known to be a good match.
    */
   async create(
-    request: components.PinRequest,
+    pinRequest: components.PinRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.PinDocument> {
     return unwrapAsync(clientPinsCreate(
       this,
-      request,
+      pinRequest,
+      locale,
       options,
     ));
   }
@@ -88,12 +96,14 @@ export class Pins extends ClientSDK {
    * Unpin a previously pinned result.
    */
   async remove(
-    request: components.Unpin,
+    unpin: components.Unpin,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientPinsRemove(
       this,
-      request,
+      unpin,
+      locale,
       options,
     ));
   }

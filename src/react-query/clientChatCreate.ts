@@ -12,17 +12,38 @@ import { clientChatCreate } from "../funcs/clientChatCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatCreateMutationVariables = {
   chatRequest: components.ChatRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatCreateMutationData = components.ChatResponse;
+
+export type ClientChatCreateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Chat
@@ -33,12 +54,12 @@ export type ClientChatCreateMutationData = components.ChatResponse;
 export function useClientChatCreateMutation(
   options?: MutationHookOptions<
     ClientChatCreateMutationData,
-    Error,
+    ClientChatCreateMutationError,
     ClientChatCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientChatCreateMutationData,
-  Error,
+  ClientChatCreateMutationError,
   ClientChatCreateMutationVariables
 > {
   const client = useGleanContext();
@@ -65,6 +86,7 @@ export function buildClientChatCreateMutation(
     mutationKey: mutationKeyClientChatCreate(),
     mutationFn: function clientChatCreateMutationFn({
       chatRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatCreateMutationData> {
@@ -83,6 +105,7 @@ export function buildClientChatCreateMutation(
       return unwrapAsync(clientChatCreate(
         client$,
         chatRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

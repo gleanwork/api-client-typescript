@@ -12,16 +12,37 @@ import { clientAnnouncementsCreate } from "../funcs/clientAnnouncementsCreate.js
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnnouncementsCreateMutationVariables = {
-  request: components.CreateAnnouncementRequest;
+  createAnnouncementRequest: components.CreateAnnouncementRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientAnnouncementsCreateMutationData = components.Announcement;
+
+export type ClientAnnouncementsCreateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Create Announcement
@@ -32,12 +53,12 @@ export type ClientAnnouncementsCreateMutationData = components.Announcement;
 export function useClientAnnouncementsCreateMutation(
   options?: MutationHookOptions<
     ClientAnnouncementsCreateMutationData,
-    Error,
+    ClientAnnouncementsCreateMutationError,
     ClientAnnouncementsCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientAnnouncementsCreateMutationData,
-  Error,
+  ClientAnnouncementsCreateMutationError,
   ClientAnnouncementsCreateMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientAnnouncementsCreateMutation(
   return {
     mutationKey: mutationKeyClientAnnouncementsCreate(),
     mutationFn: function clientAnnouncementsCreateMutationFn({
-      request,
+      createAnnouncementRequest,
+      locale,
       options,
     }): Promise<ClientAnnouncementsCreateMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientAnnouncementsCreateMutation(
       };
       return unwrapAsync(clientAnnouncementsCreate(
         client$,
-        request,
+        createAnnouncementRequest,
+        locale,
         mergedOptions,
       ));
     },

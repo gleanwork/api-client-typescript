@@ -12,16 +12,37 @@ import { clientAnswersUpdate } from "../funcs/clientAnswersUpdate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnswersUpdateMutationVariables = {
-  request: components.EditAnswerRequest;
+  editAnswerRequest: components.EditAnswerRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientAnswersUpdateMutationData = components.Answer;
+
+export type ClientAnswersUpdateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Update Answer
@@ -32,12 +53,12 @@ export type ClientAnswersUpdateMutationData = components.Answer;
 export function useClientAnswersUpdateMutation(
   options?: MutationHookOptions<
     ClientAnswersUpdateMutationData,
-    Error,
+    ClientAnswersUpdateMutationError,
     ClientAnswersUpdateMutationVariables
   >,
 ): UseMutationResult<
   ClientAnswersUpdateMutationData,
-  Error,
+  ClientAnswersUpdateMutationError,
   ClientAnswersUpdateMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientAnswersUpdateMutation(
   return {
     mutationKey: mutationKeyClientAnswersUpdate(),
     mutationFn: function clientAnswersUpdateMutationFn({
-      request,
+      editAnswerRequest,
+      locale,
       options,
     }): Promise<ClientAnswersUpdateMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientAnswersUpdateMutation(
       };
       return unwrapAsync(clientAnswersUpdate(
         client$,
-        request,
+        editAnswerRequest,
+        locale,
         mergedOptions,
       ));
     },

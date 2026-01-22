@@ -12,6 +12,16 @@ import { indexingDocumentsProcessAll } from "../funcs/indexingDocumentsProcessAl
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -22,6 +32,16 @@ export type IndexingDocumentsProcessAllMutationVariables = {
 };
 
 export type IndexingDocumentsProcessAllMutationData = void;
+
+export type IndexingDocumentsProcessAllMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Schedules the processing of uploaded documents
@@ -42,12 +62,12 @@ export type IndexingDocumentsProcessAllMutationData = void;
 export function useIndexingDocumentsProcessAllMutation(
   options?: MutationHookOptions<
     IndexingDocumentsProcessAllMutationData,
-    Error,
+    IndexingDocumentsProcessAllMutationError,
     IndexingDocumentsProcessAllMutationVariables
   >,
 ): UseMutationResult<
   IndexingDocumentsProcessAllMutationData,
-  Error,
+  IndexingDocumentsProcessAllMutationError,
   IndexingDocumentsProcessAllMutationVariables
 > {
   const client = useGleanContext();

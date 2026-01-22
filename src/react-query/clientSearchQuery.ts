@@ -12,16 +12,39 @@ import { clientSearchQuery } from "../funcs/clientSearchQuery.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchQueryMutationVariables = {
-  request: components.SearchRequest;
+  searchRequest: components.SearchRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientSearchQueryMutationData = components.SearchResponse;
+
+export type ClientSearchQueryMutationError =
+  | errors.GleanDataError
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Search
@@ -32,12 +55,12 @@ export type ClientSearchQueryMutationData = components.SearchResponse;
 export function useClientSearchQueryMutation(
   options?: MutationHookOptions<
     ClientSearchQueryMutationData,
-    Error,
+    ClientSearchQueryMutationError,
     ClientSearchQueryMutationVariables
   >,
 ): UseMutationResult<
   ClientSearchQueryMutationData,
-  Error,
+  ClientSearchQueryMutationError,
   ClientSearchQueryMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +86,8 @@ export function buildClientSearchQueryMutation(
   return {
     mutationKey: mutationKeyClientSearchQuery(),
     mutationFn: function clientSearchQueryMutationFn({
-      request,
+      searchRequest,
+      locale,
       options,
     }): Promise<ClientSearchQueryMutationData> {
       const mergedOptions = {
@@ -80,7 +104,8 @@ export function buildClientSearchQueryMutation(
       };
       return unwrapAsync(clientSearchQuery(
         client$,
-        request,
+        searchRequest,
+        locale,
         mergedOptions,
       ));
     },
