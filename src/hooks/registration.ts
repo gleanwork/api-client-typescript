@@ -1,4 +1,5 @@
-import { Hooks, AfterErrorHook } from './types.js';
+import { Hooks, AfterErrorHook } from "./types.js";
+import { XGlean } from "./x-glean.js";
 
 /*
  * This file is only ever generated once on the first generation and then is free to be modified.
@@ -47,4 +48,7 @@ export function initHooks(hooks: Hooks) {
   // with an instance of a hook that implements that specific Hook interface
   // Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
   hooks.registerAfterErrorHook(agentFileUploadErrorHook);
+
+  // Register the X-Glean header hook for experimental features and deprecation testing
+  hooks.registerBeforeRequestHook(new XGlean());
 }

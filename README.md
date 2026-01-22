@@ -76,6 +76,7 @@ These API clients provide type-safe, idiomatic interfaces for working with Glean
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
+  * [Experimental Features and Deprecation Testing](#experimental-features-and-deprecation-testing)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -1135,6 +1136,58 @@ const sdk = new Glean({ debugLogger: console });
 
 You can also enable a default debug logger by setting an environment variable `GLEAN_DEBUG` to true.
 <!-- End Debugging [debug] -->
+
+## Experimental Features and Deprecation Testing
+
+The SDK provides options to test upcoming API changes before they become the default behavior. This is useful for:
+
+- **Testing experimental features** before they are generally available
+- **Preparing for deprecations** by excluding deprecated endpoints ahead of their removal
+
+### Configuration Options
+
+You can configure these options either via environment variables or SDK constructor options:
+
+#### Using Environment Variables
+
+```typescript
+// Set environment variables before initializing the SDK
+process.env.X_Glean_Exclude_Deprecated_After = '2026-10-15';
+process.env.X_Glean_Include_Experimental = 'true';
+
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  instance: process.env["GLEAN_INSTANCE"] ?? "",
+});
+```
+
+#### Using SDK Constructor Options
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+  instance: process.env["GLEAN_INSTANCE"] ?? "",
+  excludeDeprecatedAfter: '2026-10-15',
+  includeExperimental: true,
+});
+```
+
+### Option Reference
+
+| Option | Environment Variable | Type | Description |
+| ------ | -------------------- | ---- | ----------- |
+| `excludeDeprecatedAfter` | `X_Glean_Exclude_Deprecated_After` | `string` (date) | Exclude API endpoints that will be deprecated after this date (format: `YYYY-MM-DD`). Use this to test your integration against upcoming deprecations. |
+| `includeExperimental` | `X_Glean_Include_Experimental` | `boolean` | When `true`, enables experimental API features that are not yet generally available. Use this to preview and test new functionality. |
+
+> [!NOTE]
+> Environment variables take precedence over SDK constructor options when both are set.
+
+> [!WARNING]
+> Experimental features may change or be removed without notice. Do not rely on experimental features in production environments.
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

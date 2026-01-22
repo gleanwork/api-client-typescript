@@ -40,6 +40,17 @@ export type SDKOptions = {
   retryConfig?: RetryConfig;
   timeoutMs?: number;
   debugLogger?: Logger;
+  /**
+   * Exclude API endpoints that will be deprecated after this date.
+   * Use this to test your integration against upcoming deprecations.
+   * Format: YYYY-MM-DD (e.g., '2026-10-15')
+   */
+  excludeDeprecatedAfter?: string | undefined;
+  /**
+   * When true, enables experimental API features that are not yet generally available.
+   * Use this to preview and test new functionality.
+   */
+  includeExperimental?: boolean | undefined;
 };
 
 export function serverURLFromOptions(options: SDKOptions): URL | null {
