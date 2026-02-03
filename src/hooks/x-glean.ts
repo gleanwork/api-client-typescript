@@ -1,4 +1,5 @@
 import { BeforeRequestContext, BeforeRequestHook } from "./types.js";
+import { XGleanOptions } from "./x-glean-options.js";
 
 /**
  * Get the first non-empty value from the provided arguments.
@@ -14,14 +15,18 @@ function getFirstValue(
 
 export class XGlean implements BeforeRequestHook {
   beforeRequest(hookCtx: BeforeRequestContext, request: Request): Request {
+    // Cast options to include X-Glean custom properties
+    // These properties may be passed by users but aren't in the generated SDKOptions type
+    const options = hookCtx.options as XGleanOptions;
+
     const deprecatedValue = getFirstValue(
       process.env["X_GLEAN_EXCLUDE_DEPRECATED_AFTER"],
-      hookCtx.options.excludeDeprecatedAfter,
+      options.excludeDeprecatedAfter,
     );
 
     const experimentalValue = getFirstValue(
       process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"],
-      hookCtx.options.includeExperimental === true ? "true" : undefined,
+      options.includeExperimental === true ? "true" : undefined,
     );
 
     if (deprecatedValue) {
