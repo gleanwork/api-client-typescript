@@ -15,6 +15,8 @@
       "./models/components": "./src/models/components/index.ts",
       "./models/operations": "./src/models/operations/index.ts",
       "./react-query": "./src/react-query/index.ts",
+      "./hooks": "./src/hooks/index.ts",
+      "./hooks/*.js": "./src/hooks/*.ts",
       "./hooks/*": "./src/hooks/*.ts",
       "./*.js": "./src/*.ts",
       "./*": "./src/*.ts"
@@ -129,6 +131,28 @@
       "require": {
         "types": "./dist/commonjs/react-query/index.d.ts",
         "default": "./dist/commonjs/react-query/index.js"
+      }
+    },
+    "./hooks": {
+      "import": {
+        "@gleanwork/api-client/source": "./src/hooks/index.ts",
+        "types": "./dist/esm/hooks/index.d.ts",
+        "default": "./dist/esm/hooks/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/hooks/index.d.ts",
+        "default": "./dist/commonjs/hooks/index.js"
+      }
+    },
+    "./hooks/*.js": {
+      "import": {
+        "@gleanwork/api-client/source": "./src/hooks/*.ts",
+        "types": "./dist/esm/hooks/*.d.ts",
+        "default": "./dist/esm/hooks/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/hooks/*.d.ts",
+        "default": "./dist/commonjs/hooks/*.js"
       }
     },
     "./hooks/*": {

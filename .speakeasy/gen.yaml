@@ -40,6 +40,22 @@ typescript:
     peerDependencies: {}
   additionalPackageJSON:
     exports:
+      ./hooks:
+        import:
+          "@gleanwork/api-client/source": ./src/hooks/index.ts
+          types: ./dist/esm/hooks/index.d.ts
+          default: ./dist/esm/hooks/index.js
+        require:
+          types: ./dist/commonjs/hooks/index.d.ts
+          default: ./dist/commonjs/hooks/index.js
+      ./hooks/*.js:
+        import:
+          "@gleanwork/api-client/source": ./src/hooks/*.ts
+          types: ./dist/esm/hooks/*.d.ts
+          default: ./dist/esm/hooks/*.js
+        require:
+          types: ./dist/commonjs/hooks/*.d.ts
+          default: ./dist/commonjs/hooks/*.js
       ./hooks/*:
         import:
           "@gleanwork/api-client/source": ./src/hooks/*.ts
@@ -50,6 +66,8 @@ typescript:
           default: ./dist/commonjs/hooks/*.js
     tshy:
       exports:
+        ./hooks: ./src/hooks/index.ts
+        ./hooks/*.js: ./src/hooks/*.ts
         ./hooks/*: ./src/hooks/*.ts
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
