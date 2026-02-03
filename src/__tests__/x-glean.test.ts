@@ -2,12 +2,19 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { XGlean } from "../hooks/x-glean.js";
 import { BeforeRequestContext } from "../hooks/types.js";
 import { SDKOptions } from "../lib/config.js";
+import { XGleanOptions } from "../hooks/x-glean-options.js";
 
 function createMockRequest(): Request {
   return new Request("https://example.com/api/test");
 }
 
-function createMockContext(options: SDKOptions = {}): BeforeRequestContext {
+/**
+ * Creates a mock BeforeRequestContext for testing.
+ * Uses intersection type to support both base SDKOptions and X-Glean custom options.
+ */
+function createMockContext(
+  options: SDKOptions & XGleanOptions = {},
+): BeforeRequestContext {
   return {
     baseURL: "https://example.com",
     operationID: "test-operation",
