@@ -1167,13 +1167,17 @@ const glean = new Glean({
 
 ```typescript
 import { Glean } from "@gleanwork/api-client";
+import type { SDKOptions } from "@gleanwork/api-client";
+import type { XGleanOptions } from "@gleanwork/api-client/hooks/x-glean-options.js";
 
-const glean = new Glean({
+const opts = {
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   instance: process.env["GLEAN_INSTANCE"] ?? "",
-  excludeDeprecatedAfter: '2026-10-15',
+  excludeDeprecatedAfter: "2026-10-15",
   includeExperimental: true,
-});
+} satisfies SDKOptions & XGleanOptions;
+
+const glean = new Glean(opts);
 ```
 
 ### Option Reference
