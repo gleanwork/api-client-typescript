@@ -20,10 +20,10 @@ export interface XGleanOptions {
    *
    * More information: https://developers.glean.com/deprecations/overview
    */
-  excludeDeprecatedAfter?: string | undefined;
+  excludeDeprecatedAfter?: string;
   /**
    * When true, enables experimental API features that are not yet generally available.
    * Use this to preview and test new functionality.
    */
-  includeExperimental?: boolean | undefined;
+  includeExperimental?: boolean;
 }

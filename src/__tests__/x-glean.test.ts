@@ -151,6 +151,34 @@ describe("XGlean hook", () => {
       );
       expect(result.headers.get("X-Glean-Experimental")).toBe("true");
     });
+
+    it("should not set X-Glean-Experimental header when environment variable is false", () => {
+      process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"] = "false";
+
+      const hook = new XGlean();
+      const request = createMockRequest();
+      const context = createMockContext({
+        includeExperimental: true,
+      });
+
+      const result = hook.beforeRequest(context, request);
+
+      expect(result.headers.has("X-Glean-Experimental")).toBe(false);
+    });
+
+    it("should fall back to SDK options when experimental env var is empty", () => {
+      process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"] = " ";
+
+      const hook = new XGlean();
+      const request = createMockRequest();
+      const context = createMockContext({
+        includeExperimental: true,
+      });
+
+      const result = hook.beforeRequest(context, request);
+
+      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+    });
   });
 
   describe("environment variables take precedence over SDK options", () => {
@@ -201,6 +229,34 @@ describe("XGlean hook", () => {
         "2028-01-01",
       );
       expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+    });
+
+    it("should omit X-Glean-Experimental header when env var is false, even if option is true", () => {
+      process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"] = "false";
+
+      const hook = new XGlean();
+      const request = createMockRequest();
+      const context = createMockContext({
+        includeExperimental: true,
+      });
+
+      const result = hook.beforeRequest(context, request);
+
+      expect(result.headers.has("X-Glean-Experimental")).toBe(false);
+    });
+  });
+
+  describe("when options are malformed at runtime", () => {
+    it("should not set X-Glean-Exclude-Deprecated-After when excludeDeprecatedAfter is not a string", () => {
+      const hook = new XGlean();
+      const request = createMockRequest();
+      const context = createMockContext({
+        excludeDeprecatedAfter: 123 as any,
+      });
+
+      const result = hook.beforeRequest(context, request);
+
+      expect(result.headers.has("X-Glean-Exclude-Deprecated-After")).toBe(false);
     });
   });
 });
