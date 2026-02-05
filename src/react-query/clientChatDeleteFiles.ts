@@ -12,17 +12,38 @@ import { clientChatDeleteFiles } from "../funcs/clientChatDeleteFiles.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteFilesMutationVariables = {
   deleteChatFilesRequest: components.DeleteChatFilesRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatDeleteFilesMutationData = void;
+
+export type ClientChatDeleteFilesMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Delete files uploaded by a user for chat.
@@ -33,12 +54,12 @@ export type ClientChatDeleteFilesMutationData = void;
 export function useClientChatDeleteFilesMutation(
   options?: MutationHookOptions<
     ClientChatDeleteFilesMutationData,
-    Error,
+    ClientChatDeleteFilesMutationError,
     ClientChatDeleteFilesMutationVariables
   >,
 ): UseMutationResult<
   ClientChatDeleteFilesMutationData,
-  Error,
+  ClientChatDeleteFilesMutationError,
   ClientChatDeleteFilesMutationVariables
 > {
   const client = useGleanContext();
@@ -65,6 +86,7 @@ export function buildClientChatDeleteFilesMutation(
     mutationKey: mutationKeyClientChatDeleteFiles(),
     mutationFn: function clientChatDeleteFilesMutationFn({
       deleteChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteFilesMutationData> {
@@ -83,6 +105,7 @@ export function buildClientChatDeleteFilesMutation(
       return unwrapAsync(clientChatDeleteFiles(
         client$,
         deleteChatFilesRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

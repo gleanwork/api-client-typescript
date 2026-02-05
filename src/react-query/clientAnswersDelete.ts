@@ -12,16 +12,37 @@ import { clientAnswersDelete } from "../funcs/clientAnswersDelete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnswersDeleteMutationVariables = {
-  request: components.DeleteAnswerRequest;
+  deleteAnswerRequest: components.DeleteAnswerRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientAnswersDeleteMutationData = void;
+
+export type ClientAnswersDeleteMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Delete Answer
@@ -32,12 +53,12 @@ export type ClientAnswersDeleteMutationData = void;
 export function useClientAnswersDeleteMutation(
   options?: MutationHookOptions<
     ClientAnswersDeleteMutationData,
-    Error,
+    ClientAnswersDeleteMutationError,
     ClientAnswersDeleteMutationVariables
   >,
 ): UseMutationResult<
   ClientAnswersDeleteMutationData,
-  Error,
+  ClientAnswersDeleteMutationError,
   ClientAnswersDeleteMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientAnswersDeleteMutation(
   return {
     mutationKey: mutationKeyClientAnswersDelete(),
     mutationFn: function clientAnswersDeleteMutationFn({
-      request,
+      deleteAnswerRequest,
+      locale,
       options,
     }): Promise<ClientAnswersDeleteMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientAnswersDeleteMutation(
       };
       return unwrapAsync(clientAnswersDelete(
         client$,
-        request,
+        deleteAnswerRequest,
+        locale,
         mergedOptions,
       ));
     },

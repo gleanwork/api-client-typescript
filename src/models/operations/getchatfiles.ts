@@ -8,6 +8,10 @@ import * as components from "../components/index.js";
 
 export type GetchatfilesRequest = {
   /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -16,6 +20,7 @@ export type GetchatfilesRequest = {
 
 /** @internal */
 export type GetchatfilesRequest$Outbound = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   GetChatFilesRequest: components.GetChatFilesRequest$Outbound;
 };
@@ -26,6 +31,7 @@ export const GetchatfilesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetchatfilesRequest
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   getChatFilesRequest: components.GetChatFilesRequest$outboundSchema,
 }).transform((v) => {

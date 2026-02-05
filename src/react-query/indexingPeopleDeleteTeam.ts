@@ -12,6 +12,16 @@ import { indexingPeopleDeleteTeam } from "../funcs/indexingPeopleDeleteTeam.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingPeopleDeleteTeamMutationVariables = {
 
 export type IndexingPeopleDeleteTeamMutationData = void;
 
+export type IndexingPeopleDeleteTeamMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Delete team
  *
@@ -32,12 +52,12 @@ export type IndexingPeopleDeleteTeamMutationData = void;
 export function useIndexingPeopleDeleteTeamMutation(
   options?: MutationHookOptions<
     IndexingPeopleDeleteTeamMutationData,
-    Error,
+    IndexingPeopleDeleteTeamMutationError,
     IndexingPeopleDeleteTeamMutationVariables
   >,
 ): UseMutationResult<
   IndexingPeopleDeleteTeamMutationData,
-  Error,
+  IndexingPeopleDeleteTeamMutationError,
   IndexingPeopleDeleteTeamMutationVariables
 > {
   const client = useGleanContext();

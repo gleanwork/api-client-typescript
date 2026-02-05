@@ -12,16 +12,37 @@ import { clientEntitiesReadPeople } from "../funcs/clientEntitiesReadPeople.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesReadPeopleMutationVariables = {
-  request: components.PeopleRequest;
+  peopleRequest: components.PeopleRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientEntitiesReadPeopleMutationData = components.PeopleResponse;
+
+export type ClientEntitiesReadPeopleMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read people
@@ -32,12 +53,12 @@ export type ClientEntitiesReadPeopleMutationData = components.PeopleResponse;
 export function useClientEntitiesReadPeopleMutation(
   options?: MutationHookOptions<
     ClientEntitiesReadPeopleMutationData,
-    Error,
+    ClientEntitiesReadPeopleMutationError,
     ClientEntitiesReadPeopleMutationVariables
   >,
 ): UseMutationResult<
   ClientEntitiesReadPeopleMutationData,
-  Error,
+  ClientEntitiesReadPeopleMutationError,
   ClientEntitiesReadPeopleMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientEntitiesReadPeopleMutation(
   return {
     mutationKey: mutationKeyClientEntitiesReadPeople(),
     mutationFn: function clientEntitiesReadPeopleMutationFn({
-      request,
+      peopleRequest,
+      locale,
       options,
     }): Promise<ClientEntitiesReadPeopleMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientEntitiesReadPeopleMutation(
       };
       return unwrapAsync(clientEntitiesReadPeople(
         client$,
-        request,
+        peopleRequest,
+        locale,
         mergedOptions,
       ));
     },

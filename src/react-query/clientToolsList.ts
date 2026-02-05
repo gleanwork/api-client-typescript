@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientToolsList,
 };
 
+export type ClientToolsListQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * List available tools
  *
@@ -37,8 +57,11 @@ export {
  */
 export function useClientToolsList(
   toolNames?: Array<string> | undefined,
-  options?: QueryHookOptions<ClientToolsListQueryData>,
-): UseQueryResult<ClientToolsListQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientToolsListQueryData,
+    ClientToolsListQueryError
+  >,
+): UseQueryResult<ClientToolsListQueryData, ClientToolsListQueryError> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientToolsListQuery(
@@ -58,8 +81,11 @@ export function useClientToolsList(
  */
 export function useClientToolsListSuspense(
   toolNames?: Array<string> | undefined,
-  options?: SuspenseQueryHookOptions<ClientToolsListQueryData>,
-): UseSuspenseQueryResult<ClientToolsListQueryData, Error> {
+  options?: SuspenseQueryHookOptions<
+    ClientToolsListQueryData,
+    ClientToolsListQueryError
+  >,
+): UseSuspenseQueryResult<ClientToolsListQueryData, ClientToolsListQueryError> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildClientToolsListQuery(

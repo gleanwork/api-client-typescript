@@ -12,16 +12,39 @@ import { clientCollectionsDelete } from "../funcs/clientCollectionsDelete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsDeleteMutationVariables = {
-  request: components.DeleteCollectionRequest;
+  deleteCollectionRequest: components.DeleteCollectionRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientCollectionsDeleteMutationData = void;
+
+export type ClientCollectionsDeleteMutationError =
+  | errors.CollectionError
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Delete Collection
@@ -32,12 +55,12 @@ export type ClientCollectionsDeleteMutationData = void;
 export function useClientCollectionsDeleteMutation(
   options?: MutationHookOptions<
     ClientCollectionsDeleteMutationData,
-    Error,
+    ClientCollectionsDeleteMutationError,
     ClientCollectionsDeleteMutationVariables
   >,
 ): UseMutationResult<
   ClientCollectionsDeleteMutationData,
-  Error,
+  ClientCollectionsDeleteMutationError,
   ClientCollectionsDeleteMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +86,8 @@ export function buildClientCollectionsDeleteMutation(
   return {
     mutationKey: mutationKeyClientCollectionsDelete(),
     mutationFn: function clientCollectionsDeleteMutationFn({
-      request,
+      deleteCollectionRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsDeleteMutationData> {
       const mergedOptions = {
@@ -80,7 +104,8 @@ export function buildClientCollectionsDeleteMutation(
       };
       return unwrapAsync(clientCollectionsDelete(
         client$,
-        request,
+        deleteCollectionRequest,
+        locale,
         mergedOptions,
       ));
     },

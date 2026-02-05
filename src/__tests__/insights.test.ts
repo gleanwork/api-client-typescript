@@ -15,11 +15,6 @@ test("Insights Insights", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.client.insights.retrieve({
-    categories: [
-      "CONTENT",
-      "CONTENT",
-    ],
-  });
+  const result = await glean.client.insights.retrieve({});
   expect(result).toBeDefined();
 });

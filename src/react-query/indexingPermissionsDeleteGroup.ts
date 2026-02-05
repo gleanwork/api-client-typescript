@@ -12,6 +12,16 @@ import { indexingPermissionsDeleteGroup } from "../funcs/indexingPermissionsDele
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingPermissionsDeleteGroupMutationVariables = {
 
 export type IndexingPermissionsDeleteGroupMutationData = void;
 
+export type IndexingPermissionsDeleteGroupMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Delete group
  *
@@ -33,12 +53,12 @@ export type IndexingPermissionsDeleteGroupMutationData = void;
 export function useIndexingPermissionsDeleteGroupMutation(
   options?: MutationHookOptions<
     IndexingPermissionsDeleteGroupMutationData,
-    Error,
+    IndexingPermissionsDeleteGroupMutationError,
     IndexingPermissionsDeleteGroupMutationVariables
   >,
 ): UseMutationResult<
   IndexingPermissionsDeleteGroupMutationData,
-  Error,
+  IndexingPermissionsDeleteGroupMutationError,
   IndexingPermissionsDeleteGroupMutationVariables
 > {
   const client = useGleanContext();

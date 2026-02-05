@@ -3,22 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
 import {
   AgentsInsightsV2Request,
   AgentsInsightsV2Request$Outbound,
   AgentsInsightsV2Request$outboundSchema,
 } from "./agentsinsightsv2request.js";
-import {
-  InsightsAgentsRequestOptions,
-  InsightsAgentsRequestOptions$Outbound,
-  InsightsAgentsRequestOptions$outboundSchema,
-} from "./insightsagentsrequestoptions.js";
-import {
-  InsightsAiAppRequestOptions,
-  InsightsAiAppRequestOptions$Outbound,
-  InsightsAiAppRequestOptions$outboundSchema,
-} from "./insightsaiapprequestoptions.js";
 import {
   InsightsAssistantRequest,
   InsightsAssistantRequest$Outbound,
@@ -29,35 +18,6 @@ import {
   InsightsOverviewRequest$Outbound,
   InsightsOverviewRequest$outboundSchema,
 } from "./insightsoverviewrequest.js";
-import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
-
-export const InsightsRequestCategory = {
-  Agents: "AGENTS",
-  AgentUsers: "AGENT_USERS",
-  TopAgents: "TOP_AGENTS",
-  AgentsUsageByDepartment: "AGENTS_USAGE_BY_DEPARTMENT",
-  Ai: "AI",
-  AiApps: "AI_APPS",
-  Announcements: "ANNOUNCEMENTS",
-  Answers: "ANSWERS",
-  Collections: "COLLECTIONS",
-  Content: "CONTENT",
-  GleanAssist: "GLEAN_ASSIST",
-  Queries: "QUERIES",
-  Shortcuts: "SHORTCUTS",
-  Users: "USERS",
-} as const;
-export type InsightsRequestCategory = ClosedEnum<
-  typeof InsightsRequestCategory
->;
-
-export const AssistantActivityType = {
-  GleanChat: "GLEAN_CHAT",
-  AiSummary: "AI_SUMMARY",
-  AiAnswer: "AI_ANSWER",
-  GleanbotResponse: "GLEANBOT_RESPONSE",
-} as const;
-export type AssistantActivityType = ClosedEnum<typeof AssistantActivityType>;
 
 export type InsightsRequest = {
   overviewRequest?: InsightsOverviewRequest | undefined;
@@ -67,38 +27,7 @@ export type InsightsRequest = {
    * If true, suppresses the generation of per-user Insights in the response. Default is false.
    */
   disablePerUserInsights?: boolean | undefined;
-  /**
-   * Categories of data requested. Request can include single or multiple types.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  categories?: Array<InsightsRequestCategory> | undefined;
-  /**
-   * Departments that the data is requested for. If this is empty, corresponds to whole company.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  departments?: Array<string> | undefined;
-  dayRange?: Period | undefined;
-  aiAppRequestOptions?: InsightsAiAppRequestOptions | undefined;
-  agentsRequestOptions?: InsightsAgentsRequestOptions | undefined;
-  /**
-   * Types of activity that should count in the definition of an Assistant Active User. Affects only insights for AI category.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  assistantActivityTypes?: Array<AssistantActivityType> | undefined;
 };
-
-/** @internal */
-export const InsightsRequestCategory$outboundSchema: z.ZodNativeEnum<
-  typeof InsightsRequestCategory
-> = z.nativeEnum(InsightsRequestCategory);
-
-/** @internal */
-export const AssistantActivityType$outboundSchema: z.ZodNativeEnum<
-  typeof AssistantActivityType
-> = z.nativeEnum(AssistantActivityType);
 
 /** @internal */
 export type InsightsRequest$Outbound = {
@@ -106,12 +35,6 @@ export type InsightsRequest$Outbound = {
   assistantRequest?: InsightsAssistantRequest$Outbound | undefined;
   agentsRequest?: AgentsInsightsV2Request$Outbound | undefined;
   disablePerUserInsights?: boolean | undefined;
-  categories?: Array<string> | undefined;
-  departments?: Array<string> | undefined;
-  dayRange?: Period$Outbound | undefined;
-  aiAppRequestOptions?: InsightsAiAppRequestOptions$Outbound | undefined;
-  agentsRequestOptions?: InsightsAgentsRequestOptions$Outbound | undefined;
-  assistantActivityTypes?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -124,13 +47,6 @@ export const InsightsRequest$outboundSchema: z.ZodType<
   assistantRequest: InsightsAssistantRequest$outboundSchema.optional(),
   agentsRequest: AgentsInsightsV2Request$outboundSchema.optional(),
   disablePerUserInsights: z.boolean().optional(),
-  categories: z.array(InsightsRequestCategory$outboundSchema).optional(),
-  departments: z.array(z.string()).optional(),
-  dayRange: Period$outboundSchema.optional(),
-  aiAppRequestOptions: InsightsAiAppRequestOptions$outboundSchema.optional(),
-  agentsRequestOptions: InsightsAgentsRequestOptions$outboundSchema.optional(),
-  assistantActivityTypes: z.array(AssistantActivityType$outboundSchema)
-    .optional(),
 });
 
 export function insightsRequestToJSON(

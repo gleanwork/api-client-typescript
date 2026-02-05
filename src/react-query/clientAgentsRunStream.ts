@@ -12,6 +12,16 @@ import { clientAgentsRunStream } from "../funcs/clientAgentsRunStream.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type ClientAgentsRunStreamMutationVariables = {
 
 export type ClientAgentsRunStreamMutationData = string;
 
+export type ClientAgentsRunStreamMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Create an agent run and stream the response
  *
@@ -32,12 +52,12 @@ export type ClientAgentsRunStreamMutationData = string;
 export function useClientAgentsRunStreamMutation(
   options?: MutationHookOptions<
     ClientAgentsRunStreamMutationData,
-    Error,
+    ClientAgentsRunStreamMutationError,
     ClientAgentsRunStreamMutationVariables
   >,
 ): UseMutationResult<
   ClientAgentsRunStreamMutationData,
-  Error,
+  ClientAgentsRunStreamMutationError,
   ClientAgentsRunStreamMutationVariables
 > {
   const client = useGleanContext();

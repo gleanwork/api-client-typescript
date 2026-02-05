@@ -12,16 +12,37 @@ import { clientVerificationList } from "../funcs/clientVerificationList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationListMutationVariables = {
   count?: number | undefined;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientVerificationListMutationData = components.VerificationFeed;
+
+export type ClientVerificationListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * List verifications
@@ -32,12 +53,12 @@ export type ClientVerificationListMutationData = components.VerificationFeed;
 export function useClientVerificationListMutation(
   options?: MutationHookOptions<
     ClientVerificationListMutationData,
-    Error,
+    ClientVerificationListMutationError,
     ClientVerificationListMutationVariables
   >,
 ): UseMutationResult<
   ClientVerificationListMutationData,
-  Error,
+  ClientVerificationListMutationError,
   ClientVerificationListMutationVariables
 > {
   const client = useGleanContext();
@@ -64,6 +85,7 @@ export function buildClientVerificationListMutation(
     mutationKey: mutationKeyClientVerificationList(),
     mutationFn: function clientVerificationListMutationFn({
       count,
+      locale,
       options,
     }): Promise<ClientVerificationListMutationData> {
       const mergedOptions = {
@@ -81,6 +103,7 @@ export function buildClientVerificationListMutation(
       return unwrapAsync(clientVerificationList(
         client$,
         count,
+        locale,
         mergedOptions,
       ));
     },

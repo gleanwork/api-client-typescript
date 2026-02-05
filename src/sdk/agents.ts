@@ -20,12 +20,14 @@ export class Agents extends ClientSDK {
    */
   async retrieve(
     agentId: string,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.Agent> {
     return unwrapAsync(clientAgentsRetrieve(
       this,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ));
@@ -39,12 +41,14 @@ export class Agents extends ClientSDK {
    */
   async retrieveSchemas(
     agentId: string,
+    locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
   ): Promise<components.AgentSchemas> {
     return unwrapAsync(clientAgentsRetrieveSchemas(
       this,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ));

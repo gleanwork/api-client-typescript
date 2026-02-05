@@ -12,17 +12,38 @@ import { clientPinsList } from "../funcs/clientPinsList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsListMutationVariables = {
-  request: operations.ListpinsRequest;
+  requestBody: operations.ListpinsRequestBody;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientPinsListMutationData = components.ListPinsResponse;
+
+export type ClientPinsListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * List pins
@@ -33,12 +54,12 @@ export type ClientPinsListMutationData = components.ListPinsResponse;
 export function useClientPinsListMutation(
   options?: MutationHookOptions<
     ClientPinsListMutationData,
-    Error,
+    ClientPinsListMutationError,
     ClientPinsListMutationVariables
   >,
 ): UseMutationResult<
   ClientPinsListMutationData,
-  Error,
+  ClientPinsListMutationError,
   ClientPinsListMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientPinsListMutation(
   return {
     mutationKey: mutationKeyClientPinsList(),
     mutationFn: function clientPinsListMutationFn({
-      request,
+      requestBody,
+      locale,
       options,
     }): Promise<ClientPinsListMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientPinsListMutation(
       };
       return unwrapAsync(clientPinsList(
         client$,
-        request,
+        requestBody,
+        locale,
         mergedOptions,
       ));
     },

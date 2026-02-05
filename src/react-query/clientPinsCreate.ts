@@ -12,16 +12,37 @@ import { clientPinsCreate } from "../funcs/clientPinsCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientPinsCreateMutationVariables = {
-  request: components.PinRequest;
+  pinRequest: components.PinRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientPinsCreateMutationData = components.PinDocument;
+
+export type ClientPinsCreateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Create pin
@@ -32,12 +53,12 @@ export type ClientPinsCreateMutationData = components.PinDocument;
 export function useClientPinsCreateMutation(
   options?: MutationHookOptions<
     ClientPinsCreateMutationData,
-    Error,
+    ClientPinsCreateMutationError,
     ClientPinsCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientPinsCreateMutationData,
-  Error,
+  ClientPinsCreateMutationError,
   ClientPinsCreateMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientPinsCreateMutation(
   return {
     mutationKey: mutationKeyClientPinsCreate(),
     mutationFn: function clientPinsCreateMutationFn({
-      request,
+      pinRequest,
+      locale,
       options,
     }): Promise<ClientPinsCreateMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientPinsCreateMutation(
       };
       return unwrapAsync(clientPinsCreate(
         client$,
-        request,
+        pinRequest,
+        locale,
         mergedOptions,
       ));
     },

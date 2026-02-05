@@ -12,6 +12,16 @@ import { indexingDocumentsAddOrUpdate } from "../funcs/indexingDocumentsAddOrUpd
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingDocumentsAddOrUpdateMutationVariables = {
 
 export type IndexingDocumentsAddOrUpdateMutationData = void;
 
+export type IndexingDocumentsAddOrUpdateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Index document
  *
@@ -32,12 +52,12 @@ export type IndexingDocumentsAddOrUpdateMutationData = void;
 export function useIndexingDocumentsAddOrUpdateMutation(
   options?: MutationHookOptions<
     IndexingDocumentsAddOrUpdateMutationData,
-    Error,
+    IndexingDocumentsAddOrUpdateMutationError,
     IndexingDocumentsAddOrUpdateMutationVariables
   >,
 ): UseMutationResult<
   IndexingDocumentsAddOrUpdateMutationData,
-  Error,
+  IndexingDocumentsAddOrUpdateMutationError,
   IndexingDocumentsAddOrUpdateMutationVariables
 > {
   const client = useGleanContext();

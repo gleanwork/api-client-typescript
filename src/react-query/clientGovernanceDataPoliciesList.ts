@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientGovernanceDataPoliciesList,
 };
 
+export type ClientGovernanceDataPoliciesListQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Lists policies
  *
@@ -38,8 +58,14 @@ export {
 export function useClientGovernanceDataPoliciesList(
   autoHide?: boolean | undefined,
   frequency?: string | undefined,
-  options?: QueryHookOptions<ClientGovernanceDataPoliciesListQueryData>,
-): UseQueryResult<ClientGovernanceDataPoliciesListQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientGovernanceDataPoliciesListQueryData,
+    ClientGovernanceDataPoliciesListQueryError
+  >,
+): UseQueryResult<
+  ClientGovernanceDataPoliciesListQueryData,
+  ClientGovernanceDataPoliciesListQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientGovernanceDataPoliciesListQuery(
@@ -61,8 +87,14 @@ export function useClientGovernanceDataPoliciesList(
 export function useClientGovernanceDataPoliciesListSuspense(
   autoHide?: boolean | undefined,
   frequency?: string | undefined,
-  options?: SuspenseQueryHookOptions<ClientGovernanceDataPoliciesListQueryData>,
-): UseSuspenseQueryResult<ClientGovernanceDataPoliciesListQueryData, Error> {
+  options?: SuspenseQueryHookOptions<
+    ClientGovernanceDataPoliciesListQueryData,
+    ClientGovernanceDataPoliciesListQueryError
+  >,
+): UseSuspenseQueryResult<
+  ClientGovernanceDataPoliciesListQueryData,
+  ClientGovernanceDataPoliciesListQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildClientGovernanceDataPoliciesListQuery(

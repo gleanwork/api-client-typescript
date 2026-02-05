@@ -12,6 +12,16 @@ import { indexingDocumentsCheckAccess } from "../funcs/indexingDocumentsCheckAcc
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -24,6 +34,16 @@ export type IndexingDocumentsCheckAccessMutationVariables = {
 export type IndexingDocumentsCheckAccessMutationData =
   components.CheckDocumentAccessResponse;
 
+export type IndexingDocumentsCheckAccessMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Check document access
  *
@@ -35,12 +55,12 @@ export type IndexingDocumentsCheckAccessMutationData =
 export function useIndexingDocumentsCheckAccessMutation(
   options?: MutationHookOptions<
     IndexingDocumentsCheckAccessMutationData,
-    Error,
+    IndexingDocumentsCheckAccessMutationError,
     IndexingDocumentsCheckAccessMutationVariables
   >,
 ): UseMutationResult<
   IndexingDocumentsCheckAccessMutationData,
-  Error,
+  IndexingDocumentsCheckAccessMutationError,
   IndexingDocumentsCheckAccessMutationVariables
 > {
   const client = useGleanContext();

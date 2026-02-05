@@ -11,6 +11,16 @@ import { GleanCore } from "../core.js";
 import { indexingPeopleProcessAllEmployeesAndTeams } from "../funcs/indexingPeopleProcessAllEmployeesAndTeams.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -21,6 +31,16 @@ export type IndexingPeopleProcessAllEmployeesAndTeamsMutationVariables = {
 
 export type IndexingPeopleProcessAllEmployeesAndTeamsMutationData = void;
 
+export type IndexingPeopleProcessAllEmployeesAndTeamsMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Schedules the processing of uploaded employees and teams
  *
@@ -30,12 +50,12 @@ export type IndexingPeopleProcessAllEmployeesAndTeamsMutationData = void;
 export function useIndexingPeopleProcessAllEmployeesAndTeamsMutation(
   options?: MutationHookOptions<
     IndexingPeopleProcessAllEmployeesAndTeamsMutationData,
-    Error,
+    IndexingPeopleProcessAllEmployeesAndTeamsMutationError,
     IndexingPeopleProcessAllEmployeesAndTeamsMutationVariables
   >,
 ): UseMutationResult<
   IndexingPeopleProcessAllEmployeesAndTeamsMutationData,
-  Error,
+  IndexingPeopleProcessAllEmployeesAndTeamsMutationError,
   IndexingPeopleProcessAllEmployeesAndTeamsMutationVariables
 > {
   const client = useGleanContext();

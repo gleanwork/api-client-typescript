@@ -9,11 +9,16 @@ export type ListverificationsRequest = {
    * Maximum number of documents to return
    */
   count?: number | undefined;
+  /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
 };
 
 /** @internal */
 export type ListverificationsRequest$Outbound = {
   count?: number | undefined;
+  locale?: string | undefined;
 };
 
 /** @internal */
@@ -23,6 +28,7 @@ export const ListverificationsRequest$outboundSchema: z.ZodType<
   ListverificationsRequest
 > = z.object({
   count: z.number().int().optional(),
+  locale: z.string().optional(),
 });
 
 export function listverificationsRequestToJSON(

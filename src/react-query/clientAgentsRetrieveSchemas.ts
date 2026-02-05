@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientAgentsRetrieveSchemas,
 };
 
+export type ClientAgentsRetrieveSchemasQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * List an agent's schemas
  *
@@ -37,14 +57,22 @@ export {
  */
 export function useClientAgentsRetrieveSchemas(
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
-  options?: QueryHookOptions<ClientAgentsRetrieveSchemasQueryData>,
-): UseQueryResult<ClientAgentsRetrieveSchemasQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientAgentsRetrieveSchemasQueryData,
+    ClientAgentsRetrieveSchemasQueryError
+  >,
+): UseQueryResult<
+  ClientAgentsRetrieveSchemasQueryData,
+  ClientAgentsRetrieveSchemasQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientAgentsRetrieveSchemasQuery(
       client,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -60,14 +88,22 @@ export function useClientAgentsRetrieveSchemas(
  */
 export function useClientAgentsRetrieveSchemasSuspense(
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
-  options?: SuspenseQueryHookOptions<ClientAgentsRetrieveSchemasQueryData>,
-): UseSuspenseQueryResult<ClientAgentsRetrieveSchemasQueryData, Error> {
+  options?: SuspenseQueryHookOptions<
+    ClientAgentsRetrieveSchemasQueryData,
+    ClientAgentsRetrieveSchemasQueryError
+  >,
+): UseSuspenseQueryResult<
+  ClientAgentsRetrieveSchemasQueryData,
+  ClientAgentsRetrieveSchemasQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildClientAgentsRetrieveSchemasQuery(
       client,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -79,7 +115,10 @@ export function setClientAgentsRetrieveSchemasData(
   client: QueryClient,
   queryKeyBase: [
     agentId: string,
-    parameters: { timezoneOffset?: number | undefined },
+    parameters: {
+      locale?: string | undefined;
+      timezoneOffset?: number | undefined;
+    },
   ],
   data: ClientAgentsRetrieveSchemasQueryData,
 ): ClientAgentsRetrieveSchemasQueryData | undefined {
@@ -91,7 +130,13 @@ export function setClientAgentsRetrieveSchemasData(
 export function invalidateClientAgentsRetrieveSchemas(
   client: QueryClient,
   queryKeyBase: TupleToPrefixes<
-    [agentId: string, parameters: { timezoneOffset?: number | undefined }]
+    [
+      agentId: string,
+      parameters: {
+        locale?: string | undefined;
+        timezoneOffset?: number | undefined;
+      },
+    ]
   >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
 ): Promise<void> {

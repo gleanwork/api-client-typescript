@@ -12,17 +12,38 @@ import { clientCollectionsList } from "../funcs/clientCollectionsList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsListMutationVariables = {
-  request: components.ListCollectionsRequest;
+  listCollectionsRequest: components.ListCollectionsRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientCollectionsListMutationData =
   components.ListCollectionsResponse;
+
+export type ClientCollectionsListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * List Collections
@@ -33,12 +54,12 @@ export type ClientCollectionsListMutationData =
 export function useClientCollectionsListMutation(
   options?: MutationHookOptions<
     ClientCollectionsListMutationData,
-    Error,
+    ClientCollectionsListMutationError,
     ClientCollectionsListMutationVariables
   >,
 ): UseMutationResult<
   ClientCollectionsListMutationData,
-  Error,
+  ClientCollectionsListMutationError,
   ClientCollectionsListMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientCollectionsListMutation(
   return {
     mutationKey: mutationKeyClientCollectionsList(),
     mutationFn: function clientCollectionsListMutationFn({
-      request,
+      listCollectionsRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsListMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientCollectionsListMutation(
       };
       return unwrapAsync(clientCollectionsList(
         client$,
-        request,
+        listCollectionsRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -12,16 +12,37 @@ import { clientEntitiesList } from "../funcs/clientEntitiesList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientEntitiesListMutationVariables = {
-  request: components.ListEntitiesRequest;
+  listEntitiesRequest: components.ListEntitiesRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientEntitiesListMutationData = components.ListEntitiesResponse;
+
+export type ClientEntitiesListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * List entities
@@ -32,12 +53,12 @@ export type ClientEntitiesListMutationData = components.ListEntitiesResponse;
 export function useClientEntitiesListMutation(
   options?: MutationHookOptions<
     ClientEntitiesListMutationData,
-    Error,
+    ClientEntitiesListMutationError,
     ClientEntitiesListMutationVariables
   >,
 ): UseMutationResult<
   ClientEntitiesListMutationData,
-  Error,
+  ClientEntitiesListMutationError,
   ClientEntitiesListMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientEntitiesListMutation(
   return {
     mutationKey: mutationKeyClientEntitiesList(),
     mutationFn: function clientEntitiesListMutationFn({
-      request,
+      listEntitiesRequest,
+      locale,
       options,
     }): Promise<ClientEntitiesListMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientEntitiesListMutation(
       };
       return unwrapAsync(clientEntitiesList(
         client$,
-        request,
+        listEntitiesRequest,
+        locale,
         mergedOptions,
       ));
     },

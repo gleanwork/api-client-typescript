@@ -34,6 +34,7 @@ import { Result } from "../types/fp.js";
 export function clientChatCreate(
   client: GleanCore,
   chatRequest: components.ChatRequest,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -52,6 +53,7 @@ export function clientChatCreate(
   return new APIPromise($do(
     client,
     chatRequest,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -60,6 +62,7 @@ export function clientChatCreate(
 async function $do(
   client: GleanCore,
   chatRequest: components.ChatRequest,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -80,6 +83,7 @@ async function $do(
 > {
   const input: operations.ChatRequest = {
     chatRequest: chatRequest,
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -97,6 +101,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/chat")();
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 

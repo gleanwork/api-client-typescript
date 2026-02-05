@@ -34,6 +34,7 @@ import { Result } from "../types/fp.js";
 export function clientAgentsRetrieve(
   client: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -52,6 +53,7 @@ export function clientAgentsRetrieve(
   return new APIPromise($do(
     client,
     agentId,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -60,6 +62,7 @@ export function clientAgentsRetrieve(
 async function $do(
   client: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -80,6 +83,7 @@ async function $do(
 > {
   const input: operations.GetAgentRequest = {
     agentId: agentId,
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -104,6 +108,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/agents/{agent_id}")(pathParams);
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 

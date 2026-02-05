@@ -12,17 +12,38 @@ import { clientShortcutsCreate } from "../funcs/clientShortcutsCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsCreateMutationVariables = {
-  request: components.CreateShortcutRequest;
+  createShortcutRequest: components.CreateShortcutRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientShortcutsCreateMutationData =
   components.CreateShortcutResponse;
+
+export type ClientShortcutsCreateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Create shortcut
@@ -33,12 +54,12 @@ export type ClientShortcutsCreateMutationData =
 export function useClientShortcutsCreateMutation(
   options?: MutationHookOptions<
     ClientShortcutsCreateMutationData,
-    Error,
+    ClientShortcutsCreateMutationError,
     ClientShortcutsCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientShortcutsCreateMutationData,
-  Error,
+  ClientShortcutsCreateMutationError,
   ClientShortcutsCreateMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientShortcutsCreateMutation(
   return {
     mutationKey: mutationKeyClientShortcutsCreate(),
     mutationFn: function clientShortcutsCreateMutationFn({
-      request,
+      createShortcutRequest,
+      locale,
       options,
     }): Promise<ClientShortcutsCreateMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientShortcutsCreateMutation(
       };
       return unwrapAsync(clientShortcutsCreate(
         client$,
-        request,
+        createShortcutRequest,
+        locale,
         mergedOptions,
       ));
     },

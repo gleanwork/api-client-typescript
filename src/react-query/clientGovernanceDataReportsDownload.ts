@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientGovernanceDataReportsDownload,
 };
 
+export type ClientGovernanceDataReportsDownloadQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Downloads violations CSV for report
  *
@@ -37,8 +57,14 @@ export {
  */
 export function useClientGovernanceDataReportsDownload(
   id: string,
-  options?: QueryHookOptions<ClientGovernanceDataReportsDownloadQueryData>,
-): UseQueryResult<ClientGovernanceDataReportsDownloadQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientGovernanceDataReportsDownloadQueryData,
+    ClientGovernanceDataReportsDownloadQueryError
+  >,
+): UseQueryResult<
+  ClientGovernanceDataReportsDownloadQueryData,
+  ClientGovernanceDataReportsDownloadQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientGovernanceDataReportsDownloadQuery(
@@ -59,9 +85,13 @@ export function useClientGovernanceDataReportsDownload(
 export function useClientGovernanceDataReportsDownloadSuspense(
   id: string,
   options?: SuspenseQueryHookOptions<
-    ClientGovernanceDataReportsDownloadQueryData
+    ClientGovernanceDataReportsDownloadQueryData,
+    ClientGovernanceDataReportsDownloadQueryError
   >,
-): UseSuspenseQueryResult<ClientGovernanceDataReportsDownloadQueryData, Error> {
+): UseSuspenseQueryResult<
+  ClientGovernanceDataReportsDownloadQueryData,
+  ClientGovernanceDataReportsDownloadQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildClientGovernanceDataReportsDownloadQuery(

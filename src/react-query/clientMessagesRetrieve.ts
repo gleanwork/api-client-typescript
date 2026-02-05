@@ -12,16 +12,37 @@ import { clientMessagesRetrieve } from "../funcs/clientMessagesRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientMessagesRetrieveMutationVariables = {
-  request: components.MessagesRequest;
+  messagesRequest: components.MessagesRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientMessagesRetrieveMutationData = components.MessagesResponse;
+
+export type ClientMessagesRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read messages
@@ -32,12 +53,12 @@ export type ClientMessagesRetrieveMutationData = components.MessagesResponse;
 export function useClientMessagesRetrieveMutation(
   options?: MutationHookOptions<
     ClientMessagesRetrieveMutationData,
-    Error,
+    ClientMessagesRetrieveMutationError,
     ClientMessagesRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientMessagesRetrieveMutationData,
-  Error,
+  ClientMessagesRetrieveMutationError,
   ClientMessagesRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientMessagesRetrieveMutation(
   return {
     mutationKey: mutationKeyClientMessagesRetrieve(),
     mutationFn: function clientMessagesRetrieveMutationFn({
-      request,
+      messagesRequest,
+      locale,
       options,
     }): Promise<ClientMessagesRetrieveMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientMessagesRetrieveMutation(
       };
       return unwrapAsync(clientMessagesRetrieve(
         client$,
-        request,
+        messagesRequest,
+        locale,
         mergedOptions,
       ));
     },

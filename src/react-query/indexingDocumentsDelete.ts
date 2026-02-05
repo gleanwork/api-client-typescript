@@ -12,6 +12,16 @@ import { indexingDocumentsDelete } from "../funcs/indexingDocumentsDelete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingDocumentsDeleteMutationVariables = {
 
 export type IndexingDocumentsDeleteMutationData = void;
 
+export type IndexingDocumentsDeleteMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Delete document
  *
@@ -32,12 +52,12 @@ export type IndexingDocumentsDeleteMutationData = void;
 export function useIndexingDocumentsDeleteMutation(
   options?: MutationHookOptions<
     IndexingDocumentsDeleteMutationData,
-    Error,
+    IndexingDocumentsDeleteMutationError,
     IndexingDocumentsDeleteMutationVariables
   >,
 ): UseMutationResult<
   IndexingDocumentsDeleteMutationData,
-  Error,
+  IndexingDocumentsDeleteMutationError,
   IndexingDocumentsDeleteMutationVariables
 > {
   const client = useGleanContext();

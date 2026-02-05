@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientAgentsRetrieve,
 };
 
+export type ClientAgentsRetrieveQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Retrieve an agent
  *
@@ -37,14 +57,22 @@ export {
  */
 export function useClientAgentsRetrieve(
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
-  options?: QueryHookOptions<ClientAgentsRetrieveQueryData>,
-): UseQueryResult<ClientAgentsRetrieveQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientAgentsRetrieveQueryData,
+    ClientAgentsRetrieveQueryError
+  >,
+): UseQueryResult<
+  ClientAgentsRetrieveQueryData,
+  ClientAgentsRetrieveQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientAgentsRetrieveQuery(
       client,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -60,14 +88,22 @@ export function useClientAgentsRetrieve(
  */
 export function useClientAgentsRetrieveSuspense(
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
-  options?: SuspenseQueryHookOptions<ClientAgentsRetrieveQueryData>,
-): UseSuspenseQueryResult<ClientAgentsRetrieveQueryData, Error> {
+  options?: SuspenseQueryHookOptions<
+    ClientAgentsRetrieveQueryData,
+    ClientAgentsRetrieveQueryError
+  >,
+): UseSuspenseQueryResult<
+  ClientAgentsRetrieveQueryData,
+  ClientAgentsRetrieveQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildClientAgentsRetrieveQuery(
       client,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -79,7 +115,10 @@ export function setClientAgentsRetrieveData(
   client: QueryClient,
   queryKeyBase: [
     agentId: string,
-    parameters: { timezoneOffset?: number | undefined },
+    parameters: {
+      locale?: string | undefined;
+      timezoneOffset?: number | undefined;
+    },
   ],
   data: ClientAgentsRetrieveQueryData,
 ): ClientAgentsRetrieveQueryData | undefined {
@@ -91,7 +130,13 @@ export function setClientAgentsRetrieveData(
 export function invalidateClientAgentsRetrieve(
   client: QueryClient,
   queryKeyBase: TupleToPrefixes<
-    [agentId: string, parameters: { timezoneOffset?: number | undefined }]
+    [
+      agentId: string,
+      parameters: {
+        locale?: string | undefined;
+        timezoneOffset?: number | undefined;
+      },
+    ]
   >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
 ): Promise<void> {

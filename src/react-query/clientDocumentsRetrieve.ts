@@ -12,17 +12,38 @@ import { clientDocumentsRetrieve } from "../funcs/clientDocumentsRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsRetrieveMutationVariables = {
-  request?: components.GetDocumentsRequest | undefined;
+  getDocumentsRequest?: components.GetDocumentsRequest | undefined;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientDocumentsRetrieveMutationData =
   components.GetDocumentsResponse;
+
+export type ClientDocumentsRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read documents
@@ -33,12 +54,12 @@ export type ClientDocumentsRetrieveMutationData =
 export function useClientDocumentsRetrieveMutation(
   options?: MutationHookOptions<
     ClientDocumentsRetrieveMutationData,
-    Error,
+    ClientDocumentsRetrieveMutationError,
     ClientDocumentsRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientDocumentsRetrieveMutationData,
-  Error,
+  ClientDocumentsRetrieveMutationError,
   ClientDocumentsRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientDocumentsRetrieveMutation(
   return {
     mutationKey: mutationKeyClientDocumentsRetrieve(),
     mutationFn: function clientDocumentsRetrieveMutationFn({
-      request,
+      getDocumentsRequest,
+      locale,
       options,
     }): Promise<ClientDocumentsRetrieveMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientDocumentsRetrieveMutation(
       };
       return unwrapAsync(clientDocumentsRetrieve(
         client$,
-        request,
+        getDocumentsRequest,
+        locale,
         mergedOptions,
       ));
     },

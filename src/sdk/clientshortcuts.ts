@@ -19,12 +19,14 @@ export class ClientShortcuts extends ClientSDK {
    * Create a user-generated shortcut that contains an alias and destination URL.
    */
   async create(
-    request: components.CreateShortcutRequest,
+    createShortcutRequest: components.CreateShortcutRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.CreateShortcutResponse> {
     return unwrapAsync(clientShortcutsCreate(
       this,
-      request,
+      createShortcutRequest,
+      locale,
       options,
     ));
   }
@@ -36,12 +38,14 @@ export class ClientShortcuts extends ClientSDK {
    * Delete an existing user-generated shortcut.
    */
   async delete(
-    request: components.DeleteShortcutRequest,
+    deleteShortcutRequest: components.DeleteShortcutRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientShortcutsDelete(
       this,
-      request,
+      deleteShortcutRequest,
+      locale,
       options,
     ));
   }
@@ -53,12 +57,14 @@ export class ClientShortcuts extends ClientSDK {
    * Read a particular shortcut's details given its ID.
    */
   async retrieve(
-    request: components.GetShortcutRequestUnion,
+    getShortcutRequest: components.GetShortcutRequestUnion,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetShortcutResponse> {
     return unwrapAsync(clientShortcutsRetrieve(
       this,
-      request,
+      getShortcutRequest,
+      locale,
       options,
     ));
   }
@@ -70,12 +76,14 @@ export class ClientShortcuts extends ClientSDK {
    * List shortcuts editable/owned by the currently authenticated user.
    */
   async list(
-    request: components.ListShortcutsPaginatedRequest,
+    listShortcutsPaginatedRequest: components.ListShortcutsPaginatedRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ListShortcutsPaginatedResponse> {
     return unwrapAsync(clientShortcutsList(
       this,
-      request,
+      listShortcutsPaginatedRequest,
+      locale,
       options,
     ));
   }
@@ -87,12 +95,14 @@ export class ClientShortcuts extends ClientSDK {
    * Updates the shortcut with the given ID.
    */
   async update(
-    request: components.UpdateShortcutRequest,
+    updateShortcutRequest: components.UpdateShortcutRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.UpdateShortcutResponse> {
     return unwrapAsync(clientShortcutsUpdate(
       this,
-      request,
+      updateShortcutRequest,
+      locale,
       options,
     ));
   }

@@ -11,6 +11,16 @@ import { GleanCore } from "../core.js";
 import { governanceDeletefindingsexport } from "../funcs/governanceDeletefindingsexport.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -22,6 +32,16 @@ export type GovernanceDeletefindingsexportMutationVariables = {
 
 export type GovernanceDeletefindingsexportMutationData = void;
 
+export type GovernanceDeletefindingsexportMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Deletes findings export
  *
@@ -31,12 +51,12 @@ export type GovernanceDeletefindingsexportMutationData = void;
 export function useGovernanceDeletefindingsexportMutation(
   options?: MutationHookOptions<
     GovernanceDeletefindingsexportMutationData,
-    Error,
+    GovernanceDeletefindingsexportMutationError,
     GovernanceDeletefindingsexportMutationVariables
   >,
 ): UseMutationResult<
   GovernanceDeletefindingsexportMutationData,
-  Error,
+  GovernanceDeletefindingsexportMutationError,
   GovernanceDeletefindingsexportMutationVariables
 > {
   const client = useGleanContext();

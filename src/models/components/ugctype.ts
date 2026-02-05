@@ -12,6 +12,7 @@ export const UgcType = {
   ShortcutsType: "SHORTCUTS_TYPE",
   WorkflowsType: "WORKFLOWS_TYPE",
   PromptTemplatesType: "PROMPT_TEMPLATES_TYPE",
+  PrismViewsType: "PRISM_VIEWS_TYPE",
 } as const;
 export type UgcType = ClosedEnum<typeof UgcType>;
 

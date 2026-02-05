@@ -12,18 +12,39 @@ import { clientSearchRecommendations } from "../funcs/clientSearchRecommendation
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchRecommendationsMutationVariables = {
-  request: components.RecommendationsRequest;
+  recommendationsRequest: components.RecommendationsRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientSearchRecommendationsMutationData =
   | components.ResultsResponse
   | undefined;
+
+export type ClientSearchRecommendationsMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Recommend documents
@@ -34,12 +55,12 @@ export type ClientSearchRecommendationsMutationData =
 export function useClientSearchRecommendationsMutation(
   options?: MutationHookOptions<
     ClientSearchRecommendationsMutationData,
-    Error,
+    ClientSearchRecommendationsMutationError,
     ClientSearchRecommendationsMutationVariables
   >,
 ): UseMutationResult<
   ClientSearchRecommendationsMutationData,
-  Error,
+  ClientSearchRecommendationsMutationError,
   ClientSearchRecommendationsMutationVariables
 > {
   const client = useGleanContext();
@@ -65,7 +86,8 @@ export function buildClientSearchRecommendationsMutation(
   return {
     mutationKey: mutationKeyClientSearchRecommendations(),
     mutationFn: function clientSearchRecommendationsMutationFn({
-      request,
+      recommendationsRequest,
+      locale,
       options,
     }): Promise<ClientSearchRecommendationsMutationData> {
       const mergedOptions = {
@@ -82,7 +104,8 @@ export function buildClientSearchRecommendationsMutation(
       };
       return unwrapAsync(clientSearchRecommendations(
         client$,
-        request,
+        recommendationsRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -24,6 +24,7 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   mockServer:
     disabled: false
   persistentEdits: {}
@@ -32,7 +33,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.13.20
+  version: 0.14.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -42,33 +43,33 @@ typescript:
     exports:
       ./hooks:
         import:
-          "@gleanwork/api-client/source": ./src/hooks/index.ts
-          types: ./dist/esm/hooks/index.d.ts
+          '@gleanwork/api-client/source': ./src/hooks/index.ts
           default: ./dist/esm/hooks/index.js
+          types: ./dist/esm/hooks/index.d.ts
         require:
-          types: ./dist/commonjs/hooks/index.d.ts
           default: ./dist/commonjs/hooks/index.js
-      ./hooks/*.js:
-        import:
-          "@gleanwork/api-client/source": ./src/hooks/*.ts
-          types: ./dist/esm/hooks/*.d.ts
-          default: ./dist/esm/hooks/*.js
-        require:
-          types: ./dist/commonjs/hooks/*.d.ts
-          default: ./dist/commonjs/hooks/*.js
+          types: ./dist/commonjs/hooks/index.d.ts
       ./hooks/*:
         import:
-          "@gleanwork/api-client/source": ./src/hooks/*.ts
-          types: ./dist/esm/hooks/*.d.ts
+          '@gleanwork/api-client/source': ./src/hooks/*.ts
           default: ./dist/esm/hooks/*.js
+          types: ./dist/esm/hooks/*.d.ts
         require:
-          types: ./dist/commonjs/hooks/*.d.ts
           default: ./dist/commonjs/hooks/*.js
+          types: ./dist/commonjs/hooks/*.d.ts
+      ./hooks/*.js:
+        import:
+          '@gleanwork/api-client/source': ./src/hooks/*.ts
+          default: ./dist/esm/hooks/*.js
+          types: ./dist/esm/hooks/*.d.ts
+        require:
+          default: ./dist/commonjs/hooks/*.js
+          types: ./dist/commonjs/hooks/*.d.ts
     tshy:
       exports:
         ./hooks: ./src/hooks/index.ts
-        ./hooks/*.js: ./src/hooks/*.ts
         ./hooks/*: ./src/hooks/*.ts
+        ./hooks/*.js: ./src/hooks/*.ts
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   author: Speakeasy
@@ -101,6 +102,7 @@ typescript:
   inputModelSuffix: input
   jsonpath: rfc9535
   laxMode: strict
+  legacyFileNaming: true
   maxMethodParams: 5
   methodArguments: require-security-and-request
   modelPropertyCasing: camel

@@ -12,6 +12,16 @@ import { indexingPeopleBulkIndexTeams } from "../funcs/indexingPeopleBulkIndexTe
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingPeopleBulkIndexTeamsMutationVariables = {
 
 export type IndexingPeopleBulkIndexTeamsMutationData = void;
 
+export type IndexingPeopleBulkIndexTeamsMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Bulk index teams
  *
@@ -32,12 +52,12 @@ export type IndexingPeopleBulkIndexTeamsMutationData = void;
 export function useIndexingPeopleBulkIndexTeamsMutation(
   options?: MutationHookOptions<
     IndexingPeopleBulkIndexTeamsMutationData,
-    Error,
+    IndexingPeopleBulkIndexTeamsMutationError,
     IndexingPeopleBulkIndexTeamsMutationVariables
   >,
 ): UseMutationResult<
   IndexingPeopleBulkIndexTeamsMutationData,
-  Error,
+  IndexingPeopleBulkIndexTeamsMutationError,
   IndexingPeopleBulkIndexTeamsMutationVariables
 > {
   const client = useGleanContext();
