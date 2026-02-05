@@ -12,16 +12,37 @@ import { clientVerificationAddReminder } from "../funcs/clientVerificationAddRem
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientVerificationAddReminderMutationVariables = {
-  request: components.ReminderRequest;
+  reminderRequest: components.ReminderRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientVerificationAddReminderMutationData = components.Verification;
+
+export type ClientVerificationAddReminderMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Create verification
@@ -32,12 +53,12 @@ export type ClientVerificationAddReminderMutationData = components.Verification;
 export function useClientVerificationAddReminderMutation(
   options?: MutationHookOptions<
     ClientVerificationAddReminderMutationData,
-    Error,
+    ClientVerificationAddReminderMutationError,
     ClientVerificationAddReminderMutationVariables
   >,
 ): UseMutationResult<
   ClientVerificationAddReminderMutationData,
-  Error,
+  ClientVerificationAddReminderMutationError,
   ClientVerificationAddReminderMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientVerificationAddReminderMutation(
   return {
     mutationKey: mutationKeyClientVerificationAddReminder(),
     mutationFn: function clientVerificationAddReminderMutationFn({
-      request,
+      reminderRequest,
+      locale,
       options,
     }): Promise<ClientVerificationAddReminderMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientVerificationAddReminderMutation(
       };
       return unwrapAsync(clientVerificationAddReminder(
         client$,
-        request,
+        reminderRequest,
+        locale,
         mergedOptions,
       ));
     },

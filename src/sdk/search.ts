@@ -19,12 +19,14 @@ export class Search extends ClientSDK {
    * Retrieves results for search query without respect for permissions. This is available only to privileged users.
    */
   async queryAsAdmin(
-    request: components.SearchRequest,
+    searchRequest: components.SearchRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.SearchResponse> {
     return unwrapAsync(clientSearchQueryAsAdmin(
       this,
-      request,
+      searchRequest,
+      locale,
       options,
     ));
   }
@@ -36,12 +38,14 @@ export class Search extends ClientSDK {
    * Retrieve query suggestions, operators and documents for the given partially typed query.
    */
   async autocomplete(
-    request: components.AutocompleteRequest,
+    autocompleteRequest: components.AutocompleteRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.AutocompleteResponse> {
     return unwrapAsync(clientSearchAutocomplete(
       this,
-      request,
+      autocompleteRequest,
+      locale,
       options,
     ));
   }
@@ -53,12 +57,14 @@ export class Search extends ClientSDK {
    * The personalized feed/home includes different types of contents including suggestions, recents, calendar events and many more.
    */
   async retrieveFeed(
-    request: components.FeedRequest,
+    feedRequest: components.FeedRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.FeedResponse> {
     return unwrapAsync(clientSearchRetrieveFeed(
       this,
-      request,
+      feedRequest,
+      locale,
       options,
     ));
   }
@@ -70,12 +76,14 @@ export class Search extends ClientSDK {
    * Retrieve recommended documents for the given URL or Glean Document ID.
    */
   async recommendations(
-    request: components.RecommendationsRequest,
+    recommendationsRequest: components.RecommendationsRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ResultsResponse | undefined> {
     return unwrapAsync(clientSearchRecommendations(
       this,
-      request,
+      recommendationsRequest,
+      locale,
       options,
     ));
   }
@@ -87,12 +95,14 @@ export class Search extends ClientSDK {
    * Retrieve results from the index for the given query and filters.
    */
   async query(
-    request: components.SearchRequest,
+    searchRequest: components.SearchRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.SearchResponse> {
     return unwrapAsync(clientSearchQuery(
       this,
-      request,
+      searchRequest,
+      locale,
       options,
     ));
   }

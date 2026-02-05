@@ -12,18 +12,39 @@ import { clientChatUploadFiles } from "../funcs/clientChatUploadFiles.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatUploadFilesMutationVariables = {
   uploadChatFilesRequest: components.UploadChatFilesRequest;
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatUploadFilesMutationData =
   components.UploadChatFilesResponse;
+
+export type ClientChatUploadFilesMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Upload files for Chat.
@@ -34,12 +55,12 @@ export type ClientChatUploadFilesMutationData =
 export function useClientChatUploadFilesMutation(
   options?: MutationHookOptions<
     ClientChatUploadFilesMutationData,
-    Error,
+    ClientChatUploadFilesMutationError,
     ClientChatUploadFilesMutationVariables
   >,
 ): UseMutationResult<
   ClientChatUploadFilesMutationData,
-  Error,
+  ClientChatUploadFilesMutationError,
   ClientChatUploadFilesMutationVariables
 > {
   const client = useGleanContext();
@@ -66,6 +87,7 @@ export function buildClientChatUploadFilesMutation(
     mutationKey: mutationKeyClientChatUploadFiles(),
     mutationFn: function clientChatUploadFilesMutationFn({
       uploadChatFilesRequest,
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatUploadFilesMutationData> {
@@ -84,6 +106,7 @@ export function buildClientChatUploadFilesMutation(
       return unwrapAsync(clientChatUploadFiles(
         client$,
         uploadChatFilesRequest,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

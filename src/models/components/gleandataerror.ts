@@ -26,6 +26,10 @@ export type GleanDataError = {
    */
   invalidOperators?: Array<InvalidOperatorValueError> | undefined;
   errorMessages?: Array<ErrorMessage> | undefined;
+  /**
+   * Indicates the federated search results could not be fetched due to rate limiting.
+   */
+  federatedSearchRateLimitError?: boolean | undefined;
 };
 
 /** @internal */
@@ -38,6 +42,7 @@ export const GleanDataError$inboundSchema: z.ZodType<
   badOutlookToken: z.boolean().optional(),
   invalidOperators: z.array(InvalidOperatorValueError$inboundSchema).optional(),
   errorMessages: z.array(ErrorMessage$inboundSchema).optional(),
+  federatedSearchRateLimitError: z.boolean().optional(),
 });
 
 export function gleanDataErrorFromJSON(

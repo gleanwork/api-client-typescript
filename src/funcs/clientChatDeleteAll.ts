@@ -33,6 +33,7 @@ import { Result } from "../types/fp.js";
  */
 export function clientChatDeleteAll(
   client: GleanCore,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): APIPromise<
@@ -50,6 +51,7 @@ export function clientChatDeleteAll(
 > {
   return new APIPromise($do(
     client,
+    locale,
     timezoneOffset,
     options,
   ));
@@ -57,6 +59,7 @@ export function clientChatDeleteAll(
 
 async function $do(
   client: GleanCore,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<
@@ -76,6 +79,7 @@ async function $do(
   ]
 > {
   const input: operations.DeleteallchatsRequest = {
+    locale: locale,
     timezoneOffset: timezoneOffset,
   };
 
@@ -93,6 +97,7 @@ async function $do(
   const path = pathToFunc("/rest/api/v1/deleteallchats")();
 
   const query = encodeFormQuery({
+    "locale": payload.locale,
     "timezoneOffset": payload.timezoneOffset,
   });
 

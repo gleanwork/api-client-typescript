@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyGovernanceDownloadfindingsexport,
 };
 
+export type GovernanceDownloadfindingsexportQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Downloads findings export
  *
@@ -37,8 +57,14 @@ export {
  */
 export function useGovernanceDownloadfindingsexport(
   id: string,
-  options?: QueryHookOptions<GovernanceDownloadfindingsexportQueryData>,
-): UseQueryResult<GovernanceDownloadfindingsexportQueryData, Error> {
+  options?: QueryHookOptions<
+    GovernanceDownloadfindingsexportQueryData,
+    GovernanceDownloadfindingsexportQueryError
+  >,
+): UseQueryResult<
+  GovernanceDownloadfindingsexportQueryData,
+  GovernanceDownloadfindingsexportQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildGovernanceDownloadfindingsexportQuery(
@@ -58,8 +84,14 @@ export function useGovernanceDownloadfindingsexport(
  */
 export function useGovernanceDownloadfindingsexportSuspense(
   id: string,
-  options?: SuspenseQueryHookOptions<GovernanceDownloadfindingsexportQueryData>,
-): UseSuspenseQueryResult<GovernanceDownloadfindingsexportQueryData, Error> {
+  options?: SuspenseQueryHookOptions<
+    GovernanceDownloadfindingsexportQueryData,
+    GovernanceDownloadfindingsexportQueryError
+  >,
+): UseSuspenseQueryResult<
+  GovernanceDownloadfindingsexportQueryData,
+  GovernanceDownloadfindingsexportQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildGovernanceDownloadfindingsexportQuery(

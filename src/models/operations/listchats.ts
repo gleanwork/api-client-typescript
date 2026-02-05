@@ -6,6 +6,10 @@ import * as z from "zod/v3";
 
 export type ListchatsRequest = {
   /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -13,6 +17,7 @@ export type ListchatsRequest = {
 
 /** @internal */
 export type ListchatsRequest$Outbound = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
 };
 
@@ -22,6 +27,7 @@ export const ListchatsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListchatsRequest
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
 });
 

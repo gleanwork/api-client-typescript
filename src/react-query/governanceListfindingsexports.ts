@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import { QueryHookOptions, SuspenseQueryHookOptions } from "./_types.js";
 import {
@@ -25,6 +35,16 @@ export {
   queryKeyGovernanceListfindingsexports,
 };
 
+export type GovernanceListfindingsexportsQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Lists findings exports
  *
@@ -32,8 +52,14 @@ export {
  * Lists all DLP findings exports.
  */
 export function useGovernanceListfindingsexports(
-  options?: QueryHookOptions<GovernanceListfindingsexportsQueryData>,
-): UseQueryResult<GovernanceListfindingsexportsQueryData, Error> {
+  options?: QueryHookOptions<
+    GovernanceListfindingsexportsQueryData,
+    GovernanceListfindingsexportsQueryError
+  >,
+): UseQueryResult<
+  GovernanceListfindingsexportsQueryData,
+  GovernanceListfindingsexportsQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildGovernanceListfindingsexportsQuery(
@@ -51,8 +77,14 @@ export function useGovernanceListfindingsexports(
  * Lists all DLP findings exports.
  */
 export function useGovernanceListfindingsexportsSuspense(
-  options?: SuspenseQueryHookOptions<GovernanceListfindingsexportsQueryData>,
-): UseSuspenseQueryResult<GovernanceListfindingsexportsQueryData, Error> {
+  options?: SuspenseQueryHookOptions<
+    GovernanceListfindingsexportsQueryData,
+    GovernanceListfindingsexportsQueryError
+  >,
+): UseSuspenseQueryResult<
+  GovernanceListfindingsexportsQueryData,
+  GovernanceListfindingsexportsQueryError
+> {
   const client = useGleanContext();
   return useSuspenseQuery({
     ...buildGovernanceListfindingsexportsQuery(

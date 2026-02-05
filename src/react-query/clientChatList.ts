@@ -12,16 +12,37 @@ import { clientChatList } from "../funcs/clientChatList.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatListMutationVariables = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatListMutationData = components.ListChatsResponse;
+
+export type ClientChatListMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Retrieves all saved Chats
@@ -32,12 +53,12 @@ export type ClientChatListMutationData = components.ListChatsResponse;
 export function useClientChatListMutation(
   options?: MutationHookOptions<
     ClientChatListMutationData,
-    Error,
+    ClientChatListMutationError,
     ClientChatListMutationVariables
   >,
 ): UseMutationResult<
   ClientChatListMutationData,
-  Error,
+  ClientChatListMutationError,
   ClientChatListMutationVariables
 > {
   const client = useGleanContext();
@@ -63,6 +84,7 @@ export function buildClientChatListMutation(
   return {
     mutationKey: mutationKeyClientChatList(),
     mutationFn: function clientChatListMutationFn({
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatListMutationData> {
@@ -80,6 +102,7 @@ export function buildClientChatListMutation(
       };
       return unwrapAsync(clientChatList(
         client$,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

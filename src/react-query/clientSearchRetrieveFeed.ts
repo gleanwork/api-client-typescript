@@ -12,16 +12,37 @@ import { clientSearchRetrieveFeed } from "../funcs/clientSearchRetrieveFeed.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchRetrieveFeedMutationVariables = {
-  request: components.FeedRequest;
+  feedRequest: components.FeedRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientSearchRetrieveFeedMutationData = components.FeedResponse;
+
+export type ClientSearchRetrieveFeedMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Feed of documents and events
@@ -32,12 +53,12 @@ export type ClientSearchRetrieveFeedMutationData = components.FeedResponse;
 export function useClientSearchRetrieveFeedMutation(
   options?: MutationHookOptions<
     ClientSearchRetrieveFeedMutationData,
-    Error,
+    ClientSearchRetrieveFeedMutationError,
     ClientSearchRetrieveFeedMutationVariables
   >,
 ): UseMutationResult<
   ClientSearchRetrieveFeedMutationData,
-  Error,
+  ClientSearchRetrieveFeedMutationError,
   ClientSearchRetrieveFeedMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientSearchRetrieveFeedMutation(
   return {
     mutationKey: mutationKeyClientSearchRetrieveFeed(),
     mutationFn: function clientSearchRetrieveFeedMutationFn({
-      request,
+      feedRequest,
+      locale,
       options,
     }): Promise<ClientSearchRetrieveFeedMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientSearchRetrieveFeedMutation(
       };
       return unwrapAsync(clientSearchRetrieveFeed(
         client$,
-        request,
+        feedRequest,
+        locale,
         mergedOptions,
       ));
     },

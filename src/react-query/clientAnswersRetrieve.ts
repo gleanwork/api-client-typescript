@@ -12,16 +12,37 @@ import { clientAnswersRetrieve } from "../funcs/clientAnswersRetrieve.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientAnswersRetrieveMutationVariables = {
-  request: components.GetAnswerRequest;
+  getAnswerRequest: components.GetAnswerRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientAnswersRetrieveMutationData = components.GetAnswerResponse;
+
+export type ClientAnswersRetrieveMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read Answer
@@ -32,12 +53,12 @@ export type ClientAnswersRetrieveMutationData = components.GetAnswerResponse;
 export function useClientAnswersRetrieveMutation(
   options?: MutationHookOptions<
     ClientAnswersRetrieveMutationData,
-    Error,
+    ClientAnswersRetrieveMutationError,
     ClientAnswersRetrieveMutationVariables
   >,
 ): UseMutationResult<
   ClientAnswersRetrieveMutationData,
-  Error,
+  ClientAnswersRetrieveMutationError,
   ClientAnswersRetrieveMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientAnswersRetrieveMutation(
   return {
     mutationKey: mutationKeyClientAnswersRetrieve(),
     mutationFn: function clientAnswersRetrieveMutationFn({
-      request,
+      getAnswerRequest,
+      locale,
       options,
     }): Promise<ClientAnswersRetrieveMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientAnswersRetrieveMutation(
       };
       return unwrapAsync(clientAnswersRetrieve(
         client$,
-        request,
+        getAnswerRequest,
+        locale,
         mergedOptions,
       ));
     },

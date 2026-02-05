@@ -12,6 +12,16 @@ import { clientToolsRun } from "../funcs/clientToolsRun.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type ClientToolsRunMutationVariables = {
 
 export type ClientToolsRunMutationData = components.ToolsCallResponse;
 
+export type ClientToolsRunMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Execute the specified tool
  *
@@ -32,12 +52,12 @@ export type ClientToolsRunMutationData = components.ToolsCallResponse;
 export function useClientToolsRunMutation(
   options?: MutationHookOptions<
     ClientToolsRunMutationData,
-    Error,
+    ClientToolsRunMutationError,
     ClientToolsRunMutationVariables
   >,
 ): UseMutationResult<
   ClientToolsRunMutationData,
-  Error,
+  ClientToolsRunMutationError,
   ClientToolsRunMutationVariables
 > {
   const client = useGleanContext();

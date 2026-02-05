@@ -19,12 +19,14 @@ export class Answers extends ClientSDK {
    * Create a user-generated Answer that contains a question and answer.
    */
   async create(
-    request: components.CreateAnswerRequest,
+    createAnswerRequest: components.CreateAnswerRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Answer> {
     return unwrapAsync(clientAnswersCreate(
       this,
-      request,
+      createAnswerRequest,
+      locale,
       options,
     ));
   }
@@ -36,12 +38,14 @@ export class Answers extends ClientSDK {
    * Delete an existing user-generated Answer.
    */
   async delete(
-    request: components.DeleteAnswerRequest,
+    deleteAnswerRequest: components.DeleteAnswerRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientAnswersDelete(
       this,
-      request,
+      deleteAnswerRequest,
+      locale,
       options,
     ));
   }
@@ -53,12 +57,14 @@ export class Answers extends ClientSDK {
    * Update an existing user-generated Answer.
    */
   async update(
-    request: components.EditAnswerRequest,
+    editAnswerRequest: components.EditAnswerRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.Answer> {
     return unwrapAsync(clientAnswersUpdate(
       this,
-      request,
+      editAnswerRequest,
+      locale,
       options,
     ));
   }
@@ -70,12 +76,14 @@ export class Answers extends ClientSDK {
    * Read the details of a particular Answer given its ID.
    */
   async retrieve(
-    request: components.GetAnswerRequest,
+    getAnswerRequest: components.GetAnswerRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetAnswerResponse> {
     return unwrapAsync(clientAnswersRetrieve(
       this,
-      request,
+      getAnswerRequest,
+      locale,
       options,
     ));
   }
@@ -86,15 +94,17 @@ export class Answers extends ClientSDK {
    * @remarks
    * List Answers created by the current user.
    *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated method: Deprecated on 2026-01-21, removal scheduled for 2026-10-15: Answer boards have been removed and this endpoint no longer serves a purpose.
    */
   async list(
-    request: components.ListAnswersRequest,
+    listAnswersRequest: components.ListAnswersRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ListAnswersResponse> {
     return unwrapAsync(clientAnswersList(
       this,
-      request,
+      listAnswersRequest,
+      locale,
       options,
     ));
   }

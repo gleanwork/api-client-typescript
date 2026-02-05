@@ -3,7 +3,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -34,7 +34,8 @@ import { Result } from "../types/fp.js";
  */
 export function clientCollectionsCreate(
   client: GleanCore,
-  request: components.CreateCollectionRequest,
+  createCollectionRequest: components.CreateCollectionRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,14 +53,16 @@ export function clientCollectionsCreate(
 > {
   return new APIPromise($do(
     client,
-    request,
+    createCollectionRequest,
+    locale,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: components.CreateCollectionRequest,
+  createCollectionRequest: components.CreateCollectionRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,18 +81,29 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.CreatecollectionRequest = {
+    createCollectionRequest: createCollectionRequest,
+    locale: locale,
+  };
+
   const parsed = safeParse(
-    request,
-    (value) => components.CreateCollectionRequest$outboundSchema.parse(value),
+    input,
+    (value) => operations.CreatecollectionRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.CreateCollectionRequest, {
+    explode: true,
+  });
 
   const path = pathToFunc("/rest/api/v1/createcollection")();
+
+  const query = encodeFormQuery({
+    "locale": payload.locale,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -121,6 +135,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

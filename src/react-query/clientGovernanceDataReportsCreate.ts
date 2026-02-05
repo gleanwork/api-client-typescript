@@ -12,6 +12,16 @@ import { clientGovernanceDataReportsCreate } from "../funcs/clientGovernanceData
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -24,6 +34,16 @@ export type ClientGovernanceDataReportsCreateMutationVariables = {
 export type ClientGovernanceDataReportsCreateMutationData =
   components.UpdateDlpConfigResponse;
 
+export type ClientGovernanceDataReportsCreateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Creates new one-time report
  *
@@ -33,12 +53,12 @@ export type ClientGovernanceDataReportsCreateMutationData =
 export function useClientGovernanceDataReportsCreateMutation(
   options?: MutationHookOptions<
     ClientGovernanceDataReportsCreateMutationData,
-    Error,
+    ClientGovernanceDataReportsCreateMutationError,
     ClientGovernanceDataReportsCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientGovernanceDataReportsCreateMutationData,
-  Error,
+  ClientGovernanceDataReportsCreateMutationError,
   ClientGovernanceDataReportsCreateMutationVariables
 > {
   const client = useGleanContext();

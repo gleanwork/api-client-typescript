@@ -12,6 +12,16 @@ import { indexingPermissionsBulkIndexUsers } from "../funcs/indexingPermissionsB
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -23,6 +33,16 @@ export type IndexingPermissionsBulkIndexUsersMutationVariables = {
 
 export type IndexingPermissionsBulkIndexUsersMutationData = void;
 
+export type IndexingPermissionsBulkIndexUsersMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Bulk index users
  *
@@ -33,12 +53,12 @@ export type IndexingPermissionsBulkIndexUsersMutationData = void;
 export function useIndexingPermissionsBulkIndexUsersMutation(
   options?: MutationHookOptions<
     IndexingPermissionsBulkIndexUsersMutationData,
-    Error,
+    IndexingPermissionsBulkIndexUsersMutationError,
     IndexingPermissionsBulkIndexUsersMutationVariables
   >,
 ): UseMutationResult<
   IndexingPermissionsBulkIndexUsersMutationData,
-  Error,
+  IndexingPermissionsBulkIndexUsersMutationError,
   IndexingPermissionsBulkIndexUsersMutationVariables
 > {
   const client = useGleanContext();

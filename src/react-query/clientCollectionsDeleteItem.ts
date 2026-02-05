@@ -12,17 +12,38 @@ import { clientCollectionsDeleteItem } from "../funcs/clientCollectionsDeleteIte
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientCollectionsDeleteItemMutationVariables = {
-  request: components.DeleteCollectionItemRequest;
+  deleteCollectionItemRequest: components.DeleteCollectionItemRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientCollectionsDeleteItemMutationData =
   components.DeleteCollectionItemResponse;
+
+export type ClientCollectionsDeleteItemMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Delete Collection item
@@ -33,12 +54,12 @@ export type ClientCollectionsDeleteItemMutationData =
 export function useClientCollectionsDeleteItemMutation(
   options?: MutationHookOptions<
     ClientCollectionsDeleteItemMutationData,
-    Error,
+    ClientCollectionsDeleteItemMutationError,
     ClientCollectionsDeleteItemMutationVariables
   >,
 ): UseMutationResult<
   ClientCollectionsDeleteItemMutationData,
-  Error,
+  ClientCollectionsDeleteItemMutationError,
   ClientCollectionsDeleteItemMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientCollectionsDeleteItemMutation(
   return {
     mutationKey: mutationKeyClientCollectionsDeleteItem(),
     mutationFn: function clientCollectionsDeleteItemMutationFn({
-      request,
+      deleteCollectionItemRequest,
+      locale,
       options,
     }): Promise<ClientCollectionsDeleteItemMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientCollectionsDeleteItemMutation(
       };
       return unwrapAsync(clientCollectionsDeleteItem(
         client$,
-        request,
+        deleteCollectionItemRequest,
+        locale,
         mergedOptions,
       ));
     },

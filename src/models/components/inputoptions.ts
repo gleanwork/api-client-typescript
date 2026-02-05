@@ -72,6 +72,10 @@ export type InputOptions = {
    */
   timePeriodType?: InputOptionsTimePeriodType | undefined;
   customTimeRange?: TimeRange | undefined;
+  /**
+   * Subset of document IDs to scan. If empty, all documents matching other scope criteria will be scanned.
+   */
+  subsetDocIdsToScan?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -104,6 +108,7 @@ export const InputOptions$inboundSchema: z.ZodType<
   datasourceInstances: z.array(z.string()).optional(),
   timePeriodType: InputOptionsTimePeriodType$inboundSchema.optional(),
   customTimeRange: TimeRange$inboundSchema.optional(),
+  subsetDocIdsToScan: z.array(z.string()).optional(),
 });
 /** @internal */
 export type InputOptions$Outbound = {
@@ -113,6 +118,7 @@ export type InputOptions$Outbound = {
   datasourceInstances?: Array<string> | undefined;
   timePeriodType?: string | undefined;
   customTimeRange?: TimeRange$Outbound | undefined;
+  subsetDocIdsToScan?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -127,6 +133,7 @@ export const InputOptions$outboundSchema: z.ZodType<
   datasourceInstances: z.array(z.string()).optional(),
   timePeriodType: InputOptionsTimePeriodType$outboundSchema.optional(),
   customTimeRange: TimeRange$outboundSchema.optional(),
+  subsetDocIdsToScan: z.array(z.string()).optional(),
 });
 
 export function inputOptionsToJSON(inputOptions: InputOptions): string {

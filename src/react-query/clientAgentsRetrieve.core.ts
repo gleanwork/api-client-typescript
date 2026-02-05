@@ -19,6 +19,7 @@ export function prefetchClientAgentsRetrieve(
   queryClient: QueryClient,
   client$: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): Promise<void> {
@@ -26,6 +27,7 @@ export function prefetchClientAgentsRetrieve(
     ...buildClientAgentsRetrieveQuery(
       client$,
       agentId,
+      locale,
       timezoneOffset,
       options,
     ),
@@ -35,6 +37,7 @@ export function prefetchClientAgentsRetrieve(
 export function buildClientAgentsRetrieveQuery(
   client$: GleanCore,
   agentId: string,
+  locale?: string | undefined,
   timezoneOffset?: number | undefined,
   options?: RequestOptions,
 ): {
@@ -44,7 +47,7 @@ export function buildClientAgentsRetrieveQuery(
   ) => Promise<ClientAgentsRetrieveQueryData>;
 } {
   return {
-    queryKey: queryKeyClientAgentsRetrieve(agentId, { timezoneOffset }),
+    queryKey: queryKeyClientAgentsRetrieve(agentId, { locale, timezoneOffset }),
     queryFn: async function clientAgentsRetrieveQueryFn(
       ctx,
     ): Promise<ClientAgentsRetrieveQueryData> {
@@ -62,6 +65,7 @@ export function buildClientAgentsRetrieveQuery(
       return unwrapAsync(clientAgentsRetrieve(
         client$,
         agentId,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));
@@ -71,7 +75,10 @@ export function buildClientAgentsRetrieveQuery(
 
 export function queryKeyClientAgentsRetrieve(
   agentId: string,
-  parameters: { timezoneOffset?: number | undefined },
+  parameters: {
+    locale?: string | undefined;
+    timezoneOffset?: number | undefined;
+  },
 ): QueryKey {
   return ["@gleanwork/api-client", "agents", "retrieve", agentId, parameters];
 }

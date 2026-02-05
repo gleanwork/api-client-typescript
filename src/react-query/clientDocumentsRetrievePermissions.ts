@@ -12,17 +12,38 @@ import { clientDocumentsRetrievePermissions } from "../funcs/clientDocumentsRetr
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsRetrievePermissionsMutationVariables = {
-  request: components.GetDocPermissionsRequest;
+  getDocPermissionsRequest: components.GetDocPermissionsRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientDocumentsRetrievePermissionsMutationData =
   components.GetDocPermissionsResponse;
+
+export type ClientDocumentsRetrievePermissionsMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read document permissions
@@ -33,12 +54,12 @@ export type ClientDocumentsRetrievePermissionsMutationData =
 export function useClientDocumentsRetrievePermissionsMutation(
   options?: MutationHookOptions<
     ClientDocumentsRetrievePermissionsMutationData,
-    Error,
+    ClientDocumentsRetrievePermissionsMutationError,
     ClientDocumentsRetrievePermissionsMutationVariables
   >,
 ): UseMutationResult<
   ClientDocumentsRetrievePermissionsMutationData,
-  Error,
+  ClientDocumentsRetrievePermissionsMutationError,
   ClientDocumentsRetrievePermissionsMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientDocumentsRetrievePermissionsMutation(
   return {
     mutationKey: mutationKeyClientDocumentsRetrievePermissions(),
     mutationFn: function clientDocumentsRetrievePermissionsMutationFn({
-      request,
+      getDocPermissionsRequest,
+      locale,
       options,
     }): Promise<ClientDocumentsRetrievePermissionsMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientDocumentsRetrievePermissionsMutation(
       };
       return unwrapAsync(clientDocumentsRetrievePermissions(
         client$,
-        request,
+        getDocPermissionsRequest,
+        locale,
         mergedOptions,
       ));
     },

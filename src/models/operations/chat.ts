@@ -8,6 +8,10 @@ import * as components from "../components/index.js";
 
 export type ChatRequest = {
   /**
+   * The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`.
+   */
+  locale?: string | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -19,6 +23,7 @@ export type ChatRequest = {
 
 /** @internal */
 export type ChatRequest$Outbound = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   ChatRequest: components.ChatRequest$Outbound;
 };
@@ -29,6 +34,7 @@ export const ChatRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ChatRequest
 > = z.object({
+  locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
   chatRequest: components.ChatRequest$outboundSchema,
 }).transform((v) => {

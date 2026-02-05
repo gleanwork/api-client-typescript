@@ -12,6 +12,16 @@ import { clientGovernanceDataPoliciesUpdate } from "../funcs/clientGovernanceDat
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -25,6 +35,16 @@ export type ClientGovernanceDataPoliciesUpdateMutationVariables = {
 export type ClientGovernanceDataPoliciesUpdateMutationData =
   components.UpdateDlpReportResponse;
 
+export type ClientGovernanceDataPoliciesUpdateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Updates an existing policy
  *
@@ -34,12 +54,12 @@ export type ClientGovernanceDataPoliciesUpdateMutationData =
 export function useClientGovernanceDataPoliciesUpdateMutation(
   options?: MutationHookOptions<
     ClientGovernanceDataPoliciesUpdateMutationData,
-    Error,
+    ClientGovernanceDataPoliciesUpdateMutationError,
     ClientGovernanceDataPoliciesUpdateMutationVariables
   >,
 ): UseMutationResult<
   ClientGovernanceDataPoliciesUpdateMutationData,
-  Error,
+  ClientGovernanceDataPoliciesUpdateMutationError,
   ClientGovernanceDataPoliciesUpdateMutationVariables
 > {
   const client = useGleanContext();

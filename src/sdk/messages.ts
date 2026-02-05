@@ -15,12 +15,14 @@ export class Messages extends ClientSDK {
    * Retrieves list of messages from messaging/chat datasources (e.g. Slack, Teams).
    */
   async retrieve(
-    request: components.MessagesRequest,
+    messagesRequest: components.MessagesRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.MessagesResponse> {
     return unwrapAsync(clientMessagesRetrieve(
       this,
-      request,
+      messagesRequest,
+      locale,
       options,
     ));
   }

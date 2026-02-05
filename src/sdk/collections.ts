@@ -23,12 +23,14 @@ export class Collections extends ClientSDK {
    * Add items to a Collection.
    */
   async addItems(
-    request: components.AddCollectionItemsRequest,
+    addCollectionItemsRequest: components.AddCollectionItemsRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.AddCollectionItemsResponse> {
     return unwrapAsync(clientCollectionsAddItems(
       this,
-      request,
+      addCollectionItemsRequest,
+      locale,
       options,
     ));
   }
@@ -40,12 +42,14 @@ export class Collections extends ClientSDK {
    * Create a publicly visible (empty) Collection of documents.
    */
   async create(
-    request: components.CreateCollectionRequest,
+    createCollectionRequest: components.CreateCollectionRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<operations.CreatecollectionResponse> {
     return unwrapAsync(clientCollectionsCreate(
       this,
-      request,
+      createCollectionRequest,
+      locale,
       options,
     ));
   }
@@ -57,12 +61,14 @@ export class Collections extends ClientSDK {
    * Delete a Collection given the Collection's ID.
    */
   async delete(
-    request: components.DeleteCollectionRequest,
+    deleteCollectionRequest: components.DeleteCollectionRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(clientCollectionsDelete(
       this,
-      request,
+      deleteCollectionRequest,
+      locale,
       options,
     ));
   }
@@ -74,12 +80,14 @@ export class Collections extends ClientSDK {
    * Delete a single item from a Collection.
    */
   async deleteItem(
-    request: components.DeleteCollectionItemRequest,
+    deleteCollectionItemRequest: components.DeleteCollectionItemRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.DeleteCollectionItemResponse> {
     return unwrapAsync(clientCollectionsDeleteItem(
       this,
-      request,
+      deleteCollectionItemRequest,
+      locale,
       options,
     ));
   }
@@ -91,12 +99,14 @@ export class Collections extends ClientSDK {
    * Update the properties of an existing Collection.
    */
   async update(
-    request: components.EditCollectionRequest,
+    editCollectionRequest: components.EditCollectionRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.EditCollectionResponse> {
     return unwrapAsync(clientCollectionsUpdate(
       this,
-      request,
+      editCollectionRequest,
+      locale,
       options,
     ));
   }
@@ -108,12 +118,14 @@ export class Collections extends ClientSDK {
    * Update the URL, Glean Document ID, description of an item within a Collection given its ID.
    */
   async updateItem(
-    request: components.EditCollectionItemRequest,
+    editCollectionItemRequest: components.EditCollectionItemRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.EditCollectionItemResponse> {
     return unwrapAsync(clientCollectionsUpdateItem(
       this,
-      request,
+      editCollectionItemRequest,
+      locale,
       options,
     ));
   }
@@ -125,12 +137,14 @@ export class Collections extends ClientSDK {
    * Read the details of a Collection given its ID. Does not fetch items in this Collection.
    */
   async retrieve(
-    request: components.GetCollectionRequest,
+    getCollectionRequest: components.GetCollectionRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.GetCollectionResponse> {
     return unwrapAsync(clientCollectionsRetrieve(
       this,
-      request,
+      getCollectionRequest,
+      locale,
       options,
     ));
   }
@@ -142,12 +156,14 @@ export class Collections extends ClientSDK {
    * List all existing Collections.
    */
   async list(
-    request: components.ListCollectionsRequest,
+    listCollectionsRequest: components.ListCollectionsRequest,
+    locale?: string | undefined,
     options?: RequestOptions,
   ): Promise<components.ListCollectionsResponse> {
     return unwrapAsync(clientCollectionsList(
       this,
-      request,
+      listCollectionsRequest,
+      locale,
       options,
     ));
   }

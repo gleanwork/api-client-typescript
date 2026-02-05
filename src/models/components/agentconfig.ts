@@ -38,6 +38,10 @@ export const AgentEnum = {
    * Uses an agent powered by the agentic engine that thinks for longer and potentially makes more LLM calls to return higher quality results. Requires the agentic engine to be enabled in the deployment.
    */
   Advanced: "ADVANCED",
+  /**
+   * Uses an agent powered by the agentic engine that routes between reasoning efforts based on the question and context.
+   */
+  Auto: "AUTO",
 } as const;
 /**
  * Name of the agent.

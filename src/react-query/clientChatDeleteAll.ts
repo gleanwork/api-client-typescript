@@ -11,16 +11,37 @@ import { GleanCore } from "../core.js";
 import { clientChatDeleteAll } from "../funcs/clientChatDeleteAll.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientChatDeleteAllMutationVariables = {
+  locale?: string | undefined;
   timezoneOffset?: number | undefined;
   options?: RequestOptions;
 };
 
 export type ClientChatDeleteAllMutationData = void;
+
+export type ClientChatDeleteAllMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Deletes all saved Chats owned by a user
@@ -31,12 +52,12 @@ export type ClientChatDeleteAllMutationData = void;
 export function useClientChatDeleteAllMutation(
   options?: MutationHookOptions<
     ClientChatDeleteAllMutationData,
-    Error,
+    ClientChatDeleteAllMutationError,
     ClientChatDeleteAllMutationVariables
   >,
 ): UseMutationResult<
   ClientChatDeleteAllMutationData,
-  Error,
+  ClientChatDeleteAllMutationError,
   ClientChatDeleteAllMutationVariables
 > {
   const client = useGleanContext();
@@ -62,6 +83,7 @@ export function buildClientChatDeleteAllMutation(
   return {
     mutationKey: mutationKeyClientChatDeleteAll(),
     mutationFn: function clientChatDeleteAllMutationFn({
+      locale,
       timezoneOffset,
       options,
     }): Promise<ClientChatDeleteAllMutationData> {
@@ -79,6 +101,7 @@ export function buildClientChatDeleteAllMutation(
       };
       return unwrapAsync(clientChatDeleteAll(
         client$,
+        locale,
         timezoneOffset,
         mergedOptions,
       ));

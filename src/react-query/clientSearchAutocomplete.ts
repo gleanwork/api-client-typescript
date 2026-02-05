@@ -12,17 +12,38 @@ import { clientSearchAutocomplete } from "../funcs/clientSearchAutocomplete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientSearchAutocompleteMutationVariables = {
-  request: components.AutocompleteRequest;
+  autocompleteRequest: components.AutocompleteRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientSearchAutocompleteMutationData =
   components.AutocompleteResponse;
+
+export type ClientSearchAutocompleteMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Autocomplete
@@ -33,12 +54,12 @@ export type ClientSearchAutocompleteMutationData =
 export function useClientSearchAutocompleteMutation(
   options?: MutationHookOptions<
     ClientSearchAutocompleteMutationData,
-    Error,
+    ClientSearchAutocompleteMutationError,
     ClientSearchAutocompleteMutationVariables
   >,
 ): UseMutationResult<
   ClientSearchAutocompleteMutationData,
-  Error,
+  ClientSearchAutocompleteMutationError,
   ClientSearchAutocompleteMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +85,8 @@ export function buildClientSearchAutocompleteMutation(
   return {
     mutationKey: mutationKeyClientSearchAutocomplete(),
     mutationFn: function clientSearchAutocompleteMutationFn({
-      request,
+      autocompleteRequest,
+      locale,
       options,
     }): Promise<ClientSearchAutocompleteMutationData> {
       const mergedOptions = {
@@ -81,7 +103,8 @@ export function buildClientSearchAutocompleteMutation(
       };
       return unwrapAsync(clientSearchAutocomplete(
         client$,
-        request,
+        autocompleteRequest,
+        locale,
         mergedOptions,
       ));
     },

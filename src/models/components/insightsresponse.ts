@@ -11,21 +11,9 @@ import {
   AgentsInsightsV2Response$inboundSchema,
 } from "./agentsinsightsv2response.js";
 import {
-  AiAppsInsightsResponse,
-  AiAppsInsightsResponse$inboundSchema,
-} from "./aiappsinsightsresponse.js";
-import {
-  AiInsightsResponse,
-  AiInsightsResponse$inboundSchema,
-} from "./aiinsightsresponse.js";
-import {
   AssistantInsightsResponse,
   AssistantInsightsResponse$inboundSchema,
 } from "./assistantinsightsresponse.js";
-import {
-  ContentInsightsResponse,
-  ContentInsightsResponse$inboundSchema,
-} from "./contentinsightsresponse.js";
 import {
   GleanAssistInsightsResponse,
   GleanAssistInsightsResponse$inboundSchema,
@@ -34,47 +22,9 @@ import {
   InsightsOverviewResponse,
   InsightsOverviewResponse$inboundSchema,
 } from "./insightsoverviewresponse.js";
-import {
-  LabeledCountInfo,
-  LabeledCountInfo$inboundSchema,
-} from "./labeledcountinfo.js";
-import {
-  QueryInsightsResponse,
-  QueryInsightsResponse$inboundSchema,
-} from "./queryinsightsresponse.js";
-import {
-  ShortcutInsightsResponse,
-  ShortcutInsightsResponse$inboundSchema,
-} from "./shortcutinsightsresponse.js";
-import {
-  UserInsightsResponse,
-  UserInsightsResponse$inboundSchema,
-} from "./userinsightsresponse.js";
 
 export type InsightsResponse = {
-  /**
-   * List of timeseries to make charts (if applicable).
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  timeseries?: Array<LabeledCountInfo> | undefined;
-  users?: UserInsightsResponse | undefined;
-  content?: ContentInsightsResponse | undefined;
-  queries?: QueryInsightsResponse | undefined;
-  collections?: ContentInsightsResponse | undefined;
-  collectionsV2?: ContentInsightsResponse | undefined;
-  shortcuts?: ShortcutInsightsResponse | undefined;
-  announcements?: ContentInsightsResponse | undefined;
-  answers?: ContentInsightsResponse | undefined;
-  ai?: AiInsightsResponse | undefined;
-  aiApps?: AiAppsInsightsResponse | undefined;
   gleanAssist?: GleanAssistInsightsResponse | undefined;
-  /**
-   * list of all departments.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  departments?: Array<string> | undefined;
   overviewResponse?: InsightsOverviewResponse | undefined;
   assistantResponse?: AssistantInsightsResponse | undefined;
   agentsResponse?: AgentsInsightsV2Response | undefined;
@@ -86,19 +36,7 @@ export const InsightsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  timeseries: z.array(LabeledCountInfo$inboundSchema).optional(),
-  users: UserInsightsResponse$inboundSchema.optional(),
-  content: ContentInsightsResponse$inboundSchema.optional(),
-  queries: QueryInsightsResponse$inboundSchema.optional(),
-  collections: ContentInsightsResponse$inboundSchema.optional(),
-  collectionsV2: ContentInsightsResponse$inboundSchema.optional(),
-  shortcuts: ShortcutInsightsResponse$inboundSchema.optional(),
-  announcements: ContentInsightsResponse$inboundSchema.optional(),
-  answers: ContentInsightsResponse$inboundSchema.optional(),
-  ai: AiInsightsResponse$inboundSchema.optional(),
-  aiApps: AiAppsInsightsResponse$inboundSchema.optional(),
   gleanAssist: GleanAssistInsightsResponse$inboundSchema.optional(),
-  departments: z.array(z.string()).optional(),
   overviewResponse: InsightsOverviewResponse$inboundSchema.optional(),
   assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
   agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),

@@ -12,6 +12,16 @@ import { clientGovernanceDocumentsVisibilityoverridesCreate } from "../funcs/cli
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -25,6 +35,16 @@ export type ClientGovernanceDocumentsVisibilityoverridesCreateMutationVariables 
 export type ClientGovernanceDocumentsVisibilityoverridesCreateMutationData =
   components.UpdateDocumentVisibilityOverridesResponse;
 
+export type ClientGovernanceDocumentsVisibilityoverridesCreateMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Hide or unhide docs
  *
@@ -34,12 +54,12 @@ export type ClientGovernanceDocumentsVisibilityoverridesCreateMutationData =
 export function useClientGovernanceDocumentsVisibilityoverridesCreateMutation(
   options?: MutationHookOptions<
     ClientGovernanceDocumentsVisibilityoverridesCreateMutationData,
-    Error,
+    ClientGovernanceDocumentsVisibilityoverridesCreateMutationError,
     ClientGovernanceDocumentsVisibilityoverridesCreateMutationVariables
   >,
 ): UseMutationResult<
   ClientGovernanceDocumentsVisibilityoverridesCreateMutationData,
-  Error,
+  ClientGovernanceDocumentsVisibilityoverridesCreateMutationError,
   ClientGovernanceDocumentsVisibilityoverridesCreateMutationVariables
 > {
   const client = useGleanContext();

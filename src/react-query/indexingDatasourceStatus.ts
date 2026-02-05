@@ -12,6 +12,16 @@ import { indexingDatasourceStatus } from "../funcs/indexingDatasourceStatus.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
@@ -24,6 +34,16 @@ export type IndexingDatasourceStatusMutationVariables = {
 export type IndexingDatasourceStatusMutationData =
   components.DebugDatasourceStatusResponse;
 
+export type IndexingDatasourceStatusMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Beta: Get datasource status
  *
@@ -35,12 +55,12 @@ export type IndexingDatasourceStatusMutationData =
 export function useIndexingDatasourceStatusMutation(
   options?: MutationHookOptions<
     IndexingDatasourceStatusMutationData,
-    Error,
+    IndexingDatasourceStatusMutationError,
     IndexingDatasourceStatusMutationVariables
   >,
 ): UseMutationResult<
   IndexingDatasourceStatusMutationData,
-  Error,
+  IndexingDatasourceStatusMutationError,
   IndexingDatasourceStatusMutationVariables
 > {
   const client = useGleanContext();

@@ -12,16 +12,37 @@ import { clientShortcutsDelete } from "../funcs/clientShortcutsDelete.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientShortcutsDeleteMutationVariables = {
-  request: components.DeleteShortcutRequest;
+  deleteShortcutRequest: components.DeleteShortcutRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientShortcutsDeleteMutationData = void;
+
+export type ClientShortcutsDeleteMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Delete shortcut
@@ -32,12 +53,12 @@ export type ClientShortcutsDeleteMutationData = void;
 export function useClientShortcutsDeleteMutation(
   options?: MutationHookOptions<
     ClientShortcutsDeleteMutationData,
-    Error,
+    ClientShortcutsDeleteMutationError,
     ClientShortcutsDeleteMutationVariables
   >,
 ): UseMutationResult<
   ClientShortcutsDeleteMutationData,
-  Error,
+  ClientShortcutsDeleteMutationError,
   ClientShortcutsDeleteMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientShortcutsDeleteMutation(
   return {
     mutationKey: mutationKeyClientShortcutsDelete(),
     mutationFn: function clientShortcutsDeleteMutationFn({
-      request,
+      deleteShortcutRequest,
+      locale,
       options,
     }): Promise<ClientShortcutsDeleteMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientShortcutsDeleteMutation(
       };
       return unwrapAsync(clientShortcutsDelete(
         client$,
-        request,
+        deleteShortcutRequest,
+        locale,
         mergedOptions,
       ));
     },

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { GleanCore } from "../core.js";
-import { encodeJSON } from "../lib/encodings.js";
+import { encodeFormQuery, encodeJSON } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -22,6 +22,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,7 +34,8 @@ import { Result } from "../types/fp.js";
  */
 export function clientAnnouncementsDelete(
   client: GleanCore,
-  request: components.DeleteAnnouncementRequest,
+  deleteAnnouncementRequest: components.DeleteAnnouncementRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -50,14 +52,16 @@ export function clientAnnouncementsDelete(
 > {
   return new APIPromise($do(
     client,
-    request,
+    deleteAnnouncementRequest,
+    locale,
     options,
   ));
 }
 
 async function $do(
   client: GleanCore,
-  request: components.DeleteAnnouncementRequest,
+  deleteAnnouncementRequest: components.DeleteAnnouncementRequest,
+  locale?: string | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -75,18 +79,29 @@ async function $do(
     APICall,
   ]
 > {
+  const input: operations.DeleteannouncementRequest = {
+    deleteAnnouncementRequest: deleteAnnouncementRequest,
+    locale: locale,
+  };
+
   const parsed = safeParse(
-    request,
-    (value) => components.DeleteAnnouncementRequest$outboundSchema.parse(value),
+    input,
+    (value) => operations.DeleteannouncementRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload.DeleteAnnouncementRequest, {
+    explode: true,
+  });
 
   const path = pathToFunc("/rest/api/v1/deleteannouncement")();
+
+  const query = encodeFormQuery({
+    "locale": payload.locale,
+  });
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
@@ -118,6 +133,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
+    query: query,
     body: body,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,

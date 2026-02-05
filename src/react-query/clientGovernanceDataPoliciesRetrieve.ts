@@ -10,6 +10,16 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { useGleanContext } from "./_context.js";
 import {
   QueryHookOptions,
@@ -29,6 +39,16 @@ export {
   queryKeyClientGovernanceDataPoliciesRetrieve,
 };
 
+export type ClientGovernanceDataPoliciesRetrieveQueryError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
+
 /**
  * Gets specified policy
  *
@@ -38,8 +58,14 @@ export {
 export function useClientGovernanceDataPoliciesRetrieve(
   id: string,
   version?: number | undefined,
-  options?: QueryHookOptions<ClientGovernanceDataPoliciesRetrieveQueryData>,
-): UseQueryResult<ClientGovernanceDataPoliciesRetrieveQueryData, Error> {
+  options?: QueryHookOptions<
+    ClientGovernanceDataPoliciesRetrieveQueryData,
+    ClientGovernanceDataPoliciesRetrieveQueryError
+  >,
+): UseQueryResult<
+  ClientGovernanceDataPoliciesRetrieveQueryData,
+  ClientGovernanceDataPoliciesRetrieveQueryError
+> {
   const client = useGleanContext();
   return useQuery({
     ...buildClientGovernanceDataPoliciesRetrieveQuery(
@@ -62,11 +88,12 @@ export function useClientGovernanceDataPoliciesRetrieveSuspense(
   id: string,
   version?: number | undefined,
   options?: SuspenseQueryHookOptions<
-    ClientGovernanceDataPoliciesRetrieveQueryData
+    ClientGovernanceDataPoliciesRetrieveQueryData,
+    ClientGovernanceDataPoliciesRetrieveQueryError
   >,
 ): UseSuspenseQueryResult<
   ClientGovernanceDataPoliciesRetrieveQueryData,
-  Error
+  ClientGovernanceDataPoliciesRetrieveQueryError
 > {
   const client = useGleanContext();
   return useSuspenseQuery({

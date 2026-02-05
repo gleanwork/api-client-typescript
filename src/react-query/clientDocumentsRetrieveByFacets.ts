@@ -12,17 +12,40 @@ import { clientDocumentsRetrieveByFacets } from "../funcs/clientDocumentsRetriev
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsRetrieveByFacetsMutationVariables = {
-  request?: components.GetDocumentsByFacetsRequest | undefined;
+  getDocumentsByFacetsRequest?:
+    | components.GetDocumentsByFacetsRequest
+    | undefined;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientDocumentsRetrieveByFacetsMutationData =
   components.GetDocumentsByFacetsResponse;
+
+export type ClientDocumentsRetrieveByFacetsMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Read documents by facets
@@ -33,12 +56,12 @@ export type ClientDocumentsRetrieveByFacetsMutationData =
 export function useClientDocumentsRetrieveByFacetsMutation(
   options?: MutationHookOptions<
     ClientDocumentsRetrieveByFacetsMutationData,
-    Error,
+    ClientDocumentsRetrieveByFacetsMutationError,
     ClientDocumentsRetrieveByFacetsMutationVariables
   >,
 ): UseMutationResult<
   ClientDocumentsRetrieveByFacetsMutationData,
-  Error,
+  ClientDocumentsRetrieveByFacetsMutationError,
   ClientDocumentsRetrieveByFacetsMutationVariables
 > {
   const client = useGleanContext();
@@ -64,7 +87,8 @@ export function buildClientDocumentsRetrieveByFacetsMutation(
   return {
     mutationKey: mutationKeyClientDocumentsRetrieveByFacets(),
     mutationFn: function clientDocumentsRetrieveByFacetsMutationFn({
-      request,
+      getDocumentsByFacetsRequest,
+      locale,
       options,
     }): Promise<ClientDocumentsRetrieveByFacetsMutationData> {
       const mergedOptions = {
@@ -81,7 +105,8 @@ export function buildClientDocumentsRetrieveByFacetsMutation(
       };
       return unwrapAsync(clientDocumentsRetrieveByFacets(
         client$,
-        request,
+        getDocumentsByFacetsRequest,
+        locale,
         mergedOptions,
       ));
     },

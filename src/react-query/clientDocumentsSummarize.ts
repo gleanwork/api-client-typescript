@@ -12,16 +12,37 @@ import { clientDocumentsSummarize } from "../funcs/clientDocumentsSummarize.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
+import {
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
+} from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
 export type ClientDocumentsSummarizeMutationVariables = {
-  request: components.SummarizeRequest;
+  summarizeRequest: components.SummarizeRequest;
+  locale?: string | undefined;
   options?: RequestOptions;
 };
 
 export type ClientDocumentsSummarizeMutationData = components.SummarizeResponse;
+
+export type ClientDocumentsSummarizeMutationError =
+  | GleanBaseError
+  | ResponseValidationError
+  | ConnectionError
+  | RequestAbortedError
+  | RequestTimeoutError
+  | InvalidRequestError
+  | UnexpectedClientError
+  | SDKValidationError;
 
 /**
  * Summarize documents
@@ -32,12 +53,12 @@ export type ClientDocumentsSummarizeMutationData = components.SummarizeResponse;
 export function useClientDocumentsSummarizeMutation(
   options?: MutationHookOptions<
     ClientDocumentsSummarizeMutationData,
-    Error,
+    ClientDocumentsSummarizeMutationError,
     ClientDocumentsSummarizeMutationVariables
   >,
 ): UseMutationResult<
   ClientDocumentsSummarizeMutationData,
-  Error,
+  ClientDocumentsSummarizeMutationError,
   ClientDocumentsSummarizeMutationVariables
 > {
   const client = useGleanContext();
@@ -63,7 +84,8 @@ export function buildClientDocumentsSummarizeMutation(
   return {
     mutationKey: mutationKeyClientDocumentsSummarize(),
     mutationFn: function clientDocumentsSummarizeMutationFn({
-      request,
+      summarizeRequest,
+      locale,
       options,
     }): Promise<ClientDocumentsSummarizeMutationData> {
       const mergedOptions = {
@@ -80,7 +102,8 @@ export function buildClientDocumentsSummarizeMutation(
       };
       return unwrapAsync(clientDocumentsSummarize(
         client$,
-        request,
+        summarizeRequest,
+        locale,
         mergedOptions,
       ));
     },
