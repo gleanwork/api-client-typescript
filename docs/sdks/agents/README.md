@@ -300,7 +300,7 @@ import {
 
 ## runStream
 
-Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
+Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
 
 ### Example Usage
 
@@ -400,7 +400,7 @@ import {
 
 ## run
 
-Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
+Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
 
 ### Example Usage
 

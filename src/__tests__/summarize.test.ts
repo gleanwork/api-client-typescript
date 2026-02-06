@@ -18,10 +18,12 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://educated-laughter.info/",
+        ugcType: "SHORTCUTS",
+        contentId: 602763,
       },
       {
-        url: "https://educated-laughter.info/",
+        ugcType: "SHORTCUTS",
+        contentId: 602763,
       },
     ],
   });

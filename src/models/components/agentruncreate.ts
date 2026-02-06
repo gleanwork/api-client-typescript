@@ -11,7 +11,7 @@ import {
 } from "./message.js";
 
 /**
- * Payload for creating a run.
+ * Payload for creating a run. **Important**: If the agent uses an input form trigger, the `input` field is required and must include all fields defined in the form schema. Even fields marked as optional in the UI must be included in the request—use an empty string (`""`) for optional fields without values. Omitting required form fields will result in a 500 error.
  */
 export type AgentRunCreate = {
   /**
@@ -19,7 +19,7 @@ export type AgentRunCreate = {
    */
   agentId: string;
   /**
-   * The input to the agent.
+   * The input to the agent. Required when the agent uses an input form trigger.
    */
   input?: { [k: string]: any } | undefined;
   /**

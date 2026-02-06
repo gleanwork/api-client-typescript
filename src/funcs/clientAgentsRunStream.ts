@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Create an agent run and stream the response
  *
  * @remarks
- * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
+ * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
  */
 export function clientAgentsRunStream(
   client: GleanCore,
