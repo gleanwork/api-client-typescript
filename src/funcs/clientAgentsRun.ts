@@ -28,7 +28,7 @@ import { Result } from "../types/fp.js";
  * Create an agent run and wait for the response
  *
  * @remarks
- * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
+ * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
  */
 export function clientAgentsRun(
   client: GleanCore,

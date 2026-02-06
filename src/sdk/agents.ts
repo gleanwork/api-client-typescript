@@ -75,7 +75,7 @@ export class Agents extends ClientSDK {
    * Create an agent run and stream the response
    *
    * @remarks
-   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE).
+   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
    */
   async runStream(
     request: components.AgentRunCreate,
@@ -92,7 +92,7 @@ export class Agents extends ClientSDK {
    * Create an agent run and wait for the response
    *
    * @remarks
-   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response.
+   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
    */
   async run(
     request: components.AgentRunCreate,
