@@ -92,7 +92,7 @@ let value: ChatMessageCitation = {
   referenceRanges: [
     {
       textRange: {
-        startIndex: 441442,
+        startIndex: 27290,
         document: {
           containerDocument: {
             metadata: {
