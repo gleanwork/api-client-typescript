@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { ActionSummary, ActionSummary$inboundSchema } from "./actionsummary.js";
 
 /**
  * The schema for the agent input. In JSON Schema format.
@@ -34,6 +35,10 @@ export type AgentSchemas = {
    * The schema for the agent output. In JSON Schema format.
    */
   outputSchema: OutputSchema;
+  /**
+   * List of tools that the agent can invoke. Only included when include_tools query parameter is set to true.
+   */
+  tools?: Array<ActionSummary> | undefined;
 };
 
 /** @internal */
@@ -79,6 +84,7 @@ export const AgentSchemas$inboundSchema: z.ZodType<
   agent_id: z.string(),
   input_schema: z.lazy(() => InputSchema$inboundSchema),
   output_schema: z.lazy(() => OutputSchema$inboundSchema),
+  tools: z.array(ActionSummary$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "agent_id": "agentId",

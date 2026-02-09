@@ -10,176 +10,6 @@ import { ChatResponse } from "@gleanwork/api-client/models/components";
 let value: ChatResponse = {
   messages: [
     {
-      citations: [
-        {
-          sourceDocument: {
-            containerDocument: {
-              metadata: {
-                datasource: "datasource",
-                objectType: "Feature Request",
-                container: "container",
-                parentId: "JIRA_EN-1337",
-                mimeType: "mimeType",
-                documentId: "documentId",
-                createTime: new Date("2000-01-23T04:56:07.000Z"),
-                updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                author: {
-                  name: "name",
-                  obfuscatedId: "<id>",
-                },
-                components: [
-                  "Backend",
-                  "Networking",
-                ],
-                status: "[\"Done\"]",
-                customData: {
-                  "someCustomField": {},
-                },
-              },
-            },
-            parentDocument: {
-              metadata: {
-                datasource: "datasource",
-                objectType: "Feature Request",
-                container: "container",
-                parentId: "JIRA_EN-1337",
-                mimeType: "mimeType",
-                documentId: "documentId",
-                createTime: new Date("2000-01-23T04:56:07.000Z"),
-                updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                author: {
-                  name: "name",
-                  obfuscatedId: "<id>",
-                },
-                components: [
-                  "Backend",
-                  "Networking",
-                ],
-                status: "[\"Done\"]",
-                customData: {
-                  "someCustomField": {},
-                },
-              },
-            },
-            metadata: {
-              datasource: "datasource",
-              objectType: "Feature Request",
-              container: "container",
-              parentId: "JIRA_EN-1337",
-              mimeType: "mimeType",
-              documentId: "documentId",
-              createTime: new Date("2000-01-23T04:56:07.000Z"),
-              updateTime: new Date("2000-01-23T04:56:07.000Z"),
-              author: {
-                name: "name",
-                obfuscatedId: "<id>",
-              },
-              components: [
-                "Backend",
-                "Networking",
-              ],
-              status: "[\"Done\"]",
-              customData: {
-                "someCustomField": {},
-              },
-            },
-          },
-          sourceFile: {
-            id: "FILE_1234",
-            url: "www.google.com",
-            name: "sample.pdf",
-          },
-          sourcePerson: {
-            name: "George Clooney",
-            obfuscatedId: "abc123",
-          },
-          referenceRanges: [
-            {
-              textRange: {
-                startIndex: 441442,
-                document: {
-                  containerDocument: {
-                    metadata: {
-                      datasource: "datasource",
-                      objectType: "Feature Request",
-                      container: "container",
-                      parentId: "JIRA_EN-1337",
-                      mimeType: "mimeType",
-                      documentId: "documentId",
-                      createTime: new Date("2000-01-23T04:56:07.000Z"),
-                      updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                      author: {
-                        name: "name",
-                        obfuscatedId: "<id>",
-                      },
-                      components: [
-                        "Backend",
-                        "Networking",
-                      ],
-                      status: "[\"Done\"]",
-                      customData: {
-                        "someCustomField": {},
-                      },
-                    },
-                  },
-                  parentDocument: {
-                    metadata: {
-                      datasource: "datasource",
-                      objectType: "Feature Request",
-                      container: "container",
-                      parentId: "JIRA_EN-1337",
-                      mimeType: "mimeType",
-                      documentId: "documentId",
-                      createTime: new Date("2000-01-23T04:56:07.000Z"),
-                      updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                      author: {
-                        name: "name",
-                        obfuscatedId: "<id>",
-                      },
-                      components: [
-                        "Backend",
-                        "Networking",
-                      ],
-                      status: "[\"Done\"]",
-                      customData: {
-                        "someCustomField": {},
-                      },
-                    },
-                  },
-                  metadata: {
-                    datasource: "datasource",
-                    objectType: "Feature Request",
-                    container: "container",
-                    parentId: "JIRA_EN-1337",
-                    mimeType: "mimeType",
-                    documentId: "documentId",
-                    createTime: new Date("2000-01-23T04:56:07.000Z"),
-                    updateTime: new Date("2000-01-23T04:56:07.000Z"),
-                    author: {
-                      name: "name",
-                      obfuscatedId: "<id>",
-                    },
-                    components: [
-                      "Backend",
-                      "Networking",
-                    ],
-                    status: "[\"Done\"]",
-                    customData: {
-                      "someCustomField": {},
-                    },
-                  },
-                },
-              },
-              snippets: [
-                {
-                  mimeType: "mimeType",
-                  snippet: "snippet",
-                },
-              ],
-            },
-          ],
-        },
-      ],
       fragments: [
         {
           structuredResults: [
@@ -1968,6 +1798,12 @@ let value: ChatResponse = {
                 },
               ],
               relatedQuestion: {},
+              snippets: [
+                {
+                  mimeType: "mimeType",
+                  snippet: "snippet",
+                },
+              ],
             },
           ],
           querySuggestion: {
@@ -1982,9 +1818,9 @@ let value: ChatResponse = {
           },
           action: {
             metadata: {
-              type: "ACTION",
+              type: "RETRIEVAL",
               name: "<value>",
-              displayName: "Kody.Kihn88",
+              displayName: "Wava17",
               displayDescription: "<value>",
               objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
             },
@@ -2074,7 +1910,7 @@ let value: ChatResponse = {
             referenceRanges: [
               {
                 textRange: {
-                  startIndex: 441442,
+                  startIndex: 27290,
                   document: {
                     containerDocument: {
                       metadata: {

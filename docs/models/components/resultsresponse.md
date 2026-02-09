@@ -1771,6 +1771,12 @@ let value: ResultsResponse = {
         },
       ],
       relatedQuestion: {},
+      snippets: [
+        {
+          mimeType: "mimeType",
+          snippet: "snippet",
+        },
+      ],
     },
   ],
   generatedQnaResult: {

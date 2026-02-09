@@ -1747,6 +1747,12 @@ let value: ChatMessageFragment = {
         },
       ],
       relatedQuestion: {},
+      snippets: [
+        {
+          mimeType: "mimeType",
+          snippet: "snippet",
+        },
+      ],
     },
   ],
   querySuggestion: {
@@ -1761,9 +1767,9 @@ let value: ChatMessageFragment = {
   },
   action: {
     metadata: {
-      type: "ACTION",
+      type: "RETRIEVAL",
       name: "<value>",
-      displayName: "Kody.Kihn88",
+      displayName: "Wava17",
       displayDescription: "<value>",
       objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
     },
@@ -1853,7 +1859,7 @@ let value: ChatMessageFragment = {
     referenceRanges: [
       {
         textRange: {
-          startIndex: 441442,
+          startIndex: 27290,
           document: {
             containerDocument: {
               metadata: {

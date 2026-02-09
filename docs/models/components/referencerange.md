@@ -9,7 +9,7 @@ import { ReferenceRange } from "@gleanwork/api-client/models/components";
 
 let value: ReferenceRange = {
   textRange: {
-    startIndex: 441442,
+    startIndex: 27290,
     document: {
       containerDocument: {
         metadata: {
