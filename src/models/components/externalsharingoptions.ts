@@ -10,11 +10,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Controls how "shared" a document must be to get picked for scans.
  *
- * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated class: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use broadSharingOptions instead.
  */
 export type ExternalSharingOptions = {
   /**
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
    */
   enabled?: boolean | undefined;
   /**
@@ -26,7 +26,7 @@ export type ExternalSharingOptions = {
    */
   thresholdEnabled?: boolean | undefined;
   /**
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
    */
   anyoneWithLinkEnabled?: boolean | undefined;
   /**

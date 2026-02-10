@@ -60,7 +60,7 @@ export type DlpConfig = {
   /**
    * DEPRECATED - use `sensitiveContentOptions` instead.
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use sensitiveContentOptions instead.
    */
   sensitiveInfoTypes?: Array<SensitiveInfoType> | undefined;
   /**
@@ -68,7 +68,7 @@ export type DlpConfig = {
    */
   inputOptions?: InputOptions | undefined;
   /**
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use broadSharingOptions instead.
    */
   externalSharingOptions?: ExternalSharingOptions | undefined;
   /**

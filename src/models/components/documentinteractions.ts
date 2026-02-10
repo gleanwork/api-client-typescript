@@ -37,7 +37,7 @@ export type DocumentInteractions = {
   /**
    * To be deprecated in favor of reacts. A (potentially non-exhaustive) list of reactions for the document.
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use reacts instead.
    */
   reactions?: Array<string> | undefined;
   reacts?: Array<Reaction> | undefined;
