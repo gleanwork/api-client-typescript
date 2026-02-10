@@ -119,6 +119,10 @@ export const Event = {
    */
   ManualFeedbackSideBySide: "MANUAL_FEEDBACK_SIDE_BY_SIDE",
   /**
+   * The user submitted feedback about time saved by an agent or workflow.
+   */
+  FeedbackTimeSaved: "FEEDBACK_TIME_SAVED",
+  /**
    * The user explicitly marked the content as read.
    */
   MarkAsRead: "MARK_AS_READ",

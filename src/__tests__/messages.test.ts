@@ -19,7 +19,7 @@ test("Messages Messages", async () => {
     idType: "CONVERSATION_ID",
     id: "<id>",
     timestampMillis: 558834,
-    datasource: "SLACK",
+    datasource: "MICROSOFTTEAMS",
   });
   expect(result).toBeDefined();
 });

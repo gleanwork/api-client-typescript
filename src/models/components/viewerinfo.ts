@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * DEPRECATED - use permissions instead. Viewer's role on the specific document.
  *
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
  */
 export const Role = {
   AnswerModerator: "ANSWER_MODERATOR",
@@ -21,7 +21,7 @@ export const Role = {
 /**
  * DEPRECATED - use permissions instead. Viewer's role on the specific document.
  *
- * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
+ * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
  */
 export type Role = ClosedEnum<typeof Role>;
 
@@ -29,7 +29,7 @@ export type ViewerInfo = {
   /**
    * DEPRECATED - use permissions instead. Viewer's role on the specific document.
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
    */
   role?: Role | undefined;
   lastViewedTime?: Date | undefined;
