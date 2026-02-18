@@ -49,6 +49,30 @@ export const MessageType = {
    */
   Context: "CONTEXT",
   /**
+   * Control signal for message streaming.
+   */
+  Control: "CONTROL",
+  /**
+   * Control signal indicating the start of a message stream.
+   */
+  ControlStart: "CONTROL_START",
+  /**
+   * Control signal indicating the end of a message stream.
+   */
+  ControlFinish: "CONTROL_FINISH",
+  /**
+   * Control signal indicating the message stream was cancelled.
+   */
+  ControlCancel: "CONTROL_CANCEL",
+  /**
+   * Indicates the message streaming needed to be retried.
+   */
+  ControlRetry: "CONTROL_RETRY",
+  /**
+   * Fallback control signal for unrecognized control types.
+   */
+  ControlUnknown: "CONTROL_UNKNOWN",
+  /**
    * A debug message. Strictly used internally.
    */
   Debug: "DEBUG",
