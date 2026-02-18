@@ -24,6 +24,14 @@ export type GleanDataErrorData = {
    * Indicates the federated search results could not be fetched due to rate limiting.
    */
   federatedSearchRateLimitError?: boolean | undefined;
+  /**
+   * Datasource instances that could not be queried because the user has not completed or has expired per-user OAuth.
+   *
+   * @remarks
+   */
+  unauthorizedDatasourceInstances?:
+    | Array<components.UnauthorizedDatasourceInstance>
+    | undefined;
 };
 
 export class GleanDataError extends GleanBaseError {
@@ -44,6 +52,14 @@ export class GleanDataError extends GleanBaseError {
    * Indicates the federated search results could not be fetched due to rate limiting.
    */
   federatedSearchRateLimitError?: boolean | undefined;
+  /**
+   * Datasource instances that could not be queried because the user has not completed or has expired per-user OAuth.
+   *
+   * @remarks
+   */
+  unauthorizedDatasourceInstances?:
+    | Array<components.UnauthorizedDatasourceInstance>
+    | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: GleanDataErrorData;
@@ -66,6 +82,10 @@ export class GleanDataError extends GleanBaseError {
     if (err.federatedSearchRateLimitError != null) {
       this.federatedSearchRateLimitError = err.federatedSearchRateLimitError;
     }
+    if (err.unauthorizedDatasourceInstances != null) {
+      this.unauthorizedDatasourceInstances =
+        err.unauthorizedDatasourceInstances;
+    }
 
     this.name = "GleanDataError";
   }
@@ -83,6 +103,9 @@ export const GleanDataError$inboundSchema: z.ZodType<
     .optional(),
   errorMessages: z.array(components.ErrorMessage$inboundSchema).optional(),
   federatedSearchRateLimitError: z.boolean().optional(),
+  unauthorizedDatasourceInstances: z.array(
+    components.UnauthorizedDatasourceInstance$inboundSchema,
+  ).optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
