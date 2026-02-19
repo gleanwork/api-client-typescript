@@ -29,7 +29,7 @@ export type UnauthorizedDatasourceInstance = {
    */
   authStatus?: AuthStatus | undefined;
   /**
-   * Relative path to initiate or resume OAuth for the current user and instance. Clients should prepend their configured Glean backend base URL.
+   * Relative path to initiate or resume OAuth for the current user and instance, including a one-time authentication token as a query parameter. Clients should prepend their configured Glean backend base URL.
    *
    * @remarks
    */

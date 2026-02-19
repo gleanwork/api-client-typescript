@@ -6,8 +6,8 @@ import { expect, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Summarize Summarize", async () => {
-  const testHttpClient = createTestHTTPClient("summarize");
+test("Authentication Checkdatasourceauth", async () => {
+  const testHttpClient = createTestHTTPClient("checkdatasourceauth");
 
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -15,15 +15,6 @@ test("Summarize Summarize", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.client.documents.summarize({
-    documentSpecs: [
-      {
-        url: "https://educated-laughter.info/",
-      },
-      {
-        url: "https://educated-laughter.info/",
-      },
-    ],
-  });
+  const result = await glean.authentication.checkdatasourceauth();
   expect(result).toBeDefined();
 });
