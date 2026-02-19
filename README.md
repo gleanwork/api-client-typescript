@@ -280,6 +280,10 @@ For more information on obtaining the appropriate token type, please contact you
 <details open>
 <summary>Available methods</summary>
 
+### [Authentication](docs/sdks/authentication/README.md)
+
+* [checkdatasourceauth](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
+
 ### [Client.Activity](docs/sdks/activity/README.md)
 
 * [report](docs/sdks/activity/README.md#report) - Report document activity
@@ -496,6 +500,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`authenticationCheckdatasourceauth`](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search agents
@@ -639,6 +644,7 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
+- [`useAuthenticationCheckdatasourceauthMutation`](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search agents

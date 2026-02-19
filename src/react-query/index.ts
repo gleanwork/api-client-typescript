@@ -5,6 +5,7 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./authenticationCheckdatasourceauth.js";
 export * from "./clientActivityFeedback.js";
 export * from "./clientActivityReport.js";
 export * from "./clientAgentsList.js";

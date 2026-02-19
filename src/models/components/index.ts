@@ -68,6 +68,7 @@ export * from "./chatrestrictionfilters.js";
 export * from "./chatresult.js";
 export * from "./chatsuggestion.js";
 export * from "./chatzerostatesuggestionoptions.js";
+export * from "./checkdatasourceauthresponse.js";
 export * from "./checkdocumentaccessrequest.js";
 export * from "./checkdocumentaccessresponse.js";
 export * from "./clustergroup.js";
