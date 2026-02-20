@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: e61f09454154d7eb019991c03f6d19eb
+  docChecksum: 168d09185da75c45f6edca32cb2bc2dd
   docVersion: 0.9.0
   speakeasyVersion: 1.722.7
   generationVersion: 2.832.9
-  releaseVersion: 0.14.6
-  configChecksum: 2e4ae2e107a7c4c46e5c93681b7c6430
+  releaseVersion: 0.14.7
+  configChecksum: b06f2629547070d2cfd1d03303bd53b6
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: de845636-3e48-4739-be11-ed855453b7be
-  pristine_commit_hash: 9a6d8252c042937c6297974ed05d8802055cd6ad
-  pristine_tree_hash: b7d3346ddc6247b21f25cf1e1922c01e7bbf8c33
+  generation_id: 892d7f4e-9488-48a6-91f4-326d6d1b3b4f
+  pristine_commit_hash: 75264de4fd20d49fb7e91bd2666b130c753e73f9
+  pristine_tree_hash: 0c21dfd90e6925a2720790e8a8b7e272377d663b
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -432,8 +432,8 @@ trackedFiles:
     pristine_git_object: 630c94f0888410ef52e47247cafb0986dce0300d
   docs/models/components/checkdatasourceauthresponse.md:
     id: c9e52d770713
-    last_write_checksum: sha1:bd392f24303f36c80b113f16af339d19e0857d3e
-    pristine_git_object: 3e54e40aebd33d4e51298d5f6dea02f49d8c81e9
+    last_write_checksum: sha1:f652ad19175f361e197a065beba7b4d0e12660df
+    pristine_git_object: 8593bbe5c8a9524dd6d36db6f8e2894f9e47181d
   docs/models/components/checkdocumentaccessrequest.md:
     id: e202c5bf96ac
     last_write_checksum: sha1:8244a3b3a96f003f68e09b7ddb2e1f4680032818
@@ -2756,12 +2756,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:343af9a901fc22fe24ef7434cc4af4d715aa9c6d
-    pristine_git_object: d3899087d6d8e23e17c8113e847ca102dd32ce35
+    last_write_checksum: sha1:4ff06cc44b374f7cfeb6de6c83a2ae287eff00f8
+    pristine_git_object: 94384f253516c2630de1fa237932c439e03054d4
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f788f26ab3eab6af72a569a70a0b085269d34bd5
-    pristine_git_object: 34f4501c2c533deda5e3386cb4942ab9e9eba2a9
+    last_write_checksum: sha1:da35263bc77e5a049e0cfdef868de9017fdd8dcd
+    pristine_git_object: 9e74a1f5d35d9f4d39134c8a96fb09206057cbf8
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:967fae9ee4ae9dd9ee8383b2ce261d26d05d9873
@@ -3007,7 +3007,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1getanswer.go:
     last_write_checksum: sha1:3bec6f7cd190f9394bebac2407f9d7f1e606e479
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1getchat.go:
-    last_write_checksum: sha1:2c2b7acb22e422a721a21801cccfa30fedfd3169
+    last_write_checksum: sha1:089475adb3686c656bd0eb52940285a7e037ab83
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1getchatapplication.go:
     last_write_checksum: sha1:7b81898137fdb3a89b4dcfa318b9b5b92e8860c0
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1getchatfiles.go:
@@ -3213,7 +3213,7 @@ trackedFiles:
   src/__tests__/mockserver/internal/sdk/models/components/chatzerostatesuggestionoptions.go:
     last_write_checksum: sha1:da633547681ec1c8ef5df79cc1d2919fb3714d13
   src/__tests__/mockserver/internal/sdk/models/components/checkdatasourceauthresponse.go:
-    last_write_checksum: sha1:caa976ebc0e76d521725d4dd83e17c840842fd9a
+    last_write_checksum: sha1:e99e71069a2dee200904ebf2457ee9853b1777b4
   src/__tests__/mockserver/internal/sdk/models/components/checkdocumentaccessrequest.go:
     last_write_checksum: sha1:4b403181de5f24bde26d022703e625a832f685c8
   src/__tests__/mockserver/internal/sdk/models/components/checkdocumentaccessresponse.go:
@@ -4734,8 +4734,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c430511ea1666f524057ac05272990a0dba5e28b
-    pristine_git_object: a5c481f4012201a967eee985546952b6a1a15dcc
+    last_write_checksum: sha1:f2d5b512605e8a404aa255ed6c5b918c0c0e61de
+    pristine_git_object: 715aecd5112f10c945520be15b20596ffcce83f3
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -5058,8 +5058,8 @@ trackedFiles:
     pristine_git_object: e73c632fccabf514c5a0218ec3d7cdcacdc15edd
   src/models/components/checkdatasourceauthresponse.ts:
     id: 25ae9960eb9b
-    last_write_checksum: sha1:f7f152d5a45205903bde819e1ec1999effacd746
-    pristine_git_object: 19ce89fac908895cdb6d27eecb8983c91956d7ce
+    last_write_checksum: sha1:74c730dec9fc28f8b115000b718a930f69bd1adc
+    pristine_git_object: e2f0642d11fb401e630905d9dfb11cbd1b31fa9d
   src/models/components/checkdocumentaccessrequest.ts:
     id: 9b62d0ab3d53
     last_write_checksum: sha1:abdb770748b2dfe5e6aefd0382940276b1c0483a
@@ -8413,7 +8413,7 @@ generatedTests:
   checkdatasourceauth: "2026-02-19T15:51:26Z"
 releaseNotes: |
   ## Typescript SDK Changes:
-  * `glean.authentication.checkdatasourceauth()`: **Added**
+  * `glean.authentication.checkdatasourceauth()`:  `response.unauthorizedDatasourceInstances` **Changed**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

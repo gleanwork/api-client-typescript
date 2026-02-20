@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.14.6",
+  "version": "0.14.7",
   "author": "Speakeasy",
   "tshy": {
     "sourceDialects": [
