@@ -13,13 +13,11 @@ import {
 
 export type CheckDatasourceAuthResponse = {
   /**
-   * Datasource instances that require per-user OAuth authorization. Empty or absent when all datasources are authorized.
+   * Datasource instances that require per-user OAuth authorization. Empty when all datasources are authorized.
    *
    * @remarks
    */
-  unauthorizedDatasourceInstances?:
-    | Array<UnauthorizedDatasourceInstance>
-    | undefined;
+  unauthorizedDatasourceInstances: Array<UnauthorizedDatasourceInstance>;
 };
 
 /** @internal */
@@ -30,7 +28,7 @@ export const CheckDatasourceAuthResponse$inboundSchema: z.ZodType<
 > = z.object({
   unauthorizedDatasourceInstances: z.array(
     UnauthorizedDatasourceInstance$inboundSchema,
-  ).optional(),
+  ),
 });
 
 export function checkDatasourceAuthResponseFromJSON(
