@@ -1,5 +1,6 @@
 import { Hooks, AfterErrorHook } from "./types.js";
 import { XGlean } from "./x-glean.js";
+import { serverURLNormalizerHook } from "./server-url-normalizer.js";
 
 /*
  * This file is only ever generated once on the first generation and then is free to be modified.
@@ -47,6 +48,7 @@ export function initHooks(hooks: Hooks) {
   // Add hooks by calling hooks.register{ClientInit/BeforeCreateRequest/BeforeRequest/AfterSuccess/AfterError}Hook
   // with an instance of a hook that implements that specific Hook interface
   // Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
+  hooks.registerSDKInitHook(serverURLNormalizerHook);
   hooks.registerAfterErrorHook(agentFileUploadErrorHook);
 
   // Register the X-Glean header hook for experimental features and deprecation testing
