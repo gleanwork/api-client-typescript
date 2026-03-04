@@ -14,7 +14,7 @@ Each namespace has its own authentication requirements and access patterns. Whil
 ```typescript
 // Example of accessing Client namespace
 const glean = new Glean({
-  serverURL: "mycompany-be.glean.com",
+  serverURL: "https://mycompany-be.glean.com",
   apiToken: 'client-token'
 });
 
@@ -24,7 +24,7 @@ await glean.client.search.query({
 
 // Example of accessing Indexing namespace 
 const glean = new Glean({
-  serverURL: "mycompany-be.glean.com",
+  serverURL: "https://mycompany-be.glean.com",
   apiToken: 'indexing-token'
 });
 
@@ -1169,7 +1169,7 @@ import { Glean } from "@gleanwork/api-client";
 
 const glean = new Glean({
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  serverURL: "mycompany-be.glean.com",
+  serverURL: "https://mycompany-be.glean.com",
 });
 ```
 
@@ -1182,7 +1182,7 @@ import type { XGleanOptions } from "@gleanwork/api-client/hooks/x-glean-options.
 
 const opts = {
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
-  serverURL: "mycompany-be.glean.com",
+  serverURL: "https://mycompany-be.glean.com",
   excludeDeprecatedAfter: "2026-10-15",
   includeExperimental: true,
 } satisfies SDKOptions & XGleanOptions;

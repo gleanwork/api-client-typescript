@@ -34,7 +34,7 @@ test("type test for `Glean` constructor", () => {
   
   const correctClient = new Glean({
     apiToken: "token",
-    serverURL: "mycompany-be.glean.com",
+    serverURL: "https://mycompany-be.glean.com",
   });
   expectTypeOf(correctClient).toEqualTypeOf<Glean>();
 });
