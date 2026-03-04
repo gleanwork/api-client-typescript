@@ -6,7 +6,7 @@ test("type test for `Glean` constructor", () => {
   async function run() {
     const glean = new Glean({
       apiToken: process.env["GLEAN_API_TOKEN"],
-      instance: process.env["GLEAN_INSTANCE"],
+      serverURL: process.env["GLEAN_SERVER_URL"],
     });
 
     const response = await glean.indexing.documents.index({
@@ -34,7 +34,7 @@ test("type test for `Glean` constructor", () => {
   
   const correctClient = new Glean({
     apiToken: "token",
-    instance: "example-instance",
+    serverURL: "https://mycompany-be.glean.com",
   });
   expectTypeOf(correctClient).toEqualTypeOf<Glean>();
 });

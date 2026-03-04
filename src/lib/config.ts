@@ -61,7 +61,11 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
     params = serverParams[serverIdx] || {};
   }
 
-  const u = pathToFunc(serverURL)(params);
+  let u = pathToFunc(serverURL)(params);
+  if (u && !/^https?:\/\//i.test(u)) {
+    u = `https://${u}`;
+  }
+  u = u.replace(/\/+$/, "");
   return new URL(u);
 }
 
