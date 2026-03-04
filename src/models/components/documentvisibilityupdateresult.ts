@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,7 +21,7 @@ export const DocumentVisibilityUpdateResultOverride = {
 /**
  * The visibility-override state of the document.
  */
-export type DocumentVisibilityUpdateResultOverride = ClosedEnum<
+export type DocumentVisibilityUpdateResultOverride = OpenEnum<
   typeof DocumentVisibilityUpdateResultOverride
 >;
 
@@ -37,10 +38,11 @@ export type DocumentVisibilityUpdateResult = {
 };
 
 /** @internal */
-export const DocumentVisibilityUpdateResultOverride$inboundSchema:
-  z.ZodNativeEnum<typeof DocumentVisibilityUpdateResultOverride> = z.nativeEnum(
-    DocumentVisibilityUpdateResultOverride,
-  );
+export const DocumentVisibilityUpdateResultOverride$inboundSchema: z.ZodType<
+  DocumentVisibilityUpdateResultOverride,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DocumentVisibilityUpdateResultOverride);
 
 /** @internal */
 export const DocumentVisibilityUpdateResult$inboundSchema: z.ZodType<

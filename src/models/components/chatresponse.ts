@@ -7,10 +7,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChatMessage, ChatMessage$inboundSchema } from "./chatmessage.js";
-import {
-  UnauthorizedDatasourceInstance,
-  UnauthorizedDatasourceInstance$inboundSchema,
-} from "./unauthorizeddatasourceinstance.js";
 
 /**
  * A single response from the /chat backend.
@@ -33,14 +29,6 @@ export type ChatResponse = {
    * A token that is used to track the session.
    */
   chatSessionTrackingToken?: string | undefined;
-  /**
-   * Datasource instances that could not be queried because the user has not completed or has expired per-user OAuth, aggregated across all tools invoked in this turn.
-   *
-   * @remarks
-   */
-  unauthorizedDatasourceInstances?:
-    | Array<UnauthorizedDatasourceInstance>
-    | undefined;
 };
 
 /** @internal */
@@ -54,9 +42,6 @@ export const ChatResponse$inboundSchema: z.ZodType<
   followUpPrompts: z.array(z.string()).optional(),
   backendTimeMillis: z.number().int().optional(),
   chatSessionTrackingToken: z.string().optional(),
-  unauthorizedDatasourceInstances: z.array(
-    UnauthorizedDatasourceInstance$inboundSchema,
-  ).optional(),
 });
 
 export function chatResponseFromJSON(

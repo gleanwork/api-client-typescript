@@ -12,6 +12,8 @@ let value: DocumentSpecUgcType1 = "ANNOUNCEMENTS";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "SHORTCUTS" | "CHATS"
+"ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "SHORTCUTS" | "CHATS" | Unrecognized<string>
 ```

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -20,7 +21,7 @@ export const ResponseStatus = {
   NoResponse: "NO_RESPONSE",
   Tentative: "TENTATIVE",
 } as const;
-export type ResponseStatus = ClosedEnum<typeof ResponseStatus>;
+export type ResponseStatus = OpenEnum<typeof ResponseStatus>;
 
 export type CalendarAttendee = {
   /**
@@ -40,13 +41,17 @@ export type CalendarAttendee = {
 };
 
 /** @internal */
-export const ResponseStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseStatus
-> = z.nativeEnum(ResponseStatus);
+export const ResponseStatus$inboundSchema: z.ZodType<
+  ResponseStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ResponseStatus);
 /** @internal */
-export const ResponseStatus$outboundSchema: z.ZodNativeEnum<
-  typeof ResponseStatus
-> = ResponseStatus$inboundSchema;
+export const ResponseStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ResponseStatus
+> = openEnums.outboundSchema(ResponseStatus);
 
 /** @internal */
 export const CalendarAttendee$inboundSchema: z.ZodType<

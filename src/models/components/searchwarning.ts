@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,7 +24,7 @@ export const WarningType = {
 /**
  * The type of the warning.
  */
-export type WarningType = ClosedEnum<typeof WarningType>;
+export type WarningType = OpenEnum<typeof WarningType>;
 
 export type SearchWarning = {
   /**
@@ -45,8 +46,11 @@ export type SearchWarning = {
 };
 
 /** @internal */
-export const WarningType$inboundSchema: z.ZodNativeEnum<typeof WarningType> = z
-  .nativeEnum(WarningType);
+export const WarningType$inboundSchema: z.ZodType<
+  WarningType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(WarningType);
 
 /** @internal */
 export const SearchWarning$inboundSchema: z.ZodType<

@@ -17,6 +17,8 @@ let value: AuthType = "OAUTH_ADMIN";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"NONE" | "OAUTH_USER" | "OAUTH_ADMIN" | "API_KEY" | "BASIC_AUTH" | "DWD"
+"NONE" | "OAUTH_USER" | "OAUTH_ADMIN" | "API_KEY" | "BASIC_AUTH" | "DWD" | Unrecognized<string>
 ```

@@ -3,15 +3,18 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const DlpSimpleResult = {
   Success: "SUCCESS",
   Failure: "FAILURE",
 } as const;
-export type DlpSimpleResult = ClosedEnum<typeof DlpSimpleResult>;
+export type DlpSimpleResult = OpenEnum<typeof DlpSimpleResult>;
 
 /** @internal */
-export const DlpSimpleResult$inboundSchema: z.ZodNativeEnum<
-  typeof DlpSimpleResult
-> = z.nativeEnum(DlpSimpleResult);
+export const DlpSimpleResult$inboundSchema: z.ZodType<
+  DlpSimpleResult,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DlpSimpleResult);

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The type of entity.
@@ -16,11 +17,17 @@ export const EntityType = {
 /**
  * The type of entity.
  */
-export type EntityType = ClosedEnum<typeof EntityType>;
+export type EntityType = OpenEnum<typeof EntityType>;
 
 /** @internal */
-export const EntityType$inboundSchema: z.ZodNativeEnum<typeof EntityType> = z
-  .nativeEnum(EntityType);
+export const EntityType$inboundSchema: z.ZodType<
+  EntityType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(EntityType);
 /** @internal */
-export const EntityType$outboundSchema: z.ZodNativeEnum<typeof EntityType> =
-  EntityType$inboundSchema;
+export const EntityType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  EntityType
+> = openEnums.outboundSchema(EntityType);

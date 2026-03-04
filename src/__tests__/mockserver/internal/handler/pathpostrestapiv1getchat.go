@@ -254,7 +254,7 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 														},
 													},
 												},
-												Snippet: "<value>",
+												Snippet: types.String("<value>"),
 											},
 										},
 									},

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The level of visibility of the document as understood by our system.
@@ -37,13 +38,17 @@ export const DocumentVisibility = {
 /**
  * The level of visibility of the document as understood by our system.
  */
-export type DocumentVisibility = ClosedEnum<typeof DocumentVisibility>;
+export type DocumentVisibility = OpenEnum<typeof DocumentVisibility>;
 
 /** @internal */
-export const DocumentVisibility$inboundSchema: z.ZodNativeEnum<
-  typeof DocumentVisibility
-> = z.nativeEnum(DocumentVisibility);
+export const DocumentVisibility$inboundSchema: z.ZodType<
+  DocumentVisibility,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DocumentVisibility);
 /** @internal */
-export const DocumentVisibility$outboundSchema: z.ZodNativeEnum<
-  typeof DocumentVisibility
-> = DocumentVisibility$inboundSchema;
+export const DocumentVisibility$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DocumentVisibility
+> = openEnums.outboundSchema(DocumentVisibility);

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Type of the section. This defines how the section should be interpreted and rendered in the digest.
@@ -25,8 +26,11 @@ export const SectionType = {
 /**
  * Type of the section. This defines how the section should be interpreted and rendered in the digest.
  */
-export type SectionType = ClosedEnum<typeof SectionType>;
+export type SectionType = OpenEnum<typeof SectionType>;
 
 /** @internal */
-export const SectionType$inboundSchema: z.ZodNativeEnum<typeof SectionType> = z
-  .nativeEnum(SectionType);
+export const SectionType$inboundSchema: z.ZodType<
+  SectionType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(SectionType);

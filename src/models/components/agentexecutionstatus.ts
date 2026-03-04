@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The status of the run. One of 'error', 'success'.
@@ -15,9 +16,11 @@ export const AgentExecutionStatus = {
 /**
  * The status of the run. One of 'error', 'success'.
  */
-export type AgentExecutionStatus = ClosedEnum<typeof AgentExecutionStatus>;
+export type AgentExecutionStatus = OpenEnum<typeof AgentExecutionStatus>;
 
 /** @internal */
-export const AgentExecutionStatus$inboundSchema: z.ZodNativeEnum<
-  typeof AgentExecutionStatus
-> = z.nativeEnum(AgentExecutionStatus);
+export const AgentExecutionStatus$inboundSchema: z.ZodType<
+  AgentExecutionStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AgentExecutionStatus);

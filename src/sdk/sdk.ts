@@ -5,6 +5,7 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { Authentication } from "./authentication.js";
 import { Client } from "./client.js";
+import { Datasources } from "./datasources.js";
 import { Governance } from "./governance.js";
 import { Indexing } from "./indexing.js";
 
@@ -27,5 +28,10 @@ export class Glean extends ClientSDK {
   private _governance?: Governance;
   get governance(): Governance {
     return (this._governance ??= new Governance(this._options));
+  }
+
+  private _datasources?: Datasources;
+  get datasources(): Datasources {
+    return (this._datasources ??= new Datasources(this._options));
   }
 }

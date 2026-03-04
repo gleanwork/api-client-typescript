@@ -20,6 +20,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { APICall, APIPromise } from "../types/async.js";
@@ -38,6 +39,7 @@ export function clientAgentsRunStream(
 ): APIPromise<
   Result<
     string,
+    | errors.ErrorResponse
     | GleanBaseError
     | ResponseValidationError
     | ConnectionError
@@ -63,6 +65,7 @@ async function $do(
   [
     Result<
       string,
+      | errors.ErrorResponse
       | GleanBaseError
       | ResponseValidationError
       | ConnectionError
@@ -138,8 +141,13 @@ async function $do(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
     string,
+    | errors.ErrorResponse
     | GleanBaseError
     | ResponseValidationError
     | ConnectionError
@@ -150,9 +158,10 @@ async function $do(
     | SDKValidationError
   >(
     M.text(200, z.string(), { ctype: "text/event-stream" }),
-    M.fail([400, 403, 404, 409, 422, "4XX"]),
+    M.jsonErr([404, 409, 422], errors.ErrorResponse$inboundSchema),
+    M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
-  )(response, req);
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

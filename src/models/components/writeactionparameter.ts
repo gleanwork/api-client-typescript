@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,7 +27,7 @@ export const WriteActionParameterType = {
 /**
  * The type of the value (e.g., integer, string, boolean, etc.)
  */
-export type WriteActionParameterType = ClosedEnum<
+export type WriteActionParameterType = OpenEnum<
   typeof WriteActionParameterType
 >;
 
@@ -58,13 +59,17 @@ export type WriteActionParameter = {
 };
 
 /** @internal */
-export const WriteActionParameterType$inboundSchema: z.ZodNativeEnum<
-  typeof WriteActionParameterType
-> = z.nativeEnum(WriteActionParameterType);
+export const WriteActionParameterType$inboundSchema: z.ZodType<
+  WriteActionParameterType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(WriteActionParameterType);
 /** @internal */
-export const WriteActionParameterType$outboundSchema: z.ZodNativeEnum<
-  typeof WriteActionParameterType
-> = WriteActionParameterType$inboundSchema;
+export const WriteActionParameterType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  WriteActionParameterType
+> = openEnums.outboundSchema(WriteActionParameterType);
 
 /** @internal */
 export const WriteActionParameter$inboundSchema: z.ZodType<

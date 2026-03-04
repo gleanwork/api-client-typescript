@@ -12,6 +12,8 @@ let value: ProcessingState = "UPLOAD COMPLETED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"UNAVAILABLE" | "UPLOAD STARTED" | "UPLOAD IN PROGRESS" | "UPLOAD COMPLETED" | "DELETION PAUSED" | "INDEXING COMPLETED"
+"UNAVAILABLE" | "UPLOAD STARTED" | "UPLOAD IN PROGRESS" | "UPLOAD COMPLETED" | "DELETION PAUSED" | "INDEXING COMPLETED" | Unrecognized<string>
 ```

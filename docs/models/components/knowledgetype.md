@@ -12,6 +12,8 @@ let value: KnowledgeType = "NEUTRAL_KNOWLEDGE";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"NEUTRAL_KNOWLEDGE" | "COMPANY_KNOWLEDGE" | "WORLD_KNOWLEDGE"
+"NEUTRAL_KNOWLEDGE" | "COMPANY_KNOWLEDGE" | "WORLD_KNOWLEDGE" | Unrecognized<string>
 ```

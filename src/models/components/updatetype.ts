@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Optional type classification for the update.
@@ -21,8 +22,11 @@ export const UpdateType = {
 /**
  * Optional type classification for the update.
  */
-export type UpdateType = ClosedEnum<typeof UpdateType>;
+export type UpdateType = OpenEnum<typeof UpdateType>;
 
 /** @internal */
-export const UpdateType$inboundSchema: z.ZodNativeEnum<typeof UpdateType> = z
-  .nativeEnum(UpdateType);
+export const UpdateType$inboundSchema: z.ZodType<
+  UpdateType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(UpdateType);

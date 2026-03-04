@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -20,7 +21,7 @@ export const TextRangeType = {
   Highlight: "HIGHLIGHT",
   Link: "LINK",
 } as const;
-export type TextRangeType = ClosedEnum<typeof TextRangeType>;
+export type TextRangeType = OpenEnum<typeof TextRangeType>;
 
 /**
  * A subsection of a given string to which some special formatting should be applied.
@@ -43,13 +44,17 @@ export type TextRange = {
 };
 
 /** @internal */
-export const TextRangeType$inboundSchema: z.ZodNativeEnum<
-  typeof TextRangeType
-> = z.nativeEnum(TextRangeType);
+export const TextRangeType$inboundSchema: z.ZodType<
+  TextRangeType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TextRangeType);
 /** @internal */
-export const TextRangeType$outboundSchema: z.ZodNativeEnum<
-  typeof TextRangeType
-> = TextRangeType$inboundSchema;
+export const TextRangeType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TextRangeType
+> = openEnums.outboundSchema(TextRangeType);
 
 /** @internal */
 export const TextRange$inboundSchema: z.ZodType<

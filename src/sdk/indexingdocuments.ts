@@ -181,7 +181,7 @@ export class IndexingDocuments extends ClientSDK {
    *
    * Tip: Use [/debug/{datasource}/document](https://developers.glean.com/indexing/debugging/datasource-document) for richer information.
    *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
    */
   async status(
     request: components.GetDocumentStatusRequest,
@@ -202,7 +202,7 @@ export class IndexingDocuments extends ClientSDK {
    *
    * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
    *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
    */
   async count(
     request: components.GetDocumentCountRequest,

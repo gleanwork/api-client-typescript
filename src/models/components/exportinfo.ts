@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -24,7 +25,7 @@ export const ExportInfoStatus = {
 /**
  * The status of the export
  */
-export type ExportInfoStatus = ClosedEnum<typeof ExportInfoStatus>;
+export type ExportInfoStatus = OpenEnum<typeof ExportInfoStatus>;
 
 export type ExportInfo = {
   /**
@@ -59,9 +60,11 @@ export type ExportInfo = {
 };
 
 /** @internal */
-export const ExportInfoStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ExportInfoStatus
-> = z.nativeEnum(ExportInfoStatus);
+export const ExportInfoStatus$inboundSchema: z.ZodType<
+  ExportInfoStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ExportInfoStatus);
 
 /** @internal */
 export const ExportInfo$inboundSchema: z.ZodType<

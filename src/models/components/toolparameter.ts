@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,7 +22,7 @@ export const ToolParameterType = {
 /**
  * Parameter type (string, number, boolean, object, array)
  */
-export type ToolParameterType = ClosedEnum<typeof ToolParameterType>;
+export type ToolParameterType = OpenEnum<typeof ToolParameterType>;
 
 export type ToolParameter = {
   /**
@@ -52,9 +53,11 @@ export type ToolParameter = {
 };
 
 /** @internal */
-export const ToolParameterType$inboundSchema: z.ZodNativeEnum<
-  typeof ToolParameterType
-> = z.nativeEnum(ToolParameterType);
+export const ToolParameterType$inboundSchema: z.ZodType<
+  ToolParameterType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ToolParameterType);
 
 /** @internal */
 export const ToolParameter$inboundSchema: z.ZodType<

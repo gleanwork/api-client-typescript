@@ -13,6 +13,8 @@ let value: DocumentVisibilityUpdateResultOverride =
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"NONE" | "HIDE_FROM_ALL" | "HIDE_FROM_GROUPS" | "HIDE_FROM_ALL_EXCEPT_OWNER"
+"NONE" | "HIDE_FROM_ALL" | "HIDE_FROM_GROUPS" | "HIDE_FROM_ALL_EXCEPT_OWNER" | Unrecognized<string>
 ```

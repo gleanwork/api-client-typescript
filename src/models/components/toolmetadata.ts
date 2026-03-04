@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,7 +37,7 @@ export const ToolMetadataType = {
 /**
  * The type of tool.
  */
-export type ToolMetadataType = ClosedEnum<typeof ToolMetadataType>;
+export type ToolMetadataType = OpenEnum<typeof ToolMetadataType>;
 
 /**
  * Indicates the kind of knowledge a tool would access or modify.
@@ -49,7 +50,7 @@ export const KnowledgeType = {
 /**
  * Indicates the kind of knowledge a tool would access or modify.
  */
-export type KnowledgeType = ClosedEnum<typeof KnowledgeType>;
+export type KnowledgeType = OpenEnum<typeof KnowledgeType>;
 
 /**
  * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action. MCP - Send a tools/call request to an MCP server to execute the action.
@@ -62,7 +63,7 @@ export const WriteActionType = {
 /**
  * Valid only for write actions. Represents the type of write action. REDIRECT - The client renders the URL which contains information for carrying out the action. EXECUTION - Send a request to an external server and execute the action. MCP - Send a tools/call request to an MCP server to execute the action.
  */
-export type WriteActionType = ClosedEnum<typeof WriteActionType>;
+export type WriteActionType = OpenEnum<typeof WriteActionType>;
 
 /**
  * The type of authentication being used.
@@ -90,7 +91,7 @@ export const AuthType = {
  * 'OAUTH_USER' uses individual user tokens for external API calls.
  * 'DWD' refers to domain wide delegation.
  */
-export type AuthType = ClosedEnum<typeof AuthType>;
+export type AuthType = OpenEnum<typeof AuthType>;
 
 /**
  * The manifest for a tool that can be used to augment Glean Assistant.
@@ -168,38 +169,56 @@ export type ToolMetadata = {
 };
 
 /** @internal */
-export const ToolMetadataType$inboundSchema: z.ZodNativeEnum<
-  typeof ToolMetadataType
-> = z.nativeEnum(ToolMetadataType);
+export const ToolMetadataType$inboundSchema: z.ZodType<
+  ToolMetadataType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ToolMetadataType);
 /** @internal */
-export const ToolMetadataType$outboundSchema: z.ZodNativeEnum<
-  typeof ToolMetadataType
-> = ToolMetadataType$inboundSchema;
+export const ToolMetadataType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ToolMetadataType
+> = openEnums.outboundSchema(ToolMetadataType);
 
 /** @internal */
-export const KnowledgeType$inboundSchema: z.ZodNativeEnum<
-  typeof KnowledgeType
-> = z.nativeEnum(KnowledgeType);
+export const KnowledgeType$inboundSchema: z.ZodType<
+  KnowledgeType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(KnowledgeType);
 /** @internal */
-export const KnowledgeType$outboundSchema: z.ZodNativeEnum<
-  typeof KnowledgeType
-> = KnowledgeType$inboundSchema;
+export const KnowledgeType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  KnowledgeType
+> = openEnums.outboundSchema(KnowledgeType);
 
 /** @internal */
-export const WriteActionType$inboundSchema: z.ZodNativeEnum<
-  typeof WriteActionType
-> = z.nativeEnum(WriteActionType);
+export const WriteActionType$inboundSchema: z.ZodType<
+  WriteActionType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(WriteActionType);
 /** @internal */
-export const WriteActionType$outboundSchema: z.ZodNativeEnum<
-  typeof WriteActionType
-> = WriteActionType$inboundSchema;
+export const WriteActionType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  WriteActionType
+> = openEnums.outboundSchema(WriteActionType);
 
 /** @internal */
-export const AuthType$inboundSchema: z.ZodNativeEnum<typeof AuthType> = z
-  .nativeEnum(AuthType);
+export const AuthType$inboundSchema: z.ZodType<
+  AuthType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AuthType);
 /** @internal */
-export const AuthType$outboundSchema: z.ZodNativeEnum<typeof AuthType> =
-  AuthType$inboundSchema;
+export const AuthType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AuthType
+> = openEnums.outboundSchema(AuthType);
 
 /** @internal */
 export const ToolMetadata$inboundSchema: z.ZodType<

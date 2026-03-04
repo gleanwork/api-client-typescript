@@ -12,6 +12,8 @@ let value: AnonymousEventEventType = "DEFAULT";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"DEFAULT" | "OUT_OF_OFFICE"
+"DEFAULT" | "OUT_OF_OFFICE" | Unrecognized<string>
 ```

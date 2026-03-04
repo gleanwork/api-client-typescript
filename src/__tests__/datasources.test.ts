@@ -57,3 +57,44 @@ test("Datasources Post /Api/index/v1 /Getdatasourceconfig", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Datasources Get Datasource Instance Configuration", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "getDatasourceInstanceConfiguration",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.datasources.getDatasourceInstanceConfiguration(
+    "o365sharepoint",
+    "o365sharepoint_abc123",
+  );
+  expect(result).toBeDefined();
+});
+
+test("Datasources Update Datasource Instance Configuration", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "updateDatasourceInstanceConfiguration",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.datasources.updateDatasourceInstanceConfiguration(
+    {
+      configuration: {
+        values: {},
+      },
+    },
+    "o365sharepoint",
+    "o365sharepoint_abc123",
+  );
+  expect(result).toBeDefined();
+});

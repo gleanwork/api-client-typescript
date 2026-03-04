@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Describes the scope for a ReadPermission, WritePermission, or GrantPermission object
@@ -15,11 +16,17 @@ export const ScopeType = {
 /**
  * Describes the scope for a ReadPermission, WritePermission, or GrantPermission object
  */
-export type ScopeType = ClosedEnum<typeof ScopeType>;
+export type ScopeType = OpenEnum<typeof ScopeType>;
 
 /** @internal */
-export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> = z
-  .nativeEnum(ScopeType);
+export const ScopeType$inboundSchema: z.ZodType<
+  ScopeType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ScopeType);
 /** @internal */
-export const ScopeType$outboundSchema: z.ZodNativeEnum<typeof ScopeType> =
-  ScopeType$inboundSchema;
+export const ScopeType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ScopeType
+> = openEnums.outboundSchema(ScopeType);

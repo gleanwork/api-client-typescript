@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -53,7 +54,7 @@ export const Relation = {
 /**
  * How this document relates to the including entity.
  */
-export type Relation = ClosedEnum<typeof Relation>;
+export type Relation = OpenEnum<typeof Relation>;
 
 export type RelatedDocuments = {
   /**
@@ -78,11 +79,17 @@ export type RelatedDocuments = {
 };
 
 /** @internal */
-export const Relation$inboundSchema: z.ZodNativeEnum<typeof Relation> = z
-  .nativeEnum(Relation);
+export const Relation$inboundSchema: z.ZodType<
+  Relation,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(Relation);
 /** @internal */
-export const Relation$outboundSchema: z.ZodNativeEnum<typeof Relation> =
-  Relation$inboundSchema;
+export const Relation$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  Relation
+> = openEnums.outboundSchema(Relation);
 
 /** @internal */
 export const RelatedDocuments$inboundSchema: z.ZodType<

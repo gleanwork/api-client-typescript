@@ -45,7 +45,7 @@ export class People extends ClientSDK {
    *
    * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
    *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
    */
   async count(
     request: components.GetUserCountRequest,
@@ -80,6 +80,8 @@ export class People extends ClientSDK {
    *
    * @remarks
    * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+   *
+   * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
    */
   async bulkIndex(
     request: components.BulkIndexEmployeesRequest,

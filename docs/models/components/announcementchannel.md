@@ -12,6 +12,8 @@ let value: AnnouncementChannel = "SOCIAL_FEED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"MAIN" | "SOCIAL_FEED"
+"MAIN" | "SOCIAL_FEED" | Unrecognized<string>
 ```

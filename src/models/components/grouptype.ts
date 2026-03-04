@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The type of user group
@@ -21,11 +22,17 @@ export const GroupType = {
 /**
  * The type of user group
  */
-export type GroupType = ClosedEnum<typeof GroupType>;
+export type GroupType = OpenEnum<typeof GroupType>;
 
 /** @internal */
-export const GroupType$inboundSchema: z.ZodNativeEnum<typeof GroupType> = z
-  .nativeEnum(GroupType);
+export const GroupType$inboundSchema: z.ZodType<
+  GroupType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(GroupType);
 /** @internal */
-export const GroupType$outboundSchema: z.ZodNativeEnum<typeof GroupType> =
-  GroupType$inboundSchema;
+export const GroupType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  GroupType
+> = openEnums.outboundSchema(GroupType);

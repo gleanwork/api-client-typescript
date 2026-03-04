@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,7 +28,7 @@ export const TimeRangeFilterTimePeriodType = {
 /**
  * The type of time period for which to filter findings.
  */
-export type TimeRangeFilterTimePeriodType = ClosedEnum<
+export type TimeRangeFilterTimePeriodType = OpenEnum<
   typeof TimeRangeFilterTimePeriodType
 >;
 
@@ -40,13 +41,17 @@ export type TimeRangeFilter = {
 };
 
 /** @internal */
-export const TimeRangeFilterTimePeriodType$inboundSchema: z.ZodNativeEnum<
-  typeof TimeRangeFilterTimePeriodType
-> = z.nativeEnum(TimeRangeFilterTimePeriodType);
+export const TimeRangeFilterTimePeriodType$inboundSchema: z.ZodType<
+  TimeRangeFilterTimePeriodType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TimeRangeFilterTimePeriodType);
 /** @internal */
-export const TimeRangeFilterTimePeriodType$outboundSchema: z.ZodNativeEnum<
-  typeof TimeRangeFilterTimePeriodType
-> = TimeRangeFilterTimePeriodType$inboundSchema;
+export const TimeRangeFilterTimePeriodType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TimeRangeFilterTimePeriodType
+> = openEnums.outboundSchema(TimeRangeFilterTimePeriodType);
 
 /** @internal */
 export const TimeRangeFilter$inboundSchema: z.ZodType<

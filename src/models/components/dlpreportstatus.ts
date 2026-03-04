@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The status of the policy/report. Only ACTIVE status will be picked for scans.
@@ -17,13 +18,17 @@ export const DlpReportStatus = {
 /**
  * The status of the policy/report. Only ACTIVE status will be picked for scans.
  */
-export type DlpReportStatus = ClosedEnum<typeof DlpReportStatus>;
+export type DlpReportStatus = OpenEnum<typeof DlpReportStatus>;
 
 /** @internal */
-export const DlpReportStatus$inboundSchema: z.ZodNativeEnum<
-  typeof DlpReportStatus
-> = z.nativeEnum(DlpReportStatus);
+export const DlpReportStatus$inboundSchema: z.ZodType<
+  DlpReportStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DlpReportStatus);
 /** @internal */
-export const DlpReportStatus$outboundSchema: z.ZodNativeEnum<
-  typeof DlpReportStatus
-> = DlpReportStatus$inboundSchema;
+export const DlpReportStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DlpReportStatus
+> = openEnums.outboundSchema(DlpReportStatus);

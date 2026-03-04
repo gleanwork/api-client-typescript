@@ -78,6 +78,8 @@ export * from "./clientToolsRun.js";
 export * from "./clientVerificationAddReminder.js";
 export * from "./clientVerificationList.js";
 export * from "./clientVerificationVerify.js";
+export * from "./datasourcesGetDatasourceInstanceConfiguration.js";
+export * from "./datasourcesUpdateDatasourceInstanceConfiguration.js";
 export * from "./governanceCreatefindingsexport.js";
 export * from "./governanceDeletefindingsexport.js";
 export * from "./governanceDownloadfindingsexport.js";

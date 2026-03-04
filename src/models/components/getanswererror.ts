@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Person, Person$inboundSchema } from "./person.js";
@@ -13,9 +14,7 @@ export const GetAnswerErrorErrorType = {
   NoPermission: "NO_PERMISSION",
   InvalidId: "INVALID_ID",
 } as const;
-export type GetAnswerErrorErrorType = ClosedEnum<
-  typeof GetAnswerErrorErrorType
->;
+export type GetAnswerErrorErrorType = OpenEnum<typeof GetAnswerErrorErrorType>;
 
 export type GetAnswerError = {
   errorType?: GetAnswerErrorErrorType | undefined;
@@ -23,9 +22,11 @@ export type GetAnswerError = {
 };
 
 /** @internal */
-export const GetAnswerErrorErrorType$inboundSchema: z.ZodNativeEnum<
-  typeof GetAnswerErrorErrorType
-> = z.nativeEnum(GetAnswerErrorErrorType);
+export const GetAnswerErrorErrorType$inboundSchema: z.ZodType<
+  GetAnswerErrorErrorType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(GetAnswerErrorErrorType);
 
 /** @internal */
 export const GetAnswerError$inboundSchema: z.ZodType<

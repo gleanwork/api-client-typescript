@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,7 +18,7 @@ export const CollectionErrorErrorCode = {
   WidthViolation: "WIDTH_VIOLATION",
   NoPermissions: "NO_PERMISSIONS",
 } as const;
-export type CollectionErrorErrorCode = ClosedEnum<
+export type CollectionErrorErrorCode = OpenEnum<
   typeof CollectionErrorErrorCode
 >;
 
@@ -26,9 +27,11 @@ export type CollectionError = {
 };
 
 /** @internal */
-export const CollectionErrorErrorCode$inboundSchema: z.ZodNativeEnum<
-  typeof CollectionErrorErrorCode
-> = z.nativeEnum(CollectionErrorErrorCode);
+export const CollectionErrorErrorCode$inboundSchema: z.ZodType<
+  CollectionErrorErrorCode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CollectionErrorErrorCode);
 
 /** @internal */
 export const CollectionError$inboundSchema: z.ZodType<

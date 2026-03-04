@@ -12,6 +12,8 @@ let value: StructuredResultSource = "ENTITY_NLQ";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"EXPERT_DETECTION" | "ENTITY_NLQ" | "CALENDAR_EVENT" | "AGENT"
+"EXPERT_DETECTION" | "ENTITY_NLQ" | "CALENDAR_EVENT" | "AGENT" | Unrecognized<string>
 ```

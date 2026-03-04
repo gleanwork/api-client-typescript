@@ -20,6 +20,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -34,6 +35,7 @@ export type ClientAgentsListMutationVariables = {
 export type ClientAgentsListMutationData = components.SearchAgentsResponse;
 
 export type ClientAgentsListMutationError =
+  | errors.ErrorResponse
   | GleanBaseError
   | ResponseValidationError
   | ConnectionError

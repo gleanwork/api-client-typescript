@@ -3,6 +3,7 @@
  */
 
 export * from "./collectionerror.js";
+export * from "./errorresponse.js";
 export * from "./gleanbaseerror.js";
 export * from "./gleandataerror.js";
 export * from "./gleanerror.js";

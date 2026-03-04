@@ -12,6 +12,8 @@ let value: SectionType = "TOPIC";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"CHANNEL" | "MENTIONS" | "TOPIC"
+"CHANNEL" | "MENTIONS" | "TOPIC" | Unrecognized<string>
 ```

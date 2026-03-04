@@ -12,6 +12,8 @@ let value: State = "UNVERIFIED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"UNVERIFIED" | "VERIFIED" | "DEPRECATED"
+"UNVERIFIED" | "VERIFIED" | "DEPRECATED" | Unrecognized<string>
 ```

@@ -48,6 +48,8 @@ export type IndexingPeopleBulkIndexMutationError =
  *
  * @remarks
  * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+ *
+ * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
  */
 export function useIndexingPeopleBulkIndexMutation(
   options?: MutationHookOptions<

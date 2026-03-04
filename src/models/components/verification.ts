@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -25,7 +26,7 @@ export const State = {
 /**
  * The verification state for the document.
  */
-export type State = ClosedEnum<typeof State>;
+export type State = OpenEnum<typeof State>;
 
 export type Verification = {
   /**
@@ -36,12 +37,11 @@ export type Verification = {
 };
 
 /** @internal */
-export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
-  State,
-);
+export const State$inboundSchema: z.ZodType<State, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(State);
 /** @internal */
-export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
-  State$inboundSchema;
+export const State$outboundSchema: z.ZodType<string, z.ZodTypeDef, State> =
+  openEnums.outboundSchema(State);
 
 /** @internal */
 export const Verification$inboundSchema: z.ZodType<

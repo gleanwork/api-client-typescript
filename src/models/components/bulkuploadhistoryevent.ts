@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -18,7 +19,7 @@ export const BulkUploadHistoryEventStatus = {
 /**
  * The status of the upload, an enum of ACTIVE, SUCCESSFUL
  */
-export type BulkUploadHistoryEventStatus = ClosedEnum<
+export type BulkUploadHistoryEventStatus = OpenEnum<
   typeof BulkUploadHistoryEventStatus
 >;
 
@@ -36,7 +37,7 @@ export const ProcessingState = {
 /**
  * The current state of the upload, an enum of UNAVAILABLE, UPLOAD STARTED, UPLOAD IN PROGRESS, UPLOAD COMPLETED, DELETION PAUSED, INDEXING COMPLETED
  */
-export type ProcessingState = ClosedEnum<typeof ProcessingState>;
+export type ProcessingState = OpenEnum<typeof ProcessingState>;
 
 /**
  * Information about a successful bulk upload
@@ -65,14 +66,18 @@ export type BulkUploadHistoryEvent = {
 };
 
 /** @internal */
-export const BulkUploadHistoryEventStatus$inboundSchema: z.ZodNativeEnum<
-  typeof BulkUploadHistoryEventStatus
-> = z.nativeEnum(BulkUploadHistoryEventStatus);
+export const BulkUploadHistoryEventStatus$inboundSchema: z.ZodType<
+  BulkUploadHistoryEventStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(BulkUploadHistoryEventStatus);
 
 /** @internal */
-export const ProcessingState$inboundSchema: z.ZodNativeEnum<
-  typeof ProcessingState
-> = z.nativeEnum(ProcessingState);
+export const ProcessingState$inboundSchema: z.ZodType<
+  ProcessingState,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ProcessingState);
 
 /** @internal */
 export const BulkUploadHistoryEvent$inboundSchema: z.ZodType<

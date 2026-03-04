@@ -12,6 +12,8 @@ let value: WriteActionParameterType = "STRING";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"UNKNOWN" | "INTEGER" | "STRING" | "BOOLEAN"
+"UNKNOWN" | "INTEGER" | "STRING" | "BOOLEAN" | Unrecognized<string>
 ```

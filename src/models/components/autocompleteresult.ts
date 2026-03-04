@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Document, Document$inboundSchema } from "./document.js";
@@ -35,7 +36,7 @@ export const AutocompleteResultResultType = {
   Quicklink: "QUICKLINK",
   Suggestion: "SUGGESTION",
 } as const;
-export type AutocompleteResultResultType = ClosedEnum<
+export type AutocompleteResultResultType = OpenEnum<
   typeof AutocompleteResultResultType
 >;
 
@@ -72,9 +73,11 @@ export type AutocompleteResult = {
 };
 
 /** @internal */
-export const AutocompleteResultResultType$inboundSchema: z.ZodNativeEnum<
-  typeof AutocompleteResultResultType
-> = z.nativeEnum(AutocompleteResultResultType);
+export const AutocompleteResultResultType$inboundSchema: z.ZodType<
+  AutocompleteResultResultType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AutocompleteResultResultType);
 
 /** @internal */
 export const AutocompleteResult$inboundSchema: z.ZodType<

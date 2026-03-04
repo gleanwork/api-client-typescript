@@ -12,6 +12,8 @@ let value: WriteActionType = "EXECUTION";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"REDIRECT" | "EXECUTION" | "MCP"
+"REDIRECT" | "EXECUTION" | "MCP" | Unrecognized<string>
 ```

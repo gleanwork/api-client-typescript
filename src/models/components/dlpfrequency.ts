@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Interval between scans. DAILY is deprecated.
@@ -18,11 +19,17 @@ export const DlpFrequency = {
 /**
  * Interval between scans. DAILY is deprecated.
  */
-export type DlpFrequency = ClosedEnum<typeof DlpFrequency>;
+export type DlpFrequency = OpenEnum<typeof DlpFrequency>;
 
 /** @internal */
-export const DlpFrequency$inboundSchema: z.ZodNativeEnum<typeof DlpFrequency> =
-  z.nativeEnum(DlpFrequency);
+export const DlpFrequency$inboundSchema: z.ZodType<
+  DlpFrequency,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DlpFrequency);
 /** @internal */
-export const DlpFrequency$outboundSchema: z.ZodNativeEnum<typeof DlpFrequency> =
-  DlpFrequency$inboundSchema;
+export const DlpFrequency$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DlpFrequency
+> = openEnums.outboundSchema(DlpFrequency);

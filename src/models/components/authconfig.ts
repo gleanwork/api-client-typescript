@@ -5,7 +5,8 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,7 +36,7 @@ export const AuthConfigType = {
  * 'OAUTH_USER' uses individual user tokens for external API calls.
  * 'DWD' refers to domain wide delegation.
  */
-export type AuthConfigType = ClosedEnum<typeof AuthConfigType>;
+export type AuthConfigType = OpenEnum<typeof AuthConfigType>;
 
 /**
  * The type of grant type being used.
@@ -47,7 +48,7 @@ export const GrantType = {
 /**
  * The type of grant type being used.
  */
-export type GrantType = ClosedEnum<typeof GrantType>;
+export type GrantType = OpenEnum<typeof GrantType>;
 
 /**
  * Auth status of the tool.
@@ -60,7 +61,7 @@ export const AuthConfigStatus = {
 /**
  * Auth status of the tool.
  */
-export type AuthConfigStatus = ClosedEnum<typeof AuthConfigStatus>;
+export type AuthConfigStatus = OpenEnum<typeof AuthConfigStatus>;
 
 /**
  * Config for tool's authentication method.
@@ -109,35 +110,53 @@ export type AuthConfig = {
    */
   authorizationUrl?: string | undefined;
   /**
+   * The OAuth 2.0 Resource Indicator (RFC 8707) for the protected resource. Discovered from Protected Resource Metadata (RFC 9728) during DCR. Included in authorization and token exchange requests when present.
+   */
+  resource?: string | undefined;
+  /**
    * The time the tool was last authorized in ISO format (ISO 8601).
    */
   lastAuthorizedAt?: Date | undefined;
 };
 
 /** @internal */
-export const AuthConfigType$inboundSchema: z.ZodNativeEnum<
-  typeof AuthConfigType
-> = z.nativeEnum(AuthConfigType);
+export const AuthConfigType$inboundSchema: z.ZodType<
+  AuthConfigType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AuthConfigType);
 /** @internal */
-export const AuthConfigType$outboundSchema: z.ZodNativeEnum<
-  typeof AuthConfigType
-> = AuthConfigType$inboundSchema;
+export const AuthConfigType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AuthConfigType
+> = openEnums.outboundSchema(AuthConfigType);
 
 /** @internal */
-export const GrantType$inboundSchema: z.ZodNativeEnum<typeof GrantType> = z
-  .nativeEnum(GrantType);
+export const GrantType$inboundSchema: z.ZodType<
+  GrantType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(GrantType);
 /** @internal */
-export const GrantType$outboundSchema: z.ZodNativeEnum<typeof GrantType> =
-  GrantType$inboundSchema;
+export const GrantType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  GrantType
+> = openEnums.outboundSchema(GrantType);
 
 /** @internal */
-export const AuthConfigStatus$inboundSchema: z.ZodNativeEnum<
-  typeof AuthConfigStatus
-> = z.nativeEnum(AuthConfigStatus);
+export const AuthConfigStatus$inboundSchema: z.ZodType<
+  AuthConfigStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AuthConfigStatus);
 /** @internal */
-export const AuthConfigStatus$outboundSchema: z.ZodNativeEnum<
-  typeof AuthConfigStatus
-> = AuthConfigStatus$inboundSchema;
+export const AuthConfigStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AuthConfigStatus
+> = openEnums.outboundSchema(AuthConfigStatus);
 
 /** @internal */
 export const AuthConfig$inboundSchema: z.ZodType<
@@ -154,6 +173,7 @@ export const AuthConfig$inboundSchema: z.ZodType<
   scopes: z.array(z.string()).optional(),
   audiences: z.array(z.string()).optional(),
   authorization_url: z.string().optional(),
+  resource: z.string().optional(),
   lastAuthorizedAt: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ).optional(),
@@ -174,6 +194,7 @@ export type AuthConfig$Outbound = {
   scopes?: Array<string> | undefined;
   audiences?: Array<string> | undefined;
   authorization_url?: string | undefined;
+  resource?: string | undefined;
   lastAuthorizedAt?: string | undefined;
 };
 
@@ -192,6 +213,7 @@ export const AuthConfig$outboundSchema: z.ZodType<
   scopes: z.array(z.string()).optional(),
   audiences: z.array(z.string()).optional(),
   authorizationUrl: z.string().optional(),
+  resource: z.string().optional(),
   lastAuthorizedAt: z.date().transform(v => v.toISOString()).optional(),
 }).transform((v) => {
   return remap$(v, {

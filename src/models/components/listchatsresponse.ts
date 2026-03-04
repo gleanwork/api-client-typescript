@@ -13,6 +13,10 @@ import {
 
 export type ListChatsResponse = {
   chatResults?: Array<ChatMetadataResult> | undefined;
+  /**
+   * An opaque cursor for fetching the next page of results. If empty, there are no more results.
+   */
+  cursor?: string | undefined;
 };
 
 /** @internal */
@@ -22,6 +26,7 @@ export const ListChatsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   chatResults: z.array(ChatMetadataResult$inboundSchema).optional(),
+  cursor: z.string().optional(),
 });
 
 export function listChatsResponseFromJSON(

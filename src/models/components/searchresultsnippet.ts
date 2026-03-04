@@ -37,9 +37,9 @@ export type SearchResultSnippet = {
   /**
    * A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007. Use 'text' field instead.
    *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use 'text' field instead.
    */
-  snippet: string;
+  snippet?: string | undefined;
 };
 
 /** @internal */
@@ -53,7 +53,7 @@ export const SearchResultSnippet$inboundSchema: z.ZodType<
   snippetTextOrdering: z.number().int().optional(),
   ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
   url: z.string().optional(),
-  snippet: z.string(),
+  snippet: z.string().optional(),
 });
 /** @internal */
 export type SearchResultSnippet$Outbound = {
@@ -62,7 +62,7 @@ export type SearchResultSnippet$Outbound = {
   snippetTextOrdering?: number | undefined;
   ranges?: Array<TextRange$Outbound> | undefined;
   url?: string | undefined;
-  snippet: string;
+  snippet?: string | undefined;
 };
 
 /** @internal */
@@ -76,7 +76,7 @@ export const SearchResultSnippet$outboundSchema: z.ZodType<
   snippetTextOrdering: z.number().int().optional(),
   ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
   url: z.string().optional(),
-  snippet: z.string(),
+  snippet: z.string().optional(),
 });
 
 export function searchResultSnippetToJSON(

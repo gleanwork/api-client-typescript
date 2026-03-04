@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -24,7 +25,7 @@ export const DatasourcesType = {
 /**
  * The types of datasource for which to run the report/policy.
  */
-export type DatasourcesType = ClosedEnum<typeof DatasourcesType>;
+export type DatasourcesType = OpenEnum<typeof DatasourcesType>;
 
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
@@ -39,7 +40,7 @@ export const InputOptionsTimePeriodType = {
 /**
  * Type of time period for which to run the report/policy. PAST_DAY is deprecated.
  */
-export type InputOptionsTimePeriodType = ClosedEnum<
+export type InputOptionsTimePeriodType = OpenEnum<
   typeof InputOptionsTimePeriodType
 >;
 
@@ -79,22 +80,30 @@ export type InputOptions = {
 };
 
 /** @internal */
-export const DatasourcesType$inboundSchema: z.ZodNativeEnum<
-  typeof DatasourcesType
-> = z.nativeEnum(DatasourcesType);
+export const DatasourcesType$inboundSchema: z.ZodType<
+  DatasourcesType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DatasourcesType);
 /** @internal */
-export const DatasourcesType$outboundSchema: z.ZodNativeEnum<
-  typeof DatasourcesType
-> = DatasourcesType$inboundSchema;
+export const DatasourcesType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DatasourcesType
+> = openEnums.outboundSchema(DatasourcesType);
 
 /** @internal */
-export const InputOptionsTimePeriodType$inboundSchema: z.ZodNativeEnum<
-  typeof InputOptionsTimePeriodType
-> = z.nativeEnum(InputOptionsTimePeriodType);
+export const InputOptionsTimePeriodType$inboundSchema: z.ZodType<
+  InputOptionsTimePeriodType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(InputOptionsTimePeriodType);
 /** @internal */
-export const InputOptionsTimePeriodType$outboundSchema: z.ZodNativeEnum<
-  typeof InputOptionsTimePeriodType
-> = InputOptionsTimePeriodType$inboundSchema;
+export const InputOptionsTimePeriodType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  InputOptionsTimePeriodType
+> = openEnums.outboundSchema(InputOptionsTimePeriodType);
 
 /** @internal */
 export const InputOptions$inboundSchema: z.ZodType<

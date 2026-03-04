@@ -12,6 +12,8 @@ let value: TeamStatus = "QUEUED_FOR_CREATION";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"PROCESSED" | "QUEUED_FOR_CREATION" | "QUEUED_FOR_DELETION"
+"PROCESSED" | "QUEUED_FOR_CREATION" | "QUEUED_FOR_DELETION" | Unrecognized<string>
 ```

@@ -11,10 +11,6 @@ import {
   InvalidOperatorValueError,
   InvalidOperatorValueError$inboundSchema,
 } from "./invalidoperatorvalueerror.js";
-import {
-  UnauthorizedDatasourceInstance,
-  UnauthorizedDatasourceInstance$inboundSchema,
-} from "./unauthorizeddatasourceinstance.js";
 
 export type GleanDataError = {
   /**
@@ -34,14 +30,6 @@ export type GleanDataError = {
    * Indicates the federated search results could not be fetched due to rate limiting.
    */
   federatedSearchRateLimitError?: boolean | undefined;
-  /**
-   * Datasource instances that could not be queried because the user has not completed or has expired per-user OAuth.
-   *
-   * @remarks
-   */
-  unauthorizedDatasourceInstances?:
-    | Array<UnauthorizedDatasourceInstance>
-    | undefined;
 };
 
 /** @internal */
@@ -55,9 +43,6 @@ export const GleanDataError$inboundSchema: z.ZodType<
   invalidOperators: z.array(InvalidOperatorValueError$inboundSchema).optional(),
   errorMessages: z.array(ErrorMessage$inboundSchema).optional(),
   federatedSearchRateLimitError: z.boolean().optional(),
-  unauthorizedDatasourceInstances: z.array(
-    UnauthorizedDatasourceInstance$inboundSchema,
-  ).optional(),
 });
 
 export function gleanDataErrorFromJSON(

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,7 +36,7 @@ export const CalendarEventEventType = {
 /**
  * The nature of the event, for example "out of office".
  */
-export type CalendarEventEventType = ClosedEnum<typeof CalendarEventEventType>;
+export type CalendarEventEventType = OpenEnum<typeof CalendarEventEventType>;
 
 /**
  * A generic, light-weight calendar event.
@@ -81,9 +82,11 @@ export type CalendarEvent = {
 };
 
 /** @internal */
-export const CalendarEventEventType$inboundSchema: z.ZodNativeEnum<
-  typeof CalendarEventEventType
-> = z.nativeEnum(CalendarEventEventType);
+export const CalendarEventEventType$inboundSchema: z.ZodType<
+  CalendarEventEventType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CalendarEventEventType);
 
 /** @internal */
 export const CalendarEvent$inboundSchema: z.ZodType<

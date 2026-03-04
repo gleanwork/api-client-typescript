@@ -10,6 +10,8 @@ let value: CollectionItemItemType = "URL";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"DOCUMENT" | "TEXT" | "URL" | "COLLECTION"
+"DOCUMENT" | "TEXT" | "URL" | "COLLECTION" | Unrecognized<string>
 ```

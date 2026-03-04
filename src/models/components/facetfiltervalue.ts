@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -30,7 +31,7 @@ export const RelationType = {
    */
   NotEquals: "NOT_EQUALS",
 } as const;
-export type RelationType = ClosedEnum<typeof RelationType>;
+export type RelationType = OpenEnum<typeof RelationType>;
 
 export type FacetFilterValue = {
   value?: string | undefined;
@@ -44,11 +45,17 @@ export type FacetFilterValue = {
 };
 
 /** @internal */
-export const RelationType$inboundSchema: z.ZodNativeEnum<typeof RelationType> =
-  z.nativeEnum(RelationType);
+export const RelationType$inboundSchema: z.ZodType<
+  RelationType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(RelationType);
 /** @internal */
-export const RelationType$outboundSchema: z.ZodNativeEnum<typeof RelationType> =
-  RelationType$inboundSchema;
+export const RelationType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  RelationType
+> = openEnums.outboundSchema(RelationType);
 
 /** @internal */
 export const FacetFilterValue$inboundSchema: z.ZodType<

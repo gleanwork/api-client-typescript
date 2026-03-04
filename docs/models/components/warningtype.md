@@ -12,6 +12,8 @@ let value: WarningType = "LONG_QUERY";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"LONG_QUERY" | "QUOTED_PUNCTUATION" | "PUNCTUATION_ONLY" | "COPYPASTED_QUOTES" | "INVALID_OPERATOR" | "MAYBE_INVALID_FACET_QUERY" | "TOO_MANY_DATASOURCE_GROUPS"
+"LONG_QUERY" | "QUOTED_PUNCTUATION" | "PUNCTUATION_ONLY" | "COPYPASTED_QUOTES" | "INVALID_OPERATOR" | "MAYBE_INVALID_FACET_QUERY" | "TOO_MANY_DATASOURCE_GROUPS" | Unrecognized<string>
 ```

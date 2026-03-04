@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -66,7 +67,7 @@ export const ResponseHint = {
 /**
  * Hints for the response content.
  */
-export type ResponseHint = ClosedEnum<typeof ResponseHint>;
+export type ResponseHint = OpenEnum<typeof ResponseHint>;
 
 export type SearchRequestOptions = {
   /**
@@ -131,11 +132,17 @@ export type SearchRequestOptions = {
 };
 
 /** @internal */
-export const ResponseHint$inboundSchema: z.ZodNativeEnum<typeof ResponseHint> =
-  z.nativeEnum(ResponseHint);
+export const ResponseHint$inboundSchema: z.ZodType<
+  ResponseHint,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ResponseHint);
 /** @internal */
-export const ResponseHint$outboundSchema: z.ZodNativeEnum<typeof ResponseHint> =
-  ResponseHint$inboundSchema;
+export const ResponseHint$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ResponseHint
+> = openEnums.outboundSchema(ResponseHint);
 
 /** @internal */
 export const SearchRequestOptions$inboundSchema: z.ZodType<

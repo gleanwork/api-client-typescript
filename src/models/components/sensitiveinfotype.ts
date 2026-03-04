@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,7 +22,7 @@ export const SensitiveInfoTypeLikelihoodThreshold = {
 /**
  * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
  */
-export type SensitiveInfoTypeLikelihoodThreshold = ClosedEnum<
+export type SensitiveInfoTypeLikelihoodThreshold = OpenEnum<
   typeof SensitiveInfoTypeLikelihoodThreshold
 >;
 
@@ -37,14 +38,17 @@ export type SensitiveInfoType = {
 };
 
 /** @internal */
-export const SensitiveInfoTypeLikelihoodThreshold$inboundSchema:
-  z.ZodNativeEnum<typeof SensitiveInfoTypeLikelihoodThreshold> = z.nativeEnum(
-    SensitiveInfoTypeLikelihoodThreshold,
-  );
+export const SensitiveInfoTypeLikelihoodThreshold$inboundSchema: z.ZodType<
+  SensitiveInfoTypeLikelihoodThreshold,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(SensitiveInfoTypeLikelihoodThreshold);
 /** @internal */
-export const SensitiveInfoTypeLikelihoodThreshold$outboundSchema:
-  z.ZodNativeEnum<typeof SensitiveInfoTypeLikelihoodThreshold> =
-    SensitiveInfoTypeLikelihoodThreshold$inboundSchema;
+export const SensitiveInfoTypeLikelihoodThreshold$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  SensitiveInfoTypeLikelihoodThreshold
+> = openEnums.outboundSchema(SensitiveInfoTypeLikelihoodThreshold);
 
 /** @internal */
 export const SensitiveInfoType$inboundSchema: z.ZodType<

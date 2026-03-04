@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -16,7 +17,7 @@ export const ReportStatusResponseStatus = {
   Cancelling: "CANCELLING",
   Active: "ACTIVE",
 } as const;
-export type ReportStatusResponseStatus = ClosedEnum<
+export type ReportStatusResponseStatus = OpenEnum<
   typeof ReportStatusResponseStatus
 >;
 
@@ -29,9 +30,11 @@ export type ReportStatusResponse = {
 };
 
 /** @internal */
-export const ReportStatusResponseStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ReportStatusResponseStatus
-> = z.nativeEnum(ReportStatusResponseStatus);
+export const ReportStatusResponseStatus$inboundSchema: z.ZodType<
+  ReportStatusResponseStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ReportStatusResponseStatus);
 
 /** @internal */
 export const ReportStatusResponse$inboundSchema: z.ZodType<

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 export const UgcType = {
   AnnouncementsType: "ANNOUNCEMENTS_TYPE",
@@ -14,8 +15,8 @@ export const UgcType = {
   PromptTemplatesType: "PROMPT_TEMPLATES_TYPE",
   PrismViewsType: "PRISM_VIEWS_TYPE",
 } as const;
-export type UgcType = ClosedEnum<typeof UgcType>;
+export type UgcType = OpenEnum<typeof UgcType>;
 
 /** @internal */
-export const UgcType$inboundSchema: z.ZodNativeEnum<typeof UgcType> = z
-  .nativeEnum(UgcType);
+export const UgcType$inboundSchema: z.ZodType<UgcType, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(UgcType);

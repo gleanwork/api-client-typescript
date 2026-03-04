@@ -12,6 +12,8 @@ let value: EventStrategyName = "conversations";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"customerCard" | "news" | "call" | "email" | "meetingNotes" | "linkedIn" | "relevantDocuments" | "chatFollowUps" | "conversations"
+"customerCard" | "news" | "call" | "email" | "meetingNotes" | "linkedIn" | "relevantDocuments" | "chatFollowUps" | "conversations" | Unrecognized<string>
 ```

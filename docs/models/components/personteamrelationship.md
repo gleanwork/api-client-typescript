@@ -12,6 +12,8 @@ let value: PersonTeamRelationship = "LEAD";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"MEMBER" | "MANAGER" | "LEAD" | "POINT_OF_CONTACT" | "OTHER"
+"MEMBER" | "MANAGER" | "LEAD" | "POINT_OF_CONTACT" | "OTHER" | Unrecognized<string>
 ```

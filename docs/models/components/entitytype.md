@@ -12,6 +12,8 @@ let value: EntityType = "PERSON";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"PERSON" | "PROJECT" | "CUSTOMER"
+"PERSON" | "PROJECT" | "CUSTOMER" | Unrecognized<string>
 ```

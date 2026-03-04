@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   version: 0.9.0
   title: Glean API
-  x-source-commit-sha: 56c08697ca3b6869022a262114e61f1385914425
+  x-source-commit-sha: 165e85ce0450b14d9ad367974ac852cb325c00b0
   description: |
     # Introduction
     In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
@@ -22,7 +22,7 @@ info:
     These API clients provide type-safe, idiomatic interfaces for working with Glean IndexingAPIs in your language of choice.
   x-logo:
     url: https://app.glean.com/images/glean-text2.svg
-  x-open-api-commit-sha: daa8736a6f0763faffd2c1079da8a42345536ed7
+  x-open-api-commit-sha: 2d6217ed2c0edc0b742a3898852e904adeca3954
   x-speakeasy-name: 'Glean API'
 servers:
   - url: https://{instance}-be.glean.com
@@ -2917,6 +2917,12 @@ paths:
         "429":
           description: Too Many Requests
       deprecated: true
+      x-speakeasy-deprecation-message: "Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated"
+      x-glean-deprecated:
+        id: 7eec0433-78fd-49f9-a34f-cca83640ec24
+        introduced: "2026-02-03"
+        message: Endpoint is deprecated
+        removal: "2026-10-15"
       x-speakeasy-group: indexing.documents
       x-speakeasy-name-override: status
   /api/index/v1/getdocumentcount:
@@ -2949,6 +2955,12 @@ paths:
         "409":
           description: Conflict
       deprecated: true
+      x-speakeasy-deprecation-message: "Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated"
+      x-glean-deprecated:
+        id: c164089c-9412-4724-acf6-caf3b0d2a527
+        introduced: "2026-02-03"
+        message: Endpoint is deprecated
+        removal: "2026-10-15"
       x-speakeasy-group: indexing.documents
       x-speakeasy-name-override: count
   /api/index/v1/getusercount:
@@ -2981,6 +2993,12 @@ paths:
         "409":
           description: Conflict
       deprecated: true
+      x-speakeasy-deprecation-message: "Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated"
+      x-glean-deprecated:
+        id: 4f5df873-385e-4539-8183-cb764b0f06b9
+        introduced: "2026-02-03"
+        message: Endpoint is deprecated
+        removal: "2026-10-15"
       x-speakeasy-name-override: count
       x-speakeasy-group: indexing.people
   /api/index/v1/betausers:
@@ -3122,6 +3140,13 @@ paths:
           description: Not Authorized
         "409":
           description: Conflict
+      deprecated: true
+      x-speakeasy-deprecation-message: "Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated"
+      x-glean-deprecated:
+        id: ce596f49-55c4-465e-bf3c-5a3a33906e1f
+        introduced: "2026-02-03"
+        message: Endpoint is deprecated
+        removal: "2026-10-15"
       x-speakeasy-name-override: bulkIndex
       x-speakeasy-group: indexing.people
   /api/index/v1/indexemployeelist: {}
@@ -3676,6 +3701,89 @@ paths:
         "500":
           description: Internal error
       x-visibility: Public
+  /rest/api/v1/configure/datasources/{datasourceId}/instances/{instanceId}:
+    get:
+      operationId: getDatasourceInstanceConfiguration
+      summary: Get datasource instance configuration
+      description: |
+        Gets the greenlisted configuration values for a datasource instance. Returns only configuration keys that are exposed via the public API greenlist.
+      tags:
+        - Datasources
+      parameters:
+        - $ref: '#/components/parameters/datasourceId'
+        - $ref: '#/components/parameters/instanceId'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasourceConfigurationResponse'
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          description: Not authorized
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          description: Datasource instance not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-visibility: Preview
+    patch:
+      operationId: updateDatasourceInstanceConfiguration
+      summary: Update datasource instance configuration
+      description: |
+        Updates the greenlisted configuration values for a datasource instance. Only configuration keys that are exposed via the public API greenlist may be set. Returns the full greenlisted configuration after the update is applied.
+      tags:
+        - Datasources
+      parameters:
+        - $ref: '#/components/parameters/datasourceId'
+        - $ref: '#/components/parameters/instanceId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatasourceConfigurationRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasourceConfigurationResponse'
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          description: Not authorized
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          description: Datasource instance not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-visibility: Preview
   /rest/api/v1/chat#stream:
     post:
       tags:
@@ -5702,9 +5810,6 @@ components:
         target:
           $ref: "#/components/schemas/CollectionPinTarget"
     CollectionPinnedMetadata:
-      required:
-        - pinnedCategories
-        - eligibleCategoriesForPinning
       properties:
         existingPins:
           type: array
@@ -6222,8 +6327,6 @@ components:
         type:
           $ref: "#/components/schemas/EntityType"
     SearchResultSnippet:
-      required:
-        - snippet
       properties:
         mimeType:
           type: string
@@ -6246,6 +6349,12 @@ components:
           type: string
           deprecated: true
           description: A matching snippet from the document. Query term matches are marked by the unicode characters uE006 and uE007. Use 'text' field instead.
+          x-glean-deprecated:
+            id: e55ddf30-7c47-43a5-b775-d78f8b29411a
+            introduced: "2026-02-05"
+            message: Use 'text' field instead
+            removal: "2026-10-15"
+          x-speakeasy-deprecation-message: "Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use 'text' field instead"
       example:
         snippet: snippet
         mimeType: mimeType
@@ -6547,16 +6656,34 @@ components:
           deprecated: true
           description: The person that invited this person.
           $ref: "#/components/schemas/Person"
+          x-glean-deprecated:
+            id: 1d3cd23f-9085-4378-b466-9bdc2e344a71
+            introduced: "2026-02-05"
+            message: Use ChannelInviteInfo instead
+            removal: "2026-10-15"
+          x-speakeasy-deprecation-message: "Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use ChannelInviteInfo instead"
         inviteTime:
           deprecated: true
           type: string
           format: date-time
           description: The time this person was invited in ISO format (ISO 8601).
+          x-glean-deprecated:
+            id: 2dc3f572-cded-483d-af07-fc9fc7fd0ae4
+            introduced: "2026-02-05"
+            message: Use ChannelInviteInfo instead
+            removal: "2026-10-15"
+          x-speakeasy-deprecation-message: "Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use ChannelInviteInfo instead"
         reminderTime:
           deprecated: true
           type: string
           format: date-time
           description: The time this person was reminded in ISO format (ISO 8601) if a reminder was sent.
+          x-glean-deprecated:
+            id: d02d58cf-eb90-45d0-ab90-f7a9d707ae3c
+            introduced: "2026-02-05"
+            message: Use ChannelInviteInfo instead
+            removal: "2026-10-15"
+          x-speakeasy-deprecation-message: "Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use ChannelInviteInfo instead"
     ReadPermission:
       description: Describes the read permission level that a user has for a specific feature
       properties:
@@ -7610,6 +7737,10 @@ components:
           type: string
           format: url
           description: The OAuth provider's endpoint, where access tokens are requested.
+        resource:
+          type: string
+          format: url
+          description: The OAuth 2.0 Resource Indicator (RFC 8707) for the protected resource. Discovered from Protected Resource Metadata (RFC 9728) during DCR. Included in authorization and token exchange requests when present.
         lastAuthorizedAt:
           type: string
           format: date-time
@@ -7944,12 +8075,6 @@ components:
         chatSessionTrackingToken:
           type: string
           description: A token that is used to track the session.
-        unauthorizedDatasourceInstances:
-          type: array
-          description: |
-            Datasource instances that could not be queried because the user has not completed or has expired per-user OAuth, aggregated across all tools invoked in this turn.
-          items:
-            $ref: "#/components/schemas/UnauthorizedDatasourceInstance"
     DeleteChatsRequest:
       required:
         - ids
@@ -8007,6 +8132,9 @@ components:
           items:
             $ref: "#/components/schemas/ChatMetadataResult"
           x-includeEmpty: true
+        cursor:
+          type: string
+          description: An opaque cursor for fetching the next page of results. If empty, there are no more results.
     GetChatApplicationRequest:
       required:
         - id
@@ -8107,9 +8235,12 @@ components:
               description: Whether the agent supports streaming output. If true, you you can stream agent ouput. All agents currently support streaming.
           additionalProperties: true
     ErrorResponse:
-      type: string
-      title: ErrorResponse
-      description: Error message returned from the server
+      type: object
+      description: Error response returned for failed requests
+      properties:
+        message:
+          type: string
+          description: Client-facing error message describing what went wrong
     ActionSummary:
       type: object
       description: Represents a minimal summary of an action.
@@ -8123,6 +8254,31 @@ components:
         display_name:
           type: string
           description: The display name of the action.
+        type:
+          type: string
+          description: The type of tool - RETRIEVAL for read-only operations, ACTION for operations that modify data.
+        auth_type:
+          type: string
+          description: The authentication type required - OAUTH_USER, OAUTH_ADMIN, API_KEY, BASIC_AUTH, DWD (domain-wide delegation), or NONE.
+        write_action_type:
+          type: string
+          description: For write actions only - REDIRECT (client renders URL) or EXECUTION (external server call).
+        is_setup_finished:
+          type: boolean
+          description: Whether this action has been fully configured and validated.
+          x-includeEmpty: true
+        data_source:
+          type: string
+          description: |
+            Indicates the kind of knowledge a tool would access or modify.
+            Company knowledge:
+              - Glean search, and any native tools that derive from it (e.g., expert search, code search)
+              - Native federated tools to company data sources (e.g., outlook search)
+            World knowledge:
+              - Platform action like bravewebsearch, geminiwebsearch, etc
+            Neutral knowledge:
+              - Native tools that don't access or modify content via APIs (e.g., file analyst, think)
+              - Platform read or write tools (creator has to determine their knowledge implications)
     AgentSchemas:
       properties:
         agent_id:
@@ -9026,12 +9182,6 @@ components:
         federatedSearchRateLimitError:
           type: boolean
           description: Indicates the federated search results could not be fetched due to rate limiting.
-        unauthorizedDatasourceInstances:
-          type: array
-          description: |
-            Datasource instances that could not be queried because the user has not completed or has expired per-user OAuth.
-          items:
-            $ref: "#/components/schemas/UnauthorizedDatasourceInstance"
       x-speakeasy-name-override: GleanDataError
     ResultsResponse:
       properties:
@@ -13217,6 +13367,49 @@ components:
           items:
             type: string
           description: List of field names to exclude from the export
+    ConfigurationValue:
+      type: object
+      properties:
+        value:
+          type: string
+          description: The configuration value as a string. Only one of value or valueList should be populated.
+        valueList:
+          type: array
+          items:
+            type: string
+          description: The configuration value as a list of strings. Only one of value or valueList should be populated.
+      description: A single configuration value, either a scalar or a list
+    ConfigurationValues:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/ConfigurationValue'
+      description: A map from configuration key names to their values
+    DatasourceInstanceConfiguration:
+      type: object
+      properties:
+        values:
+          $ref: '#/components/schemas/ConfigurationValues'
+      required:
+        - values
+      description: Configuration for a datasource instance
+    DatasourceConfigurationResponse:
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/DatasourceInstanceConfiguration'
+      required:
+        - configuration
+      description: |
+        The greenlisted configuration values for a datasource instance. Only keys that are exposed via the public API greenlist are included.
+    UpdateDatasourceConfigurationRequest:
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/DatasourceInstanceConfiguration'
+      required:
+        - configuration
+      description: |
+        Request to update greenlisted configuration values for a datasource instance. Only keys that are exposed via the public API greenlist may be set.
     ChatRequestStream:
       required:
         - messages
@@ -13274,6 +13467,22 @@ components:
       description: The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
       schema:
         type: integer
+    datasourceId:
+      name: datasourceId
+      in: path
+      description: The datasource type identifier (e.g. o365sharepoint)
+      required: true
+      schema:
+        type: string
+        example: o365sharepoint
+    instanceId:
+      name: instanceId
+      in: path
+      description: The datasource instance identifier
+      required: true
+      schema:
+        type: string
+        example: o365sharepoint_abc123
   responses:
     SuccessResponse:
       description: OK

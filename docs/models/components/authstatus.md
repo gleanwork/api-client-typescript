@@ -12,6 +12,8 @@ let value: AuthStatus = "DISABLED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"DISABLED" | "AWAITING_AUTH" | "AUTHORIZED" | "STALE_OAUTH" | "SEG_MIGRATION"
+"DISABLED" | "AWAITING_AUTH" | "AUTHORIZED" | "STALE_OAUTH" | "SEG_MIGRATION" | Unrecognized<string>
 ```

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { ClosedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Announcement, Announcement$inboundSchema } from "./announcement.js";
@@ -102,7 +103,7 @@ export const JustificationType = {
 /**
  * Type of the justification.
  */
-export type JustificationType = ClosedEnum<typeof JustificationType>;
+export type JustificationType = OpenEnum<typeof JustificationType>;
 
 export type FeedEntry = {
   /**
@@ -175,9 +176,11 @@ export function uiConfigFromJSON(
 }
 
 /** @internal */
-export const JustificationType$inboundSchema: z.ZodNativeEnum<
-  typeof JustificationType
-> = z.nativeEnum(JustificationType);
+export const JustificationType$inboundSchema: z.ZodType<
+  JustificationType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(JustificationType);
 
 /** @internal */
 export const FeedEntry$inboundSchema: z.ZodType<

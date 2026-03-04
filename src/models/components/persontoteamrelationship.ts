@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,7 +28,7 @@ export const PersonToTeamRelationshipRelationship = {
 /**
  * The team member's relationship to the team. This defaults to MEMBER if not set.
  */
-export type PersonToTeamRelationshipRelationship = ClosedEnum<
+export type PersonToTeamRelationshipRelationship = OpenEnum<
   typeof PersonToTeamRelationshipRelationship
 >;
 
@@ -51,14 +52,17 @@ export type PersonToTeamRelationship = {
 };
 
 /** @internal */
-export const PersonToTeamRelationshipRelationship$inboundSchema:
-  z.ZodNativeEnum<typeof PersonToTeamRelationshipRelationship> = z.nativeEnum(
-    PersonToTeamRelationshipRelationship,
-  );
+export const PersonToTeamRelationshipRelationship$inboundSchema: z.ZodType<
+  PersonToTeamRelationshipRelationship,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PersonToTeamRelationshipRelationship);
 /** @internal */
-export const PersonToTeamRelationshipRelationship$outboundSchema:
-  z.ZodNativeEnum<typeof PersonToTeamRelationshipRelationship> =
-    PersonToTeamRelationshipRelationship$inboundSchema;
+export const PersonToTeamRelationshipRelationship$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  PersonToTeamRelationshipRelationship
+> = openEnums.outboundSchema(PersonToTeamRelationshipRelationship);
 
 /** @internal */
 export const PersonToTeamRelationship$inboundSchema: z.ZodType<

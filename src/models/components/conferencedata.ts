@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -12,14 +13,14 @@ export const Provider = {
   Zoom: "ZOOM",
   Hangouts: "HANGOUTS",
 } as const;
-export type Provider = ClosedEnum<typeof Provider>;
+export type Provider = OpenEnum<typeof Provider>;
 
 export const ConferenceDataSource = {
   NativeConference: "NATIVE_CONFERENCE",
   Location: "LOCATION",
   Description: "DESCRIPTION",
 } as const;
-export type ConferenceDataSource = ClosedEnum<typeof ConferenceDataSource>;
+export type ConferenceDataSource = OpenEnum<typeof ConferenceDataSource>;
 
 export type ConferenceData = {
   provider: Provider;
@@ -31,13 +32,18 @@ export type ConferenceData = {
 };
 
 /** @internal */
-export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
-  .nativeEnum(Provider);
+export const Provider$inboundSchema: z.ZodType<
+  Provider,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(Provider);
 
 /** @internal */
-export const ConferenceDataSource$inboundSchema: z.ZodNativeEnum<
-  typeof ConferenceDataSource
-> = z.nativeEnum(ConferenceDataSource);
+export const ConferenceDataSource$inboundSchema: z.ZodType<
+  ConferenceDataSource,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ConferenceDataSource);
 
 /** @internal */
 export const ConferenceData$inboundSchema: z.ZodType<

@@ -10,6 +10,8 @@ let value: GetAnswerErrorErrorType = "NO_PERMISSION";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"NO_PERMISSION" | "INVALID_ID"
+"NO_PERMISSION" | "INVALID_ID" | Unrecognized<string>
 ```

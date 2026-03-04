@@ -12,6 +12,8 @@ let value: Prominence = "PROMOTED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"HERO" | "PROMOTED" | "STANDARD"
+"HERO" | "PROMOTED" | "STANDARD" | Unrecognized<string>
 ```

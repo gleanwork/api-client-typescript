@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Type of the custom sensitive rule.
@@ -16,15 +17,17 @@ export const CustomSensitiveRuleType = {
 /**
  * Type of the custom sensitive rule.
  */
-export type CustomSensitiveRuleType = ClosedEnum<
-  typeof CustomSensitiveRuleType
->;
+export type CustomSensitiveRuleType = OpenEnum<typeof CustomSensitiveRuleType>;
 
 /** @internal */
-export const CustomSensitiveRuleType$inboundSchema: z.ZodNativeEnum<
-  typeof CustomSensitiveRuleType
-> = z.nativeEnum(CustomSensitiveRuleType);
+export const CustomSensitiveRuleType$inboundSchema: z.ZodType<
+  CustomSensitiveRuleType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CustomSensitiveRuleType);
 /** @internal */
-export const CustomSensitiveRuleType$outboundSchema: z.ZodNativeEnum<
-  typeof CustomSensitiveRuleType
-> = CustomSensitiveRuleType$inboundSchema;
+export const CustomSensitiveRuleType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CustomSensitiveRuleType
+> = openEnums.outboundSchema(CustomSensitiveRuleType);

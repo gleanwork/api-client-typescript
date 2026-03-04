@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -99,7 +100,7 @@ export const PersonMetadataType = {
    */
   FormerEmployee: "FORMER_EMPLOYEE",
 } as const;
-export type PersonMetadataType = ClosedEnum<typeof PersonMetadataType>;
+export type PersonMetadataType = OpenEnum<typeof PersonMetadataType>;
 
 export type PersonMetadata = {
   type?: PersonMetadataType | undefined;
@@ -276,13 +277,17 @@ export type PersonMetadata = {
 };
 
 /** @internal */
-export const PersonMetadataType$inboundSchema: z.ZodNativeEnum<
-  typeof PersonMetadataType
-> = z.nativeEnum(PersonMetadataType);
+export const PersonMetadataType$inboundSchema: z.ZodType<
+  PersonMetadataType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PersonMetadataType);
 /** @internal */
-export const PersonMetadataType$outboundSchema: z.ZodNativeEnum<
-  typeof PersonMetadataType
-> = PersonMetadataType$inboundSchema;
+export const PersonMetadataType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  PersonMetadataType
+> = openEnums.outboundSchema(PersonMetadataType);
 
 /** @internal */
 export const PersonMetadata$inboundSchema: z.ZodType<

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -55,7 +56,7 @@ export const TeamStatus = {
 /**
  * whether this team is fully processed or there are still unprocessed operations that'll affect it
  */
-export type TeamStatus = ClosedEnum<typeof TeamStatus>;
+export type TeamStatus = OpenEnum<typeof TeamStatus>;
 
 export type Team = {
   /**
@@ -142,11 +143,17 @@ export type Team = {
 };
 
 /** @internal */
-export const TeamStatus$inboundSchema: z.ZodNativeEnum<typeof TeamStatus> = z
-  .nativeEnum(TeamStatus);
+export const TeamStatus$inboundSchema: z.ZodType<
+  TeamStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(TeamStatus);
 /** @internal */
-export const TeamStatus$outboundSchema: z.ZodNativeEnum<typeof TeamStatus> =
-  TeamStatus$inboundSchema;
+export const TeamStatus$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  TeamStatus
+> = openEnums.outboundSchema(TeamStatus);
 
 /** @internal */
 export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z

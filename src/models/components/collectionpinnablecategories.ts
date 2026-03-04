@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Categories a Collection can be pinned to.
@@ -16,15 +17,19 @@ export const CollectionPinnableCategories = {
 /**
  * Categories a Collection can be pinned to.
  */
-export type CollectionPinnableCategories = ClosedEnum<
+export type CollectionPinnableCategories = OpenEnum<
   typeof CollectionPinnableCategories
 >;
 
 /** @internal */
-export const CollectionPinnableCategories$inboundSchema: z.ZodNativeEnum<
-  typeof CollectionPinnableCategories
-> = z.nativeEnum(CollectionPinnableCategories);
+export const CollectionPinnableCategories$inboundSchema: z.ZodType<
+  CollectionPinnableCategories,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CollectionPinnableCategories);
 /** @internal */
-export const CollectionPinnableCategories$outboundSchema: z.ZodNativeEnum<
-  typeof CollectionPinnableCategories
-> = CollectionPinnableCategories$inboundSchema;
+export const CollectionPinnableCategories$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CollectionPinnableCategories
+> = openEnums.outboundSchema(CollectionPinnableCategories);

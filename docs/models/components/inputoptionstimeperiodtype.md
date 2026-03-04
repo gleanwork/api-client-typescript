@@ -12,6 +12,8 @@ let value: InputOptionsTimePeriodType = "CUSTOM";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"ALL_TIME" | "PAST_YEAR" | "PAST_DAY" | "CUSTOM" | "LAST_N_DAYS"
+"ALL_TIME" | "PAST_YEAR" | "PAST_DAY" | "CUSTOM" | "LAST_N_DAYS" | Unrecognized<string>
 ```

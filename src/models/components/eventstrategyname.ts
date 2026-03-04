@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The name of method used to surface relevant data for a given calendar event.
@@ -22,9 +23,11 @@ export const EventStrategyName = {
 /**
  * The name of method used to surface relevant data for a given calendar event.
  */
-export type EventStrategyName = ClosedEnum<typeof EventStrategyName>;
+export type EventStrategyName = OpenEnum<typeof EventStrategyName>;
 
 /** @internal */
-export const EventStrategyName$inboundSchema: z.ZodNativeEnum<
-  typeof EventStrategyName
-> = z.nativeEnum(EventStrategyName);
+export const EventStrategyName$inboundSchema: z.ZodType<
+  EventStrategyName,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(EventStrategyName);

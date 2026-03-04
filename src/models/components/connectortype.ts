@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The source from which document content was pulled, e.g. an API crawl or browser history
@@ -21,13 +22,17 @@ export const ConnectorType = {
 /**
  * The source from which document content was pulled, e.g. an API crawl or browser history
  */
-export type ConnectorType = ClosedEnum<typeof ConnectorType>;
+export type ConnectorType = OpenEnum<typeof ConnectorType>;
 
 /** @internal */
-export const ConnectorType$inboundSchema: z.ZodNativeEnum<
-  typeof ConnectorType
-> = z.nativeEnum(ConnectorType);
+export const ConnectorType$inboundSchema: z.ZodType<
+  ConnectorType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ConnectorType);
 /** @internal */
-export const ConnectorType$outboundSchema: z.ZodNativeEnum<
-  typeof ConnectorType
-> = ConnectorType$inboundSchema;
+export const ConnectorType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ConnectorType
+> = openEnums.outboundSchema(ConnectorType);

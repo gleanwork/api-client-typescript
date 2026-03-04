@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -21,7 +22,7 @@ export const DocumentSpecUgcType2 = {
 /**
  * The type of the user generated content (UGC datasource).
  */
-export type DocumentSpecUgcType2 = ClosedEnum<typeof DocumentSpecUgcType2>;
+export type DocumentSpecUgcType2 = OpenEnum<typeof DocumentSpecUgcType2>;
 
 export type DocumentSpec4 = {
   /**
@@ -51,7 +52,7 @@ export const DocumentSpecUgcType1 = {
 /**
  * The type of the user generated content (UGC datasource).
  */
-export type DocumentSpecUgcType1 = ClosedEnum<typeof DocumentSpecUgcType1>;
+export type DocumentSpecUgcType1 = OpenEnum<typeof DocumentSpecUgcType1>;
 
 export type DocumentSpec3 = {
   /**
@@ -89,13 +90,17 @@ export type DocumentSpecUnion =
   | DocumentSpec2;
 
 /** @internal */
-export const DocumentSpecUgcType2$inboundSchema: z.ZodNativeEnum<
-  typeof DocumentSpecUgcType2
-> = z.nativeEnum(DocumentSpecUgcType2);
+export const DocumentSpecUgcType2$inboundSchema: z.ZodType<
+  DocumentSpecUgcType2,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DocumentSpecUgcType2);
 /** @internal */
-export const DocumentSpecUgcType2$outboundSchema: z.ZodNativeEnum<
-  typeof DocumentSpecUgcType2
-> = DocumentSpecUgcType2$inboundSchema;
+export const DocumentSpecUgcType2$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DocumentSpecUgcType2
+> = openEnums.outboundSchema(DocumentSpecUgcType2);
 
 /** @internal */
 export const DocumentSpec4$inboundSchema: z.ZodType<
@@ -139,13 +144,17 @@ export function documentSpec4FromJSON(
 }
 
 /** @internal */
-export const DocumentSpecUgcType1$inboundSchema: z.ZodNativeEnum<
-  typeof DocumentSpecUgcType1
-> = z.nativeEnum(DocumentSpecUgcType1);
+export const DocumentSpecUgcType1$inboundSchema: z.ZodType<
+  DocumentSpecUgcType1,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DocumentSpecUgcType1);
 /** @internal */
-export const DocumentSpecUgcType1$outboundSchema: z.ZodNativeEnum<
-  typeof DocumentSpecUgcType1
-> = DocumentSpecUgcType1$inboundSchema;
+export const DocumentSpecUgcType1$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DocumentSpecUgcType1
+> = openEnums.outboundSchema(DocumentSpecUgcType1);
 
 /** @internal */
 export const DocumentSpec3$inboundSchema: z.ZodType<

@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DlpConfig, DlpConfig$inboundSchema } from "./dlpconfig.js";
@@ -23,7 +24,7 @@ export const LastScanStatus = {
   Cancelling: "CANCELLING",
   Active: "ACTIVE",
 } as const;
-export type LastScanStatus = ClosedEnum<typeof LastScanStatus>;
+export type LastScanStatus = OpenEnum<typeof LastScanStatus>;
 
 /**
  * Full policy information that will be used for scans.
@@ -71,9 +72,11 @@ export type DlpReport = {
 };
 
 /** @internal */
-export const LastScanStatus$inboundSchema: z.ZodNativeEnum<
-  typeof LastScanStatus
-> = z.nativeEnum(LastScanStatus);
+export const LastScanStatus$inboundSchema: z.ZodType<
+  LastScanStatus,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(LastScanStatus);
 
 /** @internal */
 export const DlpReport$inboundSchema: z.ZodType<

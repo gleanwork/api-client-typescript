@@ -12,6 +12,8 @@ let value: AgentExecutionStatus = "success";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"error" | "success"
+"error" | "success" | Unrecognized<string>
 ```

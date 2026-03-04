@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The level of visual distinction that should be given to a result.
@@ -29,15 +30,19 @@ export const SearchResultProminenceEnum = {
  *
  * @remarks
  */
-export type SearchResultProminenceEnum = ClosedEnum<
+export type SearchResultProminenceEnum = OpenEnum<
   typeof SearchResultProminenceEnum
 >;
 
 /** @internal */
-export const SearchResultProminenceEnum$inboundSchema: z.ZodNativeEnum<
-  typeof SearchResultProminenceEnum
-> = z.nativeEnum(SearchResultProminenceEnum);
+export const SearchResultProminenceEnum$inboundSchema: z.ZodType<
+  SearchResultProminenceEnum,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(SearchResultProminenceEnum);
 /** @internal */
-export const SearchResultProminenceEnum$outboundSchema: z.ZodNativeEnum<
-  typeof SearchResultProminenceEnum
-> = SearchResultProminenceEnum$inboundSchema;
+export const SearchResultProminenceEnum$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  SearchResultProminenceEnum
+> = openEnums.outboundSchema(SearchResultProminenceEnum);

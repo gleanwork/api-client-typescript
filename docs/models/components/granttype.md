@@ -12,6 +12,8 @@ let value: GrantType = "AUTH_CODE";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"AUTH_CODE" | "CLIENT_CREDENTIALS"
+"AUTH_CODE" | "CLIENT_CREDENTIALS" | Unrecognized<string>
 ```

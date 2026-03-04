@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,7 +47,7 @@ export const DocCategory = {
 /**
  * The document category of this object type.
  */
-export type DocCategory = ClosedEnum<typeof DocCategory>;
+export type DocCategory = OpenEnum<typeof DocCategory>;
 
 /**
  * The definition for an `DocumentMetadata.objectType` within a datasource.
@@ -76,11 +77,17 @@ export type ObjectDefinition = {
 };
 
 /** @internal */
-export const DocCategory$inboundSchema: z.ZodNativeEnum<typeof DocCategory> = z
-  .nativeEnum(DocCategory);
+export const DocCategory$inboundSchema: z.ZodType<
+  DocCategory,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DocCategory);
 /** @internal */
-export const DocCategory$outboundSchema: z.ZodNativeEnum<typeof DocCategory> =
-  DocCategory$inboundSchema;
+export const DocCategory$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DocCategory
+> = openEnums.outboundSchema(DocCategory);
 
 /** @internal */
 export const ObjectDefinition$inboundSchema: z.ZodType<

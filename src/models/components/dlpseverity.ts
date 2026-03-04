@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Severity levels for DLP findings and analyses.
@@ -17,11 +18,17 @@ export const DlpSeverity = {
 /**
  * Severity levels for DLP findings and analyses.
  */
-export type DlpSeverity = ClosedEnum<typeof DlpSeverity>;
+export type DlpSeverity = OpenEnum<typeof DlpSeverity>;
 
 /** @internal */
-export const DlpSeverity$inboundSchema: z.ZodNativeEnum<typeof DlpSeverity> = z
-  .nativeEnum(DlpSeverity);
+export const DlpSeverity$inboundSchema: z.ZodType<
+  DlpSeverity,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DlpSeverity);
 /** @internal */
-export const DlpSeverity$outboundSchema: z.ZodNativeEnum<typeof DlpSeverity> =
-  DlpSeverity$inboundSchema;
+export const DlpSeverity$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  DlpSeverity
+> = openEnums.outboundSchema(DlpSeverity);

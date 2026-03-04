@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -23,7 +24,7 @@ export const Role = {
  *
  * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
  */
-export type Role = ClosedEnum<typeof Role>;
+export type Role = OpenEnum<typeof Role>;
 
 export type ViewerInfo = {
   /**
@@ -36,12 +37,11 @@ export type ViewerInfo = {
 };
 
 /** @internal */
-export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
-  Role,
-);
+export const Role$inboundSchema: z.ZodType<Role, z.ZodTypeDef, unknown> =
+  openEnums.inboundSchema(Role);
 /** @internal */
-export const Role$outboundSchema: z.ZodNativeEnum<typeof Role> =
-  Role$inboundSchema;
+export const Role$outboundSchema: z.ZodType<string, z.ZodTypeDef, Role> =
+  openEnums.outboundSchema(Role);
 
 /** @internal */
 export const ViewerInfo$inboundSchema: z.ZodType<

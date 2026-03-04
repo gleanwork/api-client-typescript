@@ -12,6 +12,8 @@ let value: DlpFrequency = "DAILY";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"ONCE" | "DAILY" | "WEEKLY" | "CONTINUOUS" | "NONE"
+"ONCE" | "DAILY" | "WEEKLY" | "CONTINUOUS" | "NONE" | Unrecognized<string>
 ```

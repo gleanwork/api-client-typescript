@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -70,7 +71,7 @@ export const DatasourceVisibility = {
 /**
  * The visibility of the datasource, an enum of VISIBLE_TO_ALL, VISIBLE_TO_TEST_GROUP, NOT_VISIBLE
  */
-export type DatasourceVisibility = ClosedEnum<typeof DatasourceVisibility>;
+export type DatasourceVisibility = OpenEnum<typeof DatasourceVisibility>;
 
 /**
  * Describes the response body of the /debug/{datasource}/status API call
@@ -155,9 +156,11 @@ export function identityFromJSON(
 }
 
 /** @internal */
-export const DatasourceVisibility$inboundSchema: z.ZodNativeEnum<
-  typeof DatasourceVisibility
-> = z.nativeEnum(DatasourceVisibility);
+export const DatasourceVisibility$inboundSchema: z.ZodType<
+  DatasourceVisibility,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(DatasourceVisibility);
 
 /** @internal */
 export const DebugDatasourceStatusResponse$inboundSchema: z.ZodType<

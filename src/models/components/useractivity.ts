@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
@@ -32,7 +33,7 @@ export const UserActivityAction = {
 /**
  * The action for the activity
  */
-export type UserActivityAction = ClosedEnum<typeof UserActivityAction>;
+export type UserActivityAction = OpenEnum<typeof UserActivityAction>;
 
 export type UserActivity = {
   actor?: Person | undefined;
@@ -48,9 +49,11 @@ export type UserActivity = {
 };
 
 /** @internal */
-export const UserActivityAction$inboundSchema: z.ZodNativeEnum<
-  typeof UserActivityAction
-> = z.nativeEnum(UserActivityAction);
+export const UserActivityAction$inboundSchema: z.ZodType<
+  UserActivityAction,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(UserActivityAction);
 
 /** @internal */
 export const UserActivity$inboundSchema: z.ZodType<

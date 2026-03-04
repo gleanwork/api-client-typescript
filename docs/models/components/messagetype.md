@@ -12,6 +12,8 @@ let value: MessageType = "WARNING";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"UPDATE" | "CONTENT" | "CONTEXT" | "CONTROL" | "CONTROL_START" | "CONTROL_FINISH" | "CONTROL_CANCEL" | "CONTROL_RETRY" | "CONTROL_UNKNOWN" | "DEBUG" | "DEBUG_EXTERNAL" | "ERROR" | "HEADING" | "WARNING" | "SERVER_TOOL"
+"UPDATE" | "CONTENT" | "CONTEXT" | "CONTROL" | "CONTROL_START" | "CONTROL_FINISH" | "CONTROL_CANCEL" | "CONTROL_RETRY" | "CONTROL_UNKNOWN" | "DEBUG" | "DEBUG_EXTERNAL" | "ERROR" | "HEADING" | "WARNING" | "SERVER_TOOL" | Unrecognized<string>
 ```

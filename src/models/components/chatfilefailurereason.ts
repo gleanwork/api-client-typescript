@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Reason for failed status.
@@ -24,13 +25,17 @@ export const ChatFileFailureReason = {
 /**
  * Reason for failed status.
  */
-export type ChatFileFailureReason = ClosedEnum<typeof ChatFileFailureReason>;
+export type ChatFileFailureReason = OpenEnum<typeof ChatFileFailureReason>;
 
 /** @internal */
-export const ChatFileFailureReason$inboundSchema: z.ZodNativeEnum<
-  typeof ChatFileFailureReason
-> = z.nativeEnum(ChatFileFailureReason);
+export const ChatFileFailureReason$inboundSchema: z.ZodType<
+  ChatFileFailureReason,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ChatFileFailureReason);
 /** @internal */
-export const ChatFileFailureReason$outboundSchema: z.ZodNativeEnum<
-  typeof ChatFileFailureReason
-> = ChatFileFailureReason$inboundSchema;
+export const ChatFileFailureReason$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ChatFileFailureReason
+> = openEnums.outboundSchema(ChatFileFailureReason);

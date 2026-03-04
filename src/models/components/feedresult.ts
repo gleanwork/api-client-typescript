@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FeedEntry, FeedEntry$inboundSchema } from "./feedentry.js";
@@ -42,7 +43,7 @@ export const FeedResultCategory = {
 /**
  * Category of the result, one of the requested categories in incoming request.
  */
-export type FeedResultCategory = ClosedEnum<typeof FeedResultCategory>;
+export type FeedResultCategory = OpenEnum<typeof FeedResultCategory>;
 
 export type FeedResult = {
   /**
@@ -61,9 +62,11 @@ export type FeedResult = {
 };
 
 /** @internal */
-export const FeedResultCategory$inboundSchema: z.ZodNativeEnum<
-  typeof FeedResultCategory
-> = z.nativeEnum(FeedResultCategory);
+export const FeedResultCategory$inboundSchema: z.ZodType<
+  FeedResultCategory,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(FeedResultCategory);
 
 /** @internal */
 export const FeedResult$inboundSchema: z.ZodType<

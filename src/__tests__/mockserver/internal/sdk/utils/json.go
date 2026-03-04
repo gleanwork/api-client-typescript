@@ -299,6 +299,10 @@ func marshalValue(v interface{}, tag reflect.StructTag) (json.RawMessage, error)
 			return []byte("null"), nil
 		}
 
+		if implementsJSONMarshaler(v) {
+			return json.Marshal(v)
+		}
+
 		out := map[string]json.RawMessage{}
 
 		for _, key := range val.MapKeys() {

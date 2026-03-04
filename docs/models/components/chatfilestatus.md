@@ -12,6 +12,8 @@ let value: ChatFileStatus = "FAILED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"PROCESSING" | "PROCESSED" | "FAILED" | "DELETED"
+"PROCESSING" | "PROCESSED" | "FAILED" | "DELETED" | Unrecognized<string>
 ```

@@ -14,6 +14,8 @@ let value: Role = "ANSWER_MODERATOR";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"ANSWER_MODERATOR" | "OWNER" | "VIEWER"
+"ANSWER_MODERATOR" | "OWNER" | "VIEWER" | Unrecognized<string>
 ```

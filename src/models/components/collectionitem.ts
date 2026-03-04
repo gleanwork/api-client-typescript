@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,7 +39,7 @@ export const CollectionItemItemType = {
   Url: "URL",
   Collection: "COLLECTION",
 } as const;
-export type CollectionItemItemType = ClosedEnum<typeof CollectionItemItemType>;
+export type CollectionItemItemType = OpenEnum<typeof CollectionItemItemType>;
 
 export type CollectionItem = {
   /**
@@ -81,13 +82,17 @@ export type CollectionItem = {
 };
 
 /** @internal */
-export const CollectionItemItemType$inboundSchema: z.ZodNativeEnum<
-  typeof CollectionItemItemType
-> = z.nativeEnum(CollectionItemItemType);
+export const CollectionItemItemType$inboundSchema: z.ZodType<
+  CollectionItemItemType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(CollectionItemItemType);
 /** @internal */
-export const CollectionItemItemType$outboundSchema: z.ZodNativeEnum<
-  typeof CollectionItemItemType
-> = CollectionItemItemType$inboundSchema;
+export const CollectionItemItemType$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  CollectionItemItemType
+> = openEnums.outboundSchema(CollectionItemItemType);
 
 /** @internal */
 export const CollectionItem$inboundSchema: z.ZodType<

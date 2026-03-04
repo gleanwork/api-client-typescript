@@ -12,6 +12,8 @@ let value: AgentEnum = "AUTO";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"DEFAULT" | "GPT" | "UNIVERSAL" | "FAST" | "ADVANCED" | "AUTO"
+"DEFAULT" | "GPT" | "UNIVERSAL" | "FAST" | "ADVANCED" | "AUTO" | Unrecognized<string>
 ```

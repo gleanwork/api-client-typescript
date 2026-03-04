@@ -12,6 +12,8 @@ let value: ExportInfoStatus = "FAILED";
 
 ## Values
 
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
 ```typescript
-"PENDING" | "COMPLETED" | "FAILED"
+"PENDING" | "COMPLETED" | "FAILED" | Unrecognized<string>
 ```

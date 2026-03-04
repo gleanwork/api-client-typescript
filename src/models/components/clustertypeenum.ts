@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * The reason for inclusion of clusteredResults.
@@ -24,13 +25,17 @@ export const ClusterTypeEnum = {
 /**
  * The reason for inclusion of clusteredResults.
  */
-export type ClusterTypeEnum = ClosedEnum<typeof ClusterTypeEnum>;
+export type ClusterTypeEnum = OpenEnum<typeof ClusterTypeEnum>;
 
 /** @internal */
-export const ClusterTypeEnum$inboundSchema: z.ZodNativeEnum<
-  typeof ClusterTypeEnum
-> = z.nativeEnum(ClusterTypeEnum);
+export const ClusterTypeEnum$inboundSchema: z.ZodType<
+  ClusterTypeEnum,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ClusterTypeEnum);
 /** @internal */
-export const ClusterTypeEnum$outboundSchema: z.ZodNativeEnum<
-  typeof ClusterTypeEnum
-> = ClusterTypeEnum$inboundSchema;
+export const ClusterTypeEnum$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ClusterTypeEnum
+> = openEnums.outboundSchema(ClusterTypeEnum);

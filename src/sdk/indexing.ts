@@ -4,8 +4,8 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Datasource } from "./datasource.js";
-import { Datasources } from "./datasources.js";
 import { IndexingAuthentication } from "./indexingauthentication.js";
+import { IndexingDatasources } from "./indexingdatasources.js";
 import { IndexingDocuments } from "./indexingdocuments.js";
 import { IndexingShortcuts } from "./indexingshortcuts.js";
 import { People } from "./people.js";
@@ -32,9 +32,9 @@ export class Indexing extends ClientSDK {
     return (this._people ??= new People(this._options));
   }
 
-  private _datasources?: Datasources;
-  get datasources(): Datasources {
-    return (this._datasources ??= new Datasources(this._options));
+  private _datasources?: IndexingDatasources;
+  get datasources(): IndexingDatasources {
+    return (this._datasources ??= new IndexingDatasources(this._options));
   }
 
   private _authentication?: IndexingAuthentication;
