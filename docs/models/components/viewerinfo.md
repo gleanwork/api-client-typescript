@@ -1,0 +1,16 @@
+# ViewerInfo
+
+## Example Usage
+
+```typescript
+import { ViewerInfo } from "@gleanwork/api-client/models/components";
+
+let value: ViewerInfo = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                            | Type                                                                                                                                                                                             | Required                                                                                                                                                                                         | Description                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ~~`role`~~                                                                                                                                                                                       | [components.Role](../../models/components/role.md)                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                               | : warning: ** DEPRECATED **: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.<br/><br/>DEPRECATED - use permissions instead. Viewer's role on the specific document. |
+| `lastViewedTime`                                                                                                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                    | :heavy_minus_sign:                                                                                                                                                                               | N/A                                                                                                                                                                                              |
