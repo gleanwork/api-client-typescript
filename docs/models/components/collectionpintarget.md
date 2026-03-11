@@ -1,0 +1,19 @@
+# CollectionPinTarget
+
+## Example Usage
+
+```typescript
+import { CollectionPinTarget } from "@gleanwork/api-client/models/components";
+
+let value: CollectionPinTarget = {
+  category: "TEAM_RESOURCE",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                     | Type                                                                                                                                                                      | Required                                                                                                                                                                  | Description                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `category`                                                                                                                                                                | [components.CollectionPinnableCategories](../../models/components/collectionpinnablecategories.md)                                                                        | :heavy_check_mark:                                                                                                                                                        | Categories a Collection can be pinned to.                                                                                                                                 |
+| `value`                                                                                                                                                                   | *string*                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                        | Optional. If category supports values, then the additional value for the category e.g. department name for DEPARTMENT_RESOURCE, team name/id for TEAM_RESOURCE and so on. |
+| `target`                                                                                                                                                                  | [components.CollectionPinnableTargets](../../models/components/collectionpinnabletargets.md)                                                                              | :heavy_minus_sign:                                                                                                                                                        | What targets can a Collection be pinned to.                                                                                                                               |
