@@ -9,10 +9,12 @@ import { DocumentVisibilityUpdateResultOverride } from "@gleanwork/api-client/mo
 
 let value: DocumentVisibilityUpdateResultOverride =
   "HIDE_FROM_ALL_EXCEPT_OWNER";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"NONE" | "HIDE_FROM_ALL" | "HIDE_FROM_GROUPS" | "HIDE_FROM_ALL_EXCEPT_OWNER"
+"NONE" | "HIDE_FROM_ALL" | "HIDE_FROM_GROUPS" | "HIDE_FROM_ALL_EXCEPT_OWNER" | Unrecognized<string>
 ```

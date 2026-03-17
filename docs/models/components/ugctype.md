@@ -5,11 +5,13 @@
 ```typescript
 import { UgcType } from "@gleanwork/api-client/models/components";
 
-let value: UgcType = "WORKFLOWS_TYPE";
+let value: UgcType = "PAPER_TYPE";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"ANNOUNCEMENTS_TYPE" | "ANSWERS_TYPE" | "COLLECTIONS_TYPE" | "SHORTCUTS_TYPE" | "WORKFLOWS_TYPE" | "PROMPT_TEMPLATES_TYPE" | "PRISM_VIEWS_TYPE"
+"AGENT_TYPE" | "ANNOUNCEMENTS_TYPE" | "ANSWERS_TYPE" | "CHATS_TYPE" | "COLLECTIONS_TYPE" | "EMAIL_TYPE" | "HTML_CODE_TYPE" | "IMAGE_TYPE" | "MESSAGE_TYPE" | "PAPER_TYPE" | "PRISM_VIEWS_TYPE" | "PROMPT_TEMPLATES_TYPE" | "SCRIBES_TYPE" | "SHORTCUTS_TYPE" | "SLIDE_TYPE" | "WORKFLOWS_TYPE" | Unrecognized<string>
 ```

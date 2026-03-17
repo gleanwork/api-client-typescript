@@ -413,6 +413,11 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/verification/README.md#list) - List verifications
 * [verify](docs/sdks/verification/README.md#verify) - Update verification
 
+### [Datasources](docs/sdks/datasources/README.md)
+
+* [getDatasourceInstanceConfiguration](docs/sdks/datasources/README.md#getdatasourceinstanceconfiguration) - Get datasource instance configuration
+* [updateDatasourceInstanceConfiguration](docs/sdks/datasources/README.md#updatedatasourceinstanceconfiguration) - Update datasource instance configuration
+
 ### [Governance](docs/sdks/governance/README.md)
 
 * [createfindingsexport](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
@@ -429,10 +434,10 @@ For more information on obtaining the appropriate token type, please contact you
 * [status](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
 
-### [Indexing.Datasources](docs/sdks/datasources/README.md)
+### [Indexing.Datasources](docs/sdks/indexingdatasources/README.md)
 
-* [add](docs/sdks/datasources/README.md#add) - Add or update datasource
-* [retrieveConfig](docs/sdks/datasources/README.md#retrieveconfig) - Get datasource config
+* [add](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
+* [retrieveConfig](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
 
 ### [Indexing.Documents](docs/sdks/indexingdocuments/README.md)
 
@@ -455,7 +460,7 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [~~count~~](docs/sdks/people/README.md#count) - Get user count :warning: **Deprecated**
 * [index](docs/sdks/people/README.md#index) - Index employee
-* [bulkIndex](docs/sdks/people/README.md#bulkindex) - Bulk index employees
+* [~~bulkIndex~~](docs/sdks/people/README.md#bulkindex) - Bulk index employees :warning: **Deprecated**
 * [processAllEmployeesAndTeams](docs/sdks/people/README.md#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
 * [delete](docs/sdks/people/README.md#delete) - Delete employee
 * [indexTeam](docs/sdks/people/README.md#indexteam) - Index team
@@ -572,13 +577,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- [`datasourcesGetDatasourceInstanceConfiguration`](docs/sdks/datasources/README.md#getdatasourceinstanceconfiguration) - Get datasource instance configuration
+- [`datasourcesUpdateDatasourceInstanceConfiguration`](docs/sdks/datasources/README.md#updatedatasourceinstanceconfiguration) - Update datasource instance configuration
 - [`governanceCreatefindingsexport`](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
 - [`governanceDeletefindingsexport`](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
 - [`governanceDownloadfindingsexport`](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
 - [`governanceListfindingsexports`](docs/sdks/governance/README.md#listfindingsexports) - Lists findings exports
 - [`indexingAuthenticationRotateToken`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
-- [`indexingDatasourcesAdd`](docs/sdks/datasources/README.md#add) - Add or update datasource
-- [`indexingDatasourcesRetrieveConfig`](docs/sdks/datasources/README.md#retrieveconfig) - Get datasource config
+- [`indexingDatasourcesAdd`](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
+- [`indexingDatasourcesRetrieveConfig`](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
 - [`indexingDatasourceStatus`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
 - [`indexingDocumentsAddOrUpdate`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
@@ -591,7 +598,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingDocumentsDelete`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`indexingDocumentsIndex`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`indexingDocumentsProcessAll`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
-- [`indexingPeopleBulkIndex`](docs/sdks/people/README.md#bulkindex) - Bulk index employees
 - [`indexingPeopleBulkIndexTeams`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
 - [`indexingPeopleDebug`](docs/sdks/people/README.md#debug) - Beta: Get user information
 
@@ -617,6 +623,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
+- ~~[`indexingPeopleBulkIndex`](docs/sdks/people/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
 - ~~[`indexingPeopleCount`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
 
 </details>
@@ -716,13 +723,15 @@ To learn about this feature and how to get started, check
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- [`useDatasourcesGetDatasourceInstanceConfiguration`](docs/sdks/datasources/README.md#getdatasourceinstanceconfiguration) - Get datasource instance configuration
+- [`useDatasourcesUpdateDatasourceInstanceConfigurationMutation`](docs/sdks/datasources/README.md#updatedatasourceinstanceconfiguration) - Update datasource instance configuration
 - [`useGovernanceCreatefindingsexportMutation`](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
 - [`useGovernanceDeletefindingsexportMutation`](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
 - [`useGovernanceDownloadfindingsexport`](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
 - [`useGovernanceListfindingsexports`](docs/sdks/governance/README.md#listfindingsexports) - Lists findings exports
 - [`useIndexingAuthenticationRotateTokenMutation`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
-- [`useIndexingDatasourcesAddMutation`](docs/sdks/datasources/README.md#add) - Add or update datasource
-- [`useIndexingDatasourcesRetrieveConfigMutation`](docs/sdks/datasources/README.md#retrieveconfig) - Get datasource config
+- [`useIndexingDatasourcesAddMutation`](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
+- [`useIndexingDatasourcesRetrieveConfigMutation`](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
 - [`useIndexingDatasourceStatusMutation`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
 - [`useIndexingDocumentsAddOrUpdateMutation`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
@@ -735,7 +744,6 @@ To learn about this feature and how to get started, check
 - [`useIndexingDocumentsDeleteMutation`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`useIndexingDocumentsIndexMutation`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`useIndexingDocumentsProcessAllMutation`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
-- [`useIndexingPeopleBulkIndexMutation`](docs/sdks/people/README.md#bulkindex) - Bulk index employees
 - [`useIndexingPeopleBulkIndexTeamsMutation`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
 - [`useIndexingPeopleDebugMutation`](docs/sdks/people/README.md#debug) - Beta: Get user information
 
@@ -761,6 +769,7 @@ To learn about this feature and how to get started, check
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
+- ~~[`useIndexingPeopleBulkIndexMutation`](docs/sdks/people/README.md#bulkindex)~~ - Bulk index employees :warning: **Deprecated**
 - ~~[`useIndexingPeopleCountMutation`](docs/sdks/people/README.md#count)~~ - Get user count :warning: **Deprecated**
 
 </details>

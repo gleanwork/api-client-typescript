@@ -6,7 +6,7 @@
 import { FeedResult } from "@gleanwork/api-client/models/components";
 
 let value: FeedResult = {
-  category: "ZERO_STATE_WORKFLOW_FAVORITES",
+  category: "PERSONALIZED_CHAT_SUGGESTION",
   primaryEntry: {
     title: "<value>",
     createdBy: {

@@ -8,10 +8,12 @@ This determines whether this is an external-link post or a regular announcement 
 import { AnnouncementPostType } from "@gleanwork/api-client/models/components";
 
 let value: AnnouncementPostType = "TEXT";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"TEXT" | "LINK"
+"TEXT" | "LINK" | Unrecognized<string>
 ```

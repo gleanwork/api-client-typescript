@@ -1858,14 +1858,6 @@ let value: ResultsResponse = {
       },
     ],
   },
-  gleanDataError: {
-    unauthorizedDatasourceInstances: [
-      {
-        datasourceInstance: "slack_0",
-        displayName: "Slack",
-      },
-    ],
-  },
   backendTimeMillis: 1100,
 };
 ```

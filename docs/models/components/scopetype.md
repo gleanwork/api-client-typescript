@@ -8,10 +8,12 @@ Describes the scope for a ReadPermission, WritePermission, or GrantPermission ob
 import { ScopeType } from "@gleanwork/api-client/models/components";
 
 let value: ScopeType = "GLOBAL";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"GLOBAL" | "OWN"
+"GLOBAL" | "OWN" | Unrecognized<string>
 ```

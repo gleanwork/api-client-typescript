@@ -8,10 +8,12 @@ The type of tool.
 import { ToolMetadataType } from "@gleanwork/api-client/models/components";
 
 let value: ToolMetadataType = "ACTION";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"RETRIEVAL" | "ACTION"
+"RETRIEVAL" | "ACTION" | Unrecognized<string>
 ```

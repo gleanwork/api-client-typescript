@@ -8,7 +8,7 @@
 
 * [~~count~~](#count) - Get user count :warning: **Deprecated**
 * [index](#index) - Index employee
-* [bulkIndex](#bulkindex) - Bulk index employees
+* [~~bulkIndex~~](#bulkindex) - Bulk index employees :warning: **Deprecated**
 * [processAllEmployeesAndTeams](#processallemployeesandteams) - Schedules the processing of uploaded employees and teams
 * [delete](#delete) - Delete employee
 * [indexTeam](#indexteam) - Index team
@@ -116,7 +116,7 @@ Fetches user count for the specified custom datasource.
 Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
 
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
 
 ### Example Usage
 
@@ -312,9 +312,11 @@ import {
 | ----------------- | ----------------- | ----------------- |
 | errors.GleanError | 4XX, 5XX          | \*/\*             |
 
-## bulkIndex
+## ~~bulkIndex~~
 
 Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
+
+> :warning: **DEPRECATED**: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
 
 ### Example Usage
 

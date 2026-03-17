@@ -10,10 +10,12 @@ DEPRECATED - use permissions instead. Viewer's role on the specific document.
 import { Role } from "@gleanwork/api-client/models/components";
 
 let value: Role = "ANSWER_MODERATOR";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"ANSWER_MODERATOR" | "OWNER" | "VIEWER"
+"ANSWER_MODERATOR" | "OWNER" | "VIEWER" | Unrecognized<string>
 ```

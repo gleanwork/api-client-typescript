@@ -8,10 +8,12 @@ Optional type classification for the update.
 import { UpdateType } from "@gleanwork/api-client/models/components";
 
 let value: UpdateType = "ACTIONABLE";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"ACTIONABLE" | "INFORMATIVE"
+"ACTIONABLE" | "INFORMATIVE" | Unrecognized<string>
 ```

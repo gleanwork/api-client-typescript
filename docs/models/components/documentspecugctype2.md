@@ -8,10 +8,12 @@ The type of the user generated content (UGC datasource).
 import { DocumentSpecUgcType2 } from "@gleanwork/api-client/models/components";
 
 let value: DocumentSpecUgcType2 = "ANNOUNCEMENTS";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "SHORTCUTS" | "CHATS"
+"ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "SHORTCUTS" | "CHATS" | Unrecognized<string>
 ```
