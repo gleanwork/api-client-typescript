@@ -8,10 +8,12 @@
 import { SensitiveInfoTypeLikelihoodThreshold } from "@gleanwork/api-client/models/components";
 
 let value: SensitiveInfoTypeLikelihoodThreshold = "POSSIBLE";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"LIKELY" | "VERY_LIKELY" | "POSSIBLE" | "UNLIKELY" | "VERY_UNLIKELY"
+"LIKELY" | "VERY_LIKELY" | "POSSIBLE" | "UNLIKELY" | "VERY_UNLIKELY" | Unrecognized<string>
 ```

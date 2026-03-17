@@ -8,10 +8,12 @@ The verification state for the document.
 import { State } from "@gleanwork/api-client/models/components";
 
 let value: State = "UNVERIFIED";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"UNVERIFIED" | "VERIFIED" | "DEPRECATED"
+"UNVERIFIED" | "VERIFIED" | "DEPRECATED" | Unrecognized<string>
 ```

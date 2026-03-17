@@ -13,10 +13,12 @@ Use 'OAUTH_*' when Glean calls an external API (e.g., Jira) on behalf of a user 
 import { AuthType } from "@gleanwork/api-client/models/components";
 
 let value: AuthType = "OAUTH_ADMIN";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"NONE" | "OAUTH_USER" | "OAUTH_ADMIN" | "API_KEY" | "BASIC_AUTH" | "DWD"
+"NONE" | "OAUTH_USER" | "OAUTH_ADMIN" | "API_KEY" | "BASIC_AUTH" | "DWD" | Unrecognized<string>
 ```

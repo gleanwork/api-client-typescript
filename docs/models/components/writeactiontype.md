@@ -8,10 +8,12 @@ Valid only for write actions. Represents the type of write action. REDIRECT - Th
 import { WriteActionType } from "@gleanwork/api-client/models/components";
 
 let value: WriteActionType = "EXECUTION";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"REDIRECT" | "EXECUTION" | "MCP"
+"REDIRECT" | "EXECUTION" | "MCP" | Unrecognized<string>
 ```

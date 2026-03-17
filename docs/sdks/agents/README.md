@@ -105,9 +105,10 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404                  | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## retrieveSchemas
 
@@ -204,9 +205,10 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404, 422             | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## list
 
@@ -294,9 +296,10 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404, 422             | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## runStream
 
@@ -394,9 +397,10 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404, 409, 422        | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
 ## run
 

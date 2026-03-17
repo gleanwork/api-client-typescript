@@ -8,10 +8,12 @@ The type of this datasource. It is an important signal for relevance and must be
 import { DatasourceCategory } from "@gleanwork/api-client/models/components";
 
 let value: DatasourceCategory = "EXTERNAL_SHORTCUT";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"UNCATEGORIZED" | "TICKETS" | "CRM" | "PUBLISHED_CONTENT" | "COLLABORATIVE_CONTENT" | "QUESTION_ANSWER" | "MESSAGING" | "CODE_REPOSITORY" | "CHANGE_MANAGEMENT" | "PEOPLE" | "EMAIL" | "SSO" | "ATS" | "KNOWLEDGE_HUB" | "EXTERNAL_SHORTCUT" | "ENTITY" | "CALENDAR" | "AGENTS"
+"UNCATEGORIZED" | "TICKETS" | "CRM" | "PUBLISHED_CONTENT" | "COLLABORATIVE_CONTENT" | "QUESTION_ANSWER" | "MESSAGING" | "CODE_REPOSITORY" | "CHANGE_MANAGEMENT" | "PEOPLE" | "EMAIL" | "SSO" | "ATS" | "KNOWLEDGE_HUB" | "EXTERNAL_SHORTCUT" | "ENTITY" | "CALENDAR" | "AGENTS" | Unrecognized<string>
 ```

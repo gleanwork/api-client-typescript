@@ -8,10 +8,12 @@ The status of the upload, an enum of ACTIVE, SUCCESSFUL
 import { BulkUploadHistoryEventStatus } from "@gleanwork/api-client/models/components";
 
 let value: BulkUploadHistoryEventStatus = "SUCCESSFUL";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"ACTIVE" | "SUCCESSFUL"
+"ACTIVE" | "SUCCESSFUL" | Unrecognized<string>
 ```
