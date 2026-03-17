@@ -8,10 +8,12 @@ Type of the section. This defines how the section should be interpreted and rend
 import { SectionType } from "@gleanwork/api-client/models/components";
 
 let value: SectionType = "TOPIC";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"CHANNEL" | "MENTIONS" | "TOPIC"
+"CHANNEL" | "MENTIONS" | "TOPIC" | Unrecognized<string>
 ```

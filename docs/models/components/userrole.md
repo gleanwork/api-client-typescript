@@ -8,10 +8,12 @@ A user's role with respect to a specific document.
 import { UserRole } from "@gleanwork/api-client/models/components";
 
 let value: UserRole = "OWNER";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "VIEWER" | "ANSWER_MODERATOR" | "EDITOR" | "VERIFIER"
+"OWNER" | "VIEWER" | "ANSWER_MODERATOR" | "EDITOR" | "VERIFIER" | Unrecognized<string>
 ```

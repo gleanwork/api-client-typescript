@@ -8,10 +8,12 @@ Type of tool (READ, WRITE)
 import { ToolType } from "@gleanwork/api-client/models/components";
 
 let value: ToolType = "READ";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"READ" | "WRITE"
+"READ" | "WRITE" | Unrecognized<string>
 ```

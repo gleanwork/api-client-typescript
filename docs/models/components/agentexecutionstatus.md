@@ -8,10 +8,12 @@ The status of the run. One of 'error', 'success'.
 import { AgentExecutionStatus } from "@gleanwork/api-client/models/components";
 
 let value: AgentExecutionStatus = "success";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"error" | "success"
+"error" | "success" | Unrecognized<string>
 ```

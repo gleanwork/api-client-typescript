@@ -8,10 +8,12 @@ Type of the custom sensitive rule.
 import { CustomSensitiveRuleType } from "@gleanwork/api-client/models/components";
 
 let value: CustomSensitiveRuleType = "INFO_TYPE";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"REGEX" | "TERM" | "INFO_TYPE"
+"REGEX" | "TERM" | "INFO_TYPE" | Unrecognized<string>
 ```

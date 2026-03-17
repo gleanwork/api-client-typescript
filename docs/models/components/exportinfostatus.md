@@ -8,10 +8,12 @@ The status of the export
 import { ExportInfoStatus } from "@gleanwork/api-client/models/components";
 
 let value: ExportInfoStatus = "FAILED";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"PENDING" | "COMPLETED" | "FAILED"
+"PENDING" | "COMPLETED" | "FAILED" | Unrecognized<string>
 ```
