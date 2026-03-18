@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 97e9d39a7bc7ea190222a7ab3cc6324f
+  docChecksum: 2fab3e8959b00ae329cb184f27a113cc
   docVersion: 0.9.0
   speakeasyVersion: 1.757.0
   generationVersion: 2.866.0
-  releaseVersion: 0.14.8
-  configChecksum: 238230e940751e58aaa1357290f17646
+  releaseVersion: 0.14.9
+  configChecksum: b0cad1526aa79deefc730589aaeb28ab
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: 4621cb77-6172-4c80-bdd4-a3e4ceb1c585
-  pristine_commit_hash: 41f5aaf7f2fe29db84c4f96710dfb8e9cacd9e6c
-  pristine_tree_hash: e347d0d9f23e1b8d3497373e54d425e11f6466f8
+  generation_id: e136157a-9d41-43f8-bee5-2cb40d3241d8
+  pristine_commit_hash: c54d133297bfb70cfe73abfa440a207e645dce07
+  pristine_tree_hash: 8d8c2452d58917a076e4d1940891d810dea4450a
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -2792,12 +2792,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:23e8e3bf4d7d2453558df108e48f418577818bc9
-    pristine_git_object: e95f0d906ceded2451d14f5af01b51af2cfa7d44
+    last_write_checksum: sha1:3ebe1e8cd2bceef07ab3ad095efa78ce6737a8f1
+    pristine_git_object: 3769adb9e59e9912f163acbaec01c187cdcc7fcb
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:b0611175bb67f5a06cd61e0bdfff40c060f3cf0b
-    pristine_git_object: a0dae99d85d670e0246c0633f4660273367289bf
+    last_write_checksum: sha1:c3ac39a633fa71ccdde0badc0f6bc41752ae79e1
+    pristine_git_object: bdf95ecb7f4a3f83197c9eae5c7322212585d7f6
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -5664,8 +5664,8 @@ trackedFiles:
     pristine_git_object: c747483d172c06689dc66e150b2fbf704b483842
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:ae9e9fd9274afaa8d68416defd5e56ba15a48c04
-    pristine_git_object: 4c5df4371f7782278d514a3ce3f4c7837f34089b
+    last_write_checksum: sha1:593e8da8d5044fbed5e0cdfab94c31f093739241
+    pristine_git_object: 3dfcfe72a4ddce9bca60341ef3fe67881b9e12dc
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:3a38647391f52221c009a9273eebf90793b3d430
@@ -6172,8 +6172,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:f66dec6ec152362cffb4eb542c548c7bcc6c2afc
-    pristine_git_object: b111409592542cf4c5a8504526695ac752032e8f
+    last_write_checksum: sha1:f9db4e07fff40975fc379ca0c7f87cd88c0972f8
+    pristine_git_object: da884e41a4a514f6dec30c625527fa0f4612a1db
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:eaac763b22717206a6199104e0403ed17a4e2711
@@ -9927,7 +9927,6 @@ generatedTests:
   checkdatasourceauth: "2026-02-19T15:51:26Z"
   getDatasourceInstanceConfiguration: "2026-03-17T16:12:28Z"
   updateDatasourceInstanceConfiguration: "2026-03-17T16:12:28Z"
-releaseNotes: "## Typescript SDK Changes:\n* `glean.client.chat.create()`: \n  *  `request.chatRequest.messages[]` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n* `glean.client.search.query()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.unauthorizedDatasourceInstances` **Removed** (Breaking ⚠️)\n* `glean.client.search.recommendations()`: \n  *  `request.recommendationsRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n* `glean.client.search.autocomplete()`:  `response` **Changed** (Breaking ⚠️)\n* `glean.client.search.queryAsAdmin()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.unauthorizedDatasourceInstances` **Removed** (Breaking ⚠️)\n* `glean.client.messages.retrieve()`:  `response.searchResponse` **Changed** (Breaking ⚠️)\n* `glean.client.collections.list()`:  `response.collections[].addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.insights.retrieve()`:  `response.gleanAssist.activityInsights[].user.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.answers.retrieve()`:  `response.answerResult.answer.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.chat.retrieve()`:  `response.chatResult.chat` **Changed**\n* `glean.client.chat.list()`:  `response` **Changed**\n* `glean.client.chat.createStream()`: \n  *  `request.chatRequest.messages[]` **Changed**\n* `glean.client.agents.retrieve()`:  `error.status[404]` **Added**\n* `glean.client.agents.retrieveSchemas()`: \n  *  `response` **Changed**\n  *  `error` **Changed**\n* `glean.client.agents.list()`:  `error` **Changed**\n* `glean.client.agents.runStream()`:  `error` **Changed**\n* `glean.client.collections.addItems()`:  `response.collection.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.collections.create()`: \n  *  `request.createCollectionRequest.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.union(class (0)).collection.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.collections.deleteItem()`:  `response.collection.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.collections.update()`: \n  *  `request.editCollectionRequest.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.collections.updateItem()`:  `response.collection.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.collections.retrieve()`:  `response.collection.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.datasources.getDatasourceInstanceConfiguration()`: **Added**\n* `glean.client.documents.retrieve()`:  `response.documents.Map<DocumentOrError>.union(Document).metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.documents.retrieveByFacets()`:  `response.documents[].metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.answers.list()`:  `response.answerResults[].answer.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.answers.update()`: \n  *  `request.editAnswerRequest.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.pins.update()`:  `response.attribution.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.pins.retrieve()`:  `response.pin.attribution.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.pins.list()`:  `response.pins[].attribution.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.pins.create()`:  `response.attribution.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.answers.create()`: \n  *  `request.createAnswerRequest.data.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.announcements.update()`: \n  *  `request.updateAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.search.retrieveFeed()`: \n  *  `request.feedRequest.categories[]` **Changed**\n  *  `response.results[]` **Changed**\n* `glean.client.announcements.create()`: \n  *  `request.createAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.datasources.updateDatasourceInstanceConfiguration()`: **Added**\n* `glean.client.entities.list()`:  `response.results[].relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.entities.readPeople()`:  `response.results[].relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.shortcuts.create()`: \n  *  `request.createShortcutRequest.data.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.shortcut.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.shortcuts.retrieve()`:  `response.shortcut.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.shortcuts.list()`:  `response.shortcuts[].addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.shortcuts.update()`: \n  *  `request.updateShortcutRequest.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n  *  `response.shortcut.addedRoles[].person.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.verification.addReminder()`:  `response.metadata.lastVerifier.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.verification.list()`:  `response.documents[].metadata.lastVerifier.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.client.verification.verify()`:  `response.metadata.lastVerifier.relatedDocuments[].results[].structuredResults[].snippets[].snippet` **Changed**\n* `glean.indexing.people.bulkIndex()`: **Deprecated**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
