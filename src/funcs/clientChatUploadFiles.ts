@@ -6,6 +6,7 @@
 import { GleanCore } from "../core.js";
 import { appendForm, encodeFormQuery } from "../lib/encodings.js";
 import {
+  bytesToBlob,
   getContentTypeFromFileName,
   readableStreamToArrayBuffer,
 } from "../lib/files.js";
@@ -112,17 +113,10 @@ async function $do(
       const buffer = await readableStreamToArrayBuffer(fileItem.content);
       const contentType = getContentTypeFromFileName(fileItem.fileName)
         || "application/octet-stream";
-      const blob = new Blob([buffer], { type: contentType });
-      appendForm(body, "files", blob, fileItem.fileName);
-    } else if (fileItem.content instanceof Uint8Array) {
-      const contentType = getContentTypeFromFileName(fileItem.fileName)
-        || "application/octet-stream";
       appendForm(
         body,
         "files",
-        new Blob([new Uint8Array(fileItem.content).buffer], {
-          type: contentType,
-        }),
+        bytesToBlob(buffer, contentType),
         fileItem.fileName,
       );
     } else {
@@ -131,7 +125,7 @@ async function $do(
       appendForm(
         body,
         "files",
-        new Blob([fileItem.content], { type: contentType }),
+        bytesToBlob(fileItem.content, contentType),
         fileItem.fileName,
       );
     }
