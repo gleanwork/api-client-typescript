@@ -89,6 +89,17 @@ let value: ChatMessageCitation = {
     name: "George Clooney",
     obfuscatedId: "abc123",
   },
+  sourceCustomEntity: {
+    roles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        role: "ANSWER_MODERATOR",
+      },
+    ],
+  },
   referenceRanges: [
     {
       textRange: {
@@ -185,4 +196,5 @@ let value: ChatMessageCitation = {
 | `sourceDocument`                                                                                                           | [components.Document](../../models/components/document.md)                                                                 | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |                                                                                                                            |
 | `sourceFile`                                                                                                               | [components.ChatFile](../../models/components/chatfile.md)                                                                 | :heavy_minus_sign:                                                                                                         | Structure for file uploaded by a user for Chat.                                                                            |                                                                                                                            |
 | `sourcePerson`                                                                                                             | [components.Person](../../models/components/person.md)                                                                     | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}                                                         |
+| `sourceCustomEntity`                                                                                                       | [components.CustomEntity](../../models/components/customentity.md)                                                         | :heavy_minus_sign:                                                                                                         | N/A                                                                                                                        |                                                                                                                            |
 | `referenceRanges`                                                                                                          | [components.ReferenceRange](../../models/components/referencerange.md)[]                                                   | :heavy_minus_sign:                                                                                                         | Each reference range and its corresponding snippets                                                                        |                                                                                                                            |
