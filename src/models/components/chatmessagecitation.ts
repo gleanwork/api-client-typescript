@@ -14,6 +14,12 @@ import {
   ChatFile$outboundSchema,
 } from "./chatfile.js";
 import {
+  CustomEntity,
+  CustomEntity$inboundSchema,
+  CustomEntity$Outbound,
+  CustomEntity$outboundSchema,
+} from "./customentity.js";
+import {
   Document,
   Document$inboundSchema,
   Document$Outbound,
@@ -46,6 +52,7 @@ export type ChatMessageCitation = {
    */
   sourceFile?: ChatFile | undefined;
   sourcePerson?: Person | undefined;
+  sourceCustomEntity?: CustomEntity | undefined;
   /**
    * Each reference range and its corresponding snippets
    */
@@ -62,6 +69,7 @@ export const ChatMessageCitation$inboundSchema: z.ZodType<
   sourceDocument: Document$inboundSchema.optional(),
   sourceFile: ChatFile$inboundSchema.optional(),
   sourcePerson: Person$inboundSchema.optional(),
+  sourceCustomEntity: CustomEntity$inboundSchema.optional(),
   referenceRanges: z.array(ReferenceRange$inboundSchema).optional(),
 });
 /** @internal */
@@ -70,6 +78,7 @@ export type ChatMessageCitation$Outbound = {
   sourceDocument?: Document$Outbound | undefined;
   sourceFile?: ChatFile$Outbound | undefined;
   sourcePerson?: Person$Outbound | undefined;
+  sourceCustomEntity?: CustomEntity$Outbound | undefined;
   referenceRanges?: Array<ReferenceRange$Outbound> | undefined;
 };
 
@@ -83,6 +92,7 @@ export const ChatMessageCitation$outboundSchema: z.ZodType<
   sourceDocument: Document$outboundSchema.optional(),
   sourceFile: ChatFile$outboundSchema.optional(),
   sourcePerson: Person$outboundSchema.optional(),
+  sourceCustomEntity: CustomEntity$outboundSchema.optional(),
   referenceRanges: z.array(ReferenceRange$outboundSchema).optional(),
 });
 
