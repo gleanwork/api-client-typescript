@@ -108,7 +108,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/rest/api/v1/agents/{agent_id}")(pathParams);
 
   const query = encodeFormQuery({
