@@ -101,7 +101,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/api/index/v1/debug/{datasource}/status")(
     pathParams,
   );

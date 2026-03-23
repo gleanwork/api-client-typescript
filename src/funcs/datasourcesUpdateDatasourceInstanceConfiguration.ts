@@ -120,7 +120,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/rest/api/v1/configure/datasources/{datasourceId}/instances/{instanceId}",
   )(pathParams);
