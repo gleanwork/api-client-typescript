@@ -101,6 +101,7 @@ const (
 	JustificationTypeActiveDiscussion                  JustificationType = "ACTIVE_DISCUSSION"
 	JustificationTypeMidDayCatchUp                     JustificationType = "MID_DAY_CATCH_UP"
 	JustificationTypeQuerySuggestion                   JustificationType = "QUERY_SUGGESTION"
+	JustificationTypeWeeklyMeetings                    JustificationType = "WEEKLY_MEETINGS"
 )
 
 func (e JustificationType) ToPointer() *JustificationType {
@@ -199,6 +200,8 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 	case "MID_DAY_CATCH_UP":
 		fallthrough
 	case "QUERY_SUGGESTION":
+		fallthrough
+	case "WEEKLY_MEETINGS":
 		*e = JustificationType(v)
 		return nil
 	default:

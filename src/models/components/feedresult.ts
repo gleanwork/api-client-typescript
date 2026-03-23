@@ -46,6 +46,7 @@ export const FeedResultCategory = {
   StarterKit: "STARTER_KIT",
   MidDayCatchUp: "MID_DAY_CATCH_UP",
   QuerySuggestion: "QUERY_SUGGESTION",
+  WeeklyMeetings: "WEEKLY_MEETINGS",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.
