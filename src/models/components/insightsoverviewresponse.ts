@@ -51,6 +51,9 @@ export type InsightsOverviewResponse = {
   totalSignups?: number | undefined;
   searchSummary?: InsightsSearchSummary | undefined;
   chatSummary?: InsightsChatSummary | undefined;
+  searchActiveUsers?: CurrentActiveUsers | undefined;
+  assistantActiveUsers?: CurrentActiveUsers | undefined;
+  agentsActiveUsers?: CurrentActiveUsers | undefined;
   extensionSummary?: CurrentActiveUsers | undefined;
   ugcSummary?: CurrentActiveUsers | undefined;
   /**
@@ -103,6 +106,9 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   totalSignups: z.number().int().optional(),
   searchSummary: InsightsSearchSummary$inboundSchema.optional(),
   chatSummary: InsightsChatSummary$inboundSchema.optional(),
+  searchActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+  assistantActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+  agentsActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
   extensionSummary: CurrentActiveUsers$inboundSchema.optional(),
   ugcSummary: CurrentActiveUsers$inboundSchema.optional(),
   lastUpdatedTs: z.number().int().optional(),

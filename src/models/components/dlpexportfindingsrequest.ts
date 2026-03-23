@@ -17,6 +17,7 @@ import {
 export const ExportType = {
   Findings: "FINDINGS",
   Documents: "DOCUMENTS",
+  Issues: "ISSUES",
 } as const;
 /**
  * The type of export to perform
