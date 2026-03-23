@@ -7,11 +7,11 @@ The type of export to perform
 ```typescript
 import { ExportType } from "@gleanwork/api-client/models/components";
 
-let value: ExportType = "DOCUMENTS";
+let value: ExportType = "ISSUES";
 ```
 
 ## Values
 
 ```typescript
-"FINDINGS" | "DOCUMENTS"
+"FINDINGS" | "DOCUMENTS" | "ISSUES"
 ```

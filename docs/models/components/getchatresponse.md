@@ -1948,6 +1948,17 @@ let value: GetChatResponse = {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
                 },
+                sourceCustomEntity: {
+                  roles: [
+                    {
+                      person: {
+                        name: "George Clooney",
+                        obfuscatedId: "abc123",
+                      },
+                      role: "ANSWER_MODERATOR",
+                    },
+                  ],
+                },
                 referenceRanges: [
                   {
                     textRange: {
