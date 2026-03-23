@@ -110,6 +110,7 @@ export const JustificationType = {
   ActiveDiscussion: "ACTIVE_DISCUSSION",
   MidDayCatchUp: "MID_DAY_CATCH_UP",
   QuerySuggestion: "QUERY_SUGGESTION",
+  WeeklyMeetings: "WEEKLY_MEETINGS",
 } as const;
 /**
  * Type of the justification.
