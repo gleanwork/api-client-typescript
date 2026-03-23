@@ -101,7 +101,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/rest/api/v1/governance/data/policies/{id}")(
     pathParams,
   );
