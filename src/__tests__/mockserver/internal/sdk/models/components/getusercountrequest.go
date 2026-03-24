@@ -3,7 +3,6 @@
 
 package components
 
-// GetUserCountRequest - Describes the request body of the /getusercount API call
 type GetUserCountRequest struct {
 	// Datasource name for which user count is needed.
 	Datasource string `json:"datasource"`
