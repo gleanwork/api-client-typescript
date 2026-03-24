@@ -30,7 +30,7 @@ import { Result } from "../types/fp.js";
  * Index employee
  *
  * @remarks
- * Adds an employee or updates information about an employee
+ * Adds an employee or replaces the existing information about an employee.
  */
 export function indexingPeopleIndex(
   client: GleanCore,
