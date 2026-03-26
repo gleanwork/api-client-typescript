@@ -20,7 +20,7 @@ test("Messages Messages", async () => {
     idType: "CONVERSATION_ID",
     id: "<id>",
     timestampMillis: 558834,
-    datasource: "SLACKENTGRID",
+    datasource: "SLACK",
   });
   expect(result).toBeDefined();
 });

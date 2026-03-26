@@ -23,8 +23,8 @@ test("Summarize Summarize", async () => {
         ugcId: "<id>",
       },
       {
-        ugcType: "ANSWERS",
-        contentId: 823890,
+        ugcType: "COLLECTIONS",
+        ugcId: "<id>",
       },
     ],
   });
