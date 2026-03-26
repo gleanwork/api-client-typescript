@@ -122,6 +122,10 @@ export type DocumentDefinition = {
    */
   additionalUrls?: Array<string> | undefined;
   /**
+   * A deep link, if available, into the datasource's native application for the user's platform (e.g. slack://channel/message).
+   */
+  nativeAppUrl?: string | undefined;
+  /**
    * Comments associated with the document.
    */
   comments?: Array<CommentDefinition> | undefined;
@@ -154,6 +158,7 @@ export type DocumentDefinition$Outbound = {
   interactions?: DocumentInteractionsDefinition$Outbound | undefined;
   status?: string | undefined;
   additionalUrls?: Array<string> | undefined;
+  nativeAppUrl?: string | undefined;
   comments?: Array<CommentDefinition$Outbound> | undefined;
   customProperties?: Array<CustomProperty$Outbound> | undefined;
 };
@@ -185,6 +190,7 @@ export const DocumentDefinition$outboundSchema: z.ZodType<
   interactions: DocumentInteractionsDefinition$outboundSchema.optional(),
   status: z.string().optional(),
   additionalUrls: z.array(z.string()).optional(),
+  nativeAppUrl: z.string().optional(),
   comments: z.array(CommentDefinition$outboundSchema).optional(),
   customProperties: z.array(CustomProperty$outboundSchema).optional(),
 });
