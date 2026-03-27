@@ -48,7 +48,7 @@ export type ClientChatUploadFilesMutationError =
   | SDKValidationError;
 
 /**
- * Upload files for Chat.
+ * Upload files for Chat
  *
  * @remarks
  * Upload files for Chat.

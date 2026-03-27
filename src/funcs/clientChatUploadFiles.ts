@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
 import { isReadableStream } from "../types/streams.js";
 
 /**
- * Upload files for Chat.
+ * Upload files for Chat
  *
  * @remarks
  * Upload files for Chat.

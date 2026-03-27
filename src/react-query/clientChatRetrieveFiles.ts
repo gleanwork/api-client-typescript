@@ -48,7 +48,7 @@ export type ClientChatRetrieveFilesMutationError =
   | SDKValidationError;
 
 /**
- * Get files uploaded by a user for Chat.
+ * Get files uploaded by a user for Chat
  *
  * @remarks
  * Get files uploaded by a user for Chat.

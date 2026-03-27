@@ -27,7 +27,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get files uploaded by a user for Chat.
+ * Get files uploaded by a user for Chat
  *
  * @remarks
  * Get files uploaded by a user for Chat.

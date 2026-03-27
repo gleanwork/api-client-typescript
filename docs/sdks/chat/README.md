@@ -10,9 +10,9 @@
 * [retrieve](#retrieve) - Retrieves a Chat
 * [list](#list) - Retrieves all saved Chats
 * [retrieveApplication](#retrieveapplication) - Gets the metadata for a custom Chat application
-* [uploadFiles](#uploadfiles) - Upload files for Chat.
-* [retrieveFiles](#retrievefiles) - Get files uploaded by a user for Chat.
-* [deleteFiles](#deletefiles) - Delete files uploaded by a user for chat.
+* [uploadFiles](#uploadfiles) - Upload files for Chat
+* [retrieveFiles](#retrievefiles) - Get files uploaded by a user for Chat
+* [deleteFiles](#deletefiles) - Delete files uploaded by a user for chat
 * [createStream](#createstream) - Chat
 
 ## create
