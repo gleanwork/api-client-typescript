@@ -141,7 +141,7 @@ export class Chat extends ClientSDK {
   }
 
   /**
-   * Upload files for Chat.
+   * Upload files for Chat
    *
    * @remarks
    * Upload files for Chat.
@@ -162,7 +162,7 @@ export class Chat extends ClientSDK {
   }
 
   /**
-   * Get files uploaded by a user for Chat.
+   * Get files uploaded by a user for Chat
    *
    * @remarks
    * Get files uploaded by a user for Chat.
@@ -183,7 +183,7 @@ export class Chat extends ClientSDK {
   }
 
   /**
-   * Delete files uploaded by a user for chat.
+   * Delete files uploaded by a user for chat
    *
    * @remarks
    * Delete files uploaded by a user for Chat.

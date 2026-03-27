@@ -47,7 +47,7 @@ export type ClientChatDeleteFilesMutationError =
   | SDKValidationError;
 
 /**
- * Delete files uploaded by a user for chat.
+ * Delete files uploaded by a user for chat
  *
  * @remarks
  * Delete files uploaded by a user for Chat.

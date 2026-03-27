@@ -323,9 +323,9 @@ For more information on obtaining the appropriate token type, please contact you
 * [retrieve](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
 * [list](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
 * [retrieveApplication](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-* [uploadFiles](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
-* [retrieveFiles](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat.
-* [deleteFiles](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+* [uploadFiles](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
+* [retrieveFiles](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+* [deleteFiles](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
 * [createStream](docs/sdks/chat/README.md#createstream) - Chat
 
 ### [Client.Collections](docs/sdks/collections/README.md)
@@ -525,12 +525,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientChatCreateStream`](docs/sdks/chat/README.md#createstream) - Chat
 - [`clientChatDelete`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
 - [`clientChatDeleteAll`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+- [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
 - [`clientChatList`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
 - [`clientChatRetrieve`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
 - [`clientChatRetrieveApplication`](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-- [`clientChatRetrieveFiles`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat.
-- [`clientChatUploadFiles`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
+- [`clientChatRetrieveFiles`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+- [`clientChatUploadFiles`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
 - [`clientCollectionsAddItems`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`clientCollectionsCreate`](docs/sdks/collections/README.md#create) - Create Collection
 - [`clientCollectionsDelete`](docs/sdks/collections/README.md#delete) - Delete Collection
@@ -670,13 +670,13 @@ To learn about this feature and how to get started, check
 - [`useClientChatCreateMutation`](docs/sdks/chat/README.md#create) - Chat
 - [`useClientChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Chat
 - [`useClientChatDeleteAllMutation`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat.
+- [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
 - [`useClientChatDeleteMutation`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
 - [`useClientChatListMutation`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
 - [`useClientChatRetrieveApplicationMutation`](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-- [`useClientChatRetrieveFilesMutation`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat.
+- [`useClientChatRetrieveFilesMutation`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
 - [`useClientChatRetrieveMutation`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-- [`useClientChatUploadFilesMutation`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat.
+- [`useClientChatUploadFilesMutation`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
 - [`useClientCollectionsAddItemsMutation`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`useClientCollectionsCreateMutation`](docs/sdks/collections/README.md#create) - Create Collection
 - [`useClientCollectionsDeleteItemMutation`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item

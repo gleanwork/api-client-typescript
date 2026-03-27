@@ -7,7 +7,7 @@ Current status of the file.
 ```typescript
 import { ChatFileStatus } from "@gleanwork/api-client/models/components";
 
-let value: ChatFileStatus = "FAILED";
+let value: ChatFileStatus = "PARTIALLY_PROCESSED";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -15,5 +15,5 @@ let value: ChatFileStatus = "FAILED";
 ## Values
 
 ```typescript
-"PROCESSING" | "PROCESSED" | "FAILED" | "DELETED" | Unrecognized<string>
+"PROCESSING" | "PROCESSED" | "PARTIALLY_PROCESSED" | "FAILED" | "DELETED" | Unrecognized<string>
 ```
