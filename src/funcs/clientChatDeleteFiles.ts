@@ -28,7 +28,7 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete files uploaded by a user for chat.
+ * Delete files uploaded by a user for chat
  *
  * @remarks
  * Delete files uploaded by a user for Chat.
