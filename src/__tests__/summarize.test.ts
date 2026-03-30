@@ -19,7 +19,7 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        ugcType: "ANNOUNCEMENTS",
+        ugcType: "COLLECTIONS",
         ugcId: "<id>",
       },
       {
