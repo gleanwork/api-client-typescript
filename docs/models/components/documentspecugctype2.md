@@ -15,5 +15,5 @@ let value: DocumentSpecUgcType2 = "ANNOUNCEMENTS";
 ## Values
 
 ```typescript
-"ANNOUNCEMENTS" | "ANSWERS" | "COLLECTIONS" | "SHORTCUTS" | "CHATS" | Unrecognized<string>
+"ANNOUNCEMENTS" | "ANSWERS" | "ARTIFACTS" | "COLLECTIONS" | "SHORTCUTS" | "CHATS" | Unrecognized<string>
 ```
