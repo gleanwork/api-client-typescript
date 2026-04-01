@@ -16,6 +16,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const DocumentSpecUgcType2 = {
   Announcements: "ANNOUNCEMENTS",
   Answers: "ANSWERS",
+  Artifacts: "ARTIFACTS",
   Collections: "COLLECTIONS",
   Shortcuts: "SHORTCUTS",
   Chats: "CHATS",

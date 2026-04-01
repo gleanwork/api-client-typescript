@@ -20,10 +20,11 @@ test("Summarize Summarize", async () => {
     documentSpecs: [
       {
         ugcType: "ANNOUNCEMENTS",
-        ugcId: "<id>",
+        contentId: 758633,
       },
       {
-        id: "<id>",
+        ugcType: "ANNOUNCEMENTS",
+        contentId: 758633,
       },
     ],
   });
