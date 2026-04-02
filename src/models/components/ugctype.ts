@@ -20,6 +20,7 @@ export const UgcType = {
   PaperType: "PAPER_TYPE",
   PrismViewsType: "PRISM_VIEWS_TYPE",
   PromptTemplatesType: "PROMPT_TEMPLATES_TYPE",
+  PinsType: "PINS_TYPE",
   ScribesType: "SCRIBES_TYPE",
   ShortcutsType: "SHORTCUTS_TYPE",
   SlideType: "SLIDE_TYPE",
