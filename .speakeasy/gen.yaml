@@ -35,7 +35,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.14.14
+  version: 0.14.15
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -85,6 +85,7 @@ typescript:
   enumFormat: union
   envVarPrefix: GLEAN
   exportZodModelNamespace: false
+  fixEnumNameSanitization: false
   flatAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: body-first
