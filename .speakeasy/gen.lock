@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 7cfbc96a37c380a5aded568917db8adb
+  docChecksum: b07e1adf6a3fe531134f91a3ec3e8d6d
   docVersion: 0.9.0
-  speakeasyVersion: 1.759.3
-  generationVersion: 2.869.25
-  releaseVersion: 0.14.14
-  configChecksum: 11e2cb26e009b770b0461228ad30f3a7
+  speakeasyVersion: 1.761.1
+  generationVersion: 2.879.6
+  releaseVersion: 0.14.15
+  configChecksum: 9924839dc1a2191be4a915c48f4ae1bb
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: 7a45e76d-47f3-423e-be09-43e7683f1496
-  pristine_commit_hash: de249f28f56bbf3681c721fa5d3f79a0ca187b98
-  pristine_tree_hash: 088f2d44f2d956098dfbc11814540a650cec7f80
+  generation_id: f857e3e7-c1b0-4ec0-aaec-66a2a8fd8a1d
+  pristine_commit_hash: eddce608df6c67e87ef1f722d120123058429c88
+  pristine_tree_hash: ddf06250c66c09a8e3e2ebbc5c3ceb175035348a
 features:
   typescript:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.3
     constsAndDefaults: 0.1.14
-    core: 3.26.44
+    core: 3.26.46
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.1
@@ -27,7 +27,7 @@ features:
     envVarSecurityUsage: 0.1.2
     examples: 2.82.5
     flattening: 2.82.1
-    globalSecurity: 2.82.15
+    globalSecurity: 2.82.16
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.1
     globalServerURLs: 2.83.1
@@ -940,8 +940,8 @@ trackedFiles:
     pristine_git_object: c5720d9b1f558c62c3f78164826bdf8cfe28b67e
   docs/models/components/documentspecugctype2.md:
     id: 11271860508b
-    last_write_checksum: sha1:4af8b48f37ff2231be034dde8d12979e7fdad1fa
-    pristine_git_object: 246bc0b6c6d8e40cb1da9dd6df5706ee8b78d4f6
+    last_write_checksum: sha1:4b8e4daea50028ae15677d2646be14182819a800
+    pristine_git_object: 243be455d9a8f8b24519be8aa21cfe8d209685c2
   docs/models/components/documentspecunion.md:
     id: 06476a031e4a
     last_write_checksum: sha1:a949fef2bfc55fb7fc3f4617e7b554fdb604fa32
@@ -1128,8 +1128,8 @@ trackedFiles:
     pristine_git_object: 2d773c43730426ba979a2509498cc8367493d9e6
   docs/models/components/feedrequestcategory.md:
     id: 801f1c3c64d4
-    last_write_checksum: sha1:68744f2e9998192ba3bcfdc792e4dd94a79dfada
-    pristine_git_object: 92cee0f84a5277f253c4a4d79b1aa9310df5f4e3
+    last_write_checksum: sha1:8419341f94a7152d33800db36e908530ca3a8d88
+    pristine_git_object: 0cc0b1f71e2066ea3531052342f790e8fddecaa6
   docs/models/components/feedrequestoptions.md:
     id: 76c5e4412304
     last_write_checksum: sha1:9d026d140bef548159ac576066007ccc73ab5cee
@@ -1140,12 +1140,12 @@ trackedFiles:
     pristine_git_object: a10a337076983a0b87478440b5dd059e3f28be17
   docs/models/components/feedresult.md:
     id: c3084f56c0cc
-    last_write_checksum: sha1:609554e2c046f36e9a289481eb5f1a9dadc8f03e
-    pristine_git_object: 00f35b6d03559c90ce17eb67caeb99158dc8567b
+    last_write_checksum: sha1:34cdb73e2a540d49f6d85a02a40ae302fc8a985e
+    pristine_git_object: df1ceb6af9e18b38a8aeb02ecb3d822f05ea5e34
   docs/models/components/feedresultcategory.md:
     id: 94c0249352b4
-    last_write_checksum: sha1:cb8164e25b2b11ca7edcfd26b0bba4fce449b910
-    pristine_git_object: be760ebefba9d20243d727a1f0854ec50e8363ae
+    last_write_checksum: sha1:7d70c08a6e042ee9f3652ca2cd8f517a5d940b2d
+    pristine_git_object: bcb075edbac8e067c6e3c59aaf406721e1ffb686
   docs/models/components/fieldscope.md:
     id: 23caffb85bb7
     last_write_checksum: sha1:b90b2a0fba0f78b414366202e56a1637a8a8793f
@@ -1460,8 +1460,8 @@ trackedFiles:
     pristine_git_object: 5fcd11f6ebdaa6b2bea337b96183093a5bbaf40b
   docs/models/components/justificationtype.md:
     id: 5a15880767a5
-    last_write_checksum: sha1:13736049be6d7908dd08147bf3c6818c0baae407
-    pristine_git_object: e6919254163bf85288aa02b158a97497438d4fae
+    last_write_checksum: sha1:e25cbae8b8ab5557c546f314dc7893227def5a25
+    pristine_git_object: f883e89bf32fece65e679136db29ba11fe919b99
   docs/models/components/knowledgetype.md:
     id: cf27a7cefa69
     last_write_checksum: sha1:6e94f203bb1d3a0d12f0bdb0119bf36301536e8d
@@ -2144,8 +2144,8 @@ trackedFiles:
     pristine_git_object: a1424a959193ca0c3ed2b8904108c878b78e9653
   docs/models/components/ugctype.md:
     id: 40fa5e032f80
-    last_write_checksum: sha1:022a458a0996d82192e164fcef94bb8f6a8eff78
-    pristine_git_object: fb7970920a4f6caa216a29586356783de10f755b
+    last_write_checksum: sha1:4d259aa100881ff13bb560d7f01ae0c2a9c433a8
+    pristine_git_object: 61e40fba148667b19f01cfe3a82336509bfe9863
   docs/models/components/uiconfig.md:
     id: 755fbd873311
     last_write_checksum: sha1:e4c21e972dd18f962b16321f2f7f61eaf1617cd5
@@ -2720,8 +2720,8 @@ trackedFiles:
     pristine_git_object: 4377e4a52db3399ce1bee65a5b61405960f7758c
   docs/sdks/indexingshortcuts/README.md:
     id: 5cf29bd168af
-    last_write_checksum: sha1:b8ee3a49d845ebd9bb6d34bd4a29f98d4a3a6ebe
-    pristine_git_object: 6a50c6e35e7c8bffdabb5b0254aee595c75b8afb
+    last_write_checksum: sha1:399a7345328304bce3b1c223c5bbe3be720d60d2
+    pristine_git_object: 45fd17ff1d556f31409732785effd1076a6646c2
   docs/sdks/insights/README.md:
     id: cc2be3db9032
     last_write_checksum: sha1:4e9ea37fab38465fd13284f52e41e4c84ee7989f
@@ -2792,12 +2792,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:80a72024adf8ab7c37328cd6fa7b910d2733ce16
-    pristine_git_object: 13b09db4c13526b31727fa687ea02f806c6e0822
+    last_write_checksum: sha1:1b6a6bb05de394b4de95ef4793a4e76ddfef445c
+    pristine_git_object: 66d0123225882652a26824e627c3bc52da0abf90
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:ed5e2742f6117bd73f648f2333ec64e514ba08e9
-    pristine_git_object: 6523abc60cd510451a1863e4007b9a9bb99f12f2
+    last_write_checksum: sha1:e418bb48294165c83c7cc5a020dff59788930c38
+    pristine_git_object: 67cf88bb7f2c88cb088bf351271c9d61b5774dc1
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -2896,8 +2896,8 @@ trackedFiles:
     pristine_git_object: d252821b825c62856886e3ab9287181d7ef7f9de
   src/__tests__/messages.test.ts:
     id: 39e293f09219
-    last_write_checksum: sha1:c78b09c09e64da0655a3e0ecbadabe82980ef7d1
-    pristine_git_object: f390543460d7bd3c678c17579e755b9e06faac16
+    last_write_checksum: sha1:614ea7fd801e89ad1a53d01b4b5129e9501e54b2
+    pristine_git_object: 12904134bbdc280929babb05d7977adda65fc58c
   src/__tests__/mockserver/.gitignore:
     id: 4a7fc421b6b6
     last_write_checksum: sha1:228e1b05712a973948fd771323a2140a3b355ff4
@@ -3196,8 +3196,8 @@ trackedFiles:
     pristine_git_object: 2e612d4143e02dd5e90750945b781302230969b3
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1getchat.go:
     id: 4a9c64bf3a68
-    last_write_checksum: sha1:bd92836a7e38740708f76f52b19704fda11d9ab7
-    pristine_git_object: a7e16d16bf67e08174b9a7ec990934165ce72f6a
+    last_write_checksum: sha1:2766e6a943d9c18dc4d8a7f9e3bc7122a76bde0c
+    pristine_git_object: e2243868c4ccfbb9c80e49f9ca99c92735f4978f
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1getchatapplication.go:
     id: 069e6f3638f9
     last_write_checksum: sha1:fe7b6e94356f030628f826fdaa494f1f87bcba8a
@@ -4024,8 +4024,8 @@ trackedFiles:
     pristine_git_object: 5267419a1df5b3ce438034eebfdaa5c6dfdf9be0
   src/__tests__/mockserver/internal/sdk/models/components/documentspecunion.go:
     id: aabaf7869446
-    last_write_checksum: sha1:74190c973ecfbef298f8907d07fb138832e22c2a
-    pristine_git_object: 93ed1e00032e4c302c7fc60b64dd1f898a12e055
+    last_write_checksum: sha1:bf37c6faf195ec2d55a23c60a5f283040baccda6
+    pristine_git_object: a7fc72fb7f38b46e6a41234792a71be0ab2e475c
   src/__tests__/mockserver/internal/sdk/models/components/documentstatusresponse.go:
     id: 284217d927e5
     last_write_checksum: sha1:7702181dc8cb3b345dcf511c3a6cd4cbb7b97c11
@@ -4160,12 +4160,12 @@ trackedFiles:
     pristine_git_object: eaa87413391e44f74a2647a75d861904a051a1af
   src/__tests__/mockserver/internal/sdk/models/components/feedentry.go:
     id: 809547cb5c68
-    last_write_checksum: sha1:0b9a2e607e266ede07bb4acb710ee86608a146ae
-    pristine_git_object: 027f31b1704ba630461eb294e5dcb3d65c0af51d
+    last_write_checksum: sha1:06b2d079c198e9a0c07720826a2a0ff05f39952a
+    pristine_git_object: 35caf9b999298966dfb53f369392bc06baa56aa7
   src/__tests__/mockserver/internal/sdk/models/components/feedrequest.go:
     id: f7bd2c505cff
-    last_write_checksum: sha1:24823ca4dde241d1766d358318fe08e88f956f53
-    pristine_git_object: f696be78196e2a50062f5662ce3e8dffdd4e1111
+    last_write_checksum: sha1:f8759595e33cc47da2f0856e727dc51e8ba6eacb
+    pristine_git_object: e003cc2e14fa4959d165646bf40e5866a32a0ab4
   src/__tests__/mockserver/internal/sdk/models/components/feedrequestoptions.go:
     id: d6a1872334df
     last_write_checksum: sha1:1ab14ce889dc4f6a8cd018f5ef731ee05e3c4f3a
@@ -4176,8 +4176,8 @@ trackedFiles:
     pristine_git_object: c92a344643e978700da31b2f24afaf9d14fd8d69
   src/__tests__/mockserver/internal/sdk/models/components/feedresult.go:
     id: 90772ce61c8a
-    last_write_checksum: sha1:497fdf4405a630caaf0757befac063e4f834e020
-    pristine_git_object: cfe619a4b79d674f8985dfab0c976e4b8f198197
+    last_write_checksum: sha1:5b2cb670336d6f1a254c2cd0cde972f4c194c79e
+    pristine_git_object: 4c0e58ed54e7175e82dd5b687789c603303305d0
   src/__tests__/mockserver/internal/sdk/models/components/followupaction.go:
     id: b87db474fc6a
     last_write_checksum: sha1:94c11e6ccb0d238213354241dff0baa101808b64
@@ -4932,8 +4932,8 @@ trackedFiles:
     pristine_git_object: 59713e6b8de65e1132c4a728f2baaf46d056f406
   src/__tests__/mockserver/internal/sdk/models/components/ugctype.go:
     id: 5691e3ad0390
-    last_write_checksum: sha1:94df8c29e1b39cc7afdc007026a0c58453a959c7
-    pristine_git_object: 4d3d36e00c80f053673d6b288e5c0085fd74ef48
+    last_write_checksum: sha1:b094104d7f1f4d6b999f70164375eb78ff3b6c2b
+    pristine_git_object: 812177c7a2e09fae15d164d183765f623531db64
   src/__tests__/mockserver/internal/sdk/models/components/unauthorizeddatasourceinstance.go:
     id: 1748f7123a86
     last_write_checksum: sha1:af62a8cdb037e60d924899d3f719369d39c52d3e
@@ -5664,8 +5664,8 @@ trackedFiles:
     pristine_git_object: c747483d172c06689dc66e150b2fbf704b483842
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:72c6da2301308f2656c622c1b72a7cc7da065a17
-    pristine_git_object: 89e26dc876b7a7aae545f8fc09ac6e29317a3a92
+    last_write_checksum: sha1:db7535a40dd5b6bd52eb7feed8c3f99f1891de6a
+    pristine_git_object: ea417cd5a96534dd6d9d05de1e7a816c18c99e8e
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:3a38647391f52221c009a9273eebf90793b3d430
@@ -6144,8 +6144,8 @@ trackedFiles:
     pristine_git_object: ba608756dbcc4fc7c251d07bdefa26614a73eb15
   src/funcs/indexingShortcutsBulkIndex.ts:
     id: 4f1ca6762061
-    last_write_checksum: sha1:999e953174197b3d410b0198918d769f7643a747
-    pristine_git_object: 173ca702bf985c16436fcd366411fbb969db0f8f
+    last_write_checksum: sha1:8d74c1c0b67857b1d010dbf471c690cf15fd020a
+    pristine_git_object: 5992d8e04660c91688ca89283b409385de1fc731
   src/funcs/indexingShortcutsUpload.ts:
     id: d3415b0af8c7
     last_write_checksum: sha1:fd60f647b2f2ce03a4615ce809653dbf177ad077
@@ -6172,8 +6172,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:61b677c78ddaad068327b499e2d6d2f28882783b
-    pristine_git_object: ab89c10830cf0eb10a9728126662a9ecf8ea0c19
+    last_write_checksum: sha1:790306949f6705053e325ffbfddb4821884be933
+    pristine_git_object: dc4bd7e7cbd8e8b16e1ba5d05da3d2973ce408d0
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:eaac763b22717206a6199104e0403ed17a4e2711
@@ -6224,8 +6224,8 @@ trackedFiles:
     pristine_git_object: 8de4f4247f11005cb8f685b74712f635ad385793
   src/lib/security.ts:
     id: 0502afa7922e
-    last_write_checksum: sha1:28f3c7b97248348998154b7068265458ad521451
-    pristine_git_object: 12dacc27d43196e520e42113416b605fb7cb5773
+    last_write_checksum: sha1:ce5bbb9ead63d46dd17af6d34b8aeee5dc31c445
+    pristine_git_object: 0759d2c9424b30d64ad2e104f92122bc44595b8d
   src/lib/url.ts:
     id: b0057e24ed76
     last_write_checksum: sha1:70b18fda795b71861339376c441d5605ad6f6594
@@ -6912,8 +6912,8 @@ trackedFiles:
     pristine_git_object: 4f96bea556ac353f652cb89b8714dfb2852edae5
   src/models/components/documentspecunion.ts:
     id: 53e7557eada4
-    last_write_checksum: sha1:4a6872064a335b48f4f52c358b2f7a96cef4fb6a
-    pristine_git_object: 719af6f795de1590fbcb9e96f59057bcbf6b25b2
+    last_write_checksum: sha1:f2bd965b7eb9e3548f5c1b9ddf29241100a011a1
+    pristine_git_object: 4cf9bff47e3f8aa9f787740ee198049988527562
   src/models/components/documentstatusresponse.ts:
     id: ffaad8fafd42
     last_write_checksum: sha1:f149c3260118467fa2e2d12f210f72588ed34b15
@@ -7048,12 +7048,12 @@ trackedFiles:
     pristine_git_object: 3fb6f14548eb0f546d0fdfcbac4ea9af834b9687
   src/models/components/feedentry.ts:
     id: 47faae0fec45
-    last_write_checksum: sha1:a95a89842348ab9301c8441b8a9195e34bfb934f
-    pristine_git_object: f3d9bdd45906f84801a1dc97a6791ff1226464ca
+    last_write_checksum: sha1:2ba82e1ba8e593174e7e59e02adb9bf1a0ae33fc
+    pristine_git_object: d0d0d3391918f9c3b344b71cbedee025f975964d
   src/models/components/feedrequest.ts:
     id: e18410d4ffd4
-    last_write_checksum: sha1:86d1adb8a0f1af83074419eb8aa7349af8b490a4
-    pristine_git_object: 8e1126401fef93658248f965455704104e48c432
+    last_write_checksum: sha1:cd8d79186f8b7335bde7f4cd642e6262515a7cfc
+    pristine_git_object: dceef2d0216317f109df51970423794da7765aee
   src/models/components/feedrequestoptions.ts:
     id: 684c93eb4ff3
     last_write_checksum: sha1:339180c553629e9c992c1f5819612effd7d692e7
@@ -7064,8 +7064,8 @@ trackedFiles:
     pristine_git_object: ec512af99670430c927b57b2fcb360c620f56cf7
   src/models/components/feedresult.ts:
     id: 94d90ce484f6
-    last_write_checksum: sha1:a559f2e2ce9e174cc32d87ba1b28c92dcf9ead7b
-    pristine_git_object: be7a97e507a32fe6c88aa777e03d3adbae73a39c
+    last_write_checksum: sha1:0803ba152a4fe0e663960e53571455e90669eb46
+    pristine_git_object: aacdda155a8f7f7ac6d0b1e4a5b0358bc6cda153
   src/models/components/followupaction.ts:
     id: 0b8a71fb6ea2
     last_write_checksum: sha1:ea9d1e5a53384164dc8d63d3ff831a332a5f2fed
@@ -7820,8 +7820,8 @@ trackedFiles:
     pristine_git_object: bf66f57a01c6a0450d85b9d50feba3c5457b16d8
   src/models/components/ugctype.ts:
     id: b0a3f56ca4ad
-    last_write_checksum: sha1:0aea74e437bd34239b184ddf8363be41021d00f6
-    pristine_git_object: 83cc4ce7edc07950d7a7af148ebec619d99c6220
+    last_write_checksum: sha1:90447a878a406e0c8a9bf5e0a7f69e665f29ae75
+    pristine_git_object: 59e242df9cef0c8d60c86d61d1ae4c9e6ee92b7c
   src/models/components/unauthorizeddatasourceinstance.ts:
     id: 8eb114ca7c88
     last_write_checksum: sha1:a756d82561935bd60e6390068a436813b11dfb74
@@ -8812,8 +8812,8 @@ trackedFiles:
     pristine_git_object: 14eea45ed564a3557fe2c3971a97ad3611b25bba
   src/react-query/indexingShortcutsBulkIndex.ts:
     id: 82222586049f
-    last_write_checksum: sha1:8cb97a0494400703afa996db7d4c09fa89bc9562
-    pristine_git_object: dc7920e26872ca9e58ac0d6bd1c172bf0699c3f0
+    last_write_checksum: sha1:43242d837dbe6f7915fcfe63a7fc69a92aeb7947
+    pristine_git_object: d501da5bfaed66735ed20660c174890567d62c5d
   src/react-query/indexingShortcutsUpload.ts:
     id: f539f36cd532
     last_write_checksum: sha1:91e8ee4d5848461ccc058920574bd1658c96a7da
@@ -8912,8 +8912,8 @@ trackedFiles:
     pristine_git_object: 688d1d540b5afcd5fb2e4b2155e7ac1ac10e0543
   src/sdk/indexingshortcuts.ts:
     id: 9aebdb10dd4b
-    last_write_checksum: sha1:879c11f76ca0797510b9b06ac8a932fd473e8ebc
-    pristine_git_object: 5fccd6d66d424d085321387c010e16a46300e436
+    last_write_checksum: sha1:10740d2d6897236d6997b2116ec4193542dd11ac
+    pristine_git_object: 2965bd620e699a5f3787ec69dacd346b83e338a3
   src/sdk/insights.ts:
     id: 17a3c078d231
     last_write_checksum: sha1:8e7b1dde7affb966d9aa4f7233b2aa44da32ec53
@@ -9927,7 +9927,7 @@ generatedTests:
   checkdatasourceauth: "2026-02-19T15:51:26Z"
   getDatasourceInstanceConfiguration: "2026-03-17T16:12:28Z"
   updateDatasourceInstanceConfiguration: "2026-03-17T16:12:28Z"
-releaseNotes: "## Typescript SDK Changes:\n* `glean.client.chat.create()`: \n  *  `request.chatRequest.messages[].citations[].sourceFile.metadata.status.enum(partiallyProcessed)` **Added**\n  *  `response.messages[].citations[].sourceFile.metadata.status.enum(partiallyProcessed)` **Added**\n* `glean.client.chat.retrieve()`:  `response.chatResult.chat.messages[].citations[].sourceFile.metadata.status.enum(partiallyProcessed)` **Added**\n* `glean.client.chat.uploadFiles()`:  `response.files[].metadata.status.enum(partiallyProcessed)` **Added**\n* `glean.client.chat.retrieveFiles()`:  `response.files.Map<ChatFile>.metadata.status.enum(partiallyProcessed)` **Added**\n* `glean.client.chat.createStream()`: \n  *  `request.chatRequest.messages[].citations[].sourceFile.metadata.status.enum(partiallyProcessed)` **Added**\n* `glean.indexing.documents.addOrUpdate()`: \n  *  `request.document.nativeAppUrl` **Added**\n* `glean.indexing.documents.index()`: \n  *  `request.documents[].nativeAppUrl` **Added**\n* `glean.indexing.documents.bulkIndex()`: \n  *  `request.documents[].nativeAppUrl` **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `glean.client.announcements.create()`: \n  *  `request.createAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.announcements.update()`: \n  *  `request.updateAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.answers.create()`: \n  *  `request.createAnswerRequest.data.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.answers.update()`: \n  *  `request.editAnswerRequest.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.answers.retrieve()`:  `response.answerResult.answer.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.answers.list()`:  `response.answerResults[].answer.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.chat.create()`: \n  *  `request.chatRequest.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.chat.retrieve()`:  `response.chatResult.chat.createdBy.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.chat.list()`:  `response.chatResults[].chat.createdBy.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.chat.createStream()`: \n  *  `request.chatRequest.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.addItems()`:  `response.collection.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.create()`: \n  *  `request.createCollectionRequest.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.union(class (0)).collection.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.deleteItem()`:  `response.collection.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.update()`: \n  *  `request.editCollectionRequest.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.updateItem()`:  `response.collection.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.retrieve()`:  `response.collection.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.collections.list()`:  `response.collections[].addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.documents.retrieve()`: \n  *  `request.getDocumentsRequest.documentSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.documents.Map<DocumentOrError>.union(Document).metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.documents.retrieveByFacets()`:  `response.documents[].metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.documents.summarize()`: \n  *  `request.summarizeRequest.documentSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.insights.retrieve()`:  `response.gleanAssist.activityInsights[].user.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.messages.retrieve()`:  `response.searchResponse.results[].structuredResults[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.pins.update()`:  `response.attribution.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.pins.retrieve()`:  `response.pin.attribution.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.pins.list()`:  `response.pins[].attribution.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.pins.create()`:  `response.attribution.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.search.queryAsAdmin()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.search.autocomplete()`:  `response.results[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.search.retrieveFeed()`: \n  *  `request.feedRequest.categories[]` **Changed**\n  *  `response.results[]` **Changed**\n* `glean.client.search.recommendations()`: \n  *  `request.recommendationsRequest.sourceDocument.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.search.query()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.author.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.entities.list()`:  `response.results[].relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.entities.readPeople()`:  `response.results[].relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.shortcuts.create()`: \n  *  `request.createShortcutRequest.data.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.shortcut.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.shortcuts.retrieve()`:  `response.shortcut.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.shortcuts.list()`:  `response.shortcuts[].addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.shortcuts.update()`: \n  *  `request.updateShortcutRequest.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n  *  `response.shortcut.addedRoles[].sourceDocumentSpec.union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.verification.addReminder()`:  `response.metadata.lastVerifier.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.verification.list()`:  `response.documents[].metadata.lastVerifier.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n* `glean.client.verification.verify()`:  `response.metadata.lastVerifier.relatedDocuments[].querySuggestion.requestOptions.inclusions.containerSpecs[].union(class (3)).ugcType.enum(artifacts)` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json

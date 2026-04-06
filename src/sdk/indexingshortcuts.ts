@@ -14,7 +14,7 @@ export class IndexingShortcuts extends ClientSDK {
    * Bulk index external shortcuts
    *
    * @remarks
-   * Replaces all the currently indexed shortcuts using paginated batch API calls. Note that this endpoint is used for indexing shortcuts not hosted by Glean. If you want to upload shortcuts that would be hosted by Glean, please use the `/uploadshortcuts` endpoint. For information on what you can do with Golinks, which are Glean-hosted shortcuts, please refer to [this](https://help.glean.com/en/articles/5628838-how-go-links-work) page.
+   * Replaces all the currently indexed shortcuts using paginated batch API calls. Note that this endpoint is used for indexing shortcuts not hosted by Glean. If you want to upload shortcuts that would be hosted by Glean, please use the `/uploadshortcuts` endpoint. For information on what you can do with Golinks, which are Glean-hosted shortcuts, please refer to [this](https://docs.glean.com/user-guide/knowledge/go-links/how-go-links-work) page.
    */
   async bulkIndex(
     request: components.BulkIndexShortcutsRequest,
