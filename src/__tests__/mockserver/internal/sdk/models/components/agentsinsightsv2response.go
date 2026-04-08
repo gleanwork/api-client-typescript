@@ -16,9 +16,11 @@ type AgentsInsightsV2Response struct {
 	TopAgentsInsights               []PerAgentInsight                `json:"topAgentsInsights,omitempty"`
 	AgentsUsageByDepartmentInsights []AgentsUsageByDepartmentInsight `json:"agentsUsageByDepartmentInsights,omitempty"`
 	AgentUsersInsights              []AgentUsersInsight              `json:"agentUsersInsights,omitempty"`
-	DailyAgentRunsTimeseries        *LabeledCountInfo                `json:"dailyAgentRunsTimeseries,omitempty"`
-	UpvotesTimeseries               *LabeledCountInfo                `json:"upvotesTimeseries,omitempty"`
-	DownvotesTimeseries             *LabeledCountInfo                `json:"downvotesTimeseries,omitempty"`
+	// Insights for agents time saved over the specified time period.
+	AgentsTimeSavedInsights  []AgentsTimeSavedInsight `json:"agentsTimeSavedInsights,omitempty"`
+	DailyAgentRunsTimeseries *LabeledCountInfo        `json:"dailyAgentRunsTimeseries,omitempty"`
+	UpvotesTimeseries        *LabeledCountInfo        `json:"upvotesTimeseries,omitempty"`
+	DownvotesTimeseries      *LabeledCountInfo        `json:"downvotesTimeseries,omitempty"`
 }
 
 func (o *AgentsInsightsV2Response) GetMonthlyActiveUsers() *int64 {
@@ -82,6 +84,13 @@ func (o *AgentsInsightsV2Response) GetAgentUsersInsights() []AgentUsersInsight {
 		return nil
 	}
 	return o.AgentUsersInsights
+}
+
+func (o *AgentsInsightsV2Response) GetAgentsTimeSavedInsights() []AgentsTimeSavedInsight {
+	if o == nil {
+		return nil
+	}
+	return o.AgentsTimeSavedInsights
 }
 
 func (o *AgentsInsightsV2Response) GetDailyAgentRunsTimeseries() *LabeledCountInfo {

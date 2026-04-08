@@ -34,6 +34,16 @@ let value: AgentsInsightsV2Response = {
       },
     },
   ],
+  agentsTimeSavedInsights: [
+    {
+      icon: {
+        color: "#343CED",
+        key: "person_icon",
+        iconType: "GLYPH",
+        name: "user",
+      },
+    },
+  ],
 };
 ```
 
@@ -50,6 +60,7 @@ let value: AgentsInsightsV2Response = {
 | `topAgentsInsights`                                                                                      | [components.PerAgentInsight](../../models/components/peragentinsight.md)[]                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `agentsUsageByDepartmentInsights`                                                                        | [components.AgentsUsageByDepartmentInsight](../../models/components/agentsusagebydepartmentinsight.md)[] | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `agentUsersInsights`                                                                                     | [components.AgentUsersInsight](../../models/components/agentusersinsight.md)[]                           | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `agentsTimeSavedInsights`                                                                                | [components.AgentsTimeSavedInsight](../../models/components/agentstimesavedinsight.md)[]                 | :heavy_minus_sign:                                                                                       | Insights for agents time saved over the specified time period.                                           |
 | `dailyAgentRunsTimeseries`                                                                               | [components.LabeledCountInfo](../../models/components/labeledcountinfo.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `upvotesTimeseries`                                                                                      | [components.LabeledCountInfo](../../models/components/labeledcountinfo.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `downvotesTimeseries`                                                                                    | [components.LabeledCountInfo](../../models/components/labeledcountinfo.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
