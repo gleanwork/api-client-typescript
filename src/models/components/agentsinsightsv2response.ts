@@ -8,6 +8,10 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AgentsTimeSavedInsight,
+  AgentsTimeSavedInsight$inboundSchema,
+} from "./agentstimesavedinsight.js";
+import {
   AgentsUsageByDepartmentInsight,
   AgentsUsageByDepartmentInsight$inboundSchema,
 } from "./agentsusagebydepartmentinsight.js";
@@ -45,7 +49,14 @@ export type AgentsInsightsV2Response = {
     | Array<AgentsUsageByDepartmentInsight>
     | undefined;
   agentUsersInsights?: Array<AgentUsersInsight> | undefined;
+  /**
+   * Insights for agents time saved over the specified time period.
+   */
+  agentsTimeSavedInsights?: Array<AgentsTimeSavedInsight> | undefined;
   dailyAgentRunsTimeseries?: LabeledCountInfo | undefined;
+  successfulRunsTimeseries?: LabeledCountInfo | undefined;
+  failedRunsTimeseries?: LabeledCountInfo | undefined;
+  pausedRunsTimeseries?: LabeledCountInfo | undefined;
   upvotesTimeseries?: LabeledCountInfo | undefined;
   downvotesTimeseries?: LabeledCountInfo | undefined;
 };
@@ -67,7 +78,12 @@ export const AgentsInsightsV2Response$inboundSchema: z.ZodType<
     AgentsUsageByDepartmentInsight$inboundSchema,
   ).optional(),
   agentUsersInsights: z.array(AgentUsersInsight$inboundSchema).optional(),
+  agentsTimeSavedInsights: z.array(AgentsTimeSavedInsight$inboundSchema)
+    .optional(),
   dailyAgentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  successfulRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  failedRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  pausedRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
   upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
   downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
 });
