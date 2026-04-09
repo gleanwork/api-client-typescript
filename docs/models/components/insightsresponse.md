@@ -66,6 +66,16 @@ let value: InsightsResponse = {
         },
       },
     ],
+    agentsTimeSavedInsights: [
+      {
+        icon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
+      },
+    ],
   },
 };
 ```
