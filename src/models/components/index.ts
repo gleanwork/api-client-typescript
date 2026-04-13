@@ -159,6 +159,7 @@ export * from "./dlpconfig.js";
 export * from "./dlpexportfindingsrequest.js";
 export * from "./dlpfindingfilter.js";
 export * from "./dlpfrequency.js";
+export * from "./dlpissuestatus.js";
 export * from "./dlpperson.js";
 export * from "./dlppersonmetadata.js";
 export * from "./dlpreport.js";
