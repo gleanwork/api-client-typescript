@@ -27,6 +27,10 @@ export type Workflow = {
    * Server Unix timestamp of the last update time.
    */
   lastUpdateTimestamp?: number | undefined;
+  /**
+   * Server Unix timestamp of the last time the draft was saved.
+   */
+  lastDraftSavedAt?: number | undefined;
   lastUpdatedBy?: Person | undefined;
   permissions?: ObjectPermissions | undefined;
   /**
@@ -45,6 +49,7 @@ export const Workflow$inboundSchema: z.ZodType<
   author: Person$inboundSchema.optional(),
   createTimestamp: z.number().int().optional(),
   lastUpdateTimestamp: z.number().int().optional(),
+  lastDraftSavedAt: z.number().int().optional(),
   lastUpdatedBy: Person$inboundSchema.optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
   id: z.string().optional(),
