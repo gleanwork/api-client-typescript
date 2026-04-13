@@ -8,6 +8,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DlpIssueStatus,
+  DlpIssueStatus$inboundSchema,
+  DlpIssueStatus$outboundSchema,
+} from "./dlpissuestatus.js";
+import {
   DlpSeverity,
   DlpSeverity$inboundSchema,
   DlpSeverity$outboundSchema,
@@ -31,6 +36,7 @@ export type DlpFindingFilter = {
    */
   severity?: DlpSeverity | undefined;
   documentSeverity?: Array<DlpSeverity> | undefined;
+  statuses?: Array<DlpIssueStatus> | undefined;
   timeRange?: TimeRangeFilter | undefined;
   archived?: boolean | undefined;
 };
@@ -49,6 +55,7 @@ export const DlpFindingFilter$inboundSchema: z.ZodType<
   documentIds: z.array(z.string()).optional(),
   severity: DlpSeverity$inboundSchema.optional(),
   documentSeverity: z.array(DlpSeverity$inboundSchema).optional(),
+  statuses: z.array(DlpIssueStatus$inboundSchema).optional(),
   timeRange: TimeRangeFilter$inboundSchema.optional(),
   archived: z.boolean().optional(),
 });
@@ -62,6 +69,7 @@ export type DlpFindingFilter$Outbound = {
   documentIds?: Array<string> | undefined;
   severity?: string | undefined;
   documentSeverity?: Array<string> | undefined;
+  statuses?: Array<string> | undefined;
   timeRange?: TimeRangeFilter$Outbound | undefined;
   archived?: boolean | undefined;
 };
@@ -80,6 +88,7 @@ export const DlpFindingFilter$outboundSchema: z.ZodType<
   documentIds: z.array(z.string()).optional(),
   severity: DlpSeverity$outboundSchema.optional(),
   documentSeverity: z.array(DlpSeverity$outboundSchema).optional(),
+  statuses: z.array(DlpIssueStatus$outboundSchema).optional(),
   timeRange: TimeRangeFilter$outboundSchema.optional(),
   archived: z.boolean().optional(),
 });
