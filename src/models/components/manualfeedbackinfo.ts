@@ -46,6 +46,10 @@ export type ManualFeedbackInfoSource = ClosedEnum<
 >;
 
 export const Issue = {
+  AgentCanvasFailed: "AGENT_CANVAS_FAILED",
+  AgentClarifyingQuestions: "AGENT_CLARIFYING_QUESTIONS",
+  AgentIntermediateStepsFailed: "AGENT_INTERMEDIATE_STEPS_FAILED",
+  AgentToolCallFailed: "AGENT_TOOL_CALL_FAILED",
   InaccurateResponse: "INACCURATE_RESPONSE",
   IncompleteOrNoAnswer: "INCOMPLETE_OR_NO_ANSWER",
   IncorrectCitation: "INCORRECT_CITATION",
