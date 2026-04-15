@@ -1,9 +1,9 @@
-speakeasyVersion: 1.761.3
+speakeasyVersion: 1.761.5
 sources:
     Glean API:
         sourceNamespace: glean-api-specs
-        sourceRevisionDigest: sha256:80cbb2eee9796c0062a83bd51bf9d13e17351d5cdbbbe91f3ae3be634e32bc45
-        sourceBlobDigest: sha256:76a26d743b47a99280d23ce2cb244ca86e29e6d1627cedc1c2cbb1435832a2f2
+        sourceRevisionDigest: sha256:9e0b4fca588f78b58f6328e574fbca05e933d4154bba67ec143ad776d8c8088d
+        sourceBlobDigest: sha256:b9465f539f87ad950381cb10d709405eb1be8b15b32153fcc868a7f0a621db39
         tags:
             - latest
     Glean Client API:
@@ -17,10 +17,10 @@ targets:
     glean:
         source: Glean API
         sourceNamespace: glean-api-specs
-        sourceRevisionDigest: sha256:80cbb2eee9796c0062a83bd51bf9d13e17351d5cdbbbe91f3ae3be634e32bc45
-        sourceBlobDigest: sha256:76a26d743b47a99280d23ce2cb244ca86e29e6d1627cedc1c2cbb1435832a2f2
+        sourceRevisionDigest: sha256:9e0b4fca588f78b58f6328e574fbca05e933d4154bba67ec143ad776d8c8088d
+        sourceBlobDigest: sha256:b9465f539f87ad950381cb10d709405eb1be8b15b32153fcc868a7f0a621db39
         codeSamplesNamespace: glean-api-specs-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:16dfdaef581d5f591535ace734ed135f2ef7e0f22e439f97745bc19ad100d599
+        codeSamplesRevisionDigest: sha256:6affcfb4473a9b4b4e2421ebd5c67e78d4cdc300d741f882957a7268608ede51
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

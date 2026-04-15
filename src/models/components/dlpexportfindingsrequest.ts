@@ -10,11 +10,16 @@ import {
   DlpFindingFilter$Outbound,
   DlpFindingFilter$outboundSchema,
 } from "./dlpfindingfilter.js";
+import {
+  DlpIssueFilter,
+  DlpIssueFilter$Outbound,
+  DlpIssueFilter$outboundSchema,
+} from "./dlpissuefilter.js";
 
 /**
  * The type of export to perform
  */
-export const ExportType = {
+export const DlpExportFindingsRequestExportType = {
   Findings: "FINDINGS",
   Documents: "DOCUMENTS",
   Issues: "ISSUES",
@@ -22,7 +27,9 @@ export const ExportType = {
 /**
  * The type of export to perform
  */
-export type ExportType = ClosedEnum<typeof ExportType>;
+export type DlpExportFindingsRequestExportType = ClosedEnum<
+  typeof DlpExportFindingsRequestExportType
+>;
 
 /**
  * Controls which fields to include in the export
@@ -41,8 +48,12 @@ export type DlpExportFindingsRequest = {
   /**
    * The type of export to perform
    */
-  exportType?: ExportType | undefined;
+  exportType?: DlpExportFindingsRequestExportType | undefined;
   filter?: DlpFindingFilter | undefined;
+  /**
+   * Filter for DLP issues. Includes document-level filters and issue-specific filters.
+   */
+  issueFilter?: DlpIssueFilter | undefined;
   /**
    * The name of the file to export the findings to
    */
@@ -58,8 +69,9 @@ export type DlpExportFindingsRequest = {
 };
 
 /** @internal */
-export const ExportType$outboundSchema: z.ZodNativeEnum<typeof ExportType> = z
-  .nativeEnum(ExportType);
+export const DlpExportFindingsRequestExportType$outboundSchema: z.ZodNativeEnum<
+  typeof DlpExportFindingsRequestExportType
+> = z.nativeEnum(DlpExportFindingsRequestExportType);
 
 /** @internal */
 export const FieldScope$outboundSchema: z.ZodNativeEnum<typeof FieldScope> = z
@@ -69,6 +81,7 @@ export const FieldScope$outboundSchema: z.ZodNativeEnum<typeof FieldScope> = z
 export type DlpExportFindingsRequest$Outbound = {
   exportType?: string | undefined;
   filter?: DlpFindingFilter$Outbound | undefined;
+  issueFilter?: DlpIssueFilter$Outbound | undefined;
   fileName?: string | undefined;
   fieldScope?: string | undefined;
   fieldsToExclude?: Array<string> | undefined;
@@ -80,8 +93,9 @@ export const DlpExportFindingsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DlpExportFindingsRequest
 > = z.object({
-  exportType: ExportType$outboundSchema.optional(),
+  exportType: DlpExportFindingsRequestExportType$outboundSchema.optional(),
   filter: DlpFindingFilter$outboundSchema.optional(),
+  issueFilter: DlpIssueFilter$outboundSchema.optional(),
   fileName: z.string().optional(),
   fieldScope: FieldScope$outboundSchema.optional(),
   fieldsToExclude: z.array(z.string()).optional(),

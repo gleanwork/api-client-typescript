@@ -13,7 +13,24 @@ import {
   DlpFindingFilter,
   DlpFindingFilter$inboundSchema,
 } from "./dlpfindingfilter.js";
+import {
+  DlpIssueFilter,
+  DlpIssueFilter$inboundSchema,
+} from "./dlpissuefilter.js";
 import { DlpPerson, DlpPerson$inboundSchema } from "./dlpperson.js";
+
+/**
+ * The type of export to perform
+ */
+export const ExportInfoExportType = {
+  Findings: "FINDINGS",
+  Documents: "DOCUMENTS",
+  Issues: "ISSUES",
+} as const;
+/**
+ * The type of export to perform
+ */
+export type ExportInfoExportType = OpenEnum<typeof ExportInfoExportType>;
 
 /**
  * The status of the export
@@ -49,7 +66,15 @@ export type ExportInfo = {
    * The name of the file to export the findings to
    */
   fileName?: string | undefined;
+  /**
+   * The type of export to perform
+   */
+  exportType?: ExportInfoExportType | undefined;
   filter?: DlpFindingFilter | undefined;
+  /**
+   * Filter for DLP issues. Includes document-level filters and issue-specific filters.
+   */
+  issueFilter?: DlpIssueFilter | undefined;
   /**
    * The status of the export
    */
@@ -59,6 +84,13 @@ export type ExportInfo = {
    */
   exportSize?: number | undefined;
 };
+
+/** @internal */
+export const ExportInfoExportType$inboundSchema: z.ZodType<
+  ExportInfoExportType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ExportInfoExportType);
 
 /** @internal */
 export const ExportInfoStatus$inboundSchema: z.ZodType<
@@ -78,7 +110,9 @@ export const ExportInfo$inboundSchema: z.ZodType<
   endTime: z.string().optional(),
   exportId: z.string().optional(),
   fileName: z.string().optional(),
+  exportType: ExportInfoExportType$inboundSchema.optional(),
   filter: DlpFindingFilter$inboundSchema.optional(),
+  issueFilter: DlpIssueFilter$inboundSchema.optional(),
   status: ExportInfoStatus$inboundSchema.optional(),
   exportSize: z.number().int().optional(),
 });
