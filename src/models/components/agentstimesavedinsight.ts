@@ -34,6 +34,10 @@ export type AgentsTimeSavedInsight = {
    * Average minutes saved per run for this agent over the specified time period.
    */
   minsPerRun?: number | undefined;
+  /**
+   * Total number of users who provided feedback on time saved for this agent over the specified time period.
+   */
+  feedbackUserCount?: number | undefined;
 };
 
 /** @internal */
@@ -48,6 +52,7 @@ export const AgentsTimeSavedInsight$inboundSchema: z.ZodType<
   isDeleted: z.boolean().optional(),
   runCount: z.number().int().optional(),
   minsPerRun: z.number().optional(),
+  feedbackUserCount: z.number().int().optional(),
 });
 
 export function agentsTimeSavedInsightFromJSON(
