@@ -5,7 +5,7 @@
 ```typescript
 import { CollectionErrorErrorCode } from "@gleanwork/api-client/models/components";
 
-let value: CollectionErrorErrorCode = "WIDTH_VIOLATION";
+let value: CollectionErrorErrorCode = "NO_PERMISSIONS";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -13,5 +13,5 @@ let value: CollectionErrorErrorCode = "WIDTH_VIOLATION";
 ## Values
 
 ```typescript
-"NAME_EXISTS" | "NOT_FOUND" | "COLLECTION_PINNED" | "CONCURRENT_HIERARCHY_EDIT" | "HEIGHT_VIOLATION" | "WIDTH_VIOLATION" | "NO_PERMISSIONS" | Unrecognized<string>
+"NAME_EXISTS" | "NOT_FOUND" | "COLLECTION_PINNED" | "CONCURRENT_HIERARCHY_EDIT" | "HEIGHT_VIOLATION" | "WIDTH_VIOLATION" | "NO_PERMISSIONS" | "CORRUPT_ITEM" | Unrecognized<string>
 ```
