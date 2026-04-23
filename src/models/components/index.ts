@@ -22,6 +22,7 @@ export * from "./agentsinsightsv2request.js";
 export * from "./agentsinsightsv2response.js";
 export * from "./agentstimesavedinsight.js";
 export * from "./agentsusagebydepartmentinsight.js";
+export * from "./agentusecaseinsight.js";
 export * from "./agentusersinsight.js";
 export * from "./allowlistoptions.js";
 export * from "./announcement.js";

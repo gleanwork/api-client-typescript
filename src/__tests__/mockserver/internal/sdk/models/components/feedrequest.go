@@ -46,6 +46,7 @@ const (
 	FeedRequestCategoryFollowUp                     FeedRequestCategory = "FOLLOW_UP"
 	FeedRequestCategoryMilestoneTimelineCheck       FeedRequestCategory = "MILESTONE_TIMELINE_CHECK"
 	FeedRequestCategoryProjectDiscussionDigest      FeedRequestCategory = "PROJECT_DISCUSSION_DIGEST"
+	FeedRequestCategoryProjectFocusBlock            FeedRequestCategory = "PROJECT_FOCUS_BLOCK"
 	FeedRequestCategoryProjectNextStep              FeedRequestCategory = "PROJECT_NEXT_STEP"
 )
 
@@ -127,6 +128,8 @@ func (e *FeedRequestCategory) UnmarshalJSON(data []byte) error {
 	case "MILESTONE_TIMELINE_CHECK":
 		fallthrough
 	case "PROJECT_DISCUSSION_DIGEST":
+		fallthrough
+	case "PROJECT_FOCUS_BLOCK":
 		fallthrough
 	case "PROJECT_NEXT_STEP":
 		*e = FeedRequestCategory(v)
