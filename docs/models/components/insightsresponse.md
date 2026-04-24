@@ -48,6 +48,16 @@ let value: InsightsResponse = {
         },
       },
     ],
+    topUseCasesInsights: [
+      {
+        topAgentIcon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
+      },
+    ],
     agentsUsageByDepartmentInsights: [
       {
         icon: {
