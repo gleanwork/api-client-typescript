@@ -42,6 +42,7 @@ export const EditCollectionResponseErrorCode = {
   HeightViolation: "HEIGHT_VIOLATION",
   WidthViolation: "WIDTH_VIOLATION",
   NoPermissions: "NO_PERMISSIONS",
+  CorruptItem: "CORRUPT_ITEM",
 } as const;
 export type EditCollectionResponseErrorCode = OpenEnum<
   typeof EditCollectionResponseErrorCode
