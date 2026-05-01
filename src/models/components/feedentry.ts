@@ -114,7 +114,9 @@ export const JustificationType = {
   FollowUp: "FOLLOW_UP",
   MilestoneTimelineCheck: "MILESTONE_TIMELINE_CHECK",
   ProjectDiscussionDigest: "PROJECT_DISCUSSION_DIGEST",
+  ProjectFocusBlock: "PROJECT_FOCUS_BLOCK",
   ProjectNextStep: "PROJECT_NEXT_STEP",
+  DemoCard: "DEMO_CARD",
 } as const;
 /**
  * Type of the justification.

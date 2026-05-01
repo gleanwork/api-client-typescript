@@ -105,7 +105,9 @@ const (
 	JustificationTypeFollowUp                          JustificationType = "FOLLOW_UP"
 	JustificationTypeMilestoneTimelineCheck            JustificationType = "MILESTONE_TIMELINE_CHECK"
 	JustificationTypeProjectDiscussionDigest           JustificationType = "PROJECT_DISCUSSION_DIGEST"
+	JustificationTypeProjectFocusBlock                 JustificationType = "PROJECT_FOCUS_BLOCK"
 	JustificationTypeProjectNextStep                   JustificationType = "PROJECT_NEXT_STEP"
+	JustificationTypeDemoCard                          JustificationType = "DEMO_CARD"
 )
 
 func (e JustificationType) ToPointer() *JustificationType {
@@ -213,7 +215,11 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "PROJECT_DISCUSSION_DIGEST":
 		fallthrough
+	case "PROJECT_FOCUS_BLOCK":
+		fallthrough
 	case "PROJECT_NEXT_STEP":
+		fallthrough
+	case "DEMO_CARD":
 		*e = JustificationType(v)
 		return nil
 	default:
