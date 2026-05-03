@@ -10,6 +10,10 @@ let value: Workflow = {
     name: "George Clooney",
     obfuscatedId: "abc123",
   },
+  lastDraftSavedBy: {
+    name: "George Clooney",
+    obfuscatedId: "abc123",
+  },
   lastUpdatedBy: {
     name: "George Clooney",
     obfuscatedId: "abc123",
@@ -26,6 +30,7 @@ let value: Workflow = {
 | `createTimestamp`                                                            | *number*                                                                     | :heavy_minus_sign:                                                           | Server Unix timestamp of the creation time.                                  |                                                                              |
 | `lastUpdateTimestamp`                                                        | *number*                                                                     | :heavy_minus_sign:                                                           | Server Unix timestamp of the last update time.                               |                                                                              |
 | `lastDraftSavedAt`                                                           | *number*                                                                     | :heavy_minus_sign:                                                           | Server Unix timestamp of the last time the draft was saved.                  |                                                                              |
+| `lastDraftSavedBy`                                                           | [components.Person](../../models/components/person.md)                       | :heavy_minus_sign:                                                           | N/A                                                                          | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}           |
 | `lastUpdatedBy`                                                              | [components.Person](../../models/components/person.md)                       | :heavy_minus_sign:                                                           | N/A                                                                          | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}           |
 | `permissions`                                                                | [components.ObjectPermissions](../../models/components/objectpermissions.md) | :heavy_minus_sign:                                                           | N/A                                                                          |                                                                              |
 | `id`                                                                         | *string*                                                                     | :heavy_minus_sign:                                                           | The ID of the workflow.                                                      |                                                                              |
