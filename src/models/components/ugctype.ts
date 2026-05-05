@@ -25,6 +25,7 @@ export const UgcType = {
   ShortcutsType: "SHORTCUTS_TYPE",
   SlideType: "SLIDE_TYPE",
   SpreadsheetType: "SPREADSHEET_TYPE",
+  InlineHtmlType: "INLINE_HTML_TYPE",
   WorkflowsType: "WORKFLOWS_TYPE",
 } as const;
 export type UgcType = OpenEnum<typeof UgcType>;

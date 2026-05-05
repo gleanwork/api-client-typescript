@@ -46,7 +46,10 @@ const (
 	FeedRequestCategoryFollowUp                     FeedRequestCategory = "FOLLOW_UP"
 	FeedRequestCategoryMilestoneTimelineCheck       FeedRequestCategory = "MILESTONE_TIMELINE_CHECK"
 	FeedRequestCategoryProjectDiscussionDigest      FeedRequestCategory = "PROJECT_DISCUSSION_DIGEST"
+	FeedRequestCategoryProjectFocusBlock            FeedRequestCategory = "PROJECT_FOCUS_BLOCK"
 	FeedRequestCategoryProjectNextStep              FeedRequestCategory = "PROJECT_NEXT_STEP"
+	FeedRequestCategoryDemoCard                     FeedRequestCategory = "DEMO_CARD"
+	FeedRequestCategoryOooPlanner                   FeedRequestCategory = "OOO_PLANNER"
 )
 
 func (e FeedRequestCategory) ToPointer() *FeedRequestCategory {
@@ -128,7 +131,13 @@ func (e *FeedRequestCategory) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "PROJECT_DISCUSSION_DIGEST":
 		fallthrough
+	case "PROJECT_FOCUS_BLOCK":
+		fallthrough
 	case "PROJECT_NEXT_STEP":
+		fallthrough
+	case "DEMO_CARD":
+		fallthrough
+	case "OOO_PLANNER":
 		*e = FeedRequestCategory(v)
 		return nil
 	default:
