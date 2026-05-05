@@ -12,6 +12,7 @@ type AddCollectionItemsErrorErrorType string
 
 const (
 	AddCollectionItemsErrorErrorTypeExistingItem AddCollectionItemsErrorErrorType = "EXISTING_ITEM"
+	AddCollectionItemsErrorErrorTypeCorruptItem  AddCollectionItemsErrorErrorType = "CORRUPT_ITEM"
 )
 
 func (e AddCollectionItemsErrorErrorType) ToPointer() *AddCollectionItemsErrorErrorType {
@@ -24,6 +25,8 @@ func (e *AddCollectionItemsErrorErrorType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "EXISTING_ITEM":
+		fallthrough
+	case "CORRUPT_ITEM":
 		*e = AddCollectionItemsErrorErrorType(v)
 		return nil
 	default:
