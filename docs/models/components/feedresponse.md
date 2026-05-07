@@ -9,7 +9,7 @@ let value: FeedResponse = {
   serverTimestamp: 603266,
   results: [
     {
-      category: "VERIFICATION_REMINDER",
+      category: "EVENT",
       primaryEntry: {
         title: "<value>",
         createdBy: {
@@ -571,6 +571,10 @@ let value: FeedResponse = {
         workflow: {
           workflow: {
             author: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            lastDraftSavedBy: {
               name: "George Clooney",
               obfuscatedId: "abc123",
             },
@@ -1151,6 +1155,10 @@ let value: FeedResponse = {
           workflow: {
             workflow: {
               author: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              lastDraftSavedBy: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
               },

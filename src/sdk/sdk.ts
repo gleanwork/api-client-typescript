@@ -5,10 +5,13 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Authentication } from "./authentication.js";
+import { Chat } from "./chat.js";
 import { Client } from "./client.js";
 import { Datasources } from "./datasources.js";
+import { Entities } from "./entities.js";
 import { Governance } from "./governance.js";
 import { Indexing } from "./indexing.js";
+import { Tools } from "./tools.js";
 
 export class Glean extends ClientSDK {
   private _client?: Client;
@@ -19,6 +22,21 @@ export class Glean extends ClientSDK {
   private _authentication?: Authentication;
   get authentication(): Authentication {
     return (this._authentication ??= new Authentication(this._options));
+  }
+
+  private _chat?: Chat;
+  get chat(): Chat {
+    return (this._chat ??= new Chat(this._options));
+  }
+
+  private _entities?: Entities;
+  get entities(): Entities {
+    return (this._entities ??= new Entities(this._options));
+  }
+
+  private _tools?: Tools;
+  get tools(): Tools {
+    return (this._tools ??= new Tools(this._options));
   }
 
   private _indexing?: Indexing;
