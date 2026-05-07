@@ -31,6 +31,11 @@ export type Workflow = {
    * Server Unix timestamp of the last time the draft was saved.
    */
   lastDraftSavedAt?: number | undefined;
+  lastDraftSavedBy?: Person | undefined;
+  /**
+   * ID of the VCS user (e.g. GitHub username) who last saved the draft. Set only by the draft save path via the external Git integration API.
+   */
+  lastDraftGitAuthorId?: string | undefined;
   lastUpdatedBy?: Person | undefined;
   permissions?: ObjectPermissions | undefined;
   /**
@@ -50,6 +55,8 @@ export const Workflow$inboundSchema: z.ZodType<
   createTimestamp: z.number().int().optional(),
   lastUpdateTimestamp: z.number().int().optional(),
   lastDraftSavedAt: z.number().int().optional(),
+  lastDraftSavedBy: Person$inboundSchema.optional(),
+  lastDraftGitAuthorId: z.string().optional(),
   lastUpdatedBy: Person$inboundSchema.optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
   id: z.string().optional(),

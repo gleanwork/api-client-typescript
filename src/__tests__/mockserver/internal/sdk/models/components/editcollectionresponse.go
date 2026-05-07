@@ -20,6 +20,7 @@ const (
 	EditCollectionResponseErrorCodeHeightViolation         EditCollectionResponseErrorCode = "HEIGHT_VIOLATION"
 	EditCollectionResponseErrorCodeWidthViolation          EditCollectionResponseErrorCode = "WIDTH_VIOLATION"
 	EditCollectionResponseErrorCodeNoPermissions           EditCollectionResponseErrorCode = "NO_PERMISSIONS"
+	EditCollectionResponseErrorCodeCorruptItem             EditCollectionResponseErrorCode = "CORRUPT_ITEM"
 )
 
 func (e EditCollectionResponseErrorCode) ToPointer() *EditCollectionResponseErrorCode {
@@ -44,6 +45,8 @@ func (e *EditCollectionResponseErrorCode) UnmarshalJSON(data []byte) error {
 	case "WIDTH_VIOLATION":
 		fallthrough
 	case "NO_PERMISSIONS":
+		fallthrough
+	case "CORRUPT_ITEM":
 		*e = EditCollectionResponseErrorCode(v)
 		return nil
 	default:
