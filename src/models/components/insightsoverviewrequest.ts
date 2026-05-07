@@ -11,12 +11,17 @@ export type InsightsOverviewRequest = {
    * Departments for which Insights are requested.
    */
   departments?: Array<string> | undefined;
+  /**
+   * Manager emails whose teams should be filtered for. Empty array means no filtering.
+   */
+  managerEmails?: Array<string> | undefined;
   dayRange?: Period | undefined;
 };
 
 /** @internal */
 export type InsightsOverviewRequest$Outbound = {
   departments?: Array<string> | undefined;
+  managerEmails?: Array<string> | undefined;
   dayRange?: Period$Outbound | undefined;
 };
 
@@ -27,6 +32,7 @@ export const InsightsOverviewRequest$outboundSchema: z.ZodType<
   InsightsOverviewRequest
 > = z.object({
   departments: z.array(z.string()).optional(),
+  managerEmails: z.array(z.string()).optional(),
   dayRange: Period$outboundSchema.optional(),
 });
 

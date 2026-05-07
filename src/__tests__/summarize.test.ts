@@ -19,10 +19,10 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://dim-glider.com/",
+        url: "https://intelligent-lyre.net",
       },
       {
-        id: "<id>",
+        url: "https://intelligent-lyre.net",
       },
     ],
   });
