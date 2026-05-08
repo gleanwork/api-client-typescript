@@ -5,14 +5,16 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const AddCollectionItemsErrorErrorType = {
   ExistingItem: "EXISTING_ITEM",
+  CorruptItem: "CORRUPT_ITEM",
 } as const;
-export type AddCollectionItemsErrorErrorType = ClosedEnum<
+export type AddCollectionItemsErrorErrorType = OpenEnum<
   typeof AddCollectionItemsErrorErrorType
 >;
 
@@ -21,9 +23,11 @@ export type AddCollectionItemsError = {
 };
 
 /** @internal */
-export const AddCollectionItemsErrorErrorType$inboundSchema: z.ZodNativeEnum<
-  typeof AddCollectionItemsErrorErrorType
-> = z.nativeEnum(AddCollectionItemsErrorErrorType);
+export const AddCollectionItemsErrorErrorType$inboundSchema: z.ZodType<
+  AddCollectionItemsErrorErrorType,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AddCollectionItemsErrorErrorType);
 
 /** @internal */
 export const AddCollectionItemsError$inboundSchema: z.ZodType<
