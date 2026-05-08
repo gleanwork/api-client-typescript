@@ -569,6 +569,10 @@ let value: FeedEntry = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
+      lastDraftSavedBy: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
       lastUpdatedBy: {
         name: "George Clooney",
         obfuscatedId: "abc123",

@@ -8,6 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
+import { Person, Person$inboundSchema } from "./person.js";
 
 export type PerAgentInsight = {
   /**
@@ -42,6 +43,7 @@ export type PerAgentInsight = {
    * Total number of downvotes for this agent over the specified time period.
    */
   downvoteCount?: number | undefined;
+  owner?: Person | undefined;
 };
 
 /** @internal */
@@ -58,6 +60,7 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
   runCount: z.number().int().optional(),
   upvoteCount: z.number().int().optional(),
   downvoteCount: z.number().int().optional(),
+  owner: Person$inboundSchema.optional(),
 });
 
 export function perAgentInsightFromJSON(
