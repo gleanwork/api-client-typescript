@@ -40,3 +40,31 @@ test("Tools Post /Rest/api/v1 /Tools/call", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Tools Get Action Auth Status", async () => {
+  const testHttpClient = createTestHTTPClient("getActionAuthStatus");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.tools.getActionAuthStatus("<id>");
+  expect(result).toBeDefined();
+});
+
+test("Tools Authorize Action", async () => {
+  const testHttpClient = createTestHTTPClient("authorizeAction");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.tools.authorizeAction({
+    returnUrl: "https://irresponsible-trick.name/",
+  }, "<id>");
+  expect(result).toBeDefined();
+});

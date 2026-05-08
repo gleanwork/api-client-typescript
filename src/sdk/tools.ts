@@ -3,43 +3,53 @@
  * @generated-id: f997ccdd9dd9
  */
 
-import { clientToolsList } from "../funcs/clientToolsList.js";
-import { clientToolsRun } from "../funcs/clientToolsRun.js";
+import { toolsAuthorizeAction } from "../funcs/toolsAuthorizeAction.js";
+import { toolsGetActionAuthStatus } from "../funcs/toolsGetActionAuthStatus.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Tools extends ClientSDK {
   /**
-   * List available tools
+   * Get end-user authentication status for an action pack.
    *
    * @remarks
-   * Returns a filtered set of available tools based on optional tool name parameters. If no filters are provided, all available tools are returned.
+   * Reports whether the calling user is already authenticated against the third-party
+   * tool backing the specified action pack. Intended for headless / server-driven clients
+   * that render an "Authorize" prompt when the user has not yet consented to the tool.
    */
-  async list(
-    toolNames?: Array<string> | undefined,
+  async getActionAuthStatus(
+    actionPackId: string,
     options?: RequestOptions,
-  ): Promise<components.ToolsListResponse> {
-    return unwrapAsync(clientToolsList(
+  ): Promise<components.ActionAuthStatusResponse> {
+    return unwrapAsync(toolsGetActionAuthStatus(
       this,
-      toolNames,
+      actionPackId,
       options,
     ));
   }
 
   /**
-   * Execute the specified tool
+   * Start the OAuth authorization flow for an action pack.
    *
    * @remarks
-   * Execute the specified tool with provided parameters
+   * Starts the third-party OAuth flow for the specified action pack and returns the
+   * redirect URL that the client should navigate the end user to. After the OAuth
+   * callback completes, the user's browser is redirected back to `returnUrl` with a
+   * status query parameter (`?glean_action_auth=success|error&actionPackId=...`).
+   *
+   * `returnUrl` must match the tenant's configured return URL allowlist; otherwise the
+   * request is rejected with 400.
    */
-  async run(
-    request: components.ToolsCallRequest,
+  async authorizeAction(
+    authorizeActionRequest: components.AuthorizeActionRequest,
+    actionPackId: string,
     options?: RequestOptions,
-  ): Promise<components.ToolsCallResponse> {
-    return unwrapAsync(clientToolsRun(
+  ): Promise<components.AuthorizeActionResponse> {
+    return unwrapAsync(toolsAuthorizeAction(
       this,
-      request,
+      authorizeActionRequest,
+      actionPackId,
       options,
     ));
   }
