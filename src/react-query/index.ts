@@ -6,7 +6,9 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./agentsEditAgent.js";
 export * from "./authenticationCheckdatasourceauth.js";
+export * from "./chatGetChatFile.js";
 export * from "./clientActivityFeedback.js";
 export * from "./clientActivityReport.js";
 export * from "./clientAgentsList.js";
@@ -79,8 +81,11 @@ export * from "./clientToolsRun.js";
 export * from "./clientVerificationAddReminder.js";
 export * from "./clientVerificationList.js";
 export * from "./clientVerificationVerify.js";
+export * from "./datasourcesGetDatasourceCredentialStatus.js";
 export * from "./datasourcesGetDatasourceInstanceConfiguration.js";
+export * from "./datasourcesRotateDatasourceCredentials.js";
 export * from "./datasourcesUpdateDatasourceInstanceConfiguration.js";
+export * from "./entitiesGetPersonPhoto.js";
 export * from "./governanceCreatefindingsexport.js";
 export * from "./governanceDeletefindingsexport.js";
 export * from "./governanceDownloadfindingsexport.js";
@@ -122,3 +127,5 @@ export * from "./indexingPermissionsProcessMemberships.js";
 export * from "./indexingPermissionsUpdatePermissions.js";
 export * from "./indexingShortcutsBulkIndex.js";
 export * from "./indexingShortcutsUpload.js";
+export * from "./toolsAuthorizeAction.js";
+export * from "./toolsGetActionAuthStatus.js";

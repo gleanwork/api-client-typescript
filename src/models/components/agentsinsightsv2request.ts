@@ -15,6 +15,10 @@ export type AgentsInsightsV2Request = {
    * Departments for which Insights are requested.
    */
   departments?: Array<string> | undefined;
+  /**
+   * Manager emails whose teams should be filtered for. Empty array means no filtering.
+   */
+  managerEmails?: Array<string> | undefined;
   dayRange?: Period | undefined;
 };
 
@@ -22,6 +26,7 @@ export type AgentsInsightsV2Request = {
 export type AgentsInsightsV2Request$Outbound = {
   agentIds?: Array<string> | undefined;
   departments?: Array<string> | undefined;
+  managerEmails?: Array<string> | undefined;
   dayRange?: Period$Outbound | undefined;
 };
 
@@ -33,6 +38,7 @@ export const AgentsInsightsV2Request$outboundSchema: z.ZodType<
 > = z.object({
   agentIds: z.array(z.string()).optional(),
   departments: z.array(z.string()).optional(),
+  managerEmails: z.array(z.string()).optional(),
   dayRange: Period$outboundSchema.optional(),
 });
 
