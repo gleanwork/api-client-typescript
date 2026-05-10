@@ -119,6 +119,10 @@ export type Answer = {
   sourceDocumentSpec?: DocumentSpecUnion | undefined;
   sourceType?: AnswerSourceType | undefined;
   permissions?: ObjectPermissions | undefined;
+  /**
+   * An opaque token that represents this particular UGC. To be used for `/feedback` reporting.
+   */
+  trackingToken?: string | undefined;
   combinedAnswerText?: StructuredText | undefined;
   likes?: AnswerLikes | undefined;
   author?: Person | undefined;
@@ -175,6 +179,7 @@ export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
     sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
     sourceType: AnswerSourceType$inboundSchema.optional(),
     permissions: ObjectPermissions$inboundSchema.optional(),
+    trackingToken: z.string().optional(),
     combinedAnswerText: z.lazy(() => StructuredText$inboundSchema).optional(),
     likes: z.lazy(() => AnswerLikes$inboundSchema).optional(),
     author: z.lazy(() => Person$inboundSchema).optional(),
@@ -205,6 +210,7 @@ export type Answer$Outbound = {
   sourceDocumentSpec?: DocumentSpecUnion$Outbound | undefined;
   sourceType?: string | undefined;
   permissions?: ObjectPermissions$Outbound | undefined;
+  trackingToken?: string | undefined;
   combinedAnswerText?: StructuredText$Outbound | undefined;
   likes?: AnswerLikes$Outbound | undefined;
   author?: Person$Outbound | undefined;
@@ -238,6 +244,7 @@ export const Answer$outboundSchema: z.ZodType<
   sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
   sourceType: AnswerSourceType$outboundSchema.optional(),
   permissions: ObjectPermissions$outboundSchema.optional(),
+  trackingToken: z.string().optional(),
   combinedAnswerText: z.lazy(() => StructuredText$outboundSchema).optional(),
   likes: z.lazy(() => AnswerLikes$outboundSchema).optional(),
   author: z.lazy(() => Person$outboundSchema).optional(),
