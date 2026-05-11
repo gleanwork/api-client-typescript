@@ -5,6 +5,7 @@
 
 import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
+import { GetPersonPhotoAcceptEnum } from "../sdk/entities.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Entities Listentities", async () => {
@@ -59,4 +60,19 @@ it.skip("Entities Teams", async () => {
   assert.fail(
     "incomplete test found please make sure to address the following errors: [`workflow step teams.test referencing operation teams not found in document`]",
   );
+});
+
+test("Entities Get Person Photo", async () => {
+  const testHttpClient = createTestHTTPClient("getPersonPhoto");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.entities.getPersonPhoto("<id>", undefined, {
+    acceptHeaderOverride: GetPersonPhotoAcceptEnum.imagePng,
+  });
+  expect(result).toBeDefined();
 });
