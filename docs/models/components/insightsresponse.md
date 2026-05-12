@@ -46,6 +46,20 @@ let value: InsightsResponse = {
           iconType: "GLYPH",
           name: "user",
         },
+        owner: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
+    topUseCasesInsights: [
+      {
+        topAgentIcon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
       },
     ],
     agentsUsageByDepartmentInsights: [

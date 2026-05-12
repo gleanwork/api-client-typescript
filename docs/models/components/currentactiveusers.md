@@ -10,7 +10,7 @@ let value: CurrentActiveUsers = {};
 
 ## Fields
 
-| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `monthlyActiveUsers`                                                  | *number*                                                              | :heavy_minus_sign:                                                    | Number of current Monthly Active Users, in the specified departments. |
-| `weeklyActiveUsers`                                                   | *number*                                                              | :heavy_minus_sign:                                                    | Number of current Weekly Active Users, in the specified departments.  |
+| Field                                   | Type                                    | Required                                | Description                             |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `monthlyActiveUsers`                    | *number*                                | :heavy_minus_sign:                      | Number of current Monthly Active Users. |
+| `weeklyActiveUsers`                     | *number*                                | :heavy_minus_sign:                      | Number of current Weekly Active Users.  |
