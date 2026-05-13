@@ -280,22 +280,30 @@ For more information on obtaining the appropriate token type, please contact you
 <details open>
 <summary>Available methods</summary>
 
+### [Agents](docs/sdks/agents/README.md)
+
+* [editAgent](docs/sdks/agents/README.md#editagent) - Edit an agent
+
 ### [Authentication](docs/sdks/authentication/README.md)
 
 * [checkdatasourceauth](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
+
+### [Chat](docs/sdks/chat/README.md)
+
+* [getChatFile](docs/sdks/chat/README.md#getchatfile) - Download a chat file
 
 ### [Client.Activity](docs/sdks/activity/README.md)
 
 * [report](docs/sdks/activity/README.md#report) - Report document activity
 * [feedback](docs/sdks/activity/README.md#feedback) - Report client activity
 
-### [Client.Agents](docs/sdks/agents/README.md)
+### [Client.Agents](docs/sdks/clientagents/README.md)
 
-* [retrieve](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
-* [retrieveSchemas](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
-* [list](docs/sdks/agents/README.md#list) - Search agents
-* [runStream](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
-* [run](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
+* [retrieve](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
+* [retrieveSchemas](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
+* [list](docs/sdks/clientagents/README.md#list) - Search agents
+* [runStream](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
+* [run](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
 
 ### [Client.Announcements](docs/sdks/announcements/README.md)
 
@@ -315,18 +323,18 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [createToken](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
 
-### [Client.Chat](docs/sdks/chat/README.md)
+### [Client.Chat](docs/sdks/clientchat/README.md)
 
-* [create](docs/sdks/chat/README.md#create) - Chat
-* [deleteAll](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-* [delete](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-* [retrieve](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-* [list](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-* [retrieveApplication](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-* [uploadFiles](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
-* [retrieveFiles](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
-* [deleteFiles](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
-* [createStream](docs/sdks/chat/README.md#createstream) - Chat
+* [create](docs/sdks/clientchat/README.md#create) - Chat
+* [deleteAll](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
+* [delete](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
+* [retrieve](docs/sdks/clientchat/README.md#retrieve) - Retrieves a Chat
+* [list](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
+* [retrieveApplication](docs/sdks/clientchat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
+* [uploadFiles](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat
+* [retrieveFiles](docs/sdks/clientchat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+* [deleteFiles](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat
+* [createStream](docs/sdks/clientchat/README.md#createstream) - Chat
 
 ### [Client.Collections](docs/sdks/collections/README.md)
 
@@ -346,10 +354,10 @@ For more information on obtaining the appropriate token type, please contact you
 * [retrieveByFacets](docs/sdks/clientdocuments/README.md#retrievebyfacets) - Read documents by facets
 * [summarize](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
 
-### [Client.Entities](docs/sdks/entities/README.md)
+### [Client.Entities](docs/sdks/cliententities/README.md)
 
-* [list](docs/sdks/entities/README.md#list) - List entities
-* [readPeople](docs/sdks/entities/README.md#readpeople) - Read people
+* [list](docs/sdks/cliententities/README.md#list) - List entities
+* [readPeople](docs/sdks/cliententities/README.md#readpeople) - Read people
 
 ### [Client.Governance.Data.Policies](docs/sdks/policies/README.md)
 
@@ -402,10 +410,10 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 * [update](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 
-### [Client.Tools](docs/sdks/tools/README.md)
+### [Client.Tools](docs/sdks/clienttools/README.md)
 
-* [list](docs/sdks/tools/README.md#list) - List available tools
-* [run](docs/sdks/tools/README.md#run) - Execute the specified tool
+* [list](docs/sdks/clienttools/README.md#list) - List available tools
+* [run](docs/sdks/clienttools/README.md#run) - Execute the specified tool
 
 ### [Client.Verification](docs/sdks/verification/README.md)
 
@@ -417,6 +425,12 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [getDatasourceInstanceConfiguration](docs/sdks/datasources/README.md#getdatasourceinstanceconfiguration) - Get datasource instance configuration
 * [updateDatasourceInstanceConfiguration](docs/sdks/datasources/README.md#updatedatasourceinstanceconfiguration) - Update datasource instance configuration
+* [getDatasourceCredentialStatus](docs/sdks/datasources/README.md#getdatasourcecredentialstatus) - Get datasource instance credential status
+* [rotateDatasourceCredentials](docs/sdks/datasources/README.md#rotatedatasourcecredentials) - Rotate datasource instance credentials
+
+### [Entities](docs/sdks/entities/README.md)
+
+* [getPersonPhoto](docs/sdks/entities/README.md#getpersonphoto) - Get person photo
 
 ### [Governance](docs/sdks/governance/README.md)
 
@@ -487,6 +501,16 @@ For more information on obtaining the appropriate token type, please contact you
 * [bulkIndex](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 * [upload](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
 
+### [Tools](docs/sdks/tools/README.md)
+
+* [getActionPackAuthStatus](docs/sdks/tools/README.md#getactionpackauthstatus) - Get end-user authentication status for an action pack.
+* [authorizeActionPack](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+
+### [Troubleshooting](docs/sdks/troubleshooting/README.md)
+
+* [postApiIndexV1DebugDatasourceDocumentEvents](docs/sdks/troubleshooting/README.md#postapiindexv1debugdatasourcedocumentevents) - Beta: Get document lifecycle events
+
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -505,14 +529,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`agentsEditAgent`](docs/sdks/agents/README.md#editagent) - Edit an agent
 - [`authenticationCheckdatasourceauth`](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
+- [`chatGetChatFile`](docs/sdks/chat/README.md#getchatfile) - Download a chat file
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
-- [`clientAgentsList`](docs/sdks/agents/README.md#list) - Search agents
-- [`clientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
-- [`clientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
-- [`clientAgentsRun`](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
-- [`clientAgentsRunStream`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
+- [`clientAgentsList`](docs/sdks/clientagents/README.md#list) - Search agents
+- [`clientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
+- [`clientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
+- [`clientAgentsRun`](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
+- [`clientAgentsRunStream`](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`clientAnnouncementsUpdate`](docs/sdks/announcements/README.md#update) - Update Announcement
@@ -521,16 +547,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientAnswersRetrieve`](docs/sdks/answers/README.md#retrieve) - Read Answer
 - [`clientAnswersUpdate`](docs/sdks/answers/README.md#update) - Update Answer
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`clientChatCreate`](docs/sdks/chat/README.md#create) - Chat
-- [`clientChatCreateStream`](docs/sdks/chat/README.md#createstream) - Chat
-- [`clientChatDelete`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-- [`clientChatDeleteAll`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
-- [`clientChatList`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-- [`clientChatRetrieve`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-- [`clientChatRetrieveApplication`](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-- [`clientChatRetrieveFiles`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
-- [`clientChatUploadFiles`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
+- [`clientChatCreate`](docs/sdks/clientchat/README.md#create) - Chat
+- [`clientChatCreateStream`](docs/sdks/clientchat/README.md#createstream) - Chat
+- [`clientChatDelete`](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
+- [`clientChatDeleteAll`](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
+- [`clientChatDeleteFiles`](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat
+- [`clientChatList`](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
+- [`clientChatRetrieve`](docs/sdks/clientchat/README.md#retrieve) - Retrieves a Chat
+- [`clientChatRetrieveApplication`](docs/sdks/clientchat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
+- [`clientChatRetrieveFiles`](docs/sdks/clientchat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+- [`clientChatUploadFiles`](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat
 - [`clientCollectionsAddItems`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`clientCollectionsCreate`](docs/sdks/collections/README.md#create) - Create Collection
 - [`clientCollectionsDelete`](docs/sdks/collections/README.md#delete) - Delete Collection
@@ -543,8 +569,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientDocumentsRetrieveByFacets`](docs/sdks/clientdocuments/README.md#retrievebyfacets) - Read documents by facets
 - [`clientDocumentsRetrievePermissions`](docs/sdks/clientdocuments/README.md#retrievepermissions) - Read document permissions
 - [`clientDocumentsSummarize`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
-- [`clientEntitiesList`](docs/sdks/entities/README.md#list) - List entities
-- [`clientEntitiesReadPeople`](docs/sdks/entities/README.md#readpeople) - Read people
+- [`clientEntitiesList`](docs/sdks/cliententities/README.md#list) - List entities
+- [`clientEntitiesReadPeople`](docs/sdks/cliententities/README.md#readpeople) - Read people
 - [`clientGovernanceDataPoliciesCreate`](docs/sdks/policies/README.md#create) - Creates new policy
 - [`clientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
 - [`clientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies
@@ -572,13 +598,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientShortcutsList`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 - [`clientShortcutsRetrieve`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
-- [`clientToolsList`](docs/sdks/tools/README.md#list) - List available tools
-- [`clientToolsRun`](docs/sdks/tools/README.md#run) - Execute the specified tool
+- [`clientToolsList`](docs/sdks/clienttools/README.md#list) - List available tools
+- [`clientToolsRun`](docs/sdks/clienttools/README.md#run) - Execute the specified tool
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- [`datasourcesGetDatasourceCredentialStatus`](docs/sdks/datasources/README.md#getdatasourcecredentialstatus) - Get datasource instance credential status
 - [`datasourcesGetDatasourceInstanceConfiguration`](docs/sdks/datasources/README.md#getdatasourceinstanceconfiguration) - Get datasource instance configuration
+- [`datasourcesRotateDatasourceCredentials`](docs/sdks/datasources/README.md#rotatedatasourcecredentials) - Rotate datasource instance credentials
 - [`datasourcesUpdateDatasourceInstanceConfiguration`](docs/sdks/datasources/README.md#updatedatasourceinstanceconfiguration) - Update datasource instance configuration
+- [`entitiesGetPersonPhoto`](docs/sdks/entities/README.md#getpersonphoto) - Get person photo
 - [`governanceCreatefindingsexport`](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
 - [`governanceDeletefindingsexport`](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
 - [`governanceDownloadfindingsexport`](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
@@ -620,6 +649,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- [`toolsAuthorizeActionPack`](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+- [`toolsGetActionPackAuthStatus`](docs/sdks/tools/README.md#getactionpackauthstatus) - Get end-user authentication status for an action pack.
+- [`troubleshootingPostApiIndexV1DebugDatasourceDocumentEvents`](docs/sdks/troubleshooting/README.md#postapiindexv1debugdatasourcedocumentevents) - Beta: Get document lifecycle events
+
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -651,14 +684,16 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
+- [`useAgentsEditAgentMutation`](docs/sdks/agents/README.md#editagent) - Edit an agent
 - [`useAuthenticationCheckdatasourceauthMutation`](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
+- [`useChatGetChatFile`](docs/sdks/chat/README.md#getchatfile) - Download a chat file
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
-- [`useClientAgentsListMutation`](docs/sdks/agents/README.md#list) - Search agents
-- [`useClientAgentsRetrieve`](docs/sdks/agents/README.md#retrieve) - Retrieve an agent
-- [`useClientAgentsRetrieveSchemas`](docs/sdks/agents/README.md#retrieveschemas) - List an agent's schemas
-- [`useClientAgentsRunMutation`](docs/sdks/agents/README.md#run) - Create an agent run and wait for the response
-- [`useClientAgentsRunStreamMutation`](docs/sdks/agents/README.md#runstream) - Create an agent run and stream the response
+- [`useClientAgentsListMutation`](docs/sdks/clientagents/README.md#list) - Search agents
+- [`useClientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
+- [`useClientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
+- [`useClientAgentsRunMutation`](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
+- [`useClientAgentsRunStreamMutation`](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
 - [`useClientAnnouncementsUpdateMutation`](docs/sdks/announcements/README.md#update) - Update Announcement
@@ -667,16 +702,16 @@ To learn about this feature and how to get started, check
 - [`useClientAnswersRetrieveMutation`](docs/sdks/answers/README.md#retrieve) - Read Answer
 - [`useClientAnswersUpdateMutation`](docs/sdks/answers/README.md#update) - Update Answer
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`useClientChatCreateMutation`](docs/sdks/chat/README.md#create) - Chat
-- [`useClientChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Chat
-- [`useClientChatDeleteAllMutation`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
-- [`useClientChatDeleteMutation`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-- [`useClientChatListMutation`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-- [`useClientChatRetrieveApplicationMutation`](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-- [`useClientChatRetrieveFilesMutation`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
-- [`useClientChatRetrieveMutation`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-- [`useClientChatUploadFilesMutation`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
+- [`useClientChatCreateMutation`](docs/sdks/clientchat/README.md#create) - Chat
+- [`useClientChatCreateStreamMutation`](docs/sdks/clientchat/README.md#createstream) - Chat
+- [`useClientChatDeleteAllMutation`](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
+- [`useClientChatDeleteFilesMutation`](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat
+- [`useClientChatDeleteMutation`](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
+- [`useClientChatListMutation`](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
+- [`useClientChatRetrieveApplicationMutation`](docs/sdks/clientchat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
+- [`useClientChatRetrieveFilesMutation`](docs/sdks/clientchat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+- [`useClientChatRetrieveMutation`](docs/sdks/clientchat/README.md#retrieve) - Retrieves a Chat
+- [`useClientChatUploadFilesMutation`](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat
 - [`useClientCollectionsAddItemsMutation`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`useClientCollectionsCreateMutation`](docs/sdks/collections/README.md#create) - Create Collection
 - [`useClientCollectionsDeleteItemMutation`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
@@ -689,8 +724,8 @@ To learn about this feature and how to get started, check
 - [`useClientDocumentsRetrieveMutation`](docs/sdks/clientdocuments/README.md#retrieve) - Read documents
 - [`useClientDocumentsRetrievePermissionsMutation`](docs/sdks/clientdocuments/README.md#retrievepermissions) - Read document permissions
 - [`useClientDocumentsSummarizeMutation`](docs/sdks/clientdocuments/README.md#summarize) - Summarize documents
-- [`useClientEntitiesListMutation`](docs/sdks/entities/README.md#list) - List entities
-- [`useClientEntitiesReadPeopleMutation`](docs/sdks/entities/README.md#readpeople) - Read people
+- [`useClientEntitiesListMutation`](docs/sdks/cliententities/README.md#list) - List entities
+- [`useClientEntitiesReadPeopleMutation`](docs/sdks/cliententities/README.md#readpeople) - Read people
 - [`useClientGovernanceDataPoliciesCreateMutation`](docs/sdks/policies/README.md#create) - Creates new policy
 - [`useClientGovernanceDataPoliciesDownload`](docs/sdks/policies/README.md#download) - Downloads violations CSV for policy
 - [`useClientGovernanceDataPoliciesList`](docs/sdks/policies/README.md#list) - Lists policies
@@ -718,13 +753,16 @@ To learn about this feature and how to get started, check
 - [`useClientShortcutsListMutation`](docs/sdks/clientshortcuts/README.md#list) - List shortcuts
 - [`useClientShortcutsRetrieveMutation`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
-- [`useClientToolsList`](docs/sdks/tools/README.md#list) - List available tools
-- [`useClientToolsRunMutation`](docs/sdks/tools/README.md#run) - Execute the specified tool
+- [`useClientToolsList`](docs/sdks/clienttools/README.md#list) - List available tools
+- [`useClientToolsRunMutation`](docs/sdks/clienttools/README.md#run) - Execute the specified tool
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- [`useDatasourcesGetDatasourceCredentialStatus`](docs/sdks/datasources/README.md#getdatasourcecredentialstatus) - Get datasource instance credential status
 - [`useDatasourcesGetDatasourceInstanceConfiguration`](docs/sdks/datasources/README.md#getdatasourceinstanceconfiguration) - Get datasource instance configuration
+- [`useDatasourcesRotateDatasourceCredentialsMutation`](docs/sdks/datasources/README.md#rotatedatasourcecredentials) - Rotate datasource instance credentials
 - [`useDatasourcesUpdateDatasourceInstanceConfigurationMutation`](docs/sdks/datasources/README.md#updatedatasourceinstanceconfiguration) - Update datasource instance configuration
+- [`useEntitiesGetPersonPhoto`](docs/sdks/entities/README.md#getpersonphoto) - Get person photo
 - [`useGovernanceCreatefindingsexportMutation`](docs/sdks/governance/README.md#createfindingsexport) - Creates findings export
 - [`useGovernanceDeletefindingsexportMutation`](docs/sdks/governance/README.md#deletefindingsexport) - Deletes findings export
 - [`useGovernanceDownloadfindingsexport`](docs/sdks/governance/README.md#downloadfindingsexport) - Downloads findings export
@@ -766,6 +804,10 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- [`useToolsAuthorizeActionPackMutation`](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+- [`useToolsGetActionPackAuthStatus`](docs/sdks/tools/README.md#getactionpackauthstatus) - Get end-user authentication status for an action pack.
+- [`useTroubleshootingPostApiIndexV1DebugDatasourceDocumentEventsMutation`](docs/sdks/troubleshooting/README.md#postapiindexv1debugdatasourcedocumentevents) - Beta: Get document lifecycle events
+
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
