@@ -30,11 +30,11 @@ import {
 
 export type InsightsOverviewResponse = {
   /**
-   * Number of current Monthly Active Users, in the specified departments.
+   * Number of current Monthly Active Users.
    */
   monthlyActiveUsers?: number | undefined;
   /**
-   * Number of current Weekly Active Users, in the specified departments.
+   * Number of current Weekly Active Users.
    */
   weeklyActiveUsers?: number | undefined;
   /**
@@ -62,6 +62,8 @@ export type InsightsOverviewResponse = {
   lastUpdatedTs?: number | undefined;
   /**
    * Search session satisfaction rate, over the specified time period in the specified departments.
+   *
+   * @deprecated field: Deprecated on 2026-05-13, removal scheduled for 2027-01-15: This property is no longer supported. Please contact Support for alternatives..
    */
   searchSessionSatisfaction?: number | undefined;
   monthlyActiveUserTimeseries?: LabeledCountInfo | undefined;

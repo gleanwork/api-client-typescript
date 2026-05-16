@@ -90,6 +90,10 @@ export type Collection = {
   allowedDatasource?: string | undefined;
   permissions?: ObjectPermissions | undefined;
   /**
+   * An opaque token that represents this particular UGC. To be used for `/feedback` reporting.
+   */
+  trackingToken?: string | undefined;
+  /**
    * The unique ID of the Collection.
    */
   id: number;
@@ -143,6 +147,7 @@ export const Collection$inboundSchema: z.ZodType<
   thumbnail: Thumbnail$inboundSchema.optional(),
   allowedDatasource: z.string().optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
+  trackingToken: z.string().optional(),
   id: z.number().int(),
   createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
@@ -171,6 +176,7 @@ export type Collection$Outbound = {
   thumbnail?: Thumbnail$Outbound | undefined;
   allowedDatasource?: string | undefined;
   permissions?: ObjectPermissions$Outbound | undefined;
+  trackingToken?: string | undefined;
   id: number;
   createTime?: string | undefined;
   updateTime?: string | undefined;
@@ -204,6 +210,7 @@ export const Collection$outboundSchema: z.ZodType<
   thumbnail: Thumbnail$outboundSchema.optional(),
   allowedDatasource: z.string().optional(),
   permissions: ObjectPermissions$outboundSchema.optional(),
+  trackingToken: z.string().optional(),
   id: z.number().int(),
   createTime: z.date().transform(v => v.toISOString()).optional(),
   updateTime: z.date().transform(v => v.toISOString()).optional(),

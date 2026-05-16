@@ -5,21 +5,21 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Activity } from "./activity.js";
-import { Agents } from "./agents.js";
 import { Announcements } from "./announcements.js";
 import { Answers } from "./answers.js";
-import { Chat } from "./chat.js";
+import { ClientAgents } from "./clientagents.js";
 import { ClientAuthentication } from "./clientauthentication.js";
+import { ClientChat } from "./clientchat.js";
 import { ClientDocuments } from "./clientdocuments.js";
+import { ClientEntities } from "./cliententities.js";
 import { ClientGovernance } from "./clientgovernance.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
+import { ClientTools } from "./clienttools.js";
 import { Collections } from "./collections.js";
-import { Entities } from "./entities.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
 import { Search } from "./search.js";
-import { Tools } from "./tools.js";
 import { Verification } from "./verification.js";
 
 export class Client extends ClientSDK {
@@ -43,14 +43,14 @@ export class Client extends ClientSDK {
     return (this._authentication ??= new ClientAuthentication(this._options));
   }
 
-  private _chat?: Chat;
-  get chat(): Chat {
-    return (this._chat ??= new Chat(this._options));
+  private _chat?: ClientChat;
+  get chat(): ClientChat {
+    return (this._chat ??= new ClientChat(this._options));
   }
 
-  private _agents?: Agents;
-  get agents(): Agents {
-    return (this._agents ??= new Agents(this._options));
+  private _agents?: ClientAgents;
+  get agents(): ClientAgents {
+    return (this._agents ??= new ClientAgents(this._options));
   }
 
   private _collections?: Collections;
@@ -83,9 +83,9 @@ export class Client extends ClientSDK {
     return (this._search ??= new Search(this._options));
   }
 
-  private _entities?: Entities;
-  get entities(): Entities {
-    return (this._entities ??= new Entities(this._options));
+  private _entities?: ClientEntities;
+  get entities(): ClientEntities {
+    return (this._entities ??= new ClientEntities(this._options));
   }
 
   private _shortcuts?: ClientShortcuts;
@@ -98,9 +98,9 @@ export class Client extends ClientSDK {
     return (this._verification ??= new Verification(this._options));
   }
 
-  private _tools?: Tools;
-  get tools(): Tools {
-    return (this._tools ??= new Tools(this._options));
+  private _tools?: ClientTools;
+  get tools(): ClientTools {
+    return (this._tools ??= new ClientTools(this._options));
   }
 
   private _governance?: ClientGovernance;
