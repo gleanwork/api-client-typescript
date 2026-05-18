@@ -42,6 +42,7 @@ export const EditCollectionResponseErrorCode = {
   HeightViolation: "HEIGHT_VIOLATION",
   WidthViolation: "WIDTH_VIOLATION",
   NoPermissions: "NO_PERMISSIONS",
+  CorruptItem: "CORRUPT_ITEM",
 } as const;
 export type EditCollectionResponseErrorCode = OpenEnum<
   typeof EditCollectionResponseErrorCode
@@ -86,6 +87,10 @@ export type EditCollectionResponse = {
    */
   allowedDatasource?: string | undefined;
   permissions?: ObjectPermissions | undefined;
+  /**
+   * An opaque token that represents this particular UGC. To be used for `/feedback` reporting.
+   */
+  trackingToken?: string | undefined;
   /**
    * The unique ID of the Collection.
    */
@@ -148,6 +153,7 @@ export const EditCollectionResponse$inboundSchema: z.ZodType<
   thumbnail: Thumbnail$inboundSchema.optional(),
   allowedDatasource: z.string().optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
+  trackingToken: z.string().optional(),
   id: z.number().int(),
   createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
