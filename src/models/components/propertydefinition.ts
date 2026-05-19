@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The type of custom property - this governs the search and faceting behavior. Note that MULTIPICKLIST is not yet supported.
  */
-export const PropertyType = {
+export const PropertyDefinitionPropertyType = {
   Text: "TEXT",
   Date: "DATE",
   Int: "INT",
@@ -25,7 +25,9 @@ export const PropertyType = {
 /**
  * The type of custom property - this governs the search and faceting behavior. Note that MULTIPICKLIST is not yet supported.
  */
-export type PropertyType = OpenEnum<typeof PropertyType>;
+export type PropertyDefinitionPropertyType = OpenEnum<
+  typeof PropertyDefinitionPropertyType
+>;
 
 export const UiOptions = {
   None: "NONE",
@@ -50,7 +52,7 @@ export type PropertyDefinition = {
   /**
    * The type of custom property - this governs the search and faceting behavior. Note that MULTIPICKLIST is not yet supported.
    */
-  propertyType?: PropertyType | undefined;
+  propertyType?: PropertyDefinitionPropertyType | undefined;
   uiOptions?: UiOptions | undefined;
   /**
    * If true then the property will not show up as a facet in the UI.
@@ -71,17 +73,17 @@ export type PropertyDefinition = {
 };
 
 /** @internal */
-export const PropertyType$inboundSchema: z.ZodType<
-  PropertyType,
+export const PropertyDefinitionPropertyType$inboundSchema: z.ZodType<
+  PropertyDefinitionPropertyType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PropertyType);
+> = openEnums.inboundSchema(PropertyDefinitionPropertyType);
 /** @internal */
-export const PropertyType$outboundSchema: z.ZodType<
+export const PropertyDefinitionPropertyType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
-  PropertyType
-> = openEnums.outboundSchema(PropertyType);
+  PropertyDefinitionPropertyType
+> = openEnums.outboundSchema(PropertyDefinitionPropertyType);
 
 /** @internal */
 export const UiOptions$inboundSchema: z.ZodType<
@@ -105,7 +107,7 @@ export const PropertyDefinition$inboundSchema: z.ZodType<
   name: z.string().optional(),
   displayLabel: z.string().optional(),
   displayLabelPlural: z.string().optional(),
-  propertyType: PropertyType$inboundSchema.optional(),
+  propertyType: PropertyDefinitionPropertyType$inboundSchema.optional(),
   uiOptions: UiOptions$inboundSchema.optional(),
   hideUiFacet: z.boolean().optional(),
   uiFacetOrder: z.number().int().optional(),
@@ -134,7 +136,7 @@ export const PropertyDefinition$outboundSchema: z.ZodType<
   name: z.string().optional(),
   displayLabel: z.string().optional(),
   displayLabelPlural: z.string().optional(),
-  propertyType: PropertyType$outboundSchema.optional(),
+  propertyType: PropertyDefinitionPropertyType$outboundSchema.optional(),
   uiOptions: UiOptions$outboundSchema.optional(),
   hideUiFacet: z.boolean().optional(),
   uiFacetOrder: z.number().int().optional(),
