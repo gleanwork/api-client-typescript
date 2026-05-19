@@ -6,7 +6,7 @@
 import { FeedResult } from "@gleanwork/api-client/models/components";
 
 let value: FeedResult = {
-  category: "END_MY_DAY",
+  category: "QUERY_SUGGESTION",
   primaryEntry: {
     title: "<value>",
     createdBy: {
@@ -568,6 +568,10 @@ let value: FeedResult = {
     workflow: {
       workflow: {
         author: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        lastDraftSavedBy: {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
@@ -1148,6 +1152,10 @@ let value: FeedResult = {
       workflow: {
         workflow: {
           author: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          lastDraftSavedBy: {
             name: "George Clooney",
             obfuscatedId: "abc123",
           },
