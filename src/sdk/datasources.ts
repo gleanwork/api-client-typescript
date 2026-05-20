@@ -3,7 +3,9 @@
  * @generated-id: 16d5d120f477
  */
 
+import { datasourcesGetDatasourceCredentialStatus } from "../funcs/datasourcesGetDatasourceCredentialStatus.js";
 import { datasourcesGetDatasourceInstanceConfiguration } from "../funcs/datasourcesGetDatasourceInstanceConfiguration.js";
+import { datasourcesRotateDatasourceCredentials } from "../funcs/datasourcesRotateDatasourceCredentials.js";
 import { datasourcesUpdateDatasourceInstanceConfiguration } from "../funcs/datasourcesUpdateDatasourceInstanceConfiguration.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -47,6 +49,44 @@ export class Datasources extends ClientSDK {
       updateDatasourceConfigurationRequest,
       datasourceId,
       instanceId,
+      options,
+    ));
+  }
+
+  /**
+   * Get datasource instance credential status
+   *
+   * @remarks
+   * Returns the current credential status for a datasource instance. Access is limited to callers with the ADMIN scope; the handler enforces this check.
+   */
+  async getDatasourceCredentialStatus(
+    datasourceInstanceId: string,
+    options?: RequestOptions,
+  ): Promise<components.DatasourceCredentialStatusResponse> {
+    return unwrapAsync(datasourcesGetDatasourceCredentialStatus(
+      this,
+      datasourceInstanceId,
+      options,
+    ));
+  }
+
+  /**
+   * Rotate datasource instance credentials
+   *
+   * @remarks
+   * Rotates the credentials that a datasource instance uses to connect to its upstream system. Replaces the active credential material with the supplied values and returns the credential status after rotation. Access is limited to callers with the ADMIN scope; the handler enforces this check.
+   * Only keys recognized as credential material for the datasource type may be set in `credentials.values` (e.g. `clientSecret`, `apiToken`, `privateKey`, depending on the configured auth method). Unrecognized keys, or keys that correspond to non-credential configuration, cause a 400; other instance configuration must be updated via PATCH /configure/datasources/{datasourceId}/instances/{instanceId}.
+   */
+  async rotateDatasourceCredentials(
+    rotateDatasourceCredentialsRequest:
+      components.RotateDatasourceCredentialsRequest,
+    datasourceInstanceId: string,
+    options?: RequestOptions,
+  ): Promise<components.DatasourceCredentialStatusResponse> {
+    return unwrapAsync(datasourcesRotateDatasourceCredentials(
+      this,
+      rotateDatasourceCredentialsRequest,
+      datasourceInstanceId,
       options,
     ));
   }
