@@ -4,9 +4,9 @@
 package components
 
 type InsightsOverviewResponse struct {
-	// Number of current Monthly Active Users, in the specified departments.
+	// Number of current Monthly Active Users.
 	MonthlyActiveUsers *int64 `json:"monthlyActiveUsers,omitempty"`
-	// Number of current Weekly Active Users, in the specified departments.
+	// Number of current Weekly Active Users.
 	WeeklyActiveUsers *int64 `json:"weeklyActiveUsers,omitempty"`
 	// Department name(s).
 	Departments []string `json:"departments,omitempty"`
@@ -24,6 +24,8 @@ type InsightsOverviewResponse struct {
 	// Unix timestamp of the last update for the insights data in the response.
 	LastUpdatedTs *int64 `json:"lastUpdatedTs,omitempty"`
 	// Search session satisfaction rate, over the specified time period in the specified departments.
+	//
+	// Deprecated: Deprecated on 2026-05-13, removal scheduled for 2027-01-15: This property is no longer supported. Please contact Support for alternatives..
 	SearchSessionSatisfaction            *float32          `json:"searchSessionSatisfaction,omitempty"`
 	MonthlyActiveUserTimeseries          *LabeledCountInfo `json:"monthlyActiveUserTimeseries,omitempty"`
 	WeeklyActiveUserTimeseries           *LabeledCountInfo `json:"weeklyActiveUserTimeseries,omitempty"`
