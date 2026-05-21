@@ -14,6 +14,20 @@ let value: AgentsInsightsV2Response = {
         iconType: "GLYPH",
         name: "user",
       },
+      owner: {
+        name: "George Clooney",
+        obfuscatedId: "abc123",
+      },
+    },
+  ],
+  topUseCasesInsights: [
+    {
+      topAgentIcon: {
+        color: "#343CED",
+        key: "person_icon",
+        iconType: "GLYPH",
+        name: "user",
+      },
     },
   ],
   agentsUsageByDepartmentInsights: [
@@ -51,13 +65,14 @@ let value: AgentsInsightsV2Response = {
 
 | Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
 | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `monthlyActiveUsers`                                                                                     | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | Number of current Monthly Active Users, in the specified departments.                                    |
-| `weeklyActiveUsers`                                                                                      | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | Number of current Weekly Active Users, in the specified departments.                                     |
+| `monthlyActiveUsers`                                                                                     | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | Number of current Monthly Active Users.                                                                  |
+| `weeklyActiveUsers`                                                                                      | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | Number of current Weekly Active Users.                                                                   |
 | `monthlyActiveUserTimeseries`                                                                            | [components.LabeledCountInfo](../../models/components/labeledcountinfo.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `weeklyActiveUserTimeseries`                                                                             | [components.LabeledCountInfo](../../models/components/labeledcountinfo.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `dailyActiveUserTimeseries`                                                                              | [components.LabeledCountInfo](../../models/components/labeledcountinfo.md)                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `sharedAgentsCount`                                                                                      | *number*                                                                                                 | :heavy_minus_sign:                                                                                       | Total number of shared agents.                                                                           |
 | `topAgentsInsights`                                                                                      | [components.PerAgentInsight](../../models/components/peragentinsight.md)[]                               | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
+| `topUseCasesInsights`                                                                                    | [components.AgentUseCaseInsight](../../models/components/agentusecaseinsight.md)[]                       | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `agentsUsageByDepartmentInsights`                                                                        | [components.AgentsUsageByDepartmentInsight](../../models/components/agentsusagebydepartmentinsight.md)[] | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `agentUsersInsights`                                                                                     | [components.AgentUsersInsight](../../models/components/agentusersinsight.md)[]                           | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
 | `agentsTimeSavedInsights`                                                                                | [components.AgentsTimeSavedInsight](../../models/components/agentstimesavedinsight.md)[]                 | :heavy_minus_sign:                                                                                       | Insights for agents time saved over the specified time period.                                           |
