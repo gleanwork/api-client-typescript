@@ -31,12 +31,25 @@ export type Workflow = {
    * Server Unix timestamp of the last time the draft was saved.
    */
   lastDraftSavedAt?: number | undefined;
+  lastDraftSavedBy?: Person | undefined;
+  /**
+   * ID of the VCS user (e.g. GitHub username) who last saved the draft. Set only by the draft save path via the external Git integration API.
+   */
+  lastDraftGitAuthorId?: string | undefined;
   lastUpdatedBy?: Person | undefined;
   permissions?: ObjectPermissions | undefined;
   /**
    * The ID of the workflow.
    */
   id?: string | undefined;
+  /**
+   * When present, indicates this workflow is admin-verified. Set via the dedicated admin settings endpoint, not by regular edits.
+   */
+  verified?: boolean | undefined;
+  /**
+   * When true, displays organization name instead of author name in agent card. Set via the dedicated admin settings endpoint, not by regular edits.
+   */
+  showOrganizationAsAuthor?: boolean | undefined;
 };
 
 /** @internal */
@@ -50,9 +63,13 @@ export const Workflow$inboundSchema: z.ZodType<
   createTimestamp: z.number().int().optional(),
   lastUpdateTimestamp: z.number().int().optional(),
   lastDraftSavedAt: z.number().int().optional(),
+  lastDraftSavedBy: Person$inboundSchema.optional(),
+  lastDraftGitAuthorId: z.string().optional(),
   lastUpdatedBy: Person$inboundSchema.optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
   id: z.string().optional(),
+  verified: z.boolean().optional(),
+  showOrganizationAsAuthor: z.boolean().optional(),
 });
 
 export function workflowFromJSON(
