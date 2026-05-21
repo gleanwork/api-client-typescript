@@ -40,3 +40,31 @@ test("Tools Post /Rest/api/v1 /Tools/call", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Tools Get Action Pack Auth Status", async () => {
+  const testHttpClient = createTestHTTPClient("getActionPackAuthStatus");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.tools.getActionPackAuthStatus("<id>");
+  expect(result).toBeDefined();
+});
+
+test("Tools Authorize Action Pack", async () => {
+  const testHttpClient = createTestHTTPClient("authorizeActionPack");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.tools.authorizeActionPack({
+    returnUrl: "https://merry-allocation.org/",
+  }, "<id>");
+  expect(result).toBeDefined();
+});
