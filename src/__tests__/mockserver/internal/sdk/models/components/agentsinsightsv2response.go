@@ -4,9 +4,9 @@
 package components
 
 type AgentsInsightsV2Response struct {
-	// Number of current Monthly Active Users, in the specified departments.
+	// Number of current Monthly Active Users.
 	MonthlyActiveUsers *int64 `json:"monthlyActiveUsers,omitempty"`
-	// Number of current Weekly Active Users, in the specified departments.
+	// Number of current Weekly Active Users.
 	WeeklyActiveUsers           *int64            `json:"weeklyActiveUsers,omitempty"`
 	MonthlyActiveUserTimeseries *LabeledCountInfo `json:"monthlyActiveUserTimeseries,omitempty"`
 	WeeklyActiveUserTimeseries  *LabeledCountInfo `json:"weeklyActiveUserTimeseries,omitempty"`
@@ -14,6 +14,7 @@ type AgentsInsightsV2Response struct {
 	// Total number of shared agents.
 	SharedAgentsCount               *int64                           `json:"sharedAgentsCount,omitempty"`
 	TopAgentsInsights               []PerAgentInsight                `json:"topAgentsInsights,omitempty"`
+	TopUseCasesInsights             []AgentUseCaseInsight            `json:"topUseCasesInsights,omitempty"`
 	AgentsUsageByDepartmentInsights []AgentsUsageByDepartmentInsight `json:"agentsUsageByDepartmentInsights,omitempty"`
 	AgentUsersInsights              []AgentUsersInsight              `json:"agentUsersInsights,omitempty"`
 	// Insights for agents time saved over the specified time period.
@@ -73,6 +74,13 @@ func (o *AgentsInsightsV2Response) GetTopAgentsInsights() []PerAgentInsight {
 		return nil
 	}
 	return o.TopAgentsInsights
+}
+
+func (o *AgentsInsightsV2Response) GetTopUseCasesInsights() []AgentUseCaseInsight {
+	if o == nil {
+		return nil
+	}
+	return o.TopUseCasesInsights
 }
 
 func (o *AgentsInsightsV2Response) GetAgentsUsageByDepartmentInsights() []AgentsUsageByDepartmentInsight {
