@@ -46,6 +46,20 @@ let value: InsightsResponse = {
           iconType: "GLYPH",
           name: "user",
         },
+        owner: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
+    topUseCasesInsights: [
+      {
+        topAgentIcon: {
+          color: "#343CED",
+          key: "person_icon",
+          iconType: "GLYPH",
+          name: "user",
+        },
       },
     ],
     agentsUsageByDepartmentInsights: [
@@ -77,14 +91,26 @@ let value: InsightsResponse = {
       },
     ],
   },
+  mcpBreakdownResponse: {
+    usersBreakdown: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+      },
+    ],
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `gleanAssist`                                                                                    | [components.GleanAssistInsightsResponse](../../models/components/gleanassistinsightsresponse.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `overviewResponse`                                                                               | [components.InsightsOverviewResponse](../../models/components/insightsoverviewresponse.md)       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `assistantResponse`                                                                              | [components.AssistantInsightsResponse](../../models/components/assistantinsightsresponse.md)     | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `agentsResponse`                                                                                 | [components.AgentsInsightsV2Response](../../models/components/agentsinsightsv2response.md)       | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `gleanAssist`                                                                                      | [components.GleanAssistInsightsResponse](../../models/components/gleanassistinsightsresponse.md)   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `overviewResponse`                                                                                 | [components.InsightsOverviewResponse](../../models/components/insightsoverviewresponse.md)         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `assistantResponse`                                                                                | [components.AssistantInsightsResponse](../../models/components/assistantinsightsresponse.md)       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `agentsResponse`                                                                                   | [components.AgentsInsightsV2Response](../../models/components/agentsinsightsv2response.md)         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `mcpResponse`                                                                                      | [components.McpInsightsResponse](../../models/components/mcpinsightsresponse.md)                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `mcpBreakdownResponse`                                                                             | [components.McpBreakdownInsightsResponse](../../models/components/mcpbreakdowninsightsresponse.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

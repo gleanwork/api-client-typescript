@@ -23,12 +23,22 @@ import {
   InsightsOverviewResponse,
   InsightsOverviewResponse$inboundSchema,
 } from "./insightsoverviewresponse.js";
+import {
+  McpBreakdownInsightsResponse,
+  McpBreakdownInsightsResponse$inboundSchema,
+} from "./mcpbreakdowninsightsresponse.js";
+import {
+  McpInsightsResponse,
+  McpInsightsResponse$inboundSchema,
+} from "./mcpinsightsresponse.js";
 
 export type InsightsResponse = {
   gleanAssist?: GleanAssistInsightsResponse | undefined;
   overviewResponse?: InsightsOverviewResponse | undefined;
   assistantResponse?: AssistantInsightsResponse | undefined;
   agentsResponse?: AgentsInsightsV2Response | undefined;
+  mcpResponse?: McpInsightsResponse | undefined;
+  mcpBreakdownResponse?: McpBreakdownInsightsResponse | undefined;
 };
 
 /** @internal */
@@ -41,6 +51,8 @@ export const InsightsResponse$inboundSchema: z.ZodType<
   overviewResponse: InsightsOverviewResponse$inboundSchema.optional(),
   assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
   agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),
+  mcpResponse: McpInsightsResponse$inboundSchema.optional(),
+  mcpBreakdownResponse: McpBreakdownInsightsResponse$inboundSchema.optional(),
 });
 
 export function insightsResponseFromJSON(
