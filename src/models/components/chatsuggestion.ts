@@ -14,9 +14,17 @@ export type ChatSuggestion = {
    */
   query?: string | undefined;
   /**
+   * Button text to show for the suggestion action.
+   */
+  cta?: string | undefined;
+  /**
    * Targeted Glean Chat feature for the suggestion.
    */
   feature?: string | undefined;
+  /**
+   * Document IDs that grounded the suggestion.
+   */
+  sourceDocumentIds?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -26,7 +34,9 @@ export const ChatSuggestion$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   query: z.string().optional(),
+  cta: z.string().optional(),
   feature: z.string().optional(),
+  sourceDocumentIds: z.array(z.string()).optional(),
 });
 
 export function chatSuggestionFromJSON(
