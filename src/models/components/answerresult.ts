@@ -12,7 +12,9 @@ import { Answer, Answer$inboundSchema } from "./answer.js";
 export type AnswerResult = {
   answer: Answer;
   /**
-   * An opaque token that represents this particular Answer. To be used for `/feedback` reporting.
+   * Use `answer.trackingToken` instead.
+   *
+   * @deprecated field: Deprecated on 2026-05-07, removal scheduled for 2027-01-15: Use `answer.trackingToken` instead..
    */
   trackingToken?: string | undefined;
 };

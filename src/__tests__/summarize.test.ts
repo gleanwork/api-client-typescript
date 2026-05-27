@@ -19,10 +19,11 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://dim-glider.com/",
+        ugcType: "CHATS",
+        contentId: 207037,
       },
       {
-        id: "<id>",
+        url: "https://angelic-exhaust.com",
       },
     ],
   });

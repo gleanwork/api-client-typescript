@@ -16,6 +16,10 @@ import {
   AgentsUsageByDepartmentInsight$inboundSchema,
 } from "./agentsusagebydepartmentinsight.js";
 import {
+  AgentUseCaseInsight,
+  AgentUseCaseInsight$inboundSchema,
+} from "./agentusecaseinsight.js";
+import {
   AgentUsersInsight,
   AgentUsersInsight$inboundSchema,
 } from "./agentusersinsight.js";
@@ -30,11 +34,11 @@ import {
 
 export type AgentsInsightsV2Response = {
   /**
-   * Number of current Monthly Active Users, in the specified departments.
+   * Number of current Monthly Active Users.
    */
   monthlyActiveUsers?: number | undefined;
   /**
-   * Number of current Weekly Active Users, in the specified departments.
+   * Number of current Weekly Active Users.
    */
   weeklyActiveUsers?: number | undefined;
   monthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
@@ -45,6 +49,7 @@ export type AgentsInsightsV2Response = {
    */
   sharedAgentsCount?: number | undefined;
   topAgentsInsights?: Array<PerAgentInsight> | undefined;
+  topUseCasesInsights?: Array<AgentUseCaseInsight> | undefined;
   agentsUsageByDepartmentInsights?:
     | Array<AgentsUsageByDepartmentInsight>
     | undefined;
@@ -74,6 +79,7 @@ export const AgentsInsightsV2Response$inboundSchema: z.ZodType<
   dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   sharedAgentsCount: z.number().int().optional(),
   topAgentsInsights: z.array(PerAgentInsight$inboundSchema).optional(),
+  topUseCasesInsights: z.array(AgentUseCaseInsight$inboundSchema).optional(),
   agentsUsageByDepartmentInsights: z.array(
     AgentsUsageByDepartmentInsight$inboundSchema,
   ).optional(),

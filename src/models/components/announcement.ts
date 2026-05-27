@@ -111,6 +111,10 @@ export type Announcement = {
   draftId?: number | undefined;
   permissions?: ObjectPermissions | undefined;
   /**
+   * An opaque token that represents this particular UGC. To be used for `/feedback` reporting.
+   */
+  trackingToken?: string | undefined;
+  /**
    * The opaque id of the announcement.
    */
   id?: number | undefined;
@@ -190,6 +194,7 @@ export const Announcement$inboundSchema: z.ZodType<
   viewUrl: z.string().optional(),
   draftId: z.number().int().optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
+  trackingToken: z.string().optional(),
   id: z.number().int().optional(),
   author: Person$inboundSchema.optional(),
   createTimestamp: z.number().int().optional(),
