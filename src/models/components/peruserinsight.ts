@@ -43,6 +43,10 @@ export type PerUserInsight = {
    * Total number of agent runs for this user over the specified time period.
    */
   numAgentRuns?: number | undefined;
+  /**
+   * Total number of MCP calls for this user over the specified time period.
+   */
+  numMcpCalls?: number | undefined;
 };
 
 /** @internal */
@@ -60,6 +64,7 @@ export const PerUserInsight$inboundSchema: z.ZodType<
   numSummarizations: z.number().int().optional(),
   numAiAnswers: z.number().int().optional(),
   numAgentRuns: z.number().int().optional(),
+  numMcpCalls: z.number().int().optional(),
 });
 
 export function perUserInsightFromJSON(
