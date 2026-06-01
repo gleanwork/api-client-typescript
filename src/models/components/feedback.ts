@@ -42,6 +42,8 @@ import {
  */
 export const FeedbackCategory = {
   Announcement: "ANNOUNCEMENT",
+  Answers: "ANSWERS",
+  Artifacts: "ARTIFACTS",
   Autocomplete: "AUTOCOMPLETE",
   Collections: "COLLECTIONS",
   Feed: "FEED",
@@ -62,7 +64,7 @@ export type FeedbackCategory = ClosedEnum<typeof FeedbackCategory>;
 /**
  * The action the user took within a Glean client with respect to the object referred to by the given `trackingToken`.
  */
-export const Event = {
+export const FeedbackEvent = {
   /**
    * The object's primary link was clicked with the intent to view its full representation. Depending on the object type, this may imply an external navigation or navigating to a new page or view within the Glean app.
    */
@@ -192,7 +194,7 @@ export const Event = {
 /**
  * The action the user took within a Glean client with respect to the object referred to by the given `trackingToken`.
  */
-export type Event = ClosedEnum<typeof Event>;
+export type FeedbackEvent = ClosedEnum<typeof FeedbackEvent>;
 
 export const FeedbackChannel = {
   Company: "COMPANY",
@@ -216,7 +218,7 @@ export type Feedback = {
   /**
    * The action the user took within a Glean client with respect to the object referred to by the given `trackingToken`.
    */
-  event: Event;
+  event: FeedbackEvent;
   /**
    * Position of the element in the case that the client controls order (such as feed and autocomplete).
    */
@@ -272,9 +274,9 @@ export const FeedbackCategory$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FeedbackCategory);
 
 /** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
-  Event,
-);
+export const FeedbackEvent$outboundSchema: z.ZodNativeEnum<
+  typeof FeedbackEvent
+> = z.nativeEnum(FeedbackEvent);
 
 /** @internal */
 export const FeedbackChannel$outboundSchema: z.ZodNativeEnum<
@@ -317,7 +319,7 @@ export const Feedback$outboundSchema: z.ZodType<
   id: z.string().optional(),
   category: FeedbackCategory$outboundSchema.optional(),
   trackingTokens: z.array(z.string()),
-  event: Event$outboundSchema,
+  event: FeedbackEvent$outboundSchema,
   position: z.number().int().optional(),
   payload: z.string().optional(),
   sessionInfo: SessionInfo$outboundSchema.optional(),
