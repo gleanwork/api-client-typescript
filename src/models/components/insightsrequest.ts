@@ -19,11 +19,23 @@ import {
   InsightsOverviewRequest$Outbound,
   InsightsOverviewRequest$outboundSchema,
 } from "./insightsoverviewrequest.js";
+import {
+  McpBreakdownInsightsRequest,
+  McpBreakdownInsightsRequest$Outbound,
+  McpBreakdownInsightsRequest$outboundSchema,
+} from "./mcpbreakdowninsightsrequest.js";
+import {
+  McpInsightsRequest,
+  McpInsightsRequest$Outbound,
+  McpInsightsRequest$outboundSchema,
+} from "./mcpinsightsrequest.js";
 
 export type InsightsRequest = {
   overviewRequest?: InsightsOverviewRequest | undefined;
   assistantRequest?: InsightsAssistantRequest | undefined;
   agentsRequest?: AgentsInsightsV2Request | undefined;
+  mcpRequest?: McpInsightsRequest | undefined;
+  mcpBreakdownRequest?: McpBreakdownInsightsRequest | undefined;
   /**
    * If true, suppresses the generation of per-user Insights in the response. Default is false.
    */
@@ -35,6 +47,8 @@ export type InsightsRequest$Outbound = {
   overviewRequest?: InsightsOverviewRequest$Outbound | undefined;
   assistantRequest?: InsightsAssistantRequest$Outbound | undefined;
   agentsRequest?: AgentsInsightsV2Request$Outbound | undefined;
+  mcpRequest?: McpInsightsRequest$Outbound | undefined;
+  mcpBreakdownRequest?: McpBreakdownInsightsRequest$Outbound | undefined;
   disablePerUserInsights?: boolean | undefined;
 };
 
@@ -47,6 +61,8 @@ export const InsightsRequest$outboundSchema: z.ZodType<
   overviewRequest: InsightsOverviewRequest$outboundSchema.optional(),
   assistantRequest: InsightsAssistantRequest$outboundSchema.optional(),
   agentsRequest: AgentsInsightsV2Request$outboundSchema.optional(),
+  mcpRequest: McpInsightsRequest$outboundSchema.optional(),
+  mcpBreakdownRequest: McpBreakdownInsightsRequest$outboundSchema.optional(),
   disablePerUserInsights: z.boolean().optional(),
 });
 
