@@ -4,6 +4,7 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { CustomMetadata } from "./custommetadata.js";
 import { Datasource } from "./datasource.js";
 import { IndexingAuthentication } from "./indexingauthentication.js";
 import { IndexingDatasources } from "./indexingdatasources.js";
@@ -46,5 +47,10 @@ export class Indexing extends ClientSDK {
   private _shortcuts?: IndexingShortcuts;
   get shortcuts(): IndexingShortcuts {
     return (this._shortcuts ??= new IndexingShortcuts(this._options));
+  }
+
+  private _customMetadata?: CustomMetadata;
+  get customMetadata(): CustomMetadata {
+    return (this._customMetadata ??= new CustomMetadata(this._options));
   }
 }
