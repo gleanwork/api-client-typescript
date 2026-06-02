@@ -3,105 +3,31 @@
  * @generated-id: a103cd018c9b
  */
 
-import { clientAgentsList } from "../funcs/clientAgentsList.js";
-import { clientAgentsRetrieve } from "../funcs/clientAgentsRetrieve.js";
-import { clientAgentsRetrieveSchemas } from "../funcs/clientAgentsRetrieveSchemas.js";
-import { clientAgentsRun } from "../funcs/clientAgentsRun.js";
-import { clientAgentsRunStream } from "../funcs/clientAgentsRunStream.js";
+import { agentsEditAgent } from "../funcs/agentsEditAgent.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Agents extends ClientSDK {
   /**
-   * Retrieve an agent
+   * Edit an agent
    *
    * @remarks
-   * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
+   * Creates a draft or publishes an [agent](https://developers.glean.com/agents/agents-api). Use `isDraft=true` to save a draft, or `isDraft=false` (or omit) to publish immediately. Only draft and publish modes are supported.
    */
-  async retrieve(
+  async editAgent(
+    editWorkflowRequest: components.EditWorkflowRequest,
     agentId: string,
     locale?: string | undefined,
     timezoneOffset?: number | undefined,
     options?: RequestOptions,
-  ): Promise<components.Agent> {
-    return unwrapAsync(clientAgentsRetrieve(
+  ): Promise<void> {
+    return unwrapAsync(agentsEditAgent(
       this,
+      editWorkflowRequest,
       agentId,
       locale,
       timezoneOffset,
-      options,
-    ));
-  }
-
-  /**
-   * List an agent's schemas
-   *
-   * @remarks
-   * Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
-   */
-  async retrieveSchemas(
-    agentId: string,
-    locale?: string | undefined,
-    timezoneOffset?: number | undefined,
-    options?: RequestOptions,
-  ): Promise<components.AgentSchemas> {
-    return unwrapAsync(clientAgentsRetrieveSchemas(
-      this,
-      agentId,
-      locale,
-      timezoneOffset,
-      options,
-    ));
-  }
-
-  /**
-   * Search agents
-   *
-   * @remarks
-   * Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
-   */
-  async list(
-    request: components.SearchAgentsRequest,
-    options?: RequestOptions,
-  ): Promise<components.SearchAgentsResponse> {
-    return unwrapAsync(clientAgentsList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create an agent run and stream the response
-   *
-   * @remarks
-   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
-   */
-  async runStream(
-    request: components.AgentRunCreate,
-    options?: RequestOptions,
-  ): Promise<string> {
-    return unwrapAsync(clientAgentsRunStream(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create an agent run and wait for the response
-   *
-   * @remarks
-   * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
-   */
-  async run(
-    request: components.AgentRunCreate,
-    options?: RequestOptions,
-  ): Promise<components.AgentRunWaitResponse> {
-    return unwrapAsync(clientAgentsRun(
-      this,
-      request,
       options,
     ));
   }

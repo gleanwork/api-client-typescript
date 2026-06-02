@@ -12,6 +12,10 @@ let value: PerAgentInsight = {
     iconType: "GLYPH",
     name: "user",
   },
+  owner: {
+    name: "George Clooney",
+    obfuscatedId: "abc123",
+  },
 };
 ```
 
@@ -27,3 +31,4 @@ let value: PerAgentInsight = {
 | `runCount`                                                                        | *number*                                                                          | :heavy_minus_sign:                                                                | Total number of runs for this agent over the specified time period.               |                                                                                   |
 | `upvoteCount`                                                                     | *number*                                                                          | :heavy_minus_sign:                                                                | Total number of upvotes for this agent over the specified time period.            |                                                                                   |
 | `downvoteCount`                                                                   | *number*                                                                          | :heavy_minus_sign:                                                                | Total number of downvotes for this agent over the specified time period.          |                                                                                   |
+| `owner`                                                                           | [components.Person](../../models/components/person.md)                            | :heavy_minus_sign:                                                                | N/A                                                                               | {<br/>"name": "George Clooney",<br/>"obfuscatedId": "abc123"<br/>}                |
