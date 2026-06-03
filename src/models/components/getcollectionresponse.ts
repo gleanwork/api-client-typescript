@@ -16,11 +16,13 @@ import {
 export type GetCollectionResponse = {
   collection?: Collection | undefined;
   rootCollection?: Collection | undefined;
+  error?: CollectionError | undefined;
   /**
-   * An opaque token that represents this particular Collection. To be used for `/feedback` reporting.
+   * Use `collection.trackingToken` instead.
+   *
+   * @deprecated field: Deprecated on 2026-05-07, removal scheduled for 2027-01-15: Use `collection.trackingToken` instead..
    */
   trackingToken?: string | undefined;
-  error?: CollectionError | undefined;
 };
 
 /** @internal */
@@ -31,8 +33,8 @@ export const GetCollectionResponse$inboundSchema: z.ZodType<
 > = z.object({
   collection: Collection$inboundSchema.optional(),
   rootCollection: Collection$inboundSchema.optional(),
-  trackingToken: z.string().optional(),
   error: CollectionError$inboundSchema.optional(),
+  trackingToken: z.string().optional(),
 });
 
 export function getCollectionResponseFromJSON(
