@@ -30,11 +30,11 @@ import {
 
 export type InsightsOverviewResponse = {
   /**
-   * Number of current Monthly Active Users, in the specified departments.
+   * Number of current Monthly Active Users.
    */
   monthlyActiveUsers?: number | undefined;
   /**
-   * Number of current Weekly Active Users, in the specified departments.
+   * Number of current Weekly Active Users.
    */
   weeklyActiveUsers?: number | undefined;
   /**
@@ -54,6 +54,7 @@ export type InsightsOverviewResponse = {
   searchActiveUsers?: CurrentActiveUsers | undefined;
   assistantActiveUsers?: CurrentActiveUsers | undefined;
   agentsActiveUsers?: CurrentActiveUsers | undefined;
+  mcpActiveUsers?: CurrentActiveUsers | undefined;
   extensionSummary?: CurrentActiveUsers | undefined;
   ugcSummary?: CurrentActiveUsers | undefined;
   /**
@@ -62,6 +63,8 @@ export type InsightsOverviewResponse = {
   lastUpdatedTs?: number | undefined;
   /**
    * Search session satisfaction rate, over the specified time period in the specified departments.
+   *
+   * @deprecated field: Deprecated on 2026-05-13, removal scheduled for 2027-01-15: This property is no longer supported. Please contact Support for alternatives..
    */
   searchSessionSatisfaction?: number | undefined;
   monthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
@@ -76,9 +79,13 @@ export type InsightsOverviewResponse = {
   agentsMonthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
   agentsWeeklyActiveUserTimeseries?: LabeledCountInfo | undefined;
   agentsDailyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  mcpMonthlyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  mcpWeeklyActiveUserTimeseries?: LabeledCountInfo | undefined;
+  mcpDailyActiveUserTimeseries?: LabeledCountInfo | undefined;
   searchesTimeseries?: LabeledCountInfo | undefined;
   assistantInteractionsTimeseries?: LabeledCountInfo | undefined;
   agentRunsTimeseries?: LabeledCountInfo | undefined;
+  mcpCallsTimeseries?: LabeledCountInfo | undefined;
   /**
    * Counts of search result clicks, by datasource, over the specified time period in the specified departments.
    */
@@ -109,6 +116,7 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   searchActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
   assistantActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
   agentsActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+  mcpActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
   extensionSummary: CurrentActiveUsers$inboundSchema.optional(),
   ugcSummary: CurrentActiveUsers$inboundSchema.optional(),
   lastUpdatedTs: z.number().int().optional(),
@@ -127,9 +135,13 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   agentsMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   agentsWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   agentsDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  mcpMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  mcpWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  mcpDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   searchesTimeseries: LabeledCountInfo$inboundSchema.optional(),
   assistantInteractionsTimeseries: LabeledCountInfo$inboundSchema.optional(),
   agentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  mcpCallsTimeseries: LabeledCountInfo$inboundSchema.optional(),
   searchDatasourceCounts: z.record(z.number().int()).optional(),
   chatDatasourceCounts: z.record(z.number().int()).optional(),
   perUserInsights: z.array(PerUserInsight$inboundSchema).optional(),
