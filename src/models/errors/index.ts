@@ -4,6 +4,7 @@
  */
 
 export * from "./collectionerror.js";
+export * from "./errorinforesponse.js";
 export * from "./errorresponse.js";
 export * from "./gleanbaseerror.js";
 export * from "./gleandataerror.js";

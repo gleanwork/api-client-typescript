@@ -18,11 +18,11 @@ import {
 
 export type AssistantInsightsResponse = {
   /**
-   * Number of current Monthly Active Users, in the specified departments.
+   * Number of current Monthly Active Users.
    */
   monthlyActiveUsers?: number | undefined;
   /**
-   * Number of current Weekly Active Users, in the specified departments.
+   * Number of current Weekly Active Users.
    */
   weeklyActiveUsers?: number | undefined;
   /**
