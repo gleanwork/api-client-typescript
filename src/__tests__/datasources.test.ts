@@ -99,3 +99,37 @@ test("Datasources Update Datasource Instance Configuration", async () => {
   );
   expect(result).toBeDefined();
 });
+
+test("Datasources Get Datasource Credential Status", async () => {
+  const testHttpClient = createTestHTTPClient("getDatasourceCredentialStatus");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.datasources.getDatasourceCredentialStatus(
+    "o365sharepoint_abc123",
+  );
+  expect(result).toBeDefined();
+});
+
+test("Datasources Rotate Datasource Credentials", async () => {
+  const testHttpClient = createTestHTTPClient("rotateDatasourceCredentials");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.datasources.rotateDatasourceCredentials({
+    credentials: {
+      values: {
+        "key": {},
+      },
+    },
+  }, "o365sharepoint_abc123");
+  expect(result).toBeDefined();
+});

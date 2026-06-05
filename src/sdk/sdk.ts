@@ -4,11 +4,16 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Agents } from "./agents.js";
 import { Authentication } from "./authentication.js";
+import { Chat } from "./chat.js";
 import { Client } from "./client.js";
 import { Datasources } from "./datasources.js";
+import { Entities } from "./entities.js";
 import { Governance } from "./governance.js";
 import { Indexing } from "./indexing.js";
+import { Tools } from "./tools.js";
+import { Troubleshooting } from "./troubleshooting.js";
 
 export class Glean extends ClientSDK {
   private _client?: Client;
@@ -21,9 +26,34 @@ export class Glean extends ClientSDK {
     return (this._authentication ??= new Authentication(this._options));
   }
 
+  private _chat?: Chat;
+  get chat(): Chat {
+    return (this._chat ??= new Chat(this._options));
+  }
+
+  private _agents?: Agents;
+  get agents(): Agents {
+    return (this._agents ??= new Agents(this._options));
+  }
+
+  private _entities?: Entities;
+  get entities(): Entities {
+    return (this._entities ??= new Entities(this._options));
+  }
+
+  private _tools?: Tools;
+  get tools(): Tools {
+    return (this._tools ??= new Tools(this._options));
+  }
+
   private _indexing?: Indexing;
   get indexing(): Indexing {
     return (this._indexing ??= new Indexing(this._options));
+  }
+
+  private _troubleshooting?: Troubleshooting;
+  get troubleshooting(): Troubleshooting {
+    return (this._troubleshooting ??= new Troubleshooting(this._options));
   }
 
   private _governance?: Governance;
