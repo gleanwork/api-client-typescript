@@ -1,13 +1,13 @@
-# Event
+# FeedbackEvent
 
 The action the user took within a Glean client with respect to the object referred to by the given `trackingToken`.
 
 ## Example Usage
 
 ```typescript
-import { Event } from "@gleanwork/api-client/models/components";
+import { FeedbackEvent } from "@gleanwork/api-client/models/components";
 
-let value: Event = "COPY_LINK";
+let value: FeedbackEvent = "EXECUTE";
 ```
 
 ## Values
