@@ -170,7 +170,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.ChatResponse$inboundSchema),
+    M.json([200, 202], components.ChatResponse$inboundSchema),
     M.fail([400, 401, 408, 429, "4XX"]),
     M.fail("5XX"),
   )(response, req);
