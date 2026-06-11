@@ -19,6 +19,10 @@ export const GroupType = {
   Location: "LOCATION",
   Region: "REGION",
   ExternalGroup: "EXTERNAL_GROUP",
+  /**
+   * Refers to any viewers of the Collection.
+   */
+  CollectionAudience: "COLLECTION_AUDIENCE",
 } as const;
 /**
  * The type of user group
