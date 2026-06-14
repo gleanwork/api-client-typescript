@@ -7,7 +7,7 @@ The type of user group
 ```typescript
 import { GroupType } from "@gleanwork/api-client/models/components";
 
-let value: GroupType = "REGION";
+let value: GroupType = "EXTERNAL_GROUP";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -15,5 +15,5 @@ let value: GroupType = "REGION";
 ## Values
 
 ```typescript
-"DEPARTMENT" | "ALL" | "TEAM" | "JOB_TITLE" | "ROLE_TYPE" | "LOCATION" | "REGION" | "EXTERNAL_GROUP" | Unrecognized<string>
+"DEPARTMENT" | "ALL" | "TEAM" | "JOB_TITLE" | "ROLE_TYPE" | "LOCATION" | "REGION" | "EXTERNAL_GROUP" | "COLLECTION_AUDIENCE" | Unrecognized<string>
 ```
