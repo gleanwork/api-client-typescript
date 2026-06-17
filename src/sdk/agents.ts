@@ -3,12 +3,34 @@
  * @generated-id: a103cd018c9b
  */
 
+import { agentsCreateAgent } from "../funcs/agentsCreateAgent.js";
 import { agentsEditAgent } from "../funcs/agentsEditAgent.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Agents extends ClientSDK {
+  /**
+   * Create an agent
+   *
+   * @remarks
+   * Create an agent.
+   */
+  async createAgent(
+    createWorkflowRequest: components.CreateWorkflowRequest,
+    locale?: string | undefined,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.WorkflowResult> {
+    return unwrapAsync(agentsCreateAgent(
+      this,
+      createWorkflowRequest,
+      locale,
+      timezoneOffset,
+      options,
+    ));
+  }
+
   /**
    * Edit an agent
    *

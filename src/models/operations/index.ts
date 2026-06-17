@@ -10,6 +10,7 @@ export * from "./authorizeactionpack.js";
 export * from "./autocomplete.js";
 export * from "./chat.js";
 export * from "./chatstream.js";
+export * from "./createagent.js";
 export * from "./createannouncement.js";
 export * from "./createanswer.js";
 export * from "./createcollection.js";
