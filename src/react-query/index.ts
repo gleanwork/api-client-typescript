@@ -6,6 +6,7 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./agentsCreateAgent.js";
 export * from "./agentsEditAgent.js";
 export * from "./authenticationCheckdatasourceauth.js";
 export * from "./chatGetChatFile.js";
