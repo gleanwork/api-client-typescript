@@ -68,3 +68,16 @@ it.skip("Agents Create And Wait Run", async () => {
     "incomplete test found please make sure to address the following errors: [`workflow step createAndWaitRun.test referencing operation createAndWaitRun is missing required request body`]",
   );
 });
+
+test("Agents Create Agent", async () => {
+  const testHttpClient = createTestHTTPClient("createAgent");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.createAgent({});
+  expect(result).toBeDefined();
+});
