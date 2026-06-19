@@ -9,13 +9,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Terms that are allow-listed during the scans. If any finding picked up by a rule exactly matches a term in the allow-list, it will not be counted as a violation.
+ * Terms and regexes that are allow-listed during the scans. If any finding picked up by a rule exactly matches a term, or matches a regex, in the allow-list, it will not be counted as a violation.
  */
 export type AllowlistOptions = {
   /**
    * list of words and phrases to consider as whitelisted content
    */
   terms?: Array<string> | undefined;
+  /**
+   * list of regular expressions whose matches are considered whitelisted content
+   */
+  regexes?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -25,10 +29,12 @@ export const AllowlistOptions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   terms: z.array(z.string()).optional(),
+  regexes: z.array(z.string()).optional(),
 });
 /** @internal */
 export type AllowlistOptions$Outbound = {
   terms?: Array<string> | undefined;
+  regexes?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -38,6 +44,7 @@ export const AllowlistOptions$outboundSchema: z.ZodType<
   AllowlistOptions
 > = z.object({
   terms: z.array(z.string()).optional(),
+  regexes: z.array(z.string()).optional(),
 });
 
 export function allowlistOptionsToJSON(
