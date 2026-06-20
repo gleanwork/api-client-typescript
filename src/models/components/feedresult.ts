@@ -47,6 +47,7 @@ export const FeedResultCategory = {
   MidDayCatchUp: "MID_DAY_CATCH_UP",
   QuerySuggestion: "QUERY_SUGGESTION",
   CoworkCujPromo: "COWORK_CUJ_PROMO",
+  CardStackPromo: "CARD_STACK_PROMO",
   WeeklyMeetings: "WEEKLY_MEETINGS",
   FollowUp: "FOLLOW_UP",
   MilestoneTimelineCheck: "MILESTONE_TIMELINE_CHECK",
@@ -62,6 +63,18 @@ export const FeedResultCategory = {
  */
 export type FeedResultCategory = OpenEnum<typeof FeedResultCategory>;
 
+/**
+ * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+ */
+export const PlacementReason = {
+  Organic: "ORGANIC",
+  Promo: "PROMO",
+} as const;
+/**
+ * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+ */
+export type PlacementReason = OpenEnum<typeof PlacementReason>;
+
 export type FeedResult = {
   /**
    * Category of the result, one of the requested categories in incoming request.
@@ -76,6 +89,10 @@ export type FeedResult = {
    * Rank of the result. Rank is suggested by server. Client side rank may differ.
    */
   rank?: number | undefined;
+  /**
+   * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+   */
+  placementReason?: PlacementReason | undefined;
 };
 
 /** @internal */
@@ -84,6 +101,13 @@ export const FeedResultCategory$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = openEnums.inboundSchema(FeedResultCategory);
+
+/** @internal */
+export const PlacementReason$inboundSchema: z.ZodType<
+  PlacementReason,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PlacementReason);
 
 /** @internal */
 export const FeedResult$inboundSchema: z.ZodType<
@@ -95,6 +119,7 @@ export const FeedResult$inboundSchema: z.ZodType<
   primaryEntry: FeedEntry$inboundSchema,
   secondaryEntries: z.array(FeedEntry$inboundSchema).optional(),
   rank: z.number().int().optional(),
+  placementReason: PlacementReason$inboundSchema.optional(),
 });
 
 export function feedResultFromJSON(
