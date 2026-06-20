@@ -102,7 +102,7 @@ export type DlpConfig = {
    */
   autoHideDocs?: boolean | undefined;
   /**
-   * Terms that are allow-listed during the scans. If any finding picked up by a rule exactly matches a term in the allow-list, it will not be counted as a violation.
+   * Terms and regexes that are allow-listed during the scans. If any finding picked up by a rule exactly matches a term, or matches a regex, in the allow-list, it will not be counted as a violation.
    */
   allowlistOptions?: AllowlistOptions | undefined;
 };
