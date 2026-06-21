@@ -6,7 +6,7 @@
 import { Group } from "@gleanwork/api-client/models/components";
 
 let value: Group = {
-  type: "JOB_TITLE",
+  type: "ROLE_TYPE",
   id: "<id>",
 };
 ```
