@@ -111,6 +111,7 @@ export const JustificationType = {
   MidDayCatchUp: "MID_DAY_CATCH_UP",
   QuerySuggestion: "QUERY_SUGGESTION",
   CoworkCujPromo: "COWORK_CUJ_PROMO",
+  CardStackPromo: "CARD_STACK_PROMO",
   WeeklyMeetings: "WEEKLY_MEETINGS",
   FollowUp: "FOLLOW_UP",
   MilestoneTimelineCheck: "MILESTONE_TIMELINE_CHECK",
