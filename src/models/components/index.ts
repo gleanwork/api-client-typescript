@@ -109,6 +109,7 @@ export * from "./createdlpreportrequest.js";
 export * from "./createdlpreportresponse.js";
 export * from "./createshortcutrequest.js";
 export * from "./createshortcutresponse.js";
+export * from "./createworkflowrequest.js";
 export * from "./currentactiveusers.js";
 export * from "./customdatasourceconfig.js";
 export * from "./customdatavalue.js";
