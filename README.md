@@ -282,6 +282,7 @@ For more information on obtaining the appropriate token type, please contact you
 
 ### [Agents](docs/sdks/agents/README.md)
 
+* [createAgent](docs/sdks/agents/README.md#createagent) - Create an agent
 * [editAgent](docs/sdks/agents/README.md#editagent) - Edit an agent
 
 ### [Authentication](docs/sdks/authentication/README.md)
@@ -537,6 +538,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`agentsCreateAgent`](docs/sdks/agents/README.md#createagent) - Create an agent
 - [`agentsEditAgent`](docs/sdks/agents/README.md#editagent) - Edit an agent
 - [`authenticationCheckdatasourceauth`](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
 - [`chatGetChatFile`](docs/sdks/chat/README.md#getchatfile) - Download a chat file
@@ -697,6 +699,7 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
+- [`useAgentsCreateAgentMutation`](docs/sdks/agents/README.md#createagent) - Create an agent
 - [`useAgentsEditAgentMutation`](docs/sdks/agents/README.md#editagent) - Edit an agent
 - [`useAuthenticationCheckdatasourceauthMutation`](docs/sdks/authentication/README.md#checkdatasourceauth) - Check datasource authorization
 - [`useChatGetChatFile`](docs/sdks/chat/README.md#getchatfile) - Download a chat file

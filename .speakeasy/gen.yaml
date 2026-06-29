@@ -35,7 +35,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.15.0
+  version: 0.16.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -74,6 +74,7 @@ typescript:
         ./hooks/*.js: ./src/hooks/*.ts
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Speakeasy
   baseErrorName: GleanBaseError
   clientServerStatusCodesAsErrors: true
@@ -84,6 +85,7 @@ typescript:
   enableReactQuery: true
   enumFormat: union
   envVarPrefix: GLEAN
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
   fixEnumNameSanitization: false
   flatAdditionalProperties: false
@@ -116,6 +118,7 @@ typescript:
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2
