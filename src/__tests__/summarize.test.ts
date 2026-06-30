@@ -20,10 +20,10 @@ test("Summarize Summarize", async () => {
     documentSpecs: [
       {
         ugcType: "CHATS",
-        ugcId: "<id>",
+        contentId: 207037,
       },
       {
-        url: "https://super-stay.net/",
+        url: "https://angelic-exhaust.com",
       },
     ],
   });
