@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 939d2f12fecf92a82326fb98be3b67dc
+  docChecksum: b75d435319feab0701ab9e63ce8a76a1
   docVersion: 0.9.0
   speakeasyVersion: 1.786.1
   generationVersion: 2.913.3
-  releaseVersion: 0.16.0
-  configChecksum: beab47f1c79b84efeccc9b5ba7409ada
+  releaseVersion: 0.16.1
+  configChecksum: 4f1bc6456c8c4c0d37c2b226c49a7248
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: 3ae5ecca-82b8-49b4-8840-3d01ec3b87c3
-  pristine_commit_hash: ddd2f2d656c2b38cf32ee5bcda5d5206773d1451
-  pristine_tree_hash: 5763e466f42dd98976af152a0141b4fe9e491d50
+  generation_id: 2c7d57ef-78b6-49e4-9de0-69df74de5bc0
+  pristine_commit_hash: 0b9f78236b8a7da626172d0f20136ae3613687d3
+  pristine_tree_hash: 72c810dfebaa64938bfcd3978dbe046f98461cab
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -3023,12 +3023,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:5dc780d76edf1d053a36a88e2940b9aac1e81902
-    pristine_git_object: 95d99feee8ffb6c8eaf44789444c5d7a15b149c0
+    last_write_checksum: sha1:a4703f16a6b7e5f1c70db628a086fbc192c4ca37
+    pristine_git_object: 6fcd5b2abefc0928c1a365dfb89eb5645c9c700e
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:34512e1bc6225957d01c303dfeed22f9d68463b0
-    pristine_git_object: 8cf9afd8c3d32dad8c0ead2f8ccdb5dc52c96b0e
+    last_write_checksum: sha1:3df60b3f500b44b6854cab963738aa525c124ce3
+    pristine_git_object: 7932062471b4148dc81f0e63b4d3a68f0079bf0b
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -3135,8 +3135,8 @@ trackedFiles:
     pristine_git_object: d252821b825c62856886e3ab9287181d7ef7f9de
   src/__tests__/messages.test.ts:
     id: 39e293f09219
-    last_write_checksum: sha1:614ea7fd801e89ad1a53d01b4b5129e9501e54b2
-    pristine_git_object: 12904134bbdc280929babb05d7977adda65fc58c
+    last_write_checksum: sha1:c78b09c09e64da0655a3e0ecbadabe82980ef7d1
+    pristine_git_object: f390543460d7bd3c678c17579e755b9e06faac16
   src/__tests__/mockserver/.gitignore:
     id: 4a7fc421b6b6
     last_write_checksum: sha1:228e1b05712a973948fd771323a2140a3b355ff4
@@ -6127,8 +6127,8 @@ trackedFiles:
     pristine_git_object: c747483d172c06689dc66e150b2fbf704b483842
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:1b519d8e27e81ad47f67d63bc9e6bad24b7eadf7
-    pristine_git_object: 86678bfb9e08e6c01b90d4547f9ce70fbb2c6a31
+    last_write_checksum: sha1:9e121613a73f5522578bb56e52a7499969cfa303
+    pristine_git_object: 4b946fe339b5bd4839a100d77a8b7b6e43c8415e
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:3a38647391f52221c009a9273eebf90793b3d430
@@ -6691,8 +6691,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c3416bfb0d05021e62e5a9198191c37190252574
-    pristine_git_object: 63b60139bbb0950c2a8c709f152443fd20cd4d52
+    last_write_checksum: sha1:40b9951578bc1bc26a610a87ae432c36472bfaf9
+    pristine_git_object: 366d3577f5f3ad32d8d67467c46c6770fcc94a10
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:a74725064d06b6994b95873c037975d2f2e63467
@@ -10876,7 +10876,6 @@ generatedTests:
   getDatasourceCredentialStatus: "2026-06-05T17:32:08Z"
   rotateDatasourceCredentials: "2026-06-05T17:32:08Z"
   createAgent: "2026-06-29T03:34:47Z"
-releaseNotes: "## Typescript SDK Changes:\n* `glean.agents.createAgent()`: **Added**\n* `glean.client.announcements.create()`: \n  *  `request.createAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.announcements.update()`: \n  *  `request.updateAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.answers.create()`: \n  *  `request.createAnswerRequest.data.addedRoles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.answers.update()`: \n  *  `request.editAnswerRequest.addedRoles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.answers.retrieve()`:  `response.answerResult.answer.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.answers.list()`:  `response.answerResults[].answer.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.chat.create()`: \n  *  `request.chatRequest.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.chat.retrieve()`:  `response.chatResult.chat.createdBy.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.chat.list()`:  `response.chatResults[].chat.createdBy.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.chat.createStream()`: \n  *  `request.chatRequest.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.addItems()`:  `response.collection.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.create()`: \n  *  `request.createCollectionRequest.addedRoles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.union(class (0)).collection.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.deleteItem()`:  `response.collection.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.update()`: \n  *  `request.editCollectionRequest.addedRoles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.updateItem()`:  `response.collection.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.retrieve()`:  `response.collection.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.collections.list()`:  `response.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.documents.retrieve()`:  `response.documents.Map<DocumentOrError>.union(Document).metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.documents.retrieveByFacets()`:  `response.documents[].metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.insights.retrieve()`:  `response.gleanAssist.activityInsights[].user.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.messages.retrieve()`:  `response.searchResponse.results[].structuredResults[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.pins.update()`:  `response.attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.pins.retrieve()`:  `response.pin.attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.pins.list()`:  `response.pins[].attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.pins.create()`:  `response.attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.search.queryAsAdmin()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.search.autocomplete()`:  `response.results[].document.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.search.retrieveFeed()`: \n  *  `request.feedRequest.categories[].enum(cardStackPromo)` **Added**\n  *  `response.results[]` **Changed**\n* `glean.client.search.recommendations()`: \n  *  `request.recommendationsRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.search.query()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].customEntity.roles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.entities.list()`:  `response.results[].relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.entities.readPeople()`:  `response.results[].relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.shortcuts.create()`: \n  *  `request.createShortcutRequest.data.addedRoles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.shortcut.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.shortcuts.retrieve()`:  `response.shortcut.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.shortcuts.list()`:  `response.shortcuts[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.shortcuts.update()`: \n  *  `request.updateShortcutRequest.addedRoles[].group.type.enum(collectionAudience)` **Added**\n  *  `response.shortcut.addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.verification.addReminder()`:  `response.metadata.lastVerifier.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.verification.list()`:  `response.documents[].metadata.lastVerifier.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.verification.verify()`:  `response.metadata.lastVerifier.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].addedRoles[].group.type.enum(collectionAudience)` **Added**\n* `glean.client.governance.data.policies.retrieve()`:  `response.report.config.allowlistOptions.regexes` **Added**\n* `glean.client.governance.data.policies.update()`: \n  *  `request.updateDlpReportRequest.config.allowlistOptions.regexes` **Added**\n* `glean.client.governance.data.policies.list()`:  `response.reports[].config.allowlistOptions.regexes` **Added**\n* `glean.client.governance.data.policies.create()`: \n  *  `request.config.allowlistOptions.regexes` **Added**\n  *  `response.report.config.allowlistOptions.regexes` **Added**\n* `glean.client.governance.data.reports.create()`: \n  *  `request.config.allowlistOptions.regexes` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
