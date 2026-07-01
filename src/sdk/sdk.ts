@@ -12,10 +12,16 @@ import { Datasources } from "./datasources.js";
 import { Entities } from "./entities.js";
 import { Governance } from "./governance.js";
 import { Indexing } from "./indexing.js";
+import { Platform } from "./platform.js";
 import { Tools } from "./tools.js";
 import { Troubleshooting } from "./troubleshooting.js";
 
 export class Glean extends ClientSDK {
+  private _platform?: Platform;
+  get platform(): Platform {
+    return (this._platform ??= new Platform(this._options));
+  }
+
   private _client?: Client;
   get client(): Client {
     return (this._client ??= new Client(this._options));
