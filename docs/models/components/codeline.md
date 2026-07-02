@@ -8,7 +8,7 @@ import { CodeLine } from "@gleanwork/api-client/models/components";
 let value: CodeLine = {
   ranges: [
     {
-      startIndex: 635422,
+      startIndex: 998220,
       document: {
         containerDocument: {
           metadata: {

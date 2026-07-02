@@ -96,7 +96,7 @@ let value: ChatMessageCitation = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "ANSWER_MODERATOR",
+        role: "OWNER",
       },
     ],
   },

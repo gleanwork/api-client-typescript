@@ -32,7 +32,7 @@ let value: EditAnswerRequest = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VIEWER",
+      role: "VERIFIER",
     },
   ],
   removedRoles: [
@@ -41,7 +41,7 @@ let value: EditAnswerRequest = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VERIFIER",
+      role: "EDITOR",
     },
   ],
   roles: [
@@ -50,7 +50,7 @@ let value: EditAnswerRequest = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "ANSWER_MODERATOR",
+      role: "OWNER",
     },
   ],
   combinedAnswerText: {

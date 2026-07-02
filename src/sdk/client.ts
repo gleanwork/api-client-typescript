@@ -13,13 +13,13 @@ import { ClientChat } from "./clientchat.js";
 import { ClientDocuments } from "./clientdocuments.js";
 import { ClientEntities } from "./cliententities.js";
 import { ClientGovernance } from "./clientgovernance.js";
+import { ClientSearch } from "./clientsearch.js";
 import { ClientShortcuts } from "./clientshortcuts.js";
 import { ClientTools } from "./clienttools.js";
 import { Collections } from "./collections.js";
 import { Insights } from "./insights.js";
 import { Messages } from "./messages.js";
 import { Pins } from "./pins.js";
-import { Search } from "./search.js";
 import { Verification } from "./verification.js";
 
 export class Client extends ClientSDK {
@@ -78,9 +78,9 @@ export class Client extends ClientSDK {
     return (this._pins ??= new Pins(this._options));
   }
 
-  private _search?: Search;
-  get search(): Search {
-    return (this._search ??= new Search(this._options));
+  private _search?: ClientSearch;
+  get search(): ClientSearch {
+    return (this._search ??= new ClientSearch(this._options));
   }
 
   private _entities?: ClientEntities;

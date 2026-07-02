@@ -31,7 +31,7 @@ let value: CreateAnswerRequest = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "VIEWER",
+        role: "VERIFIER",
       },
     ],
     removedRoles: [
@@ -40,7 +40,7 @@ let value: CreateAnswerRequest = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "VERIFIER",
+        role: "EDITOR",
       },
     ],
     roles: [
@@ -49,7 +49,7 @@ let value: CreateAnswerRequest = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "ANSWER_MODERATOR",
+        role: "OWNER",
       },
     ],
     combinedAnswerText: {

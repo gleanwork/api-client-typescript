@@ -240,8 +240,7 @@ let value: FeedEntry = {
   },
   collection: {
     name: "<value>",
-    description:
-      "impanel importance pale parody towards wildly elementary unbearably",
+    description: "chiffonier shore even once colossal even instead",
     audienceFilters: [
       {
         fieldName: "type",
@@ -257,7 +256,7 @@ let value: FeedEntry = {
         ],
       },
     ],
-    id: 390864,
+    id: 769160,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -269,7 +268,7 @@ let value: FeedEntry = {
     children: [
       {
         name: "<value>",
-        description: "viciously creator incidentally hole pecan",
+        description: "vice queasy mushy",
         audienceFilters: [
           {
             fieldName: "type",
@@ -285,7 +284,7 @@ let value: FeedEntry = {
             ],
           },
         ],
-        id: 581341,
+        id: 105739,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -457,11 +456,19 @@ let value: FeedEntry = {
           },
         },
       },
+      roles: [
+        {
+          person: {
+            name: "George Clooney",
+            obfuscatedId: "abc123",
+          },
+          role: "OWNER",
+        },
+      ],
     },
     collection: {
       name: "<value>",
-      description:
-        "impanel importance pale parody towards wildly elementary unbearably",
+      description: "chiffonier shore even once colossal even instead",
       audienceFilters: [
         {
           fieldName: "type",
@@ -477,7 +484,7 @@ let value: FeedEntry = {
           ],
         },
       ],
-      id: 390864,
+      id: 769160,
       creator: {
         name: "George Clooney",
         obfuscatedId: "abc123",
@@ -489,7 +496,7 @@ let value: FeedEntry = {
       children: [
         {
           name: "<value>",
-          description: "viciously creator incidentally hole pecan",
+          description: "vice queasy mushy",
           audienceFilters: [
             {
               fieldName: "type",
@@ -505,7 +512,7 @@ let value: FeedEntry = {
               ],
             },
           ],
-          id: 581341,
+          id: 105739,
           creator: {
             name: "George Clooney",
             obfuscatedId: "abc123",
@@ -532,7 +539,7 @@ let value: FeedEntry = {
             name: "George Clooney",
             obfuscatedId: "abc123",
           },
-          role: "VIEWER",
+          role: "VERIFIER",
         },
       ],
       removedRoles: [
@@ -541,7 +548,7 @@ let value: FeedEntry = {
             name: "George Clooney",
             obfuscatedId: "abc123",
           },
-          role: "VERIFIER",
+          role: "EDITOR",
         },
       ],
       author: {
@@ -558,7 +565,7 @@ let value: FeedEntry = {
             name: "George Clooney",
             obfuscatedId: "abc123",
           },
-          role: "ANSWER_MODERATOR",
+          role: "OWNER",
         },
       ],
     },
