@@ -13,7 +13,7 @@ let value: EditCollectionRequest = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VIEWER",
+      role: "VERIFIER",
     },
   ],
   removedRoles: [
@@ -22,7 +22,7 @@ let value: EditCollectionRequest = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VERIFIER",
+      role: "EDITOR",
     },
   ],
   audienceFilters: [

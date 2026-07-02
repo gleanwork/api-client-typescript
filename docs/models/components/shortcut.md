@@ -13,7 +13,7 @@ let value: Shortcut = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VIEWER",
+      role: "VERIFIER",
     },
   ],
   removedRoles: [
@@ -22,7 +22,7 @@ let value: Shortcut = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VERIFIER",
+      role: "EDITOR",
     },
   ],
   createdBy: {
@@ -111,7 +111,7 @@ let value: Shortcut = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "ANSWER_MODERATOR",
+      role: "OWNER",
     },
   ],
 };

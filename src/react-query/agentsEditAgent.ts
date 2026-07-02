@@ -74,7 +74,7 @@ export function useAgentsEditAgentMutation(
 }
 
 export function mutationKeyAgentsEditAgent(): MutationKey {
-  return ["@gleanwork/api-client", "Agents", "editAgent"];
+  return ["@gleanwork/api-client", "agents", "editAgent"];
 }
 
 export function buildAgentsEditAgentMutation(

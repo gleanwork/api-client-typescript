@@ -4,12 +4,94 @@
  */
 
 import { agentsCreateAgent } from "../funcs/agentsCreateAgent.js";
+import {
+  agentsCreateRun,
+  CreateRunAcceptEnum,
+} from "../funcs/agentsCreateRun.js";
 import { agentsEditAgent } from "../funcs/agentsEditAgent.js";
+import { agentsGet } from "../funcs/agentsGet.js";
+import { agentsGetSchemas } from "../funcs/agentsGetSchemas.js";
+import { agentsSearch } from "../funcs/agentsSearch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
+export { CreateRunAcceptEnum } from "../funcs/agentsCreateRun.js";
+
 export class Agents extends ClientSDK {
+  /**
+   * Search agents
+   *
+   * @remarks
+   * Search agents available to the authenticated user by agent name.
+   */
+  async search(
+    request: components.PlatformAgentsSearchRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentsSearchResponse> {
+    return unwrapAsync(agentsSearch(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get agent
+   *
+   * @remarks
+   * Retrieve details for an agent available to the authenticated user.
+   */
+  async get(
+    agentId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentGetResponse> {
+    return unwrapAsync(agentsGet(
+      this,
+      agentId,
+      options,
+    ));
+  }
+
+  /**
+   * Get agent schemas
+   *
+   * @remarks
+   * Retrieve an agent's input and output JSON schemas.
+   */
+  async getSchemas(
+    agentId: string,
+    includeTools?: boolean | undefined,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentSchemasResponse> {
+    return unwrapAsync(agentsGetSchemas(
+      this,
+      agentId,
+      includeTools,
+      options,
+    ));
+  }
+
+  /**
+   * Create agent run
+   *
+   * @remarks
+   * Execute an agent run. Set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages.
+   */
+  async createRun(
+    platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest,
+    agentId: string,
+    options?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum },
+  ): Promise<operations.PlatformAgentsCreateRunResponse> {
+    return unwrapAsync(agentsCreateRun(
+      this,
+      platformAgentRunCreateRequest,
+      agentId,
+      options,
+    ));
+  }
+
   /**
    * Create an agent
    *

@@ -12,10 +12,21 @@ import { Datasources } from "./datasources.js";
 import { Entities } from "./entities.js";
 import { Governance } from "./governance.js";
 import { Indexing } from "./indexing.js";
+import { Search } from "./search.js";
 import { Tools } from "./tools.js";
 import { Troubleshooting } from "./troubleshooting.js";
 
 export class Glean extends ClientSDK {
+  private _agents?: Agents;
+  get agents(): Agents {
+    return (this._agents ??= new Agents(this._options));
+  }
+
+  private _search?: Search;
+  get search(): Search {
+    return (this._search ??= new Search(this._options));
+  }
+
   private _client?: Client;
   get client(): Client {
     return (this._client ??= new Client(this._options));
@@ -29,11 +40,6 @@ export class Glean extends ClientSDK {
   private _chat?: Chat;
   get chat(): Chat {
     return (this._chat ??= new Chat(this._options));
-  }
-
-  private _agents?: Agents;
-  get agents(): Agents {
-    return (this._agents ??= new Agents(this._options));
   }
 
   private _entities?: Entities;

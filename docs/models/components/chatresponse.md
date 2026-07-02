@@ -151,7 +151,7 @@ let value: ChatResponse = {
                       name: "George Clooney",
                       obfuscatedId: "abc123",
                     },
-                    role: "ANSWER_MODERATOR",
+                    role: "OWNER",
                   },
                 ],
               },
@@ -182,7 +182,7 @@ let value: ChatResponse = {
                       name: "George Clooney",
                       obfuscatedId: "abc123",
                     },
-                    role: "VIEWER",
+                    role: "VERIFIER",
                   },
                 ],
                 removedRoles: [
@@ -191,7 +191,7 @@ let value: ChatResponse = {
                       name: "George Clooney",
                       obfuscatedId: "abc123",
                     },
-                    role: "VERIFIER",
+                    role: "EDITOR",
                   },
                 ],
                 combinedAnswerText: {
@@ -414,7 +414,7 @@ let value: ChatResponse = {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
                               },
-                              role: "ANSWER_MODERATOR",
+                              role: "OWNER",
                             },
                           ],
                         },
@@ -446,7 +446,7 @@ let value: ChatResponse = {
                           likes: {
                             likedBy: [],
                             likedByUser: true,
-                            numLikes: 32410,
+                            numLikes: 887765,
                           },
                           author: {
                             name: "George Clooney",
@@ -557,7 +557,7 @@ let value: ChatResponse = {
                                     name: "George Clooney",
                                     obfuscatedId: "abc123",
                                   },
-                                  remindAt: 337545,
+                                  remindAt: 16612,
                                 },
                               ],
                               lastReminder: {
@@ -569,7 +569,7 @@ let value: ChatResponse = {
                                   name: "George Clooney",
                                   obfuscatedId: "abc123",
                                 },
-                                remindAt: 349760,
+                                remindAt: 116212,
                               },
                               candidateVerifiers: [
                                 {
@@ -582,8 +582,7 @@ let value: ChatResponse = {
                           collections: [
                             {
                               name: "<value>",
-                              description:
-                                "huzzah ick warp desk tedious tightly supposing bandwidth aboard pish",
+                              description: "atop bestride glass tectonics",
                               audienceFilters: [
                                 {
                                   fieldName: "type",
@@ -599,7 +598,7 @@ let value: ChatResponse = {
                                   ],
                                 },
                               ],
-                              id: 782149,
+                              id: 100990,
                               creator: {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
@@ -610,7 +609,7 @@ let value: ChatResponse = {
                               },
                               items: [
                                 {
-                                  collectionId: 30842,
+                                  collectionId: 547283,
                                   createdBy: {
                                     name: "George Clooney",
                                     obfuscatedId: "abc123",
@@ -793,11 +792,20 @@ let value: ChatResponse = {
                                         },
                                       },
                                     },
+                                    roles: [
+                                      {
+                                        person: {
+                                          name: "George Clooney",
+                                          obfuscatedId: "abc123",
+                                        },
+                                        role: "OWNER",
+                                      },
+                                    ],
                                   },
                                   collection: {
                                     name: "<value>",
                                     description:
-                                      "impanel importance pale parody towards wildly elementary unbearably",
+                                      "chiffonier shore even once colossal even instead",
                                     audienceFilters: [
                                       {
                                         fieldName: "type",
@@ -813,7 +821,7 @@ let value: ChatResponse = {
                                         ],
                                       },
                                     ],
-                                    id: 390864,
+                                    id: 769160,
                                     creator: {
                                       name: "George Clooney",
                                       obfuscatedId: "abc123",
@@ -825,8 +833,7 @@ let value: ChatResponse = {
                                     children: [
                                       {
                                         name: "<value>",
-                                        description:
-                                          "viciously creator incidentally hole pecan",
+                                        description: "vice queasy mushy",
                                         audienceFilters: [
                                           {
                                             fieldName: "type",
@@ -842,7 +849,7 @@ let value: ChatResponse = {
                                             ],
                                           },
                                         ],
-                                        id: 581341,
+                                        id: 105739,
                                         creator: {
                                           name: "George Clooney",
                                           obfuscatedId: "abc123",
@@ -854,7 +861,37 @@ let value: ChatResponse = {
                                       },
                                     ],
                                   },
-                                  itemType: "TEXT",
+                                  itemType: "URL",
+                                },
+                              ],
+                              children: [
+                                {
+                                  name: "<value>",
+                                  description: "vice queasy mushy",
+                                  audienceFilters: [
+                                    {
+                                      fieldName: "type",
+                                      values: [
+                                        {
+                                          value: "Spreadsheet",
+                                          relationType: "EQUALS",
+                                        },
+                                        {
+                                          value: "Presentation",
+                                          relationType: "EQUALS",
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                  id: 105739,
+                                  creator: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
+                                  updatedBy: {
+                                    name: "George Clooney",
+                                    obfuscatedId: "abc123",
+                                  },
                                 },
                               ],
                             },
@@ -943,7 +980,7 @@ let value: ChatResponse = {
                         generatedQna: {
                           ranges: [
                             {
-                              startIndex: 635422,
+                              startIndex: 998220,
                               document: {
                                 containerDocument: {
                                   metadata: {
@@ -1080,7 +1117,7 @@ let value: ChatResponse = {
                         collection: {
                           name: "<value>",
                           description:
-                            "impanel importance pale parody towards wildly elementary unbearably",
+                            "chiffonier shore even once colossal even instead",
                           audienceFilters: [
                             {
                               fieldName: "type",
@@ -1096,7 +1133,7 @@ let value: ChatResponse = {
                               ],
                             },
                           ],
-                          id: 390864,
+                          id: 769160,
                           creator: {
                             name: "George Clooney",
                             obfuscatedId: "abc123",
@@ -1108,8 +1145,7 @@ let value: ChatResponse = {
                           children: [
                             {
                               name: "<value>",
-                              description:
-                                "viciously creator incidentally hole pecan",
+                              description: "vice queasy mushy",
                               audienceFilters: [
                                 {
                                   fieldName: "type",
@@ -1125,7 +1161,7 @@ let value: ChatResponse = {
                                   ],
                                 },
                               ],
-                              id: 581341,
+                              id: 105739,
                               creator: {
                                 name: "George Clooney",
                                 obfuscatedId: "abc123",
@@ -1231,6 +1267,15 @@ let value: ChatResponse = {
                               },
                             },
                           },
+                          roles: [
+                            {
+                              person: {
+                                name: "George Clooney",
+                                obfuscatedId: "abc123",
+                              },
+                              role: "OWNER",
+                            },
+                          ],
                         },
                         querySuggestions: {
                           person: {
@@ -1286,7 +1331,7 @@ let value: ChatResponse = {
                 likes: {
                   likedBy: [],
                   likedByUser: true,
-                  numLikes: 32410,
+                  numLikes: 887765,
                 },
                 author: {
                   name: "George Clooney",
@@ -1385,7 +1430,7 @@ let value: ChatResponse = {
                           name: "George Clooney",
                           obfuscatedId: "abc123",
                         },
-                        remindAt: 337545,
+                        remindAt: 16612,
                       },
                     ],
                     lastReminder: {
@@ -1397,7 +1442,7 @@ let value: ChatResponse = {
                         name: "George Clooney",
                         obfuscatedId: "abc123",
                       },
-                      remindAt: 349760,
+                      remindAt: 116212,
                     },
                     candidateVerifiers: [
                       {
@@ -1483,7 +1528,7 @@ let value: ChatResponse = {
               generatedQna: {
                 ranges: [
                   {
-                    startIndex: 635422,
+                    startIndex: 998220,
                     document: {
                       containerDocument: {
                         metadata: {
@@ -1607,8 +1652,7 @@ let value: ChatResponse = {
               },
               collection: {
                 name: "<value>",
-                description:
-                  "impanel importance pale parody towards wildly elementary unbearably",
+                description: "chiffonier shore even once colossal even instead",
                 audienceFilters: [
                   {
                     fieldName: "type",
@@ -1624,7 +1668,7 @@ let value: ChatResponse = {
                     ],
                   },
                 ],
-                id: 390864,
+                id: 769160,
                 creator: {
                   name: "George Clooney",
                   obfuscatedId: "abc123",
@@ -1636,7 +1680,7 @@ let value: ChatResponse = {
                 children: [
                   {
                     name: "<value>",
-                    description: "viciously creator incidentally hole pecan",
+                    description: "vice queasy mushy",
                     audienceFilters: [
                       {
                         fieldName: "type",
@@ -1652,7 +1696,7 @@ let value: ChatResponse = {
                         ],
                       },
                     ],
-                    id: 581341,
+                    id: 105739,
                     creator: {
                       name: "George Clooney",
                       obfuscatedId: "abc123",
@@ -1750,6 +1794,15 @@ let value: ChatResponse = {
                     },
                   },
                 },
+                roles: [
+                  {
+                    person: {
+                      name: "George Clooney",
+                      obfuscatedId: "abc123",
+                    },
+                    role: "OWNER",
+                  },
+                ],
               },
               querySuggestions: {
                 person: {
@@ -1914,7 +1967,7 @@ let value: ChatResponse = {
                     name: "George Clooney",
                     obfuscatedId: "abc123",
                   },
-                  role: "ANSWER_MODERATOR",
+                  role: "OWNER",
                 },
               ],
             },

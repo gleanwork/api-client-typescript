@@ -71,7 +71,7 @@ export function useAgentsCreateAgentMutation(
 }
 
 export function mutationKeyAgentsCreateAgent(): MutationKey {
-  return ["@gleanwork/api-client", "Agents", "createAgent"];
+  return ["@gleanwork/api-client", "agents", "createAgent"];
 }
 
 export function buildAgentsCreateAgentMutation(

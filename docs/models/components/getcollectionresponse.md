@@ -8,8 +8,7 @@ import { GetCollectionResponse } from "@gleanwork/api-client/models/components";
 let value: GetCollectionResponse = {
   collection: {
     name: "<value>",
-    description:
-      "impanel importance pale parody towards wildly elementary unbearably",
+    description: "chiffonier shore even once colossal even instead",
     audienceFilters: [
       {
         fieldName: "type",
@@ -25,7 +24,7 @@ let value: GetCollectionResponse = {
         ],
       },
     ],
-    id: 390864,
+    id: 769160,
     creator: {
       name: "George Clooney",
       obfuscatedId: "abc123",
@@ -37,7 +36,7 @@ let value: GetCollectionResponse = {
     children: [
       {
         name: "<value>",
-        description: "viciously creator incidentally hole pecan",
+        description: "vice queasy mushy",
         audienceFilters: [
           {
             fieldName: "type",
@@ -53,7 +52,7 @@ let value: GetCollectionResponse = {
             ],
           },
         ],
-        id: 581341,
+        id: 105739,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -74,7 +73,7 @@ let value: GetCollectionResponse = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "VIEWER",
+        role: "VERIFIER",
       },
     ],
     removedRoles: [
@@ -83,7 +82,7 @@ let value: GetCollectionResponse = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "VERIFIER",
+        role: "EDITOR",
       },
     ],
     audienceFilters: [
@@ -112,7 +111,7 @@ let value: GetCollectionResponse = {
     },
     items: [
       {
-        collectionId: 30842,
+        collectionId: 547283,
         createdBy: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -271,11 +270,19 @@ let value: GetCollectionResponse = {
               },
             },
           },
+          roles: [
+            {
+              person: {
+                name: "George Clooney",
+                obfuscatedId: "abc123",
+              },
+              role: "OWNER",
+            },
+          ],
         },
         collection: {
           name: "<value>",
-          description:
-            "impanel importance pale parody towards wildly elementary unbearably",
+          description: "chiffonier shore even once colossal even instead",
           audienceFilters: [
             {
               fieldName: "type",
@@ -291,7 +298,7 @@ let value: GetCollectionResponse = {
               ],
             },
           ],
-          id: 390864,
+          id: 769160,
           creator: {
             name: "George Clooney",
             obfuscatedId: "abc123",
@@ -303,7 +310,7 @@ let value: GetCollectionResponse = {
           children: [
             {
               name: "<value>",
-              description: "viciously creator incidentally hole pecan",
+              description: "vice queasy mushy",
               audienceFilters: [
                 {
                   fieldName: "type",
@@ -319,7 +326,7 @@ let value: GetCollectionResponse = {
                   ],
                 },
               ],
-              id: 581341,
+              id: 105739,
               creator: {
                 name: "George Clooney",
                 obfuscatedId: "abc123",
@@ -331,13 +338,13 @@ let value: GetCollectionResponse = {
             },
           ],
         },
-        itemType: "TEXT",
+        itemType: "URL",
       },
     ],
     children: [
       {
         name: "<value>",
-        description: "viciously creator incidentally hole pecan",
+        description: "vice queasy mushy",
         audienceFilters: [
           {
             fieldName: "type",
@@ -353,7 +360,7 @@ let value: GetCollectionResponse = {
             ],
           },
         ],
-        id: 581341,
+        id: 105739,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -370,7 +377,7 @@ let value: GetCollectionResponse = {
           name: "George Clooney",
           obfuscatedId: "abc123",
         },
-        role: "ANSWER_MODERATOR",
+        role: "OWNER",
       },
     ],
   },
