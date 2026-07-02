@@ -4,6 +4,7 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Findings } from "./findings.js";
 import { Policies } from "./policies.js";
 import { Reports } from "./reports.js";
 
@@ -16,5 +17,10 @@ export class Data extends ClientSDK {
   private _reports?: Reports;
   get reports(): Reports {
     return (this._reports ??= new Reports(this._options));
+  }
+
+  private _findings?: Findings;
+  get findings(): Findings {
+    return (this._findings ??= new Findings(this._options));
   }
 }

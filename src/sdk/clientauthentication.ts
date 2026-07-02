@@ -3,12 +3,34 @@
  * @generated-id: dd653d48dc6a
  */
 
+import { clientAuthenticationCheckDatasourceAuth } from "../funcs/clientAuthenticationCheckDatasourceAuth.js";
 import { clientAuthenticationCreateToken } from "../funcs/clientAuthenticationCreateToken.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ClientAuthentication extends ClientSDK {
+  /**
+   * Check datasource authorization
+   *
+   * @remarks
+   * Returns all datasource instances that require per-user OAuth authorization
+   * for the authenticated user, along with a transient auth token that can be
+   * appended to auth URLs to complete OAuth flows.
+   *
+   * Clients construct the full OAuth URL by combining the backend base URL,
+   * the `authUrlRelativePath` from each instance, and the transient auth token:
+   * `<backend>/<authUrlRelativePath>?transient_auth_token=<token>`.
+   */
+  async checkDatasourceAuth(
+    options?: RequestOptions,
+  ): Promise<components.CheckDatasourceAuthResponse> {
+    return unwrapAsync(clientAuthenticationCheckDatasourceAuth(
+      this,
+      options,
+    ));
+  }
+
   /**
    * Create authentication token
    *

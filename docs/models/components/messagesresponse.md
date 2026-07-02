@@ -31,7 +31,7 @@ let value: MessagesResponse = {
         ],
       },
     ],
-    gleanDataError: {
+    GleanDataError: {
       errorMessages: [
         {
           source: "gmail",

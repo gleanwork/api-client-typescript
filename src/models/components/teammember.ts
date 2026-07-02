@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { RFCDate } from "../../types/rfcdate.js";
 
 /**
@@ -22,7 +21,7 @@ export type TeamMember = {
   /**
    * The member's start date
    */
-  joinDate?: RFCDate | undefined;
+  join_date?: RFCDate | undefined;
 };
 
 /** @internal */
@@ -40,11 +39,7 @@ export const TeamMember$outboundSchema: z.ZodType<
 > = z.object({
   email: z.string(),
   relationship: z.string().default("MEMBER"),
-  joinDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    joinDate: "join_date",
-  });
+  join_date: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
 });
 
 export function teamMemberToJSON(teamMember: TeamMember): string {

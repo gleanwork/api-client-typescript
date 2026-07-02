@@ -29,7 +29,7 @@ export type ResultsResponse = {
   results?: Array<SearchResult> | undefined;
   structuredResults?: Array<StructuredResult> | undefined;
   generatedQnaResult?: GeneratedQna | undefined;
-  gleanDataError?: GleanDataError | undefined;
+  GleanDataError?: GleanDataError | undefined;
   /**
    * A platform-generated request ID to correlate backend logs.
    */
@@ -56,7 +56,7 @@ export const ResultsResponse$inboundSchema: z.ZodType<
   backendTimeMillis: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "errorInfo": "gleanDataError",
+    "errorInfo": "GleanDataError",
   });
 });
 

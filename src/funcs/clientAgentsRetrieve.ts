@@ -87,7 +87,7 @@ async function $do(
   ]
 > {
   const input: operations.GetAgentRequest = {
-    agentId: agentId,
+    agent_id: agentId,
     locale: locale,
     timezoneOffset: timezoneOffset,
   };

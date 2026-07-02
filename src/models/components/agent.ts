@@ -29,11 +29,11 @@ export type AgentCapabilities = {
   /**
    * Whether the agent supports messages as an input. If true, you'll pass `messages` as an input when running the agent.
    */
-  apIoMessages?: boolean | undefined;
+  "ap.io.messages"?: boolean | undefined;
   /**
    * Whether the agent supports streaming output. If true, you you can stream agent ouput. All agents currently support streaming.
    */
-  apIoStreaming?: boolean | undefined;
+  "ap.io.streaming"?: boolean | undefined;
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
@@ -41,7 +41,7 @@ export type Agent = {
   /**
    * The ID of the agent.
    */
-  agentId: string;
+  agent_id: string;
   /**
    * The name of the agent
    */
@@ -96,8 +96,8 @@ export const AgentCapabilities$inboundSchema: z.ZodType<
   true,
 ).transform((v) => {
   return remap$(v, {
-    "ap.io.messages": "apIoMessages",
-    "ap.io.streaming": "apIoStreaming",
+    "ap.io.messages": "ap.io.messages",
+    "ap.io.streaming": "ap.io.streaming",
   });
 });
 
@@ -119,10 +119,6 @@ export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
     description: z.string().optional(),
     metadata: z.lazy(() => AgentMetadata$inboundSchema).optional(),
     capabilities: z.lazy(() => AgentCapabilities$inboundSchema),
-  }).transform((v) => {
-    return remap$(v, {
-      "agent_id": "agentId",
-    });
   });
 
 export function agentFromJSON(

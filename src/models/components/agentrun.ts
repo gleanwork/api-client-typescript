@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -21,7 +20,7 @@ export type AgentRun = {
   /**
    * The ID of the agent to run.
    */
-  agentId: string;
+  agent_id: string;
   /**
    * The input to the agent. Required when the agent uses an input form trigger.
    */
@@ -51,10 +50,6 @@ export const AgentRun$inboundSchema: z.ZodType<
   messages: z.array(Message$inboundSchema).optional(),
   metadata: z.record(z.any()).optional(),
   status: AgentExecutionStatus$inboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-  });
 });
 
 export function agentRunFromJSON(

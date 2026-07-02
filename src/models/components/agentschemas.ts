@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -27,7 +26,7 @@ export type AgentSchemas = {
   /**
    * The ID of the agent.
    */
-  agentId: string;
+  agent_id: string;
   /**
    * The name of the agent.
    */
@@ -35,11 +34,11 @@ export type AgentSchemas = {
   /**
    * The schema for the agent input. In JSON Schema format.
    */
-  inputSchema: InputSchema;
+  input_schema: InputSchema;
   /**
    * The schema for the agent output. In JSON Schema format.
    */
-  outputSchema: OutputSchema;
+  output_schema: OutputSchema;
   /**
    * List of tools that the agent can invoke. Only included when include_tools query parameter is set to true.
    */
@@ -91,12 +90,6 @@ export const AgentSchemas$inboundSchema: z.ZodType<
   input_schema: z.lazy(() => InputSchema$inboundSchema),
   output_schema: z.lazy(() => OutputSchema$inboundSchema),
   tools: z.array(ActionSummary$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "agent_id": "agentId",
-    "input_schema": "inputSchema",
-    "output_schema": "outputSchema",
-  });
 });
 
 export function agentSchemasFromJSON(

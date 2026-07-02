@@ -6,7 +6,7 @@
 import { EditAgentRequest } from "@gleanwork/api-client/models/operations";
 
 let value: EditAgentRequest = {
-  agentId: "<id>",
+  agent_id: "<id>",
   editWorkflowRequest: {},
 };
 ```
