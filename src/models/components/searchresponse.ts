@@ -40,7 +40,7 @@ export type SearchResponse = {
   results?: Array<SearchResult> | undefined;
   structuredResults?: Array<StructuredResult> | undefined;
   generatedQnaResult?: GeneratedQna | undefined;
-  gleanDataError?: GleanDataError | undefined;
+  GleanDataError?: GleanDataError | undefined;
   /**
    * A platform-generated request ID to correlate backend logs.
    */
@@ -103,7 +103,7 @@ export const SearchResponse$inboundSchema: z.ZodType<
   hasMoreResults: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "errorInfo": "gleanDataError",
+    "errorInfo": "GleanDataError",
   });
 });
 

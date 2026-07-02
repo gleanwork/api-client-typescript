@@ -19,7 +19,7 @@ export type EditAgentRequest = {
   /**
    * The ID of the agent.
    */
-  agentId: string;
+  agent_id: string;
   editWorkflowRequest: components.EditWorkflowRequest;
 };
 
@@ -39,11 +39,10 @@ export const EditAgentRequest$outboundSchema: z.ZodType<
 > = z.object({
   locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
-  agentId: z.string(),
+  agent_id: z.string(),
   editWorkflowRequest: components.EditWorkflowRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    agentId: "agent_id",
     editWorkflowRequest: "EditWorkflowRequest",
   });
 });

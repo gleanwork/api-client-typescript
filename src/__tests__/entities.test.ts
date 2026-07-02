@@ -5,7 +5,7 @@
 
 import { assert, expect, it, test } from "vitest";
 import { Glean } from "../index.js";
-import { GetPersonPhotoAcceptEnum } from "../sdk/entities.js";
+import { RetrievePersonPhotoAcceptEnum } from "../sdk/entities.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Entities Listentities", async () => {
@@ -71,8 +71,12 @@ test("Entities Get Person Photo", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.entities.getPersonPhoto("<id>", undefined, {
-    acceptHeaderOverride: GetPersonPhotoAcceptEnum.imagePng,
-  });
+  const result = await glean.client.entities.retrievePersonPhoto(
+    "<id>",
+    undefined,
+    {
+      acceptHeaderOverride: RetrievePersonPhotoAcceptEnum.imagePng,
+    },
+  );
   expect(result).toBeDefined();
 });

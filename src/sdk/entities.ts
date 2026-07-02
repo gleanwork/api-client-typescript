@@ -3,31 +3,72 @@
  * @generated-id: 71997b5f9b62
  */
 
+import { clientEntitiesList } from "../funcs/clientEntitiesList.js";
+import { clientEntitiesReadPeople } from "../funcs/clientEntitiesReadPeople.js";
 import {
-  entitiesGetPersonPhoto,
-  GetPersonPhotoAcceptEnum,
-} from "../funcs/entitiesGetPersonPhoto.js";
+  clientEntitiesRetrievePersonPhoto,
+  RetrievePersonPhotoAcceptEnum,
+} from "../funcs/clientEntitiesRetrievePersonPhoto.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
-export { GetPersonPhotoAcceptEnum } from "../funcs/entitiesGetPersonPhoto.js";
+export { RetrievePersonPhotoAcceptEnum } from "../funcs/clientEntitiesRetrievePersonPhoto.js";
 
 export class Entities extends ClientSDK {
+  /**
+   * List entities
+   *
+   * @remarks
+   * List some set of details for all entities that fit the given criteria and return in the requested order. Does not support negation in filters, assumes relation type EQUALS. There is a limit of 10000 entities that can be retrieved via this endpoint, except when using FULL_DIRECTORY request type for people entities.
+   */
+  async list(
+    listEntitiesRequest: components.ListEntitiesRequest,
+    locale?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ListEntitiesResponse> {
+    return unwrapAsync(clientEntitiesList(
+      this,
+      listEntitiesRequest,
+      locale,
+      options,
+    ));
+  }
+
+  /**
+   * Read people
+   *
+   * @remarks
+   * Read people details for the given IDs.
+   */
+  async readPeople(
+    peopleRequest: components.PeopleRequest,
+    locale?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<components.PeopleResponse> {
+    return unwrapAsync(clientEntitiesReadPeople(
+      this,
+      peopleRequest,
+      locale,
+      options,
+    ));
+  }
+
   /**
    * Get person photo
    *
    * @remarks
    * Returns the profile photo bytes for a person whose photo is stored in Glean (crawled from an identity source or user-uploaded via admin console). Photos hosted externally (e.g. Slack CDN) are not served by this endpoint; callers should follow the photoUrl from /people or /listentities directly. Responses include a Cache-Control header (max-age=3600) to reduce redundant fetches.
    */
-  async getPersonPhoto(
+  async retrievePersonPhoto(
     personId: string,
     ds?: string | undefined,
     options?: RequestOptions & {
-      acceptHeaderOverride?: GetPersonPhotoAcceptEnum;
+      acceptHeaderOverride?: RetrievePersonPhotoAcceptEnum;
     },
   ): Promise<operations.GetPersonPhotoResponse> {
-    return unwrapAsync(entitiesGetPersonPhoto(
+    return unwrapAsync(clientEntitiesRetrievePersonPhoto(
       this,
       personId,
       ds,

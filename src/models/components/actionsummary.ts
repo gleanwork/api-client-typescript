@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -16,11 +15,11 @@ export type ActionSummary = {
   /**
    * The unique identifier of the action.
    */
-  toolId: string;
+  tool_id: string;
   /**
    * The display name of the action.
    */
-  displayName: string;
+  display_name: string;
   /**
    * The type of tool - RETRIEVAL for read-only operations, ACTION for operations that modify data.
    */
@@ -28,15 +27,15 @@ export type ActionSummary = {
   /**
    * The authentication type required - OAUTH_USER, OAUTH_ADMIN, API_KEY, BASIC_AUTH, DWD (domain-wide delegation), or NONE.
    */
-  authType?: string | undefined;
+  auth_type?: string | undefined;
   /**
    * For write actions only - REDIRECT (client renders URL) or EXECUTION (external server call).
    */
-  writeActionType?: string | undefined;
+  write_action_type?: string | undefined;
   /**
    * Whether this action has been fully configured and validated.
    */
-  isSetupFinished?: boolean | undefined;
+  is_setup_finished?: boolean | undefined;
   /**
    * Indicates the kind of knowledge a tool would access or modify.
    *
@@ -50,7 +49,7 @@ export type ActionSummary = {
    *   - Native tools that don't access or modify content via APIs (e.g., file analyst, think)
    *   - Platform read or write tools (creator has to determine their knowledge implications)
    */
-  dataSource?: string | undefined;
+  data_source?: string | undefined;
 };
 
 /** @internal */
@@ -66,15 +65,6 @@ export const ActionSummary$inboundSchema: z.ZodType<
   write_action_type: z.string().optional(),
   is_setup_finished: z.boolean().optional(),
   data_source: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "tool_id": "toolId",
-    "display_name": "displayName",
-    "auth_type": "authType",
-    "write_action_type": "writeActionType",
-    "is_setup_finished": "isSetupFinished",
-    "data_source": "dataSource",
-  });
 });
 
 export function actionSummaryFromJSON(

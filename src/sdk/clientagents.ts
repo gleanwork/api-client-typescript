@@ -3,16 +3,39 @@
  * @generated-id: 7864a10ac52c
  */
 
+import { clientAgentsCreate } from "../funcs/clientAgentsCreate.js";
 import { clientAgentsList } from "../funcs/clientAgentsList.js";
 import { clientAgentsRetrieve } from "../funcs/clientAgentsRetrieve.js";
 import { clientAgentsRetrieveSchemas } from "../funcs/clientAgentsRetrieveSchemas.js";
 import { clientAgentsRun } from "../funcs/clientAgentsRun.js";
 import { clientAgentsRunStream } from "../funcs/clientAgentsRunStream.js";
+import { clientAgentsUpdate } from "../funcs/clientAgentsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class ClientAgents extends ClientSDK {
+  /**
+   * Create an agent
+   *
+   * @remarks
+   * Create an agent.
+   */
+  async create(
+    createWorkflowRequest: components.CreateWorkflowRequest,
+    locale?: string | undefined,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.WorkflowResult> {
+    return unwrapAsync(clientAgentsCreate(
+      this,
+      createWorkflowRequest,
+      locale,
+      timezoneOffset,
+      options,
+    ));
+  }
+
   /**
    * Retrieve an agent
    *
@@ -27,6 +50,29 @@ export class ClientAgents extends ClientSDK {
   ): Promise<components.Agent> {
     return unwrapAsync(clientAgentsRetrieve(
       this,
+      agentId,
+      locale,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Edit an agent
+   *
+   * @remarks
+   * Creates a draft or publishes an [agent](https://developers.glean.com/agents/agents-api). Use `isDraft=true` to save a draft, or `isDraft=false` (or omit) to publish immediately. Only draft and publish modes are supported.
+   */
+  async update(
+    editWorkflowRequest: components.EditWorkflowRequest,
+    agentId: string,
+    locale?: string | undefined,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(clientAgentsUpdate(
+      this,
+      editWorkflowRequest,
       agentId,
       locale,
       timezoneOffset,

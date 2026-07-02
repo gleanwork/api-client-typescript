@@ -8,8 +8,8 @@ Represents a minimal summary of an action.
 import { ActionSummary } from "@gleanwork/api-client/models/components";
 
 let value: ActionSummary = {
-  toolId: "<id>",
-  displayName: "Sean71",
+  tool_id: "<id>",
+  display_name: "Sean71",
 };
 ```
 
