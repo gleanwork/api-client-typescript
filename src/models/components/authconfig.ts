@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
@@ -110,7 +109,7 @@ export type AuthConfig = {
   /**
    * The URL where users will be directed to start the OAuth flow.
    */
-  clientUrl?: string | undefined;
+  client_url?: string | undefined;
   /**
    * A list of strings denoting the different scopes or access levels required by the tool.
    */
@@ -122,7 +121,7 @@ export type AuthConfig = {
   /**
    * The OAuth provider's endpoint, where access tokens are requested.
    */
-  authorizationUrl?: string | undefined;
+  authorization_url?: string | undefined;
   /**
    * The OAuth 2.0 Resource Indicator (RFC 8707) for the protected resource. Discovered from Protected Resource Metadata (RFC 9728) during DCR. Included in authorization and token exchange requests when present.
    */
@@ -130,7 +129,7 @@ export type AuthConfig = {
   /**
    * The OAuth 2.0 token endpoint authentication method (RFC 7591). Determines how the client authenticates when exchanging an authorization code for a token. client_secret_post sends credentials as form fields, client_secret_basic sends them via Authorization header, none omits client secret and relies on PKCE only. Values use lowercase to match the OAuth 2.0 wire format (RFC 7591 Section 2).
    */
-  tokenEndpointAuthMethod?: TokenEndpointAuthMethod | undefined;
+  token_endpoint_auth_method?: TokenEndpointAuthMethod | undefined;
   /**
    * The time the tool was last authorized in ISO format (ISO 8601).
    */
@@ -209,12 +208,6 @@ export const AuthConfig$inboundSchema: z.ZodType<
   lastAuthorizedAt: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "client_url": "clientUrl",
-    "authorization_url": "authorizationUrl",
-    "token_endpoint_auth_method": "tokenEndpointAuthMethod",
-  });
 });
 /** @internal */
 export type AuthConfig$Outbound = {
@@ -243,19 +236,13 @@ export const AuthConfig$outboundSchema: z.ZodType<
   type: AuthConfigType$outboundSchema.optional(),
   grantType: GrantType$outboundSchema.optional(),
   status: AuthConfigStatus$outboundSchema.optional(),
-  clientUrl: z.string().optional(),
+  client_url: z.string().optional(),
   scopes: z.array(z.string()).optional(),
   audiences: z.array(z.string()).optional(),
-  authorizationUrl: z.string().optional(),
+  authorization_url: z.string().optional(),
   resource: z.string().optional(),
-  tokenEndpointAuthMethod: TokenEndpointAuthMethod$outboundSchema.optional(),
+  token_endpoint_auth_method: TokenEndpointAuthMethod$outboundSchema.optional(),
   lastAuthorizedAt: z.date().transform(v => v.toISOString()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    clientUrl: "client_url",
-    authorizationUrl: "authorization_url",
-    tokenEndpointAuthMethod: "token_endpoint_auth_method",
-  });
 });
 
 export function authConfigToJSON(authConfig: AuthConfig): string {

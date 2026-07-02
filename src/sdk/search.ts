@@ -3,107 +3,25 @@
  * @generated-id: b88871d87236
  */
 
-import { clientSearchAutocomplete } from "../funcs/clientSearchAutocomplete.js";
-import { clientSearchQuery } from "../funcs/clientSearchQuery.js";
-import { clientSearchQueryAsAdmin } from "../funcs/clientSearchQueryAsAdmin.js";
-import { clientSearchRecommendations } from "../funcs/clientSearchRecommendations.js";
-import { clientSearchRetrieveFeed } from "../funcs/clientSearchRetrieveFeed.js";
+import { searchQuery } from "../funcs/searchQuery.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Search extends ClientSDK {
   /**
-   * Search the index (admin)
-   *
-   * @remarks
-   * Retrieves results for search query without respect for permissions. This is available only to privileged users.
-   */
-  async queryAsAdmin(
-    searchRequest: components.SearchRequest,
-    locale?: string | undefined,
-    options?: RequestOptions,
-  ): Promise<components.SearchResponse> {
-    return unwrapAsync(clientSearchQueryAsAdmin(
-      this,
-      searchRequest,
-      locale,
-      options,
-    ));
-  }
-
-  /**
-   * Autocomplete
-   *
-   * @remarks
-   * Retrieve query suggestions, operators and documents for the given partially typed query.
-   */
-  async autocomplete(
-    autocompleteRequest: components.AutocompleteRequest,
-    locale?: string | undefined,
-    options?: RequestOptions,
-  ): Promise<components.AutocompleteResponse> {
-    return unwrapAsync(clientSearchAutocomplete(
-      this,
-      autocompleteRequest,
-      locale,
-      options,
-    ));
-  }
-
-  /**
-   * Feed of documents and events
-   *
-   * @remarks
-   * The personalized feed/home includes different types of contents including suggestions, recents, calendar events and many more.
-   */
-  async retrieveFeed(
-    feedRequest: components.FeedRequest,
-    locale?: string | undefined,
-    options?: RequestOptions,
-  ): Promise<components.FeedResponse> {
-    return unwrapAsync(clientSearchRetrieveFeed(
-      this,
-      feedRequest,
-      locale,
-      options,
-    ));
-  }
-
-  /**
-   * Recommend documents
-   *
-   * @remarks
-   * Retrieve recommended documents for the given URL or Glean Document ID.
-   */
-  async recommendations(
-    recommendationsRequest: components.RecommendationsRequest,
-    locale?: string | undefined,
-    options?: RequestOptions,
-  ): Promise<components.ResultsResponse | undefined> {
-    return unwrapAsync(clientSearchRecommendations(
-      this,
-      recommendationsRequest,
-      locale,
-      options,
-    ));
-  }
-
-  /**
    * Search
    *
    * @remarks
-   * Retrieve results from the index for the given query and filters.
+   * Execute a search query and retrieve ranked results. This is the data retrieval variant of the search API and returns only results and pagination state.
    */
   async query(
-    searchRequest: components.SearchRequest,
-    locale?: string | undefined,
+    request: components.PlatformSearchRequest,
     options?: RequestOptions,
-  ): Promise<components.SearchResponse> {
-    return unwrapAsync(clientSearchQuery(
+  ): Promise<components.PlatformSearchResponse> {
+    return unwrapAsync(searchQuery(
       this,
-      searchRequest,
-      locale,
+      request,
       options,
     ));
   }

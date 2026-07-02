@@ -8,10 +8,10 @@ Defines the structure and properties of an agent.
 import { AgentSchemas } from "@gleanwork/api-client/models/components";
 
 let value: AgentSchemas = {
-  agentId: "mho4lwzylcozgoc2",
+  agent_id: "mho4lwzylcozgoc2",
   name: "HR Policy Agent",
-  inputSchema: {},
-  outputSchema: {},
+  input_schema: {},
+  output_schema: {},
 };
 ```
 

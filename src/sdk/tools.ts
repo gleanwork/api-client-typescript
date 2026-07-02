@@ -3,13 +3,49 @@
  * @generated-id: f997ccdd9dd9
  */
 
-import { toolsAuthorizeActionPack } from "../funcs/toolsAuthorizeActionPack.js";
-import { toolsGetActionPackAuthStatus } from "../funcs/toolsGetActionPackAuthStatus.js";
+import { clientToolsAuthorizeActionPack } from "../funcs/clientToolsAuthorizeActionPack.js";
+import { clientToolsList } from "../funcs/clientToolsList.js";
+import { clientToolsRetrieveActionPackAuthStatus } from "../funcs/clientToolsRetrieveActionPackAuthStatus.js";
+import { clientToolsRun } from "../funcs/clientToolsRun.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Tools extends ClientSDK {
+  /**
+   * List available tools
+   *
+   * @remarks
+   * Returns a filtered set of available tools based on optional tool name parameters. If no filters are provided, all available tools are returned.
+   */
+  async list(
+    toolNames?: Array<string> | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ToolsListResponse> {
+    return unwrapAsync(clientToolsList(
+      this,
+      toolNames,
+      options,
+    ));
+  }
+
+  /**
+   * Execute the specified tool
+   *
+   * @remarks
+   * Execute the specified tool with provided parameters
+   */
+  async run(
+    request: components.ToolsCallRequest,
+    options?: RequestOptions,
+  ): Promise<components.ToolsCallResponse> {
+    return unwrapAsync(clientToolsRun(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Get end-user authentication status for an action pack.
    *
@@ -18,11 +54,11 @@ export class Tools extends ClientSDK {
    * tool backing the specified action pack. Intended for headless / server-driven clients
    * that render an "Authorize" prompt when the user has not yet consented to the tool.
    */
-  async getActionPackAuthStatus(
+  async retrieveActionPackAuthStatus(
     actionPackId: string,
     options?: RequestOptions,
   ): Promise<components.ActionPackAuthStatusResponse> {
-    return unwrapAsync(toolsGetActionPackAuthStatus(
+    return unwrapAsync(clientToolsRetrieveActionPackAuthStatus(
       this,
       actionPackId,
       options,
@@ -46,7 +82,7 @@ export class Tools extends ClientSDK {
     actionPackId: string,
     options?: RequestOptions,
   ): Promise<components.AuthorizeActionPackResponse> {
-    return unwrapAsync(toolsAuthorizeActionPack(
+    return unwrapAsync(clientToolsAuthorizeActionPack(
       this,
       authorizeActionPackRequest,
       actionPackId,

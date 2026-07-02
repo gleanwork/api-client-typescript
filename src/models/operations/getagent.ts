@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 
 export type GetAgentRequest = {
   /**
@@ -18,7 +17,7 @@ export type GetAgentRequest = {
   /**
    * The ID of the agent.
    */
-  agentId: string;
+  agent_id: string;
 };
 
 /** @internal */
@@ -36,11 +35,7 @@ export const GetAgentRequest$outboundSchema: z.ZodType<
 > = z.object({
   locale: z.string().optional(),
   timezoneOffset: z.number().int().optional(),
-  agentId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-  });
+  agent_id: z.string(),
 });
 
 export function getAgentRequestToJSON(

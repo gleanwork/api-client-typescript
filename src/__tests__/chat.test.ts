@@ -16,6 +16,6 @@ test("Chat Get Chat File", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.chat.getChatFile("<id>");
+  const result = await glean.client.chat.retrieveFile("<id>");
   expect(result).toBeDefined();
 });

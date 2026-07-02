@@ -8,6 +8,7 @@ import { indexingDocumentsBulkIndex } from "../funcs/indexingDocumentsBulkIndex.
 import { indexingDocumentsCheckAccess } from "../funcs/indexingDocumentsCheckAccess.js";
 import { indexingDocumentsCount } from "../funcs/indexingDocumentsCount.js";
 import { indexingDocumentsDebug } from "../funcs/indexingDocumentsDebug.js";
+import { indexingDocumentsDebugEvents } from "../funcs/indexingDocumentsDebugEvents.js";
 import { indexingDocumentsDebugMany } from "../funcs/indexingDocumentsDebugMany.js";
 import { indexingDocumentsDelete } from "../funcs/indexingDocumentsDelete.js";
 import { indexingDocumentsIndex } from "../funcs/indexingDocumentsIndex.js";
@@ -212,6 +213,25 @@ export class IndexingDocuments extends ClientSDK {
     return unwrapAsync(indexingDocumentsCount(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Beta: Get document lifecycle events
+   *
+   * @remarks
+   * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource. Currently in beta, might undergo breaking changes without prior notice.
+   */
+  async debugEvents(
+    debugDocumentLifecycleRequest: components.DebugDocumentLifecycleRequest,
+    datasource: string,
+    options?: RequestOptions,
+  ): Promise<components.DebugDocumentLifecycleResponse> {
+    return unwrapAsync(indexingDocumentsDebugEvents(
+      this,
+      debugDocumentLifecycleRequest,
+      datasource,
       options,
     ));
   }

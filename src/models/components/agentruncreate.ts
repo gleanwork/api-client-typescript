@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
 import {
   Message,
   Message$Outbound,
@@ -18,7 +17,7 @@ export type AgentRunCreate = {
   /**
    * The ID of the agent to run.
    */
-  agentId: string;
+  agent_id: string;
   /**
    * The input to the agent. Required when the agent uses an input form trigger.
    */
@@ -47,14 +46,10 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AgentRunCreate
 > = z.object({
-  agentId: z.string(),
+  agent_id: z.string(),
   input: z.record(z.any()).optional(),
   messages: z.array(Message$outboundSchema).optional(),
   metadata: z.record(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    agentId: "agent_id",
-  });
 });
 
 export function agentRunCreateToJSON(agentRunCreate: AgentRunCreate): string {
