@@ -92,7 +92,7 @@ let value: VerificationMetadata = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      remindAt: 337545,
+      remindAt: 16612,
     },
   ],
   lastReminder: {
@@ -104,7 +104,7 @@ let value: VerificationMetadata = {
       name: "George Clooney",
       obfuscatedId: "abc123",
     },
-    remindAt: 349760,
+    remindAt: 116212,
   },
   candidateVerifiers: [
     {

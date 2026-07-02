@@ -88,6 +88,15 @@ let value: UpdateShortcutResponse = {
         },
       },
     },
+    roles: [
+      {
+        person: {
+          name: "George Clooney",
+          obfuscatedId: "abc123",
+        },
+        role: "OWNER",
+      },
+    ],
   },
 };
 ```

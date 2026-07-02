@@ -13,7 +13,7 @@ let value: PromptTemplate = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VIEWER",
+      role: "VERIFIER",
     },
   ],
   removedRoles: [
@@ -22,7 +22,7 @@ let value: PromptTemplate = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VERIFIER",
+      role: "EDITOR",
     },
   ],
   author: {
@@ -39,7 +39,7 @@ let value: PromptTemplate = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "ANSWER_MODERATOR",
+      role: "OWNER",
     },
   ],
 };

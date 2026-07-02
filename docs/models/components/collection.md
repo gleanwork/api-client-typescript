@@ -14,7 +14,7 @@ let value: Collection = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VIEWER",
+      role: "VERIFIER",
     },
   ],
   removedRoles: [
@@ -23,7 +23,7 @@ let value: Collection = {
         name: "George Clooney",
         obfuscatedId: "abc123",
       },
-      role: "VERIFIER",
+      role: "EDITOR",
     },
   ],
   audienceFilters: [
@@ -52,7 +52,7 @@ let value: Collection = {
   },
   items: [
     {
-      collectionId: 30842,
+      collectionId: 547283,
       createdBy: {
         name: "George Clooney",
         obfuscatedId: "abc123",
@@ -211,11 +211,19 @@ let value: Collection = {
             },
           },
         },
+        roles: [
+          {
+            person: {
+              name: "George Clooney",
+              obfuscatedId: "abc123",
+            },
+            role: "OWNER",
+          },
+        ],
       },
       collection: {
         name: "<value>",
-        description:
-          "impanel importance pale parody towards wildly elementary unbearably",
+        description: "chiffonier shore even once colossal even instead",
         audienceFilters: [
           {
             fieldName: "type",
@@ -231,7 +239,7 @@ let value: Collection = {
             ],
           },
         ],
-        id: 390864,
+        id: 769160,
         creator: {
           name: "George Clooney",
           obfuscatedId: "abc123",
@@ -243,7 +251,7 @@ let value: Collection = {
         children: [
           {
             name: "<value>",
-            description: "viciously creator incidentally hole pecan",
+            description: "vice queasy mushy",
             audienceFilters: [
               {
                 fieldName: "type",
@@ -259,7 +267,7 @@ let value: Collection = {
                 ],
               },
             ],
-            id: 581341,
+            id: 105739,
             creator: {
               name: "George Clooney",
               obfuscatedId: "abc123",
@@ -271,46 +279,7 @@ let value: Collection = {
           },
         ],
       },
-      itemType: "TEXT",
-    },
-  ],
-  children: [
-    {
-      name: "<value>",
-      description: "viciously creator incidentally hole pecan",
-      audienceFilters: [
-        {
-          fieldName: "type",
-          values: [
-            {
-              value: "Spreadsheet",
-              relationType: "EQUALS",
-            },
-            {
-              value: "Presentation",
-              relationType: "EQUALS",
-            },
-          ],
-        },
-      ],
-      id: 581341,
-      creator: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      updatedBy: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-    },
-  ],
-  roles: [
-    {
-      person: {
-        name: "George Clooney",
-        obfuscatedId: "abc123",
-      },
-      role: "ANSWER_MODERATOR",
+      itemType: "URL",
     },
   ],
 };
