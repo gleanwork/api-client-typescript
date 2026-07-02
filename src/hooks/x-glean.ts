@@ -64,7 +64,7 @@ export class XGlean implements BeforeRequestHook {
     }
 
     if (experimentalValue) {
-      request.headers.set("X-Glean-Experimental", experimentalValue);
+      request.headers.set("X-Glean-Include-Experimental", experimentalValue);
     }
 
     return request;
