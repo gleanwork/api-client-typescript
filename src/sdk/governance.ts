@@ -3,78 +3,18 @@
  * @generated-id: b7de258afd95
  */
 
-import { governanceCreatefindingsexport } from "../funcs/governanceCreatefindingsexport.js";
-import { governanceDeletefindingsexport } from "../funcs/governanceDeletefindingsexport.js";
-import { governanceDownloadfindingsexport } from "../funcs/governanceDownloadfindingsexport.js";
-import { governanceListfindingsexports } from "../funcs/governanceListfindingsexports.js";
-import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
-import { unwrapAsync } from "../types/fp.js";
+import { ClientSDK } from "../lib/sdks.js";
+import { Data } from "./data.js";
+import { GovernanceDocuments } from "./governancedocuments.js";
 
 export class Governance extends ClientSDK {
-  /**
-   * Creates findings export
-   *
-   * @remarks
-   * Creates a new DLP findings export job.
-   */
-  async createfindingsexport(
-    request: components.DlpExportFindingsRequest,
-    options?: RequestOptions,
-  ): Promise<components.ExportInfo> {
-    return unwrapAsync(governanceCreatefindingsexport(
-      this,
-      request,
-      options,
-    ));
+  private _data?: Data;
+  get data(): Data {
+    return (this._data ??= new Data(this._options));
   }
 
-  /**
-   * Lists findings exports
-   *
-   * @remarks
-   * Lists all DLP findings exports.
-   */
-  async listfindingsexports(
-    options?: RequestOptions,
-  ): Promise<components.ListDlpFindingsExportsResponse> {
-    return unwrapAsync(governanceListfindingsexports(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * Downloads findings export
-   *
-   * @remarks
-   * Downloads a DLP findings export as a CSV file.
-   */
-  async downloadfindingsexport(
-    id: string,
-    options?: RequestOptions,
-  ): Promise<string> {
-    return unwrapAsync(governanceDownloadfindingsexport(
-      this,
-      id,
-      options,
-    ));
-  }
-
-  /**
-   * Deletes findings export
-   *
-   * @remarks
-   * Deletes a DLP findings export.
-   */
-  async deletefindingsexport(
-    id: number,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(governanceDeletefindingsexport(
-      this,
-      id,
-      options,
-    ));
+  private _documents?: GovernanceDocuments;
+  get documents(): GovernanceDocuments {
+    return (this._documents ??= new GovernanceDocuments(this._options));
   }
 }

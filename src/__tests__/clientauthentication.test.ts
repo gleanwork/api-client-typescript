@@ -25,3 +25,16 @@ test("Client Authentication Createauthtoken", async () => {
   const result = await glean.client.authentication.createToken();
   expect(result).toBeDefined();
 });
+
+test("Client Authentication Checkdatasourceauth", async () => {
+  const testHttpClient = createTestHTTPClient("checkdatasourceauth");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.client.authentication.checkDatasourceAuth();
+  expect(result).toBeDefined();
+});

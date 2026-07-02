@@ -8,7 +8,7 @@ Payload for creating a run. **Important**: If the agent uses an input form trigg
 import { AgentRun } from "@gleanwork/api-client/models/components";
 
 let value: AgentRun = {
-  agentId: "<id>",
+  agent_id: "<id>",
   messages: [
     {
       role: "USER",

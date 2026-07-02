@@ -6,7 +6,7 @@
 import { GetPersonPhotoRequest } from "@gleanwork/api-client/models/operations";
 
 let value: GetPersonPhotoRequest = {
-  personId: "<id>",
+  person_id: "<id>",
 };
 ```
 

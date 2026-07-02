@@ -69,8 +69,8 @@ it.skip("Agents Create And Wait Run", async () => {
   );
 });
 
-test("Agents Create Agent", async () => {
-  const testHttpClient = createTestHTTPClient("createAgent");
+test("Agents Platform Agents Search", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-search");
 
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -78,6 +78,54 @@ test("Agents Create Agent", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.agents.createAgent({});
+  const result = await glean.agents.search({
+    name: "HR Policy Agent",
+  });
+  expect(result).toBeDefined();
+});
+
+test("Agents Platform Agents Get", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-get");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.get("<id>");
+  expect(result).toBeDefined();
+});
+
+test("Agents Platform Agents Get Schemas", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-get-schemas");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.getSchemas("<id>");
+  expect(result).toBeDefined();
+});
+
+test("Agents Platform Agents Create Run", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-create-run");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.createRun({
+    messages: [
+      {
+        role: "USER",
+        content: [],
+      },
+    ],
+  }, "<id>");
   expect(result).toBeDefined();
 });

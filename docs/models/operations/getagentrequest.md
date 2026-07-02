@@ -6,7 +6,7 @@
 import { GetAgentRequest } from "@gleanwork/api-client/models/operations";
 
 let value: GetAgentRequest = {
-  agentId: "<id>",
+  agent_id: "<id>",
 };
 ```
 

@@ -29,7 +29,7 @@ let value: SearchResponse = {
       ],
     },
   ],
-  gleanDataError: {
+  GleanDataError: {
     errorMessages: [
       {
         source: "gmail",

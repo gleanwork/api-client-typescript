@@ -50,7 +50,7 @@ test("Tools Get Action Pack Auth Status", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.tools.getActionPackAuthStatus("<id>");
+  const result = await glean.client.tools.retrieveActionPackAuthStatus("<id>");
   expect(result).toBeDefined();
 });
 
@@ -63,7 +63,7 @@ test("Tools Authorize Action Pack", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.tools.authorizeActionPack({
+  const result = await glean.client.tools.authorizeActionPack({
     returnUrl: "https://merry-allocation.org/",
   }, "<id>");
   expect(result).toBeDefined();

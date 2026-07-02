@@ -13,7 +13,7 @@ export type GetPersonPhotoRequest = {
   /**
    * The obfuscated ID of the person whose photo to retrieve.
    */
-  personId: string;
+  person_id: string;
   /**
    * Optional datasource override for crawled photos (e.g. AZURE, GDRIVE, OKTA). When omitted, the datasource is derived from the person's stored photo URL or the deployment's primary person datasource.
    *
@@ -27,7 +27,7 @@ export type GetPersonPhotoResponseResult =
   | ReadableStream<Uint8Array>;
 
 export type GetPersonPhotoResponse = {
-  headers: { [k: string]: Array<string> };
+  Headers: { [k: string]: Array<string> };
   result: ReadableStream<Uint8Array> | ReadableStream<Uint8Array>;
 };
 
@@ -43,12 +43,8 @@ export const GetPersonPhotoRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetPersonPhotoRequest
 > = z.object({
-  personId: z.string(),
+  person_id: z.string(),
   ds: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    personId: "person_id",
-  });
 });
 
 export function getPersonPhotoRequestToJSON(
@@ -92,7 +88,6 @@ export const GetPersonPhotoResponse$inboundSchema: z.ZodType<
   ]),
 }).transform((v) => {
   return remap$(v, {
-    "Headers": "headers",
     "Result": "result",
   });
 });

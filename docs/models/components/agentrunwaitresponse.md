@@ -7,7 +7,7 @@ import { AgentRunWaitResponse } from "@gleanwork/api-client/models/components";
 
 let value: AgentRunWaitResponse = {
   run: {
-    agentId: "<id>",
+    agent_id: "<id>",
     messages: [
       {
         role: "USER",

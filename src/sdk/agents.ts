@@ -3,53 +3,89 @@
  * @generated-id: a103cd018c9b
  */
 
-import { agentsCreateAgent } from "../funcs/agentsCreateAgent.js";
-import { agentsEditAgent } from "../funcs/agentsEditAgent.js";
+import {
+  agentsCreateRun,
+  CreateRunAcceptEnum,
+} from "../funcs/agentsCreateRun.js";
+import { agentsGet } from "../funcs/agentsGet.js";
+import { agentsGetSchemas } from "../funcs/agentsGetSchemas.js";
+import { agentsSearch } from "../funcs/agentsSearch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+
+export { CreateRunAcceptEnum } from "../funcs/agentsCreateRun.js";
 
 export class Agents extends ClientSDK {
   /**
-   * Create an agent
+   * Search agents
    *
    * @remarks
-   * Create an agent.
+   * Search agents available to the authenticated user by agent name.
    */
-  async createAgent(
-    createWorkflowRequest: components.CreateWorkflowRequest,
-    locale?: string | undefined,
-    timezoneOffset?: number | undefined,
+  async search(
+    request: components.PlatformAgentsSearchRequest,
     options?: RequestOptions,
-  ): Promise<components.WorkflowResult> {
-    return unwrapAsync(agentsCreateAgent(
+  ): Promise<components.PlatformAgentsSearchResponse> {
+    return unwrapAsync(agentsSearch(
       this,
-      createWorkflowRequest,
-      locale,
-      timezoneOffset,
+      request,
       options,
     ));
   }
 
   /**
-   * Edit an agent
+   * Get agent
    *
    * @remarks
-   * Creates a draft or publishes an [agent](https://developers.glean.com/agents/agents-api). Use `isDraft=true` to save a draft, or `isDraft=false` (or omit) to publish immediately. Only draft and publish modes are supported.
+   * Retrieve details for an agent available to the authenticated user.
    */
-  async editAgent(
-    editWorkflowRequest: components.EditWorkflowRequest,
+  async get(
     agentId: string,
-    locale?: string | undefined,
-    timezoneOffset?: number | undefined,
     options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(agentsEditAgent(
+  ): Promise<components.PlatformAgentGetResponse> {
+    return unwrapAsync(agentsGet(
       this,
-      editWorkflowRequest,
       agentId,
-      locale,
-      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Get agent schemas
+   *
+   * @remarks
+   * Retrieve an agent's input and output JSON schemas.
+   */
+  async getSchemas(
+    agentId: string,
+    includeTools?: boolean | undefined,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentSchemasResponse> {
+    return unwrapAsync(agentsGetSchemas(
+      this,
+      agentId,
+      includeTools,
+      options,
+    ));
+  }
+
+  /**
+   * Create agent run
+   *
+   * @remarks
+   * Execute an agent run. Set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages.
+   */
+  async createRun(
+    platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest,
+    agentId: string,
+    options?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum },
+  ): Promise<operations.PlatformAgentsCreateRunResponse> {
+    return unwrapAsync(agentsCreateRun(
+      this,
+      platformAgentRunCreateRequest,
+      agentId,
       options,
     ));
   }

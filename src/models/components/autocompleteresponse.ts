@@ -37,7 +37,7 @@ export type AutocompleteResponse = {
    * Subsections of the results list from which distinct sections should be created.
    */
   groups?: Array<AutocompleteResultGroup> | undefined;
-  gleanDataError?: GleanDataError | undefined;
+  GleanDataError?: GleanDataError | undefined;
   /**
    * Time in milliseconds the backend took to respond to the request.
    */
@@ -59,7 +59,7 @@ export const AutocompleteResponse$inboundSchema: z.ZodType<
   backendTimeMillis: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "errorInfo": "gleanDataError",
+    "errorInfo": "GleanDataError",
   });
 });
 

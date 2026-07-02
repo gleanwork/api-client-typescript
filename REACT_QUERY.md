@@ -50,10 +50,10 @@ from TanStack Query.
 [use-query]: https://tanstack.com/query/v5/docs/framework/react/reference/useQuery
 
 ```tsx
-import { useClientAgentsRetrieve } from "@gleanwork/api-client/react-query/clientAgentsRetrieve.js";
+import { useAgentsGet } from "@gleanwork/api-client/react-query/agentsGet.js";
 
 export function Example() {
-  const { data, error, status } = useClientAgentsRetrieve("<id>");
+  const { data, error, status } = useAgentsGet("<id>");
 
   // Render the UI here...
 }
@@ -66,11 +66,11 @@ more options provided by the query hooks to control these behaviors.
 
 ```tsx
 import { useState } from "react";
-import { useClientAgentsRetrieve } from "@gleanwork/api-client/react-query/clientAgentsRetrieve.js";
+import { useAgentsGet } from "@gleanwork/api-client/react-query/agentsGet.js";
 
 export function ExampleWithOptions() {
   const [enabled, setEnabled] = useState(true);
-  const { data, error, status } = useClientAgentsRetrieve(
+  const { data, error, status } = useAgentsGet(
     "<id>",
     {
       // TanStack Query options:
@@ -108,10 +108,10 @@ Query.
 [use-mutation]: https://tanstack.com/query/v5/docs/framework/react/reference/useMutation
 
 ```tsx
-import { useClientActivityReportMutation } from "@gleanwork/api-client/react-query/clientActivityReport.js";
+import { useAgentsSearchMutation } from "@gleanwork/api-client/react-query/agentsSearch.js";
 
 export function Example() {
-  const { mutate, status } = useClientActivityReportMutation();
+  const { mutate, status } = useAgentsSearchMutation();
 
   return (
     <form
@@ -121,30 +121,7 @@ export function Example() {
         // Read form data here...
 
         mutate({
-          events: [
-            {
-              action: "HISTORICAL_VIEW",
-              timestamp: new Date("2000-01-23T04:56:07.000Z"),
-              url: "https://example.com/",
-            },
-            {
-              action: "SEARCH",
-              params: {
-                query: "query",
-              },
-              timestamp: new Date("2000-01-23T04:56:07.000Z"),
-              url: "https://example.com/search?q=query",
-            },
-            {
-              action: "VIEW",
-              params: {
-                duration: 20,
-                referrer: "https://example.com/document",
-              },
-              timestamp: new Date("2000-01-23T04:56:07.000Z"),
-              url: "https://example.com/",
-            },
-          ],
+          name: "HR Policy Agent",
         });
       }}
     >
@@ -161,10 +138,10 @@ Since the underlying SDK handles request timeouts and retries, there are a few
 more options provided by the mutation hooks to control these behaviors.
 
 ```tsx
-import { useClientActivityReportMutation } from "@gleanwork/api-client/react-query/clientActivityReport.js";
+import { useAgentsSearchMutation } from "@gleanwork/api-client/react-query/agentsSearch.js";
 
 export function ExampleWithOptions() {
-  const { mutate, status } = useClientActivityReportMutation({
+  const { mutate, status } = useAgentsSearchMutation({
     // TanStack Query options:
     networkMode: "online",
     gcTime: 5 * 60 * 1000, // 5 minutes
@@ -196,7 +173,7 @@ query hook there are two functions that help invalidate cached data:
 
 ```tsx
 import { useQueryClient } from "@tanstack/react-query";
-import { invalidateClientAgentsRetrieve, invalidateAllClientAgentsRetrieve } from "@gleanwork/api-client/react-query/clientAgentsRetrieve.js";
+import { invalidateAgentsGet, invalidateAllAgentsGet } from "@gleanwork/api-client/react-query/agentsGet.js";
 // Replace this with a real mutation
 import { useExampleMutation } from "@gleanwork/api-client/react-query/example.js";
 
@@ -214,9 +191,9 @@ export function Example() {
         mutate(formData, {
           onSuccess: () => {
             // Invalidate a single cache entry:
-            invalidateClientAgentsRetrieve(queryClient, /* ... arguments ... */);
+            invalidateAgentsGet(queryClient, /* ... arguments ... */);
             // OR, invalidate all cache entries for the query targets:
-            invalidateAllClientAgentsRetrieve(queryClient);
+            invalidateAllAgentsGet(queryClient);
           },
         });
       }}
@@ -244,7 +221,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 import { GleanCore } from "@gleanwork/api-client";
 import { GleanProvider } from "@gleanwork/api-client/react-query";
-import { useClientAgentsRetrieveSuspense } from "@gleanwork/api-client/react-query/clientAgentsRetrieve.js";
+import { useAgentsGetSuspense } from "@gleanwork/api-client/react-query/agentsGet.js";
 
 const queryClient = new QueryClient();
 const glean = new GleanCore({
@@ -279,7 +256,7 @@ export function App() {
 }
 
 function Example() {
-  const { data } = useClientAgentsRetrieveSuspense("<id>");
+  const { data } = useAgentsGetSuspense("<id>");
 
   // Render the UI here...
 }
@@ -299,7 +276,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { GleanCore } from "@gleanwork/api-client";
-import { prefetchClientAgentsRetrieve } from "@gleanwork/api-client/react-query/clientAgentsRetrieve.js";
+import { prefetchAgentsGet } from "@gleanwork/api-client/react-query/agentsGet.js";
 
 export default async function Page() {
   const queryClient = new QueryClient();
@@ -307,7 +284,7 @@ export default async function Page() {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   });
 
-  await prefetchClientAgentsRetrieve(queryClient, glean, "<id>");
+  await prefetchAgentsGet(queryClient, glean, "<id>");
 
   return (
     // HydrationBoundary is a Client Component, so hydration will happen there.
