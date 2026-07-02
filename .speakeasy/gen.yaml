@@ -116,7 +116,7 @@ typescript:
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
   preApplyUnionDiscriminators: true
-  preserveModelFieldNames: false
+  preserveModelFieldNames: true
   privateIdentifierPrefix: '#'
   requestExtras: false
   responseFormat: flat
