@@ -1,5 +1,8 @@
 import { BeforeRequestContext, BeforeRequestHook } from "./types.js";
 
+export const EXCLUDE_DEPRECATED_AFTER_HEADER = "X-Glean-Exclude-Deprecated-After";
+export const INCLUDE_EXPERIMENTAL_HEADER = "X-Glean-Include-Experimental";
+
 /**
  * Get the first non-empty value from the provided arguments.
  */
@@ -60,11 +63,11 @@ export class XGlean implements BeforeRequestHook {
     }
 
     if (deprecatedValue) {
-      request.headers.set("X-Glean-Exclude-Deprecated-After", deprecatedValue);
+      request.headers.set(EXCLUDE_DEPRECATED_AFTER_HEADER, deprecatedValue);
     }
 
     if (experimentalValue) {
-      request.headers.set("X-Glean-Include-Experimental", experimentalValue);
+      request.headers.set(INCLUDE_EXPERIMENTAL_HEADER, experimentalValue);
     }
 
     return request;
