@@ -1,5 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { XGlean } from "../hooks/x-glean.js";
+import {
+  XGlean,
+  EXCLUDE_DEPRECATED_AFTER_HEADER,
+  INCLUDE_EXPERIMENTAL_HEADER,
+} from "../hooks/x-glean.js";
 import { BeforeRequestContext } from "../hooks/types.js";
 import { SDKOptions } from "../lib/config.js";
 import { XGleanOptions } from "../hooks/x-glean-options.js";
@@ -46,10 +50,10 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.has("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.has(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         false,
       );
-      expect(result.headers.has("X-Glean-Experimental")).toBe(false);
+      expect(result.headers.has(INCLUDE_EXPERIMENTAL_HEADER)).toBe(false);
     });
   });
 
@@ -63,12 +67,12 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.get(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         "2026-10-15",
       );
     });
 
-    it("should set X-Glean-Experimental header when includeExperimental is true", () => {
+    it("should set X-Glean-Include-Experimental header when includeExperimental is true", () => {
       const hook = new XGlean();
       const request = createMockRequest();
       const context = createMockContext({
@@ -77,10 +81,10 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
 
-    it("should not set X-Glean-Experimental header when includeExperimental is false", () => {
+    it("should not set X-Glean-Include-Experimental header when includeExperimental is false", () => {
       const hook = new XGlean();
       const request = createMockRequest();
       const context = createMockContext({
@@ -89,7 +93,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.has("X-Glean-Experimental")).toBe(false);
+      expect(result.headers.has(INCLUDE_EXPERIMENTAL_HEADER)).toBe(false);
     });
 
     it("should set both headers when both options are provided", () => {
@@ -102,10 +106,10 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.get(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         "2026-10-15",
       );
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
   });
 
@@ -119,12 +123,12 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.get(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         "2027-01-01",
       );
     });
 
-    it("should set X-Glean-Experimental header from environment variable", () => {
+    it("should set X-Glean-Include-Experimental header from environment variable", () => {
       process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"] = "true";
 
       const hook = new XGlean();
@@ -133,7 +137,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
 
     it("should set both headers from environment variables", () => {
@@ -146,13 +150,13 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.get(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         "2027-06-15",
       );
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
 
-    it("should not set X-Glean-Experimental header when environment variable is false", () => {
+    it("should not set X-Glean-Include-Experimental header when environment variable is false", () => {
       process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"] = "false";
 
       const hook = new XGlean();
@@ -163,7 +167,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.has("X-Glean-Experimental")).toBe(false);
+      expect(result.headers.has(INCLUDE_EXPERIMENTAL_HEADER)).toBe(false);
     });
 
     it("should fall back to SDK options when experimental env var is empty", () => {
@@ -177,7 +181,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
   });
 
@@ -193,7 +197,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.get(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         "2027-12-31",
       );
     });
@@ -209,7 +213,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
 
     it("should use environment variables for both headers when all are set", () => {
@@ -225,13 +229,13 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.get("X-Glean-Exclude-Deprecated-After")).toBe(
+      expect(result.headers.get(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(
         "2028-01-01",
       );
-      expect(result.headers.get("X-Glean-Experimental")).toBe("true");
+      expect(result.headers.get(INCLUDE_EXPERIMENTAL_HEADER)).toBe("true");
     });
 
-    it("should omit X-Glean-Experimental header when env var is false, even if option is true", () => {
+    it("should omit X-Glean-Include-Experimental header when env var is false, even if option is true", () => {
       process.env["X_GLEAN_INCLUDE_EXPERIMENTAL"] = "false";
 
       const hook = new XGlean();
@@ -242,7 +246,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.has("X-Glean-Experimental")).toBe(false);
+      expect(result.headers.has(INCLUDE_EXPERIMENTAL_HEADER)).toBe(false);
     });
   });
 
@@ -256,7 +260,7 @@ describe("XGlean hook", () => {
 
       const result = hook.beforeRequest(context, request);
 
-      expect(result.headers.has("X-Glean-Exclude-Deprecated-After")).toBe(false);
+      expect(result.headers.has(EXCLUDE_DEPRECATED_AFTER_HEADER)).toBe(false);
     });
   });
 });
