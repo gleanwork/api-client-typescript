@@ -8,6 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Answer, Answer$inboundSchema } from "./answer.js";
+import { FavoriteInfo, FavoriteInfo$inboundSchema } from "./favoriteinfo.js";
 
 export type AnswerResult = {
   answer: Answer;
@@ -17,6 +18,7 @@ export type AnswerResult = {
    * @deprecated field: Deprecated on 2026-05-07, removal scheduled for 2027-01-15: Use `answer.trackingToken` instead..
    */
   trackingToken?: string | undefined;
+  favoriteInfo?: FavoriteInfo | undefined;
 };
 
 /** @internal */
@@ -27,6 +29,7 @@ export const AnswerResult$inboundSchema: z.ZodType<
 > = z.object({
   answer: Answer$inboundSchema,
   trackingToken: z.string().optional(),
+  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
 });
 
 export function answerResultFromJSON(
