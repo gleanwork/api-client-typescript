@@ -161,7 +161,7 @@ async function $do(
   >(
     M.json(200, components.PlatformSearchResponse$inboundSchema),
     M.jsonErr(
-      [400, 401, 403, 404, 408, 429],
+      [400, 401, 403, 404, 408, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,
       { ctype: "application/problem+json" },
     ),

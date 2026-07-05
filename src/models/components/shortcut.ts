@@ -14,6 +14,12 @@ import {
   Document$outboundSchema,
 } from "./document.js";
 import {
+  FavoriteInfo,
+  FavoriteInfo$inboundSchema,
+  FavoriteInfo$Outbound,
+  FavoriteInfo$outboundSchema,
+} from "./favoriteinfo.js";
+import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
   ObjectPermissions$Outbound,
@@ -109,6 +115,7 @@ export type Shortcut = {
    * A list of user roles for the Go Link.
    */
   roles?: Array<UserRoleSpecification> | undefined;
+  favoriteInfo?: FavoriteInfo | undefined;
 };
 
 /** @internal */
@@ -143,6 +150,7 @@ export const Shortcut$inboundSchema: z.ZodType<
   alias: z.string().optional(),
   title: z.string().optional(),
   roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
+  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
 });
 /** @internal */
 export type Shortcut$Outbound = {
@@ -168,6 +176,7 @@ export type Shortcut$Outbound = {
   alias?: string | undefined;
   title?: string | undefined;
   roles?: Array<UserRoleSpecification$Outbound> | undefined;
+  favoriteInfo?: FavoriteInfo$Outbound | undefined;
 };
 
 /** @internal */
@@ -200,6 +209,7 @@ export const Shortcut$outboundSchema: z.ZodType<
   alias: z.string().optional(),
   title: z.string().optional(),
   roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
+  favoriteInfo: FavoriteInfo$outboundSchema.optional(),
 });
 
 export function shortcutToJSON(shortcut: Shortcut): string {
