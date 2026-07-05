@@ -188,7 +188,7 @@ async function $do(
       ctype: "text/event-stream",
     }),
     M.jsonErr(
-      [400, 401, 403, 404, 408, 409, 429],
+      [400, 401, 403, 404, 408, 409, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,
       { ctype: "application/problem+json" },
     ),
