@@ -23,6 +23,7 @@ import {
   CollectionPinnedMetadata$inboundSchema,
 } from "./collectionpinnedmetadata.js";
 import { FacetFilter, FacetFilter$inboundSchema } from "./facetfilter.js";
+import { FavoriteInfo, FavoriteInfo$inboundSchema } from "./favoriteinfo.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
@@ -124,6 +125,7 @@ export type EditCollectionResponse = {
    * A list of user roles for the Collection.
    */
   roles?: Array<UserRoleSpecification> | undefined;
+  favoriteInfo?: FavoriteInfo | undefined;
   errorCode: EditCollectionResponseErrorCode;
   collection?: Collection | undefined;
   error?: CollectionError | undefined;
@@ -168,6 +170,7 @@ export const EditCollectionResponse$inboundSchema: z.ZodType<
   shortcuts: z.array(z.string()).optional(),
   children: z.array(Collection$inboundSchema).optional(),
   roles: z.array(UserRoleSpecification$inboundSchema).optional(),
+  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
   errorCode: EditCollectionResponseErrorCode$inboundSchema,
   collection: Collection$inboundSchema.optional(),
   error: CollectionError$inboundSchema.optional(),
