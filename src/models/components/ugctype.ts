@@ -34,3 +34,6 @@ export type UgcType = OpenEnum<typeof UgcType>;
 /** @internal */
 export const UgcType$inboundSchema: z.ZodType<UgcType, z.ZodTypeDef, unknown> =
   openEnums.inboundSchema(UgcType);
+/** @internal */
+export const UgcType$outboundSchema: z.ZodType<string, z.ZodTypeDef, UgcType> =
+  openEnums.outboundSchema(UgcType);

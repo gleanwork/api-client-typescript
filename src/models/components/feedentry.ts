@@ -100,6 +100,7 @@ export const JustificationType = {
   ZeroStateAgentSuggestion: "ZERO_STATE_AGENT_SUGGESTION",
   PersonalizedChatSuggestion: "PERSONALIZED_CHAT_SUGGESTION",
   DailyDigest: "DAILY_DIGEST",
+  Podcast: "PODCAST",
   Task: "TASK",
   PlanMyDay: "PLAN_MY_DAY",
   EndMyDay: "END_MY_DAY",

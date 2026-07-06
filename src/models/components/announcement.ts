@@ -11,6 +11,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Document, Document$inboundSchema } from "./document.js";
 import { FacetFilter, FacetFilter$inboundSchema } from "./facetfilter.js";
+import { FavoriteInfo, FavoriteInfo$inboundSchema } from "./favoriteinfo.js";
 import {
   ObjectPermissions,
   ObjectPermissions$inboundSchema,
@@ -134,6 +135,7 @@ export type Announcement = {
    * Whether or not the announcement is published.
    */
   isPublished?: boolean | undefined;
+  favoriteInfo?: FavoriteInfo | undefined;
 };
 
 /** @internal */
@@ -203,6 +205,7 @@ export const Announcement$inboundSchema: z.ZodType<
   viewerInfo: z.lazy(() => AnnouncementViewerInfo$inboundSchema).optional(),
   sourceDocument: Document$inboundSchema.optional(),
   isPublished: z.boolean().optional(),
+  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
 });
 
 export function announcementFromJSON(

@@ -127,7 +127,8 @@ type Announcement struct {
 	ViewerInfo          *AnnouncementViewerInfo `json:"viewerInfo,omitempty"`
 	SourceDocument      *Document               `json:"sourceDocument,omitempty"`
 	// Whether or not the announcement is published.
-	IsPublished *bool `json:"isPublished,omitempty"`
+	IsPublished  *bool         `json:"isPublished,omitempty"`
+	FavoriteInfo *FavoriteInfo `json:"favoriteInfo,omitempty"`
 }
 
 func (a Announcement) MarshalJSON() ([]byte, error) {
@@ -314,4 +315,11 @@ func (o *Announcement) GetIsPublished() *bool {
 		return nil
 	}
 	return o.IsPublished
+}
+
+func (o *Announcement) GetFavoriteInfo() *FavoriteInfo {
+	if o == nil {
+		return nil
+	}
+	return o.FavoriteInfo
 }
