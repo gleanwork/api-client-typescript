@@ -14,6 +14,12 @@ import {
   FacetFilter$outboundSchema,
 } from "./facetfilter.js";
 import {
+  FavoriteInfo,
+  FavoriteInfo$inboundSchema,
+  FavoriteInfo$Outbound,
+  FavoriteInfo$outboundSchema,
+} from "./favoriteinfo.js";
+import {
   Person,
   Person$inboundSchema,
   Person$Outbound,
@@ -41,6 +47,7 @@ export type PinDocument = {
   updatedBy?: Person | undefined;
   createTime?: Date | undefined;
   updateTime?: Date | undefined;
+  favoriteInfo?: FavoriteInfo | undefined;
 };
 
 /** @internal */
@@ -59,6 +66,7 @@ export const PinDocument$inboundSchema: z.ZodType<
     .optional(),
   updateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
 });
 /** @internal */
 export type PinDocument$Outbound = {
@@ -70,6 +78,7 @@ export type PinDocument$Outbound = {
   updatedBy?: Person$Outbound | undefined;
   createTime?: string | undefined;
   updateTime?: string | undefined;
+  favoriteInfo?: FavoriteInfo$Outbound | undefined;
 };
 
 /** @internal */
@@ -86,6 +95,7 @@ export const PinDocument$outboundSchema: z.ZodType<
   updatedBy: z.lazy(() => Person$outboundSchema).optional(),
   createTime: z.date().transform(v => v.toISOString()).optional(),
   updateTime: z.date().transform(v => v.toISOString()).optional(),
+  favoriteInfo: FavoriteInfo$outboundSchema.optional(),
 });
 
 export function pinDocumentToJSON(pinDocument: PinDocument): string {

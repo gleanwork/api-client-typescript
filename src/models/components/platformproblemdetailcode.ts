@@ -24,6 +24,7 @@ export const PlatformProblemDetailCode = {
   ResourceNotFound: "resource_not_found",
   MethodNotAllowed: "method_not_allowed",
   RequestTimeout: "request_timeout",
+  RequestTooLarge: "request_too_large",
   Conflict: "conflict",
   Gone: "gone",
   UnprocessableQuery: "unprocessable_query",
