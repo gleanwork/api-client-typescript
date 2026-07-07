@@ -68,3 +68,31 @@ test("Tools Authorize Action Pack", async () => {
   }, "<id>");
   expect(result).toBeDefined();
 });
+
+test("Tools Get Tool Server Auth Status", async () => {
+  const testHttpClient = createTestHTTPClient("getToolServerAuthStatus");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.client.tools.retrieveToolServerAuthStatus("<id>");
+  expect(result).toBeDefined();
+});
+
+test("Tools Authorize Tool Server", async () => {
+  const testHttpClient = createTestHTTPClient("authorizeToolServer");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.client.tools.authorizeToolServer({
+    returnUrl: "https://lucky-disadvantage.com",
+  }, "<id>");
+  expect(result).toBeDefined();
+});
