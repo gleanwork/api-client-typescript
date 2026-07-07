@@ -8,6 +8,8 @@
 * [run](#run) - Execute the specified tool
 * [retrieveActionPackAuthStatus](#retrieveactionpackauthstatus) - Get end-user authentication status for an action pack.
 * [authorizeActionPack](#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+* [retrieveToolServerAuthStatus](#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
+* [authorizeToolServer](#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
 
 ## list
 
@@ -399,6 +401,203 @@ import {
 ### Response
 
 **Promise\<[components.AuthorizeActionPackResponse](../../models/components/authorizeactionpackresponse.md)\>**
+
+### Errors
+
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
+
+## retrieveToolServerAuthStatus
+
+Returns display information and the calling user's current authentication status
+for the specified tool server.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getToolServerAuthStatus" method="get" path="/rest/api/v1/tool-servers/{serverId}/auth" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.client.tools.retrieveToolServerAuthStatus("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientToolsRetrieveToolServerAuthStatus } from "@gleanwork/api-client/funcs/clientToolsRetrieveToolServerAuthStatus.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await clientToolsRetrieveToolServerAuthStatus(glean, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientToolsRetrieveToolServerAuthStatus failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useClientToolsRetrieveToolServerAuthStatus,
+  useClientToolsRetrieveToolServerAuthStatusSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchClientToolsRetrieveToolServerAuthStatus,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateClientToolsRetrieveToolServerAuthStatus,
+  invalidateAllClientToolsRetrieveToolServerAuthStatus,
+} from "@gleanwork/api-client/react-query/clientToolsRetrieveToolServerAuthStatus.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `serverId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier of the tool server.                                                                                                                                          |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.ToolServerAuthStatusResponse](../../models/components/toolserverauthstatusresponse.md)\>**
+
+### Errors
+
+| Error Type        | Status Code       | Content Type      |
+| ----------------- | ----------------- | ----------------- |
+| errors.GleanError | 4XX, 5XX          | \*/\*             |
+
+## authorizeToolServer
+
+Initiates the third-party OAuth flow for the specified tool server and returns the
+authorization URL that the client should navigate the end user to. After the OAuth
+callback completes, the user's browser is redirected back to `returnUrl` with query
+parameters indicating the result.
+
+`returnUrl` must match the tenant's configured return URL allowlist; otherwise the
+request is rejected with 400.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="authorizeToolServer" method="post" path="/rest/api/v1/tool-servers/{serverId}/auth" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.client.tools.authorizeToolServer({
+    returnUrl: "https://lucky-disadvantage.com",
+  }, "<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientToolsAuthorizeToolServer } from "@gleanwork/api-client/funcs/clientToolsAuthorizeToolServer.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await clientToolsAuthorizeToolServer(glean, {
+    returnUrl: "https://lucky-disadvantage.com",
+  }, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientToolsAuthorizeToolServer failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useClientToolsAuthorizeToolServerMutation
+} from "@gleanwork/api-client/react-query/clientToolsAuthorizeToolServer.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `serverId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Unique identifier of the tool server.                                                                                                                                          |
+| `authorizeToolServerRequest`                                                                                                                                                   | [components.AuthorizeToolServerRequest](../../models/components/authorizetoolserverrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.AuthorizeToolServerResponse](../../models/components/authorizetoolserverresponse.md)\>**
 
 ### Errors
 
