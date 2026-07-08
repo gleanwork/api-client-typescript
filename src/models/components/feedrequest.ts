@@ -60,6 +60,7 @@ export const FeedRequestCategory = {
   DemoCard: "DEMO_CARD",
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
+  AdminHealthCenter: "ADMIN_HEALTH_CENTER",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 

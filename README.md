@@ -409,6 +409,8 @@ For more information on obtaining the appropriate token type, please contact you
 * [run](docs/sdks/tools/README.md#run) - Execute the specified tool
 * [retrieveActionPackAuthStatus](docs/sdks/tools/README.md#retrieveactionpackauthstatus) - Get end-user authentication status for an action pack.
 * [authorizeActionPack](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+* [retrieveToolServerAuthStatus](docs/sdks/tools/README.md#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
+* [authorizeToolServer](docs/sdks/tools/README.md#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
 
 ### [Client.Verification](docs/sdks/verification/README.md)
 
@@ -594,8 +596,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientShortcutsRetrieve`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`clientToolsAuthorizeActionPack`](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+- [`clientToolsAuthorizeToolServer`](docs/sdks/tools/README.md#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
 - [`clientToolsList`](docs/sdks/tools/README.md#list) - List available tools
 - [`clientToolsRetrieveActionPackAuthStatus`](docs/sdks/tools/README.md#retrieveactionpackauthstatus) - Get end-user authentication status for an action pack.
+- [`clientToolsRetrieveToolServerAuthStatus`](docs/sdks/tools/README.md#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
 - [`clientToolsRun`](docs/sdks/tools/README.md#run) - Execute the specified tool
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
@@ -760,8 +764,10 @@ To learn about this feature and how to get started, check
 - [`useClientShortcutsRetrieveMutation`](docs/sdks/clientshortcuts/README.md#retrieve) - Read shortcut
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`useClientToolsAuthorizeActionPackMutation`](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
+- [`useClientToolsAuthorizeToolServerMutation`](docs/sdks/tools/README.md#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
 - [`useClientToolsList`](docs/sdks/tools/README.md#list) - List available tools
 - [`useClientToolsRetrieveActionPackAuthStatus`](docs/sdks/tools/README.md#retrieveactionpackauthstatus) - Get end-user authentication status for an action pack.
+- [`useClientToolsRetrieveToolServerAuthStatus`](docs/sdks/tools/README.md#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
 - [`useClientToolsRunMutation`](docs/sdks/tools/README.md#run) - Execute the specified tool
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
