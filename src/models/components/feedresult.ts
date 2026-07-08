@@ -58,6 +58,7 @@ export const FeedResultCategory = {
   DemoCard: "DEMO_CARD",
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
+  AdminHealthCenter: "ADMIN_HEALTH_CENTER",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.

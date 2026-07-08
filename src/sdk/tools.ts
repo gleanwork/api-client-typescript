@@ -4,8 +4,10 @@
  */
 
 import { clientToolsAuthorizeActionPack } from "../funcs/clientToolsAuthorizeActionPack.js";
+import { clientToolsAuthorizeToolServer } from "../funcs/clientToolsAuthorizeToolServer.js";
 import { clientToolsList } from "../funcs/clientToolsList.js";
 import { clientToolsRetrieveActionPackAuthStatus } from "../funcs/clientToolsRetrieveActionPackAuthStatus.js";
+import { clientToolsRetrieveToolServerAuthStatus } from "../funcs/clientToolsRetrieveToolServerAuthStatus.js";
 import { clientToolsRun } from "../funcs/clientToolsRun.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -86,6 +88,49 @@ export class Tools extends ClientSDK {
       this,
       authorizeActionPackRequest,
       actionPackId,
+      options,
+    ));
+  }
+
+  /**
+   * Get end-user authentication status for a tool server.
+   *
+   * @remarks
+   * Returns display information and the calling user's current authentication status
+   * for the specified tool server.
+   */
+  async retrieveToolServerAuthStatus(
+    serverId: string,
+    options?: RequestOptions,
+  ): Promise<components.ToolServerAuthStatusResponse> {
+    return unwrapAsync(clientToolsRetrieveToolServerAuthStatus(
+      this,
+      serverId,
+      options,
+    ));
+  }
+
+  /**
+   * Start the OAuth authorization flow for a tool server.
+   *
+   * @remarks
+   * Initiates the third-party OAuth flow for the specified tool server and returns the
+   * authorization URL that the client should navigate the end user to. After the OAuth
+   * callback completes, the user's browser is redirected back to `returnUrl` with query
+   * parameters indicating the result.
+   *
+   * `returnUrl` must match the tenant's configured return URL allowlist; otherwise the
+   * request is rejected with 400.
+   */
+  async authorizeToolServer(
+    authorizeToolServerRequest: components.AuthorizeToolServerRequest,
+    serverId: string,
+    options?: RequestOptions,
+  ): Promise<components.AuthorizeToolServerResponse> {
+    return unwrapAsync(clientToolsAuthorizeToolServer(
+      this,
+      authorizeToolServerRequest,
+      serverId,
       options,
     ));
   }
