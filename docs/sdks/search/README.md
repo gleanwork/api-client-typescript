@@ -28,10 +28,6 @@ async function run() {
       "confluence",
       "google_drive",
     ],
-    datasource_instances: [
-      "slack_acme",
-      "slack_eu",
-    ],
     filters: [
       {
         field: "type",
@@ -69,10 +65,6 @@ async function run() {
     datasources: [
       "confluence",
       "google_drive",
-    ],
-    datasource_instances: [
-      "slack_acme",
-      "slack_eu",
     ],
     filters: [
       {

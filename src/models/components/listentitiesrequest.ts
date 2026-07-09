@@ -43,7 +43,7 @@ export type ListEntitiesRequestIncludeField = ClosedEnum<
 /**
  * The type of request being made.
  */
-export const RequestType = {
+export const ListEntitiesRequestRequestType = {
   /**
    * Used by default for all requests and satisfies all standard use cases for list requests. Limited to 10000 entities.
    */
@@ -56,7 +56,9 @@ export const RequestType = {
 /**
  * The type of request being made.
  */
-export type RequestType = ClosedEnum<typeof RequestType>;
+export type ListEntitiesRequestRequestType = ClosedEnum<
+  typeof ListEntitiesRequestRequestType
+>;
 
 export type ListEntitiesRequest = {
   filter?: Array<FacetFilter> | undefined;
@@ -92,7 +94,7 @@ export type ListEntitiesRequest = {
   /**
    * The type of request being made.
    */
-  requestType?: RequestType | undefined;
+  requestType?: ListEntitiesRequestRequestType | undefined;
 };
 
 /** @internal */
@@ -106,8 +108,9 @@ export const ListEntitiesRequestIncludeField$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ListEntitiesRequestIncludeField);
 
 /** @internal */
-export const RequestType$outboundSchema: z.ZodNativeEnum<typeof RequestType> = z
-  .nativeEnum(RequestType);
+export const ListEntitiesRequestRequestType$outboundSchema: z.ZodNativeEnum<
+  typeof ListEntitiesRequestRequestType
+> = z.nativeEnum(ListEntitiesRequestRequestType);
 
 /** @internal */
 export type ListEntitiesRequest$Outbound = {
@@ -139,7 +142,9 @@ export const ListEntitiesRequest$outboundSchema: z.ZodType<
   pageSize: z.number().int().optional(),
   cursor: z.string().optional(),
   source: z.string().optional(),
-  requestType: RequestType$outboundSchema.default("STANDARD"),
+  requestType: ListEntitiesRequestRequestType$outboundSchema.default(
+    "STANDARD",
+  ),
 });
 
 export function listEntitiesRequestToJSON(
