@@ -26,6 +26,18 @@ import {
   QuerySuggestion$outboundSchema,
 } from "./querysuggestion.js";
 import {
+  ServerToolRequest,
+  ServerToolRequest$inboundSchema,
+  ServerToolRequest$Outbound,
+  ServerToolRequest$outboundSchema,
+} from "./servertoolrequest.js";
+import {
+  ServerToolResponse,
+  ServerToolResponse$inboundSchema,
+  ServerToolResponse$Outbound,
+  ServerToolResponse$outboundSchema,
+} from "./servertoolresponse.js";
+import {
   StructuredResult,
   StructuredResult$inboundSchema,
   StructuredResult$Outbound,
@@ -61,6 +73,25 @@ export type ChatMessageFragment = {
    * Information about the source for a ChatMessage.
    */
   citation?: ChatMessageCitation | undefined;
+  serverToolRequest?: ServerToolRequest | undefined;
+  /**
+   * Response to a server tool request. The applicable fields depend on requestType:
+   *
+   * @remarks
+   *
+   * For EXECUTION requests:
+   * - isGranted: whether tool execution is approved
+   * - reason: optional explanation
+   *
+   * For AUTHENTICATION_SUGGESTION requests:
+   * - isGranted: whether auth completed successfully (true=connected, false=skipped)
+   * - authContext: contains serverId or actionPackId for identifying the authenticated entity
+   * - reason: optional explanation for skip
+   *
+   * For VOTE_SUGGESTION requests:
+   * - voted: whether the user voted for this tool
+   */
+  serverToolResponse?: ServerToolResponse | undefined;
 };
 
 /** @internal */
@@ -76,6 +107,8 @@ export const ChatMessageFragment$inboundSchema: z.ZodType<
   file: ChatFile$inboundSchema.optional(),
   action: ToolInfo$inboundSchema.optional(),
   citation: ChatMessageCitation$inboundSchema.optional(),
+  serverToolRequest: ServerToolRequest$inboundSchema.optional(),
+  serverToolResponse: ServerToolResponse$inboundSchema.optional(),
 });
 /** @internal */
 export type ChatMessageFragment$Outbound = {
@@ -86,6 +119,8 @@ export type ChatMessageFragment$Outbound = {
   file?: ChatFile$Outbound | undefined;
   action?: ToolInfo$Outbound | undefined;
   citation?: ChatMessageCitation$Outbound | undefined;
+  serverToolRequest?: ServerToolRequest$Outbound | undefined;
+  serverToolResponse?: ServerToolResponse$Outbound | undefined;
 };
 
 /** @internal */
@@ -101,6 +136,8 @@ export const ChatMessageFragment$outboundSchema: z.ZodType<
   file: ChatFile$outboundSchema.optional(),
   action: ToolInfo$outboundSchema.optional(),
   citation: ChatMessageCitation$outboundSchema.optional(),
+  serverToolRequest: ServerToolRequest$outboundSchema.optional(),
+  serverToolResponse: ServerToolResponse$outboundSchema.optional(),
 });
 
 export function chatMessageFragmentToJSON(
