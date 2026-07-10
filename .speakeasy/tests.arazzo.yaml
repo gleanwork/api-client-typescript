@@ -164690,9 +164690,6 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            datasource_instances:
-              - slack_acme
-              - slack_eu
             datasources:
               - confluence
               - google_drive
