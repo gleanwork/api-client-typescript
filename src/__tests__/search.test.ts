@@ -2066,10 +2066,6 @@ test("Search Platform Search", async () => {
       "confluence",
       "google_drive",
     ],
-    datasource_instances: [
-      "slack_acme",
-      "slack_eu",
-    ],
     filters: [
       {
         field: "type",
