@@ -7,12 +7,18 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Agents } from "./agents.js";
 import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
+import { Platform } from "./platform.js";
 import { Search } from "./search.js";
 
 export class Glean extends ClientSDK {
   private _agents?: Agents;
   get agents(): Agents {
     return (this._agents ??= new Agents(this._options));
+  }
+
+  private _platform?: Platform;
+  get platform(): Platform {
+    return (this._platform ??= new Platform(this._options));
   }
 
   private _search?: Search;
