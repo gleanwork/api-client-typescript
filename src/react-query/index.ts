@@ -143,3 +143,5 @@ export * from "./indexingPermissionsUpdatePermissions.js";
 export * from "./indexingShortcutsBulkIndex.js";
 export * from "./indexingShortcutsUpload.js";
 export * from "./searchQuery.js";
+export * from "./skillsList.js";
+export * from "./skillsRetrieve.js";
