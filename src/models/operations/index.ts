@@ -75,6 +75,8 @@ export * from "./pin.js";
 export * from "./platformagentscreaterun.js";
 export * from "./platformagentsget.js";
 export * from "./platformagentsgetschemas.js";
+export * from "./platformskillsget.js";
+export * from "./platformskillslist.js";
 export * from "./postapiindexv1debugdatasourcedocument.js";
 export * from "./postapiindexv1debugdatasourcedocumentevents.js";
 export * from "./postapiindexv1debugdatasourcedocuments.js";
