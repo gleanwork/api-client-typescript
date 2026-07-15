@@ -17,6 +17,8 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodDelete, "/rest/api/index/document/{docId}/custom-metadata/{groupName}", pathDeleteRestAPIIndexDocumentDocIDCustomMetadataGroupName(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/api/agents/{agent_id}", pathGetAPIAgentsAgentID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/api/agents/{agent_id}/schemas", pathGetAPIAgentsAgentIDSchemas(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/api/skills", pathGetAPISkills(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodGet, "/api/skills/{skill_id}", pathGetAPISkillsSkillID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/index/custom-metadata/schema/{groupName}", pathGetRestAPIIndexCustomMetadataSchemaGroupName(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/actions/actionpack/{actionPackId}/auth", pathGetRestAPIV1ActionsActionpackActionPackIDAuth(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/agents/{agent_id}", pathGetRestAPIV1AgentsAgentID(dir, rt)),
