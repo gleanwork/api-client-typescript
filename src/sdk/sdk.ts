@@ -8,11 +8,17 @@ import { Agents } from "./agents.js";
 import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
 import { Search } from "./search.js";
+import { Skills } from "./skills.js";
 
 export class Glean extends ClientSDK {
   private _agents?: Agents;
   get agents(): Agents {
     return (this._agents ??= new Agents(this._options));
+  }
+
+  private _skills?: Skills;
+  get skills(): Skills {
+    return (this._skills ??= new Skills(this._options));
   }
 
   private _search?: Search;
