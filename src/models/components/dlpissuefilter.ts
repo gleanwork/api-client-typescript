@@ -37,17 +37,50 @@ export type DlpIssueFilter = {
    */
   statuses?: Array<DlpIssueStatus> | undefined;
   /**
-   * Filter by assignee user ID.
+   * Filter by a single assignee user ID. Deprecated; use assigneeIds.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   assigneeId?: string | undefined;
+  /**
+   * Filter by one or more assignee user IDs. Use the sentinel value "UNASSIGNED" to match issues with no assignee.
+   */
+  assigneeIds?: Array<string> | undefined;
+  /**
+   * Filter by a single built-in info type. Deprecated; use infoTypes.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   infoType?: string | undefined;
+  /**
+   * Filter by one or more built-in info types.
+   */
+  infoTypes?: Array<string> | undefined;
+  /**
+   * Filter by a single regex rule ID. Deprecated; use regexIds.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   regexId?: string | undefined;
+  /**
+   * Filter by one or more regex rule IDs.
+   */
+  regexIds?: Array<string> | undefined;
   /**
    * Filter by one or more report/policy IDs.
    */
   reportIds?: Array<string> | undefined;
   docId?: string | undefined;
+  /**
+   * Filter by a single datasource. Deprecated; use datasources.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
   datasource?: string | undefined;
+  /**
+   * Filter by one or more datasources.
+   */
+  datasources?: Array<string> | undefined;
   visibility?: string | undefined;
   /**
    * Filter by one or more severity levels.
@@ -65,11 +98,15 @@ export const DlpIssueFilter$inboundSchema: z.ZodType<
   searchText: z.string().optional(),
   statuses: z.array(DlpIssueStatus$inboundSchema).optional(),
   assigneeId: z.string().optional(),
+  assigneeIds: z.array(z.string()).optional(),
   infoType: z.string().optional(),
+  infoTypes: z.array(z.string()).optional(),
   regexId: z.string().optional(),
+  regexIds: z.array(z.string()).optional(),
   reportIds: z.array(z.string()).optional(),
   docId: z.string().optional(),
   datasource: z.string().optional(),
+  datasources: z.array(z.string()).optional(),
   visibility: z.string().optional(),
   severities: z.array(DlpSeverity$inboundSchema).optional(),
   timeRange: TimeRangeFilter$inboundSchema.optional(),
@@ -79,11 +116,15 @@ export type DlpIssueFilter$Outbound = {
   searchText?: string | undefined;
   statuses?: Array<string> | undefined;
   assigneeId?: string | undefined;
+  assigneeIds?: Array<string> | undefined;
   infoType?: string | undefined;
+  infoTypes?: Array<string> | undefined;
   regexId?: string | undefined;
+  regexIds?: Array<string> | undefined;
   reportIds?: Array<string> | undefined;
   docId?: string | undefined;
   datasource?: string | undefined;
+  datasources?: Array<string> | undefined;
   visibility?: string | undefined;
   severities?: Array<string> | undefined;
   timeRange?: TimeRangeFilter$Outbound | undefined;
@@ -98,11 +139,15 @@ export const DlpIssueFilter$outboundSchema: z.ZodType<
   searchText: z.string().optional(),
   statuses: z.array(DlpIssueStatus$outboundSchema).optional(),
   assigneeId: z.string().optional(),
+  assigneeIds: z.array(z.string()).optional(),
   infoType: z.string().optional(),
+  infoTypes: z.array(z.string()).optional(),
   regexId: z.string().optional(),
+  regexIds: z.array(z.string()).optional(),
   reportIds: z.array(z.string()).optional(),
   docId: z.string().optional(),
   datasource: z.string().optional(),
+  datasources: z.array(z.string()).optional(),
   visibility: z.string().optional(),
   severities: z.array(DlpSeverity$outboundSchema).optional(),
   timeRange: TimeRangeFilter$outboundSchema.optional(),

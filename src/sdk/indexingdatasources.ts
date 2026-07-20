@@ -5,8 +5,10 @@
 
 import { indexingDatasourcesAdd } from "../funcs/indexingDatasourcesAdd.js";
 import { indexingDatasourcesRetrieveConfig } from "../funcs/indexingDatasourcesRetrieveConfig.js";
+import { indexingDatasourcesSubmit } from "../funcs/indexingDatasourcesSubmit.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class IndexingDatasources extends ClientSDK {
@@ -40,6 +42,29 @@ export class IndexingDatasources extends ClientSDK {
     return unwrapAsync(indexingDatasourcesRetrieveConfig(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Submit datasource data
+   *
+   * @remarks
+   * Validates and asynchronously processes a datasource-specific submission.
+   */
+  async submit(
+    requestBody: { [k: string]: any },
+    datasourceInstance: string,
+    type: string,
+    options?: RequestOptions,
+  ): Promise<
+    operations.PostRestApiIndexSubmissionsDatasourceInstanceTypeResponse
+  > {
+    return unwrapAsync(indexingDatasourcesSubmit(
+      this,
+      requestBody,
+      datasourceInstance,
+      type,
       options,
     ));
   }
