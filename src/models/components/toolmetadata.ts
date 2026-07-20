@@ -67,6 +67,38 @@ export const WriteActionType = {
 export type WriteActionType = OpenEnum<typeof WriteActionType>;
 
 /**
+ * Analytics-only signal (product snapshot) describing WHERE the action's
+ *
+ * @remarks
+ * read/write determination came from. Complementary to the effective
+ * read/write value (the tool's ToolType, which drives HITL): the value says
+ * read-or-write, this says how confident that is. MCP_ANNOTATION = from the
+ * tool's read-only/destructive hints; ADMIN_OVERRIDE = an admin set it;
+ * NONE = no usable hint (the effective value then defaults to write);
+ * NATIVE_TOOL_DEFINITION = from a curated native tool (snapshot-derived).
+ * Does not affect runtime behavior.
+ */
+export const ActionTypeSource = {
+  McpAnnotation: "MCP_ANNOTATION",
+  AdminOverride: "ADMIN_OVERRIDE",
+  None: "NONE",
+  NativeToolDefinition: "NATIVE_TOOL_DEFINITION",
+} as const;
+/**
+ * Analytics-only signal (product snapshot) describing WHERE the action's
+ *
+ * @remarks
+ * read/write determination came from. Complementary to the effective
+ * read/write value (the tool's ToolType, which drives HITL): the value says
+ * read-or-write, this says how confident that is. MCP_ANNOTATION = from the
+ * tool's read-only/destructive hints; ADMIN_OVERRIDE = an admin set it;
+ * NONE = no usable hint (the effective value then defaults to write);
+ * NATIVE_TOOL_DEFINITION = from a curated native tool (snapshot-derived).
+ * Does not affect runtime behavior.
+ */
+export type ActionTypeSource = OpenEnum<typeof ActionTypeSource>;
+
+/**
  * The type of authentication being used.
  *
  * @remarks
@@ -145,6 +177,19 @@ export type ToolMetadata = {
    */
   writeActionType?: WriteActionType | undefined;
   /**
+   * Analytics-only signal (product snapshot) describing WHERE the action's
+   *
+   * @remarks
+   * read/write determination came from. Complementary to the effective
+   * read/write value (the tool's ToolType, which drives HITL): the value says
+   * read-or-write, this says how confident that is. MCP_ANNOTATION = from the
+   * tool's read-only/destructive hints; ADMIN_OVERRIDE = an admin set it;
+   * NONE = no usable hint (the effective value then defaults to write);
+   * NATIVE_TOOL_DEFINITION = from a curated native tool (snapshot-derived).
+   * Does not affect runtime behavior.
+   */
+  actionTypeSource?: ActionTypeSource | undefined;
+  /**
    * The type of authentication being used.
    *
    * @remarks
@@ -209,6 +254,19 @@ export const WriteActionType$outboundSchema: z.ZodType<
 > = openEnums.outboundSchema(WriteActionType);
 
 /** @internal */
+export const ActionTypeSource$inboundSchema: z.ZodType<
+  ActionTypeSource,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ActionTypeSource);
+/** @internal */
+export const ActionTypeSource$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ActionTypeSource
+> = openEnums.outboundSchema(ActionTypeSource);
+
+/** @internal */
 export const AuthType$inboundSchema: z.ZodType<
   AuthType,
   z.ZodTypeDef,
@@ -243,6 +301,7 @@ export const ToolMetadata$inboundSchema: z.ZodType<
     new Date(v)
   ).optional(),
   writeActionType: WriteActionType$inboundSchema.optional(),
+  actionTypeSource: ActionTypeSource$inboundSchema.optional(),
   authType: AuthType$inboundSchema.optional(),
   auth: AuthConfig$inboundSchema.optional(),
   permissions: ObjectPermissions$inboundSchema.optional(),
@@ -264,6 +323,7 @@ export type ToolMetadata$Outbound = {
   createdAt?: string | undefined;
   lastUpdatedAt?: string | undefined;
   writeActionType?: string | undefined;
+  actionTypeSource?: string | undefined;
   authType?: string | undefined;
   auth?: AuthConfig$Outbound | undefined;
   permissions?: ObjectPermissions$Outbound | undefined;
@@ -290,6 +350,7 @@ export const ToolMetadata$outboundSchema: z.ZodType<
   createdAt: z.date().transform(v => v.toISOString()).optional(),
   lastUpdatedAt: z.date().transform(v => v.toISOString()).optional(),
   writeActionType: WriteActionType$outboundSchema.optional(),
+  actionTypeSource: ActionTypeSource$outboundSchema.optional(),
   authType: AuthType$outboundSchema.optional(),
   auth: AuthConfig$outboundSchema.optional(),
   permissions: ObjectPermissions$outboundSchema.optional(),
