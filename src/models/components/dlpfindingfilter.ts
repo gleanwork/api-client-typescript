@@ -32,7 +32,7 @@ export type DlpFindingFilter = {
   visibility?: string | undefined;
   documentIds?: Array<string> | undefined;
   /**
-   * Severity levels for DLP findings and analyses.
+   * Severity levels for DLP findings and analyses. FALSE_POSITIVE ranks below LOW and marks analyses that concluded every flagged entity is a detector false positive.
    */
   severity?: DlpSeverity | undefined;
   documentSeverity?: Array<DlpSeverity> | undefined;
