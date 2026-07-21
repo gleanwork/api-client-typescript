@@ -1,9 +1,9 @@
-# FileT
+# PlatformSkillValidationRequestFile
 
 ## Example Usage
 
 ```typescript
-import { FileT } from "@gleanwork/api-client/models/components";
+import { PlatformSkillValidationRequestFile } from "@gleanwork/api-client/models/components";
 
 // No examples available for this model
 ```

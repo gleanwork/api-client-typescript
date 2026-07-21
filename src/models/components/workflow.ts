@@ -50,6 +50,12 @@ export type Workflow = {
    * When true, displays organization name instead of author name in agent card. Set via the dedicated admin settings endpoint, not by regular edits.
    */
   showOrganizationAsAuthor?: boolean | undefined;
+  /**
+   * For a CUSTOM_WEBHOOK-triggered agent, the full inbound webhook URL (.../webhooks/custom/<token>) minted for the agent. Empty for other trigger types.
+   *
+   * @remarks
+   */
+  webhookUrl?: string | undefined;
 };
 
 /** @internal */
@@ -70,6 +76,7 @@ export const Workflow$inboundSchema: z.ZodType<
   id: z.string().optional(),
   verified: z.boolean().optional(),
   showOrganizationAsAuthor: z.boolean().optional(),
+  webhookUrl: z.string().optional(),
 });
 
 export function workflowFromJSON(
