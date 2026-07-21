@@ -15,6 +15,6 @@ let value: UploadChatFilesRequest = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `files`                                                | [components.FileT](../../models/components/filet.md)[] | :heavy_check_mark:                                     | Raw files to be uploaded for chat in binary format.    |
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `files`                                                                                          | [components.UploadChatFilesRequestFile](../../models/components/uploadchatfilesrequestfile.md)[] | :heavy_check_mark:                                                                               | Raw files to be uploaded for chat in binary format.                                              |

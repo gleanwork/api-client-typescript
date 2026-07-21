@@ -8,16 +8,17 @@ import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
 /**
- * Severity levels for DLP findings and analyses.
+ * Severity levels for DLP findings and analyses. FALSE_POSITIVE ranks below LOW and marks analyses that concluded every flagged entity is a detector false positive.
  */
 export const DlpSeverity = {
   Unspecified: "UNSPECIFIED",
   Low: "LOW",
   Medium: "MEDIUM",
   High: "HIGH",
+  FalsePositive: "FALSE_POSITIVE",
 } as const;
 /**
- * Severity levels for DLP findings and analyses.
+ * Severity levels for DLP findings and analyses. FALSE_POSITIVE ranks below LOW and marks analyses that concluded every flagged entity is a detector false positive.
  */
 export type DlpSeverity = OpenEnum<typeof DlpSeverity>;
 
