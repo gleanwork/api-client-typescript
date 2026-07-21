@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 
-export type FileT = {
+export type UploadChatFilesRequestFile = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
@@ -14,20 +14,20 @@ export type UploadChatFilesRequest = {
   /**
    * Raw files to be uploaded for chat in binary format.
    */
-  files: Array<FileT>;
+  files: Array<UploadChatFilesRequestFile>;
 };
 
 /** @internal */
-export type FileT$Outbound = {
+export type UploadChatFilesRequestFile$Outbound = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
 
 /** @internal */
-export const FileT$outboundSchema: z.ZodType<
-  FileT$Outbound,
+export const UploadChatFilesRequestFile$outboundSchema: z.ZodType<
+  UploadChatFilesRequestFile$Outbound,
   z.ZodTypeDef,
-  FileT
+  UploadChatFilesRequestFile
 > = z.object({
   fileName: z.string(),
   content: z.union([
@@ -38,13 +38,17 @@ export const FileT$outboundSchema: z.ZodType<
   ]),
 });
 
-export function fileToJSON(fileT: FileT): string {
-  return JSON.stringify(FileT$outboundSchema.parse(fileT));
+export function uploadChatFilesRequestFileToJSON(
+  uploadChatFilesRequestFile: UploadChatFilesRequestFile,
+): string {
+  return JSON.stringify(
+    UploadChatFilesRequestFile$outboundSchema.parse(uploadChatFilesRequestFile),
+  );
 }
 
 /** @internal */
 export type UploadChatFilesRequest$Outbound = {
-  files: Array<FileT$Outbound>;
+  files: Array<UploadChatFilesRequestFile$Outbound>;
 };
 
 /** @internal */
@@ -53,7 +57,7 @@ export const UploadChatFilesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UploadChatFilesRequest
 > = z.object({
-  files: z.array(z.lazy(() => FileT$outboundSchema)),
+  files: z.array(z.lazy(() => UploadChatFilesRequestFile$outboundSchema)),
 });
 
 export function uploadChatFilesRequestToJSON(
