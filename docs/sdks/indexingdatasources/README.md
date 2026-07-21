@@ -6,6 +6,7 @@
 
 * [add](#add) - Add or update datasource
 * [retrieveConfig](#retrieveconfig) - Get datasource config
+* [submit](#submit) - Submit datasource data
 
 ## add
 
@@ -208,3 +209,102 @@ import {
 | Error Type        | Status Code       | Content Type      |
 | ----------------- | ----------------- | ----------------- |
 | errors.GleanError | 4XX, 5XX          | \*/\*             |
+
+## submit
+
+Validates and asynchronously processes a datasource-specific submission.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="post_/rest/api/index/submissions/{datasourceInstance}/{type}" method="post" path="/rest/api/index/submissions/{datasourceInstance}/{type}" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.indexing.datasources.submit({
+    "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
+  }, "<value>", "<value>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { indexingDatasourcesSubmit } from "@gleanwork/api-client/funcs/indexingDatasourcesSubmit.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await indexingDatasourcesSubmit(glean, {
+    "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
+  }, "<value>", "<value>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("indexingDatasourcesSubmit failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useIndexingDatasourcesSubmitMutation
+} from "@gleanwork/api-client/react-query/indexingDatasourcesSubmit.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `datasourceInstance`                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Datasource instance that should process the submission                                                                                                                         |
+| `type`                                                                                                                                                                         | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Submission type registered for the datasource                                                                                                                                  |
+| `requestBody`                                                                                                                                                                  | Record<string, *any*>                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| `options.serverURL`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | An optional server URL to use.                                                                                                                                                 |
+
+### Response
+
+**Promise\<[operations.PostRestApiIndexSubmissionsDatasourceInstanceTypeResponse](../../models/operations/postrestapiindexsubmissionsdatasourceinstancetyperesponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.ErrorInfoResponse | 400, 401, 404            | application/json         |
+| errors.ErrorInfoResponse | 500                      | application/json         |
+| errors.GleanError        | 4XX, 5XX                 | \*/\*                    |

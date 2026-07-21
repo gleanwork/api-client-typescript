@@ -439,6 +439,7 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [add](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
 * [retrieveConfig](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
+* [submit](docs/sdks/indexingdatasources/README.md#submit) - Submit datasource data
 
 ### [Indexing.Documents](docs/sdks/indexingdocuments/README.md)
 
@@ -493,6 +494,18 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Search](docs/sdks/search/README.md)
 
 * [query](docs/sdks/search/README.md#query) - Search
+
+### [Skills](docs/sdks/skills/README.md)
+
+* [create](docs/sdks/skills/README.md#create) - Create skill
+* [list](docs/sdks/skills/README.md#list) - List skills
+* [validate](docs/sdks/skills/README.md#validate) - Validate skill bundle
+* [retrieve](docs/sdks/skills/README.md#retrieve) - Retrieve skill
+* [retrieveContent](docs/sdks/skills/README.md#retrievecontent) - Download skill content
+* [createVersion](docs/sdks/skills/README.md#createversion) - Create skill version
+* [listVersions](docs/sdks/skills/README.md#listversions) - List skill versions
+* [retrieveVersion](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
+* [retrieveVersionContent](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -612,6 +625,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingCustomMetadataUpsertSchema`](docs/sdks/custommetadata/README.md#upsertschema) - Create or update metadata schema
 - [`indexingDatasourcesAdd`](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
 - [`indexingDatasourcesRetrieveConfig`](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
+- [`indexingDatasourcesSubmit`](docs/sdks/indexingdatasources/README.md#submit) - Submit datasource data
 - [`indexingDatasourceStatus`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
 - [`indexingDocumentsAddOrUpdate`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
@@ -649,6 +663,15 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
 - [`searchQuery`](docs/sdks/search/README.md#query) - Search
+- [`skillsCreate`](docs/sdks/skills/README.md#create) - Create skill
+- [`skillsCreateVersion`](docs/sdks/skills/README.md#createversion) - Create skill version
+- [`skillsList`](docs/sdks/skills/README.md#list) - List skills
+- [`skillsListVersions`](docs/sdks/skills/README.md#listversions) - List skill versions
+- [`skillsRetrieve`](docs/sdks/skills/README.md#retrieve) - Retrieve skill
+- [`skillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
+- [`skillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
+- [`skillsRetrieveVersionContent`](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+- [`skillsValidate`](docs/sdks/skills/README.md#validate) - Validate skill bundle
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -780,6 +803,7 @@ To learn about this feature and how to get started, check
 - [`useIndexingCustomMetadataUpsertSchemaMutation`](docs/sdks/custommetadata/README.md#upsertschema) - Create or update metadata schema
 - [`useIndexingDatasourcesAddMutation`](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
 - [`useIndexingDatasourcesRetrieveConfigMutation`](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
+- [`useIndexingDatasourcesSubmitMutation`](docs/sdks/indexingdatasources/README.md#submit) - Submit datasource data
 - [`useIndexingDatasourceStatusMutation`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
 
 - [`useIndexingDocumentsAddOrUpdateMutation`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
@@ -817,6 +841,15 @@ To learn about this feature and how to get started, check
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
 - [`useSearchQueryMutation`](docs/sdks/search/README.md#query) - Search
+- [`useSkillsCreateMutation`](docs/sdks/skills/README.md#create) - Create skill
+- [`useSkillsCreateVersionMutation`](docs/sdks/skills/README.md#createversion) - Create skill version
+- [`useSkillsList`](docs/sdks/skills/README.md#list) - List skills
+- [`useSkillsListVersions`](docs/sdks/skills/README.md#listversions) - List skill versions
+- [`useSkillsRetrieve`](docs/sdks/skills/README.md#retrieve) - Retrieve skill
+- [`useSkillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
+- [`useSkillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
+- [`useSkillsRetrieveVersionContent`](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+- [`useSkillsValidateMutation`](docs/sdks/skills/README.md#validate) - Validate skill bundle
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -849,10 +882,8 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.client.chat.uploadFiles({
-    files: [
-      await openAsBlob("example.file"),
-    ],
+  const result = await glean.skills.create({
+    file: await openAsBlob("example.file"),
   });
 
   console.log(result);
@@ -1061,11 +1092,13 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.indexing.customMetadata.upsert(
+  const result = await glean.indexing.datasources.submit(
     {
-      customMetadata: [],
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
     },
-    "<id>",
+    "<value>",
     "<value>",
     {
       serverURL: "https://instance-name-be.glean.com",
