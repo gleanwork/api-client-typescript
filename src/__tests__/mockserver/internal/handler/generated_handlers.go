@@ -36,6 +36,7 @@ func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/people/{person_id}/photo", pathGetRestAPIV1PeoplePersonIDPhoto(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/tool-servers/{serverId}/auth", pathGetRestAPIV1ToolServersServerIDAuth(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodGet, "/rest/api/v1/tools/list", pathGetRestAPIV1ToolsList(dir, rt)),
+		NewGeneratedHandler(ctx, http.MethodPatch, "/api/skills/{skill_id}", pathPatchAPISkillsSkillID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPatch, "/rest/api/v1/configure/datasources/{datasourceId}/instances/{instanceId}", pathPatchRestAPIV1ConfigureDatasourcesDatasourceIDInstancesInstanceID(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/api/agents/search", pathPostAPIAgentsSearch(dir, rt)),
 		NewGeneratedHandler(ctx, http.MethodPost, "/api/agents/{agent_id}/runs", pathPostAPIAgentsAgentIDRuns(dir, rt)),

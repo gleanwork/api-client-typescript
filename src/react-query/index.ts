@@ -152,4 +152,5 @@ export * from "./skillsRetrieve.js";
 export * from "./skillsRetrieveContent.js";
 export * from "./skillsRetrieveVersion.js";
 export * from "./skillsRetrieveVersionContent.js";
+export * from "./skillsUpdate.js";
 export * from "./skillsValidate.js";

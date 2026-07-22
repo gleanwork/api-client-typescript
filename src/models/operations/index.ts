@@ -82,6 +82,7 @@ export * from "./platformskillsgetversion.js";
 export * from "./platformskillsgetversioncontent.js";
 export * from "./platformskillslist.js";
 export * from "./platformskillslistversions.js";
+export * from "./platformskillsupdate.js";
 export * from "./postapiindexv1debugdatasourcedocument.js";
 export * from "./postapiindexv1debugdatasourcedocumentevents.js";
 export * from "./postapiindexv1debugdatasourcedocuments.js";
