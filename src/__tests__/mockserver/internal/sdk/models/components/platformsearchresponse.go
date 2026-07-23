@@ -12,6 +12,9 @@ type PlatformSearchResponse struct {
 	NextCursor *string `json:"next_cursor"`
 	// Platform-generated request ID for support correlation.
 	RequestID string `json:"request_id"`
+	// Non-blocking warnings for this response. Always present; empty means `[]`. Clients must tolerate unknown warning codes. Current code `results_incomplete` means some results may be unavailable for the requested datasource scope; results, `has_more`, and `next_cursor` remain present.
+	//
+	Warnings []PlatformWarning `json:"warnings"`
 }
 
 func (o *PlatformSearchResponse) GetResults() []PlatformResult {
@@ -40,4 +43,11 @@ func (o *PlatformSearchResponse) GetRequestID() string {
 		return ""
 	}
 	return o.RequestID
+}
+
+func (o *PlatformSearchResponse) GetWarnings() []PlatformWarning {
+	if o == nil {
+		return []PlatformWarning{}
+	}
+	return o.Warnings
 }
