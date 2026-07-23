@@ -9,7 +9,8 @@ import (
 
 type PlatformSearchResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	// Successful search.
+	// Successful search. Always includes `warnings` (`[]` when empty). A `results_incomplete` warning may be present while results and cursor remain available.
+	//
 	PlatformSearchResponse *components.PlatformSearchResponse
 }
 

@@ -11,6 +11,10 @@ import {
   PlatformResult,
   PlatformResult$inboundSchema,
 } from "./platformresult.js";
+import {
+  PlatformWarning,
+  PlatformWarning$inboundSchema,
+} from "./platformwarning.js";
 
 export type PlatformSearchResponse = {
   /**
@@ -29,6 +33,12 @@ export type PlatformSearchResponse = {
    * Platform-generated request ID for support correlation.
    */
   request_id: string;
+  /**
+   * Non-blocking warnings for this response. Always present; empty means `[]`. Clients must tolerate unknown warning codes. Current code `results_incomplete` means some results may be unavailable for the requested datasource scope; results, `has_more`, and `next_cursor` remain present.
+   *
+   * @remarks
+   */
+  warnings: Array<PlatformWarning>;
 };
 
 /** @internal */
@@ -41,6 +51,7 @@ export const PlatformSearchResponse$inboundSchema: z.ZodType<
   has_more: z.boolean(),
   next_cursor: z.nullable(z.string()),
   request_id: z.string(),
+  warnings: z.array(PlatformWarning$inboundSchema),
 });
 
 export function platformSearchResponseFromJSON(
