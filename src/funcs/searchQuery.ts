@@ -31,7 +31,8 @@ import { Result } from "../types/fp.js";
  * Search
  *
  * @remarks
- * Execute a search query and retrieve ranked results. This is the data retrieval variant of the search API and returns only results and pagination state.
+ * Execute a search query and retrieve ranked results. This is the data retrieval variant of the search API and returns only results and pagination state. Structured filters accept the eleven exact lowercase public built-ins and free-form custom fields. Custom and unknown fields are forwarded without spelling, existence, type, ambiguity, or operator-compatibility validation, so behavior is backend-dependent.
+ * Successful responses always include a non-nullable `warnings` array (`[]` when empty). When results are incomplete for the requested datasource scope, the response remains HTTP 200 with `results`, `has_more`, and `next_cursor` preserved and a `results_incomplete` warning. Query outcomes that cannot be honored return HTTP 422 `unprocessable_query` and suppress results and cursor; invalid inline operators may include a nested `/query` `invalid_filter` issue. Backend work and audit logging may already have occurred before such a 422 replaces a result-bearing response. Structural and representability failures remain HTTP 400. Rate limits return HTTP 429 with `Retry-After`. Temporary backend unavailability returns HTTP 503.
  */
 export function searchQuery(
   client: GleanCore,
@@ -161,7 +162,7 @@ async function $do(
   >(
     M.json(200, components.PlatformSearchResponse$inboundSchema),
     M.jsonErr(
-      [400, 401, 403, 404, 408, 413, 429],
+      [400, 401, 403, 404, 408, 413, 422, 429],
       errors.PlatformProblemDetailError$inboundSchema,
       { ctype: "application/problem+json" },
     ),

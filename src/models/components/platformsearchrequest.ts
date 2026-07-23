@@ -33,19 +33,13 @@ export type PlatformSearchRequest = {
    */
   cursor?: string | null | undefined;
   /**
-   * Restrict results to specific datasources. Requests must not specify both `datasources` and `datasource_instances`.
+   * Restrict results to specific canonical normalized datasource identifiers.
    *
    * @remarks
    */
   datasources?: Array<string> | undefined;
   /**
-   * Restrict results to specific datasource instances. Values are datasource instance identifiers returned by `GET /api/search/filters`. Requests must not specify both `datasources` and `datasource_instances`.
-   *
-   * @remarks
-   */
-  datasource_instances?: Array<string> | undefined;
-  /**
-   * Structured filters applied to search results. Equality operators OR multiple values within a filter. Multiple filters are AND'd together, including range filters on the same field. Filters are AND'd with any inline operators in `query`. Note that conflicting constraints on the same field (e.g., `type:document` in the query and `type: spreadsheet` in a filter) produce an empty result set.
+   * Structured filters applied to search results. Equality operators OR multiple values within a filter. Multiple filters are AND'd together, including range filters on the same field. Filters are AND'd with any inline operators in `query`. Note that conflicting constraints on the same field (e.g., `type:document` in the query and `type: spreadsheet` in a filter) produce an empty result set. Exact lowercase public built-ins (`type`, `owner`, `from`, `author`, `channel`, `status`, `assignee`, `reporter`, `component`, `mentions`, and `collection`) accept only `EQUALS` and `NOT_EQUALS`. Repeated same-field `EQUALS` filters are rejected because separate filters represent conjunction. Every other nonblank field name is forwarded unchanged as a possible custom field without spelling, existence, type, ambiguity, or operator-compatibility checks; resulting behavior is backend-dependent.
    *
    * @remarks
    */
@@ -62,7 +56,6 @@ export type PlatformSearchRequest$Outbound = {
   page_size: number;
   cursor?: string | null | undefined;
   datasources?: Array<string> | undefined;
-  datasource_instances?: Array<string> | undefined;
   filters?: Array<PlatformFilter$Outbound> | undefined;
   time_range?: PlatformTimeRange$Outbound | undefined;
 };
@@ -77,7 +70,6 @@ export const PlatformSearchRequest$outboundSchema: z.ZodType<
   page_size: z.number().int().default(10),
   cursor: z.nullable(z.string()).optional(),
   datasources: z.array(z.string()).optional(),
-  datasource_instances: z.array(z.string()).optional(),
   filters: z.array(PlatformFilter$outboundSchema).optional(),
   time_range: PlatformTimeRange$outboundSchema.optional(),
 });

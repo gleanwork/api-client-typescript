@@ -2078,3 +2078,16 @@ test("Search Platform Search", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Search Platform Search Filters", async () => {
+  const testHttpClient = createTestHTTPClient("platform-search-filters");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.search.listFilters();
+  expect(result).toBeDefined();
+});
