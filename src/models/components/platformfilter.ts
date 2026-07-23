@@ -10,13 +10,13 @@ import {
 } from "./platformfilteroperator.js";
 
 /**
- * A single filter criterion. For `EQUALS`, multiple values within a filter are OR'd. For `NOT_EQUALS`, multiple values exclude all listed values. Filters are AND'd with each other and with any inline query operators.
+ * A single filter criterion. For `EQUALS`, multiple values within a filter are OR'd. For `NOT_EQUALS`, multiple values exclude all listed values. Filters are AND'd with each other and with any inline query operators. Repeated same-field `EQUALS` filters are rejected because separate filters represent conjunction.
  *
  * @remarks
  */
 export type PlatformFilter = {
   /**
-   * The field to filter on. Accepts built-in filter field names such as `type`, `owner`, `from`, `author`, `channel`, `status`, `assignee`, `reporter`, `component`, `mentions`, and `collection`, plus custom datasource property names.
+   * Exact lowercase public built-in names are case-sensitive and limited to `type`, `owner`, `from`, `author`, `channel`, `status`, `assignee`, `reporter`, `component`, `mentions`, and `collection`. Any other nonblank name is forwarded as a possible custom field without spelling, existence, type, ambiguity, or operator-compatibility validation.
    *
    * @remarks
    */
@@ -26,7 +26,7 @@ export type PlatformFilter = {
    */
   values: Array<string>;
   /**
-   * Comparison operator to apply to this filter. Defaults to `EQUALS`. `GT`, `GTE`, `LT`, and `LTE` range operators require exactly one value; express bounded ranges with multiple filters on the same field.
+   * Comparison operator to apply to this filter. Defaults to `EQUALS`. Exact public built-ins support only `EQUALS` and `NOT_EQUALS`. `GT`, `GTE`, `LT`, and `LTE` range operators require exactly one value; express bounded ranges with multiple filters on the same field. For non-built-in fields, operator compatibility is backend-dependent.
    *
    * @remarks
    */
