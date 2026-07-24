@@ -4,7 +4,8 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Supported filter operator.
@@ -20,9 +21,17 @@ export const PlatformFilterOperator = {
 /**
  * Supported filter operator.
  */
-export type PlatformFilterOperator = ClosedEnum<typeof PlatformFilterOperator>;
+export type PlatformFilterOperator = OpenEnum<typeof PlatformFilterOperator>;
 
 /** @internal */
-export const PlatformFilterOperator$outboundSchema: z.ZodNativeEnum<
-  typeof PlatformFilterOperator
-> = z.nativeEnum(PlatformFilterOperator);
+export const PlatformFilterOperator$inboundSchema: z.ZodType<
+  PlatformFilterOperator,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PlatformFilterOperator);
+/** @internal */
+export const PlatformFilterOperator$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  PlatformFilterOperator
+> = openEnums.outboundSchema(PlatformFilterOperator);
