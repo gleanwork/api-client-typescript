@@ -44,6 +44,8 @@ export const DocCategory = {
   Entity: "ENTITY",
   Calendar: "CALENDAR",
   Agents: "AGENTS",
+  AiConversation: "AI_CONVERSATION",
+  AiArtifact: "AI_ARTIFACT",
 } as const;
 /**
  * The document category of this object type.

@@ -57,6 +57,7 @@ func testPlatformSearchPlatformSearch0(w http.ResponseWriter, req *http.Request)
 		HasMore:    false,
 		NextCursor: types.String("<value>"),
 		RequestID:  "<id>",
+		Warnings:   []components.PlatformWarning{},
 	}
 	respBodyBytes, err := utils.MarshalJSON(respBody, "", true)
 
