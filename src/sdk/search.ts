@@ -3,9 +3,11 @@
  * @generated-id: b88871d87236
  */
 
+import { searchListFilters } from "../funcs/searchListFilters.js";
 import { searchQuery } from "../funcs/searchQuery.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Search extends ClientSDK {
@@ -13,7 +15,8 @@ export class Search extends ClientSDK {
    * Search
    *
    * @remarks
-   * Execute a search query and retrieve ranked results. This is the data retrieval variant of the search API and returns only results and pagination state.
+   * Search your organization's connected content and return ranked document results with cursor pagination. Use `GET /api/search/filters` to discover datasource identifiers and common filter fields. Built-in filter names are validated; other field names are accepted as custom filters and behavior depends on your Glean configuration and connected sources.
+   * Errors: HTTP 422 `unprocessable_query` returns no `results` or `next_cursor`. See `warnings` on the response for non-blocking issues such as partially available results. Not every query issue produces a warning or error.
    */
   async query(
     request: components.PlatformSearchRequest,
@@ -22,6 +25,26 @@ export class Search extends ClientSDK {
     return unwrapAsync(searchQuery(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * List search filters
+   *
+   * @remarks
+   * List datasources and common built-in filter fields visible to the authenticated user. This is a best-effort catalog, not an exhaustive list of every filter search accepts.
+   * Without `query`, returns field metadata only and does not run a search. With a nonblank `query`, provide exactly one `datasources` value to request suggested filter values for that query; no documents are returned and this endpoint does not include warning objects. See `FilterFieldInfo.values` for limitations on suggested values. Rate-limited requests return HTTP 429 with `Retry-After`; temporary backend unavailability returns HTTP 503.
+   */
+  async listFilters(
+    datasources?: Array<string> | undefined,
+    query?: string | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.PlatformSearchFiltersResponse> {
+    return unwrapAsync(searchListFilters(
+      this,
+      datasources,
+      query,
       options,
     ));
   }

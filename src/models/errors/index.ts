@@ -3,6 +3,7 @@
  * @generated-id: c4e22507cb83
  */
 
+export * from "./accessrequestpermissiondeniedresponseerror.js";
 export * from "./collectionerror.js";
 export * from "./errorinforesponse.js";
 export * from "./errorresponse.js";
