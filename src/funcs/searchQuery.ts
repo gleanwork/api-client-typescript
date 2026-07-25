@@ -31,7 +31,8 @@ import { Result } from "../types/fp.js";
  * Search
  *
  * @remarks
- * Execute a search query and retrieve ranked results. This is the data retrieval variant of the search API and returns only results and pagination state.
+ * Search your organization's connected content and return ranked document results with cursor pagination. Use `GET /api/search/filters` to discover datasource identifiers and common filter fields. Built-in filter names are validated; other field names are accepted as custom filters and behavior depends on your Glean configuration and connected sources.
+ * Errors: HTTP 422 `unprocessable_query` returns no `results` or `next_cursor`. See `warnings` on the response for non-blocking issues such as partially available results. Not every query issue produces a warning or error.
  */
 export function searchQuery(
   client: GleanCore,
@@ -161,7 +162,7 @@ async function $do(
   >(
     M.json(200, components.PlatformSearchResponse$inboundSchema),
     M.jsonErr(
-      [400, 401, 403, 404, 408, 413, 429],
+      [400, 401, 403, 404, 408, 413, 422, 429],
       errors.PlatformProblemDetailError$inboundSchema,
       { ctype: "application/problem+json" },
     ),

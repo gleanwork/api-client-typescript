@@ -11,6 +11,7 @@ import { skillsRetrieve } from "../funcs/skillsRetrieve.js";
 import { skillsRetrieveContent } from "../funcs/skillsRetrieveContent.js";
 import { skillsRetrieveVersion } from "../funcs/skillsRetrieveVersion.js";
 import { skillsRetrieveVersionContent } from "../funcs/skillsRetrieveVersionContent.js";
+import { skillsUpdate } from "../funcs/skillsUpdate.js";
 import { skillsValidate } from "../funcs/skillsValidate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -67,6 +68,25 @@ export class Skills extends ClientSDK {
     return unwrapAsync(skillsValidate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Update skill
+   *
+   * @remarks
+   * Update mutable metadata for a skill. V1 supports enabling or disabling a skill without changing its content.
+   */
+  async update(
+    platformSkillUpdateRequest: components.PlatformSkillUpdateRequest,
+    skillId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillUpdateResponse> {
+    return unwrapAsync(skillsUpdate(
+      this,
+      platformSkillUpdateRequest,
+      skillId,
       options,
     ));
   }
