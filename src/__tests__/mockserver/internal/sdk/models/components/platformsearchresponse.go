@@ -4,7 +4,8 @@
 package components
 
 type PlatformSearchResponse struct {
-	// Ordered list of search results.
+	// Ordered list of ranked document results. People cards, Q&A blocks, and other UI-only result types are not included.
+	//
 	Results []PlatformResult `json:"results"`
 	// Indicates whether additional pages of results are available.
 	HasMore bool `json:"has_more"`
@@ -12,6 +13,9 @@ type PlatformSearchResponse struct {
 	NextCursor *string `json:"next_cursor"`
 	// Platform-generated request ID for support correlation.
 	RequestID string `json:"request_id"`
+	// Non-blocking warnings for this response. Required; use `[]` when there are none. Clients must tolerate unknown warning codes. `results_incomplete` means some results may be unavailable for the requested datasource scope while `results`, `has_more`, and `next_cursor` remain present. Warning messages are generic and do not include query text or internal identifiers.
+	//
+	Warnings []PlatformWarning `json:"warnings"`
 }
 
 func (o *PlatformSearchResponse) GetResults() []PlatformResult {
@@ -40,4 +44,11 @@ func (o *PlatformSearchResponse) GetRequestID() string {
 		return ""
 	}
 	return o.RequestID
+}
+
+func (o *PlatformSearchResponse) GetWarnings() []PlatformWarning {
+	if o == nil {
+		return []PlatformWarning{}
+	}
+	return o.Warnings
 }
