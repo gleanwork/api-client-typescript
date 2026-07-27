@@ -33,19 +33,13 @@ export type PlatformSearchRequest = {
    */
   cursor?: string | null | undefined;
   /**
-   * Restrict results to specific datasources. Requests must not specify both `datasources` and `datasource_instances`.
+   * Restrict results to specific datasource identifiers returned by `GET /api/search/filters`. Scopes by datasource type and may include results from multiple instances of that type.
    *
    * @remarks
    */
   datasources?: Array<string> | undefined;
   /**
-   * Restrict results to specific datasource instances. Values are datasource instance identifiers returned by `GET /api/search/filters`. Requests must not specify both `datasources` and `datasource_instances`.
-   *
-   * @remarks
-   */
-  datasource_instances?: Array<string> | undefined;
-  /**
-   * Structured filters applied to search results. Equality operators OR multiple values within a filter. Multiple filters are AND'd together, including range filters on the same field. Filters are AND'd with any inline operators in `query`. Note that conflicting constraints on the same field (e.g., `type:document` in the query and `type: spreadsheet` in a filter) produce an empty result set.
+   * Structured filters applied to search results. Multiple values within a filter with `EQUALS` are OR'd; separate filters are AND'd. Conflicting constraints on the same field (for example, `type:document` in `query` and `type:spreadsheet` in a filter) return an empty result set. See `Filter.field` for built-in field names and operators. Other nonblank field names are accepted as custom filters without validation; behavior depends on your connected sources.
    *
    * @remarks
    */
@@ -62,7 +56,6 @@ export type PlatformSearchRequest$Outbound = {
   page_size: number;
   cursor?: string | null | undefined;
   datasources?: Array<string> | undefined;
-  datasource_instances?: Array<string> | undefined;
   filters?: Array<PlatformFilter$Outbound> | undefined;
   time_range?: PlatformTimeRange$Outbound | undefined;
 };
@@ -77,7 +70,6 @@ export const PlatformSearchRequest$outboundSchema: z.ZodType<
   page_size: z.number().int().default(10),
   cursor: z.nullable(z.string()).optional(),
   datasources: z.array(z.string()).optional(),
-  datasource_instances: z.array(z.string()).optional(),
   filters: z.array(PlatformFilter$outboundSchema).optional(),
   time_range: PlatformTimeRange$outboundSchema.optional(),
 });
