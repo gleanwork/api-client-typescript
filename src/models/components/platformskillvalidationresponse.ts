@@ -16,9 +16,9 @@ import {
   PlatformSkillValidationMetadata$inboundSchema,
 } from "./platformskillvalidationmetadata.js";
 import {
-  PlatformSkillValidationWarning,
-  PlatformSkillValidationWarning$inboundSchema,
-} from "./platformskillvalidationwarning.js";
+  PlatformWarning,
+  PlatformWarning$inboundSchema,
+} from "./platformwarning.js";
 
 export type PlatformSkillValidationResponse = {
   metadata: PlatformSkillValidationMetadata;
@@ -29,7 +29,7 @@ export type PlatformSkillValidationResponse = {
   /**
    * Non-blocking validation warnings.
    */
-  warnings: Array<PlatformSkillValidationWarning>;
+  warnings: Array<PlatformWarning>;
   /**
    * Platform-generated request ID for support correlation.
    */
@@ -44,7 +44,7 @@ export const PlatformSkillValidationResponse$inboundSchema: z.ZodType<
 > = z.object({
   metadata: PlatformSkillValidationMetadata$inboundSchema,
   files: z.array(PlatformSkillValidationFile$inboundSchema),
-  warnings: z.array(PlatformSkillValidationWarning$inboundSchema),
+  warnings: z.array(PlatformWarning$inboundSchema),
   request_id: z.string(),
 });
 
