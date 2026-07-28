@@ -105359,9 +105359,10 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| errors.AccessRequestPermissionDeniedResponseError | 403                                               | application/json                                  |
+| errors.GleanError                                 | 4XX, 5XX                                          | \*/\*                                             |
 
 ## list
 

@@ -494,12 +494,14 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Search](docs/sdks/search/README.md)
 
 * [query](docs/sdks/search/README.md#query) - Search
+* [listFilters](docs/sdks/search/README.md#listfilters) - List search filters
 
 ### [Skills](docs/sdks/skills/README.md)
 
 * [create](docs/sdks/skills/README.md#create) - Create skill
 * [list](docs/sdks/skills/README.md#list) - List skills
 * [validate](docs/sdks/skills/README.md#validate) - Validate skill bundle
+* [update](docs/sdks/skills/README.md#update) - Update skill
 * [retrieve](docs/sdks/skills/README.md#retrieve) - Retrieve skill
 * [retrieveContent](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 * [createVersion](docs/sdks/skills/README.md#createversion) - Create skill version
@@ -662,6 +664,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- [`searchListFilters`](docs/sdks/search/README.md#listfilters) - List search filters
 - [`searchQuery`](docs/sdks/search/README.md#query) - Search
 - [`skillsCreate`](docs/sdks/skills/README.md#create) - Create skill
 - [`skillsCreateVersion`](docs/sdks/skills/README.md#createversion) - Create skill version
@@ -671,6 +674,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`skillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 - [`skillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
 - [`skillsRetrieveVersionContent`](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+- [`skillsUpdate`](docs/sdks/skills/README.md#update) - Update skill
 - [`skillsValidate`](docs/sdks/skills/README.md#validate) - Validate skill bundle
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
@@ -840,6 +844,7 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- [`useSearchListFilters`](docs/sdks/search/README.md#listfilters) - List search filters
 - [`useSearchQueryMutation`](docs/sdks/search/README.md#query) - Search
 - [`useSkillsCreateMutation`](docs/sdks/skills/README.md#create) - Create skill
 - [`useSkillsCreateVersionMutation`](docs/sdks/skills/README.md#createversion) - Create skill version
@@ -849,6 +854,7 @@ To learn about this feature and how to get started, check
 - [`useSkillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 - [`useSkillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
 - [`useSkillsRetrieveVersionContent`](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+- [`useSkillsUpdateMutation`](docs/sdks/skills/README.md#update) - Update skill
 - [`useSkillsValidateMutation`](docs/sdks/skills/README.md#validate) - Validate skill bundle
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
