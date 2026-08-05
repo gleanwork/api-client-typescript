@@ -7,6 +7,8 @@
 * [create](#create) - Create skill
 * [list](#list) - List skills
 * [validate](#validate) - Validate skill bundle
+* [previewSource](#previewsource) - Preview a GitHub skill source
+* [update](#update) - Update skill
 * [retrieve](#retrieve) - Retrieve skill
 * [retrieveContent](#retrievecontent) - Download skill content
 * [createVersion](#createversion) - Create skill version
@@ -304,6 +306,193 @@ import {
 | errors.PlatformProblemDetailError | 400, 401, 403, 404, 408, 413, 429 | application/problem+json          |
 | errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
 | errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+
+## previewSource
+
+Inspect a GitHub URL without persisting a source or any discovered skills. Set stream to true to receive repository scan progress as server-sent events; otherwise the response contains the completed preview.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-skills-preview-source" method="post" path="/api/skills/sources/preview" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.skills.previewSource({
+    source_url: "https://ugly-information.name/",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { skillsPreviewSource } from "@gleanwork/api-client/funcs/skillsPreviewSource.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await skillsPreviewSource(glean, {
+    source_url: "https://ugly-information.name/",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("skillsPreviewSource failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useSkillsPreviewSourceMutation
+} from "@gleanwork/api-client/react-query/skillsPreviewSource.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.PlatformSkillSourcePreviewRequest](../../models/components/platformskillsourcepreviewrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.PlatformSkillsPreviewSourceResponse](../../models/operations/platformskillspreviewsourceresponse.md)\>**
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.PlatformProblemDetailError | 400, 401, 403, 408, 413, 429      | application/problem+json          |
+| errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
+| errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+
+## update
+
+Update mutable metadata for a skill. V1 supports enabling or disabling a skill without changing its content.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-skills-update" method="patch" path="/api/skills/{skill_id}" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.skills.update({
+    status: "DISABLED",
+  }, "<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { skillsUpdate } from "@gleanwork/api-client/funcs/skillsUpdate.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await skillsUpdate(glean, {
+    status: "DISABLED",
+  }, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("skillsUpdate failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useSkillsUpdateMutation
+} from "@gleanwork/api-client/react-query/skillsUpdate.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `skillId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Glean skill ID.                                                                                                                                                                |
+| `platformSkillUpdateRequest`                                                                                                                                                   | [components.PlatformSkillUpdateRequest](../../models/components/platformskillupdaterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.PlatformSkillUpdateResponse](../../models/components/platformskillupdateresponse.md)\>**
+
+### Errors
+
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.PlatformProblemDetailError      | 400, 401, 403, 404, 408, 409, 413, 429 | application/problem+json               |
+| errors.PlatformProblemDetailError      | 500, 503                               | application/problem+json               |
+| errors.GleanError                      | 4XX, 5XX                               | \*/\*                                  |
 
 ## retrieve
 

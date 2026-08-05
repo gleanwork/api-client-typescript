@@ -3,7 +3,7 @@
  * @generated-id: 00ff50b9ba77
  */
 
-import { test } from "vitest";
+import { expect, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
@@ -19,4 +19,21 @@ test("People Post /Api/index/v1 /Processallemployeesandteams", async () => {
   });
 
   await glean.indexing.people.processAllEmployeesAndTeams();
+});
+
+test("People Post /Api/index/v1 /Debug/{datasource}/user", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "post_/api/index/v1/debug/{datasource}/user",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.indexing.people.debug({
+    email: "u1@foo.com",
+  }, "<value>");
+  expect(result).toBeDefined();
 });

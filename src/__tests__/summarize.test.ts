@@ -20,10 +20,10 @@ test("Summarize Summarize", async () => {
     documentSpecs: [
       {
         ugcType: "COLLECTIONS",
-        contentId: 252303,
+        contentId: 993975,
       },
       {
-        url: "https://shocked-casket.name/",
+        id: "<id>",
       },
     ],
   });

@@ -5,6 +5,7 @@
 
 import { expect, test } from "vitest";
 import { Glean } from "../index.js";
+import { filesToStream } from "./files.js";
 import { createTestHTTPClient } from "./testclient.js";
 
 test("Client Agents Create Agent", async () => {
@@ -17,5 +18,23 @@ test("Client Agents Create Agent", async () => {
   });
 
   const result = await glean.client.agents.create({});
+  expect(result).toBeDefined();
+});
+
+test("Client Agents Import Agent", async () => {
+  const testHttpClient = createTestHTTPClient("importAgent");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.client.agents.import({
+    bundle: {
+      fileName: "example.file",
+      content: filesToStream(".speakeasy/testfiles/example.file"),
+    },
+  }, "<id>");
   expect(result).toBeDefined();
 });

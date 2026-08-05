@@ -10,23 +10,25 @@ import {
 } from "./platformfilteroperator.js";
 
 /**
- * A single filter criterion. For `EQUALS`, multiple values within a filter are OR'd. For `NOT_EQUALS`, multiple values exclude all listed values. Filters are AND'd with each other and with any inline query operators.
+ * A single filter criterion. For `EQUALS`, multiple values within a filter are OR'd; for `NOT_EQUALS`, listed values are excluded. Separate filters are AND'd with each other and with inline operators in `query`. Repeated same-field `EQUALS` filters are rejected.
  *
  * @remarks
  */
 export type PlatformFilter = {
   /**
-   * The field to filter on. Accepts built-in filter field names such as `type`, `owner`, `from`, `author`, `channel`, `status`, `assignee`, `reporter`, `component`, `mentions`, and `collection`, plus custom datasource property names.
+   * Filter field name. Built-in names (case-sensitive, lowercase only): `type`, `owner`, `from`, `author`, `channel`, `status`, `assignee`, `reporter`, `component`, `mentions`, and `collection`. Built-ins accept only `EQUALS` and `NOT_EQUALS`. Any other nonblank name is accepted as a custom filter without spelling, existence, or type checks; behavior depends on your connected sources.
    *
    * @remarks
    */
   field: string;
   /**
-   * One or more values to match.
+   * One or more values to match. Prefer values returned by filter discovery unchanged. For people (`USER`) fields, values may be email addresses or display names.
+   *
+   * @remarks
    */
   values: Array<string>;
   /**
-   * Comparison operator to apply to this filter. Defaults to `EQUALS`. `GT`, `GTE`, `LT`, and `LTE` range operators require exactly one value; express bounded ranges with multiple filters on the same field.
+   * Comparison operator. Defaults to `EQUALS`. Built-in fields support only `EQUALS` and `NOT_EQUALS`. Range operators (`GT`, `GTE`, `LT`, `LTE`) require exactly one value; express ranges with multiple filters on the same field. Custom fields may support different operators depending on the data source.
    *
    * @remarks
    */

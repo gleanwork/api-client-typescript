@@ -5,6 +5,7 @@
 
 import { clientToolsAuthorizeActionPack } from "../funcs/clientToolsAuthorizeActionPack.js";
 import { clientToolsAuthorizeToolServer } from "../funcs/clientToolsAuthorizeToolServer.js";
+import { clientToolsGetToolServerTools } from "../funcs/clientToolsGetToolServerTools.js";
 import { clientToolsList } from "../funcs/clientToolsList.js";
 import { clientToolsRetrieveActionPackAuthStatus } from "../funcs/clientToolsRetrieveActionPackAuthStatus.js";
 import { clientToolsRetrieveToolServerAuthStatus } from "../funcs/clientToolsRetrieveToolServerAuthStatus.js";
@@ -131,6 +132,33 @@ export class Tools extends ClientSDK {
       this,
       authorizeToolServerRequest,
       serverId,
+      options,
+    ));
+  }
+
+  /**
+   * Get tool definitions from a tool server.
+   *
+   * @remarks
+   * Returns the name, description and JSON input schema for the named tools on the
+   * specified tool server. Works for both action packs and MCP servers.
+   *
+   * `toolNames` is required. Names that do not exist on the server are returned in
+   * `notFound` rather than failing the request, so a single bad name does not force
+   * callers into one-at-a-time retries. Matching is case-insensitive and treats `-`
+   * and `_` as equivalent.
+   *
+   * Native tools are not served; `serverId=native` returns 404.
+   */
+  async getToolServerTools(
+    serverId: string,
+    toolNames: Array<string>,
+    options?: RequestOptions,
+  ): Promise<components.ToolDefinitionsResponse> {
+    return unwrapAsync(clientToolsGetToolServerTools(
+      this,
+      serverId,
+      toolNames,
       options,
     ));
   }
