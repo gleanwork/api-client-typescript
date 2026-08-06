@@ -3,6 +3,7 @@
  * @generated-id: c4e22507cb83
  */
 
+export * from "./accessrequestpermissiondeniedresponseerror.js";
 export * from "./collectionerror.js";
 export * from "./errorinforesponse.js";
 export * from "./errorresponse.js";
@@ -11,5 +12,7 @@ export * from "./gleandataerror.js";
 export * from "./gleanerror.js";
 export * from "./httpclienterrors.js";
 export * from "./platformproblemdetailerror.js";
+export * from "./platformunauthorizedagenttoolsproblemerror.js";
 export * from "./responsevalidationerror.js";
 export * from "./sdkvalidationerror.js";
+export * from "./unauthorizedagenttoolserror.js";

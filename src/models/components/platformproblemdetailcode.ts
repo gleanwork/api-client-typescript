@@ -28,6 +28,7 @@ export const PlatformProblemDetailCode = {
   Conflict: "conflict",
   Gone: "gone",
   UnprocessableQuery: "unprocessable_query",
+  ToolsUnauthorized: "tools_unauthorized",
   RateLimitExceeded: "rate_limit_exceeded",
   InternalError: "internal_error",
   ServiceUnavailable: "service_unavailable",

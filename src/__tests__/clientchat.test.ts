@@ -8641,3 +8641,16 @@ test("Client Chat Chat Stream Citation Response", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Client Chat Get Chat File", async () => {
+  const testHttpClient = createTestHTTPClient("getChatFile");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.client.chat.retrieveFile("<id>");
+  expect(result).toBeDefined();
+});

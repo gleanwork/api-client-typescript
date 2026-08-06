@@ -1,4 +1,4 @@
-# ~~Role~~
+# ~~ViewerInfoRole~~
 
 DEPRECATED - use permissions instead. Viewer's role on the specific document.
 
@@ -7,9 +7,9 @@ DEPRECATED - use permissions instead. Viewer's role on the specific document.
 ## Example Usage
 
 ```typescript
-import { Role } from "@gleanwork/api-client/models/components";
+import { ViewerInfoRole } from "@gleanwork/api-client/models/components";
 
-let value: Role = "ANSWER_MODERATOR";
+let value: ViewerInfoRole = "VIEWER";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```

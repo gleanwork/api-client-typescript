@@ -7,9 +7,9 @@ import { ClientSDK } from "../lib/sdks.js";
 import { Activity } from "./activity.js";
 import { Announcements } from "./announcements.js";
 import { Answers } from "./answers.js";
-import { Chat } from "./chat.js";
 import { ClientAgents } from "./clientagents.js";
 import { ClientAuthentication } from "./clientauthentication.js";
+import { ClientChat } from "./clientchat.js";
 import { ClientDatasources } from "./clientdatasources.js";
 import { ClientDocuments } from "./clientdocuments.js";
 import { ClientSearch } from "./clientsearch.js";
@@ -44,9 +44,9 @@ export class Client extends ClientSDK {
     return (this._authentication ??= new ClientAuthentication(this._options));
   }
 
-  private _chat?: Chat;
-  get chat(): Chat {
-    return (this._chat ??= new Chat(this._options));
+  private _chat?: ClientChat;
+  get chat(): ClientChat {
+    return (this._chat ??= new ClientChat(this._options));
   }
 
   private _agents?: ClientAgents;

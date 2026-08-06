@@ -7,15 +7,22 @@ import { skillsCreate } from "../funcs/skillsCreate.js";
 import { skillsCreateVersion } from "../funcs/skillsCreateVersion.js";
 import { skillsList } from "../funcs/skillsList.js";
 import { skillsListVersions } from "../funcs/skillsListVersions.js";
+import {
+  PreviewSourceAcceptEnum,
+  skillsPreviewSource,
+} from "../funcs/skillsPreviewSource.js";
 import { skillsRetrieve } from "../funcs/skillsRetrieve.js";
 import { skillsRetrieveContent } from "../funcs/skillsRetrieveContent.js";
 import { skillsRetrieveVersion } from "../funcs/skillsRetrieveVersion.js";
 import { skillsRetrieveVersionContent } from "../funcs/skillsRetrieveVersionContent.js";
+import { skillsUpdate } from "../funcs/skillsUpdate.js";
 import { skillsValidate } from "../funcs/skillsValidate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+
+export { PreviewSourceAcceptEnum } from "../funcs/skillsPreviewSource.js";
 
 export class Skills extends ClientSDK {
   /**
@@ -67,6 +74,44 @@ export class Skills extends ClientSDK {
     return unwrapAsync(skillsValidate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Preview a GitHub skill source
+   *
+   * @remarks
+   * Inspect a GitHub URL without persisting a source or any discovered skills. Set stream to true to receive repository scan progress as server-sent events; otherwise the response contains the completed preview.
+   */
+  async previewSource(
+    request: components.PlatformSkillSourcePreviewRequest,
+    options?: RequestOptions & {
+      acceptHeaderOverride?: PreviewSourceAcceptEnum;
+    },
+  ): Promise<operations.PlatformSkillsPreviewSourceResponse> {
+    return unwrapAsync(skillsPreviewSource(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update skill
+   *
+   * @remarks
+   * Update mutable metadata for a skill. V1 supports enabling or disabling a skill without changing its content.
+   */
+  async update(
+    platformSkillUpdateRequest: components.PlatformSkillUpdateRequest,
+    skillId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillUpdateResponse> {
+    return unwrapAsync(skillsUpdate(
+      this,
+      platformSkillUpdateRequest,
+      skillId,
       options,
     ));
   }

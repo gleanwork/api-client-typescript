@@ -21,6 +21,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -37,6 +38,7 @@ export type ClientChatRetrieveMutationVariables = {
 export type ClientChatRetrieveMutationData = components.GetChatResponse;
 
 export type ClientChatRetrieveMutationError =
+  | errors.AccessRequestPermissionDeniedResponseError
   | GleanBaseError
   | ResponseValidationError
   | ConnectionError
