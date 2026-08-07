@@ -29,9 +29,11 @@ let value: VerificationMetadata = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -53,9 +55,11 @@ let value: VerificationMetadata = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -76,9 +80,11 @@ let value: VerificationMetadata = {
         "Backend",
         "Networking",
       ],
-      status: "[\"Done\"]",
+      status: "Done",
       customData: {
-        "someCustomField": {},
+        "someCustomField": {
+          stringValue: "someCustomValue",
+        },
       },
     },
   },

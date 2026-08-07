@@ -44,6 +44,7 @@ export type AgentsCreateRunMutationData =
   operations.PlatformAgentsCreateRunResponse;
 
 export type AgentsCreateRunMutationError =
+  | errors.PlatformUnauthorizedAgentToolsProblemError
   | errors.PlatformProblemDetailError
   | GleanBaseError
   | ResponseValidationError

@@ -30,9 +30,11 @@ let value: CollectionItem = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -54,9 +56,11 @@ let value: CollectionItem = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -77,9 +81,11 @@ let value: CollectionItem = {
         "Backend",
         "Networking",
       ],
-      status: "[\"Done\"]",
+      status: "Done",
       customData: {
-        "someCustomField": {},
+        "someCustomField": {
+          stringValue: "someCustomValue",
+        },
       },
     },
   },
@@ -112,9 +118,11 @@ let value: CollectionItem = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -136,9 +144,11 @@ let value: CollectionItem = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -159,9 +169,11 @@ let value: CollectionItem = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },

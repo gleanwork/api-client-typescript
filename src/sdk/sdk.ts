@@ -5,6 +5,7 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Agents } from "./agents.js";
+import { Chat } from "./chat.js";
 import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
 import { Search } from "./search.js";
@@ -14,6 +15,11 @@ export class Glean extends ClientSDK {
   private _agents?: Agents;
   get agents(): Agents {
     return (this._agents ??= new Agents(this._options));
+  }
+
+  private _chat?: Chat;
+  get chat(): Chat {
+    return (this._chat ??= new Chat(this._options));
   }
 
   private _skills?: Skills;

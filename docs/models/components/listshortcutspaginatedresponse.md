@@ -33,7 +33,9 @@ let value: ListShortcutsPaginatedResponse = {
       groupName: "Service Cloud",
     },
   ],
-  meta: {},
+  meta: {
+    cursor: "",
+  },
 };
 ```
 

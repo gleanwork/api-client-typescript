@@ -31,10 +31,12 @@ let value: PeopleResponse = {
             },
           ],
           mustIncludeSuggestions: {
-            person: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
+            suggestions: [
+              {
+                missingTerm: "container",
+                query: "container",
+              },
+            ],
           },
         },
       ],

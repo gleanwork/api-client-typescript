@@ -8,6 +8,7 @@ import { ListshortcutsRequest } from "@gleanwork/api-client/models/operations";
 let value: ListshortcutsRequest = {
   listShortcutsPaginatedRequest: {
     pageSize: 10,
+    cursor: "",
     filters: [
       {
         fieldName: "type",

@@ -32,9 +32,11 @@ let value: Share = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -56,9 +58,11 @@ let value: Share = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -79,9 +83,11 @@ let value: Share = {
         "Backend",
         "Networking",
       ],
-      status: "[\"Done\"]",
+      status: "Done",
       customData: {
-        "someCustomField": {},
+        "someCustomField": {
+          stringValue: "someCustomValue",
+        },
       },
     },
   },
