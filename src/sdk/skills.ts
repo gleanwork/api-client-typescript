@@ -5,17 +5,27 @@
 
 import { skillsCreate } from "../funcs/skillsCreate.js";
 import { skillsCreateVersion } from "../funcs/skillsCreateVersion.js";
+import { skillsDelete } from "../funcs/skillsDelete.js";
+import { skillsImport } from "../funcs/skillsImport.js";
 import { skillsList } from "../funcs/skillsList.js";
 import { skillsListVersions } from "../funcs/skillsListVersions.js";
+import {
+  PreviewSourceAcceptEnum,
+  skillsPreviewSource,
+} from "../funcs/skillsPreviewSource.js";
 import { skillsRetrieve } from "../funcs/skillsRetrieve.js";
 import { skillsRetrieveContent } from "../funcs/skillsRetrieveContent.js";
 import { skillsRetrieveVersion } from "../funcs/skillsRetrieveVersion.js";
 import { skillsRetrieveVersionContent } from "../funcs/skillsRetrieveVersionContent.js";
+import { skillsSync } from "../funcs/skillsSync.js";
+import { skillsUpdate } from "../funcs/skillsUpdate.js";
 import { skillsValidate } from "../funcs/skillsValidate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
+
+export { PreviewSourceAcceptEnum } from "../funcs/skillsPreviewSource.js";
 
 export class Skills extends ClientSDK {
   /**
@@ -72,6 +82,78 @@ export class Skills extends ClientSDK {
   }
 
   /**
+   * Import skills from GitHub
+   *
+   * @remarks
+   * Import one or more skills selected from a GitHub source preview. Each source URL is fetched and persisted as an independent skill with source provenance. This operation does not create a durable source resource. The import is atomic: if any source cannot be fetched, validated, or persisted, no skills are created.
+   */
+  async import(
+    request: components.PlatformSkillImportRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillImportResponse> {
+    return unwrapAsync(skillsImport(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Preview a GitHub skill source
+   *
+   * @remarks
+   * Inspect a GitHub URL without persisting a source or any discovered skills. Set stream to true to receive repository scan progress as server-sent events; otherwise the response contains the completed preview.
+   */
+  async previewSource(
+    request: components.PlatformSkillSourcePreviewRequest,
+    options?: RequestOptions & {
+      acceptHeaderOverride?: PreviewSourceAcceptEnum;
+    },
+  ): Promise<operations.PlatformSkillsPreviewSourceResponse> {
+    return unwrapAsync(skillsPreviewSource(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update skill
+   *
+   * @remarks
+   * Update mutable metadata for a skill. V1 supports enabling or disabling a skill without changing its content.
+   */
+  async update(
+    platformSkillUpdateRequest: components.PlatformSkillUpdateRequest,
+    skillId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillUpdateResponse> {
+    return unwrapAsync(skillsUpdate(
+      this,
+      platformSkillUpdateRequest,
+      skillId,
+      options,
+    ));
+  }
+
+  /**
+   * Delete skill
+   *
+   * @remarks
+   * Delete a skill the authenticated caller is allowed to manage. This operation permanently removes all versions of the skill.
+   */
+  async delete(
+    skillId: string,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(skillsDelete(
+      this,
+      skillId,
+      options,
+    ));
+  }
+
+  /**
    * Retrieve skill
    *
    * @remarks
@@ -99,6 +181,23 @@ export class Skills extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.PlatformSkillsGetContentResponse> {
     return unwrapAsync(skillsRetrieveContent(
+      this,
+      skillId,
+      options,
+    ));
+  }
+
+  /**
+   * Sync a GitHub-imported skill
+   *
+   * @remarks
+   * Refresh one GitHub-imported skill from its stored source URL. If the skill content has changed, this operation creates a new skill version. If the skill is no longer present upstream, the stored skill is left unchanged and must be deleted explicitly.
+   */
+  async sync(
+    skillId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillSyncResponse> {
+    return unwrapAsync(skillsSync(
       this,
       skillId,
       options,

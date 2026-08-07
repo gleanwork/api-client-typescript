@@ -47,6 +47,7 @@ export function agentsCreateRun(
 ): APIPromise<
   Result<
     operations.PlatformAgentsCreateRunResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -75,6 +76,7 @@ async function $do(
   [
     Result<
       operations.PlatformAgentsCreateRunResponse,
+      | errors.PlatformUnauthorizedAgentToolsProblemError
       | errors.PlatformProblemDetailError
       | GleanBaseError
       | ResponseValidationError
@@ -173,6 +175,7 @@ async function $do(
 
   const [result] = await M.match<
     operations.PlatformAgentsCreateRunResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -187,6 +190,11 @@ async function $do(
     M.text(200, operations.PlatformAgentsCreateRunResponse$inboundSchema, {
       ctype: "text/event-stream",
     }),
+    M.jsonErr(
+      422,
+      errors.PlatformUnauthorizedAgentToolsProblemError$inboundSchema,
+      { ctype: "application/problem+json" },
+    ),
     M.jsonErr(
       [400, 401, 403, 404, 408, 409, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,

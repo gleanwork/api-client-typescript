@@ -8,6 +8,7 @@
 * [retrieve](#retrieve) - Retrieve an agent
 * [update](#update) - Edit an agent
 * [retrieveSchemas](#retrieveschemas) - List an agent's schemas
+* [import](#import) - Import an agent
 * [list](#list) - Search agents
 * [runStream](#runstream) - Create an agent run and stream the response
 * [run](#run) - Create an agent run and wait for the response
@@ -390,6 +391,102 @@ import {
 | errors.ErrorResponse | 404, 422             | application/json     |
 | errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
+## import
+
+Imports an [agent](https://developers.glean.com/agents/agents-api) from its on-disk folder representation (spec.yaml, instructions.md, skills/, subagents/) packaged as a zip, and creates or updates the agent. Inverse of the export flow: the folder-to-schema conversion runs server-side. The bundle must contain only regular files; symlinks are resolved by the caller at packaging time.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="importAgent" method="post" path="/rest/api/v1/agents/{agent_id}/import" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+import { openAsBlob } from "node:fs";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.client.agents.import({
+    bundle: await openAsBlob("example.file"),
+  }, "<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { clientAgentsImport } from "@gleanwork/api-client/funcs/clientAgentsImport.js";
+import { openAsBlob } from "node:fs";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await clientAgentsImport(glean, {
+    bundle: await openAsBlob("example.file"),
+  }, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("clientAgentsImport failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useClientAgentsImportMutation
+} from "@gleanwork/api-client/react-query/clientAgentsImport.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                           | Type                                                                                                                                                                                                | Required                                                                                                                                                                                            | Description                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `agentId`                                                                                                                                                                                           | *string*                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                  | The ID of the agent to create or update.                                                                                                                                                            |
+| `importAgentRequest`                                                                                                                                                                                | [components.ImportAgentRequest](../../models/components/importagentrequest.md)                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                  | N/A                                                                                                                                                                                                 |
+| `locale`                                                                                                                                                                                            | *string*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The client's preferred locale in rfc5646 format (e.g. `en`, `ja`, `pt-BR`). If omitted, the `Accept-Language` will be used. If not present or not supported, defaults to the closest match or `en`. |
+| `timezoneOffset`                                                                                                                                                                                    | *number*                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                  | The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.                                                                                          |
+| `options`                                                                                                                                                                                           | RequestOptions                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                  | Used to set various options for making HTTP requests.                                                                                                                                               |
+| `options.fetchOptions`                                                                                                                                                                              | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                  | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                      |
+| `options.retries`                                                                                                                                                                                   | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                  | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                    |
+
+### Response
+
+**Promise\<[components.ImportAgentResponse](../../models/components/importagentresponse.md)\>**
+
+### Errors
+
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 404                  | application/json     |
+| errors.GleanError    | 4XX, 5XX             | \*/\*                |
+
 ## list
 
 Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
@@ -577,10 +674,11 @@ import {
 
 ### Errors
 
-| Error Type           | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| errors.ErrorResponse | 404, 409, 422        | application/json     |
-| errors.GleanError    | 4XX, 5XX             | \*/\*                |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.ErrorResponse               | 404, 409                           | application/json                   |
+| errors.UnauthorizedAgentToolsError | 422                                | application/json                   |
+| errors.GleanError                  | 4XX, 5XX                           | \*/\*                              |
 
 ## run
 
@@ -678,6 +776,7 @@ import {
 
 ### Errors
 
-| Error Type        | Status Code       | Content Type      |
-| ----------------- | ----------------- | ----------------- |
-| errors.GleanError | 4XX, 5XX          | \*/\*             |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.UnauthorizedAgentToolsError | 422                                | application/json                   |
+| errors.GleanError                  | 4XX, 5XX                           | \*/\*                              |

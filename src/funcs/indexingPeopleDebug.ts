@@ -111,7 +111,7 @@ async function $do(
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
-    Accept: "application/json; charset=UTF-8",
+    Accept: "application/json",
   }));
 
   const secConfig = await extractSecurity(client._options.apiToken);
@@ -171,9 +171,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.DebugUserResponse$inboundSchema, {
-      ctype: "application/json; charset=UTF-8",
-    }),
+    M.json(200, components.DebugUserResponse$inboundSchema),
     M.fail([400, 401, "4XX"]),
     M.fail("5XX"),
   )(response, req);

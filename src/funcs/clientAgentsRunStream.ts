@@ -42,6 +42,7 @@ export function clientAgentsRunStream(
   Result<
     string,
     | errors.ErrorResponse
+    | errors.UnauthorizedAgentToolsError
     | GleanBaseError
     | ResponseValidationError
     | ConnectionError
@@ -68,6 +69,7 @@ async function $do(
     Result<
       string,
       | errors.ErrorResponse
+      | errors.UnauthorizedAgentToolsError
       | GleanBaseError
       | ResponseValidationError
       | ConnectionError
@@ -151,6 +153,7 @@ async function $do(
   const [result] = await M.match<
     string,
     | errors.ErrorResponse
+    | errors.UnauthorizedAgentToolsError
     | GleanBaseError
     | ResponseValidationError
     | ConnectionError
@@ -161,7 +164,8 @@ async function $do(
     | SDKValidationError
   >(
     M.text(200, z.string(), { ctype: "text/event-stream" }),
-    M.jsonErr([404, 409, 422], errors.ErrorResponse$inboundSchema),
+    M.jsonErr([404, 409], errors.ErrorResponse$inboundSchema),
+    M.jsonErr(422, errors.UnauthorizedAgentToolsError$inboundSchema),
     M.fail([400, 403, "4XX"]),
     M.fail([500, "5XX"]),
   )(response, req, { extraFields: responseFields });

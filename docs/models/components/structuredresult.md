@@ -27,9 +27,11 @@ let value: StructuredResult = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -51,9 +53,11 @@ let value: StructuredResult = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -74,9 +78,11 @@ let value: StructuredResult = {
         "Backend",
         "Networking",
       ],
-      status: "[\"Done\"]",
+      status: "Done",
       customData: {
-        "someCustomField": {},
+        "someCustomField": {
+          stringValue: "someCustomValue",
+        },
       },
     },
   },
@@ -213,9 +219,11 @@ let value: StructuredResult = {
                   "Backend",
                   "Networking",
                 ],
-                status: "[\"Done\"]",
+                status: "Done",
                 customData: {
-                  "someCustomField": {},
+                  "someCustomField": {
+                    stringValue: "someCustomValue",
+                  },
                 },
               },
             },
@@ -237,9 +245,11 @@ let value: StructuredResult = {
                   "Backend",
                   "Networking",
                 ],
-                status: "[\"Done\"]",
+                status: "Done",
                 customData: {
-                  "someCustomField": {},
+                  "someCustomField": {
+                    stringValue: "someCustomValue",
+                  },
                 },
               },
             },
@@ -260,9 +270,11 @@ let value: StructuredResult = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -288,9 +300,11 @@ let value: StructuredResult = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -312,9 +326,11 @@ let value: StructuredResult = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -335,9 +351,11 @@ let value: StructuredResult = {
                   "Backend",
                   "Networking",
                 ],
-                status: "[\"Done\"]",
+                status: "Done",
                 customData: {
-                  "someCustomField": {},
+                  "someCustomField": {
+                    stringValue: "someCustomValue",
+                  },
                 },
               },
             },
@@ -474,9 +492,11 @@ let value: StructuredResult = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -498,9 +518,11 @@ let value: StructuredResult = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -521,9 +543,11 @@ let value: StructuredResult = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -614,9 +638,11 @@ let value: StructuredResult = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -638,9 +664,11 @@ let value: StructuredResult = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -661,9 +689,11 @@ let value: StructuredResult = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -696,9 +726,11 @@ let value: StructuredResult = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -720,9 +752,11 @@ let value: StructuredResult = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -743,9 +777,11 @@ let value: StructuredResult = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -834,9 +870,11 @@ let value: StructuredResult = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -858,9 +896,11 @@ let value: StructuredResult = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -881,9 +921,11 @@ let value: StructuredResult = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -911,9 +953,11 @@ let value: StructuredResult = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -935,9 +979,11 @@ let value: StructuredResult = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -958,14 +1004,17 @@ let value: StructuredResult = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
                 },
               ],
+              cursor: "",
             },
             extractedQnA: {
               questionResult: {
@@ -981,15 +1030,10 @@ let value: StructuredResult = {
                 mustIncludeSuggestions: {
                   suggestions: [
                     {
-                      query: "app:github type:pull author:mortimer",
-                      label: "Mortimer's PRs",
-                      datasource: "github",
+                      missingTerm: "container",
+                      query: "container",
                     },
                   ],
-                  person: {
-                    name: "George Clooney",
-                    obfuscatedId: "abc123",
-                  },
                 },
               },
             },
@@ -1105,9 +1149,11 @@ let value: StructuredResult = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -1129,9 +1175,11 @@ let value: StructuredResult = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -1152,9 +1200,11 @@ let value: StructuredResult = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1196,10 +1246,12 @@ let value: StructuredResult = {
                       },
                     ],
                     mustIncludeSuggestions: {
-                      person: {
-                        name: "George Clooney",
-                        obfuscatedId: "abc123",
-                      },
+                      suggestions: [
+                        {
+                          missingTerm: "container",
+                          query: "container",
+                        },
+                      ],
                     },
                   },
                 ],
@@ -1249,9 +1301,11 @@ let value: StructuredResult = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1273,9 +1327,11 @@ let value: StructuredResult = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1296,9 +1352,11 @@ let value: StructuredResult = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -1353,9 +1411,11 @@ let value: StructuredResult = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -1377,9 +1437,11 @@ let value: StructuredResult = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -1400,9 +1462,11 @@ let value: StructuredResult = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -1430,9 +1494,11 @@ let value: StructuredResult = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1454,9 +1520,11 @@ let value: StructuredResult = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1477,14 +1545,17 @@ let value: StructuredResult = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
       },
     ],
+    cursor: "",
   },
   extractedQnA: {
     questionResult: {
@@ -1500,15 +1571,10 @@ let value: StructuredResult = {
       mustIncludeSuggestions: {
         suggestions: [
           {
-            query: "app:github type:pull author:mortimer",
-            label: "Mortimer's PRs",
-            datasource: "github",
+            missingTerm: "container",
+            query: "container",
           },
         ],
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
       },
     },
   },
@@ -1624,9 +1690,11 @@ let value: StructuredResult = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -1648,9 +1716,11 @@ let value: StructuredResult = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -1671,9 +1741,11 @@ let value: StructuredResult = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
