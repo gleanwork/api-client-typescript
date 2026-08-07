@@ -29,6 +29,7 @@ const (
 	PlatformProblemDetailCodeConflict                PlatformProblemDetailCode = "conflict"
 	PlatformProblemDetailCodeGone                    PlatformProblemDetailCode = "gone"
 	PlatformProblemDetailCodeUnprocessableQuery      PlatformProblemDetailCode = "unprocessable_query"
+	PlatformProblemDetailCodeToolsUnauthorized       PlatformProblemDetailCode = "tools_unauthorized"
 	PlatformProblemDetailCodeRateLimitExceeded       PlatformProblemDetailCode = "rate_limit_exceeded"
 	PlatformProblemDetailCodeInternalError           PlatformProblemDetailCode = "internal_error"
 	PlatformProblemDetailCodeServiceUnavailable      PlatformProblemDetailCode = "service_unavailable"
@@ -76,6 +77,8 @@ func (e *PlatformProblemDetailCode) UnmarshalJSON(data []byte) error {
 	case "gone":
 		fallthrough
 	case "unprocessable_query":
+		fallthrough
+	case "tools_unauthorized":
 		fallthrough
 	case "rate_limit_exceeded":
 		fallthrough

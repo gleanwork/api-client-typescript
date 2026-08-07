@@ -11,7 +11,7 @@ let value: ToolInfo = {
     name: "<value>",
     displayName: "Wava17",
     displayDescription: "<value>",
-    objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
+    objectName: "HR ticket",
   },
 };
 ```

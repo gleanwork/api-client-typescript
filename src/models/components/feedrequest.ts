@@ -47,6 +47,7 @@ export const FeedRequestCategory = {
   PlanMyDay: "PLAN_MY_DAY",
   EndMyDay: "END_MY_DAY",
   StarterKit: "STARTER_KIT",
+  MeetingPrepAutomation: "MEETING_PREP_AUTOMATION",
   MidDayCatchUp: "MID_DAY_CATCH_UP",
   QuerySuggestion: "QUERY_SUGGESTION",
   CoworkCujPromo: "COWORK_CUJ_PROMO",

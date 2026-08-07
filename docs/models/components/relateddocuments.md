@@ -25,15 +25,10 @@ let value: RelatedDocuments = {
       mustIncludeSuggestions: {
         suggestions: [
           {
-            query: "app:github type:pull author:mortimer",
-            label: "Mortimer's PRs",
-            datasource: "github",
+            missingTerm: "container",
+            query: "container",
           },
         ],
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
       },
     },
   ],

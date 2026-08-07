@@ -33,9 +33,11 @@ let value: ChatResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -57,9 +59,11 @@ let value: ChatResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -80,9 +84,11 @@ let value: ChatResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -220,9 +226,11 @@ let value: ChatResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -244,9 +252,11 @@ let value: ChatResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -267,9 +277,11 @@ let value: ChatResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -295,9 +307,11 @@ let value: ChatResponse = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -319,9 +333,11 @@ let value: ChatResponse = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -342,9 +358,11 @@ let value: ChatResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -486,9 +504,11 @@ let value: ChatResponse = {
                                       "Backend",
                                       "Networking",
                                     ],
-                                    status: "[\"Done\"]",
+                                    status: "Done",
                                     customData: {
-                                      "someCustomField": {},
+                                      "someCustomField": {
+                                        stringValue: "someCustomValue",
+                                      },
                                     },
                                   },
                                 },
@@ -514,9 +534,11 @@ let value: ChatResponse = {
                                       "Backend",
                                       "Networking",
                                     ],
-                                    status: "[\"Done\"]",
+                                    status: "Done",
                                     customData: {
-                                      "someCustomField": {},
+                                      "someCustomField": {
+                                        stringValue: "someCustomValue",
+                                      },
                                     },
                                   },
                                 },
@@ -541,9 +563,11 @@ let value: ChatResponse = {
                                     "Backend",
                                     "Networking",
                                   ],
-                                  status: "[\"Done\"]",
+                                  status: "Done",
                                   customData: {
-                                    "someCustomField": {},
+                                    "someCustomField": {
+                                      stringValue: "someCustomValue",
+                                    },
                                   },
                                 },
                               },
@@ -638,9 +662,11 @@ let value: ChatResponse = {
                                           "Backend",
                                           "Networking",
                                         ],
-                                        status: "[\"Done\"]",
+                                        status: "Done",
                                         customData: {
-                                          "someCustomField": {},
+                                          "someCustomField": {
+                                            stringValue: "someCustomValue",
+                                          },
                                         },
                                       },
                                     },
@@ -666,9 +692,11 @@ let value: ChatResponse = {
                                           "Backend",
                                           "Networking",
                                         ],
-                                        status: "[\"Done\"]",
+                                        status: "Done",
                                         customData: {
-                                          "someCustomField": {},
+                                          "someCustomField": {
+                                            stringValue: "someCustomValue",
+                                          },
                                         },
                                       },
                                     },
@@ -693,9 +721,11 @@ let value: ChatResponse = {
                                         "Backend",
                                         "Networking",
                                       ],
-                                      status: "[\"Done\"]",
+                                      status: "Done",
                                       customData: {
-                                        "someCustomField": {},
+                                        "someCustomField": {
+                                          stringValue: "someCustomValue",
+                                        },
                                       },
                                     },
                                   },
@@ -732,9 +762,11 @@ let value: ChatResponse = {
                                             "Backend",
                                             "Networking",
                                           ],
-                                          status: "[\"Done\"]",
+                                          status: "Done",
                                           customData: {
-                                            "someCustomField": {},
+                                            "someCustomField": {
+                                              stringValue: "someCustomValue",
+                                            },
                                           },
                                         },
                                       },
@@ -760,9 +792,11 @@ let value: ChatResponse = {
                                             "Backend",
                                             "Networking",
                                           ],
-                                          status: "[\"Done\"]",
+                                          status: "Done",
                                           customData: {
-                                            "someCustomField": {},
+                                            "someCustomField": {
+                                              stringValue: "someCustomValue",
+                                            },
                                           },
                                         },
                                       },
@@ -787,9 +821,11 @@ let value: ChatResponse = {
                                           "Backend",
                                           "Networking",
                                         ],
-                                        status: "[\"Done\"]",
+                                        status: "Done",
                                         customData: {
-                                          "someCustomField": {},
+                                          "someCustomField": {
+                                            stringValue: "someCustomValue",
+                                          },
                                         },
                                       },
                                     },
@@ -882,9 +918,11 @@ let value: ChatResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -910,9 +948,11 @@ let value: ChatResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -933,9 +973,11 @@ let value: ChatResponse = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -967,9 +1009,11 @@ let value: ChatResponse = {
                                       "Backend",
                                       "Networking",
                                     ],
-                                    status: "[\"Done\"]",
+                                    status: "Done",
                                     customData: {
-                                      "someCustomField": {},
+                                      "someCustomField": {
+                                        stringValue: "someCustomValue",
+                                      },
                                     },
                                   },
                                 },
@@ -995,9 +1039,11 @@ let value: ChatResponse = {
                                       "Backend",
                                       "Networking",
                                     ],
-                                    status: "[\"Done\"]",
+                                    status: "Done",
                                     customData: {
-                                      "someCustomField": {},
+                                      "someCustomField": {
+                                        stringValue: "someCustomValue",
+                                      },
                                     },
                                   },
                                 },
@@ -1022,14 +1068,17 @@ let value: ChatResponse = {
                                     "Backend",
                                     "Networking",
                                   ],
-                                  status: "[\"Done\"]",
+                                  status: "Done",
                                   customData: {
-                                    "someCustomField": {},
+                                    "someCustomField": {
+                                      stringValue: "someCustomValue",
+                                    },
                                   },
                                 },
                               },
                             },
                           ],
+                          cursor: "",
                         },
                         extractedQnA: {
                           questionResult: {
@@ -1045,15 +1094,10 @@ let value: ChatResponse = {
                             mustIncludeSuggestions: {
                               suggestions: [
                                 {
-                                  query: "app:github type:pull author:mortimer",
-                                  label: "Mortimer's PRs",
-                                  datasource: "github",
+                                  missingTerm: "container",
+                                  query: "container",
                                 },
                               ],
-                              person: {
-                                name: "George Clooney",
-                                obfuscatedId: "abc123",
-                              },
                             },
                           },
                         },
@@ -1174,9 +1218,11 @@ let value: ChatResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -1202,9 +1248,11 @@ let value: ChatResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -1225,9 +1273,11 @@ let value: ChatResponse = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -1269,10 +1319,12 @@ let value: ChatResponse = {
                                   },
                                 ],
                                 mustIncludeSuggestions: {
-                                  person: {
-                                    name: "George Clooney",
-                                    obfuscatedId: "abc123",
-                                  },
+                                  suggestions: [
+                                    {
+                                      missingTerm: "container",
+                                      query: "container",
+                                    },
+                                  ],
                                 },
                               },
                             ],
@@ -1322,9 +1374,11 @@ let value: ChatResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -1346,9 +1400,11 @@ let value: ChatResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -1369,9 +1425,11 @@ let value: ChatResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -1426,9 +1484,11 @@ let value: ChatResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -1450,9 +1510,11 @@ let value: ChatResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -1473,9 +1535,11 @@ let value: ChatResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -1503,9 +1567,11 @@ let value: ChatResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -1527,9 +1593,11 @@ let value: ChatResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -1550,14 +1618,17 @@ let value: ChatResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
                   },
                 ],
+                cursor: "",
               },
               extractedQnA: {
                 questionResult: {
@@ -1573,15 +1644,10 @@ let value: ChatResponse = {
                   mustIncludeSuggestions: {
                     suggestions: [
                       {
-                        query: "app:github type:pull author:mortimer",
-                        label: "Mortimer's PRs",
-                        datasource: "github",
+                        missingTerm: "container",
+                        query: "container",
                       },
                     ],
-                    person: {
-                      name: "George Clooney",
-                      obfuscatedId: "abc123",
-                    },
                   },
                 },
               },
@@ -1697,9 +1763,11 @@ let value: ChatResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -1721,9 +1789,11 @@ let value: ChatResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -1744,9 +1814,11 @@ let value: ChatResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -1788,10 +1860,12 @@ let value: ChatResponse = {
                         },
                       ],
                       mustIncludeSuggestions: {
-                        person: {
-                          name: "George Clooney",
-                          obfuscatedId: "abc123",
-                        },
+                        suggestions: [
+                          {
+                            missingTerm: "container",
+                            query: "container",
+                          },
+                        ],
                       },
                     },
                   ],
@@ -1822,7 +1896,7 @@ let value: ChatResponse = {
               name: "<value>",
               displayName: "Wava17",
               displayDescription: "<value>",
-              objectName: "[\"HR ticket\",\"Email\",\"Chat message\"]",
+              objectName: "HR ticket",
             },
           },
           citation: {
@@ -1845,9 +1919,11 @@ let value: ChatResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1869,9 +1945,11 @@ let value: ChatResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1892,9 +1970,11 @@ let value: ChatResponse = {
                   "Backend",
                   "Networking",
                 ],
-                status: "[\"Done\"]",
+                status: "Done",
                 customData: {
-                  "someCustomField": {},
+                  "someCustomField": {
+                    stringValue: "someCustomValue",
+                  },
                 },
               },
             },
@@ -1941,9 +2021,11 @@ let value: ChatResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -1965,9 +2047,11 @@ let value: ChatResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -1988,9 +2072,11 @@ let value: ChatResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
