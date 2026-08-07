@@ -22,12 +22,13 @@ let value: ListChatsResponse = {
       },
     },
   ],
+  cursor: "",
 };
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `chatResults`                                                                                | [components.ChatMetadataResult](../../models/components/chatmetadataresult.md)[]             | :heavy_minus_sign:                                                                           | N/A                                                                                          |
-| `cursor`                                                                                     | *string*                                                                                     | :heavy_minus_sign:                                                                           | An opaque cursor for fetching the next page of results. If empty, there are no more results. |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `chatResults`                                                                                | [components.ChatMetadataResult](../../models/components/chatmetadataresult.md)[]             | :heavy_minus_sign:                                                                           | N/A                                                                                          |                                                                                              |
+| `cursor`                                                                                     | *string*                                                                                     | :heavy_minus_sign:                                                                           | An opaque cursor for fetching the next page of results. If empty, there are no more results. |                                                                                              |

@@ -3468,6 +3468,7 @@ const glean = new Glean({
 async function run() {
   const result = await glean.client.shortcuts.list({
     pageSize: 10,
+    cursor: "",
     filters: [
       {
         fieldName: "type",
@@ -3508,6 +3509,7 @@ const glean = new GleanCore({
 async function run() {
   const res = await clientShortcutsList(glean, {
     pageSize: 10,
+    cursor: "",
     filters: [
       {
         fieldName: "type",

@@ -23,6 +23,7 @@ let value: ListentitiesRequest = {
       },
     ],
     pageSize: 100,
+    cursor: "",
   },
 };
 ```

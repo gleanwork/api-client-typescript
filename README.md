@@ -266,6 +266,10 @@ For more information on obtaining the appropriate token type, please contact you
 * [getSchemas](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 * [createRun](docs/sdks/agents/README.md#createrun) - Create agent run
 
+### [Chat](docs/sdks/chat/README.md)
+
+* [create](docs/sdks/chat/README.md#create) - Create a chat response
+
 ### [Client.Activity](docs/sdks/activity/README.md)
 
 * [report](docs/sdks/activity/README.md#report) - Report document activity
@@ -277,6 +281,7 @@ For more information on obtaining the appropriate token type, please contact you
 * [retrieve](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
 * [update](docs/sdks/clientagents/README.md#update) - Edit an agent
 * [retrieveSchemas](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
+* [import](docs/sdks/clientagents/README.md#import) - Import an agent
 * [list](docs/sdks/clientagents/README.md#list) - Search agents
 * [runStream](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
 * [run](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
@@ -300,19 +305,19 @@ For more information on obtaining the appropriate token type, please contact you
 * [checkDatasourceAuth](docs/sdks/clientauthentication/README.md#checkdatasourceauth) - Check datasource authorization
 * [createToken](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
 
-### [Client.Chat](docs/sdks/chat/README.md)
+### [Client.Chat](docs/sdks/clientchat/README.md)
 
-* [create](docs/sdks/chat/README.md#create) - Chat
-* [deleteAll](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-* [delete](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-* [retrieve](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-* [list](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-* [retrieveApplication](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-* [uploadFiles](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
-* [retrieveFiles](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
-* [deleteFiles](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
-* [retrieveFile](docs/sdks/chat/README.md#retrievefile) - Download a chat file
-* [createStream](docs/sdks/chat/README.md#createstream) - Chat
+* [create](docs/sdks/clientchat/README.md#create) - Chat
+* [deleteAll](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
+* [delete](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
+* [retrieve](docs/sdks/clientchat/README.md#retrieve) - Retrieves a Chat
+* [list](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
+* [retrieveApplication](docs/sdks/clientchat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
+* [uploadFiles](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat
+* [retrieveFiles](docs/sdks/clientchat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+* [deleteFiles](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat
+* [retrieveFile](docs/sdks/clientchat/README.md#retrievefile) - Download a chat file
+* [createStream](docs/sdks/clientchat/README.md#createstream) - Chat
 
 ### [Client.Collections](docs/sdks/collections/README.md)
 
@@ -411,6 +416,7 @@ For more information on obtaining the appropriate token type, please contact you
 * [authorizeActionPack](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
 * [retrieveToolServerAuthStatus](docs/sdks/tools/README.md#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
 * [authorizeToolServer](docs/sdks/tools/README.md#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
+* [getToolServerTools](docs/sdks/tools/README.md#gettoolservertools) - Get tool definitions from a tool server.
 
 ### [Client.Verification](docs/sdks/verification/README.md)
 
@@ -494,14 +500,20 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Search](docs/sdks/search/README.md)
 
 * [query](docs/sdks/search/README.md#query) - Search
+* [listFilters](docs/sdks/search/README.md#listfilters) - List search filters
 
 ### [Skills](docs/sdks/skills/README.md)
 
 * [create](docs/sdks/skills/README.md#create) - Create skill
 * [list](docs/sdks/skills/README.md#list) - List skills
 * [validate](docs/sdks/skills/README.md#validate) - Validate skill bundle
+* [import](docs/sdks/skills/README.md#import) - Import skills from GitHub
+* [previewSource](docs/sdks/skills/README.md#previewsource) - Preview a GitHub skill source
+* [update](docs/sdks/skills/README.md#update) - Update skill
+* [delete](docs/sdks/skills/README.md#delete) - Delete skill
 * [retrieve](docs/sdks/skills/README.md#retrieve) - Retrieve skill
 * [retrieveContent](docs/sdks/skills/README.md#retrievecontent) - Download skill content
+* [sync](docs/sdks/skills/README.md#sync) - Sync a GitHub-imported skill
 * [createVersion](docs/sdks/skills/README.md#createversion) - Create skill version
 * [listVersions](docs/sdks/skills/README.md#listversions) - List skill versions
 * [retrieveVersion](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
@@ -529,9 +541,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsGet`](docs/sdks/agents/README.md#get) - Get agent
 - [`agentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`agentsSearch`](docs/sdks/agents/README.md#search) - Search agents
+- [`chatCreate`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAgentsCreate`](docs/sdks/clientagents/README.md#create) - Create an agent
+- [`clientAgentsImport`](docs/sdks/clientagents/README.md#import) - Import an agent
 - [`clientAgentsList`](docs/sdks/clientagents/README.md#list) - Search agents
 - [`clientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
 - [`clientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
@@ -547,17 +561,17 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientAnswersUpdate`](docs/sdks/answers/README.md#update) - Update Answer
 - [`clientAuthenticationCheckDatasourceAuth`](docs/sdks/clientauthentication/README.md#checkdatasourceauth) - Check datasource authorization
 - [`clientAuthenticationCreateToken`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`clientChatCreate`](docs/sdks/chat/README.md#create) - Chat
-- [`clientChatCreateStream`](docs/sdks/chat/README.md#createstream) - Chat
-- [`clientChatDelete`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-- [`clientChatDeleteAll`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`clientChatDeleteFiles`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
-- [`clientChatList`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-- [`clientChatRetrieve`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-- [`clientChatRetrieveApplication`](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-- [`clientChatRetrieveFile`](docs/sdks/chat/README.md#retrievefile) - Download a chat file
-- [`clientChatRetrieveFiles`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
-- [`clientChatUploadFiles`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
+- [`clientChatCreate`](docs/sdks/clientchat/README.md#create) - Chat
+- [`clientChatCreateStream`](docs/sdks/clientchat/README.md#createstream) - Chat
+- [`clientChatDelete`](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
+- [`clientChatDeleteAll`](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
+- [`clientChatDeleteFiles`](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat
+- [`clientChatList`](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
+- [`clientChatRetrieve`](docs/sdks/clientchat/README.md#retrieve) - Retrieves a Chat
+- [`clientChatRetrieveApplication`](docs/sdks/clientchat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
+- [`clientChatRetrieveFile`](docs/sdks/clientchat/README.md#retrievefile) - Download a chat file
+- [`clientChatRetrieveFiles`](docs/sdks/clientchat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+- [`clientChatUploadFiles`](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat
 - [`clientCollectionsAddItems`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`clientCollectionsCreate`](docs/sdks/collections/README.md#create) - Create Collection
 - [`clientCollectionsDelete`](docs/sdks/collections/README.md#delete) - Delete Collection
@@ -610,6 +624,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientShortcutsUpdate`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`clientToolsAuthorizeActionPack`](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
 - [`clientToolsAuthorizeToolServer`](docs/sdks/tools/README.md#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
+- [`clientToolsGetToolServerTools`](docs/sdks/tools/README.md#gettoolservertools) - Get tool definitions from a tool server.
 - [`clientToolsList`](docs/sdks/tools/README.md#list) - List available tools
 - [`clientToolsRetrieveActionPackAuthStatus`](docs/sdks/tools/README.md#retrieveactionpackauthstatus) - Get end-user authentication status for an action pack.
 - [`clientToolsRetrieveToolServerAuthStatus`](docs/sdks/tools/README.md#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
@@ -662,15 +677,21 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- [`searchListFilters`](docs/sdks/search/README.md#listfilters) - List search filters
 - [`searchQuery`](docs/sdks/search/README.md#query) - Search
 - [`skillsCreate`](docs/sdks/skills/README.md#create) - Create skill
 - [`skillsCreateVersion`](docs/sdks/skills/README.md#createversion) - Create skill version
+- [`skillsDelete`](docs/sdks/skills/README.md#delete) - Delete skill
+- [`skillsImport`](docs/sdks/skills/README.md#import) - Import skills from GitHub
 - [`skillsList`](docs/sdks/skills/README.md#list) - List skills
 - [`skillsListVersions`](docs/sdks/skills/README.md#listversions) - List skill versions
+- [`skillsPreviewSource`](docs/sdks/skills/README.md#previewsource) - Preview a GitHub skill source
 - [`skillsRetrieve`](docs/sdks/skills/README.md#retrieve) - Retrieve skill
 - [`skillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 - [`skillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
 - [`skillsRetrieveVersionContent`](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+- [`skillsSync`](docs/sdks/skills/README.md#sync) - Sync a GitHub-imported skill
+- [`skillsUpdate`](docs/sdks/skills/README.md#update) - Update skill
 - [`skillsValidate`](docs/sdks/skills/README.md#validate) - Validate skill bundle
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
@@ -707,9 +728,11 @@ To learn about this feature and how to get started, check
 - [`useAgentsGet`](docs/sdks/agents/README.md#get) - Get agent
 - [`useAgentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`useAgentsSearchMutation`](docs/sdks/agents/README.md#search) - Search agents
+- [`useChatCreateMutation`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAgentsCreateMutation`](docs/sdks/clientagents/README.md#create) - Create an agent
+- [`useClientAgentsImportMutation`](docs/sdks/clientagents/README.md#import) - Import an agent
 - [`useClientAgentsListMutation`](docs/sdks/clientagents/README.md#list) - Search agents
 - [`useClientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
 - [`useClientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
@@ -725,17 +748,17 @@ To learn about this feature and how to get started, check
 - [`useClientAnswersUpdateMutation`](docs/sdks/answers/README.md#update) - Update Answer
 - [`useClientAuthenticationCheckDatasourceAuthMutation`](docs/sdks/clientauthentication/README.md#checkdatasourceauth) - Check datasource authorization
 - [`useClientAuthenticationCreateTokenMutation`](docs/sdks/clientauthentication/README.md#createtoken) - Create authentication token
-- [`useClientChatCreateMutation`](docs/sdks/chat/README.md#create) - Chat
-- [`useClientChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Chat
-- [`useClientChatDeleteAllMutation`](docs/sdks/chat/README.md#deleteall) - Deletes all saved Chats owned by a user
-- [`useClientChatDeleteFilesMutation`](docs/sdks/chat/README.md#deletefiles) - Delete files uploaded by a user for chat
-- [`useClientChatDeleteMutation`](docs/sdks/chat/README.md#delete) - Deletes saved Chats
-- [`useClientChatListMutation`](docs/sdks/chat/README.md#list) - Retrieves all saved Chats
-- [`useClientChatRetrieveApplicationMutation`](docs/sdks/chat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
-- [`useClientChatRetrieveFile`](docs/sdks/chat/README.md#retrievefile) - Download a chat file
-- [`useClientChatRetrieveFilesMutation`](docs/sdks/chat/README.md#retrievefiles) - Get files uploaded by a user for Chat
-- [`useClientChatRetrieveMutation`](docs/sdks/chat/README.md#retrieve) - Retrieves a Chat
-- [`useClientChatUploadFilesMutation`](docs/sdks/chat/README.md#uploadfiles) - Upload files for Chat
+- [`useClientChatCreateMutation`](docs/sdks/clientchat/README.md#create) - Chat
+- [`useClientChatCreateStreamMutation`](docs/sdks/clientchat/README.md#createstream) - Chat
+- [`useClientChatDeleteAllMutation`](docs/sdks/clientchat/README.md#deleteall) - Deletes all saved Chats owned by a user
+- [`useClientChatDeleteFilesMutation`](docs/sdks/clientchat/README.md#deletefiles) - Delete files uploaded by a user for chat
+- [`useClientChatDeleteMutation`](docs/sdks/clientchat/README.md#delete) - Deletes saved Chats
+- [`useClientChatListMutation`](docs/sdks/clientchat/README.md#list) - Retrieves all saved Chats
+- [`useClientChatRetrieveApplicationMutation`](docs/sdks/clientchat/README.md#retrieveapplication) - Gets the metadata for a custom Chat application
+- [`useClientChatRetrieveFile`](docs/sdks/clientchat/README.md#retrievefile) - Download a chat file
+- [`useClientChatRetrieveFilesMutation`](docs/sdks/clientchat/README.md#retrievefiles) - Get files uploaded by a user for Chat
+- [`useClientChatRetrieveMutation`](docs/sdks/clientchat/README.md#retrieve) - Retrieves a Chat
+- [`useClientChatUploadFilesMutation`](docs/sdks/clientchat/README.md#uploadfiles) - Upload files for Chat
 - [`useClientCollectionsAddItemsMutation`](docs/sdks/collections/README.md#additems) - Add Collection item
 - [`useClientCollectionsCreateMutation`](docs/sdks/collections/README.md#create) - Create Collection
 - [`useClientCollectionsDeleteItemMutation`](docs/sdks/collections/README.md#deleteitem) - Delete Collection item
@@ -788,6 +811,7 @@ To learn about this feature and how to get started, check
 - [`useClientShortcutsUpdateMutation`](docs/sdks/clientshortcuts/README.md#update) - Update shortcut
 - [`useClientToolsAuthorizeActionPackMutation`](docs/sdks/tools/README.md#authorizeactionpack) - Start the OAuth authorization flow for an action pack.
 - [`useClientToolsAuthorizeToolServerMutation`](docs/sdks/tools/README.md#authorizetoolserver) - Start the OAuth authorization flow for a tool server.
+- [`useClientToolsGetToolServerTools`](docs/sdks/tools/README.md#gettoolservertools) - Get tool definitions from a tool server.
 - [`useClientToolsList`](docs/sdks/tools/README.md#list) - List available tools
 - [`useClientToolsRetrieveActionPackAuthStatus`](docs/sdks/tools/README.md#retrieveactionpackauthstatus) - Get end-user authentication status for an action pack.
 - [`useClientToolsRetrieveToolServerAuthStatus`](docs/sdks/tools/README.md#retrievetoolserverauthstatus) - Get end-user authentication status for a tool server.
@@ -840,15 +864,21 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
+- [`useSearchListFilters`](docs/sdks/search/README.md#listfilters) - List search filters
 - [`useSearchQueryMutation`](docs/sdks/search/README.md#query) - Search
 - [`useSkillsCreateMutation`](docs/sdks/skills/README.md#create) - Create skill
 - [`useSkillsCreateVersionMutation`](docs/sdks/skills/README.md#createversion) - Create skill version
+- [`useSkillsDeleteMutation`](docs/sdks/skills/README.md#delete) - Delete skill
+- [`useSkillsImportMutation`](docs/sdks/skills/README.md#import) - Import skills from GitHub
 - [`useSkillsList`](docs/sdks/skills/README.md#list) - List skills
 - [`useSkillsListVersions`](docs/sdks/skills/README.md#listversions) - List skill versions
+- [`useSkillsPreviewSourceMutation`](docs/sdks/skills/README.md#previewsource) - Preview a GitHub skill source
 - [`useSkillsRetrieve`](docs/sdks/skills/README.md#retrieve) - Retrieve skill
 - [`useSkillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 - [`useSkillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
 - [`useSkillsRetrieveVersionContent`](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+- [`useSkillsSyncMutation`](docs/sdks/skills/README.md#sync) - Sync a GitHub-imported skill
+- [`useSkillsUpdateMutation`](docs/sdks/skills/README.md#update) - Update skill
 - [`useSkillsValidateMutation`](docs/sdks/skills/README.md#validate) - Validate skill bundle
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**

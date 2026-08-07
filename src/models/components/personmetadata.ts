@@ -126,6 +126,10 @@ export type PersonMetadata = {
    */
   department?: string | undefined;
   /**
+   * Normalized job-function category assigned by Entity Builder from the source department and, when available, job title. Unlike `department`, which preserves the company-specific organizational unit, this field groups departments into configured categories such as `Engineering`, `Sales`, or `IT`; it may be `Unknown` when the mapping is inconclusive.
+   */
+  jobFunction?: string | undefined;
+  /**
    * Info about the employee's team(s).
    */
   teams?: Array<PersonTeam> | undefined;
@@ -302,6 +306,7 @@ export const PersonMetadata$inboundSchema: z.ZodType<
   title: z.string().optional(),
   businessUnit: z.string().optional(),
   department: z.string().optional(),
+  jobFunction: z.string().optional(),
   teams: z.array(PersonTeam$inboundSchema).optional(),
   departmentCount: z.number().int().optional(),
   email: z.string().optional(),
@@ -352,6 +357,7 @@ export type PersonMetadata$Outbound = {
   title?: string | undefined;
   businessUnit?: string | undefined;
   department?: string | undefined;
+  jobFunction?: string | undefined;
   teams?: Array<PersonTeam$Outbound> | undefined;
   departmentCount?: number | undefined;
   email?: string | undefined;
@@ -405,6 +411,7 @@ export const PersonMetadata$outboundSchema: z.ZodType<
   title: z.string().optional(),
   businessUnit: z.string().optional(),
   department: z.string().optional(),
+  jobFunction: z.string().optional(),
   teams: z.array(PersonTeam$outboundSchema).optional(),
   departmentCount: z.number().int().optional(),
   email: z.string().optional(),

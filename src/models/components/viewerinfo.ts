@@ -15,7 +15,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  *
  * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
  */
-export const Role = {
+export const ViewerInfoRole = {
   AnswerModerator: "ANSWER_MODERATOR",
   Owner: "OWNER",
   Viewer: "VIEWER",
@@ -25,7 +25,7 @@ export const Role = {
  *
  * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
  */
-export type Role = OpenEnum<typeof Role>;
+export type ViewerInfoRole = OpenEnum<typeof ViewerInfoRole>;
 
 export type ViewerInfo = {
   /**
@@ -33,16 +33,22 @@ export type ViewerInfo = {
    *
    * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use permissions instead.
    */
-  role?: Role | undefined;
+  role?: ViewerInfoRole | undefined;
   lastViewedTime?: Date | undefined;
 };
 
 /** @internal */
-export const Role$inboundSchema: z.ZodType<Role, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(Role);
+export const ViewerInfoRole$inboundSchema: z.ZodType<
+  ViewerInfoRole,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(ViewerInfoRole);
 /** @internal */
-export const Role$outboundSchema: z.ZodType<string, z.ZodTypeDef, Role> =
-  openEnums.outboundSchema(Role);
+export const ViewerInfoRole$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  ViewerInfoRole
+> = openEnums.outboundSchema(ViewerInfoRole);
 
 /** @internal */
 export const ViewerInfo$inboundSchema: z.ZodType<
@@ -50,7 +56,7 @@ export const ViewerInfo$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  role: Role$inboundSchema.optional(),
+  role: ViewerInfoRole$inboundSchema.optional(),
   lastViewedTime: z.string().datetime({ offset: true }).transform(v =>
     new Date(v)
   ).optional(),
@@ -67,7 +73,7 @@ export const ViewerInfo$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ViewerInfo
 > = z.object({
-  role: Role$outboundSchema.optional(),
+  role: ViewerInfoRole$outboundSchema.optional(),
   lastViewedTime: z.date().transform(v => v.toISOString()).optional(),
 });
 

@@ -4,6 +4,7 @@
  */
 
 import { clientAgentsCreate } from "../funcs/clientAgentsCreate.js";
+import { clientAgentsImport } from "../funcs/clientAgentsImport.js";
 import { clientAgentsList } from "../funcs/clientAgentsList.js";
 import { clientAgentsRetrieve } from "../funcs/clientAgentsRetrieve.js";
 import { clientAgentsRetrieveSchemas } from "../funcs/clientAgentsRetrieveSchemas.js";
@@ -94,6 +95,29 @@ export class ClientAgents extends ClientSDK {
   ): Promise<components.AgentSchemas> {
     return unwrapAsync(clientAgentsRetrieveSchemas(
       this,
+      agentId,
+      locale,
+      timezoneOffset,
+      options,
+    ));
+  }
+
+  /**
+   * Import an agent
+   *
+   * @remarks
+   * Imports an [agent](https://developers.glean.com/agents/agents-api) from its on-disk folder representation (spec.yaml, instructions.md, skills/, subagents/) packaged as a zip, and creates or updates the agent. Inverse of the export flow: the folder-to-schema conversion runs server-side. The bundle must contain only regular files; symlinks are resolved by the caller at packaging time.
+   */
+  async import(
+    importAgentRequest: components.ImportAgentRequest,
+    agentId: string,
+    locale?: string | undefined,
+    timezoneOffset?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<components.ImportAgentResponse> {
+    return unwrapAsync(clientAgentsImport(
+      this,
+      importAgentRequest,
       agentId,
       locale,
       timezoneOffset,
