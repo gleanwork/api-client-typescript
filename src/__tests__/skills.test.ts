@@ -141,3 +141,33 @@ test("Skills Platform Skills Get Version Content", async () => {
   const result = await glean.skills.retrieveVersionContent("<id>", 117760);
   expect(result).toBeDefined();
 });
+
+test("Skills Platform Skills Preview Source", async () => {
+  const testHttpClient = createTestHTTPClient("platform-skills-preview-source");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.skills.previewSource({
+    source_url: "https://ugly-information.name/",
+  });
+  expect(result).toBeDefined();
+});
+
+test("Skills Platform Skills Update", async () => {
+  const testHttpClient = createTestHTTPClient("platform-skills-update");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.skills.update({
+    status: "DISABLED",
+  }, "<id>");
+  expect(result).toBeDefined();
+});

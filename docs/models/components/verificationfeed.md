@@ -33,9 +33,11 @@ let value: VerificationFeed = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -57,9 +59,11 @@ let value: VerificationFeed = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -80,9 +84,11 @@ let value: VerificationFeed = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },

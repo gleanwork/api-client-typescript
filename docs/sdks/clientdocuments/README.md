@@ -235,6 +235,7 @@ async function run() {
         ],
       },
     ],
+    cursor: "",
   });
 
   console.log(result);
@@ -295,6 +296,7 @@ async function run() {
         ],
       },
     ],
+    cursor: "",
   });
   if (res.ok) {
     const { value: result } = res;

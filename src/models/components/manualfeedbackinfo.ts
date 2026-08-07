@@ -61,6 +61,8 @@ export const Issue = {
   ResultsHelpful: "RESULTS_HELPFUL",
   ResultsPoorOrder: "RESULTS_POOR_ORDER",
   TooMuchOneKind: "TOO_MUCH_ONE_KIND",
+  NotAQuestion: "NOT_A_QUESTION",
+  UnsureIfCorrect: "UNSURE_IF_CORRECT",
 } as const;
 export type Issue = ClosedEnum<typeof Issue>;
 

@@ -30,10 +30,6 @@ export type PlatformResult = {
    */
   datasource: string;
   /**
-   * The datasource instance this result originates from, if known.
-   */
-  datasource_instance?: string | null | undefined;
-  /**
    * The document type within the datasource.
    */
   document_type?: string | null | undefined;
@@ -65,7 +61,6 @@ export const PlatformResult$inboundSchema: z.ZodType<
   title: z.string(),
   snippets: z.array(z.string()).optional(),
   datasource: z.string(),
-  datasource_instance: z.nullable(z.string()).optional(),
   document_type: z.nullable(z.string()).optional(),
   creator: PlatformPersonReference$inboundSchema.optional(),
   owner: PlatformPersonReference$inboundSchema.optional(),

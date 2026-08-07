@@ -37,6 +37,7 @@ export type ClientAgentsRunStreamMutationData = string;
 
 export type ClientAgentsRunStreamMutationError =
   | errors.ErrorResponse
+  | errors.UnauthorizedAgentToolsError
   | GleanBaseError
   | ResponseValidationError
   | ConnectionError

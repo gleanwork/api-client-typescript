@@ -3,7 +3,7 @@
  * @generated-id: 2f58c12547ae
  */
 
-import { test } from "vitest";
+import { expect, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
@@ -98,4 +98,64 @@ test("Indexing Documents Post /Api/index/v1 /Deletedocument", async () => {
     objectType: "<value>",
     id: "<id>",
   });
+});
+
+test("Indexing Documents Post /Api/index/v1 /Debug/{datasource}/document", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "post_/api/index/v1/debug/{datasource}/document",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.indexing.documents.debug({
+    objectType: "Article",
+    docId: "art123",
+  }, "<value>");
+  expect(result).toBeDefined();
+});
+
+test("Indexing Documents Post /Api/index/v1 /Debug/{datasource}/documents", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "post_/api/index/v1/debug/{datasource}/documents",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.indexing.documents.debugMany({
+    debugDocuments: [
+      {
+        objectType: "Article",
+        docId: "art123",
+      },
+    ],
+  }, "<value>");
+  expect(result).toBeDefined();
+});
+
+test("Indexing Documents Post /Api/index/v1 /Debug/{datasource}/document/events", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "post_/api/index/v1/debug/{datasource}/document/events",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.indexing.documents.debugEvents({
+    objectType: "Article",
+    docId: "art123",
+    startDate: "2025-05-01",
+    maxEvents: 50,
+  }, "<value>");
+  expect(result).toBeDefined();
 });

@@ -20,15 +20,10 @@ let value: ResultsResponse = {
       mustIncludeSuggestions: {
         suggestions: [
           {
-            query: "app:github type:pull author:mortimer",
-            label: "Mortimer's PRs",
-            datasource: "github",
+            missingTerm: "container",
+            query: "container",
           },
         ],
-        person: {
-          name: "George Clooney",
-          obfuscatedId: "abc123",
-        },
       },
     },
   ],
@@ -53,9 +48,11 @@ let value: ResultsResponse = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -77,9 +74,11 @@ let value: ResultsResponse = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -100,9 +99,11 @@ let value: ResultsResponse = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -239,9 +240,11 @@ let value: ResultsResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -263,9 +266,11 @@ let value: ResultsResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -286,9 +291,11 @@ let value: ResultsResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -314,9 +321,11 @@ let value: ResultsResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -338,9 +347,11 @@ let value: ResultsResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -361,9 +372,11 @@ let value: ResultsResponse = {
                       "Backend",
                       "Networking",
                     ],
-                    status: "[\"Done\"]",
+                    status: "Done",
                     customData: {
-                      "someCustomField": {},
+                      "someCustomField": {
+                        stringValue: "someCustomValue",
+                      },
                     },
                   },
                 },
@@ -500,9 +513,11 @@ let value: ResultsResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -524,9 +539,11 @@ let value: ResultsResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -547,9 +564,11 @@ let value: ResultsResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
@@ -644,9 +663,11 @@ let value: ResultsResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -672,9 +693,11 @@ let value: ResultsResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -695,9 +718,11 @@ let value: ResultsResponse = {
                                 "Backend",
                                 "Networking",
                               ],
-                              status: "[\"Done\"]",
+                              status: "Done",
                               customData: {
-                                "someCustomField": {},
+                                "someCustomField": {
+                                  stringValue: "someCustomValue",
+                                },
                               },
                             },
                           },
@@ -734,9 +759,11 @@ let value: ResultsResponse = {
                                     "Backend",
                                     "Networking",
                                   ],
-                                  status: "[\"Done\"]",
+                                  status: "Done",
                                   customData: {
-                                    "someCustomField": {},
+                                    "someCustomField": {
+                                      stringValue: "someCustomValue",
+                                    },
                                   },
                                 },
                               },
@@ -762,9 +789,11 @@ let value: ResultsResponse = {
                                     "Backend",
                                     "Networking",
                                   ],
-                                  status: "[\"Done\"]",
+                                  status: "Done",
                                   customData: {
-                                    "someCustomField": {},
+                                    "someCustomField": {
+                                      stringValue: "someCustomValue",
+                                    },
                                   },
                                 },
                               },
@@ -789,9 +818,11 @@ let value: ResultsResponse = {
                                   "Backend",
                                   "Networking",
                                 ],
-                                status: "[\"Done\"]",
+                                status: "Done",
                                 customData: {
-                                  "someCustomField": {},
+                                  "someCustomField": {
+                                    stringValue: "someCustomValue",
+                                  },
                                 },
                               },
                             },
@@ -880,9 +911,11 @@ let value: ResultsResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -904,9 +937,11 @@ let value: ResultsResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -927,9 +962,11 @@ let value: ResultsResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -957,9 +994,11 @@ let value: ResultsResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -981,9 +1020,11 @@ let value: ResultsResponse = {
                               "Backend",
                               "Networking",
                             ],
-                            status: "[\"Done\"]",
+                            status: "Done",
                             customData: {
-                              "someCustomField": {},
+                              "someCustomField": {
+                                stringValue: "someCustomValue",
+                              },
                             },
                           },
                         },
@@ -1004,14 +1045,17 @@ let value: ResultsResponse = {
                             "Backend",
                             "Networking",
                           ],
-                          status: "[\"Done\"]",
+                          status: "Done",
                           customData: {
-                            "someCustomField": {},
+                            "someCustomField": {
+                              stringValue: "someCustomValue",
+                            },
                           },
                         },
                       },
                     },
                   ],
+                  cursor: "",
                 },
                 extractedQnA: {
                   questionResult: {
@@ -1027,15 +1071,10 @@ let value: ResultsResponse = {
                     mustIncludeSuggestions: {
                       suggestions: [
                         {
-                          query: "app:github type:pull author:mortimer",
-                          label: "Mortimer's PRs",
-                          datasource: "github",
+                          missingTerm: "container",
+                          query: "container",
                         },
                       ],
-                      person: {
-                        name: "George Clooney",
-                        obfuscatedId: "abc123",
-                      },
                     },
                   },
                 },
@@ -1151,9 +1190,11 @@ let value: ResultsResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -1175,9 +1216,11 @@ let value: ResultsResponse = {
                           "Backend",
                           "Networking",
                         ],
-                        status: "[\"Done\"]",
+                        status: "Done",
                         customData: {
-                          "someCustomField": {},
+                          "someCustomField": {
+                            stringValue: "someCustomValue",
+                          },
                         },
                       },
                     },
@@ -1198,9 +1241,11 @@ let value: ResultsResponse = {
                         "Backend",
                         "Networking",
                       ],
-                      status: "[\"Done\"]",
+                      status: "Done",
                       customData: {
-                        "someCustomField": {},
+                        "someCustomField": {
+                          stringValue: "someCustomValue",
+                        },
                       },
                     },
                   },
@@ -1242,10 +1287,12 @@ let value: ResultsResponse = {
                           },
                         ],
                         mustIncludeSuggestions: {
-                          person: {
-                            name: "George Clooney",
-                            obfuscatedId: "abc123",
-                          },
+                          suggestions: [
+                            {
+                              missingTerm: "container",
+                              query: "container",
+                            },
+                          ],
                         },
                       },
                     ],
@@ -1295,9 +1342,11 @@ let value: ResultsResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1319,9 +1368,11 @@ let value: ResultsResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1342,9 +1393,11 @@ let value: ResultsResponse = {
                   "Backend",
                   "Networking",
                 ],
-                status: "[\"Done\"]",
+                status: "Done",
                 customData: {
-                  "someCustomField": {},
+                  "someCustomField": {
+                    stringValue: "someCustomValue",
+                  },
                 },
               },
             },
@@ -1399,9 +1452,11 @@ let value: ResultsResponse = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1423,9 +1478,11 @@ let value: ResultsResponse = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1446,9 +1503,11 @@ let value: ResultsResponse = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -1476,9 +1535,11 @@ let value: ResultsResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1500,9 +1561,11 @@ let value: ResultsResponse = {
                     "Backend",
                     "Networking",
                   ],
-                  status: "[\"Done\"]",
+                  status: "Done",
                   customData: {
-                    "someCustomField": {},
+                    "someCustomField": {
+                      stringValue: "someCustomValue",
+                    },
                   },
                 },
               },
@@ -1523,14 +1586,17 @@ let value: ResultsResponse = {
                   "Backend",
                   "Networking",
                 ],
-                status: "[\"Done\"]",
+                status: "Done",
                 customData: {
-                  "someCustomField": {},
+                  "someCustomField": {
+                    stringValue: "someCustomValue",
+                  },
                 },
               },
             },
           },
         ],
+        cursor: "",
       },
       extractedQnA: {
         questionResult: {
@@ -1546,15 +1612,10 @@ let value: ResultsResponse = {
           mustIncludeSuggestions: {
             suggestions: [
               {
-                query: "app:github type:pull author:mortimer",
-                label: "Mortimer's PRs",
-                datasource: "github",
+                missingTerm: "container",
+                query: "container",
               },
             ],
-            person: {
-              name: "George Clooney",
-              obfuscatedId: "abc123",
-            },
           },
         },
       },
@@ -1670,9 +1731,11 @@ let value: ResultsResponse = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1694,9 +1757,11 @@ let value: ResultsResponse = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1717,9 +1782,11 @@ let value: ResultsResponse = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -1761,10 +1828,12 @@ let value: ResultsResponse = {
                 },
               ],
               mustIncludeSuggestions: {
-                person: {
-                  name: "George Clooney",
-                  obfuscatedId: "abc123",
-                },
+                suggestions: [
+                  {
+                    missingTerm: "container",
+                    query: "container",
+                  },
+                ],
               },
             },
           ],
@@ -1802,9 +1871,11 @@ let value: ResultsResponse = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1826,9 +1897,11 @@ let value: ResultsResponse = {
                 "Backend",
                 "Networking",
               ],
-              status: "[\"Done\"]",
+              status: "Done",
               customData: {
-                "someCustomField": {},
+                "someCustomField": {
+                  stringValue: "someCustomValue",
+                },
               },
             },
           },
@@ -1849,14 +1922,17 @@ let value: ResultsResponse = {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
       },
     ],
+    cursor: "",
   },
   backendTimeMillis: 1100,
 };

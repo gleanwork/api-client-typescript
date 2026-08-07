@@ -383,9 +383,11 @@ async function run() {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -407,9 +409,11 @@ async function run() {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -430,9 +434,11 @@ async function run() {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -511,9 +517,11 @@ async function run() {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -535,9 +543,11 @@ async function run() {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -558,9 +568,11 @@ async function run() {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -608,9 +620,11 @@ async function run() {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -632,9 +646,11 @@ async function run() {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -655,9 +671,11 @@ async function run() {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
@@ -736,9 +754,11 @@ async function run() {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -760,9 +780,11 @@ async function run() {
               "Backend",
               "Networking",
             ],
-            status: "[\"Done\"]",
+            status: "Done",
             customData: {
-              "someCustomField": {},
+              "someCustomField": {
+                stringValue: "someCustomValue",
+              },
             },
           },
         },
@@ -783,9 +805,11 @@ async function run() {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
