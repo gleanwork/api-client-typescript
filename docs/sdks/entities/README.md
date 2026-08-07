@@ -40,6 +40,7 @@ async function run() {
       },
     ],
     pageSize: 100,
+    cursor: "",
   });
 
   console.log(result);
@@ -80,6 +81,7 @@ async function run() {
       },
     ],
     pageSize: 100,
+    cursor: "",
   });
   if (res.ok) {
     const { value: result } = res;

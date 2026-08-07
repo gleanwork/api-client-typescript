@@ -7,6 +7,7 @@ import { ListShortcutsPaginatedRequest } from "@gleanwork/api-client/models/comp
 
 let value: ListShortcutsPaginatedRequest = {
   pageSize: 10,
+  cursor: "",
   filters: [
     {
       fieldName: "type",

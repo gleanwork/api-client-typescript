@@ -96,3 +96,20 @@ test("Tools Authorize Tool Server", async () => {
   }, "<id>");
   expect(result).toBeDefined();
 });
+
+test("Tools Get Tool Server Tools", async () => {
+  const testHttpClient = createTestHTTPClient("getToolServerTools");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.client.tools.getToolServerTools("<id>", [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ]);
+  expect(result).toBeDefined();
+});

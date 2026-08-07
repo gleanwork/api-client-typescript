@@ -126,9 +126,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 										"Backend",
 										"Networking",
 									},
-									Status: types.String("[\"Done\"]"),
+									Status: types.String("Done"),
 									CustomData: map[string]components.CustomDataValue{
-										"someCustomField": components.CustomDataValue{},
+										"someCustomField": components.CustomDataValue{
+											StringValue: types.String("someCustomValue"),
+										},
 									},
 								},
 							},
@@ -150,9 +152,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 										"Backend",
 										"Networking",
 									},
-									Status: types.String("[\"Done\"]"),
+									Status: types.String("Done"),
 									CustomData: map[string]components.CustomDataValue{
-										"someCustomField": components.CustomDataValue{},
+										"someCustomField": components.CustomDataValue{
+											StringValue: types.String("someCustomValue"),
+										},
 									},
 								},
 							},
@@ -173,9 +177,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 									"Backend",
 									"Networking",
 								},
-								Status: types.String("[\"Done\"]"),
+								Status: types.String("Done"),
 								CustomData: map[string]components.CustomDataValue{
-									"someCustomField": components.CustomDataValue{},
+									"someCustomField": components.CustomDataValue{
+										StringValue: types.String("someCustomValue"),
+									},
 								},
 							},
 						},
@@ -208,9 +214,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 											"Backend",
 											"Networking",
 										},
-										Status: types.String("[\"Done\"]"),
+										Status: types.String("Done"),
 										CustomData: map[string]components.CustomDataValue{
-											"someCustomField": components.CustomDataValue{},
+											"someCustomField": components.CustomDataValue{
+												StringValue: types.String("someCustomValue"),
+											},
 										},
 									},
 								},
@@ -232,9 +240,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 											"Backend",
 											"Networking",
 										},
-										Status: types.String("[\"Done\"]"),
+										Status: types.String("Done"),
 										CustomData: map[string]components.CustomDataValue{
-											"someCustomField": components.CustomDataValue{},
+											"someCustomField": components.CustomDataValue{
+												StringValue: types.String("someCustomValue"),
+											},
 										},
 									},
 								},
@@ -255,9 +265,11 @@ func testCreatecollectionCreatecollection0(w http.ResponseWriter, req *http.Requ
 										"Backend",
 										"Networking",
 									},
-									Status: types.String("[\"Done\"]"),
+									Status: types.String("Done"),
 									CustomData: map[string]components.CustomDataValue{
-										"someCustomField": components.CustomDataValue{},
+										"someCustomField": components.CustomDataValue{
+											StringValue: types.String("someCustomValue"),
+										},
 									},
 								},
 							},
