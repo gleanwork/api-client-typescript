@@ -7,8 +7,8 @@ import { expect, test } from "vitest";
 import { Glean } from "../index.js";
 import { createTestHTTPClient } from "./testclient.js";
 
-test("Chat Get Chat File", async () => {
-  const testHttpClient = createTestHTTPClient("getChatFile");
+test("Chat Platform Chat Create", async () => {
+  const testHttpClient = createTestHTTPClient("platform-chat-create");
 
   const glean = new Glean({
     serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
@@ -16,6 +16,8 @@ test("Chat Get Chat File", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.client.chat.retrieveFile("<id>");
+  const result = await glean.chat.create({
+    input: "<value>",
+  });
   expect(result).toBeDefined();
 });

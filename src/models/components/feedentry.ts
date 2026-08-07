@@ -108,6 +108,7 @@ export const JustificationType = {
   StarterKitOrgChart: "STARTER_KIT_ORG_CHART",
   StarterKitAddDoc: "STARTER_KIT_ADD_DOC",
   MeetingRecap: "MEETING_RECAP",
+  MeetingPrepAutomation: "MEETING_PREP_AUTOMATION",
   ActiveDiscussion: "ACTIVE_DISCUSSION",
   MidDayCatchUp: "MID_DAY_CATCH_UP",
   QuerySuggestion: "QUERY_SUGGESTION",

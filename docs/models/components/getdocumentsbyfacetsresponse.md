@@ -26,9 +26,11 @@ let value: GetDocumentsByFacetsResponse = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -50,9 +52,11 @@ let value: GetDocumentsByFacetsResponse = {
             "Backend",
             "Networking",
           ],
-          status: "[\"Done\"]",
+          status: "Done",
           customData: {
-            "someCustomField": {},
+            "someCustomField": {
+              stringValue: "someCustomValue",
+            },
           },
         },
       },
@@ -73,20 +77,23 @@ let value: GetDocumentsByFacetsResponse = {
           "Backend",
           "Networking",
         ],
-        status: "[\"Done\"]",
+        status: "Done",
         customData: {
-          "someCustomField": {},
+          "someCustomField": {
+            stringValue: "someCustomValue",
+          },
         },
       },
     },
   ],
+  cursor: "",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `documents`                                                                                                  | [components.Document](../../models/components/document.md)[]                                                 | :heavy_minus_sign:                                                                                           | The document details, ordered by score.                                                                      |
-| `hasMoreResults`                                                                                             | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | Whether more results are available. Use cursor to retrieve them.                                             |
-| `cursor`                                                                                                     | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Cursor that indicates the start of the next page of results. To be passed in "more" requests for this query. |
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `documents`                                                                                                  | [components.Document](../../models/components/document.md)[]                                                 | :heavy_minus_sign:                                                                                           | The document details, ordered by score.                                                                      |                                                                                                              |
+| `hasMoreResults`                                                                                             | *boolean*                                                                                                    | :heavy_minus_sign:                                                                                           | Whether more results are available. Use cursor to retrieve them.                                             |                                                                                                              |
+| `cursor`                                                                                                     | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | Cursor that indicates the start of the next page of results. To be passed in "more" requests for this query. |                                                                                                              |

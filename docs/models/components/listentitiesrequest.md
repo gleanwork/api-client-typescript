@@ -22,6 +22,7 @@ let value: ListEntitiesRequest = {
     },
   ],
   pageSize: 100,
+  cursor: "",
 };
 ```
 

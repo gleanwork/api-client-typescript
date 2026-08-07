@@ -94,11 +94,11 @@ let value: SearchResponse = {
       fieldName: "fieldName",
       values: [
         {
-          value: "Spreadsheet",
+          value: "fieldValues",
           relationType: "EQUALS",
         },
         {
-          value: "Spreadsheet",
+          value: "fieldValues",
           relationType: "EQUALS",
         },
       ],
@@ -107,11 +107,11 @@ let value: SearchResponse = {
       fieldName: "fieldName",
       values: [
         {
-          value: "Spreadsheet",
+          value: "fieldValues",
           relationType: "EQUALS",
         },
         {
-          value: "Spreadsheet",
+          value: "fieldValues",
           relationType: "EQUALS",
         },
       ],
