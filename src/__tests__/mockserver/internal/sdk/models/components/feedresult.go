@@ -57,6 +57,7 @@ const (
 	FeedResultCategoryOooPlanner                   FeedResultCategory = "OOO_PLANNER"
 	FeedResultCategoryOooCatchUp                   FeedResultCategory = "OOO_CATCH_UP"
 	FeedResultCategoryAdminHealthCenter            FeedResultCategory = "ADMIN_HEALTH_CENTER"
+	FeedResultCategoryKnowledgeGap                 FeedResultCategory = "KNOWLEDGE_GAP"
 )
 
 func (e FeedResultCategory) ToPointer() *FeedResultCategory {
@@ -157,6 +158,8 @@ func (e *FeedResultCategory) UnmarshalJSON(data []byte) error {
 	case "OOO_CATCH_UP":
 		fallthrough
 	case "ADMIN_HEALTH_CENTER":
+		fallthrough
+	case "KNOWLEDGE_GAP":
 		*e = FeedResultCategory(v)
 		return nil
 	default:
@@ -164,12 +167,13 @@ func (e *FeedResultCategory) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// PlacementReason - Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+// PlacementReason - Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework. PINNED means the card was moved to the head of the ranked stack (e.g. knowledge-gap pilot cards).
 type PlacementReason string
 
 const (
 	PlacementReasonOrganic PlacementReason = "ORGANIC"
 	PlacementReasonPromo   PlacementReason = "PROMO"
+	PlacementReasonPinned  PlacementReason = "PINNED"
 )
 
 func (e PlacementReason) ToPointer() *PlacementReason {
@@ -184,6 +188,8 @@ func (e *PlacementReason) UnmarshalJSON(data []byte) error {
 	case "ORGANIC":
 		fallthrough
 	case "PROMO":
+		fallthrough
+	case "PINNED":
 		*e = PlacementReason(v)
 		return nil
 	default:
@@ -199,7 +205,7 @@ type FeedResult struct {
 	SecondaryEntries []FeedEntry `json:"secondaryEntries,omitempty"`
 	// Rank of the result. Rank is suggested by server. Client side rank may differ.
 	Rank *int64 `json:"rank,omitempty"`
-	// Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+	// Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework. PINNED means the card was moved to the head of the ranked stack (e.g. knowledge-gap pilot cards).
 	PlacementReason *PlacementReason `json:"placementReason,omitempty"`
 }
 
