@@ -124,6 +124,7 @@ export const JustificationType = {
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
+  KnowledgeGap: "KNOWLEDGE_GAP",
 } as const;
 /**
  * Type of the justification.
