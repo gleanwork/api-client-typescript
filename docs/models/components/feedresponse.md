@@ -9,7 +9,7 @@ let value: FeedResponse = {
   serverTimestamp: 603266,
   results: [
     {
-      category: "EVENT",
+      category: "ANNOUNCEMENT",
       primaryEntry: {
         title: "<value>",
         createdBy: {
