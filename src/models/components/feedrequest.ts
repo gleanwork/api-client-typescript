@@ -62,6 +62,7 @@ export const FeedRequestCategory = {
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
+  KnowledgeGap: "KNOWLEDGE_GAP",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 

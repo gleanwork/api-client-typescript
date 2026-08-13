@@ -18,7 +18,7 @@ import {
 } from "./platformchatcitationsource.js";
 
 export const PlatformChatCitationAnnotationType = {
-  Citation: "citation",
+  Citation: "CITATION",
 } as const;
 export type PlatformChatCitationAnnotationType = ClosedEnum<
   typeof PlatformChatCitationAnnotationType

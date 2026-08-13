@@ -7,8 +7,8 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const PlatformChatInputMessageRole = {
-  User: "user",
-  Assistant: "assistant",
+  User: "USER",
+  Assistant: "ASSISTANT",
 } as const;
 export type PlatformChatInputMessageRole = ClosedEnum<
   typeof PlatformChatInputMessageRole
