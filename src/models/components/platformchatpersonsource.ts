@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const PlatformChatPersonSourceType = {
-  Person: "person",
+  Person: "PERSON",
 } as const;
 export type PlatformChatPersonSourceType = ClosedEnum<
   typeof PlatformChatPersonSourceType

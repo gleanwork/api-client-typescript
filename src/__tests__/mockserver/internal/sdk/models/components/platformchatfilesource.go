@@ -12,7 +12,7 @@ import (
 type PlatformChatFileSourceType string
 
 const (
-	PlatformChatFileSourceTypeFile PlatformChatFileSourceType = "file"
+	PlatformChatFileSourceTypeFile PlatformChatFileSourceType = "FILE"
 )
 
 func (e PlatformChatFileSourceType) ToPointer() *PlatformChatFileSourceType {
@@ -24,7 +24,7 @@ func (e *PlatformChatFileSourceType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "file":
+	case "FILE":
 		*e = PlatformChatFileSourceType(v)
 		return nil
 	default:

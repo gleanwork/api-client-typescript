@@ -115,6 +115,7 @@ const (
 	JustificationTypeOooPlanner                        JustificationType = "OOO_PLANNER"
 	JustificationTypeOooCatchUp                        JustificationType = "OOO_CATCH_UP"
 	JustificationTypeAdminHealthCenter                 JustificationType = "ADMIN_HEALTH_CENTER"
+	JustificationTypeKnowledgeGap                      JustificationType = "KNOWLEDGE_GAP"
 )
 
 func (e JustificationType) ToPointer() *JustificationType {
@@ -241,6 +242,8 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 	case "OOO_CATCH_UP":
 		fallthrough
 	case "ADMIN_HEALTH_CENTER":
+		fallthrough
+	case "KNOWLEDGE_GAP":
 		*e = JustificationType(v)
 		return nil
 	default:

@@ -11,7 +11,7 @@ import (
 type PlatformChatOutputTextContentType string
 
 const (
-	PlatformChatOutputTextContentTypeOutputText PlatformChatOutputTextContentType = "output_text"
+	PlatformChatOutputTextContentTypeOutputText PlatformChatOutputTextContentType = "OUTPUT_TEXT"
 )
 
 func (e PlatformChatOutputTextContentType) ToPointer() *PlatformChatOutputTextContentType {
@@ -23,7 +23,7 @@ func (e *PlatformChatOutputTextContentType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "output_text":
+	case "OUTPUT_TEXT":
 		*e = PlatformChatOutputTextContentType(v)
 		return nil
 	default:

@@ -6,7 +6,7 @@
 import { PlatformChatOutputTextContent } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatOutputTextContent = {
-  type: "output_text",
+  type: "OUTPUT_TEXT",
   text: "<value>",
 };
 ```
