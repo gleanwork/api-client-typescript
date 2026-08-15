@@ -6,7 +6,7 @@
 import { PlatformChatFileSource } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatFileSource = {
-  type: "file",
+  type: "FILE",
   file_id: "<id>",
 };
 ```
