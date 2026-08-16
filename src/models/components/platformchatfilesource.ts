@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const PlatformChatFileSourceType = {
-  File: "file",
+  File: "FILE",
 } as const;
 export type PlatformChatFileSourceType = ClosedEnum<
   typeof PlatformChatFileSourceType

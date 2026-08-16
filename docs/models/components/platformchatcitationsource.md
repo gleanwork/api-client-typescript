@@ -9,7 +9,7 @@ Four-variant citation source union.
 
 ```typescript
 const value: components.PlatformChatDocumentSource = {
-  type: "document",
+  type: "DOCUMENT",
   document_id: "<id>",
 };
 ```
@@ -18,7 +18,7 @@ const value: components.PlatformChatDocumentSource = {
 
 ```typescript
 const value: components.PlatformChatPersonSource = {
-  type: "person",
+  type: "PERSON",
   person_id: "<id>",
 };
 ```
@@ -27,7 +27,7 @@ const value: components.PlatformChatPersonSource = {
 
 ```typescript
 const value: components.PlatformChatFileSource = {
-  type: "file",
+  type: "FILE",
   file_id: "<id>",
 };
 ```
@@ -36,7 +36,7 @@ const value: components.PlatformChatFileSource = {
 
 ```typescript
 const value: components.PlatformChatCustomEntitySource = {
-  type: "custom_entity",
+  type: "CUSTOM_ENTITY",
   entity_id: "<id>",
 };
 ```

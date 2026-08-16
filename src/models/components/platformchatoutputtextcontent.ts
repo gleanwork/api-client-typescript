@@ -14,7 +14,7 @@ import {
 } from "./platformchatcitationannotation.js";
 
 export const PlatformChatOutputTextContentType = {
-  OutputText: "output_text",
+  OutputText: "OUTPUT_TEXT",
 } as const;
 export type PlatformChatOutputTextContentType = ClosedEnum<
   typeof PlatformChatOutputTextContentType
