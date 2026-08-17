@@ -10,7 +10,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export const PlatformChatDocumentSourceType2 = {
-  Document: "document",
+  Document: "DOCUMENT",
 } as const;
 export type PlatformChatDocumentSourceType2 = ClosedEnum<
   typeof PlatformChatDocumentSourceType2
@@ -25,7 +25,7 @@ export type PlatformChatDocumentSourceDocument2 = {
 };
 
 export const PlatformChatDocumentSourceType1 = {
-  Document: "document",
+  Document: "DOCUMENT",
 } as const;
 export type PlatformChatDocumentSourceType1 = ClosedEnum<
   typeof PlatformChatDocumentSourceType1
