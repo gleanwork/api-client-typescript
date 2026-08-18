@@ -6,7 +6,7 @@
 import { PlatformChatCitationAnnotation } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatCitationAnnotation = {
-  type: "citation",
+  type: "CITATION",
   sources: [],
 };
 ```

@@ -6,7 +6,7 @@
 import { PlatformChatDocumentSourceDocument2 } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatDocumentSourceDocument2 = {
-  type: "document",
+  type: "DOCUMENT",
   url: "https://webbed-cross-contamination.info",
 };
 ```

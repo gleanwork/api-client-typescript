@@ -5,11 +5,11 @@
 ```typescript
 import { PlatformChatCustomEntitySourceType } from "@gleanwork/api-client/models/components";
 
-let value: PlatformChatCustomEntitySourceType = "custom_entity";
+let value: PlatformChatCustomEntitySourceType = "CUSTOM_ENTITY";
 ```
 
 ## Values
 
 ```typescript
-"custom_entity"
+"CUSTOM_ENTITY"
 ```
