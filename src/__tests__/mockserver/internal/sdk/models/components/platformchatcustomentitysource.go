@@ -12,7 +12,7 @@ import (
 type PlatformChatCustomEntitySourceType string
 
 const (
-	PlatformChatCustomEntitySourceTypeCustomEntity PlatformChatCustomEntitySourceType = "custom_entity"
+	PlatformChatCustomEntitySourceTypeCustomEntity PlatformChatCustomEntitySourceType = "CUSTOM_ENTITY"
 )
 
 func (e PlatformChatCustomEntitySourceType) ToPointer() *PlatformChatCustomEntitySourceType {
@@ -24,7 +24,7 @@ func (e *PlatformChatCustomEntitySourceType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "custom_entity":
+	case "CUSTOM_ENTITY":
 		*e = PlatformChatCustomEntitySourceType(v)
 		return nil
 	default:
