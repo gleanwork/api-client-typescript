@@ -7,13 +7,13 @@ import { PlatformChatCompletedResponse } from "@gleanwork/api-client/models/comp
 
 let value: PlatformChatCompletedResponse = {
   id: "<id>",
-  object: "response",
+  object: "RESPONSE",
   created_at: new Date("2024-01-21T06:04:05.713Z"),
-  status: "completed",
+  status: "COMPLETED",
   output: [
     {
-      type: "message",
-      role: "assistant",
+      type: "MESSAGE",
+      role: "ASSISTANT",
       content: [],
     },
   ],

@@ -6,8 +6,8 @@
 import { PlatformChatOutputMessage } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatOutputMessage = {
-  type: "message",
-  role: "assistant",
+  type: "MESSAGE",
+  role: "ASSISTANT",
   content: [],
 };
 ```

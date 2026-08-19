@@ -99,6 +99,7 @@ const (
 	JustificationTypeStarterKitOrgChart                JustificationType = "STARTER_KIT_ORG_CHART"
 	JustificationTypeStarterKitAddDoc                  JustificationType = "STARTER_KIT_ADD_DOC"
 	JustificationTypeMeetingRecap                      JustificationType = "MEETING_RECAP"
+	JustificationTypeMeetingRoom                       JustificationType = "MEETING_ROOM"
 	JustificationTypeMeetingPrepAutomation             JustificationType = "MEETING_PREP_AUTOMATION"
 	JustificationTypeActiveDiscussion                  JustificationType = "ACTIVE_DISCUSSION"
 	JustificationTypeMidDayCatchUp                     JustificationType = "MID_DAY_CATCH_UP"
@@ -115,6 +116,7 @@ const (
 	JustificationTypeOooPlanner                        JustificationType = "OOO_PLANNER"
 	JustificationTypeOooCatchUp                        JustificationType = "OOO_CATCH_UP"
 	JustificationTypeAdminHealthCenter                 JustificationType = "ADMIN_HEALTH_CENTER"
+	JustificationTypeKnowledgeGap                      JustificationType = "KNOWLEDGE_GAP"
 )
 
 func (e JustificationType) ToPointer() *JustificationType {
@@ -210,6 +212,8 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "MEETING_RECAP":
 		fallthrough
+	case "MEETING_ROOM":
+		fallthrough
 	case "MEETING_PREP_AUTOMATION":
 		fallthrough
 	case "ACTIVE_DISCUSSION":
@@ -241,6 +245,8 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 	case "OOO_CATCH_UP":
 		fallthrough
 	case "ADMIN_HEALTH_CENTER":
+		fallthrough
+	case "KNOWLEDGE_GAP":
 		*e = JustificationType(v)
 		return nil
 	default:

@@ -108,6 +108,7 @@ export const JustificationType = {
   StarterKitOrgChart: "STARTER_KIT_ORG_CHART",
   StarterKitAddDoc: "STARTER_KIT_ADD_DOC",
   MeetingRecap: "MEETING_RECAP",
+  MeetingRoom: "MEETING_ROOM",
   MeetingPrepAutomation: "MEETING_PREP_AUTOMATION",
   ActiveDiscussion: "ACTIVE_DISCUSSION",
   MidDayCatchUp: "MID_DAY_CATCH_UP",
@@ -124,6 +125,7 @@ export const JustificationType = {
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
+  KnowledgeGap: "KNOWLEDGE_GAP",
 } as const;
 /**
  * Type of the justification.
