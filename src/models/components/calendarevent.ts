@@ -14,6 +14,10 @@ import {
   CalendarAttendees$inboundSchema,
 } from "./calendarattendees.js";
 import {
+  CalendarRoomBookingStatus,
+  CalendarRoomBookingStatus$inboundSchema,
+} from "./calendarroombookingstatus.js";
+import {
   ConferenceData,
   ConferenceData$inboundSchema,
 } from "./conferencedata.js";
@@ -58,6 +62,18 @@ export type CalendarEvent = {
   url: string;
   attendees?: CalendarAttendees | undefined;
   /**
+   * Whether the requesting user is the organizer of this event.
+   */
+  isOrganizer?: boolean | null | undefined;
+  /**
+   * The current booking status of the room resource associated with an event.
+   */
+  roomBookingStatus?: CalendarRoomBookingStatus | undefined;
+  /**
+   * The display name of the room resource associated with this event.
+   */
+  roomName?: string | undefined;
+  /**
    * The location that this event is taking place at.
    */
   location?: string | undefined;
@@ -100,6 +116,9 @@ export const CalendarEvent$inboundSchema: z.ZodType<
   id: z.string(),
   url: z.string(),
   attendees: CalendarAttendees$inboundSchema.optional(),
+  isOrganizer: z.nullable(z.boolean()).optional(),
+  roomBookingStatus: CalendarRoomBookingStatus$inboundSchema.optional(),
+  roomName: z.string().optional(),
   location: z.string().optional(),
   conferenceData: ConferenceData$inboundSchema.optional(),
   description: z.string().optional(),
