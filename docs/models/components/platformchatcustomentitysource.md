@@ -6,7 +6,7 @@
 import { PlatformChatCustomEntitySource } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatCustomEntitySource = {
-  type: "custom_entity",
+  type: "CUSTOM_ENTITY",
   entity_id: "<id>",
 };
 ```
