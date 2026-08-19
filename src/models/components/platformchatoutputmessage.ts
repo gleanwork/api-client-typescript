@@ -14,14 +14,14 @@ import {
 } from "./platformchatoutputtextcontent.js";
 
 export const PlatformChatOutputMessageType = {
-  Message: "message",
+  Message: "MESSAGE",
 } as const;
 export type PlatformChatOutputMessageType = ClosedEnum<
   typeof PlatformChatOutputMessageType
 >;
 
 export const PlatformChatOutputMessageRole = {
-  Assistant: "assistant",
+  Assistant: "ASSISTANT",
 } as const;
 export type PlatformChatOutputMessageRole = ClosedEnum<
   typeof PlatformChatOutputMessageRole

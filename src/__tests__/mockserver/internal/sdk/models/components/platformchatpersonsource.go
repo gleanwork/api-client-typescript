@@ -12,7 +12,7 @@ import (
 type PlatformChatPersonSourceType string
 
 const (
-	PlatformChatPersonSourceTypePerson PlatformChatPersonSourceType = "person"
+	PlatformChatPersonSourceTypePerson PlatformChatPersonSourceType = "PERSON"
 )
 
 func (e PlatformChatPersonSourceType) ToPointer() *PlatformChatPersonSourceType {
@@ -24,7 +24,7 @@ func (e *PlatformChatPersonSourceType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "person":
+	case "PERSON":
 		*e = PlatformChatPersonSourceType(v)
 		return nil
 	default:
