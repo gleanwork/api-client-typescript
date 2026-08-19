@@ -6,7 +6,7 @@
 import { PlatformChatPersonSource } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatPersonSource = {
-  type: "person",
+  type: "PERSON",
   person_id: "<id>",
 };
 ```

@@ -14,12 +14,12 @@ import {
 } from "./platformchatoutputmessage.js";
 
 export const ObjectT = {
-  Response: "response",
+  Response: "RESPONSE",
 } as const;
 export type ObjectT = ClosedEnum<typeof ObjectT>;
 
 export const PlatformChatCompletedResponseStatus = {
-  Completed: "completed",
+  Completed: "COMPLETED",
 } as const;
 export type PlatformChatCompletedResponseStatus = ClosedEnum<
   typeof PlatformChatCompletedResponseStatus
