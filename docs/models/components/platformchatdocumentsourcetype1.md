@@ -5,11 +5,11 @@
 ```typescript
 import { PlatformChatDocumentSourceType1 } from "@gleanwork/api-client/models/components";
 
-let value: PlatformChatDocumentSourceType1 = "document";
+let value: PlatformChatDocumentSourceType1 = "DOCUMENT";
 ```
 
 ## Values
 
 ```typescript
-"document"
+"DOCUMENT"
 ```

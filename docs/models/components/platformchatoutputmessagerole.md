@@ -5,11 +5,11 @@
 ```typescript
 import { PlatformChatOutputMessageRole } from "@gleanwork/api-client/models/components";
 
-let value: PlatformChatOutputMessageRole = "assistant";
+let value: PlatformChatOutputMessageRole = "ASSISTANT";
 ```
 
 ## Values
 
 ```typescript
-"assistant"
+"ASSISTANT"
 ```
