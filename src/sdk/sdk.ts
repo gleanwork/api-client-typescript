@@ -10,6 +10,7 @@ import { Client } from "./client.js";
 import { Indexing } from "./indexing.js";
 import { Search } from "./search.js";
 import { Skills } from "./skills.js";
+import { Triggers } from "./triggers.js";
 
 export class Glean extends ClientSDK {
   private _agents?: Agents;
@@ -30,6 +31,11 @@ export class Glean extends ClientSDK {
   private _search?: Search;
   get search(): Search {
     return (this._search ??= new Search(this._options));
+  }
+
+  private _triggers?: Triggers;
+  get triggers(): Triggers {
+    return (this._triggers ??= new Triggers(this._options));
   }
 
   private _client?: Client;

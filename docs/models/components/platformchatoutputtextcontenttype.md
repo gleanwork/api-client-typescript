@@ -5,11 +5,11 @@
 ```typescript
 import { PlatformChatOutputTextContentType } from "@gleanwork/api-client/models/components";
 
-let value: PlatformChatOutputTextContentType = "output_text";
+let value: PlatformChatOutputTextContentType = "OUTPUT_TEXT";
 ```
 
 ## Values
 
 ```typescript
-"output_text"
+"OUTPUT_TEXT"
 ```

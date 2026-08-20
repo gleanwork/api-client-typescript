@@ -5,28 +5,15 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const PlatformChatPersonSourceType = {
-  Person: "person",
-} as const;
-export type PlatformChatPersonSourceType = ClosedEnum<
-  typeof PlatformChatPersonSourceType
->;
-
 export type PlatformChatPersonSource = {
-  type: PlatformChatPersonSourceType;
+  type: "PERSON";
   person_id: string;
   name?: string | undefined;
   url?: string | undefined;
 };
-
-/** @internal */
-export const PlatformChatPersonSourceType$inboundSchema: z.ZodNativeEnum<
-  typeof PlatformChatPersonSourceType
-> = z.nativeEnum(PlatformChatPersonSourceType);
 
 /** @internal */
 export const PlatformChatPersonSource$inboundSchema: z.ZodType<
@@ -34,7 +21,7 @@ export const PlatformChatPersonSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: PlatformChatPersonSourceType$inboundSchema,
+  type: z.literal("PERSON"),
   person_id: z.string(),
   name: z.string().optional(),
   url: z.string().optional(),
