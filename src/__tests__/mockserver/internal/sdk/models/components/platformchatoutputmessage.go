@@ -11,7 +11,7 @@ import (
 type PlatformChatOutputMessageType string
 
 const (
-	PlatformChatOutputMessageTypeMessage PlatformChatOutputMessageType = "message"
+	PlatformChatOutputMessageTypeMessage PlatformChatOutputMessageType = "MESSAGE"
 )
 
 func (e PlatformChatOutputMessageType) ToPointer() *PlatformChatOutputMessageType {
@@ -23,7 +23,7 @@ func (e *PlatformChatOutputMessageType) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "message":
+	case "MESSAGE":
 		*e = PlatformChatOutputMessageType(v)
 		return nil
 	default:
@@ -34,7 +34,7 @@ func (e *PlatformChatOutputMessageType) UnmarshalJSON(data []byte) error {
 type PlatformChatOutputMessageRole string
 
 const (
-	PlatformChatOutputMessageRoleAssistant PlatformChatOutputMessageRole = "assistant"
+	PlatformChatOutputMessageRoleAssistant PlatformChatOutputMessageRole = "ASSISTANT"
 )
 
 func (e PlatformChatOutputMessageRole) ToPointer() *PlatformChatOutputMessageRole {
@@ -46,7 +46,7 @@ func (e *PlatformChatOutputMessageRole) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "assistant":
+	case "ASSISTANT":
 		*e = PlatformChatOutputMessageRole(v)
 		return nil
 	default:

@@ -5,19 +5,11 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const PlatformChatFileSourceType = {
-  File: "file",
-} as const;
-export type PlatformChatFileSourceType = ClosedEnum<
-  typeof PlatformChatFileSourceType
->;
-
 export type PlatformChatFileSource = {
-  type: PlatformChatFileSourceType;
+  type: "FILE";
   file_id: string;
   title?: string | undefined;
   url?: string | undefined;
@@ -25,17 +17,12 @@ export type PlatformChatFileSource = {
 };
 
 /** @internal */
-export const PlatformChatFileSourceType$inboundSchema: z.ZodNativeEnum<
-  typeof PlatformChatFileSourceType
-> = z.nativeEnum(PlatformChatFileSourceType);
-
-/** @internal */
 export const PlatformChatFileSource$inboundSchema: z.ZodType<
   PlatformChatFileSource,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: PlatformChatFileSourceType$inboundSchema,
+  type: z.literal("FILE"),
   file_id: z.string(),
   title: z.string().optional(),
   url: z.string().optional(),

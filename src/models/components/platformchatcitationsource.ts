@@ -28,10 +28,10 @@ import {
  * Four-variant citation source union.
  */
 export type PlatformChatCitationSource =
+  | (PlatformChatDocumentSource & { type: "DOCUMENT" })
   | PlatformChatPersonSource
   | PlatformChatFileSource
-  | PlatformChatCustomEntitySource
-  | PlatformChatDocumentSource;
+  | PlatformChatCustomEntitySource;
 
 /** @internal */
 export const PlatformChatCitationSource$inboundSchema: z.ZodType<
@@ -39,10 +39,12 @@ export const PlatformChatCitationSource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  PlatformChatDocumentSource$inboundSchema.and(
+    z.object({ type: z.literal("DOCUMENT") }),
+  ),
   PlatformChatPersonSource$inboundSchema,
   PlatformChatFileSource$inboundSchema,
   PlatformChatCustomEntitySource$inboundSchema,
-  PlatformChatDocumentSource$inboundSchema,
 ]);
 
 export function platformChatCitationSourceFromJSON(
