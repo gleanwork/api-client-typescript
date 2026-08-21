@@ -65,23 +65,6 @@ export class Skills extends ClientSDK {
   }
 
   /**
-   * Validate skill bundle
-   *
-   * @remarks
-   * Validate a skill bundle without persisting it. Accepts a SKILL.md, .zip, or .skill upload and returns parsed metadata plus the normalized file layout.
-   */
-  async validate(
-    request: components.PlatformSkillValidationRequest,
-    options?: RequestOptions,
-  ): Promise<components.PlatformSkillValidationResponse> {
-    return unwrapAsync(skillsValidate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Import skills from GitHub
    *
    * @remarks
@@ -92,6 +75,23 @@ export class Skills extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.PlatformSkillImportResponse> {
     return unwrapAsync(skillsImport(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Validate skill bundle
+   *
+   * @remarks
+   * Validate a skill bundle without persisting it. Accepts a SKILL.md, .zip, or .skill upload and returns parsed metadata plus the normalized file layout.
+   */
+  async validate(
+    request: components.PlatformSkillValidationRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillValidationResponse> {
+    return unwrapAsync(skillsValidate(
       this,
       request,
       options,

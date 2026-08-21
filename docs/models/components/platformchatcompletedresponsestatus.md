@@ -5,11 +5,11 @@
 ```typescript
 import { PlatformChatCompletedResponseStatus } from "@gleanwork/api-client/models/components";
 
-let value: PlatformChatCompletedResponseStatus = "completed";
+let value: PlatformChatCompletedResponseStatus = "COMPLETED";
 ```
 
 ## Values
 
 ```typescript
-"completed"
+"COMPLETED"
 ```

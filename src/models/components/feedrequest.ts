@@ -59,9 +59,11 @@ export const FeedRequestCategory = {
   ProjectFocusBlock: "PROJECT_FOCUS_BLOCK",
   ProjectNextStep: "PROJECT_NEXT_STEP",
   DemoCard: "DEMO_CARD",
+  ResolveMeetingConflict: "RESOLVE_MEETING_CONFLICT",
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
+  KnowledgeGap: "KNOWLEDGE_GAP",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 
