@@ -506,8 +506,8 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [create](docs/sdks/skills/README.md#create) - Create skill
 * [list](docs/sdks/skills/README.md#list) - List skills
-* [validate](docs/sdks/skills/README.md#validate) - Validate skill bundle
 * [import](docs/sdks/skills/README.md#import) - Import skills from GitHub
+* [validate](docs/sdks/skills/README.md#validate) - Validate skill bundle
 * [previewSource](docs/sdks/skills/README.md#previewsource) - Preview a GitHub skill source
 * [update](docs/sdks/skills/README.md#update) - Update skill
 * [delete](docs/sdks/skills/README.md#delete) - Delete skill
@@ -518,6 +518,19 @@ For more information on obtaining the appropriate token type, please contact you
 * [listVersions](docs/sdks/skills/README.md#listversions) - List skill versions
 * [retrieveVersion](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
 * [retrieveVersionContent](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+
+### [Triggers](docs/sdks/triggers/README.md)
+
+* [create](docs/sdks/triggers/README.md#create) - Create trigger
+* [list](docs/sdks/triggers/README.md#list) - List triggers
+* [get](docs/sdks/triggers/README.md#get) - Get trigger
+* [update](docs/sdks/triggers/README.md#update) - Update trigger
+* [delete](docs/sdks/triggers/README.md#delete) - Delete trigger
+* [searchEvents](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
+* [listPresets](docs/sdks/triggers/README.md#listpresets) - List trigger presets
+* [getPreset](docs/sdks/triggers/README.md#getpreset) - Get trigger preset
+* [listPresetInputValues](docs/sdks/triggers/README.md#listpresetinputvalues) - Search trigger preset input values
+* [searchPresetEvents](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -693,6 +706,16 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`skillsSync`](docs/sdks/skills/README.md#sync) - Sync a GitHub-imported skill
 - [`skillsUpdate`](docs/sdks/skills/README.md#update) - Update skill
 - [`skillsValidate`](docs/sdks/skills/README.md#validate) - Validate skill bundle
+- [`triggersCreate`](docs/sdks/triggers/README.md#create) - Create trigger
+- [`triggersDelete`](docs/sdks/triggers/README.md#delete) - Delete trigger
+- [`triggersGet`](docs/sdks/triggers/README.md#get) - Get trigger
+- [`triggersGetPreset`](docs/sdks/triggers/README.md#getpreset) - Get trigger preset
+- [`triggersList`](docs/sdks/triggers/README.md#list) - List triggers
+- [`triggersListPresetInputValues`](docs/sdks/triggers/README.md#listpresetinputvalues) - Search trigger preset input values
+- [`triggersListPresets`](docs/sdks/triggers/README.md#listpresets) - List trigger presets
+- [`triggersSearchEvents`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
+- [`triggersSearchPresetEvents`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
+- [`triggersUpdate`](docs/sdks/triggers/README.md#update) - Update trigger
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -880,6 +903,16 @@ To learn about this feature and how to get started, check
 - [`useSkillsSyncMutation`](docs/sdks/skills/README.md#sync) - Sync a GitHub-imported skill
 - [`useSkillsUpdateMutation`](docs/sdks/skills/README.md#update) - Update skill
 - [`useSkillsValidateMutation`](docs/sdks/skills/README.md#validate) - Validate skill bundle
+- [`useTriggersCreateMutation`](docs/sdks/triggers/README.md#create) - Create trigger
+- [`useTriggersDeleteMutation`](docs/sdks/triggers/README.md#delete) - Delete trigger
+- [`useTriggersGet`](docs/sdks/triggers/README.md#get) - Get trigger
+- [`useTriggersGetPreset`](docs/sdks/triggers/README.md#getpreset) - Get trigger preset
+- [`useTriggersList`](docs/sdks/triggers/README.md#list) - List triggers
+- [`useTriggersListPresetInputValues`](docs/sdks/triggers/README.md#listpresetinputvalues) - Search trigger preset input values
+- [`useTriggersListPresets`](docs/sdks/triggers/README.md#listpresets) - List trigger presets
+- [`useTriggersSearchEventsMutation`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
+- [`useTriggersSearchPresetEventsMutation`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
+- [`useTriggersUpdateMutation`](docs/sdks/triggers/README.md#update) - Update trigger
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**

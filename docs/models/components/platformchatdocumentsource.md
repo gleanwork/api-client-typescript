@@ -7,7 +7,7 @@
 
 ```typescript
 const value: components.PlatformChatDocumentSourceDocument1 = {
-  type: "document",
+  type: "DOCUMENT",
   document_id: "<id>",
 };
 ```
@@ -16,7 +16,7 @@ const value: components.PlatformChatDocumentSourceDocument1 = {
 
 ```typescript
 const value: components.PlatformChatDocumentSourceDocument2 = {
-  type: "document",
+  type: "DOCUMENT",
   url: "https://webbed-cross-contamination.info",
 };
 ```
