@@ -5,19 +5,11 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export const PlatformChatCustomEntitySourceType = {
-  CustomEntity: "custom_entity",
-} as const;
-export type PlatformChatCustomEntitySourceType = ClosedEnum<
-  typeof PlatformChatCustomEntitySourceType
->;
-
 export type PlatformChatCustomEntitySource = {
-  type: PlatformChatCustomEntitySourceType;
+  type: "CUSTOM_ENTITY";
   entity_id: string;
   name?: string | undefined;
   title?: string | undefined;
@@ -26,17 +18,12 @@ export type PlatformChatCustomEntitySource = {
 };
 
 /** @internal */
-export const PlatformChatCustomEntitySourceType$inboundSchema: z.ZodNativeEnum<
-  typeof PlatformChatCustomEntitySourceType
-> = z.nativeEnum(PlatformChatCustomEntitySourceType);
-
-/** @internal */
 export const PlatformChatCustomEntitySource$inboundSchema: z.ZodType<
   PlatformChatCustomEntitySource,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: PlatformChatCustomEntitySourceType$inboundSchema,
+  type: z.literal("CUSTOM_ENTITY"),
   entity_id: z.string(),
   name: z.string().optional(),
   title: z.string().optional(),

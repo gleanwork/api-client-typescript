@@ -57,9 +57,11 @@ export const FeedResultCategory = {
   ProjectFocusBlock: "PROJECT_FOCUS_BLOCK",
   ProjectNextStep: "PROJECT_NEXT_STEP",
   DemoCard: "DEMO_CARD",
+  ResolveMeetingConflict: "RESOLVE_MEETING_CONFLICT",
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
+  KnowledgeGap: "KNOWLEDGE_GAP",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.
@@ -67,14 +69,15 @@ export const FeedResultCategory = {
 export type FeedResultCategory = OpenEnum<typeof FeedResultCategory>;
 
 /**
- * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+ * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework. PINNED means the card was moved to the head of the ranked stack (e.g. knowledge-gap pilot cards).
  */
 export const PlacementReason = {
   Organic: "ORGANIC",
   Promo: "PROMO",
+  Pinned: "PINNED",
 } as const;
 /**
- * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+ * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework. PINNED means the card was moved to the head of the ranked stack (e.g. knowledge-gap pilot cards).
  */
 export type PlacementReason = OpenEnum<typeof PlacementReason>;
 
@@ -93,7 +96,7 @@ export type FeedResult = {
    */
   rank?: number | undefined;
   /**
-   * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework.
+   * Placement source for ranked feed results. ORGANIC means the card was emitted by normal feed ranking. PROMO means the card was inserted by the homepage cards promo framework. PINNED means the card was moved to the head of the ranked stack (e.g. knowledge-gap pilot cards).
    */
   placementReason?: PlacementReason | undefined;
 };
