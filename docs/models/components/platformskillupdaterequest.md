@@ -6,7 +6,7 @@
 import { PlatformSkillUpdateRequest } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSkillUpdateRequest = {
-  status: "DISABLED",
+  status: "ENABLED",
 };
 ```
 
