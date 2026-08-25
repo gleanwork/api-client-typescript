@@ -12,7 +12,12 @@ let value: PlatformAgentRunCreateRequest = {
   messages: [
     {
       role: "USER",
-      content: [],
+      content: [
+        {
+          text: "What is our parental leave policy?",
+          type: "text",
+        },
+      ],
     },
   ],
 };
