@@ -6,7 +6,9 @@
 import { PlatformSkillImportRequest } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSkillImportRequest = {
-  source_urls: [],
+  source_urls: [
+    "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+  ],
 };
 ```
 

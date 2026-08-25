@@ -123,7 +123,12 @@ test("Agents Platform Agents Create Run", async () => {
     messages: [
       {
         role: "USER",
-        content: [],
+        content: [
+          {
+            text: "What is our parental leave policy?",
+            type: "text",
+          },
+        ],
       },
     ],
   }, "<id>");
