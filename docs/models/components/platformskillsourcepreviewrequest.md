@@ -6,7 +6,7 @@
 import { PlatformSkillSourcePreviewRequest } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSkillSourcePreviewRequest = {
-  source_url: "https://clean-shoulder.net/",
+  source_url: "https://github.com/anthropics/skills",
 };
 ```
 

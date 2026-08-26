@@ -32,6 +32,10 @@ export const ServerToolRequestRequestType = {
    * Suggestion to vote for enabling an available-but-not-enabled tool.
    */
   VoteSuggestion: "VOTE_SUGGESTION",
+  /**
+   * Request to approve an outbound/egress call from the sandbox.
+   */
+  SandboxEgress: "SANDBOX_EGRESS",
 } as const;
 /**
  * The type of request made to the user.

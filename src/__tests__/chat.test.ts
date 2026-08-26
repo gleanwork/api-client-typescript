@@ -17,7 +17,7 @@ test("Chat Platform Chat Create", async () => {
   });
 
   const result = await glean.chat.create({
-    input: "<value>",
+    input: "What is our parental leave policy?",
   });
   expect(result).toBeDefined();
 });

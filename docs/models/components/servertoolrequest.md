@@ -6,7 +6,7 @@
 import { ServerToolRequest } from "@gleanwork/api-client/models/components";
 
 let value: ServerToolRequest = {
-  requestType: "AUTHENTICATION_SUGGESTION",
+  requestType: "VOTE_SUGGESTION",
   requestId: "<id>",
 };
 ```
