@@ -23,7 +23,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.chat.create({
-    input: "<value>",
+    input: "What is our parental leave policy?",
   });
 
   console.log(result);
@@ -48,7 +48,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await chatCreate(glean, {
-    input: "<value>",
+    input: "What is our parental leave policy?",
   });
   if (res.ok) {
     const { value: result } = res;

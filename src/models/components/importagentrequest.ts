@@ -41,7 +41,7 @@ export type ImportAgentRequest = {
    */
   syncMode?: ImportAgentSyncMode | undefined;
   /**
-   * When true, validates and stores a draft preview without publishing (used for PR preview links). Takes precedence over `syncMode`: when `isDraft` is true, `syncMode` is ignored.
+   * Deprecated. Draft mutation semantics are not supported for transient previews. Use transient and parentWorkflowId instead.
    *
    * @remarks
    */
