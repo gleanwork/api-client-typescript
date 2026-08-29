@@ -32,6 +32,10 @@ export const ServerToolResponseRequestType = {
    * Suggestion to vote for enabling an available-but-not-enabled tool.
    */
   VoteSuggestion: "VOTE_SUGGESTION",
+  /**
+   * Request to approve an outbound/egress call from the sandbox.
+   */
+  SandboxEgress: "SANDBOX_EGRESS",
 } as const;
 /**
  * The type of request made to the user.
@@ -82,6 +86,9 @@ export type GrantScope = OpenEnum<typeof GrantScope>;
  *
  * For VOTE_SUGGESTION requests:
  * - voted: whether the user voted for this tool
+ *
+ * For SANDBOX_EGRESS requests:
+ * - isGranted: whether the sandbox egress call is approved
  */
 export type ServerToolResponse = {
   /**

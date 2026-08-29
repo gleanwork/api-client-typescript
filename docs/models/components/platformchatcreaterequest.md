@@ -6,7 +6,7 @@
 import { PlatformChatCreateRequest } from "@gleanwork/api-client/models/components";
 
 let value: PlatformChatCreateRequest = {
-  input: "<value>",
+  input: "What is our parental leave policy?",
 };
 ```
 
