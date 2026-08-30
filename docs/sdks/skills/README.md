@@ -233,7 +233,7 @@ const glean = new Glean({
 async function run() {
   const result = await glean.skills.import({
     source_urls: [
-      "<value 1>",
+      "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
     ],
   });
 
@@ -260,7 +260,7 @@ const glean = new GleanCore({
 async function run() {
   const res = await skillsImport(glean, {
     source_urls: [
-      "<value 1>",
+      "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
     ],
   });
   if (res.ok) {
@@ -424,7 +424,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.skills.previewSource({
-    source_url: "https://ugly-information.name/",
+    source_url: "https://github.com/anthropics/skills",
   });
 
   console.log(result);
@@ -449,7 +449,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await skillsPreviewSource(glean, {
-    source_url: "https://ugly-information.name/",
+    source_url: "https://github.com/anthropics/skills",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -517,7 +517,7 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.skills.update({
-    status: "DISABLED",
+    status: "ENABLED",
   }, "<id>");
 
   console.log(result);
@@ -542,7 +542,7 @@ const glean = new GleanCore({
 
 async function run() {
   const res = await skillsUpdate(glean, {
-    status: "DISABLED",
+    status: "ENABLED",
   }, "<id>");
   if (res.ok) {
     const { value: result } = res;
@@ -574,13 +574,13 @@ import {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `skillId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Glean skill ID.                                                                                                                                                                |
-| `platformSkillUpdateRequest`                                                                                                                                                   | [components.PlatformSkillUpdateRequest](../../models/components/platformskillupdaterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `skillId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Glean skill ID.                                                                                                                                                                |                                                                                                                                                                                |
+| `platformSkillUpdateRequest`                                                                                                                                                   | [components.PlatformSkillUpdateRequest](../../models/components/platformskillupdaterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | {<br/>"status": "ENABLED"<br/>}                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
