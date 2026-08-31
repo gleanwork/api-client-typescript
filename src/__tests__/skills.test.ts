@@ -153,7 +153,7 @@ test("Skills Platform Skills Import", async () => {
 
   const result = await glean.skills.import({
     source_urls: [
-      "<value 1>",
+      "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
     ],
   });
   expect(result).toBeDefined();
@@ -169,7 +169,7 @@ test("Skills Platform Skills Preview Source", async () => {
   });
 
   const result = await glean.skills.previewSource({
-    source_url: "https://ugly-information.name/",
+    source_url: "https://github.com/anthropics/skills",
   });
   expect(result).toBeDefined();
 });
@@ -184,7 +184,7 @@ test("Skills Platform Skills Update", async () => {
   });
 
   const result = await glean.skills.update({
-    status: "DISABLED",
+    status: "ENABLED",
   }, "<id>");
   expect(result).toBeDefined();
 });

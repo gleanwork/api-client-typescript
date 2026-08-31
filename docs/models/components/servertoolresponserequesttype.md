@@ -15,5 +15,5 @@ let value: ServerToolResponseRequestType = "EXECUTION";
 ## Values
 
 ```typescript
-"EXECUTION" | "AUTHENTICATION_SUGGESTION" | "VOTE_SUGGESTION" | Unrecognized<string>
+"EXECUTION" | "AUTHENTICATION_SUGGESTION" | "VOTE_SUGGESTION" | "SANDBOX_EGRESS" | Unrecognized<string>
 ```

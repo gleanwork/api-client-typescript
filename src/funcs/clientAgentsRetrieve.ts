@@ -33,6 +33,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
+ *
+ * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use GET /api/agents/{agent_id} instead..
  */
 export function clientAgentsRetrieve(
   client: GleanCore,
