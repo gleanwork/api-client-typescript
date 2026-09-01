@@ -7,7 +7,7 @@ The type of request made to the user.
 ```typescript
 import { ServerToolRequestRequestType } from "@gleanwork/api-client/models/components";
 
-let value: ServerToolRequestRequestType = "AUTHENTICATION_SUGGESTION";
+let value: ServerToolRequestRequestType = "VOTE_SUGGESTION";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```
@@ -15,5 +15,5 @@ let value: ServerToolRequestRequestType = "AUTHENTICATION_SUGGESTION";
 ## Values
 
 ```typescript
-"EXECUTION" | "AUTHENTICATION_SUGGESTION" | "VOTE_SUGGESTION" | Unrecognized<string>
+"EXECUTION" | "AUTHENTICATION_SUGGESTION" | "VOTE_SUGGESTION" | "SANDBOX_EGRESS" | Unrecognized<string>
 ```
