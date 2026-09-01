@@ -5,13 +5,13 @@
 ### Available Operations
 
 * [create](#create) - Create an agent
-* [retrieve](#retrieve) - Retrieve an agent
+* [~~retrieve~~](#retrieve) - Retrieve an agent :warning: **Deprecated**
 * [update](#update) - Edit an agent
-* [retrieveSchemas](#retrieveschemas) - List an agent's schemas
+* [~~retrieveSchemas~~](#retrieveschemas) - List an agent's schemas :warning: **Deprecated**
 * [import](#import) - Import an agent
-* [list](#list) - Search agents
-* [runStream](#runstream) - Create an agent run and stream the response
-* [run](#run) - Create an agent run and wait for the response
+* [~~list~~](#list) - Search agents :warning: **Deprecated**
+* [~~runStream~~](#runstream) - Create an agent run and stream the response :warning: **Deprecated**
+* [~~run~~](#run) - Create an agent run and wait for the response :warning: **Deprecated**
 
 ## create
 
@@ -101,9 +101,11 @@ import {
 | ----------------- | ----------------- | ----------------- |
 | errors.GleanError | 4XX, 5XX          | \*/\*             |
 
-## retrieve
+## ~~retrieve~~
 
 Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
+
+> :warning: **DEPRECATED**: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use GET /api/agents/{agent_id} instead..
 
 ### Example Usage
 
@@ -291,9 +293,11 @@ import {
 | errors.ErrorResponse | 404                  | application/json     |
 | errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
-## retrieveSchemas
+## ~~retrieveSchemas~~
 
 Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
+
+> :warning: **DEPRECATED**: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use GET /api/agents/{agent_id}/schemas instead..
 
 ### Example Usage
 
@@ -487,9 +491,11 @@ import {
 | errors.ErrorResponse | 404                  | application/json     |
 | errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
-## list
+## ~~list~~
 
 Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
+
+> :warning: **DEPRECATED**: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/search instead..
 
 ### Example Usage
 
@@ -578,9 +584,11 @@ import {
 | errors.ErrorResponse | 404, 422             | application/json     |
 | errors.GleanError    | 4XX, 5XX             | \*/\*                |
 
-## runStream
+## ~~runStream~~
 
 Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
+
+> :warning: **DEPRECATED**: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/{agent_id}/runs with stream=true instead..
 
 ### Example Usage
 
@@ -680,9 +688,11 @@ import {
 | errors.UnauthorizedAgentToolsError | 422                                | application/json                   |
 | errors.GleanError                  | 4XX, 5XX                           | \*/\*                              |
 
-## run
+## ~~run~~
 
 Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
+
+> :warning: **DEPRECATED**: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/{agent_id}/runs instead..
 
 ### Example Usage
 

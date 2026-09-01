@@ -90,6 +90,9 @@ export type ChatMessageFragment = {
    *
    * For VOTE_SUGGESTION requests:
    * - voted: whether the user voted for this tool
+   *
+   * For SANDBOX_EGRESS requests:
+   * - isGranted: whether the sandbox egress call is approved
    */
   serverToolResponse?: ServerToolResponse | undefined;
 };

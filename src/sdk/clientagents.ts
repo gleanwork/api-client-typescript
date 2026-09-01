@@ -42,6 +42,8 @@ export class ClientAgents extends ClientSDK {
    *
    * @remarks
    * Returns details of an [agent](https://developers.glean.com/agents/agents-api) created in the Agent Builder.
+   *
+   * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use GET /api/agents/{agent_id} instead..
    */
   async retrieve(
     agentId: string,
@@ -86,6 +88,8 @@ export class ClientAgents extends ClientSDK {
    *
    * @remarks
    * Return [agent](https://developers.glean.com/agents/agents-api)'s input and output schemas. You can use these schemas to detect changes to an agent's input or output structure.
+   *
+   * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use GET /api/agents/{agent_id}/schemas instead..
    */
   async retrieveSchemas(
     agentId: string,
@@ -130,6 +134,8 @@ export class ClientAgents extends ClientSDK {
    *
    * @remarks
    * Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
+   *
+   * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/search instead..
    */
   async list(
     request: components.SearchAgentsRequest,
@@ -147,6 +153,8 @@ export class ClientAgents extends ClientSDK {
    *
    * @remarks
    * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the result as a stream of server-sent events (SSE). **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
+   *
+   * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/{agent_id}/runs with stream=true instead..
    */
   async runStream(
     request: components.AgentRunCreate,
@@ -164,6 +172,8 @@ export class ClientAgents extends ClientSDK {
    *
    * @remarks
    * Executes an [agent](https://developers.glean.com/agents/agents-api) run and returns the final response. **Note**: If the agent uses an input form trigger, all form fields (including optional fields) must be included in the `input` object.
+   *
+   * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/{agent_id}/runs instead..
    */
   async run(
     request: components.AgentRunCreate,

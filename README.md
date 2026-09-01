@@ -278,13 +278,13 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Client.Agents](docs/sdks/clientagents/README.md)
 
 * [create](docs/sdks/clientagents/README.md#create) - Create an agent
-* [retrieve](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
+* [~~retrieve~~](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent :warning: **Deprecated**
 * [update](docs/sdks/clientagents/README.md#update) - Edit an agent
-* [retrieveSchemas](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
+* [~~retrieveSchemas~~](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas :warning: **Deprecated**
 * [import](docs/sdks/clientagents/README.md#import) - Import an agent
-* [list](docs/sdks/clientagents/README.md#list) - Search agents
-* [runStream](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
-* [run](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
+* [~~list~~](docs/sdks/clientagents/README.md#list) - Search agents :warning: **Deprecated**
+* [~~runStream~~](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response :warning: **Deprecated**
+* [~~run~~](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response :warning: **Deprecated**
 
 ### [Client.Announcements](docs/sdks/announcements/README.md)
 
@@ -559,11 +559,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAgentsCreate`](docs/sdks/clientagents/README.md#create) - Create an agent
 - [`clientAgentsImport`](docs/sdks/clientagents/README.md#import) - Import an agent
-- [`clientAgentsList`](docs/sdks/clientagents/README.md#list) - Search agents
-- [`clientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
-- [`clientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
-- [`clientAgentsRun`](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
-- [`clientAgentsRunStream`](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
 - [`clientAgentsUpdate`](docs/sdks/clientagents/README.md#update) - Edit an agent
 - [`clientAnnouncementsCreate`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`clientAnnouncementsDelete`](docs/sdks/announcements/README.md#delete) - Delete Announcement
@@ -716,6 +711,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`triggersSearchEvents`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
 - [`triggersSearchPresetEvents`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 - [`triggersUpdate`](docs/sdks/triggers/README.md#update) - Update trigger
+- ~~[`clientAgentsList`](docs/sdks/clientagents/README.md#list)~~ - Search agents :warning: **Deprecated**
+- ~~[`clientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve)~~ - Retrieve an agent :warning: **Deprecated**
+- ~~[`clientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas)~~ - List an agent's schemas :warning: **Deprecated**
+- ~~[`clientAgentsRun`](docs/sdks/clientagents/README.md#run)~~ - Create an agent run and wait for the response :warning: **Deprecated**
+- ~~[`clientAgentsRunStream`](docs/sdks/clientagents/README.md#runstream)~~ - Create an agent run and stream the response :warning: **Deprecated**
 - ~~[`clientAnswersList`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`indexingDocumentsCount`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`indexingDocumentsStatus`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**
@@ -756,11 +756,6 @@ To learn about this feature and how to get started, check
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAgentsCreateMutation`](docs/sdks/clientagents/README.md#create) - Create an agent
 - [`useClientAgentsImportMutation`](docs/sdks/clientagents/README.md#import) - Import an agent
-- [`useClientAgentsListMutation`](docs/sdks/clientagents/README.md#list) - Search agents
-- [`useClientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve) - Retrieve an agent
-- [`useClientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas) - List an agent's schemas
-- [`useClientAgentsRunMutation`](docs/sdks/clientagents/README.md#run) - Create an agent run and wait for the response
-- [`useClientAgentsRunStreamMutation`](docs/sdks/clientagents/README.md#runstream) - Create an agent run and stream the response
 - [`useClientAgentsUpdateMutation`](docs/sdks/clientagents/README.md#update) - Edit an agent
 - [`useClientAnnouncementsCreateMutation`](docs/sdks/announcements/README.md#create) - Create Announcement
 - [`useClientAnnouncementsDeleteMutation`](docs/sdks/announcements/README.md#delete) - Delete Announcement
@@ -913,6 +908,11 @@ To learn about this feature and how to get started, check
 - [`useTriggersSearchEventsMutation`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
 - [`useTriggersSearchPresetEventsMutation`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 - [`useTriggersUpdateMutation`](docs/sdks/triggers/README.md#update) - Update trigger
+- ~~[`useClientAgentsListMutation`](docs/sdks/clientagents/README.md#list)~~ - Search agents :warning: **Deprecated**
+- ~~[`useClientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve)~~ - Retrieve an agent :warning: **Deprecated**
+- ~~[`useClientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas)~~ - List an agent's schemas :warning: **Deprecated**
+- ~~[`useClientAgentsRunMutation`](docs/sdks/clientagents/README.md#run)~~ - Create an agent run and wait for the response :warning: **Deprecated**
+- ~~[`useClientAgentsRunStreamMutation`](docs/sdks/clientagents/README.md#runstream)~~ - Create an agent run and stream the response :warning: **Deprecated**
 - ~~[`useClientAnswersListMutation`](docs/sdks/answers/README.md#list)~~ - List Answers :warning: **Deprecated**
 - ~~[`useIndexingDocumentsCountMutation`](docs/sdks/indexingdocuments/README.md#count)~~ - Get document count :warning: **Deprecated**
 - ~~[`useIndexingDocumentsStatusMutation`](docs/sdks/indexingdocuments/README.md#status)~~ - Get document upload and indexing status :warning: **Deprecated**

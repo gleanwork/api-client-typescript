@@ -164671,7 +164671,9 @@ workflows:
           contentType: application/json
           payload:
             messages:
-              - content: []
+              - content:
+                  - text: What is our parental leave policy?
+                    type: text
                 role: USER
             stream: false
         successCriteria:
@@ -164939,7 +164941,7 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            input: <value>
+            input: What is our parental leave policy?
             store: true
             stream: false
         successCriteria:
@@ -164959,7 +164961,7 @@ workflows:
           contentType: application/json
           payload:
             source_urls:
-              - <value 1>
+              - https://github.com/anthropics/skills/tree/main/skills/skill-creator
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json
@@ -164976,7 +164978,7 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            source_url: https://ugly-information.name/
+            source_url: https://github.com/anthropics/skills
             stream: false
         successCriteria:
           - condition: $statusCode == 200
@@ -164998,7 +165000,7 @@ workflows:
         requestBody:
           contentType: application/json
           payload:
-            status: DISABLED
+            status: ENABLED
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json

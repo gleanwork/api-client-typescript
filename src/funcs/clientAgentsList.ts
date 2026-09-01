@@ -32,6 +32,8 @@ import { Result } from "../types/fp.js";
  *
  * @remarks
  * Search for [agents](https://developers.glean.com/agents/agents-api) by agent name.
+ *
+ * @deprecated method: Deprecated on 2026-08-25, removal scheduled for 2027-04-15: Use POST /api/agents/search instead..
  */
 export function clientAgentsList(
   client: GleanCore,
