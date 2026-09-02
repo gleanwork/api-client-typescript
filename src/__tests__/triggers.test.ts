@@ -18,16 +18,11 @@ test("Triggers Platform Triggers Create", async () => {
 
   const result = await glean.triggers.create({
     preset_id: "GITHUB_1",
-    description: "Reviews I am tagged on, sent to my team's review channel",
     inputs: {
-      "repository": "acme/payments-api",
+      "repository": "{repository}",
     },
     delivery: {
-      webhook_url: "https://customer.app/webhook",
-      auth: {
-        type: "BEARER",
-        secret: "secret_test_123",
-      },
+      webhook_url: "https://example.com/webhook",
     },
   });
   expect(result).toBeDefined();
@@ -69,17 +64,11 @@ test("Triggers Platform Triggers Update", async () => {
   });
 
   const result = await glean.triggers.update({
-    status: "ENABLED",
-    description: "Reviews I am tagged on, sent to my team's review channel",
     inputs: {
-      "repository": "acme/payments-api",
+      "repository": "{repository}",
     },
     delivery: {
-      webhook_url: "https://customer.app/webhook",
-      auth: {
-        type: "BEARER",
-        secret: "secret_test_123",
-      },
+      webhook_url: "https://example.com/webhook",
     },
   }, "<id>");
   expect(result).toBeDefined();
@@ -96,7 +85,7 @@ test("Triggers Platform Triggers Events Search", async () => {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
   });
 
-  const result = await glean.triggers.searchEvents("<id>");
+  const result = await glean.triggers.searchEvents("<id>", {});
   expect(result).toBeDefined();
 });
 
@@ -154,7 +143,7 @@ test("Triggers Platform Trigger Presets Events Search", async () => {
 
   const result = await glean.triggers.searchPresetEvents("<id>", {
     inputs: {
-      "repository": "acme/payments-api",
+      "repository": "{repository}",
     },
   });
   expect(result).toBeDefined();

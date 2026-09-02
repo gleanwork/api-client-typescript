@@ -2062,19 +2062,6 @@ test("Search Platform Search", async () => {
 
   const result = await glean.search.query({
     query: "quarterly planning 2026",
-    datasources: [
-      "confluence",
-      "google_drive",
-    ],
-    filters: [
-      {
-        field: "type",
-        values: [
-          "spreadsheet",
-          "presentation",
-        ],
-      },
-    ],
   });
   expect(result).toBeDefined();
 });

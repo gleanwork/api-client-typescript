@@ -6,12 +6,12 @@
 import { PlatformTriggerPresetsGetRequest } from "@gleanwork/api-client/models/operations";
 
 let value: PlatformTriggerPresetsGetRequest = {
-  preset_id: "<id>",
+  preset_id: "{preset_id}",
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `presetId`                    | *string*                      | :heavy_check_mark:            | ID of the preset to retrieve. |
+| Field                         | Type                          | Required                      | Description                   | Example                       |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `presetId`                    | *string*                      | :heavy_check_mark:            | ID of the preset to retrieve. | {preset_id}                   |
