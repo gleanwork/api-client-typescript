@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 8dc95bfc7e332908fbcd5de1c6c86785
+  docChecksum: 18a116fa0026e01d9a1addcdb4a0eb16
   docVersion: 0.9.0
   speakeasyVersion: 1.796.2
   generationVersion: 2.933.0
-  releaseVersion: 0.19.1
-  configChecksum: b72b7943b8ed10928f271547d79a4705
+  releaseVersion: 0.19.2
+  configChecksum: 09eb4bd29503f8d21c73821b9a5c27c7
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: c7cf0486-2997-41a1-baea-98825d4677ec
-  pristine_commit_hash: cfa4f2f40a4768989e123766ac954600b49377db
-  pristine_tree_hash: 7c3f00ff2dbc10df426d1978cb31717ec07db604
+  generation_id: 58b7eda4-31e9-49ba-8b9b-62933dd4faca
+  pristine_commit_hash: 2f4f181d387ae40b0eb239a38e7fd5c61c572786
+  pristine_tree_hash: 31b2a673f890be742df0c998977dc339ba60e4d1
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -3746,12 +3746,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:bef54fc1ffea253400e3cae175d6c1057f50bb2a
-    pristine_git_object: df343d1cc7e02126c9476e3b00d1591553cceabe
+    last_write_checksum: sha1:8af13d5f6d06f778e05704b21e40461a90a68acd
+    pristine_git_object: fe1ce080e0b1417b45814b28fc8b000ce6be067a
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f88f55a77ddbb3bd34502dfef42ea1e90af2cf28
-    pristine_git_object: eee7a9078dc566465479108f4f3b281dbca435a7
+    last_write_checksum: sha1:744d8eead25d266969fefc45b939af432fbbea95
+    pristine_git_object: fa739bc035c03ce962475b2f578ae7af68348d17
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -3866,8 +3866,8 @@ trackedFiles:
     pristine_git_object: d252821b825c62856886e3ab9287181d7ef7f9de
   src/__tests__/messages.test.ts:
     id: 39e293f09219
-    last_write_checksum: sha1:d71d67d8ed6743e623401b4101f70705c2eb5172
-    pristine_git_object: a4785e3180745bef1ba299e2191e9c49bec1da88
+    last_write_checksum: sha1:17d923a23384341a26ce4774612e47a9bcfc8dc6
+    pristine_git_object: 41c0b3c93454418989eac9a34b10c888541e3e2e
   src/__tests__/mockserver/.gitignore:
     id: 4a7fc421b6b6
     last_write_checksum: sha1:228e1b05712a973948fd771323a2140a3b355ff4
@@ -8362,8 +8362,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:667f5c3376b9363c74661489de9b2a7a49f69eb4
-    pristine_git_object: b441535e64a3fd10efde9ef72366ec2dcbcd51ad
+    last_write_checksum: sha1:b2f70cff4cd5ea921d2e521709859da265b5a8b9
+    pristine_git_object: 082ff15ab3cbae682a37f13e01f7f9172fd1abf5
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:d1917169abb226ccb0d2e93fd211a1d2987822b4
@@ -13850,7 +13850,6 @@ generatedTests:
   platform-trigger-presets-get: "2026-08-21T02:36:10Z"
   platform-trigger-presets-input-values-list: "2026-08-21T02:36:10Z"
   platform-trigger-presets-events-search: "2026-08-21T02:36:10Z"
-releaseNotes: "## Typescript SDK Changes:\n* `glean.client.chat.create()`: \n  *  `request.chatRequest.messages[].fragments[]` **Changed**\n  *  `response.messages[].fragments[]` **Changed**\n* `glean.client.chat.retrieve()`:  `response.chatResult.chat.messages[].fragments[]` **Changed**\n* `glean.client.chat.createStream()`: \n  *  `request.chatRequest.messages[].fragments[]` **Changed**\n* `glean.client.agents.retrieve()`: **Deprecated**\n* `glean.client.agents.retrieveSchemas()`: **Deprecated**\n* `glean.client.agents.list()`: **Deprecated**\n* `glean.client.agents.runStream()`: **Deprecated**\n* `glean.client.agents.runStream()`:  `error.authenticationSuggestions[].requestType.enum(sandboxEgress)` **Added**\n* `glean.client.agents.run()`: **Deprecated**\n* `glean.client.agents.run()`:  `error.authenticationSuggestions[].requestType.enum(sandboxEgress)` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
