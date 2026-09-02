@@ -26,19 +26,6 @@ const glean = new Glean({
 async function run() {
   const result = await glean.search.query({
     query: "quarterly planning 2026",
-    datasources: [
-      "confluence",
-      "google_drive",
-    ],
-    filters: [
-      {
-        field: "type",
-        values: [
-          "spreadsheet",
-          "presentation",
-        ],
-      },
-    ],
   });
 
   console.log(result);
@@ -64,19 +51,6 @@ const glean = new GleanCore({
 async function run() {
   const res = await searchQuery(glean, {
     query: "quarterly planning 2026",
-    datasources: [
-      "confluence",
-      "google_drive",
-    ],
-    filters: [
-      {
-        field: "type",
-        values: [
-          "spreadsheet",
-          "presentation",
-        ],
-      },
-    ],
   });
   if (res.ok) {
     const { value: result } = res;

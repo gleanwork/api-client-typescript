@@ -7,16 +7,11 @@ import { PlatformTriggerCreateRequest } from "@gleanwork/api-client/models/compo
 
 let value: PlatformTriggerCreateRequest = {
   preset_id: "GITHUB_1",
-  description: "Reviews I am tagged on, sent to my team's review channel",
   inputs: {
-    "repository": "acme/payments-api",
+    "repository": "{repository}",
   },
   delivery: {
-    webhook_url: "https://customer.app/webhook",
-    auth: {
-      type: "BEARER",
-      secret: "secret_test_123",
-    },
+    webhook_url: "https://example.com/webhook",
   },
 };
 ```
