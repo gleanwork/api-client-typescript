@@ -11,6 +11,7 @@ export * from "./agentsGet.js";
 export * from "./agentsGetSchemas.js";
 export * from "./agentsSearch.js";
 export * from "./chatCreate.js";
+export * from "./chatCreateStream.js";
 export * from "./clientActivityFeedback.js";
 export * from "./clientActivityReport.js";
 export * from "./clientAgentsCreate.js";
