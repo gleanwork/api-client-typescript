@@ -7,19 +7,6 @@ import { PlatformSearchRequest } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSearchRequest = {
   query: "quarterly planning 2026",
-  datasources: [
-    "confluence",
-    "google_drive",
-  ],
-  filters: [
-    {
-      field: "type",
-      values: [
-        "spreadsheet",
-        "presentation",
-      ],
-    },
-  ],
 };
 ```
 

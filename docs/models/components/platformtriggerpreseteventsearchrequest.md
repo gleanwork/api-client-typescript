@@ -7,7 +7,7 @@ import { PlatformTriggerPresetEventSearchRequest } from "@gleanwork/api-client/m
 
 let value: PlatformTriggerPresetEventSearchRequest = {
   inputs: {
-    "repository": "acme/payments-api",
+    "repository": "{repository}",
   },
 };
 ```

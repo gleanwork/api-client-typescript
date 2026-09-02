@@ -53,7 +53,7 @@ from TanStack Query.
 import { useAgentsGet } from "@gleanwork/api-client/react-query/agentsGet.js";
 
 export function Example() {
-  const { data, error, status } = useAgentsGet("<id>");
+  const { data, error, status } = useAgentsGet("{agent_id}");
 
   // Render the UI here...
 }
@@ -71,7 +71,7 @@ import { useAgentsGet } from "@gleanwork/api-client/react-query/agentsGet.js";
 export function ExampleWithOptions() {
   const [enabled, setEnabled] = useState(true);
   const { data, error, status } = useAgentsGet(
-    "<id>",
+    "{agent_id}",
     {
       // TanStack Query options:
       enabled,
@@ -256,7 +256,7 @@ export function App() {
 }
 
 function Example() {
-  const { data } = useAgentsGetSuspense("<id>");
+  const { data } = useAgentsGetSuspense("{agent_id}");
 
   // Render the UI here...
 }
@@ -284,7 +284,7 @@ export default async function Page() {
     apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   });
 
-  await prefetchAgentsGet(queryClient, glean, "<id>");
+  await prefetchAgentsGet(queryClient, glean, "{agent_id}");
 
   return (
     // HydrationBoundary is a Client Component, so hydration will happen there.
