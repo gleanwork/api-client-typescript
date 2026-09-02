@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Create a chat response
  *
  * @remarks
- * Run an assistant turn. Set `stream` to true to receive server-sent events; otherwise the response is a typed JSON response object.
+ * Run an assistant turn. The default response is JSON. HTTP clients request server-sent events by setting `stream` to true in the JSON body. An `Accept: text/event-stream` header does not replace `stream`.
  */
 export function chatCreate(
   client: GleanCore,
