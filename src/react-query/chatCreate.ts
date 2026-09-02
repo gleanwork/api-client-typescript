@@ -9,7 +9,7 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { GleanCore } from "../core.js";
-import { chatCreate, CreateAcceptEnum } from "../funcs/chatCreate.js";
+import { chatCreate } from "../funcs/chatCreate.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -29,14 +29,12 @@ import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export { CreateAcceptEnum } from "../funcs/chatCreate.js";
-
 export type ChatCreateMutationVariables = {
-  request: components.PlatformChatCreateRequest;
-  options?: RequestOptions & { acceptHeaderOverride?: CreateAcceptEnum };
+  request: operations.PlatformChatCreateRequest;
+  options?: RequestOptions;
 };
 
-export type ChatCreateMutationData = operations.PlatformChatCreateResponse;
+export type ChatCreateMutationData = components.PlatformChatCompletedResponse;
 
 export type ChatCreateMutationError =
   | errors.PlatformProblemDetailError
@@ -79,7 +77,7 @@ export function mutationKeyChatCreate(): MutationKey {
 
 export function buildChatCreateMutation(
   client$: GleanCore,
-  hookOptions?: RequestOptions & { acceptHeaderOverride?: CreateAcceptEnum },
+  hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (

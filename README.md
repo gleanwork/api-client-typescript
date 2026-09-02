@@ -70,6 +70,7 @@ These API clients provide type-safe, idiomatic interfaces for working with Glean
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
   * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
+  * [Server-sent event streaming](#server-sent-event-streaming)
   * [File uploads](#file-uploads)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
@@ -269,6 +270,7 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Chat](docs/sdks/chat/README.md)
 
 * [create](docs/sdks/chat/README.md#create) - Create a chat response
+* [createStream](docs/sdks/chat/README.md#createstream) - SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
 
 ### [Client.Activity](docs/sdks/activity/README.md)
 
@@ -555,6 +557,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`agentsSearch`](docs/sdks/agents/README.md#search) - Search agents
 - [`chatCreate`](docs/sdks/chat/README.md#create) - Create a chat response
+- [`chatCreateStream`](docs/sdks/chat/README.md#createstream) - SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAgentsCreate`](docs/sdks/clientagents/README.md#create) - Create an agent
@@ -752,6 +755,7 @@ To learn about this feature and how to get started, check
 - [`useAgentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`useAgentsSearchMutation`](docs/sdks/agents/README.md#search) - Search agents
 - [`useChatCreateMutation`](docs/sdks/chat/README.md#create) - Create a chat response
+- [`useChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAgentsCreateMutation`](docs/sdks/clientagents/README.md#create) - Create an agent
@@ -921,6 +925,40 @@ To learn about this feature and how to get started, check
 
 </details>
 <!-- End React hooks with TanStack Query [react-query] -->
+
+<!-- Start Server-sent event streaming [eventstream] -->
+## Server-sent event streaming
+
+[Server-sent events][mdn-sse] are used to stream content from certain
+operations. These operations will expose the stream as an async iterable that
+can be consumed using a [`for await...of`][mdn-for-await-of] loop. The loop will
+terminate when the server no longer has any events to send and closes the
+underlying connection.
+
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.chat.createStream({
+    input: "What is our parental leave policy?",
+  });
+
+  for await (const event of result) {
+    console.log(event);
+  }
+}
+
+run();
+
+```
+
+[mdn-sse]: https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events
+[mdn-for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+<!-- End Server-sent event streaming [eventstream] -->
 
 <!-- Start File uploads [file-upload] -->
 ## File uploads

@@ -3,13 +3,13 @@
  * @generated-id: c56babc22a20
  */
 
-import { chatCreate, CreateAcceptEnum } from "../funcs/chatCreate.js";
+import { chatCreate } from "../funcs/chatCreate.js";
+import { chatCreateStream } from "../funcs/chatCreateStream.js";
+import { EventStream } from "../lib/event-streams.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
-
-export { CreateAcceptEnum } from "../funcs/chatCreate.js";
 
 export class Chat extends ClientSDK {
   /**
@@ -19,10 +19,27 @@ export class Chat extends ClientSDK {
    * Run an assistant turn. Set `stream` to true to receive server-sent events; otherwise the response is a typed JSON response object.
    */
   async create(
-    request: components.PlatformChatCreateRequest,
-    options?: RequestOptions & { acceptHeaderOverride?: CreateAcceptEnum },
-  ): Promise<operations.PlatformChatCreateResponse> {
+    request: operations.PlatformChatCreateRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformChatCompletedResponse> {
     return unwrapAsync(chatCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
+   *
+   * @remarks
+   * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Run an assistant turn. Set `stream` to true to receive server-sent events; otherwise the response is a typed JSON response object.
+   */
+  async createStream(
+    request: operations.PlatformChatCreateStreamRequest,
+    options?: RequestOptions,
+  ): Promise<EventStream<components.PlatformChatStreamEventServerSentEvent>> {
+    return unwrapAsync(chatCreateStream(
       this,
       request,
       options,
