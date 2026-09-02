@@ -2,8 +2,8 @@ openapi: 3.1.0
 info:
   version: "0.9.0"
   title: Glean API
-  x-source-commit-sha: 5466f502134b80b23f38908bc64369113503fdea
-  x-open-api-commit-sha: deb9f3c416b47e6ae3ae9af44a4b6a8ba8f61089
+  x-source-commit-sha: 5385fd04e94476a27a2fbb6d7dc806af5c4d61c8
+  x-open-api-commit-sha: 78c3048aaa90e6293ba0522adee1866a5613da27
   description: |
     # Introduction
     In addition to the data sources that Glean has built-in support for, Glean also provides a REST API that enables customers to put arbitrary content in the search index. This is useful, for example, for doing permissions-aware search over content in internal tools that reside on-prem as well as for searching over applications that Glean does not currently support first class. In addition these APIs allow the customer to push organization data (people info, organization structure etc) into Glean.
@@ -255,7 +255,7 @@ paths:
         - Chat
       summary: Create a chat response
       description: |
-        Run an assistant turn. Set `stream` to true to receive server-sent events; otherwise the response is a typed JSON response object.
+        Run an assistant turn. The default response is JSON. HTTP clients request server-sent events by setting `stream` to true in the JSON body. An `Accept: text/event-stream` header does not replace `stream`.
       operationId: platform-chat-create
       x-visibility: Public
       x-glean-experimental:
@@ -1737,7 +1737,7 @@ paths:
         - Chat
       summary: SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
       description: |
-        SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Run an assistant turn. Set `stream` to true to receive server-sent events; otherwise the response is a typed JSON response object.
+        SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Run an assistant turn. The default response is JSON. HTTP clients request server-sent events by setting `stream` to true in the JSON body. An `Accept: text/event-stream` header does not replace `stream`.
       operationId: platform-chat-create-stream
       x-visibility: Public
       x-glean-experimental:
@@ -7293,7 +7293,7 @@ components:
         stream:
           type: boolean
           description: |
-            When true, respond with `text/event-stream`. When false or omitted, respond with `application/json`.
+            When true, the HTTP response is `text/event-stream`. When false or omitted, the HTTP response is `application/json`.
           default: false
         store:
           type: boolean
