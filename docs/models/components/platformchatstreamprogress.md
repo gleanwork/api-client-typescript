@@ -1,0 +1,21 @@
+# PlatformChatStreamProgress
+
+## Example Usage
+
+```typescript
+import { PlatformChatStreamProgress } from "@gleanwork/api-client/models/components";
+
+let value: PlatformChatStreamProgress = {
+  type: "RESPONSE_PROGRESS",
+  response_id: "<id>",
+  text: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                       | Type                                                                                                                                                                                        | Required                                                                                                                                                                                    | Description                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                                                                      | [components.PlatformChatStreamProgressType](../../models/components/platformchatstreamprogresstype.md)                                                                                      | :heavy_check_mark:                                                                                                                                                                          | N/A                                                                                                                                                                                         |
+| `responseId`                                                                                                                                                                                | *string*                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                          | Platform-owned, non-persisted response envelope identifier in `resp_<uuid>` form. The same identifier is used for every event in one streamed response.<br/>                                |
+| `text`                                                                                                                                                                                      | *string*                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                          | Verbatim concatenated fragment text from an assistant UPDATE wire message. Display-oriented passthrough only; not part of the final answer and not present on terminal response snapshots.<br/> |

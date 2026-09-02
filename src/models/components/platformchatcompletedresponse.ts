@@ -13,10 +13,12 @@ import {
   PlatformChatOutputMessage$inboundSchema,
 } from "./platformchatoutputmessage.js";
 
-export const ObjectT = {
+export const PlatformChatCompletedResponseObject = {
   Response: "RESPONSE",
 } as const;
-export type ObjectT = ClosedEnum<typeof ObjectT>;
+export type PlatformChatCompletedResponseObject = ClosedEnum<
+  typeof PlatformChatCompletedResponseObject
+>;
 
 export const PlatformChatCompletedResponseStatus = {
   Completed: "COMPLETED",
@@ -32,7 +34,7 @@ export type PlatformChatCompletedResponse = {
    * @remarks
    */
   id: string;
-  object: ObjectT;
+  object: PlatformChatCompletedResponseObject;
   /**
    * RFC 3339 UTC timestamp when the response was created.
    */
@@ -48,8 +50,9 @@ export type PlatformChatCompletedResponse = {
 };
 
 /** @internal */
-export const ObjectT$inboundSchema: z.ZodNativeEnum<typeof ObjectT> = z
-  .nativeEnum(ObjectT);
+export const PlatformChatCompletedResponseObject$inboundSchema: z.ZodNativeEnum<
+  typeof PlatformChatCompletedResponseObject
+> = z.nativeEnum(PlatformChatCompletedResponseObject);
 
 /** @internal */
 export const PlatformChatCompletedResponseStatus$inboundSchema: z.ZodNativeEnum<
@@ -63,7 +66,7 @@ export const PlatformChatCompletedResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  object: ObjectT$inboundSchema,
+  object: PlatformChatCompletedResponseObject$inboundSchema,
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   status: PlatformChatCompletedResponseStatus$inboundSchema,
   output: z.array(PlatformChatOutputMessage$inboundSchema),

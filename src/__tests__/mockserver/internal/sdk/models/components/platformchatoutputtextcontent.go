@@ -6,6 +6,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 type PlatformChatOutputTextContentType string
@@ -35,6 +36,17 @@ type PlatformChatOutputTextContent struct {
 	Type        PlatformChatOutputTextContentType `json:"type"`
 	Text        string                            `json:"text"`
 	Annotations []PlatformChatCitationAnnotation  `json:"annotations,omitempty"`
+}
+
+func (p PlatformChatOutputTextContent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PlatformChatOutputTextContent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"type", "text"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PlatformChatOutputTextContent) GetType() PlatformChatOutputTextContentType {

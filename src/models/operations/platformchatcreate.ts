@@ -4,31 +4,89 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PlatformChatCreateResponse =
-  | components.PlatformChatCompletedResponse
-  | string;
+/**
+ * Either a plain string (single user turn) or a chronological array of `USER`/`ASSISTANT` messages. The final array message must be `USER`.
+ *
+ * @remarks
+ */
+export type PlatformChatCreateInput =
+  | string
+  | Array<components.PlatformChatInputMessage>;
+
+export type PlatformChatCreateRequest = {
+  /**
+   * Either a plain string (single user turn) or a chronological array of `USER`/`ASSISTANT` messages. The final array message must be `USER`.
+   *
+   * @remarks
+   */
+  input: string | Array<components.PlatformChatInputMessage>;
+  stream?: false | undefined;
+  /**
+   * When true (default), persist the interaction and return a `conversation_id`. When false, run ephemerally with no persistence.
+   *
+   * @remarks
+   */
+  store?: boolean | undefined;
+  /**
+   * Continue an existing stored conversation. Incompatible with message-array `input` and with `store: false`.
+   *
+   * @remarks
+   */
+  conversation_id?: string | undefined;
+};
 
 /** @internal */
-export const PlatformChatCreateResponse$inboundSchema: z.ZodType<
-  PlatformChatCreateResponse,
+export type PlatformChatCreateInput$Outbound =
+  | string
+  | Array<components.PlatformChatInputMessage$Outbound>;
+
+/** @internal */
+export const PlatformChatCreateInput$outboundSchema: z.ZodType<
+  PlatformChatCreateInput$Outbound,
   z.ZodTypeDef,
-  unknown
+  PlatformChatCreateInput
 > = z.union([
-  components.PlatformChatCompletedResponse$inboundSchema,
   z.string(),
+  z.array(components.PlatformChatInputMessage$outboundSchema),
 ]);
 
-export function platformChatCreateResponseFromJSON(
-  jsonString: string,
-): SafeParseResult<PlatformChatCreateResponse, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PlatformChatCreateResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PlatformChatCreateResponse' from JSON`,
+export function platformChatCreateInputToJSON(
+  platformChatCreateInput: PlatformChatCreateInput,
+): string {
+  return JSON.stringify(
+    PlatformChatCreateInput$outboundSchema.parse(platformChatCreateInput),
+  );
+}
+
+/** @internal */
+export type PlatformChatCreateRequest$Outbound = {
+  input: string | Array<components.PlatformChatInputMessage$Outbound>;
+  stream: false;
+  store: boolean;
+  conversation_id?: string | undefined;
+};
+
+/** @internal */
+export const PlatformChatCreateRequest$outboundSchema: z.ZodType<
+  PlatformChatCreateRequest$Outbound,
+  z.ZodTypeDef,
+  PlatformChatCreateRequest
+> = z.object({
+  input: z.union([
+    z.string(),
+    z.array(components.PlatformChatInputMessage$outboundSchema),
+  ]),
+  stream: z.literal(false).default(false as const),
+  store: z.boolean().default(true),
+  conversation_id: z.string().optional(),
+});
+
+export function platformChatCreateRequestToJSON(
+  platformChatCreateRequest: PlatformChatCreateRequest,
+): string {
+  return JSON.stringify(
+    PlatformChatCreateRequest$outboundSchema.parse(platformChatCreateRequest),
   );
 }
