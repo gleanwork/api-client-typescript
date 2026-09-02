@@ -2,7 +2,7 @@
 
 {
   "name": "@gleanwork/api-client",
-  "version": "0.19.2",
+  "version": "0.20.0",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    
@@ -12,6 +12,7 @@
     "./lib/http": "./src/lib/http.ts",
     "./lib/retries": "./src/lib/retries.ts",
     "./lib/sdks": "./src/lib/sdks.ts",
+    "./lib/event-streams": "./src/lib/event-streams.ts",
     "./types": "./src/types/index.ts"
   },
   "publish": {

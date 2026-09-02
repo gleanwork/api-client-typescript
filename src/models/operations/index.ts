@@ -78,6 +78,7 @@ export * from "./platformagentscreaterun.js";
 export * from "./platformagentsget.js";
 export * from "./platformagentsgetschemas.js";
 export * from "./platformchatcreate.js";
+export * from "./platformchatcreatestream.js";
 export * from "./platformsearchfilters.js";
 export * from "./platformskillscreateversion.js";
 export * from "./platformskillsdelete.js";
