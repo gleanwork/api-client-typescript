@@ -8,17 +8,11 @@ Partial update. Only the supplied fields are changed.
 import { PlatformTriggerUpdateRequest } from "@gleanwork/api-client/models/components";
 
 let value: PlatformTriggerUpdateRequest = {
-  status: "ENABLED",
-  description: "Reviews I am tagged on, sent to my team's review channel",
   inputs: {
-    "repository": "acme/payments-api",
+    "repository": "{repository}",
   },
   delivery: {
-    webhook_url: "https://customer.app/webhook",
-    auth: {
-      type: "BEARER",
-      secret: "secret_test_123",
-    },
+    webhook_url: "https://example.com/webhook",
   },
 };
 ```
