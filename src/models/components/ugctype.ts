@@ -23,6 +23,7 @@ export const UgcType = {
   PinsType: "PINS_TYPE",
   ScribesType: "SCRIBES_TYPE",
   ShortcutsType: "SHORTCUTS_TYPE",
+  SkillsType: "SKILLS_TYPE",
   SlideType: "SLIDE_TYPE",
   SpreadsheetType: "SPREADSHEET_TYPE",
   InlineHtmlType: "INLINE_HTML_TYPE",

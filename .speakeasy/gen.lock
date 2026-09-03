@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 68720f65cbf714217871381245ae8dc9
+  docChecksum: f93d9acdb5383727834338db515aa742
   docVersion: 0.9.0
   speakeasyVersion: 1.796.3
   generationVersion: 2.934.1
-  releaseVersion: 0.20.2
-  configChecksum: 22b57c4af6d9b7ea1cbbd92f12a3ffd8
+  releaseVersion: 0.20.3
+  configChecksum: e200cbde5a092994f88afaf98973bdff
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: d7e95a6a-1e87-4d74-8e8e-74679f58d78e
-  pristine_commit_hash: 4dcb26a9db23981a1827af453c73553b3daafd5a
-  pristine_tree_hash: ec807fc45396cbdff03dfa016971741f87a429b1
+  generation_id: baebd7b2-7eac-4ccc-9b4c-6be58323de9d
+  pristine_commit_hash: 3655894e213b6677dce52291c32cb6aab6e30b98
+  pristine_tree_hash: 90a3b7d8affaf0db89a57931e5f78dc73b47509f
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -2931,8 +2931,8 @@ trackedFiles:
     pristine_git_object: a1424a959193ca0c3ed2b8904108c878b78e9653
   docs/models/components/ugctype.md:
     id: 40fa5e032f80
-    last_write_checksum: sha1:2fe035a5791056128a139dbaf4712d029c7286b5
-    pristine_git_object: 243bf0c85469a26ba9a68c9489b53122b122cdac
+    last_write_checksum: sha1:0a12bfacde6aadf46e9b08a2b21c33c574ff7d08
+    pristine_git_object: 956a8c6590eeb9742cc57110b2e009ae1982ceda
   docs/models/components/uiconfig.md:
     id: 755fbd873311
     last_write_checksum: sha1:e4c21e972dd18f962b16321f2f7f61eaf1617cd5
@@ -3843,12 +3843,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:0007bb8bf98cc948652293be448cd09e98dd6d4d
-    pristine_git_object: 162b1153045cbbd9561e09eb7170f935e7869b65
+    last_write_checksum: sha1:c7911f8680c34bd6d4506afb88d59a5b94da58d6
+    pristine_git_object: 90ff2d04f235fdd2f214dce76091cc2b80328337
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:c8984176f8f8867fe6114ebe70a4b3098439a5da
-    pristine_git_object: 0f30175aae708229b363c3864f72098b1111bc8b
+    last_write_checksum: sha1:75cf59630b809b55c298b637f1ba52360e3c2e2b
+    pristine_git_object: a301297e98a3d46b25c2849590b372b436cf848e
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -4379,8 +4379,8 @@ trackedFiles:
     pristine_git_object: 759610d9e14b656b2a8671c25618d94bd6dd13fb
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1createcollection.go:
     id: a5a57be97594
-    last_write_checksum: sha1:018cc7286107290e649b6b3b03aa3dbb954fac49
-    pristine_git_object: 673b01bb8e674296a9eaae2e614c08d07b3700a2
+    last_write_checksum: sha1:9b962c4ca4d653411bc410023c49401518b209fe
+    pristine_git_object: a4b193767e8924ecc8a22aa8df6d0030f8786874
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1createshortcut.go:
     id: 440deca160f6
     last_write_checksum: sha1:e2bba9884dd04f8d9b158c88fb32ff9f06687846
@@ -6847,8 +6847,8 @@ trackedFiles:
     pristine_git_object: 59713e6b8de65e1132c4a728f2baaf46d056f406
   src/__tests__/mockserver/internal/sdk/models/components/ugctype.go:
     id: 5691e3ad0390
-    last_write_checksum: sha1:caa78f58ca506ae3d94b75d2eafb5eea0ba8edac
-    pristine_git_object: 76f3175d9107203f786e9ca8615af43b300b1c70
+    last_write_checksum: sha1:1eae154c34f24cdad203b0616efc4c51df0cdd16
+    pristine_git_object: 022ae2034ab765ee9cf8efcdc7031499220b0a12
   src/__tests__/mockserver/internal/sdk/models/components/unauthorizeddatasourceinstance.go:
     id: 1748f7123a86
     last_write_checksum: sha1:af62a8cdb037e60d924899d3f719369d39c52d3e
@@ -7811,8 +7811,8 @@ trackedFiles:
     pristine_git_object: 80853fce6d86d20766336fb2fd27c8669cd12ca8
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:dfb185c744196a1c04135d609d44ccdaa541d5d4
-    pristine_git_object: a1e80406504d94388ad5335968a981e0cc471443
+    last_write_checksum: sha1:bb2dba46f1d4304d8236c52e0355a53081ab6119
+    pristine_git_object: bb5e2b02fd92c4bc218d0a791e8786a14448f109
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:3a38647391f52221c009a9273eebf90793b3d430
@@ -8527,8 +8527,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:3c03dd73a32b36bb0b1002a59a3ffea03cc1b0f3
-    pristine_git_object: 6555b62fcc88bf13aabd3145c381fb692c4c70f7
+    last_write_checksum: sha1:0c1591f9d847cfd3e46f90d41b3b5d7e4373c47c
+    pristine_git_object: b802cb4a7045a592ca25eaf4144e767347af44a6
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:d1917169abb226ccb0d2e93fd211a1d2987822b4
@@ -10823,8 +10823,8 @@ trackedFiles:
     pristine_git_object: bf66f57a01c6a0450d85b9d50feba3c5457b16d8
   src/models/components/ugctype.ts:
     id: b0a3f56ca4ad
-    last_write_checksum: sha1:425e4c0573f7c20ed119266e00285f891aa56215
-    pristine_git_object: 21615b6543fcd1958ff2d93729f569217b38b0de
+    last_write_checksum: sha1:46ae6ef0ddac465e2eebd8d9ee39f1153b482e39
+    pristine_git_object: a3df0f8d51ca37dbb5be8b729ee40083a2c7bcdf
   src/models/components/unauthorizeddatasourceinstance.ts:
     id: 8eb114ca7c88
     last_write_checksum: sha1:a756d82561935bd60e6390068a436813b11dfb74
@@ -14094,6 +14094,7 @@ generatedTests:
   platform-trigger-presets-get: "2026-08-21T02:36:10Z"
   platform-trigger-presets-input-values-list: "2026-08-21T02:36:10Z"
   platform-trigger-presets-events-search: "2026-08-21T02:36:10Z"
+releaseNotes: "## Typescript SDK Changes:\n* `glean.client.announcements.create()`: \n  *  `request.createAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.announcements.update()`: \n  *  `request.updateAnnouncementRequest.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.body.structuredList[].document.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.answers.create()`: \n  *  `request.createAnswerRequest.data.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.answers.update()`: \n  *  `request.editAnswerRequest.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.answers.retrieve()`:  `response.answerResult.answer.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.answers.list()`:  `response.answerResults[].answer.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.chat.create()`: \n  *  `request.chatRequest.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.chat.retrieve()`: \n  *  `response.chatResult.chat.createdBy.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `error.createdBy.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.chat.list()`:  `response.chatResults[].chat.createdBy.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.chat.createStream()`: \n  *  `request.chatRequest.messages[].citations[].sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.agents.create()`:  `response.workflow.author.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.agents.import()`:  `response.workflowResult.workflow.author.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.addItems()`:  `response.collection.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.create()`: \n  *  `request.createCollectionRequest.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.union(class (0)).collection.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.deleteItem()`:  `response.collection.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.update()`: \n  *  `request.editCollectionRequest.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.updateItem()`:  `response.collection.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.retrieve()`:  `response.collection.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.collections.list()`:  `response.collections[].addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.documents.retrieve()`:  `response.documents.Map<DocumentOrError>.union(Document).metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.documents.retrieveByFacets()`:  `response.documents[].metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.insights.retrieve()`:  `response.gleanAssist.activityInsights[].user.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.messages.retrieve()`:  `response.searchResponse.results[].structuredResults[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.pins.update()`:  `response.attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.pins.retrieve()`:  `response.pin.attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.pins.list()`:  `response.pins[].attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.pins.create()`:  `response.attribution.relatedDocuments[].querySuggestion.ranges[].document.metadata.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.search.queryAsAdmin()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.search.autocomplete()`:  `response.results[].document.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.search.retrieveFeed()`:  `response.results[].primaryEntry.createdBy.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.search.recommendations()`: \n  *  `request.recommendationsRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.search.query()`: \n  *  `request.searchRequest.sourceDocument.metadata.author.relatedDocuments[].results[].structuredResults[].answer.collections[].items[].shortcut.favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.results[].structuredResults[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.entities.list()`:  `response.results[].relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.entities.readPeople()`:  `response.results[].relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.shortcuts.create()`: \n  *  `request.createShortcutRequest.data.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.shortcut.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.shortcuts.retrieve()`:  `response.shortcut.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.shortcuts.list()`:  `response.shortcuts[].addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.shortcuts.update()`: \n  *  `request.updateShortcutRequest.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n  *  `response.shortcut.addedRoles[].person.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.verification.addReminder()`:  `response.metadata.lastVerifier.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.verification.list()`:  `response.documents[].metadata.lastVerifier.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n* `glean.client.verification.verify()`:  `response.metadata.lastVerifier.relatedDocuments[].querySuggestion.ranges[].document.metadata.pins[].favoriteInfo.ugcType.enum(skillsType)` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
