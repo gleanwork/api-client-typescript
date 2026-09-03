@@ -26,6 +26,7 @@ const (
 	UgcTypePinsType            UgcType = "PINS_TYPE"
 	UgcTypeScribesType         UgcType = "SCRIBES_TYPE"
 	UgcTypeShortcutsType       UgcType = "SHORTCUTS_TYPE"
+	UgcTypeSkillsType          UgcType = "SKILLS_TYPE"
 	UgcTypeSlideType           UgcType = "SLIDE_TYPE"
 	UgcTypeSpreadsheetType     UgcType = "SPREADSHEET_TYPE"
 	UgcTypeInlineHTMLType      UgcType = "INLINE_HTML_TYPE"
@@ -71,6 +72,8 @@ func (e *UgcType) UnmarshalJSON(data []byte) error {
 	case "SCRIBES_TYPE":
 		fallthrough
 	case "SHORTCUTS_TYPE":
+		fallthrough
+	case "SKILLS_TYPE":
 		fallthrough
 	case "SLIDE_TYPE":
 		fallthrough
