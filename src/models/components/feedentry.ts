@@ -123,10 +123,12 @@ export const JustificationType = {
   ProjectNextStep: "PROJECT_NEXT_STEP",
   DemoCard: "DEMO_CARD",
   ResolveMeetingConflict: "RESOLVE_MEETING_CONFLICT",
+  FindingMeetingRoom: "FINDING_MEETING_ROOM",
   OooPlanner: "OOO_PLANNER",
   OooCatchUp: "OOO_CATCH_UP",
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
   KnowledgeGap: "KNOWLEDGE_GAP",
+  ArtifactCreation: "ARTIFACT_CREATION",
 } as const;
 /**
  * Type of the justification.
