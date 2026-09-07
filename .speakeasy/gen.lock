@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 2b2ce854d657d789a98d46023428c81a
+  docChecksum: 09575dec742ea8ce59a96ca53e7d9a73
   docVersion: 0.9.0
   speakeasyVersion: 1.796.4
   generationVersion: 2.935.1
-  releaseVersion: 0.20.5
-  configChecksum: 6b303cc78ceb65b7a88722ef5edf8ce7
+  releaseVersion: 0.20.6
+  configChecksum: c6d7c03661bfbab86f509a5f9b32232b
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: d7f95137-fa05-4bc4-a0ec-ce40d9096fbc
-  pristine_commit_hash: beddd4b0a7768b963ba25ea04e8aba92dd95351f
-  pristine_tree_hash: af5f01cf8db2557693d8bd800737863a5f66b03b
+  generation_id: 2babd389-5d4e-4685-8ae4-fadbf7a3843d
+  pristine_commit_hash: 8bb5f14fe0f0d492d9fc2a38ce5564df4af75448
+  pristine_tree_hash: 7ac24e97bf538d057ca2828f7200b98fcd767c9a
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -3843,12 +3843,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:a84eb0970c22756f492068e70b2555e65b3e4c69
-    pristine_git_object: 106fcd50aeaedef3774446f731cdd887ed02955e
+    last_write_checksum: sha1:af35df1277331bfe343ead72f915612964c22438
+    pristine_git_object: b3f634aa1c6c1e955cd46a08a2dee4f67f670d98
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:9dad6df53c817c33b72e06ea6c77a91d2f0031b6
-    pristine_git_object: a0736ace812db47a9790ba37cb2de9fe3c09a245
+    last_write_checksum: sha1:e13734e8c3c5e76a1e5c2d2536e473115699c300
+    pristine_git_object: 5d8e9165596d8d052fe7930a32f150df32e1f249
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -4379,8 +4379,8 @@ trackedFiles:
     pristine_git_object: 759610d9e14b656b2a8671c25618d94bd6dd13fb
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1createcollection.go:
     id: a5a57be97594
-    last_write_checksum: sha1:018cc7286107290e649b6b3b03aa3dbb954fac49
-    pristine_git_object: 673b01bb8e674296a9eaae2e614c08d07b3700a2
+    last_write_checksum: sha1:9b962c4ca4d653411bc410023c49401518b209fe
+    pristine_git_object: a4b193767e8924ecc8a22aa8df6d0030f8786874
   src/__tests__/mockserver/internal/handler/pathpostrestapiv1createshortcut.go:
     id: 440deca160f6
     last_write_checksum: sha1:e2bba9884dd04f8d9b158c88fb32ff9f06687846
@@ -7811,8 +7811,8 @@ trackedFiles:
     pristine_git_object: 80853fce6d86d20766336fb2fd27c8669cd12ca8
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:56378f2a53fd53a8dd89700e017fadc88986998c
-    pristine_git_object: 682a1852ffb44b6785f3eff152b8b7e754ad29d4
+    last_write_checksum: sha1:530339639c4d11743032d2771e3a3f0567ca7f4b
+    pristine_git_object: a526bf2187424ed2a5da7c9bbf52644176663dc5
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:3a38647391f52221c009a9273eebf90793b3d430
@@ -8527,8 +8527,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:7ccc4fb78ed864890f4c77121cae750339e88896
-    pristine_git_object: c862631978042821dd82fcc0d14bf51ae8d76252
+    last_write_checksum: sha1:e4f30f8052380bee69f3c971ccb4770020575e1e
+    pristine_git_object: 9efc6ec29e7087f05b89a280ac679369b6007593
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:d1917169abb226ccb0d2e93fd211a1d2987822b4
@@ -14094,7 +14094,6 @@ generatedTests:
   platform-trigger-presets-get: "2026-08-21T02:36:10Z"
   platform-trigger-presets-input-values-list: "2026-08-21T02:36:10Z"
   platform-trigger-presets-events-search: "2026-08-21T02:36:10Z"
-releaseNotes: "## Typescript SDK Changes:\n* `glean.client.search.retrieveFeed()`: \n  *  `request.feedRequest.categories[]` **Changed**\n  *  `response.results[]` **Changed**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
