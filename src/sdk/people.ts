@@ -82,7 +82,7 @@ export class People extends ClientSDK {
    * @remarks
    * Replaces all the currently indexed employees using paginated batch API calls. Please refer to the [bulk indexing](https://developers.glean.com/indexing/documents/bulk-upload-model) documentation for an explanation of how to use bulk endpoints.
    *
-   * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
+   * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2027-01-15: Endpoint is deprecated.
    */
   async bulkIndex(
     request: components.BulkIndexEmployeesRequest,
