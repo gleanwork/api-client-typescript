@@ -66,6 +66,7 @@ export const FeedRequestCategory = {
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
   KnowledgeGap: "KNOWLEDGE_GAP",
   ArtifactCreation: "ARTIFACT_CREATION",
+  EditDoc: "EDIT_DOC",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 
