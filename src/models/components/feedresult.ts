@@ -64,6 +64,7 @@ export const FeedResultCategory = {
   AdminHealthCenter: "ADMIN_HEALTH_CENTER",
   KnowledgeGap: "KNOWLEDGE_GAP",
   ArtifactCreation: "ARTIFACT_CREATION",
+  EditDoc: "EDIT_DOC",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.
