@@ -270,7 +270,7 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Chat](docs/sdks/chat/README.md)
 
 * [create](docs/sdks/chat/README.md#create) - Create a chat response
-* [createStream](docs/sdks/chat/README.md#createstream) - SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
+* [createStream](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
 
 ### [Client.Activity](docs/sdks/activity/README.md)
 
@@ -557,7 +557,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`agentsSearch`](docs/sdks/agents/README.md#search) - Search agents
 - [`chatCreate`](docs/sdks/chat/README.md#create) - Create a chat response
-- [`chatCreateStream`](docs/sdks/chat/README.md#createstream) - SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
+- [`chatCreateStream`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAgentsCreate`](docs/sdks/clientagents/README.md#create) - Create an agent
@@ -755,7 +755,7 @@ To learn about this feature and how to get started, check
 - [`useAgentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`useAgentsSearchMutation`](docs/sdks/agents/README.md#search) - Search agents
 - [`useChatCreateMutation`](docs/sdks/chat/README.md#create) - Create a chat response
-- [`useChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
+- [`useChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAgentsCreateMutation`](docs/sdks/clientagents/README.md#create) - Create an agent
