@@ -51,10 +51,10 @@ export type ChatCreateStreamMutationError =
   | SDKValidationError;
 
 /**
- * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Create a chat response
+ * Create a streaming chat response
  *
  * @remarks
- * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Run an assistant turn. The default response is JSON. HTTP clients request server-sent events by setting `stream` to true in the JSON body. An `Accept: text/event-stream` header does not replace `stream`.
+ * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Run an assistant turn as server-sent events. HTTP clients request this mode by setting `stream` to true in the JSON body.
  */
 export function useChatCreateStreamMutation(
   options?: MutationHookOptions<
