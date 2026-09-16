@@ -41,6 +41,12 @@ export type ImportAgentRequest = {
    */
   syncMode?: ImportAgentSyncMode | undefined;
   /**
+   * Optional baseline hash of the currently published agent definition. When publish hash validation is enabled, an import updating an existing agent with syncMode PUBLISHED is rejected with HTTP 409 if the current published definition hash is nonempty and does not match this baseline. Leading and trailing whitespace is trimmed; omitted or blank values skip validation. Ignored for STAGED imports, new agents, and transient previews.
+   *
+   * @remarks
+   */
+  publishedBaselineHash?: string | undefined;
+  /**
    * Deprecated. Draft mutation semantics are not supported for transient previews. Use transient and parentWorkflowId instead.
    *
    * @remarks
@@ -80,6 +86,7 @@ export type ImportAgentRequest$Outbound = {
   gitAuthorId?: string | undefined;
   commitMessage?: string | undefined;
   syncMode?: string | undefined;
+  publishedBaselineHash?: string | undefined;
   isDraft?: boolean | undefined;
 };
 
@@ -94,6 +101,7 @@ export const ImportAgentRequest$outboundSchema: z.ZodType<
   gitAuthorId: z.string().optional(),
   commitMessage: z.string().optional(),
   syncMode: ImportAgentSyncMode$outboundSchema.optional(),
+  publishedBaselineHash: z.string().optional(),
   isDraft: z.boolean().optional(),
 });
 
