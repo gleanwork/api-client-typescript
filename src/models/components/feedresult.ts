@@ -65,6 +65,7 @@ export const FeedResultCategory = {
   KnowledgeGap: "KNOWLEDGE_GAP",
   ArtifactCreation: "ARTIFACT_CREATION",
   EditDoc: "EDIT_DOC",
+  ChatToArtifact: "CHAT_TO_ARTIFACT",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.
