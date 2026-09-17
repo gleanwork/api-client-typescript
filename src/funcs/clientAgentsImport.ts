@@ -160,8 +160,18 @@ async function $do(
   if (payload.ImportAgentRequest.isDraft !== undefined) {
     appendForm(body, "isDraft", payload.ImportAgentRequest.isDraft);
   }
+  if (payload.ImportAgentRequest.publishedBaselineHash !== undefined) {
+    appendForm(
+      body,
+      "publishedBaselineHash",
+      payload.ImportAgentRequest.publishedBaselineHash,
+    );
+  }
   if (payload.ImportAgentRequest.syncMode !== undefined) {
     appendForm(body, "syncMode", payload.ImportAgentRequest.syncMode);
+  }
+  if (payload.ImportAgentRequest.versionSource !== undefined) {
+    appendForm(body, "versionSource", payload.ImportAgentRequest.versionSource);
   }
 
   const pathParams = {

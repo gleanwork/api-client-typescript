@@ -5,10 +5,10 @@
 
 import * as z from "zod/v3";
 import {
-  PlatformMessage,
-  PlatformMessage$Outbound,
-  PlatformMessage$outboundSchema,
-} from "./platformmessage.js";
+  PlatformMessageInput,
+  PlatformMessageInput$Outbound,
+  PlatformMessageInput$outboundSchema,
+} from "./platformmessageinput.js";
 
 /**
  * Request to run an agent. A request MUST supply either `messages` (a non-empty conversation) or `input` (for input-form triggered agents).
@@ -25,7 +25,7 @@ export type PlatformAgentRunCreateRequest = {
    *
    * @remarks
    */
-  messages?: Array<PlatformMessage> | undefined;
+  messages?: Array<PlatformMessageInput> | undefined;
   /**
    * Metadata to pass to the agent.
    */
@@ -39,7 +39,7 @@ export type PlatformAgentRunCreateRequest = {
 /** @internal */
 export type PlatformAgentRunCreateRequest$Outbound = {
   input?: { [k: string]: any } | undefined;
-  messages?: Array<PlatformMessage$Outbound> | undefined;
+  messages?: Array<PlatformMessageInput$Outbound> | undefined;
   metadata?: { [k: string]: any } | undefined;
   stream: boolean;
 };
@@ -51,7 +51,7 @@ export const PlatformAgentRunCreateRequest$outboundSchema: z.ZodType<
   PlatformAgentRunCreateRequest
 > = z.object({
   input: z.record(z.any()).optional(),
-  messages: z.array(PlatformMessage$outboundSchema).optional(),
+  messages: z.array(PlatformMessageInput$outboundSchema).optional(),
   metadata: z.record(z.any()).optional(),
   stream: z.boolean().default(false),
 });

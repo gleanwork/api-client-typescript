@@ -8,9 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  PlatformChatCitationAnnotation,
+  PlatformChatCitationAnnotation$inboundSchema,
+} from "./platformchatcitationannotation.js";
+import {
   PlatformContentType,
   PlatformContentType$inboundSchema,
-  PlatformContentType$outboundSchema,
 } from "./platformcontenttype.js";
 
 export type PlatformMessageTextBlock = {
@@ -19,6 +22,7 @@ export type PlatformMessageTextBlock = {
    */
   text: string;
   type: PlatformContentType;
+  annotations?: Array<PlatformChatCitationAnnotation> | undefined;
 };
 
 /** @internal */
@@ -29,30 +33,9 @@ export const PlatformMessageTextBlock$inboundSchema: z.ZodType<
 > = z.object({
   text: z.string(),
   type: PlatformContentType$inboundSchema,
-});
-/** @internal */
-export type PlatformMessageTextBlock$Outbound = {
-  text: string;
-  type: string;
-};
-
-/** @internal */
-export const PlatformMessageTextBlock$outboundSchema: z.ZodType<
-  PlatformMessageTextBlock$Outbound,
-  z.ZodTypeDef,
-  PlatformMessageTextBlock
-> = z.object({
-  text: z.string(),
-  type: PlatformContentType$outboundSchema,
+  annotations: z.array(PlatformChatCitationAnnotation$inboundSchema).optional(),
 });
 
-export function platformMessageTextBlockToJSON(
-  platformMessageTextBlock: PlatformMessageTextBlock,
-): string {
-  return JSON.stringify(
-    PlatformMessageTextBlock$outboundSchema.parse(platformMessageTextBlock),
-  );
-}
 export function platformMessageTextBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<PlatformMessageTextBlock, SDKValidationError> {
