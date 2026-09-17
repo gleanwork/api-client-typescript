@@ -5,10 +5,10 @@
 
 import * as z from "zod/v3";
 import {
-  Message,
-  Message$Outbound,
-  Message$outboundSchema,
-} from "./message.js";
+  MessageInput,
+  MessageInput$Outbound,
+  MessageInput$outboundSchema,
+} from "./messageinput.js";
 
 /**
  * Payload for creating a run. **Important**: If the agent uses an input form trigger, the `input` field is required and must include all fields defined in the form schema. Even fields marked as optional in the UI must be included in the request—use an empty string (`""`) for optional fields without values. Omitting required form fields will result in a 500 error.
@@ -25,7 +25,7 @@ export type AgentRunCreate = {
   /**
    * The messages to pass an input to the agent.
    */
-  messages?: Array<Message> | undefined;
+  messages?: Array<MessageInput> | undefined;
   /**
    * The metadata to pass to the agent.
    */
@@ -36,7 +36,7 @@ export type AgentRunCreate = {
 export type AgentRunCreate$Outbound = {
   agent_id: string;
   input?: { [k: string]: any } | undefined;
-  messages?: Array<Message$Outbound> | undefined;
+  messages?: Array<MessageInput$Outbound> | undefined;
   metadata?: { [k: string]: any } | undefined;
 };
 
@@ -48,7 +48,7 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
 > = z.object({
   agent_id: z.string(),
   input: z.record(z.any()).optional(),
-  messages: z.array(Message$outboundSchema).optional(),
+  messages: z.array(MessageInput$outboundSchema).optional(),
   metadata: z.record(z.any()).optional(),
 });
 

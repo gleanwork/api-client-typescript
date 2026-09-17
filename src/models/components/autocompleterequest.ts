@@ -57,8 +57,6 @@ export type AutocompleteRequest = {
   resultTypes?: Array<AutocompleteRequestResultType> | undefined;
   /**
    * Maximum number of results to be returned. If no value is provided, the backend will cap at 200.
-   *
-   * @remarks
    */
   resultSize?: number | undefined;
   /**

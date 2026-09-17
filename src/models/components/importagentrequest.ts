@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { blobLikeSchema } from "../../types/blobs.js";
+import { ClosedEnum } from "../../types/enums.js";
 import {
   ImportAgentSyncMode,
   ImportAgentSyncMode$outboundSchema,
@@ -14,6 +15,22 @@ export type Bundle = {
   fileName: string;
   content: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array;
 };
+
+/**
+ * Provenance recorded on the staged commit or published version this import produces. Doesn't change the agent's management mode (workflowSource). GIT: synced from a Git repository. USER: uploaded by a user. Defaults to USER when omitted. Ignored for transient imports.
+ *
+ * @remarks
+ */
+export const VersionSource = {
+  Git: "GIT",
+  User: "USER",
+} as const;
+/**
+ * Provenance recorded on the staged commit or published version this import produces. Doesn't change the agent's management mode (workflowSource). GIT: synced from a Git repository. USER: uploaded by a user. Defaults to USER when omitted. Ignored for transient imports.
+ *
+ * @remarks
+ */
+export type VersionSource = ClosedEnum<typeof VersionSource>;
 
 export type ImportAgentRequest = {
   /**
@@ -40,6 +57,18 @@ export type ImportAgentRequest = {
    * @remarks
    */
   syncMode?: ImportAgentSyncMode | undefined;
+  /**
+   * Provenance recorded on the staged commit or published version this import produces. Doesn't change the agent's management mode (workflowSource). GIT: synced from a Git repository. USER: uploaded by a user. Defaults to USER when omitted. Ignored for transient imports.
+   *
+   * @remarks
+   */
+  versionSource?: VersionSource | undefined;
+  /**
+   * Optional baseline hash of the currently published agent definition. When publish hash validation is enabled, an import updating an existing agent with syncMode PUBLISHED is rejected with HTTP 409 if the current published definition hash is nonempty and does not match this baseline. Leading and trailing whitespace is trimmed; omitted or blank values skip validation. Ignored for STAGED imports, new agents, and transient previews.
+   *
+   * @remarks
+   */
+  publishedBaselineHash?: string | undefined;
   /**
    * Deprecated. Draft mutation semantics are not supported for transient previews. Use transient and parentWorkflowId instead.
    *
@@ -74,12 +103,19 @@ export function bundleToJSON(bundle: Bundle): string {
 }
 
 /** @internal */
+export const VersionSource$outboundSchema: z.ZodNativeEnum<
+  typeof VersionSource
+> = z.nativeEnum(VersionSource);
+
+/** @internal */
 export type ImportAgentRequest$Outbound = {
   bundle: Bundle$Outbound | Blob;
   gitCommitSha?: string | undefined;
   gitAuthorId?: string | undefined;
   commitMessage?: string | undefined;
   syncMode?: string | undefined;
+  versionSource: string;
+  publishedBaselineHash?: string | undefined;
   isDraft?: boolean | undefined;
 };
 
@@ -94,6 +130,8 @@ export const ImportAgentRequest$outboundSchema: z.ZodType<
   gitAuthorId: z.string().optional(),
   commitMessage: z.string().optional(),
   syncMode: ImportAgentSyncMode$outboundSchema.optional(),
+  versionSource: VersionSource$outboundSchema.default("USER"),
+  publishedBaselineHash: z.string().optional(),
   isDraft: z.boolean().optional(),
 });
 
