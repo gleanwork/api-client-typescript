@@ -130,6 +130,7 @@ export const JustificationType = {
   KnowledgeGap: "KNOWLEDGE_GAP",
   ArtifactCreation: "ARTIFACT_CREATION",
   EditDoc: "EDIT_DOC",
+  ChatToArtifact: "CHAT_TO_ARTIFACT",
 } as const;
 /**
  * Type of the justification.
