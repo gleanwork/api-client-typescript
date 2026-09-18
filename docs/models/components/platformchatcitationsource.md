@@ -9,8 +9,8 @@ Four-variant citation source union.
 
 ```typescript
 const value: components.PlatformChatDocumentSource = {
-  type: "DOCUMENT",
   document_id: "<id>",
+  type: "DOCUMENT",
 };
 ```
 

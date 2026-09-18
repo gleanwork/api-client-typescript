@@ -8,14 +8,15 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  ContentType,
-  ContentType$inboundSchema,
-  ContentType$outboundSchema,
-} from "./contenttype.js";
+  ChatCitationAnnotation,
+  ChatCitationAnnotation$inboundSchema,
+} from "./chatcitationannotation.js";
+import { ContentType, ContentType$inboundSchema } from "./contenttype.js";
 
 export type MessageTextBlock = {
   text: string;
   type: ContentType;
+  annotations?: Array<ChatCitationAnnotation> | undefined;
 };
 
 export type Message = {
@@ -37,30 +38,9 @@ export const MessageTextBlock$inboundSchema: z.ZodType<
 > = z.object({
   text: z.string(),
   type: ContentType$inboundSchema,
-});
-/** @internal */
-export type MessageTextBlock$Outbound = {
-  text: string;
-  type: string;
-};
-
-/** @internal */
-export const MessageTextBlock$outboundSchema: z.ZodType<
-  MessageTextBlock$Outbound,
-  z.ZodTypeDef,
-  MessageTextBlock
-> = z.object({
-  text: z.string(),
-  type: ContentType$outboundSchema,
+  annotations: z.array(ChatCitationAnnotation$inboundSchema).optional(),
 });
 
-export function messageTextBlockToJSON(
-  messageTextBlock: MessageTextBlock,
-): string {
-  return JSON.stringify(
-    MessageTextBlock$outboundSchema.parse(messageTextBlock),
-  );
-}
 export function messageTextBlockFromJSON(
   jsonString: string,
 ): SafeParseResult<MessageTextBlock, SDKValidationError> {
@@ -77,25 +57,7 @@ export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
     role: z.string().optional(),
     content: z.array(z.lazy(() => MessageTextBlock$inboundSchema)).optional(),
   });
-/** @internal */
-export type Message$Outbound = {
-  role?: string | undefined;
-  content?: Array<MessageTextBlock$Outbound> | undefined;
-};
 
-/** @internal */
-export const Message$outboundSchema: z.ZodType<
-  Message$Outbound,
-  z.ZodTypeDef,
-  Message
-> = z.object({
-  role: z.string().optional(),
-  content: z.array(z.lazy(() => MessageTextBlock$outboundSchema)).optional(),
-});
-
-export function messageToJSON(message: Message): string {
-  return JSON.stringify(Message$outboundSchema.parse(message));
-}
 export function messageFromJSON(
   jsonString: string,
 ): SafeParseResult<Message, SDKValidationError> {
