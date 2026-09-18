@@ -10,13 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PlatformMessageRole,
   PlatformMessageRole$inboundSchema,
-  PlatformMessageRole$outboundSchema,
 } from "./platformmessagerole.js";
 import {
   PlatformMessageTextBlock,
   PlatformMessageTextBlock$inboundSchema,
-  PlatformMessageTextBlock$Outbound,
-  PlatformMessageTextBlock$outboundSchema,
 } from "./platformmessagetextblock.js";
 
 export type PlatformMessage = {
@@ -39,27 +36,7 @@ export const PlatformMessage$inboundSchema: z.ZodType<
   role: PlatformMessageRole$inboundSchema,
   content: z.array(PlatformMessageTextBlock$inboundSchema),
 });
-/** @internal */
-export type PlatformMessage$Outbound = {
-  role: string;
-  content: Array<PlatformMessageTextBlock$Outbound>;
-};
 
-/** @internal */
-export const PlatformMessage$outboundSchema: z.ZodType<
-  PlatformMessage$Outbound,
-  z.ZodTypeDef,
-  PlatformMessage
-> = z.object({
-  role: PlatformMessageRole$outboundSchema,
-  content: z.array(PlatformMessageTextBlock$outboundSchema),
-});
-
-export function platformMessageToJSON(
-  platformMessage: PlatformMessage,
-): string {
-  return JSON.stringify(PlatformMessage$outboundSchema.parse(platformMessage));
-}
 export function platformMessageFromJSON(
   jsonString: string,
 ): SafeParseResult<PlatformMessage, SDKValidationError> {
