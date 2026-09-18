@@ -20,7 +20,7 @@ test("Messages Messages", async () => {
     idType: "CONVERSATION_ID",
     id: "<id>",
     timestampMillis: 558834,
-    datasource: "FACEBOOKWORKPLACE",
+    datasource: "MICROSOFTTEAMS",
   });
   expect(result).toBeDefined();
 });
