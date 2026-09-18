@@ -165044,6 +165044,7 @@ workflows:
           contentType: multipart/form-data
           payload:
             bundle: 'x-file: example.file'
+            versionSource: USER
         successCriteria:
           - condition: $statusCode == 200
           - condition: $response.header.Content-Type == application/json

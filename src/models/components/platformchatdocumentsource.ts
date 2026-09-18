@@ -17,9 +17,9 @@ export type PlatformChatDocumentSourceType2 = ClosedEnum<
 >;
 
 export type PlatformChatDocumentSourceDocument2 = {
+  url: string;
   type: PlatformChatDocumentSourceType2;
   document_id?: string | undefined;
-  url: string;
   title?: string | undefined;
   datasource?: string | undefined;
 };
@@ -32,8 +32,8 @@ export type PlatformChatDocumentSourceType1 = ClosedEnum<
 >;
 
 export type PlatformChatDocumentSourceDocument1 = {
-  type: PlatformChatDocumentSourceType1;
   document_id: string;
+  type: PlatformChatDocumentSourceType1;
   url?: string | undefined;
   title?: string | undefined;
   datasource?: string | undefined;
@@ -54,9 +54,9 @@ export const PlatformChatDocumentSourceDocument2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  url: z.string(),
   type: PlatformChatDocumentSourceType2$inboundSchema,
   document_id: z.string().optional(),
-  url: z.string(),
   title: z.string().optional(),
   datasource: z.string().optional(),
 });
@@ -83,8 +83,8 @@ export const PlatformChatDocumentSourceDocument1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: PlatformChatDocumentSourceType1$inboundSchema,
   document_id: z.string(),
+  type: PlatformChatDocumentSourceType1$inboundSchema,
   url: z.string().optional(),
   title: z.string().optional(),
   datasource: z.string().optional(),
