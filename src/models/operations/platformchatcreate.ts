@@ -15,6 +15,32 @@ export type PlatformChatCreateInput =
   | string
   | Array<components.PlatformChatInputMessage>;
 
+/**
+ * Output format for the assistant text. TEXT is unconstrained. JSON_SCHEMA constrains the response to the supplied schema.
+ *
+ * @remarks
+ */
+export type PlatformChatCreateFormat =
+  | components.PlatformChatTextFormat
+  | components.PlatformChatJsonSchemaFormat;
+
+/**
+ * Optional configuration for the assistant's text response. When `format.type` is `JSON_SCHEMA`, the response is constrained to the supplied JSON schema and returned in `output[*].content[*].structured_output`. Structured output is not supported when `stream` is true.
+ *
+ * @remarks
+ */
+export type PlatformChatCreateText = {
+  /**
+   * Output format for the assistant text. TEXT is unconstrained. JSON_SCHEMA constrains the response to the supplied schema.
+   *
+   * @remarks
+   */
+  format?:
+    | components.PlatformChatTextFormat
+    | components.PlatformChatJsonSchemaFormat
+    | undefined;
+};
+
 export type PlatformChatCreateRequest = {
   /**
    * Either a plain string (single user turn) or a chronological array of `USER`/`ASSISTANT` messages. The final array message must be `USER`.
@@ -35,6 +61,12 @@ export type PlatformChatCreateRequest = {
    * @remarks
    */
   conversation_id?: string | undefined;
+  /**
+   * Optional configuration for the assistant's text response. When `format.type` is `JSON_SCHEMA`, the response is constrained to the supplied JSON schema and returned in `output[*].content[*].structured_output`. Structured output is not supported when `stream` is true.
+   *
+   * @remarks
+   */
+  text?: PlatformChatCreateText | undefined;
 };
 
 /** @internal */
@@ -61,11 +93,63 @@ export function platformChatCreateInputToJSON(
 }
 
 /** @internal */
+export type PlatformChatCreateFormat$Outbound =
+  | components.PlatformChatTextFormat$Outbound
+  | components.PlatformChatJsonSchemaFormat$Outbound;
+
+/** @internal */
+export const PlatformChatCreateFormat$outboundSchema: z.ZodType<
+  PlatformChatCreateFormat$Outbound,
+  z.ZodTypeDef,
+  PlatformChatCreateFormat
+> = z.union([
+  components.PlatformChatTextFormat$outboundSchema,
+  components.PlatformChatJsonSchemaFormat$outboundSchema,
+]);
+
+export function platformChatCreateFormatToJSON(
+  platformChatCreateFormat: PlatformChatCreateFormat,
+): string {
+  return JSON.stringify(
+    PlatformChatCreateFormat$outboundSchema.parse(platformChatCreateFormat),
+  );
+}
+
+/** @internal */
+export type PlatformChatCreateText$Outbound = {
+  format?:
+    | components.PlatformChatTextFormat$Outbound
+    | components.PlatformChatJsonSchemaFormat$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const PlatformChatCreateText$outboundSchema: z.ZodType<
+  PlatformChatCreateText$Outbound,
+  z.ZodTypeDef,
+  PlatformChatCreateText
+> = z.object({
+  format: z.union([
+    components.PlatformChatTextFormat$outboundSchema,
+    components.PlatformChatJsonSchemaFormat$outboundSchema,
+  ]).optional(),
+});
+
+export function platformChatCreateTextToJSON(
+  platformChatCreateText: PlatformChatCreateText,
+): string {
+  return JSON.stringify(
+    PlatformChatCreateText$outboundSchema.parse(platformChatCreateText),
+  );
+}
+
+/** @internal */
 export type PlatformChatCreateRequest$Outbound = {
   input: string | Array<components.PlatformChatInputMessage$Outbound>;
   stream: false;
   store: boolean;
   conversation_id?: string | undefined;
+  text?: PlatformChatCreateText$Outbound | undefined;
 };
 
 /** @internal */
@@ -81,6 +165,7 @@ export const PlatformChatCreateRequest$outboundSchema: z.ZodType<
   stream: z.literal(false).default(false as const),
   store: z.boolean().default(true),
   conversation_id: z.string().optional(),
+  text: z.lazy(() => PlatformChatCreateText$outboundSchema).optional(),
 });
 
 export function platformChatCreateRequestToJSON(
