@@ -19,11 +19,12 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://huge-gym.net/",
+        ugcType: "SHORTCUTS",
+        contentId: 602763,
       },
       {
-        ugcType: "COLLECTIONS",
-        ugcId: "<id>",
+        ugcType: "SHORTCUTS",
+        contentId: 602763,
       },
     ],
   });

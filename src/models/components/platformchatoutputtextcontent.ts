@@ -20,9 +20,22 @@ export type PlatformChatOutputTextContentType = ClosedEnum<
   typeof PlatformChatOutputTextContentType
 >;
 
+/**
+ * Parsed and validated JSON object when structured output was requested. Present only when the request included `text.format.type: JSON_SCHEMA`.
+ *
+ * @remarks
+ */
+export type StructuredOutput = {};
+
 export type PlatformChatOutputTextContent = {
   type: PlatformChatOutputTextContentType;
   text: string;
+  /**
+   * Parsed and validated JSON object when structured output was requested. Present only when the request included `text.format.type: JSON_SCHEMA`.
+   *
+   * @remarks
+   */
+  structured_output?: StructuredOutput | null | undefined;
   annotations?: Array<PlatformChatCitationAnnotation> | undefined;
 };
 
@@ -32,6 +45,23 @@ export const PlatformChatOutputTextContentType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PlatformChatOutputTextContentType);
 
 /** @internal */
+export const StructuredOutput$inboundSchema: z.ZodType<
+  StructuredOutput,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+export function structuredOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<StructuredOutput, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StructuredOutput$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StructuredOutput' from JSON`,
+  );
+}
+
+/** @internal */
 export const PlatformChatOutputTextContent$inboundSchema: z.ZodType<
   PlatformChatOutputTextContent,
   z.ZodTypeDef,
@@ -39,6 +69,8 @@ export const PlatformChatOutputTextContent$inboundSchema: z.ZodType<
 > = z.object({
   type: PlatformChatOutputTextContentType$inboundSchema,
   text: z.string(),
+  structured_output: z.nullable(z.lazy(() => StructuredOutput$inboundSchema))
+    .optional(),
   annotations: z.array(PlatformChatCitationAnnotation$inboundSchema).optional(),
 });
 

@@ -944,7 +944,29 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.chat.createStream({
-    input: "What is our parental leave policy?",
+    input: "Summarize our parental leave policy as JSON.",
+    text: {
+      format: {
+        type: "JSON_SCHEMA",
+        name: "policy_summary",
+        schema: {
+          "type": "object",
+          "properties": {
+            "eligible_employees": {
+              "type": "string",
+            },
+            "duration_weeks": {
+              "type": "integer",
+            },
+          },
+          "required": [
+            "eligible_employees",
+            "duration_weeks",
+          ],
+        },
+        strict: true,
+      },
+    },
   });
 
   for await (const event of result) {
