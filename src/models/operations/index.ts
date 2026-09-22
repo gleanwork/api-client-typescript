@@ -76,6 +76,7 @@ export * from "./people.js";
 export * from "./pin.js";
 export * from "./platformagentscreaterun.js";
 export * from "./platformagentsget.js";
+export * from "./platformagentsgetrun.js";
 export * from "./platformagentsgetschemas.js";
 export * from "./platformchatcreate.js";
 export * from "./platformchatcreatestream.js";

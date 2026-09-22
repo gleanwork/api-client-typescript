@@ -69,6 +69,7 @@ export const FeedRequestCategory = {
   EditDoc: "EDIT_DOC",
   ChatToArtifact: "CHAT_TO_ARTIFACT",
   ShareArtifact: "SHARE_ARTIFACT",
+  CreateAgent: "CREATE_AGENT",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 

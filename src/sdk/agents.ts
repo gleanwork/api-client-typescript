@@ -8,6 +8,7 @@ import {
   CreateRunAcceptEnum,
 } from "../funcs/agentsCreateRun.js";
 import { agentsGet } from "../funcs/agentsGet.js";
+import { agentsGetRun } from "../funcs/agentsGetRun.js";
 import { agentsGetSchemas } from "../funcs/agentsGetSchemas.js";
 import { agentsSearch } from "../funcs/agentsSearch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -86,6 +87,25 @@ export class Agents extends ClientSDK {
       this,
       platformAgentRunCreateRequest,
       agentId,
+      options,
+    ));
+  }
+
+  /**
+   * Get agent run
+   *
+   * @remarks
+   * Retrieve a persisted workflow execution owned by the authenticated user. The run must belong to the specified agent, and the user must still have access to that agent. Unknown runs, runs owned by another user, and mismatched agent/run identifiers return 404. Requires the agents.run scope. Executions without a persisted workflow record are not available through this endpoint.
+   */
+  async getRun(
+    agentId: string,
+    runId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentRunResponse> {
+    return unwrapAsync(agentsGetRun(
+      this,
+      agentId,
+      runId,
       options,
     ));
   }
