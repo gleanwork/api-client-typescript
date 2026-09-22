@@ -59,7 +59,7 @@ export type AgentsCreateRunMutationError =
  * Create agent run
  *
  * @remarks
- * Execute an agent run. Set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages.
+ * Execute an agent run. By default, set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages. Set `execution_mode` to `DURABLE` to persist a new run and return its initial snapshot with HTTP 201 without waiting for execution. Poll the agent-scoped GET run endpoint for progress. Durable execution continues after an HTTP disconnect, but is not automatically resumed after a QE restart or crash. An active turn becomes overdue more than 40 minutes after acceptance (a 30-minute execution timeout plus 10 minutes of grace). The next GET of the run marks the overdue turn FAILED without replay; there is no periodic sweep. Without a GET, the stored run can remain RUNNING. Failure does not prove that external tool work has stopped. Paused runs are not expired. Each POST creates a new run; retrying a POST can create another execution. A run tracks one workflow execution; automatic background-subagent wake turns are separate executions, not continuations tracked by this run ID.
  */
 export function useAgentsCreateRunMutation(
   options?: MutationHookOptions<
