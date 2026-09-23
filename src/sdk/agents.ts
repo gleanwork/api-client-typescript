@@ -3,12 +3,15 @@
  * @generated-id: a103cd018c9b
  */
 
+import { agentsCancelRun } from "../funcs/agentsCancelRun.js";
 import {
   agentsCreateRun,
   CreateRunAcceptEnum,
 } from "../funcs/agentsCreateRun.js";
 import { agentsGet } from "../funcs/agentsGet.js";
+import { agentsGetRun } from "../funcs/agentsGetRun.js";
 import { agentsGetSchemas } from "../funcs/agentsGetSchemas.js";
+import { agentsRespondToRun } from "../funcs/agentsRespondToRun.js";
 import { agentsSearch } from "../funcs/agentsSearch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -75,7 +78,7 @@ export class Agents extends ClientSDK {
    * Create agent run
    *
    * @remarks
-   * Execute an agent run. Set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages.
+   * Execute an agent run. By default, set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages. Set `execution_mode` to `DURABLE` to persist a new run and return its initial snapshot with HTTP 201 without waiting for execution. Poll the agent-scoped GET run endpoint for progress. Durable execution continues after an HTTP disconnect, but is not automatically resumed after a QE restart or crash. An active turn becomes overdue more than 40 minutes after acceptance (a 30-minute execution timeout plus 10 minutes of grace). The next GET of the run marks the overdue turn FAILED without replay; there is no periodic sweep. Without a GET, the stored run can remain RUNNING. Failure does not prove that external tool work has stopped. Paused runs are not expired; an accepted approval continuation starts a fresh deadline. Each POST creates a new run; retrying a POST can create another execution. Submit pending approval decisions through the run responses endpoint, and cancellation can be requested through the run cancellations endpoint. A run tracks one workflow execution; automatic background-subagent wake turns are separate executions, not continuations tracked by this run ID.
    */
   async createRun(
     platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest,
@@ -85,6 +88,65 @@ export class Agents extends ClientSDK {
     return unwrapAsync(agentsCreateRun(
       this,
       platformAgentRunCreateRequest,
+      agentId,
+      options,
+    ));
+  }
+
+  /**
+   * Get agent run
+   *
+   * @remarks
+   * Retrieve a persisted workflow execution owned by the authenticated user. The run must belong to the specified agent, and the user must still have access to that agent. Unknown runs, runs owned by another user, and mismatched agent/run identifiers return 404. Requires the agents.run scope. Executions without a persisted workflow record are not available through this endpoint.
+   */
+  async getRun(
+    agentId: string,
+    runId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentRunResponse> {
+    return unwrapAsync(agentsGetRun(
+      this,
+      agentId,
+      runId,
+      options,
+    ));
+  }
+
+  /**
+   * Cancel an agent run
+   *
+   * @remarks
+   * Request cooperative cancellation of the durable agent run identified by `run_id` in the JSON body. Requires ownership, current agent access, and the agents.run scope. Sending a cancellation signal does not itself change an active run from RUNNING; poll GET run for the final state. Paused runs become CANCELLED without resuming execution. Repeated requests and requests for terminal runs return the current snapshot. Completion may win a race with cancellation. Completed tool side effects cannot be undone, and external work may continue if a tool does not support cancellation. Cancellation targets this run, not separate background-subagent executions. An active run without a cancellation registration returns 409. Cancellation signaling requires Redis. An interrupted active run can instead become FAILED through deadline cleanup; this does not verify that external tool work has stopped.
+   */
+  async cancelRun(
+    platformAgentRunCancellationRequest:
+      components.PlatformAgentRunCancellationRequest,
+    agentId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentRunResponse> {
+    return unwrapAsync(agentsCancelRun(
+      this,
+      platformAgentRunCancellationRequest,
+      agentId,
+      options,
+    ));
+  }
+
+  /**
+   * Respond to agent run approvals
+   *
+   * @remarks
+   * Submit decisions for every pending tool approval in the paused run's current batch. The run is identified by `run_id` in the JSON body. Decisions apply only to the stored invocations and arguments; argument edits, authentication responses, and session-wide grants are not supported. The caller must own the run, still have agent access, and have the agents.run scope. Acceptance persists the decisions before resuming the same run and chat session. Identical accepted decisions return the current snapshot without another continuation. Conflicting, stale, incomplete, or non-pending decisions return 409. Cancellation registration failure returns 503 without accepting the decisions; retry the same approval batch. This retry guarantee does not cover an indeterminate database commit outcome. Go workflow approval resumes currently support one tool invocation and one approval response. Unsupported multi-tool or multi-decision Go resumes fail without executing tools. The resumed action must resolve to the tool identified by the stored approval request and paused checkpoint. Missing or inconsistent identity fails without executing tools. Execution continues after HTTP disconnects, but is not automatically resumed after a QE crash. Each accepted continuation starts a fresh 30-minute execution timeout and 40-minute cleanup deadline. Identical retries do not extend that deadline. Waiting for approval does not expire a run. The next GET marks an overdue active turn FAILED without replaying execution.
+   */
+  async respondToRun(
+    platformAgentRunResponsesRequest:
+      components.PlatformAgentRunResponsesRequest,
+    agentId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentRunResponse> {
+    return unwrapAsync(agentsRespondToRun(
+      this,
+      platformAgentRunResponsesRequest,
       agentId,
       options,
     ));
