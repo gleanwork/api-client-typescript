@@ -134,3 +134,54 @@ test("Agents Platform Agents Create Run", async () => {
   }, "<id>");
   expect(result).toBeDefined();
 });
+
+test("Agents Platform Agents Get Run", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-get-run");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.getRun("{agent_id}", "{run_id}");
+  expect(result).toBeDefined();
+});
+
+test("Agents Platform Agents Cancel Run", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-cancel-run");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.cancelRun({
+    run_id: "{run_id}",
+  }, "{agent_id}");
+  expect(result).toBeDefined();
+});
+
+test("Agents Platform Agents Create Run Responses", async () => {
+  const testHttpClient = createTestHTTPClient(
+    "platform-agents-create-run-responses",
+  );
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.respondToRun({
+    run_id: "{run_id}",
+    responses: [
+      {
+        interaction_id: "{interaction_id}",
+        decision: "APPROVE",
+      },
+    ],
+  }, "{agent_id}");
+  expect(result).toBeDefined();
+});

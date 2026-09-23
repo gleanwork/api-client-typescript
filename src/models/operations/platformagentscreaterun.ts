@@ -19,6 +19,7 @@ export type PlatformAgentsCreateRunRequest = {
 };
 
 export type PlatformAgentsCreateRunResponse =
+  | components.PlatformAgentRunResponse
   | components.PlatformAgentRunWaitResponse
   | string;
 
@@ -60,6 +61,7 @@ export const PlatformAgentsCreateRunResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  components.PlatformAgentRunResponse$inboundSchema,
   components.PlatformAgentRunWaitResponse$inboundSchema,
   z.string(),
 ]);

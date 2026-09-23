@@ -266,6 +266,9 @@ For more information on obtaining the appropriate token type, please contact you
 * [get](docs/sdks/agents/README.md#get) - Get agent
 * [getSchemas](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 * [createRun](docs/sdks/agents/README.md#createrun) - Create agent run
+* [getRun](docs/sdks/agents/README.md#getrun) - Get agent run
+* [cancelRun](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
+* [respondToRun](docs/sdks/agents/README.md#respondtorun) - Respond to agent run approvals
 
 ### [Chat](docs/sdks/chat/README.md)
 
@@ -552,9 +555,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`agentsCancelRun`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 - [`agentsCreateRun`](docs/sdks/agents/README.md#createrun) - Create agent run
 - [`agentsGet`](docs/sdks/agents/README.md#get) - Get agent
+- [`agentsGetRun`](docs/sdks/agents/README.md#getrun) - Get agent run
 - [`agentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
+- [`agentsRespondToRun`](docs/sdks/agents/README.md#respondtorun) - Respond to agent run approvals
 - [`agentsSearch`](docs/sdks/agents/README.md#search) - Search agents
 - [`chatCreate`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`chatCreateStream`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
@@ -750,9 +756,12 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
+- [`useAgentsCancelRunMutation`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 - [`useAgentsCreateRunMutation`](docs/sdks/agents/README.md#createrun) - Create agent run
 - [`useAgentsGet`](docs/sdks/agents/README.md#get) - Get agent
+- [`useAgentsGetRun`](docs/sdks/agents/README.md#getrun) - Get agent run
 - [`useAgentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
+- [`useAgentsRespondToRunMutation`](docs/sdks/agents/README.md#respondtorun) - Respond to agent run approvals
 - [`useAgentsSearchMutation`](docs/sdks/agents/README.md#search) - Search agents
 - [`useChatCreateMutation`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`useChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
@@ -944,7 +953,29 @@ const glean = new Glean({
 
 async function run() {
   const result = await glean.chat.createStream({
-    input: "What is our parental leave policy?",
+    input: "Summarize our parental leave policy as JSON.",
+    text: {
+      format: {
+        type: "JSON_SCHEMA",
+        name: "policy_summary",
+        schema: {
+          "type": "object",
+          "properties": {
+            "eligible_employees": {
+              "type": "string",
+            },
+            "duration_weeks": {
+              "type": "integer",
+            },
+          },
+          "required": [
+            "eligible_employees",
+            "duration_weeks",
+          ],
+        },
+        strict: true,
+      },
+    },
   });
 
   for await (const event of result) {
