@@ -6,8 +6,10 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./agentsCancelRun.js";
 export * from "./agentsCreateRun.js";
 export * from "./agentsGet.js";
+export * from "./agentsGetRun.js";
 export * from "./agentsGetSchemas.js";
 export * from "./agentsSearch.js";
 export * from "./chatCreate.js";

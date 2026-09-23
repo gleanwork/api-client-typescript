@@ -33,3 +33,19 @@ const value: components.PlatformAgentRunWaitResponse = {
 const value: string = "<value>";
 ```
 
+### `components.PlatformAgentRunResponse`
+
+```typescript
+const value: components.PlatformAgentRunResponse = {
+  run: {
+    run_id: "<id>",
+    agent_id: "<id>",
+    state: "RUNNING",
+    created_at: new Date("2025-07-02T11:33:51.838Z"),
+    updated_at: new Date("2024-12-21T16:46:41.143Z"),
+    pending_interactions: [],
+  },
+  request_id: "<id>",
+};
+```
+
