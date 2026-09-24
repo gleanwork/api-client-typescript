@@ -36,6 +36,7 @@ export type SkillsSyncMutationVariables = {
 export type SkillsSyncMutationData = components.PlatformSkillSyncResponse;
 
 export type SkillsSyncMutationError =
+  | errors.PlatformUnauthorizedAgentToolsProblemError
   | errors.PlatformProblemDetailError
   | GleanBaseError
   | ResponseValidationError

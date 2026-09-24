@@ -10,7 +10,7 @@ import (
 
 type PlatformSkill struct {
 	// Glean skill ID.
-	ID string `json:"id"`
+	SkillID string `json:"skill_id"`
 	// Human-readable skill name.
 	DisplayName string `json:"display_name"`
 	// Human-readable skill description.
@@ -37,17 +37,17 @@ func (p PlatformSkill) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PlatformSkill) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "display_name", "description", "latest_version", "latest_minor_version", "status", "origin", "owner", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"skill_id", "display_name", "description", "latest_version", "latest_minor_version", "status", "origin", "owner", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *PlatformSkill) GetID() string {
+func (o *PlatformSkill) GetSkillID() string {
 	if o == nil {
 		return ""
 	}
-	return o.ID
+	return o.SkillID
 }
 
 func (o *PlatformSkill) GetDisplayName() string {

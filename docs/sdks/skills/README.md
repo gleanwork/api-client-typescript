@@ -18,10 +18,11 @@
 * [listVersions](#listversions) - List skill versions
 * [retrieveVersion](#retrieveversion) - Retrieve skill version
 * [retrieveVersionContent](#retrieveversioncontent) - Download skill version content
+* [previewSourceStream](#previewsourcestream) - Preview a GitHub skill source as events
 
 ## create
 
-Create a skill from an uploaded SKILL.md, .zip, or .skill bundle. If the authenticated user already has a skill with the same name, the existing skill is superseded with a new version.
+Create a skill from an uploaded SKILL.md, .zip, or .skill bundle. If the authenticated user already has a skill with the same name, the existing skill is superseded with a new version, unless it is source-managed: a same-name create over a GitHub-imported skill returns 409, and the caller syncs the existing skill instead. Two concurrent same-name creates can still produce two skills.
 
 
 ### Example Usage
@@ -108,15 +109,15 @@ import {
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.PlatformProblemDetailError | 400, 401, 403, 404, 408, 413, 429 | application/problem+json          |
-| errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
-| errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.PlatformProblemDetailError      | 400, 401, 403, 404, 408, 409, 413, 429 | application/problem+json               |
+| errors.PlatformProblemDetailError      | 500, 503                               | application/problem+json               |
+| errors.GleanError                      | 4XX, 5XX                               | \*/\*                                  |
 
 ## list
 
-List skills available to the authenticated user.
+List every custom skill the authenticated caller can access. Built-in skills are excluded: they have no versions, content download, update, or delete, so their identifiers would fail most skill operations. Chat-authored skills shared with the caller without a listed grant are omitted: they stay retrievable by identifier when it is known, but this list does not discover them.
 
 
 ### Example Usage
@@ -306,11 +307,12 @@ import {
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.PlatformProblemDetailError | 400, 401, 403, 408, 409, 413, 429 | application/problem+json          |
-| errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
-| errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| errors.PlatformUnauthorizedAgentToolsProblemError | 422                                               | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 400, 401, 403, 408, 409, 413, 429                 | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 500, 503                                          | application/problem+json                          |
+| errors.GleanError                                 | 4XX, 5XX                                          | \*/\*                                             |
 
 ## validate
 
@@ -483,22 +485,23 @@ import {
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.PlatformSkillSourcePreviewRequest](../../models/components/platformskillsourcepreviewrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PlatformSkillsPreviewSourceRequest](../../models/operations/platformskillspreviewsourcerequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.PlatformSkillsPreviewSourceResponse](../../models/operations/platformskillspreviewsourceresponse.md)\>**
+**Promise\<[components.PlatformSkillSourcePreviewResponse](../../models/components/platformskillsourcepreviewresponse.md)\>**
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.PlatformProblemDetailError | 400, 401, 403, 408, 413, 429      | application/problem+json          |
-| errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
-| errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| errors.PlatformUnauthorizedAgentToolsProblemError | 422                                               | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 400, 401, 403, 408, 413, 429                      | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 500, 503                                          | application/problem+json                          |
+| errors.GleanError                                 | 4XX, 5XX                                          | \*/\*                                             |
 
 ## update
 
@@ -966,11 +969,12 @@ import {
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.PlatformProblemDetailError      | 400, 401, 403, 404, 408, 409, 413, 429 | application/problem+json               |
-| errors.PlatformProblemDetailError      | 500, 503                               | application/problem+json               |
-| errors.GleanError                      | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| errors.PlatformUnauthorizedAgentToolsProblemError | 422                                               | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 400, 401, 403, 404, 408, 409, 429                 | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 500, 503                                          | application/problem+json                          |
+| errors.GleanError                                 | 4XX, 5XX                                          | \*/\*                                             |
 
 ## createVersion
 
@@ -1371,3 +1375,101 @@ import {
 | errors.PlatformProblemDetailError | 400, 401, 403, 404, 408, 429      | application/problem+json          |
 | errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
 | errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+
+## previewSourceStream
+
+SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Inspect a GitHub URL as server-sent events. HTTP clients request this mode by setting `stream` to true in the JSON body.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-skills-preview-source-stream" method="post" path="/api/skills/sources/preview#stream" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.skills.previewSourceStream({
+    source_url: "https://github.com/anthropics/skills",
+  });
+
+  for await (const event of result) {
+    console.log(event);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { skillsPreviewSourceStream } from "@gleanwork/api-client/funcs/skillsPreviewSourceStream.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await skillsPreviewSourceStream(glean, {
+    source_url: "https://github.com/anthropics/skills",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const event of result) {
+    console.log(event);
+  }
+  } else {
+    console.log("skillsPreviewSourceStream failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useSkillsPreviewSourceStreamMutation
+} from "@gleanwork/api-client/react-query/skillsPreviewSourceStream.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PlatformSkillsPreviewSourceStreamRequest](../../models/operations/platformskillspreviewsourcestreamrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[EventStream<components.PlatformSkillSourcePreviewStreamEventServerSentEvent>](../../models/.md)\>**
+
+### Errors
+
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| errors.PlatformUnauthorizedAgentToolsProblemError | 422                                               | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 400, 401, 403, 408, 413, 429                      | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 500, 503                                          | application/problem+json                          |
+| errors.GleanError                                 | 4XX, 5XX                                          | \*/\*                                             |
