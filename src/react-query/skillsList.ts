@@ -56,7 +56,7 @@ export type SkillsListQueryError =
  * List skills
  *
  * @remarks
- * List skills available to the authenticated user.
+ * List every custom skill the authenticated caller can access. Built-in skills are excluded: they have no versions, content download, update, or delete, so their identifiers would fail most skill operations. Chat-authored skills shared with the caller without a listed grant are omitted: they stay retrievable by identifier when it is known, but this list does not discover them.
  */
 export function useSkillsList(
   pageSize?: number | undefined,
@@ -79,7 +79,7 @@ export function useSkillsList(
  * List skills
  *
  * @remarks
- * List skills available to the authenticated user.
+ * List every custom skill the authenticated caller can access. Built-in skills are excluded: they have no versions, content download, update, or delete, so their identifiers would fail most skill operations. Chat-authored skills shared with the caller without a listed grant are omitted: they stay retrievable by identifier when it is known, but this list does not discover them.
  */
 export function useSkillsListSuspense(
   pageSize?: number | undefined,

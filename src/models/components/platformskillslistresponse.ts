@@ -13,7 +13,7 @@ export type PlatformSkillsListResponse = {
   /**
    * Skills available to the user.
    */
-  skills: Array<PlatformSkill>;
+  results: Array<PlatformSkill>;
   /**
    * Whether additional results are available.
    */
@@ -34,7 +34,7 @@ export const PlatformSkillsListResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  skills: z.array(PlatformSkill$inboundSchema),
+  results: z.array(PlatformSkill$inboundSchema),
   has_more: z.boolean(),
   next_cursor: z.nullable(z.string()),
   request_id: z.string(),

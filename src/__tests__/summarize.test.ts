@@ -19,10 +19,12 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://coarse-surface.net",
+        ugcType: "ANSWERS",
+        contentId: 748256,
       },
       {
-        url: "https://coarse-surface.net",
+        ugcType: "CHATS",
+        ugcId: "<id>",
       },
     ],
   });
