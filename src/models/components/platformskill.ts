@@ -28,7 +28,7 @@ export type PlatformSkill = {
   /**
    * Glean skill ID.
    */
-  id: string;
+  skill_id: string;
   /**
    * Human-readable skill name.
    */
@@ -74,7 +74,7 @@ export const PlatformSkill$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string(),
+  skill_id: z.string(),
   display_name: z.string(),
   description: z.string(),
   latest_version: z.number().int(),

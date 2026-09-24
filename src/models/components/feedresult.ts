@@ -69,6 +69,7 @@ export const FeedResultCategory = {
   ShareArtifact: "SHARE_ARTIFACT",
   CreateAgent: "CREATE_AGENT",
   ManagerInvite: "MANAGER_INVITE",
+  OnboardingAuthorization: "ONBOARDING_AUTHORIZATION",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.

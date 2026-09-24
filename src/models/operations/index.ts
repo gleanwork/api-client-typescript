@@ -92,6 +92,7 @@ export * from "./platformskillsgetversioncontent.js";
 export * from "./platformskillslist.js";
 export * from "./platformskillslistversions.js";
 export * from "./platformskillspreviewsource.js";
+export * from "./platformskillspreviewsourcestream.js";
 export * from "./platformskillssync.js";
 export * from "./platformskillsupdate.js";
 export * from "./platformtriggerpresetseventssearch.js";

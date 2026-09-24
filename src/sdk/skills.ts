@@ -9,10 +9,8 @@ import { skillsDelete } from "../funcs/skillsDelete.js";
 import { skillsImport } from "../funcs/skillsImport.js";
 import { skillsList } from "../funcs/skillsList.js";
 import { skillsListVersions } from "../funcs/skillsListVersions.js";
-import {
-  PreviewSourceAcceptEnum,
-  skillsPreviewSource,
-} from "../funcs/skillsPreviewSource.js";
+import { skillsPreviewSource } from "../funcs/skillsPreviewSource.js";
+import { skillsPreviewSourceStream } from "../funcs/skillsPreviewSourceStream.js";
 import { skillsRetrieve } from "../funcs/skillsRetrieve.js";
 import { skillsRetrieveContent } from "../funcs/skillsRetrieveContent.js";
 import { skillsRetrieveVersion } from "../funcs/skillsRetrieveVersion.js";
@@ -20,12 +18,11 @@ import { skillsRetrieveVersionContent } from "../funcs/skillsRetrieveVersionCont
 import { skillsSync } from "../funcs/skillsSync.js";
 import { skillsUpdate } from "../funcs/skillsUpdate.js";
 import { skillsValidate } from "../funcs/skillsValidate.js";
+import { EventStream } from "../lib/event-streams.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
-
-export { PreviewSourceAcceptEnum } from "../funcs/skillsPreviewSource.js";
 
 export class Skills extends ClientSDK {
   /**
@@ -49,7 +46,7 @@ export class Skills extends ClientSDK {
    * List skills
    *
    * @remarks
-   * List skills available to the authenticated user.
+   * List every custom skill the authenticated caller can access. Built-in skills are excluded: they have no versions, content download, update, or delete, so their identifiers would fail most skill operations. Chat-authored skills shared with the caller without a listed grant are omitted: they stay retrievable by identifier when it is known, but this list does not discover them.
    */
   async list(
     pageSize?: number | undefined,
@@ -105,11 +102,9 @@ export class Skills extends ClientSDK {
    * Inspect a GitHub URL without persisting a source or any discovered skills. Set stream to true to receive repository scan progress as server-sent events; otherwise the response contains the completed preview.
    */
   async previewSource(
-    request: components.PlatformSkillSourcePreviewRequest,
-    options?: RequestOptions & {
-      acceptHeaderOverride?: PreviewSourceAcceptEnum;
-    },
-  ): Promise<operations.PlatformSkillsPreviewSourceResponse> {
+    request: operations.PlatformSkillsPreviewSourceRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSkillSourcePreviewResponse> {
     return unwrapAsync(skillsPreviewSource(
       this,
       request,
@@ -279,6 +274,25 @@ export class Skills extends ClientSDK {
       this,
       skillId,
       version,
+      options,
+    ));
+  }
+
+  /**
+   * Preview a GitHub skill source as events
+   *
+   * @remarks
+   * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Inspect a GitHub URL as server-sent events. HTTP clients request this mode by setting `stream` to true in the JSON body.
+   */
+  async previewSourceStream(
+    request: operations.PlatformSkillsPreviewSourceStreamRequest,
+    options?: RequestOptions,
+  ): Promise<
+    EventStream<components.PlatformSkillSourcePreviewStreamEventServerSentEvent>
+  > {
+    return unwrapAsync(skillsPreviewSourceStream(
+      this,
+      request,
       options,
     ));
   }

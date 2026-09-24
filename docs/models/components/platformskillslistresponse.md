@@ -6,9 +6,9 @@
 import { PlatformSkillsListResponse } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSkillsListResponse = {
-  skills: [
+  results: [
     {
-      id: "<id>",
+      skill_id: "<id>",
       display_name: "Kameron36",
       description:
         "sedately scowl other yearningly aggravating anti heavily extract",
@@ -33,7 +33,7 @@ let value: PlatformSkillsListResponse = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `skills`                                                               | [components.PlatformSkill](../../models/components/platformskill.md)[] | :heavy_check_mark:                                                     | Skills available to the user.                                          |
+| `results`                                                              | [components.PlatformSkill](../../models/components/platformskill.md)[] | :heavy_check_mark:                                                     | Skills available to the user.                                          |
 | `hasMore`                                                              | *boolean*                                                              | :heavy_check_mark:                                                     | Whether additional results are available.                              |
 | `nextCursor`                                                           | *string*                                                               | :heavy_check_mark:                                                     | Cursor for the next page, or null when no more results are available.  |
 | `requestId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Platform-generated request ID for support correlation.                 |

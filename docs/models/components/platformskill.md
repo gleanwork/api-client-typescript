@@ -6,7 +6,7 @@
 import { PlatformSkill } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSkill = {
-  id: "<id>",
+  skill_id: "<id>",
   display_name: "Jerome_Kutch",
   description: "afore joyously insidious daily bog coop haze meh pointless",
   latest_version: 325433,
@@ -25,7 +25,7 @@ let value: PlatformSkill = {
 
 | Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                 | *string*                                                                                             | :heavy_check_mark:                                                                                   | Glean skill ID.                                                                                      |
+| `skillId`                                                                                            | *string*                                                                                             | :heavy_check_mark:                                                                                   | Glean skill ID.                                                                                      |
 | `displayName`                                                                                        | *string*                                                                                             | :heavy_check_mark:                                                                                   | Human-readable skill name.                                                                           |
 | `description`                                                                                        | *string*                                                                                             | :heavy_check_mark:                                                                                   | Human-readable skill description.                                                                    |
 | `latestVersion`                                                                                      | *number*                                                                                             | :heavy_check_mark:                                                                                   | Latest major version number for the skill.                                                           |

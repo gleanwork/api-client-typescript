@@ -7,7 +7,7 @@ import { PlatformSkillUpdateResponse } from "@gleanwork/api-client/models/compon
 
 let value: PlatformSkillUpdateResponse = {
   skill: {
-    id: "<id>",
+    skill_id: "<id>",
     display_name: "Kian.Klein18",
     description: "per whereas indeed than devise oh",
     latest_version: 33911,

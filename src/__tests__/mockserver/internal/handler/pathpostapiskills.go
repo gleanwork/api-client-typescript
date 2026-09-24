@@ -54,7 +54,7 @@ func testPlatformSkillsCreatePlatformSkillsCreate0(w http.ResponseWriter, req *h
 	}
 	var respBody *components.PlatformSkillCreateResponse = &components.PlatformSkillCreateResponse{
 		Skill: components.PlatformSkill{
-			ID:                 "<id>",
+			SkillID:            "<id>",
 			DisplayName:        "Merl18",
 			Description:        "rural ugh unexpectedly excepting livid",
 			LatestVersion:      504149,
@@ -80,6 +80,6 @@ func testPlatformSkillsCreatePlatformSkillsCreate0(w http.ResponseWriter, req *h
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusCreated)
 	_, _ = w.Write(respBodyBytes)
 }

@@ -192,7 +192,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.PlatformSkillCreateResponse$inboundSchema),
+    M.json(201, components.PlatformSkillCreateResponse$inboundSchema),
     M.jsonErr(
       [400, 401, 403, 404, 408, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,
