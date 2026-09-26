@@ -8,19 +8,18 @@ import { PlatformSkillImportResponse } from "@gleanwork/api-client/models/compon
 let value: PlatformSkillImportResponse = {
   skills: [
     {
-      id: "<id>",
-      display_name: "Kameron36",
-      description:
-        "sedately scowl other yearningly aggravating anti heavily extract",
-      latest_version: 33039,
-      latest_minor_version: 380295,
-      status: "DRAFT",
+      skill_id: "<id>",
+      display_name: "Noble.Gerlach39",
+      description: "versus direct acidly teriyaki adrenalin ah eventually",
+      latest_version: 179388,
+      latest_minor_version: 651453,
+      status: "DISABLED",
       origin: "CUSTOM",
       owner: {
         name: "<value>",
       },
-      created_at: new Date("2024-11-30T20:43:59.162Z"),
-      updated_at: new Date("2024-07-06T04:25:41.450Z"),
+      created_at: new Date("2024-01-28T00:06:21.563Z"),
+      updated_at: new Date("2026-06-16T17:44:31.635Z"),
     },
   ],
   request_id: "<id>",
@@ -29,7 +28,7 @@ let value: PlatformSkillImportResponse = {
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `skills`                                                               | [components.PlatformSkill](../../models/components/platformskill.md)[] | :heavy_check_mark:                                                     | Independently persisted skills in request order.                       |
-| `requestId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | Platform-generated request ID for support correlation.                 |
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `skills`                                                                                            | [components.PlatformSkill](../../models/components/platformskill.md)[]                              | :heavy_check_mark:                                                                                  | Imported skills in request order. The import is atomic: either every source persists or none does.<br/> |
+| `requestId`                                                                                         | *string*                                                                                            | :heavy_check_mark:                                                                                  | Platform-generated request ID for support correlation.                                              |

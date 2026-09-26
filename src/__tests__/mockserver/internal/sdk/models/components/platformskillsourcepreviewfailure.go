@@ -3,6 +3,10 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 type PlatformSkillSourcePreviewFailure struct {
 	// Resolved URL for the entry that could not be previewed.
 	SourceURL string `json:"source_url"`
@@ -10,6 +14,17 @@ type PlatformSkillSourcePreviewFailure struct {
 	Code PlatformSkillSourcePreviewFailureCode `json:"code"`
 	// Safe explanation of why the entry was excluded.
 	Detail string `json:"detail"`
+}
+
+func (p PlatformSkillSourcePreviewFailure) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PlatformSkillSourcePreviewFailure) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"source_url", "code", "detail"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PlatformSkillSourcePreviewFailure) GetSourceURL() string {

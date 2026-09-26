@@ -7,16 +7,8 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  PlatformSkillSyncResultStatus,
-  PlatformSkillSyncResultStatus$inboundSchema,
-} from "./platformskillsyncresultstatus.js";
 
 export type PlatformSkillSyncResponse = {
-  /**
-   * Synchronization status after a successful refresh.
-   */
-  sync_status: PlatformSkillSyncResultStatus;
   /**
    * Git commit SHA now associated with the skill.
    */
@@ -24,7 +16,7 @@ export type PlatformSkillSyncResponse = {
   /**
    * Whether this request created a new skill version.
    */
-  updated: boolean;
+  is_updated: boolean;
   /**
    * Platform-generated request ID for support correlation.
    */
@@ -37,9 +29,8 @@ export const PlatformSkillSyncResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  sync_status: PlatformSkillSyncResultStatus$inboundSchema,
   commit_sha: z.string(),
-  updated: z.boolean(),
+  is_updated: z.boolean(),
   request_id: z.string(),
 });
 

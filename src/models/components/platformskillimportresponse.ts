@@ -11,7 +11,9 @@ import { PlatformSkill, PlatformSkill$inboundSchema } from "./platformskill.js";
 
 export type PlatformSkillImportResponse = {
   /**
-   * Independently persisted skills in request order.
+   * Imported skills in request order. The import is atomic: either every source persists or none does.
+   *
+   * @remarks
    */
   skills: Array<PlatformSkill>;
   /**
