@@ -4,21 +4,12 @@
 package components
 
 type PlatformSkillSyncResponse struct {
-	// Synchronization status after a successful refresh.
-	SyncStatus PlatformSkillSyncResultStatus `json:"sync_status"`
 	// Git commit SHA now associated with the skill.
 	CommitSha string `json:"commit_sha"`
 	// Whether this request created a new skill version.
-	Updated bool `json:"updated"`
+	IsUpdated bool `json:"is_updated"`
 	// Platform-generated request ID for support correlation.
 	RequestID string `json:"request_id"`
-}
-
-func (o *PlatformSkillSyncResponse) GetSyncStatus() PlatformSkillSyncResultStatus {
-	if o == nil {
-		return PlatformSkillSyncResultStatus("")
-	}
-	return o.SyncStatus
 }
 
 func (o *PlatformSkillSyncResponse) GetCommitSha() string {
@@ -28,11 +19,11 @@ func (o *PlatformSkillSyncResponse) GetCommitSha() string {
 	return o.CommitSha
 }
 
-func (o *PlatformSkillSyncResponse) GetUpdated() bool {
+func (o *PlatformSkillSyncResponse) GetIsUpdated() bool {
 	if o == nil {
 		return false
 	}
-	return o.Updated
+	return o.IsUpdated
 }
 
 func (o *PlatformSkillSyncResponse) GetRequestID() string {

@@ -39,7 +39,7 @@ import { isReadableStream } from "../types/streams.js";
  * Create skill version
  *
  * @remarks
- * Create a new immutable version for an existing caller-managed skill from an uploaded SKILL.md, .zip, or .skill bundle.
+ * Create a new immutable version for an existing caller-managed skill from an uploaded SKILL.md, .zip, or .skill bundle. A create-version over a GitHub-imported skill returns 409, and the caller syncs the existing skill instead.
  */
 export function skillsCreateVersion(
   client: GleanCore,
@@ -220,7 +220,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.PlatformSkillVersionCreateResponse$inboundSchema),
+    M.json(201, components.PlatformSkillVersionCreateResponse$inboundSchema),
     M.jsonErr(
       [400, 401, 403, 404, 408, 409, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,

@@ -7,11 +7,13 @@ Source category for the skill.
 ```typescript
 import { PlatformSkillOrigin } from "@gleanwork/api-client/models/components";
 
-let value: PlatformSkillOrigin = "CUSTOM";
+let value: PlatformSkillOrigin = "GITHUB";
+
+// Open enum: unrecognized values are captured as Unrecognized<string>
 ```
 
 ## Values
 
 ```typescript
-"CUSTOM"
+"CUSTOM" | "GITHUB" | Unrecognized<string>
 ```

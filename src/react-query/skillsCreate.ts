@@ -50,7 +50,7 @@ export type SkillsCreateMutationError =
  * Create skill
  *
  * @remarks
- * Create a skill from an uploaded SKILL.md, .zip, or .skill bundle. If the authenticated user already has a skill with the same name, the existing skill is superseded with a new version.
+ * Create a skill from an uploaded SKILL.md, .zip, or .skill bundle. If the authenticated user already has a skill with the same name, the existing skill is superseded with a new version, unless it is source-managed: a same-name create over a GitHub-imported skill returns 409, and the caller syncs the existing skill instead. Two concurrent same-name creates can still produce two skills.
  */
 export function useSkillsCreateMutation(
   options?: MutationHookOptions<

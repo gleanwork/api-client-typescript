@@ -53,7 +53,7 @@ export type SkillsCreateVersionMutationError =
  * Create skill version
  *
  * @remarks
- * Create a new immutable version for an existing caller-managed skill from an uploaded SKILL.md, .zip, or .skill bundle.
+ * Create a new immutable version for an existing caller-managed skill from an uploaded SKILL.md, .zip, or .skill bundle. A create-version over a GitHub-imported skill returns 409, and the caller syncs the existing skill instead.
  */
 export function useSkillsCreateVersionMutation(
   options?: MutationHookOptions<

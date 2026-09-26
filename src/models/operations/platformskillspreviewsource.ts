@@ -4,32 +4,37 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PlatformSkillsPreviewSourceResponse =
-  | components.PlatformSkillSourcePreviewResponse
-  | string;
+export type PlatformSkillsPreviewSourceRequest = {
+  /**
+   * GitHub URL for a skill directory, SKILL.md file, or repository to inspect.
+   */
+  source_url: string;
+  stream?: false | undefined;
+};
 
 /** @internal */
-export const PlatformSkillsPreviewSourceResponse$inboundSchema: z.ZodType<
-  PlatformSkillsPreviewSourceResponse,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  components.PlatformSkillSourcePreviewResponse$inboundSchema,
-  z.string(),
-]);
+export type PlatformSkillsPreviewSourceRequest$Outbound = {
+  source_url: string;
+  stream: false;
+};
 
-export function platformSkillsPreviewSourceResponseFromJSON(
-  jsonString: string,
-): SafeParseResult<PlatformSkillsPreviewSourceResponse, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PlatformSkillsPreviewSourceResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PlatformSkillsPreviewSourceResponse' from JSON`,
+/** @internal */
+export const PlatformSkillsPreviewSourceRequest$outboundSchema: z.ZodType<
+  PlatformSkillsPreviewSourceRequest$Outbound,
+  z.ZodTypeDef,
+  PlatformSkillsPreviewSourceRequest
+> = z.object({
+  source_url: z.string(),
+  stream: z.literal(false).default(false as const),
+});
+
+export function platformSkillsPreviewSourceRequestToJSON(
+  platformSkillsPreviewSourceRequest: PlatformSkillsPreviewSourceRequest,
+): string {
+  return JSON.stringify(
+    PlatformSkillsPreviewSourceRequest$outboundSchema.parse(
+      platformSkillsPreviewSourceRequest,
+    ),
   );
 }
