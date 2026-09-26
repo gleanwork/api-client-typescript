@@ -16,7 +16,7 @@ export type PlatformSkillVersionsListResponse = {
   /**
    * Versions available for the skill.
    */
-  versions: Array<PlatformSkillVersion>;
+  results: Array<PlatformSkillVersion>;
   /**
    * Whether additional results are available.
    */
@@ -37,7 +37,7 @@ export const PlatformSkillVersionsListResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  versions: z.array(PlatformSkillVersion$inboundSchema),
+  results: z.array(PlatformSkillVersion$inboundSchema),
   has_more: z.boolean(),
   next_cursor: z.nullable(z.string()),
   request_id: z.string(),

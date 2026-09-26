@@ -7,14 +7,18 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
- * New status for the skill.
+ * Activation to apply for the authenticated caller. For the owner, this updates the skill's stored status. For any other caller, it updates only that caller's setting.
+ *
+ * @remarks
  */
 export const PlatformSkillUpdateStatus = {
   Enabled: "ENABLED",
   Disabled: "DISABLED",
 } as const;
 /**
- * New status for the skill.
+ * Activation to apply for the authenticated caller. For the owner, this updates the skill's stored status. For any other caller, it updates only that caller's setting.
+ *
+ * @remarks
  */
 export type PlatformSkillUpdateStatus = ClosedEnum<
   typeof PlatformSkillUpdateStatus

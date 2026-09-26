@@ -30,6 +30,10 @@ export type IncludeType = ClosedEnum<typeof IncludeType>;
 
 export type PeopleRequest = {
   /**
+   * If true and the current user's people profile is missing, reads the stored SSO profile and returns a minimal Person with its display name, the authenticated user's email, the same obfuscatedId used by a normal self-lookup, and identityOnly set to true. If the SSO profile or its name is unavailable, preserves the missing-profile error. Applies only when emailIds and obfuscatedIds are empty and the request doesn't use act-as, a virtual identity, anonymous authentication, or the INVALID_ENTITIES includeType. The fallback doesn't mask lookup or enrichment errors and doesn't create a directory profile. Normal people profiles don't require an SSO lookup.
+   */
+  fallbackToAuthenticatedIdentity?: boolean | undefined;
+  /**
    * The offset of the client's timezone in minutes from UTC. e.g. PDT is -420 because it's 7 hours behind UTC.
    */
   timezoneOffset?: number | undefined;
@@ -66,6 +70,7 @@ export const IncludeType$outboundSchema: z.ZodNativeEnum<typeof IncludeType> = z
 
 /** @internal */
 export type PeopleRequest$Outbound = {
+  fallbackToAuthenticatedIdentity: boolean;
   timezoneOffset?: number | undefined;
   obfuscatedIds?: Array<string> | undefined;
   emailIds?: Array<string> | undefined;
@@ -80,6 +85,7 @@ export const PeopleRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PeopleRequest
 > = z.object({
+  fallbackToAuthenticatedIdentity: z.boolean().default(false),
   timezoneOffset: z.number().int().optional(),
   obfuscatedIds: z.array(z.string()).optional(),
   emailIds: z.array(z.string()).optional(),

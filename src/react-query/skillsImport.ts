@@ -36,6 +36,7 @@ export type SkillsImportMutationVariables = {
 export type SkillsImportMutationData = components.PlatformSkillImportResponse;
 
 export type SkillsImportMutationError =
+  | errors.PlatformUnauthorizedAgentToolsProblemError
   | errors.PlatformProblemDetailError
   | GleanBaseError
   | ResponseValidationError

@@ -159,6 +159,7 @@ export * from "./skillsImport.js";
 export * from "./skillsList.js";
 export * from "./skillsListVersions.js";
 export * from "./skillsPreviewSource.js";
+export * from "./skillsPreviewSourceStream.js";
 export * from "./skillsRetrieve.js";
 export * from "./skillsRetrieveContent.js";
 export * from "./skillsRetrieveVersion.js";
