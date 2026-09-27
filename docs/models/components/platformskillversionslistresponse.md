@@ -6,7 +6,7 @@
 import { PlatformSkillVersionsListResponse } from "@gleanwork/api-client/models/components";
 
 let value: PlatformSkillVersionsListResponse = {
-  versions: [
+  results: [
     {
       skill_id: "<id>",
       version: 684124,
@@ -29,7 +29,7 @@ let value: PlatformSkillVersionsListResponse = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `versions`                                                                           | [components.PlatformSkillVersion](../../models/components/platformskillversion.md)[] | :heavy_check_mark:                                                                   | Versions available for the skill.                                                    |
+| `results`                                                                            | [components.PlatformSkillVersion](../../models/components/platformskillversion.md)[] | :heavy_check_mark:                                                                   | Versions available for the skill.                                                    |
 | `hasMore`                                                                            | *boolean*                                                                            | :heavy_check_mark:                                                                   | Whether additional results are available.                                            |
 | `nextCursor`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | Cursor for the next page, or null when no more results are available.                |
 | `requestId`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | Platform-generated request ID for support correlation.                               |

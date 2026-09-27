@@ -38,7 +38,7 @@ import { isReadableStream } from "../types/streams.js";
  * Create skill
  *
  * @remarks
- * Create a skill from an uploaded SKILL.md, .zip, or .skill bundle. If the authenticated user already has a skill with the same name, the existing skill is superseded with a new version.
+ * Create a skill from an uploaded SKILL.md, .zip, or .skill bundle. If the authenticated user already has a skill with the same name, the existing skill is superseded with a new version, unless it is source-managed: a same-name create over a GitHub-imported skill returns 409, and the caller syncs the existing skill instead. Two concurrent same-name creates can still produce two skills.
  */
 export function skillsCreate(
   client: GleanCore,
@@ -192,9 +192,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.PlatformSkillCreateResponse$inboundSchema),
+    M.json(201, components.PlatformSkillCreateResponse$inboundSchema),
     M.jsonErr(
-      [400, 401, 403, 404, 408, 413, 429],
+      [400, 401, 403, 404, 408, 409, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,
       { ctype: "application/problem+json" },
     ),
