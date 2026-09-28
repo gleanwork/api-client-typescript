@@ -71,6 +71,7 @@ export const FeedRequestCategory = {
   ShareArtifact: "SHARE_ARTIFACT",
   CreateAgent: "CREATE_AGENT",
   ManagerInvite: "MANAGER_INVITE",
+  OnboardingAuthorization: "ONBOARDING_AUTHORIZATION",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 

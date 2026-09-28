@@ -7,7 +7,7 @@ import * as z from "zod/v3";
 
 export type PlatformSkillsListRequest = {
   /**
-   * Maximum number of skills to return.
+   * Maximum number of skills to return. Defaults to 20. Maximum is 100.
    */
   page_size?: number | undefined;
   /**
@@ -18,7 +18,7 @@ export type PlatformSkillsListRequest = {
 
 /** @internal */
 export type PlatformSkillsListRequest$Outbound = {
-  page_size?: number | undefined;
+  page_size: number;
   cursor?: string | undefined;
 };
 
@@ -28,7 +28,7 @@ export const PlatformSkillsListRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PlatformSkillsListRequest
 > = z.object({
-  page_size: z.number().int().optional(),
+  page_size: z.number().int().default(20),
   cursor: z.string().optional(),
 });
 

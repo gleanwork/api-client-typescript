@@ -6,7 +6,7 @@
 import { FeedResult } from "@gleanwork/api-client/models/components";
 
 let value: FeedResult = {
-  category: "DEMO_CARD",
+  category: "RESOLVE_MEETING_CONFLICT",
   primaryEntry: {
     title: "<value>",
     createdBy: {

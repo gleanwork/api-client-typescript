@@ -9,10 +9,7 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { GleanCore } from "../core.js";
-import {
-  PreviewSourceAcceptEnum,
-  skillsPreviewSource,
-} from "../funcs/skillsPreviewSource.js";
+import { skillsPreviewSource } from "../funcs/skillsPreviewSource.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -32,17 +29,16 @@ import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export { PreviewSourceAcceptEnum } from "../funcs/skillsPreviewSource.js";
-
 export type SkillsPreviewSourceMutationVariables = {
-  request: components.PlatformSkillSourcePreviewRequest;
-  options?: RequestOptions & { acceptHeaderOverride?: PreviewSourceAcceptEnum };
+  request: operations.PlatformSkillsPreviewSourceRequest;
+  options?: RequestOptions;
 };
 
 export type SkillsPreviewSourceMutationData =
-  operations.PlatformSkillsPreviewSourceResponse;
+  components.PlatformSkillSourcePreviewResponse;
 
 export type SkillsPreviewSourceMutationError =
+  | errors.PlatformUnauthorizedAgentToolsProblemError
   | errors.PlatformProblemDetailError
   | GleanBaseError
   | ResponseValidationError
@@ -83,9 +79,7 @@ export function mutationKeySkillsPreviewSource(): MutationKey {
 
 export function buildSkillsPreviewSourceMutation(
   client$: GleanCore,
-  hookOptions?: RequestOptions & {
-    acceptHeaderOverride?: PreviewSourceAcceptEnum;
-  },
+  hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (
