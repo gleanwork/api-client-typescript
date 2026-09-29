@@ -8,6 +8,10 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  McpAuthMethodBreakdown,
+  McpAuthMethodBreakdown$inboundSchema,
+} from "./mcpauthmethodbreakdown.js";
+import {
   McpHostApplicationBreakdown,
   McpHostApplicationBreakdown$inboundSchema,
 } from "./mcphostapplicationbreakdown.js";
@@ -29,6 +33,7 @@ export type McpBreakdownInsightsResponse = {
   hostApplicationsBreakdown?: Array<McpHostApplicationBreakdown> | undefined;
   toolsBreakdown?: Array<McpToolBreakdown> | undefined;
   serversBreakdown?: Array<McpServerBreakdown> | undefined;
+  authMethodsBreakdown?: Array<McpAuthMethodBreakdown> | undefined;
 };
 
 /** @internal */
@@ -42,6 +47,8 @@ export const McpBreakdownInsightsResponse$inboundSchema: z.ZodType<
     .optional(),
   toolsBreakdown: z.array(McpToolBreakdown$inboundSchema).optional(),
   serversBreakdown: z.array(McpServerBreakdown$inboundSchema).optional(),
+  authMethodsBreakdown: z.array(McpAuthMethodBreakdown$inboundSchema)
+    .optional(),
 });
 
 export function mcpBreakdownInsightsResponseFromJSON(

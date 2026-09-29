@@ -19,10 +19,10 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://coarse-surface.net",
+        url: "https://dim-glider.com/",
       },
       {
-        url: "https://coarse-surface.net",
+        id: "<id>",
       },
     ],
   });
