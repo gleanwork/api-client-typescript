@@ -11,7 +11,7 @@ export type PlatformSkillsListVersionsRequest = {
    */
   skill_id: string;
   /**
-   * Maximum number of versions to return.
+   * Maximum number of versions to return. Defaults to 20. Maximum is 100.
    */
   page_size?: number | undefined;
   /**
@@ -23,7 +23,7 @@ export type PlatformSkillsListVersionsRequest = {
 /** @internal */
 export type PlatformSkillsListVersionsRequest$Outbound = {
   skill_id: string;
-  page_size?: number | undefined;
+  page_size: number;
   cursor?: string | undefined;
 };
 
@@ -34,7 +34,7 @@ export const PlatformSkillsListVersionsRequest$outboundSchema: z.ZodType<
   PlatformSkillsListVersionsRequest
 > = z.object({
   skill_id: z.string(),
-  page_size: z.number().int().optional(),
+  page_size: z.number().int().default(20),
   cursor: z.string().optional(),
 });
 

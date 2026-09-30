@@ -14,12 +14,12 @@ const (
 	AutocompleteRequestResultTypeAdditionalDocument AutocompleteRequestResultType = "ADDITIONAL_DOCUMENT"
 	AutocompleteRequestResultTypeApp                AutocompleteRequestResultType = "APP"
 	AutocompleteRequestResultTypeBrowserHistory     AutocompleteRequestResultType = "BROWSER_HISTORY"
+	AutocompleteRequestResultTypeChatHistory        AutocompleteRequestResultType = "CHAT_HISTORY"
 	AutocompleteRequestResultTypeDatasource         AutocompleteRequestResultType = "DATASOURCE"
 	AutocompleteRequestResultTypeDocument           AutocompleteRequestResultType = "DOCUMENT"
 	AutocompleteRequestResultTypeEntity             AutocompleteRequestResultType = "ENTITY"
 	AutocompleteRequestResultTypeGolink             AutocompleteRequestResultType = "GOLINK"
 	AutocompleteRequestResultTypeHistory            AutocompleteRequestResultType = "HISTORY"
-	AutocompleteRequestResultTypeChatHistory        AutocompleteRequestResultType = "CHAT_HISTORY"
 	AutocompleteRequestResultTypeNewChat            AutocompleteRequestResultType = "NEW_CHAT"
 	AutocompleteRequestResultTypeOperator           AutocompleteRequestResultType = "OPERATOR"
 	AutocompleteRequestResultTypeOperatorValue      AutocompleteRequestResultType = "OPERATOR_VALUE"
@@ -42,6 +42,8 @@ func (e *AutocompleteRequestResultType) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "BROWSER_HISTORY":
 		fallthrough
+	case "CHAT_HISTORY":
+		fallthrough
 	case "DATASOURCE":
 		fallthrough
 	case "DOCUMENT":
@@ -51,8 +53,6 @@ func (e *AutocompleteRequestResultType) UnmarshalJSON(data []byte) error {
 	case "GOLINK":
 		fallthrough
 	case "HISTORY":
-		fallthrough
-	case "CHAT_HISTORY":
 		fallthrough
 	case "NEW_CHAT":
 		fallthrough
