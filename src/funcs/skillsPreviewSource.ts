@@ -28,11 +28,6 @@ import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
-export enum PreviewSourceAcceptEnum {
-  applicationJson = "application/json",
-  textEventStream = "text/event-stream",
-}
-
 /**
  * Preview a GitHub skill source
  *
@@ -41,11 +36,12 @@ export enum PreviewSourceAcceptEnum {
  */
 export function skillsPreviewSource(
   client: GleanCore,
-  request: components.PlatformSkillSourcePreviewRequest,
-  options?: RequestOptions & { acceptHeaderOverride?: PreviewSourceAcceptEnum },
+  request: operations.PlatformSkillsPreviewSourceRequest,
+  options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PlatformSkillsPreviewSourceResponse,
+    components.PlatformSkillSourcePreviewResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -66,12 +62,13 @@ export function skillsPreviewSource(
 
 async function $do(
   client: GleanCore,
-  request: components.PlatformSkillSourcePreviewRequest,
-  options?: RequestOptions & { acceptHeaderOverride?: PreviewSourceAcceptEnum },
+  request: operations.PlatformSkillsPreviewSourceRequest,
+  options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PlatformSkillsPreviewSourceResponse,
+      components.PlatformSkillSourcePreviewResponse,
+      | errors.PlatformUnauthorizedAgentToolsProblemError
       | errors.PlatformProblemDetailError
       | GleanBaseError
       | ResponseValidationError
@@ -88,7 +85,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      components.PlatformSkillSourcePreviewRequest$outboundSchema.parse(value),
+      operations.PlatformSkillsPreviewSourceRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -101,8 +98,7 @@ async function $do(
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
-    Accept: options?.acceptHeaderOverride
-      || "application/json;q=1, text/event-stream;q=0",
+    Accept: "application/json",
   }));
 
   const secConfig = await extractSecurity(client._options.apiToken);
@@ -156,7 +152,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PlatformSkillsPreviewSourceResponse,
+    components.PlatformSkillSourcePreviewResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -167,10 +164,12 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.PlatformSkillsPreviewSourceResponse$inboundSchema),
-    M.text(200, operations.PlatformSkillsPreviewSourceResponse$inboundSchema, {
-      ctype: "text/event-stream",
-    }),
+    M.json(200, components.PlatformSkillSourcePreviewResponse$inboundSchema),
+    M.jsonErr(
+      422,
+      errors.PlatformUnauthorizedAgentToolsProblemError$inboundSchema,
+      { ctype: "application/problem+json" },
+    ),
     M.jsonErr(
       [400, 401, 403, 408, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,
