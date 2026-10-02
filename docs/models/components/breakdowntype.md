@@ -13,5 +13,5 @@ let value: BreakdownType = "USERS";
 ## Values
 
 ```typescript
-"USERS" | "HOST_APPLICATIONS" | "TOOLS" | "SERVERS"
+"USERS" | "HOST_APPLICATIONS" | "TOOLS" | "SERVERS" | "AUTH_METHODS"
 ```

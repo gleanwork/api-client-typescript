@@ -134,6 +134,8 @@ export const JustificationType = {
   ShareArtifact: "SHARE_ARTIFACT",
   CreateAgent: "CREATE_AGENT",
   ManagerInvite: "MANAGER_INVITE",
+  OnboardingAuthorization: "ONBOARDING_AUTHORIZATION",
+  ChatReminder: "CHAT_REMINDER",
 } as const;
 /**
  * Type of the justification.
