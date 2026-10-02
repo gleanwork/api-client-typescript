@@ -13,6 +13,7 @@ type PlatformSkillOrigin string
 
 const (
 	PlatformSkillOriginCustom PlatformSkillOrigin = "CUSTOM"
+	PlatformSkillOriginGithub PlatformSkillOrigin = "GITHUB"
 )
 
 func (e PlatformSkillOrigin) ToPointer() *PlatformSkillOrigin {
@@ -25,6 +26,8 @@ func (e *PlatformSkillOrigin) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "CUSTOM":
+		fallthrough
+	case "GITHUB":
 		*e = PlatformSkillOrigin(v)
 		return nil
 	default:

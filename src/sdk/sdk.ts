@@ -4,6 +4,7 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
+import { Admin } from "./admin.js";
 import { Agents } from "./agents.js";
 import { Chat } from "./chat.js";
 import { Client } from "./client.js";
@@ -11,6 +12,7 @@ import { Indexing } from "./indexing.js";
 import { Search } from "./search.js";
 import { Skills } from "./skills.js";
 import { Triggers } from "./triggers.js";
+import { Usage } from "./usage.js";
 
 export class Glean extends ClientSDK {
   private _agents?: Agents;
@@ -31,6 +33,16 @@ export class Glean extends ClientSDK {
   private _search?: Search;
   get search(): Search {
     return (this._search ??= new Search(this._options));
+  }
+
+  private _admin?: Admin;
+  get admin(): Admin {
+    return (this._admin ??= new Admin(this._options));
+  }
+
+  private _usage?: Usage;
+  get usage(): Usage {
+    return (this._usage ??= new Usage(this._options));
   }
 
   private _triggers?: Triggers;

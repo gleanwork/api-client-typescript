@@ -31,6 +31,7 @@ const (
 	UgcTypeSpreadsheetType     UgcType = "SPREADSHEET_TYPE"
 	UgcTypeInlineHTMLType      UgcType = "INLINE_HTML_TYPE"
 	UgcTypePodcastType         UgcType = "PODCAST_TYPE"
+	UgcTypeVideoType           UgcType = "VIDEO_TYPE"
 	UgcTypeWorkflowsType       UgcType = "WORKFLOWS_TYPE"
 )
 
@@ -82,6 +83,8 @@ func (e *UgcType) UnmarshalJSON(data []byte) error {
 	case "INLINE_HTML_TYPE":
 		fallthrough
 	case "PODCAST_TYPE":
+		fallthrough
+	case "VIDEO_TYPE":
 		fallthrough
 	case "WORKFLOWS_TYPE":
 		*e = UgcType(v)

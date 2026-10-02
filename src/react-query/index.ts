@@ -6,6 +6,11 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./adminUsageCreateLimitIncreaseRequest.js";
+export * from "./adminUsageGetLimitIncreaseRequest.js";
+export * from "./adminUsageGetSettings.js";
+export * from "./adminUsageListLimitIncreaseRequests.js";
+export * from "./adminUsageUpdateSettings.js";
 export * from "./agentsCancelRun.js";
 export * from "./agentsCreateRun.js";
 export * from "./agentsGet.js";
@@ -159,6 +164,7 @@ export * from "./skillsImport.js";
 export * from "./skillsList.js";
 export * from "./skillsListVersions.js";
 export * from "./skillsPreviewSource.js";
+export * from "./skillsPreviewSourceStream.js";
 export * from "./skillsRetrieve.js";
 export * from "./skillsRetrieveContent.js";
 export * from "./skillsRetrieveVersion.js";
@@ -176,3 +182,6 @@ export * from "./triggersListPresets.js";
 export * from "./triggersSearchEvents.js";
 export * from "./triggersSearchPresetEvents.js";
 export * from "./triggersUpdate.js";
+export * from "./usageCreateLimitIncreaseRequest.js";
+export * from "./usageGetLimitIncreaseRequest.js";
+export * from "./usageListLimitIncreaseRequests.js";
