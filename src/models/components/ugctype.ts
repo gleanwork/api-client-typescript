@@ -28,6 +28,7 @@ export const UgcType = {
   SpreadsheetType: "SPREADSHEET_TYPE",
   InlineHtmlType: "INLINE_HTML_TYPE",
   PodcastType: "PODCAST_TYPE",
+  VideoType: "VIDEO_TYPE",
   WorkflowsType: "WORKFLOWS_TYPE",
 } as const;
 export type UgcType = OpenEnum<typeof UgcType>;

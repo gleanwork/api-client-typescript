@@ -41,6 +41,7 @@ export function skillsSync(
 ): APIPromise<
   Result<
     components.PlatformSkillSyncResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -67,6 +68,7 @@ async function $do(
   [
     Result<
       components.PlatformSkillSyncResponse,
+      | errors.PlatformUnauthorizedAgentToolsProblemError
       | errors.PlatformProblemDetailError
       | GleanBaseError
       | ResponseValidationError
@@ -159,6 +161,7 @@ async function $do(
 
   const [result] = await M.match<
     components.PlatformSkillSyncResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -171,7 +174,12 @@ async function $do(
   >(
     M.json(200, components.PlatformSkillSyncResponse$inboundSchema),
     M.jsonErr(
-      [400, 401, 403, 404, 408, 409, 413, 429],
+      422,
+      errors.PlatformUnauthorizedAgentToolsProblemError$inboundSchema,
+      { ctype: "application/problem+json" },
+    ),
+    M.jsonErr(
+      [400, 401, 403, 404, 408, 409, 429],
       errors.PlatformProblemDetailError$inboundSchema,
       { ctype: "application/problem+json" },
     ),

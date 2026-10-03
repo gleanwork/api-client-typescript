@@ -4,20 +4,24 @@
  */
 
 import * as z from "zod/v3";
-import { ClosedEnum } from "../../types/enums.js";
+import * as openEnums from "../../types/enums.js";
+import { OpenEnum } from "../../types/enums.js";
 
 /**
  * Source category for the skill.
  */
 export const PlatformSkillOrigin = {
   Custom: "CUSTOM",
+  Github: "GITHUB",
 } as const;
 /**
  * Source category for the skill.
  */
-export type PlatformSkillOrigin = ClosedEnum<typeof PlatformSkillOrigin>;
+export type PlatformSkillOrigin = OpenEnum<typeof PlatformSkillOrigin>;
 
 /** @internal */
-export const PlatformSkillOrigin$inboundSchema: z.ZodNativeEnum<
-  typeof PlatformSkillOrigin
-> = z.nativeEnum(PlatformSkillOrigin);
+export const PlatformSkillOrigin$inboundSchema: z.ZodType<
+  PlatformSkillOrigin,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(PlatformSkillOrigin);

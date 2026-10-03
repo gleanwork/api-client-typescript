@@ -40,6 +40,7 @@ export function skillsImport(
 ): APIPromise<
   Result<
     components.PlatformSkillImportResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -66,6 +67,7 @@ async function $do(
   [
     Result<
       components.PlatformSkillImportResponse,
+      | errors.PlatformUnauthorizedAgentToolsProblemError
       | errors.PlatformProblemDetailError
       | GleanBaseError
       | ResponseValidationError
@@ -150,6 +152,7 @@ async function $do(
 
   const [result] = await M.match<
     components.PlatformSkillImportResponse,
+    | errors.PlatformUnauthorizedAgentToolsProblemError
     | errors.PlatformProblemDetailError
     | GleanBaseError
     | ResponseValidationError
@@ -160,7 +163,12 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.PlatformSkillImportResponse$inboundSchema),
+    M.json(201, components.PlatformSkillImportResponse$inboundSchema),
+    M.jsonErr(
+      422,
+      errors.PlatformUnauthorizedAgentToolsProblemError$inboundSchema,
+      { ctype: "application/problem+json" },
+    ),
     M.jsonErr(
       [400, 401, 403, 408, 409, 413, 429],
       errors.PlatformProblemDetailError$inboundSchema,
