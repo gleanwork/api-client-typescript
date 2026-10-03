@@ -27,6 +27,10 @@ export type McpUserBreakdown = {
    * MCP servers used by this user in the specified time period.
    */
   servers?: Array<string> | undefined;
+  /**
+   * Authentication methods this user's MCP clients presented in the specified time period, for example OAUTH_XAA for Cross App Access.
+   */
+  authMethods?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -40,6 +44,7 @@ export const McpUserBreakdown$inboundSchema: z.ZodType<
   hostApplications: z.array(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   servers: z.array(z.string()).optional(),
+  authMethods: z.array(z.string()).optional(),
 });
 
 export function mcpUserBreakdownFromJSON(

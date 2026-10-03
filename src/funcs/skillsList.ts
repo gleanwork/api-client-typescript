@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * List skills
  *
  * @remarks
- * List skills available to the authenticated user.
+ * List every custom skill the authenticated caller can access. Built-in skills are excluded: they have no versions, content download, update, or delete, so their identifiers would fail most skill operations. Chat-authored skills shared with the caller without a listed grant are omitted: they stay retrievable by identifier when it is known, but this list does not discover them.
  */
 export function skillsList(
   client: GleanCore,

@@ -7,6 +7,7 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { ArtifactType, ArtifactType$inboundSchema } from "./artifacttype.js";
 
 export type ChatSuggestion = {
   /**
@@ -22,6 +23,10 @@ export type ChatSuggestion = {
    */
   feature?: string | undefined;
   /**
+   * Type of the Artifact
+   */
+  artifactType?: ArtifactType | undefined;
+  /**
    * Document IDs that grounded the suggestion.
    */
   sourceDocumentIds?: Array<string> | undefined;
@@ -36,6 +41,7 @@ export const ChatSuggestion$inboundSchema: z.ZodType<
   query: z.string().optional(),
   cta: z.string().optional(),
   feature: z.string().optional(),
+  artifactType: ArtifactType$inboundSchema.optional(),
   sourceDocumentIds: z.array(z.string()).optional(),
 });
 

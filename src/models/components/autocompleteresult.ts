@@ -20,6 +20,10 @@ import {
   StructuredResult$inboundSchema,
 } from "./structuredresult.js";
 import { TextRange, TextRange$inboundSchema } from "./textrange.js";
+import {
+  UgcActionUnion,
+  UgcActionUnion$inboundSchema,
+} from "./ugcactionunion.js";
 
 export const AutocompleteResultResultType = {
   AdditionalDocument: "ADDITIONAL_DOCUMENT",
@@ -64,6 +68,10 @@ export type AutocompleteResult = {
    */
   structuredResult?: StructuredResult | undefined;
   /**
+   * An action to perform on user-generated content. This may be accompanied by `text` on the ChatMessageFragment, which acts as the display name content of the pill.
+   */
+  ugcAction?: UgcActionUnion | undefined;
+  /**
    * A token to be passed in /feedback events associated with this autocomplete result.
    */
   trackingToken?: string | undefined;
@@ -95,6 +103,7 @@ export const AutocompleteResult$inboundSchema: z.ZodType<
   document: Document$inboundSchema.optional(),
   url: z.string().optional(),
   structuredResult: StructuredResult$inboundSchema.optional(),
+  ugcAction: UgcActionUnion$inboundSchema.optional(),
   trackingToken: z.string().optional(),
   ranges: z.array(TextRange$inboundSchema).optional(),
 });
