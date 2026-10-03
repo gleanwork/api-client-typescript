@@ -9,7 +9,7 @@ import (
 
 type PlatformSkillsCreateResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	// Successful response.
+	// Skill created.
 	PlatformSkillCreateResponse *components.PlatformSkillCreateResponse
 }
 

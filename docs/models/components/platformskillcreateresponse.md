@@ -7,18 +7,18 @@ import { PlatformSkillCreateResponse } from "@gleanwork/api-client/models/compon
 
 let value: PlatformSkillCreateResponse = {
   skill: {
-    id: "<id>",
+    skill_id: "<id>",
     display_name: "Kian.Klein18",
     description: "per whereas indeed than devise oh",
     latest_version: 33911,
     latest_minor_version: 977646,
     status: "ENABLED",
-    origin: "CUSTOM",
+    origin: "GITHUB",
     owner: {
       name: "<value>",
     },
-    created_at: new Date("2025-10-31T03:35:54.354Z"),
-    updated_at: new Date("2025-01-03T15:10:34.800Z"),
+    created_at: new Date("2025-01-03T15:10:34.800Z"),
+    updated_at: new Date("2026-06-20T04:43:24.533Z"),
   },
   request_id: "<id>",
 };

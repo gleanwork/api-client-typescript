@@ -30,6 +30,10 @@ export type Person = {
    */
   obfuscatedId: string;
   /**
+   * True when this is an authenticated identity fallback rather than a people profile. Directory metadata is unavailable.
+   */
+  identityOnly?: boolean | undefined;
+  /**
    * A list of documents related to this person.
    */
   relatedDocuments?: Array<RelatedDocuments> | undefined;
@@ -41,6 +45,7 @@ export const Person$inboundSchema: z.ZodType<Person, z.ZodTypeDef, unknown> = z
   .object({
     name: z.string(),
     obfuscatedId: z.string(),
+    identityOnly: z.boolean().optional(),
     relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
       .optional(),
     metadata: z.lazy(() => PersonMetadata$inboundSchema).optional(),
@@ -49,6 +54,7 @@ export const Person$inboundSchema: z.ZodType<Person, z.ZodTypeDef, unknown> = z
 export type Person$Outbound = {
   name: string;
   obfuscatedId: string;
+  identityOnly?: boolean | undefined;
   relatedDocuments?: Array<RelatedDocuments$Outbound> | undefined;
   metadata?: PersonMetadata$Outbound | undefined;
 };
@@ -61,6 +67,7 @@ export const Person$outboundSchema: z.ZodType<
 > = z.object({
   name: z.string(),
   obfuscatedId: z.string(),
+  identityOnly: z.boolean().optional(),
   relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
     .optional(),
   metadata: z.lazy(() => PersonMetadata$outboundSchema).optional(),

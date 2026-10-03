@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Update skill
  *
  * @remarks
- * Update mutable metadata for a skill. V1 supports enabling or disabling a skill without changing its content.
+ * Enable or disable the skill for the authenticated caller without changing its content. The owner's update sets the skill's stored status. Any other caller's update applies only to that caller.
  */
 export function skillsUpdate(
   client: GleanCore,

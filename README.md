@@ -523,6 +523,7 @@ For more information on obtaining the appropriate token type, please contact you
 * [listVersions](docs/sdks/skills/README.md#listversions) - List skill versions
 * [retrieveVersion](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
 * [retrieveVersionContent](docs/sdks/skills/README.md#retrieveversioncontent) - Download skill version content
+* [previewSourceStream](docs/sdks/skills/README.md#previewsourcestream) - Preview a GitHub skill source as events
 
 ### [Triggers](docs/sdks/triggers/README.md)
 
@@ -703,6 +704,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`skillsList`](docs/sdks/skills/README.md#list) - List skills
 - [`skillsListVersions`](docs/sdks/skills/README.md#listversions) - List skill versions
 - [`skillsPreviewSource`](docs/sdks/skills/README.md#previewsource) - Preview a GitHub skill source
+- [`skillsPreviewSourceStream`](docs/sdks/skills/README.md#previewsourcestream) - Preview a GitHub skill source as events
 - [`skillsRetrieve`](docs/sdks/skills/README.md#retrieve) - Retrieve skill
 - [`skillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 - [`skillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version
@@ -904,6 +906,7 @@ To learn about this feature and how to get started, check
 - [`useSkillsList`](docs/sdks/skills/README.md#list) - List skills
 - [`useSkillsListVersions`](docs/sdks/skills/README.md#listversions) - List skill versions
 - [`useSkillsPreviewSourceMutation`](docs/sdks/skills/README.md#previewsource) - Preview a GitHub skill source
+- [`useSkillsPreviewSourceStreamMutation`](docs/sdks/skills/README.md#previewsourcestream) - Preview a GitHub skill source as events
 - [`useSkillsRetrieve`](docs/sdks/skills/README.md#retrieve) - Retrieve skill
 - [`useSkillsRetrieveContent`](docs/sdks/skills/README.md#retrievecontent) - Download skill content
 - [`useSkillsRetrieveVersion`](docs/sdks/skills/README.md#retrieveversion) - Retrieve skill version

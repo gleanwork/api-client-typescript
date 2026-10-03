@@ -15,6 +15,7 @@ export const BreakdownType = {
   HostApplications: "HOST_APPLICATIONS",
   Tools: "TOOLS",
   Servers: "SERVERS",
+  AuthMethods: "AUTH_METHODS",
 } as const;
 /**
  * Type of breakdown to return.
@@ -51,6 +52,10 @@ export type McpBreakdownInsightsRequest = {
    * MCP servers to filter by. Empty array means all servers.
    */
   servers?: Array<string> | undefined;
+  /**
+   * Authentication methods to filter by, for example OAUTH_XAA for Cross App Access traffic. Empty array means all authentication methods.
+   */
+  authMethods?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -68,6 +73,7 @@ export type McpBreakdownInsightsRequest$Outbound = {
   hostApplications?: Array<string> | undefined;
   tools?: Array<string> | undefined;
   servers?: Array<string> | undefined;
+  authMethods?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -84,6 +90,7 @@ export const McpBreakdownInsightsRequest$outboundSchema: z.ZodType<
   hostApplications: z.array(z.string()).optional(),
   tools: z.array(z.string()).optional(),
   servers: z.array(z.string()).optional(),
+  authMethods: z.array(z.string()).optional(),
 });
 
 export function mcpBreakdownInsightsRequestToJSON(
