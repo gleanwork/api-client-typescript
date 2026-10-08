@@ -21,6 +21,10 @@ export type SocialNetwork = {
    * Link to profile.
    */
   profileUrl: string;
+  /**
+   * URL of the icon to display for this social network, when available.
+   */
+  iconUrl?: string | undefined;
 };
 
 /** @internal */
@@ -32,12 +36,14 @@ export const SocialNetwork$inboundSchema: z.ZodType<
   name: z.string(),
   profileName: z.string().optional(),
   profileUrl: z.string(),
+  iconUrl: z.string().optional(),
 });
 /** @internal */
 export type SocialNetwork$Outbound = {
   name: string;
   profileName?: string | undefined;
   profileUrl: string;
+  iconUrl?: string | undefined;
 };
 
 /** @internal */
@@ -49,6 +55,7 @@ export const SocialNetwork$outboundSchema: z.ZodType<
   name: z.string(),
   profileName: z.string().optional(),
   profileUrl: z.string(),
+  iconUrl: z.string().optional(),
 });
 
 export function socialNetworkToJSON(socialNetwork: SocialNetwork): string {
