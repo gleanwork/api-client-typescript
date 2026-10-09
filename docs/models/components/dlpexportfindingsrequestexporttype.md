@@ -1,6 +1,6 @@
 # DlpExportFindingsRequestExportType
 
-The type of export to perform
+The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: DlpExportFindingsRequestExportType = "FINDINGS";
 ## Values
 
 ```typescript
-"FINDINGS" | "DOCUMENTS" | "ISSUES"
+"FINDINGS" | "DOCUMENTS" | "ISSUES" | "FINDINGS_CSV"
 ```

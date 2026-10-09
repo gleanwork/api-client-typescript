@@ -8,13 +8,14 @@ import (
 	"fmt"
 )
 
-// ExportInfoExportType - The type of export to perform
+// ExportInfoExportType - The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
 type ExportInfoExportType string
 
 const (
-	ExportInfoExportTypeFindings  ExportInfoExportType = "FINDINGS"
-	ExportInfoExportTypeDocuments ExportInfoExportType = "DOCUMENTS"
-	ExportInfoExportTypeIssues    ExportInfoExportType = "ISSUES"
+	ExportInfoExportTypeFindings    ExportInfoExportType = "FINDINGS"
+	ExportInfoExportTypeDocuments   ExportInfoExportType = "DOCUMENTS"
+	ExportInfoExportTypeIssues      ExportInfoExportType = "ISSUES"
+	ExportInfoExportTypeFindingsCsv ExportInfoExportType = "FINDINGS_CSV"
 )
 
 func (e ExportInfoExportType) ToPointer() *ExportInfoExportType {
@@ -31,6 +32,8 @@ func (e *ExportInfoExportType) UnmarshalJSON(data []byte) error {
 	case "DOCUMENTS":
 		fallthrough
 	case "ISSUES":
+		fallthrough
+	case "FINDINGS_CSV":
 		*e = ExportInfoExportType(v)
 		return nil
 	default:
@@ -79,7 +82,7 @@ type ExportInfo struct {
 	ExportID *string `json:"exportId,omitempty"`
 	// The name of the file to export the findings to
 	FileName *string `json:"fileName,omitempty"`
-	// The type of export to perform
+	// The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
 	ExportType *ExportInfoExportType `json:"exportType,omitempty"`
 	Filter     *DlpFindingFilter     `json:"filter,omitempty"`
 	// Filter for DLP issues. Includes document-level filters and issue-specific filters.
