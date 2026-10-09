@@ -104,6 +104,7 @@ export * from "./platformtriggerseventssearch.js";
 export * from "./platformtriggersget.js";
 export * from "./platformtriggerslist.js";
 export * from "./platformtriggersupdate.js";
+export * from "./platformuserslist.js";
 export * from "./postapiindexv1debugdatasourcedocument.js";
 export * from "./postapiindexv1debugdatasourcedocumentevents.js";
 export * from "./postapiindexv1debugdatasourcedocuments.js";
