@@ -1,6 +1,6 @@
 # ExportInfoExportType
 
-The type of export to perform
+The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
 
 ## Example Usage
 
@@ -15,5 +15,5 @@ let value: ExportInfoExportType = "ISSUES";
 ## Values
 
 ```typescript
-"FINDINGS" | "DOCUMENTS" | "ISSUES" | Unrecognized<string>
+"FINDINGS" | "DOCUMENTS" | "ISSUES" | "FINDINGS_CSV" | Unrecognized<string>
 ```
