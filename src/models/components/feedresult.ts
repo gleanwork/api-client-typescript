@@ -35,6 +35,7 @@ export const FeedResultCategory = {
   ZeroStateChatToolSuggestion: "ZERO_STATE_CHAT_TOOL_SUGGESTION",
   ZeroStateWorkflowCreatedByMe: "ZERO_STATE_WORKFLOW_CREATED_BY_ME",
   ZeroStateWorkflowFavorites: "ZERO_STATE_WORKFLOW_FAVORITES",
+  ZeroStateGleanAgentCoworkers: "ZERO_STATE_GLEAN_AGENT_COWORKERS",
   ZeroStateWorkflowPopular: "ZERO_STATE_WORKFLOW_POPULAR",
   ZeroStateWorkflowRecent: "ZERO_STATE_WORKFLOW_RECENT",
   ZeroStateWorkflowSuggestion: "ZERO_STATE_WORKFLOW_SUGGESTION",
