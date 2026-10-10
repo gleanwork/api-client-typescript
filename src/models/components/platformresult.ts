@@ -18,7 +18,7 @@ export type PlatformResult = {
    */
   url: string;
   /**
-   * Result title.
+   * Display title. For a conversation, this is a title built from the participants, such as "Alice and Bob", including when the indexed title is the message body. When the result has no title, the server returns Untitled.
    */
   title: string;
   /**
