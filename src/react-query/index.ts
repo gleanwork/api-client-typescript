@@ -6,6 +6,7 @@
 export { GleanProvider, useGleanContext } from "./_context.js";
 export * from "./_types.js";
 
+export * from "./adminAgentsList.js";
 export * from "./agentsCancelRun.js";
 export * from "./agentsCreateRun.js";
 export * from "./agentsGet.js";
@@ -106,6 +107,7 @@ export * from "./clientToolsRun.js";
 export * from "./clientVerificationAddReminder.js";
 export * from "./clientVerificationList.js";
 export * from "./clientVerificationVerify.js";
+export * from "./departmentsList.js";
 export * from "./indexingAuthenticationRotateToken.js";
 export * from "./indexingCustomMetadataDelete.js";
 export * from "./indexingCustomMetadataDeleteSchema.js";
@@ -177,3 +179,4 @@ export * from "./triggersListPresets.js";
 export * from "./triggersSearchEvents.js";
 export * from "./triggersSearchPresetEvents.js";
 export * from "./triggersUpdate.js";
+export * from "./usersList.js";
