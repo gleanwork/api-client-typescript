@@ -35,7 +35,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: true
 typescript:
-  version: 0.20.16
+  version: 0.20.17
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -113,6 +113,7 @@ typescript:
   modelPropertyCasing: camel
   moduleFormat: dual
   multipartArrayFormat: standard
+  numericEnumMemberNames: legacy
   outputModelSuffix: output
   packageName: '@gleanwork/api-client'
   preApplyUnionDiscriminators: true
