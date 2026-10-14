@@ -17,15 +17,16 @@ import {
 } from "./dlpissuefilter.js";
 
 /**
- * The type of export to perform
+ * The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
  */
 export const DlpExportFindingsRequestExportType = {
   Findings: "FINDINGS",
   Documents: "DOCUMENTS",
   Issues: "ISSUES",
+  FindingsCsv: "FINDINGS_CSV",
 } as const;
 /**
- * The type of export to perform
+ * The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
  */
 export type DlpExportFindingsRequestExportType = ClosedEnum<
   typeof DlpExportFindingsRequestExportType
@@ -46,7 +47,7 @@ export type FieldScope = ClosedEnum<typeof FieldScope>;
 
 export type DlpExportFindingsRequest = {
   /**
-   * The type of export to perform
+   * The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
    */
   exportType?: DlpExportFindingsRequestExportType | undefined;
   filter?: DlpFindingFilter | undefined;
