@@ -20,15 +20,16 @@ import {
 import { DlpPerson, DlpPerson$inboundSchema } from "./dlpperson.js";
 
 /**
- * The type of export to perform
+ * The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
  */
 export const ExportInfoExportType = {
   Findings: "FINDINGS",
   Documents: "DOCUMENTS",
   Issues: "ISSUES",
+  FindingsCsv: "FINDINGS_CSV",
 } as const;
 /**
- * The type of export to perform
+ * The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
  */
 export type ExportInfoExportType = OpenEnum<typeof ExportInfoExportType>;
 
@@ -67,7 +68,7 @@ export type ExportInfo = {
    */
   fileName?: string | undefined;
   /**
-   * The type of export to perform
+   * The type of export to perform. FINDINGS, DOCUMENTS and ISSUES produce JSONL; FINDINGS_CSV produces one CSV row per finding.
    */
   exportType?: ExportInfoExportType | undefined;
   filter?: DlpFindingFilter | undefined;

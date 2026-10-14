@@ -260,6 +260,19 @@ For more information on obtaining the appropriate token type, please contact you
 <details open>
 <summary>Available methods</summary>
 
+### [Admin.Agents](docs/sdks/adminagents/README.md)
+
+* [list](docs/sdks/adminagents/README.md#list) - List all agents
+
+### [Admin.Idpgroups](docs/sdks/idpgroups/README.md)
+
+* [list](docs/sdks/idpgroups/README.md#list) - List IdP groups
+
+### [Admin.Usage](docs/sdks/usage/README.md)
+
+* [getSettings](docs/sdks/usage/README.md#getsettings) - Get usage settings
+* [updateSettings](docs/sdks/usage/README.md#updatesettings) - Update usage settings
+
 ### [Agents](docs/sdks/agents/README.md)
 
 * [search](docs/sdks/agents/README.md#search) - Search agents
@@ -429,6 +442,10 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/verification/README.md#list) - List verifications
 * [verify](docs/sdks/verification/README.md#verify) - Update verification
 
+### [Departments](docs/sdks/departments/README.md)
+
+* [list](docs/sdks/departments/README.md#list) - List departments
+
 ### [Indexing.Authentication](docs/sdks/indexingauthentication/README.md)
 
 * [rotateToken](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
@@ -538,6 +555,10 @@ For more information on obtaining the appropriate token type, please contact you
 * [listPresetInputValues](docs/sdks/triggers/README.md#listpresetinputvalues) - Search trigger preset input values
 * [searchPresetEvents](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 
+### [Users](docs/sdks/users/README.md)
+
+* [list](docs/sdks/users/README.md#list) - List users
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
@@ -556,6 +577,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
+- [`adminAgentsList`](docs/sdks/adminagents/README.md#list) - List all agents
+- [`adminIdpgroupsList`](docs/sdks/idpgroups/README.md#list) - List IdP groups
+- [`adminUsageGetSettings`](docs/sdks/usage/README.md#getsettings) - Get usage settings
+- [`adminUsageUpdateSettings`](docs/sdks/usage/README.md#updatesettings) - Update usage settings
 - [`agentsCancelRun`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 - [`agentsCreateRun`](docs/sdks/agents/README.md#createrun) - Create agent run
 - [`agentsGet`](docs/sdks/agents/README.md#get) - Get agent
@@ -650,6 +675,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- [`departmentsList`](docs/sdks/departments/README.md#list) - List departments
 - [`indexingAuthenticationRotateToken`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`indexingCustomMetadataDelete`](docs/sdks/custommetadata/README.md#delete) - Remove custom metadata
 - [`indexingCustomMetadataDeleteSchema`](docs/sdks/custommetadata/README.md#deleteschema) - Remove metadata schema
@@ -722,6 +748,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`triggersSearchEvents`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
 - [`triggersSearchPresetEvents`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 - [`triggersUpdate`](docs/sdks/triggers/README.md#update) - Update trigger
+- [`usersList`](docs/sdks/users/README.md#list) - List users
 - ~~[`clientAgentsList`](docs/sdks/clientagents/README.md#list)~~ - Search agents :warning: **Deprecated**
 - ~~[`clientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve)~~ - Retrieve an agent :warning: **Deprecated**
 - ~~[`clientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas)~~ - List an agent's schemas :warning: **Deprecated**
@@ -758,6 +785,10 @@ To learn about this feature and how to get started, check
 
 <summary>Available React hooks</summary>
 
+- [`useAdminAgentsList`](docs/sdks/adminagents/README.md#list) - List all agents
+- [`useAdminIdpgroupsList`](docs/sdks/idpgroups/README.md#list) - List IdP groups
+- [`useAdminUsageGetSettings`](docs/sdks/usage/README.md#getsettings) - Get usage settings
+- [`useAdminUsageUpdateSettingsMutation`](docs/sdks/usage/README.md#updatesettings) - Update usage settings
 - [`useAgentsCancelRunMutation`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 - [`useAgentsCreateRunMutation`](docs/sdks/agents/README.md#createrun) - Create agent run
 - [`useAgentsGet`](docs/sdks/agents/README.md#get) - Get agent
@@ -852,6 +883,7 @@ To learn about this feature and how to get started, check
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- [`useDepartmentsList`](docs/sdks/departments/README.md#list) - List departments
 - [`useIndexingAuthenticationRotateTokenMutation`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`useIndexingCustomMetadataDeleteMutation`](docs/sdks/custommetadata/README.md#delete) - Remove custom metadata
 - [`useIndexingCustomMetadataDeleteSchemaMutation`](docs/sdks/custommetadata/README.md#deleteschema) - Remove metadata schema
@@ -924,6 +956,7 @@ To learn about this feature and how to get started, check
 - [`useTriggersSearchEventsMutation`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
 - [`useTriggersSearchPresetEventsMutation`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 - [`useTriggersUpdateMutation`](docs/sdks/triggers/README.md#update) - Update trigger
+- [`useUsersList`](docs/sdks/users/README.md#list) - List users
 - ~~[`useClientAgentsListMutation`](docs/sdks/clientagents/README.md#list)~~ - Search agents :warning: **Deprecated**
 - ~~[`useClientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve)~~ - Retrieve an agent :warning: **Deprecated**
 - ~~[`useClientAgentsRetrieveSchemas`](docs/sdks/clientagents/README.md#retrieveschemas)~~ - List an agent's schemas :warning: **Deprecated**
