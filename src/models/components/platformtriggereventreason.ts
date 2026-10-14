@@ -63,6 +63,10 @@ export const PlatformTriggerEventReason = {
    * The source system sent a webhook update.
    */
   WebhookUpdated: "WEBHOOK_UPDATED",
+  /**
+   * The source system sent a webhook creation event.
+   */
+  WebhookCreated: "WEBHOOK_CREATED",
 } as const;
 /**
  * Why the event fired.
