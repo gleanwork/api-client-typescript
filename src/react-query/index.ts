@@ -8,6 +8,7 @@ export * from "./_types.js";
 
 export * from "./adminAgentsList.js";
 export * from "./adminIdpgroupsList.js";
+export * from "./adminOauthClientsList.js";
 export * from "./adminUsageGetSettings.js";
 export * from "./adminUsageUpdateSettings.js";
 export * from "./agentsCancelRun.js";
@@ -182,4 +183,5 @@ export * from "./triggersListPresets.js";
 export * from "./triggersSearchEvents.js";
 export * from "./triggersSearchPresetEvents.js";
 export * from "./triggersUpdate.js";
+export * from "./usersGet.js";
 export * from "./usersList.js";
