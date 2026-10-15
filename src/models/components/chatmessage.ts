@@ -116,7 +116,7 @@ export type ChatMessage = {
   /**
    * Deprecated: Use inline citations via ChatMessageFragment.citation instead. For detailed reference information, use ChatMessageCitation.referenceRanges. This field is still populated for backward compatibility.
    *
-   * @deprecated field: Deprecated on 2026-02-06, removal scheduled for 2026-10-15: Use inline citations via ChatMessageFragment.citation and ChatMessageCitation.referenceRanges instead. This field is still populated for backward compatibility..
+   * @deprecated field: Deprecated on 2026-02-06, removal scheduled for 2027-01-15: Use inline citations via ChatMessageFragment.citation and ChatMessageCitation.referenceRanges instead. This field is still populated for backward compatibility..
    */
   citations?: Array<ChatMessageCitation> | undefined;
   /**
