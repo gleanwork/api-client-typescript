@@ -73,7 +73,7 @@ export type EmployeeInfoDefinition = {
   /**
    * The employee's location (city/office name etc).
    *
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
    */
   location?: string | undefined;
   /**
