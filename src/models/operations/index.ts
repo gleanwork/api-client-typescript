@@ -76,6 +76,7 @@ export * from "./people.js";
 export * from "./pin.js";
 export * from "./platformadminagentslist.js";
 export * from "./platformadminidpgroupslist.js";
+export * from "./platformadminoauthclientslist.js";
 export * from "./platformagentscancelrun.js";
 export * from "./platformagentscreaterun.js";
 export * from "./platformagentscreaterunresponses.js";
