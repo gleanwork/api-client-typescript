@@ -36,13 +36,13 @@ export type InviteInfo = {
   /**
    * The time this person was invited in ISO format (ISO 8601).
    *
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use ChannelInviteInfo instead.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Use ChannelInviteInfo instead.
    */
   inviteTime?: Date | undefined;
   /**
    * The time this person was reminded in ISO format (ISO 8601) if a reminder was sent.
    *
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use ChannelInviteInfo instead.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Use ChannelInviteInfo instead.
    */
   reminderTime?: Date | undefined;
 };

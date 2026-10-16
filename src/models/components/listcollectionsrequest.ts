@@ -7,6 +7,10 @@ import * as z from "zod/v3";
 
 export type ListCollectionsRequest = {
   /**
+   * Case-insensitive substring search on collection names. Leading and trailing whitespace is ignored. An empty query does not filter collections.
+   */
+  query?: string | undefined;
+  /**
    * Whether to include the audience filters with the listed Collections.
    */
   includeAudience?: boolean | undefined;
@@ -25,6 +29,7 @@ export type ListCollectionsRequest = {
 
 /** @internal */
 export type ListCollectionsRequest$Outbound = {
+  query?: string | undefined;
   includeAudience?: boolean | undefined;
   includeRoles?: boolean | undefined;
   allowedDatasource?: string | undefined;
@@ -36,6 +41,7 @@ export const ListCollectionsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ListCollectionsRequest
 > = z.object({
+  query: z.string().optional(),
   includeAudience: z.boolean().optional(),
   includeRoles: z.boolean().optional(),
   allowedDatasource: z.string().optional(),
