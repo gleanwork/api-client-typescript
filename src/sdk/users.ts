@@ -3,6 +3,7 @@
  * @generated-id: 2df5828eed03
  */
 
+import { usersGet } from "../funcs/usersGet.js";
 import { usersList } from "../funcs/usersList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -27,6 +28,25 @@ export class Users extends ClientSDK {
       pageSize,
       cursor,
       filters,
+      include,
+      options,
+    ));
+  }
+
+  /**
+   * Get user
+   *
+   * @remarks
+   * Get one user in the Glean directory by user_id. The user can be any person that the list returns, including an inactive user such as a former employee, which is returned with is_active set to false. A user_id that is not in the directory returns 404 resource_not_found. This includes a deleted user and a person that the People directory does not show. An alias ID of a merged person returns the person's canonical user_id.
+   */
+  async get(
+    userId: string,
+    include?: Array<components.PlatformUserInclude> | undefined,
+    options?: RequestOptions,
+  ): Promise<components.PlatformGetUserResponse> {
+    return unwrapAsync(usersGet(
+      this,
+      userId,
       include,
       options,
     ));
