@@ -13,7 +13,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
  */
 export type SharingOptions = {
   /**
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
    */
   enabled?: boolean | undefined;
   /**
@@ -25,7 +25,7 @@ export type SharingOptions = {
    */
   thresholdEnabled?: boolean | undefined;
   /**
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
    */
   anyoneWithLinkEnabled?: boolean | undefined;
   /**
