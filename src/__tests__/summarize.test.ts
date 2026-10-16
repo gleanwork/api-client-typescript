@@ -19,11 +19,12 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        url: "https://neat-council.name/",
+        ugcType: "CHATS",
+        contentId: 735985,
       },
       {
-        ugcType: "ANNOUNCEMENTS",
-        ugcId: "<id>",
+        ugcType: "CHATS",
+        contentId: 735985,
       },
     ],
   });
