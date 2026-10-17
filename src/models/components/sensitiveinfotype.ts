@@ -11,7 +11,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+ * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
  */
 export const SensitiveInfoTypeLikelihoodThreshold = {
   Likely: "LIKELY",
@@ -21,7 +21,7 @@ export const SensitiveInfoTypeLikelihoodThreshold = {
   VeryUnlikely: "VERY_UNLIKELY",
 } as const;
 /**
- * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+ * @deprecated enum: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
  */
 export type SensitiveInfoTypeLikelihoodThreshold = OpenEnum<
   typeof SensitiveInfoTypeLikelihoodThreshold
@@ -29,7 +29,7 @@ export type SensitiveInfoTypeLikelihoodThreshold = OpenEnum<
 
 export type SensitiveInfoType = {
   /**
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
    */
   likelihoodThreshold?: SensitiveInfoTypeLikelihoodThreshold | undefined;
   /**
