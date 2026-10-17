@@ -3,6 +3,7 @@
  * @generated-id: b272c6e1d425
  */
 
+import { adminIdpgroupsGet } from "../funcs/adminIdpgroupsGet.js";
 import { adminIdpgroupsList } from "../funcs/adminIdpgroupsList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -26,6 +27,23 @@ export class Idpgroups extends ClientSDK {
       pageSize,
       cursor,
       filters,
+      options,
+    ));
+  }
+
+  /**
+   * Get an IdP group
+   *
+   * @remarks
+   * Get one identity provider (IdP) group by its idp_group_id. Inactive IdP groups are returned, so a caller can still show a group after it was removed from the identity provider. An IdP group is active when Glean loaded it from the directory. An IdP group is inactive when only a usage limit names it, for example after the group was removed from the identity provider. An idp_group_id that is not valid, or that names no group that the list returns, returns 404 resource_not_found. The caller must be able to read the workspace configuration or the workspace billing.
+   */
+  async get(
+    idpGroupId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformGetIdpGroupResponse> {
+    return unwrapAsync(adminIdpgroupsGet(
+      this,
+      idpGroupId,
       options,
     ));
   }
