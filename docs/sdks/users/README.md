@@ -5,6 +5,7 @@
 ### Available Operations
 
 * [list](#list) - List users
+* [get](#get) - Get user
 
 ## list
 
@@ -100,6 +101,107 @@ import {
 ### Response
 
 **Promise\<[components.PlatformListUsersResponse](../../models/components/platformlistusersresponse.md)\>**
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.PlatformProblemDetailError | 400, 401, 403, 404, 408, 429      | application/problem+json          |
+| errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
+| errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+
+## get
+
+Get one user in the Glean directory by user_id. The user can be any person that the list returns, including an inactive user such as a former employee, which is returned with is_active set to false. A user_id that is not in the directory returns 404 resource_not_found. This includes a deleted user and a person that the People directory does not show. An alias ID of a merged person returns the person's canonical user_id.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-users-get" method="get" path="/api/users/{user_id}" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.users.get("{user_id}");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { usersGet } from "@gleanwork/api-client/funcs/usersGet.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await usersGet(glean, "{user_id}");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("usersGet failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useUsersGet,
+  useUsersGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchUsersGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateUsersGet,
+  invalidateAllUsersGet,
+} from "@gleanwork/api-client/react-query/usersGet.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `userId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Canonical Glean user ID, as the list returns it.                                                                                                                               | {user_id}                                                                                                                                                                      |
+| `include`                                                                                                                                                                      | [components.PlatformUserInclude](../../models/components/platformuserinclude.md)[]                                                                                             | :heavy_minus_sign:                                                                                                                                                             | Optional fields to add to the user. Each value only adds fields.<br/>                                                                                                          |                                                                                                                                                                                |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[components.PlatformGetUserResponse](../../models/components/platformgetuserresponse.md)\>**
 
 ### Errors
 
