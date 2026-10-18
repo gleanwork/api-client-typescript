@@ -52,7 +52,7 @@ export type InputOptions = {
   /**
    * list of url regex matching documents excluded from report
    *
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
    */
   urlGreenlist?: Array<string> | undefined;
   /**
@@ -62,7 +62,7 @@ export type InputOptions = {
   /**
    * List of datasources to consider for report. DEPRECATED - use datasourceInstances instead.
    *
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Use datasourceInstances instead.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Use datasourceInstances instead.
    */
   datasources?: Array<string> | undefined;
   /**
