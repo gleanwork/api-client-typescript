@@ -19,3 +19,16 @@ test("Users Platform Users List", async () => {
   const result = await glean.users.list();
   expect(result).toBeDefined();
 });
+
+test("Users Platform Users Get", async () => {
+  const testHttpClient = createTestHTTPClient("platform-users-get");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.users.get("{user_id}");
+  expect(result).toBeDefined();
+});

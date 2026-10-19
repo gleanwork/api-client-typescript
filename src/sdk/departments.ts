@@ -3,6 +3,7 @@
  * @generated-id: 8278c9a9987d
  */
 
+import { departmentsGet } from "../funcs/departmentsGet.js";
 import { departmentsList } from "../funcs/departmentsList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -26,6 +27,23 @@ export class Departments extends ClientSDK {
       pageSize,
       cursor,
       filters,
+      options,
+    ));
+  }
+
+  /**
+   * Get a department
+   *
+   * @remarks
+   * Get one department by its department_id. Inactive departments are returned, so a caller can show the name of a department that a usage limit still names. A department is active when at least one active user belongs to it. A department is inactive when only inactive users, such as former employees, belong to it, or when only a usage limit names it. A department_id that is not valid, or that no user and no usage limit uses, returns 404 resource_not_found. A department_id comes from the exact department name, so a renamed department gets a new ID, and a name that is used again gets its old ID back.
+   */
+  async get(
+    departmentId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformGetDepartmentResponse> {
+    return unwrapAsync(departmentsGet(
+      this,
+      departmentId,
       options,
     ));
   }
