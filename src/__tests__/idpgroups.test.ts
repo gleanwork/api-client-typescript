@@ -19,3 +19,16 @@ test("Idpgroups Platform Admin Idp Groups List", async () => {
   const result = await glean.admin.idpgroups.list();
   expect(result).toBeDefined();
 });
+
+test("Idpgroups Platform Admin Idp Groups Get", async () => {
+  const testHttpClient = createTestHTTPClient("platform-admin-idp-groups-get");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.admin.idpgroups.get("{idp_group_id}");
+  expect(result).toBeDefined();
+});
