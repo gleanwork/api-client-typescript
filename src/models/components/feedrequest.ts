@@ -74,6 +74,7 @@ export const FeedRequestCategory = {
   ManagerInvite: "MANAGER_INVITE",
   OnboardingAuthorization: "ONBOARDING_AUTHORIZATION",
   ChatReminder: "CHAT_REMINDER",
+  Discover: "DISCOVER",
 } as const;
 export type FeedRequestCategory = ClosedEnum<typeof FeedRequestCategory>;
 

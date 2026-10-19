@@ -136,6 +136,7 @@ export const JustificationType = {
   ManagerInvite: "MANAGER_INVITE",
   OnboardingAuthorization: "ONBOARDING_AUTHORIZATION",
   ChatReminder: "CHAT_REMINDER",
+  Discover: "DISCOVER",
 } as const;
 /**
  * Type of the justification.
