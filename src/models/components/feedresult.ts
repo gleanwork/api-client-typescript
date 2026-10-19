@@ -72,6 +72,7 @@ export const FeedResultCategory = {
   ManagerInvite: "MANAGER_INVITE",
   OnboardingAuthorization: "ONBOARDING_AUTHORIZATION",
   ChatReminder: "CHAT_REMINDER",
+  Discover: "DISCOVER",
 } as const;
 /**
  * Category of the result, one of the requested categories in incoming request.
