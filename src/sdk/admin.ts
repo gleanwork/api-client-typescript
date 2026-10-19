@@ -6,12 +6,18 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AdminAgents } from "./adminagents.js";
 import { Idpgroups } from "./idpgroups.js";
+import { Oauth } from "./oauth.js";
 import { Usage } from "./usage.js";
 
 export class Admin extends ClientSDK {
   private _usage?: Usage;
   get usage(): Usage {
     return (this._usage ??= new Usage(this._options));
+  }
+
+  private _oauth?: Oauth;
+  get oauth(): Oauth {
+    return (this._oauth ??= new Oauth(this._options));
   }
 
   private _idpgroups?: Idpgroups;
