@@ -18,7 +18,7 @@ export type PlatformUsersListRequest = {
    */
   cursor?: string | undefined;
   /**
-   * JSON-encoded filters that choose which users are returned. The only supported field is is_active, with the values "true" and "false" and the operator EQUALS. Multiple values OR within a filter. Multiple filters AND together. Without an is_active filter, only active users are returned. To return active and inactive users, send [{"field":"is_active","values":["true","false"]}].
+   * JSON-encoded filters that choose which users are returned. The supported fields are is_active, name, email, manager_id, and department_id, each with the operator EQUALS. Multiple values OR within a filter. Multiple filters AND together. Only is_active may appear in more than one filter. Without an is_active filter, only active users are returned, so a filter on another field matches only active users unless an is_active filter includes "false". To return active and inactive users, send [{"field":"is_active","values":["true","false"]}]. A value that matches no user, such as an unknown email or department_id, returns no users rather than an error.
    *
    * @remarks
    */
