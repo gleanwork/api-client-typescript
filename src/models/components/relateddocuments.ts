@@ -70,7 +70,7 @@ export type RelatedDocuments = {
   /**
    * A truncated list of documents with this relation. TO BE DEPRECATED.
    *
-   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2026-10-15: Field is deprecated.
+   * @deprecated field: Deprecated on 2026-02-05, removal scheduled for 2027-01-15: Field is deprecated.
    */
   documents?: Array<Document> | undefined;
   /**
