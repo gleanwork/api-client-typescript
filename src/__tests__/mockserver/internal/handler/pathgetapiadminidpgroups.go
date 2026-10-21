@@ -53,7 +53,6 @@ func testPlatformAdminIdpGroupsListPlatformAdminIdpGroupsList0(w http.ResponseWr
 				DisplayName:      "Kaya52",
 				Provider:         "<value>",
 				ProviderInstance: "<value>",
-				IsActive:         false,
 			},
 		},
 		HasMore:   true,

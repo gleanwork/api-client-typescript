@@ -53,7 +53,7 @@ export type IndexingDocumentsCountMutationError =
  *
  * Tip: Use [/debug/{datasource}/status](https://developers.glean.com/indexing/debugging/datasource-status) for richer information.
  *
- * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2026-10-15: Endpoint is deprecated.
+ * @deprecated method: Deprecated on 2026-02-03, removal scheduled for 2027-01-15: Endpoint is deprecated.
  */
 export function useIndexingDocumentsCountMutation(
   options?: MutationHookOptions<

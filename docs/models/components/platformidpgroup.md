@@ -12,7 +12,6 @@ let value: PlatformIdpGroup = {
   display_name: "Walker_Adams47",
   provider: "<value>",
   provider_instance: "<value>",
-  is_active: false,
 };
 ```
 
@@ -24,4 +23,3 @@ let value: PlatformIdpGroup = {
 | `displayName`                                                                                                                  | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | Group name from the identity provider. When the provider has no display name, this is the group's name or ID in the provider.<br/> |
 | `provider`                                                                                                                     | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | The identity provider datasource that the group comes from, for example "okta", "gdrive", or "o365".<br/>                      |
 | `providerInstance`                                                                                                             | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | The datasource instance that the group comes from, for example "okta". A provider can have more than one instance.<br/>        |
-| `isActive`                                                                                                                     | *boolean*                                                                                                                      | :heavy_check_mark:                                                                                                             | Whether Glean loaded the group from the directory. A group that only a usage limit names is inactive.<br/>                     |

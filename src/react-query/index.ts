@@ -8,8 +8,6 @@ export * from "./_types.js";
 
 export * from "./adminAgentsList.js";
 export * from "./adminIdpgroupsList.js";
-export * from "./adminUsageGetSettings.js";
-export * from "./adminUsageUpdateSettings.js";
 export * from "./agentsCancelRun.js";
 export * from "./agentsCreateRun.js";
 export * from "./agentsGet.js";

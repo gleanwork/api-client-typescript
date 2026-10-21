@@ -49,12 +49,6 @@ export type PlatformUser = {
    */
   alias_emails?: Array<string> | undefined;
   /**
-   * Whether the user is active. A user whose type is FORMER_EMPLOYEE is inactive.
-   *
-   * @remarks
-   */
-  is_active: boolean;
-  /**
    * Person employment status or account type.
    */
   user_type?: PlatformPersonType | undefined;
@@ -92,7 +86,6 @@ export const PlatformUser$inboundSchema: z.ZodType<
   display_name: z.string(),
   email: z.string().optional(),
   alias_emails: z.array(z.string()).optional(),
-  is_active: z.boolean(),
   user_type: PlatformPersonType$inboundSchema.optional(),
   title: z.string().optional(),
   department: PlatformDepartmentReference$inboundSchema.optional(),

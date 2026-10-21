@@ -4886,7 +4886,7 @@ import {
 
 List Answers created by the current user.
 
-> :warning: **DEPRECATED**: Deprecated on 2026-01-21, removal scheduled for 2026-10-15: Answer boards have been removed and this endpoint no longer serves a purpose.
+> :warning: **DEPRECATED**: Deprecated on 2026-01-21, removal scheduled for 2027-01-15: Answer boards have been removed and this endpoint no longer serves a purpose.
 
 ### Example Usage
 
