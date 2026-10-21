@@ -4,6 +4,8 @@
 package components
 
 type ListCollectionsRequest struct {
+	// Case-insensitive substring search on collection names. Leading and trailing whitespace is ignored. An empty query does not filter collections.
+	Query *string `json:"query,omitempty"`
 	// Whether to include the audience filters with the listed Collections.
 	IncludeAudience *bool `json:"includeAudience,omitempty"`
 	// Whether to include the editor roles with the listed Collections.
@@ -11,6 +13,13 @@ type ListCollectionsRequest struct {
 	// The datasource type this Collection can hold.
 	// ANSWERS - for Collections representing answer boards
 	AllowedDatasource *string `json:"allowedDatasource,omitempty"`
+}
+
+func (o *ListCollectionsRequest) GetQuery() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Query
 }
 
 func (o *ListCollectionsRequest) GetIncludeAudience() *bool {

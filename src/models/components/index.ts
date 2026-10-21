@@ -413,8 +413,6 @@ export * from "./platformchattextformat.js";
 export * from "./platformcontentschedulewebhookevent.js";
 export * from "./platformcontenttype.js";
 export * from "./platformdatasourcefilterinfo.js";
-export * from "./platformdepartment.js";
-export * from "./platformdepartmentfilter.js";
 export * from "./platformdepartmentreference.js";
 export * from "./platformdocumentchangewebhookevent.js";
 export * from "./platformdurableagentrun.js";
