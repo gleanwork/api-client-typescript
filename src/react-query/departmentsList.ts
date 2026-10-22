@@ -11,6 +11,7 @@ import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
+import * as components from "../models/components/index.js";
 import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
 import {
   ConnectionError,
@@ -56,11 +57,12 @@ export type DepartmentsListQueryError =
  * List departments
  *
  * @remarks
- * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments.
+ * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments. Send a name filter to return only the departments whose display_name contains a value.
  */
 export function useDepartmentsList(
   pageSize?: number | undefined,
   cursor?: string | undefined,
+  filters?: Array<components.PlatformDepartmentFilter> | undefined,
   options?: QueryHookOptions<
     DepartmentsListQueryData,
     DepartmentsListQueryError
@@ -72,6 +74,7 @@ export function useDepartmentsList(
       client,
       pageSize,
       cursor,
+      filters,
       options,
     ),
     ...options,
@@ -82,11 +85,12 @@ export function useDepartmentsList(
  * List departments
  *
  * @remarks
- * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments.
+ * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments. Send a name filter to return only the departments whose display_name contains a value.
  */
 export function useDepartmentsListSuspense(
   pageSize?: number | undefined,
   cursor?: string | undefined,
+  filters?: Array<components.PlatformDepartmentFilter> | undefined,
   options?: SuspenseQueryHookOptions<
     DepartmentsListQueryData,
     DepartmentsListQueryError
@@ -98,6 +102,7 @@ export function useDepartmentsListSuspense(
       client,
       pageSize,
       cursor,
+      filters,
       options,
     ),
     ...options,
@@ -107,7 +112,11 @@ export function useDepartmentsListSuspense(
 export function setDepartmentsListData(
   client: QueryClient,
   queryKeyBase: [
-    parameters: { pageSize?: number | undefined; cursor?: string | undefined },
+    parameters: {
+      pageSize?: number | undefined;
+      cursor?: string | undefined;
+      filters?: Array<components.PlatformDepartmentFilter> | undefined;
+    },
   ],
   data: DepartmentsListQueryData,
 ): DepartmentsListQueryData | undefined {
@@ -119,7 +128,11 @@ export function setDepartmentsListData(
 export function invalidateDepartmentsList(
   client: QueryClient,
   queryKeyBase: TupleToPrefixes<
-    [parameters: { pageSize?: number | undefined; cursor?: string | undefined }]
+    [parameters: {
+      pageSize?: number | undefined;
+      cursor?: string | undefined;
+      filters?: Array<components.PlatformDepartmentFilter> | undefined;
+    }]
   >,
   filters?: Omit<InvalidateQueryFilters, "queryKey" | "predicate" | "exact">,
 ): Promise<void> {
