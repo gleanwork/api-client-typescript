@@ -22,7 +22,6 @@ export function prefetchDepartmentsList(
   client$: GleanCore,
   pageSize?: number | undefined,
   cursor?: string | undefined,
-  filters?: Array<components.PlatformDepartmentFilter> | undefined,
   options?: RequestOptions,
 ): Promise<void> {
   return queryClient.prefetchQuery({
@@ -30,7 +29,6 @@ export function prefetchDepartmentsList(
       client$,
       pageSize,
       cursor,
-      filters,
       options,
     ),
   });
@@ -40,14 +38,13 @@ export function buildDepartmentsListQuery(
   client$: GleanCore,
   pageSize?: number | undefined,
   cursor?: string | undefined,
-  filters?: Array<components.PlatformDepartmentFilter> | undefined,
   options?: RequestOptions,
 ): {
   queryKey: QueryKey;
   queryFn: (context: QueryFunctionContext) => Promise<DepartmentsListQueryData>;
 } {
   return {
-    queryKey: queryKeyDepartmentsList({ pageSize, cursor, filters }),
+    queryKey: queryKeyDepartmentsList({ pageSize, cursor }),
     queryFn: async function departmentsListQueryFn(
       ctx,
     ): Promise<DepartmentsListQueryData> {
@@ -66,7 +63,6 @@ export function buildDepartmentsListQuery(
         client$,
         pageSize,
         cursor,
-        filters,
         mergedOptions,
       ));
     },
@@ -74,11 +70,7 @@ export function buildDepartmentsListQuery(
 }
 
 export function queryKeyDepartmentsList(
-  parameters: {
-    pageSize?: number | undefined;
-    cursor?: string | undefined;
-    filters?: Array<components.PlatformDepartmentFilter> | undefined;
-  },
+  parameters: { pageSize?: number | undefined; cursor?: string | undefined },
 ): QueryKey {
   return ["@gleanwork/api-client", "departments", "list", parameters];
 }

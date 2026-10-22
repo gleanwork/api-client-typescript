@@ -43,3 +43,18 @@ test("Chat Platform Chat Create", async () => {
   });
   expect(result).toBeDefined();
 });
+
+test("Chat Platform Chat Update", async () => {
+  const testHttpClient = createTestHTTPClient("platform-chat-update");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.chat.update({
+    name: "<value>",
+  }, "{chat_id}");
+  expect(result).toBeDefined();
+});

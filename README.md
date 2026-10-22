@@ -267,11 +267,12 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Admin.Idpgroups](docs/sdks/idpgroups/README.md)
 
 * [list](docs/sdks/idpgroups/README.md#list) - List IdP groups
+* [get](docs/sdks/idpgroups/README.md#get) - Get an IdP group
 
-### [Admin.Usage](docs/sdks/usage/README.md)
+### [Admin.Oauth.Clients](docs/sdks/clients/README.md)
 
-* [getSettings](docs/sdks/usage/README.md#getsettings) - Get usage settings
-* [updateSettings](docs/sdks/usage/README.md#updatesettings) - Update usage settings
+* [list](docs/sdks/clients/README.md#list) - List OAuth clients
+* [get](docs/sdks/clients/README.md#get) - Get an OAuth client
 
 ### [Agents](docs/sdks/agents/README.md)
 
@@ -286,6 +287,7 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Chat](docs/sdks/chat/README.md)
 
 * [create](docs/sdks/chat/README.md#create) - Create a chat response
+* [update](docs/sdks/chat/README.md#update) - Update a chat
 * [createStream](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
 
 ### [Client.Activity](docs/sdks/activity/README.md)
@@ -445,6 +447,7 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Departments](docs/sdks/departments/README.md)
 
 * [list](docs/sdks/departments/README.md#list) - List departments
+* [get](docs/sdks/departments/README.md#get) - Get a department
 
 ### [Indexing.Authentication](docs/sdks/indexingauthentication/README.md)
 
@@ -558,6 +561,7 @@ For more information on obtaining the appropriate token type, please contact you
 ### [Users](docs/sdks/users/README.md)
 
 * [list](docs/sdks/users/README.md#list) - List users
+* [get](docs/sdks/users/README.md#get) - Get user
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -578,9 +582,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 <summary>Available standalone functions</summary>
 
 - [`adminAgentsList`](docs/sdks/adminagents/README.md#list) - List all agents
+- [`adminIdpgroupsGet`](docs/sdks/idpgroups/README.md#get) - Get an IdP group
 - [`adminIdpgroupsList`](docs/sdks/idpgroups/README.md#list) - List IdP groups
-- [`adminUsageGetSettings`](docs/sdks/usage/README.md#getsettings) - Get usage settings
-- [`adminUsageUpdateSettings`](docs/sdks/usage/README.md#updatesettings) - Update usage settings
+- [`adminOauthClientsGet`](docs/sdks/clients/README.md#get) - Get an OAuth client
+- [`adminOauthClientsList`](docs/sdks/clients/README.md#list) - List OAuth clients
 - [`agentsCancelRun`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 - [`agentsCreateRun`](docs/sdks/agents/README.md#createrun) - Create agent run
 - [`agentsGet`](docs/sdks/agents/README.md#get) - Get agent
@@ -590,6 +595,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`agentsSearch`](docs/sdks/agents/README.md#search) - Search agents
 - [`chatCreate`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`chatCreateStream`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
+- [`chatUpdate`](docs/sdks/chat/README.md#update) - Update a chat
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
 - [`clientAgentsCreate`](docs/sdks/clientagents/README.md#create) - Create an agent
@@ -675,6 +681,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientVerificationAddReminder`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`clientVerificationList`](docs/sdks/verification/README.md#list) - List verifications
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
+- [`departmentsGet`](docs/sdks/departments/README.md#get) - Get a department
 - [`departmentsList`](docs/sdks/departments/README.md#list) - List departments
 - [`indexingAuthenticationRotateToken`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`indexingCustomMetadataDelete`](docs/sdks/custommetadata/README.md#delete) - Remove custom metadata
@@ -748,6 +755,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`triggersSearchEvents`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
 - [`triggersSearchPresetEvents`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 - [`triggersUpdate`](docs/sdks/triggers/README.md#update) - Update trigger
+- [`usersGet`](docs/sdks/users/README.md#get) - Get user
 - [`usersList`](docs/sdks/users/README.md#list) - List users
 - ~~[`clientAgentsList`](docs/sdks/clientagents/README.md#list)~~ - Search agents :warning: **Deprecated**
 - ~~[`clientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve)~~ - Retrieve an agent :warning: **Deprecated**
@@ -786,9 +794,10 @@ To learn about this feature and how to get started, check
 <summary>Available React hooks</summary>
 
 - [`useAdminAgentsList`](docs/sdks/adminagents/README.md#list) - List all agents
+- [`useAdminIdpgroupsGet`](docs/sdks/idpgroups/README.md#get) - Get an IdP group
 - [`useAdminIdpgroupsList`](docs/sdks/idpgroups/README.md#list) - List IdP groups
-- [`useAdminUsageGetSettings`](docs/sdks/usage/README.md#getsettings) - Get usage settings
-- [`useAdminUsageUpdateSettingsMutation`](docs/sdks/usage/README.md#updatesettings) - Update usage settings
+- [`useAdminOauthClientsGet`](docs/sdks/clients/README.md#get) - Get an OAuth client
+- [`useAdminOauthClientsList`](docs/sdks/clients/README.md#list) - List OAuth clients
 - [`useAgentsCancelRunMutation`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 - [`useAgentsCreateRunMutation`](docs/sdks/agents/README.md#createrun) - Create agent run
 - [`useAgentsGet`](docs/sdks/agents/README.md#get) - Get agent
@@ -798,6 +807,7 @@ To learn about this feature and how to get started, check
 - [`useAgentsSearchMutation`](docs/sdks/agents/README.md#search) - Search agents
 - [`useChatCreateMutation`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`useChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
+- [`useChatUpdateMutation`](docs/sdks/chat/README.md#update) - Update a chat
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
 - [`useClientAgentsCreateMutation`](docs/sdks/clientagents/README.md#create) - Create an agent
@@ -883,6 +893,7 @@ To learn about this feature and how to get started, check
 - [`useClientVerificationAddReminderMutation`](docs/sdks/verification/README.md#addreminder) - Create verification
 - [`useClientVerificationListMutation`](docs/sdks/verification/README.md#list) - List verifications
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
+- [`useDepartmentsGet`](docs/sdks/departments/README.md#get) - Get a department
 - [`useDepartmentsList`](docs/sdks/departments/README.md#list) - List departments
 - [`useIndexingAuthenticationRotateTokenMutation`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`useIndexingCustomMetadataDeleteMutation`](docs/sdks/custommetadata/README.md#delete) - Remove custom metadata
@@ -956,6 +967,7 @@ To learn about this feature and how to get started, check
 - [`useTriggersSearchEventsMutation`](docs/sdks/triggers/README.md#searchevents) - Search events for a trigger
 - [`useTriggersSearchPresetEventsMutation`](docs/sdks/triggers/README.md#searchpresetevents) - Search events for a trigger preset
 - [`useTriggersUpdateMutation`](docs/sdks/triggers/README.md#update) - Update trigger
+- [`useUsersGet`](docs/sdks/users/README.md#get) - Get user
 - [`useUsersList`](docs/sdks/users/README.md#list) - List users
 - ~~[`useClientAgentsListMutation`](docs/sdks/clientagents/README.md#list)~~ - Search agents :warning: **Deprecated**
 - ~~[`useClientAgentsRetrieve`](docs/sdks/clientagents/README.md#retrieve)~~ - Retrieve an agent :warning: **Deprecated**
