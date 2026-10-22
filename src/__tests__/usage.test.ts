@@ -3,40 +3,16 @@
  * @generated-id: f6282f30e25c
  */
 
-import { expect, test } from "vitest";
-import { Glean } from "../index.js";
-import { createTestHTTPClient } from "./testclient.js";
+import { assert, it } from "vitest";
 
-test("Usage Platform Admin Usage Settings Get", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "platform-admin-usage-settings-get",
+it.skip("Usage Platform Admin Usage Settings Get", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step platform-admin-usage-settings-get.test referencing operation platform-admin-usage-settings-get not found in document`]",
   );
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-  });
-
-  const result = await glean.admin.usage.getSettings();
-  expect(result).toBeDefined();
 });
 
-test("Usage Platform Admin Usage Settings Update", async () => {
-  const testHttpClient = createTestHTTPClient(
-    "platform-admin-usage-settings-update",
+it.skip("Usage Platform Admin Usage Settings Update", async () => {
+  assert.fail(
+    "incomplete test found please make sure to address the following errors: [`workflow step platform-admin-usage-settings-update.test referencing operation platform-admin-usage-settings-update not found in document`]",
   );
-
-  const glean = new Glean({
-    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
-    httpClient: testHttpClient,
-    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
-  });
-
-  const result = await glean.admin.usage.updateSettings({
-    limit_increase_requests: {
-      business_justification: "REQUIRED",
-    },
-  });
-  expect(result).toBeDefined();
 });

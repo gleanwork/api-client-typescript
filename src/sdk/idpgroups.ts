@@ -3,6 +3,7 @@
  * @generated-id: b272c6e1d425
  */
 
+import { adminIdpgroupsGet } from "../funcs/adminIdpgroupsGet.js";
 import { adminIdpgroupsList } from "../funcs/adminIdpgroupsList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -13,7 +14,7 @@ export class Idpgroups extends ClientSDK {
    * List IdP groups
    *
    * @remarks
-   * List the identity provider (IdP) groups that Glean loads from the directory, ordered by display_name and then by idp_group_id. Use idp_group_id to name a group in other Platform APIs. An IdP group is active when Glean loaded it from the directory. An IdP group is inactive when only a usage limit names it, for example after the group was removed from the identity provider. Inactive IdP groups are left out unless an is_active filter includes the value "false". Usage limits apply only to IdP groups from the datasource instance that the usage settings select, so use the provider_instance filter to list only those groups. Internal O365 ownership groups and SharePoint groups are left out. The caller must be able to read the workspace configuration or the workspace billing.
+   * List the identity provider (IdP) groups that Glean loads from the directory, ordered by display_name and then by idp_group_id. Use idp_group_id to name a group in other Platform APIs, such as the usage limit evaluation and limit increase request APIs. Usage limits apply only to IdP groups from the datasource instance in usage_settings.user_grouping.idp_group_provider_instance of the get usage settings response, and this API always lists that instance's groups. To list only those groups, pass that value in a provider_instance filter of the filters parameter, for example `filters=[{"field":"provider_instance","operator":"EQUALS","values":["okta"]}]`, URL-encoded as `filters=%5B%7B%22field%22%3A%22provider_instance%22%2C%22operator%22%3A%22EQUALS%22%2C%22values%22%3A%5B%22okta%22%5D%7D%5D`. Internal O365 ownership groups and SharePoint groups are left out. The caller must be able to read the workspace configuration or the workspace billing.
    */
   async list(
     pageSize?: number | undefined,
@@ -26,6 +27,23 @@ export class Idpgroups extends ClientSDK {
       pageSize,
       cursor,
       filters,
+      options,
+    ));
+  }
+
+  /**
+   * Get an IdP group
+   *
+   * @remarks
+   * Get one identity provider (IdP) group by its idp_group_id. An idp_group_id that is not valid, or that names no group that the list returns, returns 404 resource_not_found. A group that was removed from the identity provider returns 404 after Glean reloads the directory. The caller must be able to read the workspace configuration or the workspace billing.
+   */
+  async get(
+    idpGroupId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformGetIdpGroupResponse> {
+    return unwrapAsync(adminIdpgroupsGet(
+      this,
+      idpGroupId,
       options,
     ));
   }

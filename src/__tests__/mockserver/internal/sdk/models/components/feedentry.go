@@ -127,6 +127,7 @@ const (
 	JustificationTypeManagerInvite                     JustificationType = "MANAGER_INVITE"
 	JustificationTypeOnboardingAuthorization           JustificationType = "ONBOARDING_AUTHORIZATION"
 	JustificationTypeChatReminder                      JustificationType = "CHAT_REMINDER"
+	JustificationTypeDiscover                          JustificationType = "DISCOVER"
 )
 
 func (e JustificationType) ToPointer() *JustificationType {
@@ -277,6 +278,8 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 	case "ONBOARDING_AUTHORIZATION":
 		fallthrough
 	case "CHAT_REMINDER":
+		fallthrough
+	case "DISCOVER":
 		*e = JustificationType(v)
 		return nil
 	default:

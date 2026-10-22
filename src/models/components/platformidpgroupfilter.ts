@@ -29,7 +29,7 @@ export type PlatformIdpGroupFilterOperator = ClosedEnum<
  */
 export type PlatformIdpGroupFilter = {
   /**
-   * The IdP group field to filter on. The supported fields are is_active and provider_instance.
+   * The IdP group field to filter on. The only supported field is provider_instance.
    *
    * @remarks
    */

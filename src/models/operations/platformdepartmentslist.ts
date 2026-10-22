@@ -4,7 +4,6 @@
  */
 
 import * as z from "zod/v3";
-import * as components from "../components/index.js";
 
 export type PlatformDepartmentsListRequest = {
   /**
@@ -12,24 +11,15 @@ export type PlatformDepartmentsListRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Opaque pagination cursor from a previous response. Send the same filters that the previous request used.
-   *
-   * @remarks
+   * Opaque pagination cursor from a previous response.
    */
   cursor?: string | undefined;
-  /**
-   * JSON-encoded filters that choose which departments are returned. The only supported field is is_active, with the values "true" and "false" and the operator EQUALS. Multiple values OR within a filter. Multiple filters AND together. Without an is_active filter, only active departments are returned. To return active and inactive departments, send [{"field":"is_active","values":["true","false"]}].
-   *
-   * @remarks
-   */
-  filters?: Array<components.PlatformDepartmentFilter> | undefined;
 };
 
 /** @internal */
 export type PlatformDepartmentsListRequest$Outbound = {
   page_size: number;
   cursor?: string | undefined;
-  filters?: Array<components.PlatformDepartmentFilter$Outbound> | undefined;
 };
 
 /** @internal */
@@ -40,8 +30,6 @@ export const PlatformDepartmentsListRequest$outboundSchema: z.ZodType<
 > = z.object({
   page_size: z.number().int().default(50),
   cursor: z.string().optional(),
-  filters: z.array(components.PlatformDepartmentFilter$outboundSchema)
-    .optional(),
 });
 
 export function platformDepartmentsListRequestToJSON(
