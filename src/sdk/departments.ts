@@ -13,19 +13,17 @@ export class Departments extends ClientSDK {
    * List departments
    *
    * @remarks
-   * List the departments in the Glean directory, ordered by display_name and then by department_id. A department is active when at least one active user belongs to it. A department is inactive when only inactive users, such as former employees, belong to it, or when only a usage limit names it. Inactive departments are left out unless an is_active filter includes the value "false". Department names are exact, so names that differ only by case are different departments.
+   * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments.
    */
   async list(
     pageSize?: number | undefined,
     cursor?: string | undefined,
-    filters?: Array<components.PlatformDepartmentFilter> | undefined,
     options?: RequestOptions,
   ): Promise<components.PlatformListDepartmentsResponse> {
     return unwrapAsync(departmentsList(
       this,
       pageSize,
       cursor,
-      filters,
       options,
     ));
   }

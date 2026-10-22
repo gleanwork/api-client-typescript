@@ -36,12 +36,6 @@ export type PlatformIdpGroup = {
    * @remarks
    */
   provider_instance: string;
-  /**
-   * Whether Glean loaded the group from the directory. A group that only a usage limit names is inactive.
-   *
-   * @remarks
-   */
-  is_active: boolean;
 };
 
 /** @internal */
@@ -54,7 +48,6 @@ export const PlatformIdpGroup$inboundSchema: z.ZodType<
   display_name: z.string(),
   provider: z.string(),
   provider_instance: z.string(),
-  is_active: z.boolean(),
 });
 
 export function platformIdpGroupFromJSON(

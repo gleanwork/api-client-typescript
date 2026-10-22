@@ -5,6 +5,7 @@
 
 import { chatCreate } from "../funcs/chatCreate.js";
 import { chatCreateStream } from "../funcs/chatCreateStream.js";
+import { chatUpdate } from "../funcs/chatUpdate.js";
 import { EventStream } from "../lib/event-streams.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -25,6 +26,25 @@ export class Chat extends ClientSDK {
     return unwrapAsync(chatCreate(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a chat
+   *
+   * @remarks
+   * Update the name of a chat. Only the chat owner can update it.
+   */
+  async update(
+    platformChatUpdateRequest: components.PlatformChatUpdateRequest,
+    chatId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformChatUpdateResponse> {
+    return unwrapAsync(chatUpdate(
+      this,
+      platformChatUpdateRequest,
+      chatId,
       options,
     ));
   }

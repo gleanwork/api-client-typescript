@@ -36,14 +36,14 @@ export class Glean extends ClientSDK {
     return (this._search ??= new Search(this._options));
   }
 
-  private _admin?: Admin;
-  get admin(): Admin {
-    return (this._admin ??= new Admin(this._options));
-  }
-
   private _departments?: Departments;
   get departments(): Departments {
     return (this._departments ??= new Departments(this._options));
+  }
+
+  private _admin?: Admin;
+  get admin(): Admin {
+    return (this._admin ??= new Admin(this._options));
   }
 
   private _users?: Users;
