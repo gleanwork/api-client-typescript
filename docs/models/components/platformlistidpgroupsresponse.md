@@ -14,7 +14,6 @@ let value: PlatformListIdpGroupsResponse = {
       display_name: "Adele.Sawayn",
       provider: "<value>",
       provider_instance: "<value>",
-      is_active: false,
     },
   ],
   has_more: false,

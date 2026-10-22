@@ -8,8 +8,6 @@ export * from "./_types.js";
 
 export * from "./adminAgentsList.js";
 export * from "./adminIdpgroupsList.js";
-export * from "./adminUsageGetSettings.js";
-export * from "./adminUsageUpdateSettings.js";
 export * from "./agentsCancelRun.js";
 export * from "./agentsCreateRun.js";
 export * from "./agentsGet.js";
@@ -19,6 +17,7 @@ export * from "./agentsRespondToRun.js";
 export * from "./agentsSearch.js";
 export * from "./chatCreate.js";
 export * from "./chatCreateStream.js";
+export * from "./chatUpdate.js";
 export * from "./clientActivityFeedback.js";
 export * from "./clientActivityReport.js";
 export * from "./clientAgentsCreate.js";

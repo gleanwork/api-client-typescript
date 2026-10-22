@@ -6,14 +6,8 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AdminAgents } from "./adminagents.js";
 import { Idpgroups } from "./idpgroups.js";
-import { Usage } from "./usage.js";
 
 export class Admin extends ClientSDK {
-  private _usage?: Usage;
-  get usage(): Usage {
-    return (this._usage ??= new Usage(this._options));
-  }
-
   private _idpgroups?: Idpgroups;
   get idpgroups(): Idpgroups {
     return (this._idpgroups ??= new Idpgroups(this._options));

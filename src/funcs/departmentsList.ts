@@ -4,11 +4,7 @@
  */
 
 import { GleanCore } from "../core.js";
-import {
-  encodeFormQuery,
-  encodeJSONQuery,
-  queryJoin,
-} from "../lib/encodings.js";
+import { encodeFormQuery } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -36,13 +32,12 @@ import { Result } from "../types/fp.js";
  * List departments
  *
  * @remarks
- * List the departments in the Glean directory, ordered by display_name and then by department_id. A department is active when at least one active user belongs to it. A department is inactive when only inactive users, such as former employees, belong to it, or when only a usage limit names it. Inactive departments are left out unless an is_active filter includes the value "false". Department names are exact, so names that differ only by case are different departments.
+ * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments.
  */
 export function departmentsList(
   client: GleanCore,
   pageSize?: number | undefined,
   cursor?: string | undefined,
-  filters?: Array<components.PlatformDepartmentFilter> | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -62,7 +57,6 @@ export function departmentsList(
     client,
     pageSize,
     cursor,
-    filters,
     options,
   ));
 }
@@ -71,7 +65,6 @@ async function $do(
   client: GleanCore,
   pageSize?: number | undefined,
   cursor?: string | undefined,
-  filters?: Array<components.PlatformDepartmentFilter> | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -93,7 +86,6 @@ async function $do(
   const input: operations.PlatformDepartmentsListRequest = {
     page_size: pageSize,
     cursor: cursor,
-    filters: filters,
   };
 
   const parsed = safeParse(
@@ -110,15 +102,10 @@ async function $do(
 
   const path = pathToFunc("/api/departments")();
 
-  const query = queryJoin(
-    encodeFormQuery({
-      "cursor": payload.cursor,
-      "page_size": payload.page_size,
-    }),
-    encodeJSONQuery({
-      "filters": payload.filters,
-    }, { explode: false }),
-  );
+  const query = encodeFormQuery({
+    "cursor": payload.cursor,
+    "page_size": payload.page_size,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
