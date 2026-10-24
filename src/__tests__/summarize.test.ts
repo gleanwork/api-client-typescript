@@ -24,7 +24,7 @@ test("Summarize Summarize", async () => {
       },
       {
         ugcType: "COLLECTIONS",
-        contentId: 337360,
+        contentId: 885812,
       },
     ],
   });
