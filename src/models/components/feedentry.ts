@@ -122,6 +122,7 @@ export const JustificationType = {
   ProjectFocusBlock: "PROJECT_FOCUS_BLOCK",
   ProjectNextStep: "PROJECT_NEXT_STEP",
   DemoCard: "DEMO_CARD",
+  PersonalAgentNux: "PERSONAL_AGENT_NUX",
   ResolveMeetingConflict: "RESOLVE_MEETING_CONFLICT",
   FindingMeetingRoom: "FINDING_MEETING_ROOM",
   OooPlanner: "OOO_PLANNER",
