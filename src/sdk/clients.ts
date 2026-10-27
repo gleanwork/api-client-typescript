@@ -14,7 +14,7 @@ export class Clients extends ClientSDK {
    * List OAuth clients
    *
    * @remarks
-   * List the static OAuth clients that admins created for this workspace, ordered by display_name and then by client_id. Dynamically registered clients and Glean's own clients, such as Glean Desktop, are not listed. A client is active when it is enabled. Inactive clients are left out unless an is_active filter includes the value "false". To set a usage limit for a client, send its ai_gateway.usage_client_id, not its client_id, to the usage APIs. The caller needs admin read or billing read permission.
+   * List the static OAuth clients that admins created for this workspace, ordered by display_name and then by client_id. Dynamically registered clients and Glean's own clients, such as Glean Desktop, are not listed. Disabled clients are left out unless an is_enabled filter includes the value "false". Use filters to find clients by name, client_id, usage_client_id, LLM Gateway access, or supported app. To set a usage limit for a client, send its ai_gateway.usage_client_id, not its client_id, to the usage APIs. The caller needs admin read or billing read permission.
    */
   async list(
     pageSize?: number | undefined,
@@ -35,7 +35,7 @@ export class Clients extends ClientSDK {
    * Get an OAuth client
    *
    * @remarks
-   * Get one static OAuth client that an admin created for this workspace. A client that an admin disabled is returned with is_active false. A deleted client, a dynamically registered client, one of Glean's own clients, such as Glean Desktop, and an unknown client_id all return 404. The path takes the OAuth client_id, not ai_gateway.usage_client_id. The caller needs admin read or billing read permission.
+   * Get one static OAuth client that an admin created for this workspace. A client that an admin disabled is returned with is_enabled false. A deleted client, a dynamically registered client, one of Glean's own clients, such as Glean Desktop, and an unknown client_id all return 404. The path takes the OAuth client_id, not ai_gateway.usage_client_id. The caller needs admin read or billing read permission.
    */
   async get(
     clientId: string,

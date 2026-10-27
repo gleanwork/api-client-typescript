@@ -29,7 +29,9 @@ export type PlatformAdminAgentFilterOperator = ClosedEnum<
  */
 export type PlatformAdminAgentFilter = {
   /**
-   * The agent field to filter on. The only supported field is is_active.
+   * The agent field to filter on. name matches agents whose name contains the value. description matches agents whose description contains the value. Matching ignores case and surrounding whitespace. Each value is at most 256 characters.
+   *
+   * @remarks
    */
   field: string;
   /**
