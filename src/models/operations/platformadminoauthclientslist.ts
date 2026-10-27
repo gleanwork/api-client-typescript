@@ -18,7 +18,7 @@ export type PlatformAdminOauthClientsListRequest = {
    */
   cursor?: string | undefined;
   /**
-   * JSON-encoded filters that choose which clients are returned. The only supported field is is_active, with the values "true" and "false" and the operator EQUALS. Multiple values OR within a filter. Multiple filters AND together. Without an is_active filter, only active clients are returned. To return active and inactive clients, send [{"field":"is_active","values":["true","false"]}].
+   * JSON-encoded filters that choose which clients are returned. The supported fields are is_active and is_ai_gateway_enabled. Both take the values "true" and "false". The only supported operator is EQUALS. Multiple values OR within a filter. Multiple filters AND together. Without an is_active filter, only active clients are returned. To return active and inactive clients, send [{"field":"is_active","values":["true","false"]}]. An is_ai_gateway_enabled filter with the value "true" returns only the clients that have ai_gateway. The value "false" returns only the clients that do not. Without an is_ai_gateway_enabled filter, clients are returned whether or not they have ai_gateway.
    *
    * @remarks
    */
