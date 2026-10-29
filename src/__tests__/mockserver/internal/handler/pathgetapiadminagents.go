@@ -47,7 +47,7 @@ func testPlatformAdminAgentsListPlatformAdminAgentsList0(w http.ResponseWriter, 
 		return
 	}
 	var respBody *components.PlatformListAdminAgentsResponse = &components.PlatformListAdminAgentsResponse{
-		Results:   []components.PlatformAdminAgent{},
+		Results:   []components.PlatformAgent{},
 		HasMore:   true,
 		RequestID: "<id>",
 	}
