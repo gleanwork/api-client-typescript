@@ -19,7 +19,7 @@ let value: PlatformListOAuthClientsResponse = {
       redirect_uris: [
         "<value 1>",
       ],
-      is_active: false,
+      is_enabled: false,
     },
   ],
   has_more: false,

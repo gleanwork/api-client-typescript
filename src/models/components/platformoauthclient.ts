@@ -63,11 +63,11 @@ export type PlatformOAuthClient = {
    */
   redirect_uris: Array<string>;
   /**
-   * Whether the client is active. A client that an admin disabled is inactive and cannot authenticate.
+   * Whether the client is enabled. A client that an admin disabled cannot authenticate.
    *
    * @remarks
    */
-  is_active: boolean;
+  is_enabled: boolean;
   /**
    * When the client was created. Absent when it is not known.
    */
@@ -92,7 +92,7 @@ export const PlatformOAuthClient$inboundSchema: z.ZodType<
   token_endpoint_auth_method: PlatformOAuthTokenEndpointAuthMethod$inboundSchema
     .optional(),
   redirect_uris: z.array(z.string()),
-  is_active: z.boolean(),
+  is_enabled: z.boolean(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   ai_gateway: PlatformOAuthClientAiGateway$inboundSchema.optional(),
