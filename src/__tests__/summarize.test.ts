@@ -20,11 +20,10 @@ test("Summarize Summarize", async () => {
     documentSpecs: [
       {
         ugcType: "ANNOUNCEMENTS",
-        ugcId: "<id>",
+        contentId: 634958,
       },
       {
-        ugcType: "COLLECTIONS",
-        contentId: 337360,
+        url: "https://internal-sustenance.info/",
       },
     ],
   });

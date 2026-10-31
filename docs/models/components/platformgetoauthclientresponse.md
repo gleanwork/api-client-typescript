@@ -20,7 +20,7 @@ let value: PlatformGetOAuthClientResponse = {
       "<value 2>",
       "<value 3>",
     ],
-    is_active: true,
+    is_enabled: true,
   },
   request_id: "<id>",
 };
