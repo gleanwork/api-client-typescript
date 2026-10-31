@@ -57,7 +57,7 @@ export type AdminOauthClientsListQueryError =
  * List OAuth clients
  *
  * @remarks
- * List the static OAuth clients that admins created for this workspace, ordered by display_name and then by client_id. Dynamically registered clients and Glean's own clients, such as Glean Desktop, are not listed. A client is active when it is enabled. Inactive clients are left out unless an is_active filter includes the value "false". To set a usage limit for a client, send its ai_gateway.usage_client_id, not its client_id, to the usage APIs. The caller needs admin read or billing read permission.
+ * List the static OAuth clients that admins created for this workspace, ordered by display_name and then by client_id. Dynamically registered clients and Glean's own clients, such as Glean Desktop, are not listed. Disabled clients are left out unless an is_enabled filter includes the value "false". Use filters to find clients by name, client_id, usage_client_id, LLM Gateway access, or supported app. To set a usage limit for a client, send its ai_gateway.usage_client_id, not its client_id, to the usage APIs. The caller needs admin read or billing read permission.
  */
 export function useAdminOauthClientsList(
   pageSize?: number | undefined,
@@ -88,7 +88,7 @@ export function useAdminOauthClientsList(
  * List OAuth clients
  *
  * @remarks
- * List the static OAuth clients that admins created for this workspace, ordered by display_name and then by client_id. Dynamically registered clients and Glean's own clients, such as Glean Desktop, are not listed. A client is active when it is enabled. Inactive clients are left out unless an is_active filter includes the value "false". To set a usage limit for a client, send its ai_gateway.usage_client_id, not its client_id, to the usage APIs. The caller needs admin read or billing read permission.
+ * List the static OAuth clients that admins created for this workspace, ordered by display_name and then by client_id. Dynamically registered clients and Glean's own clients, such as Glean Desktop, are not listed. Disabled clients are left out unless an is_enabled filter includes the value "false". Use filters to find clients by name, client_id, usage_client_id, LLM Gateway access, or supported app. To set a usage limit for a client, send its ai_gateway.usage_client_id, not its client_id, to the usage APIs. The caller needs admin read or billing read permission.
  */
 export function useAdminOauthClientsListSuspense(
   pageSize?: number | undefined,

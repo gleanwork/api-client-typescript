@@ -29,9 +29,17 @@ export type PlatformIdpGroupFilterOperator = ClosedEnum<
  */
 export type PlatformIdpGroupFilter = {
   /**
-   * The IdP group field to filter on. The only supported field is provider_instance.
+   * The IdP group field to filter on.
    *
    * @remarks
+   * - provider_instance: matches groups from the datasource instance, such as
+   *   "okta", ignoring case.
+   *
+   * - provider: matches groups from the identity provider, such as "okta", ignoring
+   *   case.
+   *
+   * - name: matches groups whose display_name contains the value, ignoring case and
+   *   surrounding whitespace. Each value is at most 256 characters.
    */
   field: string;
   /**
