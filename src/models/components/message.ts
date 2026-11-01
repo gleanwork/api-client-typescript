@@ -28,6 +28,10 @@ export type Message = {
    * The content of the message.
    */
   content?: Array<MessageTextBlock> | undefined;
+  /**
+   * An opaque token that represents this particular agent message. Populated only on `GLEAN_AI` messages in responses. To record feedback, pass the token of the message being rated (typically the final `GLEAN_AI` message of the run) as the single entry in `trackingTokens` to `/feedback`, with `category: CHAT`.
+   */
+  messageTrackingToken?: string | undefined;
 };
 
 /** @internal */
@@ -56,6 +60,7 @@ export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
   z.object({
     role: z.string().optional(),
     content: z.array(z.lazy(() => MessageTextBlock$inboundSchema)).optional(),
+    messageTrackingToken: z.string().optional(),
   });
 
 export function messageFromJSON(
