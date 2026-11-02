@@ -19,12 +19,11 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        ugcType: "ANNOUNCEMENTS",
-        ugcId: "<id>",
+        url: "https://deficient-majority.net",
       },
       {
-        ugcType: "COLLECTIONS",
-        contentId: 337360,
+        ugcType: "SHORTCUTS",
+        ugcId: "<id>",
       },
     ],
   });
