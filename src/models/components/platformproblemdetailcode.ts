@@ -14,6 +14,7 @@ export const PlatformProblemDetailCode = {
   InvalidRequest: "invalid_request",
   MissingRequiredField: "missing_required_field",
   InvalidParameter: "invalid_parameter",
+  UnsupportedActionTarget: "unsupported_action_target",
   InvalidCursor: "invalid_cursor",
   ExpiredCursor: "expired_cursor",
   InvalidFilter: "invalid_filter",
