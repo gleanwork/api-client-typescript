@@ -7,6 +7,10 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  PlatformOAuthClientSupportedApp,
+  PlatformOAuthClientSupportedApp$inboundSchema,
+} from "./platformoauthclientsupportedapp.js";
 
 /**
  * LLM Gateway details of an OAuth client.
@@ -18,6 +22,12 @@ export type PlatformOAuthClientAiGateway = {
    * @remarks
    */
   usage_client_id: string;
+  /**
+   * The apps that the client is set up for, in alphabetical order. Empty when no app is recorded for the client.
+   *
+   * @remarks
+   */
+  supported_apps: Array<PlatformOAuthClientSupportedApp>;
 };
 
 /** @internal */
@@ -27,6 +37,7 @@ export const PlatformOAuthClientAiGateway$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   usage_client_id: z.string(),
+  supported_apps: z.array(PlatformOAuthClientSupportedApp$inboundSchema),
 });
 
 export function platformOAuthClientAiGatewayFromJSON(
