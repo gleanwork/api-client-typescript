@@ -8,9 +8,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChatResult, ChatResult$inboundSchema } from "./chatresult.js";
+import {
+  GetChatPagination,
+  GetChatPagination$inboundSchema,
+} from "./getchatpagination.js";
 
 export type GetChatResponse = {
   chatResult?: ChatResult | undefined;
+  /**
+   * Pagination cursors and page flags for a getchat message page.
+   */
+  pagination?: GetChatPagination | undefined;
 };
 
 /** @internal */
@@ -20,6 +28,7 @@ export const GetChatResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   chatResult: ChatResult$inboundSchema.optional(),
+  pagination: GetChatPagination$inboundSchema.optional(),
 });
 
 export function getChatResponseFromJSON(

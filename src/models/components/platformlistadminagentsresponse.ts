@@ -7,19 +7,16 @@ import * as z from "zod/v3";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  PlatformAdminAgent,
-  PlatformAdminAgent$inboundSchema,
-} from "./platformadminagent.js";
+import { PlatformAgent, PlatformAgent$inboundSchema } from "./platformagent.js";
 
 /**
  * One page of agents.
  */
 export type PlatformListAdminAgentsResponse = {
   /**
-   * The agents on this page, ordered by display_name and then by agent_id.
+   * The agents on this page, ordered by name and then by agent_id.
    */
-  results: Array<PlatformAdminAgent>;
+  results: Array<PlatformAgent>;
   /**
    * Whether more agents are available after this page.
    */
@@ -40,7 +37,7 @@ export const PlatformListAdminAgentsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  results: z.array(PlatformAdminAgent$inboundSchema),
+  results: z.array(PlatformAgent$inboundSchema),
   has_more: z.boolean(),
   next_cursor: z.nullable(z.string()).optional(),
   request_id: z.string(),
