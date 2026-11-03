@@ -55,7 +55,7 @@ func testPlatformAdminOauthClientsGetPlatformAdminOauthClientsGet0(w http.Respon
 			RedirectUris: []string{
 				"<value 1>",
 			},
-			IsActive: false,
+			IsEnabled: true,
 		},
 		RequestID: "<id>",
 	}
