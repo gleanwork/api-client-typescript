@@ -113,6 +113,7 @@ const (
 	JustificationTypeProjectFocusBlock                 JustificationType = "PROJECT_FOCUS_BLOCK"
 	JustificationTypeProjectNextStep                   JustificationType = "PROJECT_NEXT_STEP"
 	JustificationTypeDemoCard                          JustificationType = "DEMO_CARD"
+	JustificationTypePersonalAgentNux                  JustificationType = "PERSONAL_AGENT_NUX"
 	JustificationTypeResolveMeetingConflict            JustificationType = "RESOLVE_MEETING_CONFLICT"
 	JustificationTypeFindingMeetingRoom                JustificationType = "FINDING_MEETING_ROOM"
 	JustificationTypeOooPlanner                        JustificationType = "OOO_PLANNER"
@@ -250,6 +251,8 @@ func (e *JustificationType) UnmarshalJSON(data []byte) error {
 	case "PROJECT_NEXT_STEP":
 		fallthrough
 	case "DEMO_CARD":
+		fallthrough
+	case "PERSONAL_AGENT_NUX":
 		fallthrough
 	case "RESOLVE_MEETING_CONFLICT":
 		fallthrough

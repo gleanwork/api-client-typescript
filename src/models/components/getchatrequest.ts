@@ -5,16 +5,39 @@
 
 import * as z from "zod/v3";
 
+/**
+ * Retrieves a Chat. Omit pagination fields to return the full message history. When paginating, messages are returned in chronological order. Allowed combinations: last alone (latest page), last with before (older messages), first alone (earliest page), or first with after (newer messages). first and last are mutually exclusive; before and after are mutually exclusive; first cannot be combined with before; last cannot be combined with after.
+ */
 export type GetChatRequest = {
   /**
    * The id of the Chat to be retrieved.
    */
   id: string;
+  /**
+   * Maximum number of messages to return from the start of the chat, or after the cursor when after is set. Pair with after for newer messages; alone returns the earliest messages. Mutually exclusive with last and before.
+   */
+  first?: number | undefined;
+  /**
+   * An opaque message cursor from this chat. Returns messages strictly newer than this cursor. Pair with first. Mutually exclusive with before; cannot be combined with last.
+   */
+  after?: string | undefined;
+  /**
+   * Maximum number of messages to return from the end of the chat, or before the cursor when before is set. Alone returns the latest messages; pair with before for older messages. Mutually exclusive with first and after.
+   */
+  last?: number | undefined;
+  /**
+   * An opaque message cursor from this chat. Returns messages strictly older than this cursor. Pair with last. Mutually exclusive with after; cannot be combined with first.
+   */
+  before?: string | undefined;
 };
 
 /** @internal */
 export type GetChatRequest$Outbound = {
   id: string;
+  first?: number | undefined;
+  after?: string | undefined;
+  last?: number | undefined;
+  before?: string | undefined;
 };
 
 /** @internal */
@@ -24,6 +47,10 @@ export const GetChatRequest$outboundSchema: z.ZodType<
   GetChatRequest
 > = z.object({
   id: z.string(),
+  first: z.number().int().optional(),
+  after: z.string().optional(),
+  last: z.number().int().optional(),
+  before: z.string().optional(),
 });
 
 export function getChatRequestToJSON(getChatRequest: GetChatRequest): string {

@@ -47,13 +47,17 @@ export type PlatformDocumentChangeWebhookEvent = {
    */
   event_time?: Date | undefined;
   /**
-   * Email body content when the event is for an email document.
+   * Email body content when the event is for an email document, or the message text when the event is for a Slack message.
    */
   content?: string | undefined;
   /**
    * Present and true when source content exceeded the delivery size limit.
    */
   content_truncated?: boolean | undefined;
+  /**
+   * Facets of a Slack message as the event saw them, keyed as trigger filters key them, for example `from`, `mentions` and `channel`. Person facets carry the person's name. Each key lists up to 50 distinct values. Omitted for other documents and when the event has no facets.
+   */
+  facets?: { [k: string]: Array<string> } | undefined;
 };
 
 /** @internal */
@@ -75,6 +79,7 @@ export const PlatformDocumentChangeWebhookEvent$inboundSchema: z.ZodType<
     .optional(),
   content: z.string().optional(),
   content_truncated: z.boolean().optional(),
+  facets: z.record(z.array(z.string())).optional(),
 });
 /** @internal */
 export type PlatformDocumentChangeWebhookEvent$Outbound = {
@@ -90,6 +95,7 @@ export type PlatformDocumentChangeWebhookEvent$Outbound = {
   event_time?: string | undefined;
   content?: string | undefined;
   content_truncated?: boolean | undefined;
+  facets?: { [k: string]: Array<string> } | undefined;
 };
 
 /** @internal */
@@ -110,6 +116,7 @@ export const PlatformDocumentChangeWebhookEvent$outboundSchema: z.ZodType<
   event_time: z.date().transform(v => v.toISOString()).optional(),
   content: z.string().optional(),
   content_truncated: z.boolean().optional(),
+  facets: z.record(z.array(z.string())).optional(),
 });
 
 export function platformDocumentChangeWebhookEventToJSON(
