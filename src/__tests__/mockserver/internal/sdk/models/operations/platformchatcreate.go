@@ -201,6 +201,9 @@ type PlatformChatCreateRequest struct {
 	// Continue an existing stored conversation. Incompatible with message-array `input` and with `store: false`.
 	//
 	ConversationID *string `json:"conversation_id,omitempty"`
+	// Model for this turn, matched exactly to an id from GET /api/models. When GET /api/models reports `endpoints.chat` for the model, `POST /api/chat` does not reject this value at `/model`, except across a deployment change. Other request checks still apply. The model is requested, not guaranteed: deployment configuration can still run the turn on a different model.
+	//
+	Model *string `json:"model,omitempty"`
 	// Optional configuration for the assistant's text response. When `format.type` is `JSON_SCHEMA`, the response is constrained to the supplied JSON schema and returned in `output[*].content[*].structured_output`. Structured output is not supported when `stream` is true.
 	//
 	Text *PlatformChatCreateText `json:"text,omitempty"`
@@ -240,6 +243,13 @@ func (o *PlatformChatCreateRequest) GetConversationID() *string {
 		return nil
 	}
 	return o.ConversationID
+}
+
+func (o *PlatformChatCreateRequest) GetModel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Model
 }
 
 func (o *PlatformChatCreateRequest) GetText() *PlatformChatCreateText {

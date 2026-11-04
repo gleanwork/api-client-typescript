@@ -62,6 +62,12 @@ export type PlatformChatCreateStreamRequest = {
    */
   conversation_id?: string | undefined;
   /**
+   * Model for this turn, matched exactly to an id from GET /api/models. When GET /api/models reports `endpoints.chat` for the model, `POST /api/chat` does not reject this value at `/model`, except across a deployment change. Other request checks still apply. The model is requested, not guaranteed: deployment configuration can still run the turn on a different model.
+   *
+   * @remarks
+   */
+  model?: string | undefined;
+  /**
    * Optional configuration for the assistant's text response. When `format.type` is `JSON_SCHEMA`, the response is constrained to the supplied JSON schema and returned in `output[*].content[*].structured_output`. Structured output is not supported when `stream` is true.
    *
    * @remarks
@@ -155,6 +161,7 @@ export type PlatformChatCreateStreamRequest$Outbound = {
   stream: true;
   store: boolean;
   conversation_id?: string | undefined;
+  model?: string | undefined;
   text?: PlatformChatCreateStreamText$Outbound | undefined;
 };
 
@@ -171,6 +178,7 @@ export const PlatformChatCreateStreamRequest$outboundSchema: z.ZodType<
   stream: z.literal(true).default(true as const),
   store: z.boolean().default(true),
   conversation_id: z.string().optional(),
+  model: z.string().optional(),
   text: z.lazy(() => PlatformChatCreateStreamText$outboundSchema).optional(),
 });
 

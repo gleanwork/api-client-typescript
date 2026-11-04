@@ -56,7 +56,7 @@ export type AdminOauthClientsGetQueryError =
  * Get an OAuth client
  *
  * @remarks
- * Get one static OAuth client that an admin created for this workspace. A client that an admin disabled is returned with is_active false. A deleted client, a dynamically registered client, one of Glean's own clients, such as Glean Desktop, and an unknown client_id all return 404. The path takes the OAuth client_id, not ai_gateway.usage_client_id. The caller needs admin read or billing read permission.
+ * Get one static OAuth client that an admin created for this workspace. A client that an admin disabled is returned with is_enabled false. A deleted client, a dynamically registered client, one of Glean's own clients, such as Glean Desktop, and an unknown client_id all return 404. The path takes the OAuth client_id, not ai_gateway.usage_client_id. The caller needs admin read or billing read permission.
  */
 export function useAdminOauthClientsGet(
   clientId: string,
@@ -83,7 +83,7 @@ export function useAdminOauthClientsGet(
  * Get an OAuth client
  *
  * @remarks
- * Get one static OAuth client that an admin created for this workspace. A client that an admin disabled is returned with is_active false. A deleted client, a dynamically registered client, one of Glean's own clients, such as Glean Desktop, and an unknown client_id all return 404. The path takes the OAuth client_id, not ai_gateway.usage_client_id. The caller needs admin read or billing read permission.
+ * Get one static OAuth client that an admin created for this workspace. A client that an admin disabled is returned with is_enabled false. A deleted client, a dynamically registered client, one of Glean's own clients, such as Glean Desktop, and an unknown client_id all return 404. The path takes the OAuth client_id, not ai_gateway.usage_client_id. The caller needs admin read or billing read permission.
  */
 export function useAdminOauthClientsGetSuspense(
   clientId: string,
