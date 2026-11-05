@@ -2152,6 +2152,7 @@ let value: GetChatResponse = {
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `chatResult`                                                   | [components.ChatResult](../../models/components/chatresult.md) | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `chatResult`                                                                 | [components.ChatResult](../../models/components/chatresult.md)               | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `pagination`                                                                 | [components.GetChatPagination](../../models/components/getchatpagination.md) | :heavy_minus_sign:                                                           | Pagination cursors and page flags for a getchat message page.                |
