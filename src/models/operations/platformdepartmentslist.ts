@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import * as components from "../components/index.js";
 
 export type PlatformDepartmentsListRequest = {
   /**
@@ -11,15 +12,24 @@ export type PlatformDepartmentsListRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Opaque pagination cursor from a previous response.
+   * Opaque pagination cursor from a previous response. Send the same filters that the previous request used.
+   *
+   * @remarks
    */
   cursor?: string | undefined;
+  /**
+   * JSON-encoded filters that choose which departments are returned. The only supported field is name, with the operator EQUALS. Multiple values OR within a filter. The field may appear in only one filter. A value that matches no department returns no departments rather than an error.
+   *
+   * @remarks
+   */
+  filters?: Array<components.PlatformDepartmentFilter> | undefined;
 };
 
 /** @internal */
 export type PlatformDepartmentsListRequest$Outbound = {
   page_size: number;
   cursor?: string | undefined;
+  filters?: Array<components.PlatformDepartmentFilter$Outbound> | undefined;
 };
 
 /** @internal */
@@ -30,6 +40,8 @@ export const PlatformDepartmentsListRequest$outboundSchema: z.ZodType<
 > = z.object({
   page_size: z.number().int().default(50),
   cursor: z.string().optional(),
+  filters: z.array(components.PlatformDepartmentFilter$outboundSchema)
+    .optional(),
 });
 
 export function platformDepartmentsListRequestToJSON(
