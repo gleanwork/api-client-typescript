@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * List all agents
  *
  * @remarks
- * List every agent in the workspace, ordered by display_name and then by agent_id. Unlike agent search, the list does not depend on who an agent is shared with, so it includes private and disabled agents. Deleted agents are inactive and are left out unless an is_active filter includes the value "false". Use the agent_id of an active agent with other Platform APIs, for example as a usage limit target. A deleted agent is not a valid usage limit target. The caller must be able to read all agents, administer agents, or read workspace billing.
+ * List every agent in the workspace, ordered by name and then by agent_id. Each agent has the same shape that Get agent returns. Unlike agent search, the list does not depend on who an agent is shared with, so it includes private and disabled agents. Deleted agents are left out. Use the agent_id with other Platform APIs, for example as a usage limit target. The caller must be able to read all agents, administer agents, or read workspace billing.
  */
 export function adminAgentsList(
   client: GleanCore,

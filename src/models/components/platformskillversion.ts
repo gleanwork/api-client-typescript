@@ -38,6 +38,10 @@ export type PlatformSkillVersion = {
    */
   created_by: PlatformPersonReference;
   /**
+   * A lightweight reference to a person, used where a payload merely points at someone.
+   */
+  updated_by?: PlatformPersonReference | undefined;
+  /**
    * Time this version was created.
    */
   created_at: Date;
@@ -59,6 +63,7 @@ export const PlatformSkillVersion$inboundSchema: z.ZodType<
   minor_version: z.number().int(),
   is_latest: z.boolean(),
   created_by: PlatformPersonReference$inboundSchema,
+  updated_by: PlatformPersonReference$inboundSchema.optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   source_provenance: PlatformSkillSourceProvenance$inboundSchema.optional(),
