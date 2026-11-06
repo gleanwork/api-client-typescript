@@ -90,6 +90,8 @@ export * from "./platformchatcreatestream.js";
 export * from "./platformchatupdate.js";
 export * from "./platformdepartmentsget.js";
 export * from "./platformdepartmentslist.js";
+export * from "./platformdocumentsget.js";
+export * from "./platformdocumentsgetbyurl.js";
 export * from "./platformsearchfilters.js";
 export * from "./platformskillscreateversion.js";
 export * from "./platformskillsdelete.js";

@@ -14,17 +14,19 @@ export class Departments extends ClientSDK {
    * List departments
    *
    * @remarks
-   * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments.
+   * List the departments in the Glean directory, ordered by display_name and then by department_id. The list includes every department that at least one user belongs to or that a usage limit names, so a caller can show the name of a department that a usage limit still names after its users leave it. Department names are exact, so names that differ only by case are different departments. Send a name filter to return only the departments whose display_name contains a value.
    */
   async list(
     pageSize?: number | undefined,
     cursor?: string | undefined,
+    filters?: Array<components.PlatformDepartmentFilter> | undefined,
     options?: RequestOptions,
   ): Promise<components.PlatformListDepartmentsResponse> {
     return unwrapAsync(departmentsList(
       this,
       pageSize,
       cursor,
+      filters,
       options,
     ));
   }
