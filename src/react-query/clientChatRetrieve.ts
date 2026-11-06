@@ -52,7 +52,7 @@ export type ClientChatRetrieveMutationError =
  * Retrieves a Chat
  *
  * @remarks
- * Retrieves the chat history between Glean Assistant and the user for a given Chat.
+ * Retrieves the chat history between Glean Assistant and the user for a given Chat. Omit pagination fields to return the full message history (existing behavior). Use last alone for the latest page, last with before for older messages, or first with after for newer messages. Each page is chronological and includes pagination cursors and page flags.
  */
 export function useClientChatRetrieveMutation(
   options?: MutationHookOptions<

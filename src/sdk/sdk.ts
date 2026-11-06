@@ -9,6 +9,7 @@ import { Agents } from "./agents.js";
 import { Chat } from "./chat.js";
 import { Client } from "./client.js";
 import { Departments } from "./departments.js";
+import { Documents } from "./documents.js";
 import { Indexing } from "./indexing.js";
 import { Search } from "./search.js";
 import { Skills } from "./skills.js";
@@ -49,6 +50,11 @@ export class Glean extends ClientSDK {
   private _users?: Users;
   get users(): Users {
     return (this._users ??= new Users(this._options));
+  }
+
+  private _documents?: Documents;
+  get documents(): Documents {
+    return (this._documents ??= new Documents(this._options));
   }
 
   private _triggers?: Triggers;
