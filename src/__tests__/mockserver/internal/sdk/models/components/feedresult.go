@@ -55,6 +55,7 @@ const (
 	FeedResultCategoryProjectFocusBlock            FeedResultCategory = "PROJECT_FOCUS_BLOCK"
 	FeedResultCategoryProjectNextStep              FeedResultCategory = "PROJECT_NEXT_STEP"
 	FeedResultCategoryDemoCard                     FeedResultCategory = "DEMO_CARD"
+	FeedResultCategoryPersonalAgentNux             FeedResultCategory = "PERSONAL_AGENT_NUX"
 	FeedResultCategoryResolveMeetingConflict       FeedResultCategory = "RESOLVE_MEETING_CONFLICT"
 	FeedResultCategoryFindingMeetingRoom           FeedResultCategory = "FINDING_MEETING_ROOM"
 	FeedResultCategoryOooPlanner                   FeedResultCategory = "OOO_PLANNER"
@@ -166,6 +167,8 @@ func (e *FeedResultCategory) UnmarshalJSON(data []byte) error {
 	case "PROJECT_NEXT_STEP":
 		fallthrough
 	case "DEMO_CARD":
+		fallthrough
+	case "PERSONAL_AGENT_NUX":
 		fallthrough
 	case "RESOLVE_MEETING_CONFLICT":
 		fallthrough

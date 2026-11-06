@@ -449,6 +449,12 @@ For more information on obtaining the appropriate token type, please contact you
 * [list](docs/sdks/departments/README.md#list) - List departments
 * [get](docs/sdks/departments/README.md#get) - Get a department
 
+### [Documents](docs/sdks/documents/README.md)
+
+* [getByUrl](docs/sdks/documents/README.md#getbyurl) - Get document by URL
+* [getById](docs/sdks/documents/README.md#getbyid) - Get document by ID
+* [batch](docs/sdks/documents/README.md#batch) - Batch get documents
+
 ### [Indexing.Authentication](docs/sdks/indexingauthentication/README.md)
 
 * [rotateToken](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
@@ -683,6 +689,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`clientVerificationVerify`](docs/sdks/verification/README.md#verify) - Update verification
 - [`departmentsGet`](docs/sdks/departments/README.md#get) - Get a department
 - [`departmentsList`](docs/sdks/departments/README.md#list) - List departments
+- [`documentsBatch`](docs/sdks/documents/README.md#batch) - Batch get documents
+- [`documentsGetById`](docs/sdks/documents/README.md#getbyid) - Get document by ID
+- [`documentsGetByUrl`](docs/sdks/documents/README.md#getbyurl) - Get document by URL
 - [`indexingAuthenticationRotateToken`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`indexingCustomMetadataDelete`](docs/sdks/custommetadata/README.md#delete) - Remove custom metadata
 - [`indexingCustomMetadataDeleteSchema`](docs/sdks/custommetadata/README.md#deleteschema) - Remove metadata schema
@@ -895,6 +904,9 @@ To learn about this feature and how to get started, check
 - [`useClientVerificationVerifyMutation`](docs/sdks/verification/README.md#verify) - Update verification
 - [`useDepartmentsGet`](docs/sdks/departments/README.md#get) - Get a department
 - [`useDepartmentsList`](docs/sdks/departments/README.md#list) - List departments
+- [`useDocumentsBatchMutation`](docs/sdks/documents/README.md#batch) - Batch get documents
+- [`useDocumentsGetById`](docs/sdks/documents/README.md#getbyid) - Get document by ID
+- [`useDocumentsGetByUrl`](docs/sdks/documents/README.md#getbyurl) - Get document by URL
 - [`useIndexingAuthenticationRotateTokenMutation`](docs/sdks/indexingauthentication/README.md#rotatetoken) - Rotate token
 - [`useIndexingCustomMetadataDeleteMutation`](docs/sdks/custommetadata/README.md#delete) - Remove custom metadata
 - [`useIndexingCustomMetadataDeleteSchemaMutation`](docs/sdks/custommetadata/README.md#deleteschema) - Remove metadata schema

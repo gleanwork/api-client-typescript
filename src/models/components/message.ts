@@ -28,6 +28,14 @@ export type Message = {
    * The content of the message.
    */
   content?: Array<MessageTextBlock> | undefined;
+  /**
+   * An opaque token that represents this particular agent message. Populated only on `GLEAN_AI` messages in responses. To record feedback, pass the token of the message being rated (typically the final `GLEAN_AI` message of the run) as the single entry in `trackingTokens` to `/feedback`, with `category: CHAT`.
+   */
+  messageTrackingToken?: string | undefined;
+  /**
+   * The agent trace ID for the run that produced this message. Populated only on `GLEAN_AI` messages in responses, when the run was traced. To attach the trace to manual feedback, pass it as `manualFeedbackInfo.traceId` to `/feedback`, together with this message's `messageTrackingToken` in `trackingTokens`. The feedback must be sent by the same user who ran the agent.
+   */
+  traceId?: string | undefined;
 };
 
 /** @internal */
@@ -56,6 +64,8 @@ export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
   z.object({
     role: z.string().optional(),
     content: z.array(z.lazy(() => MessageTextBlock$inboundSchema)).optional(),
+    messageTrackingToken: z.string().optional(),
+    traceId: z.string().optional(),
   });
 
 export function messageFromJSON(
