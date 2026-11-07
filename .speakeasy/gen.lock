@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 664aaca5-a41f-4434-8f2a-642dba92fe68
 management:
-  docChecksum: 85fd0b317d248bf62455701daa45f644
+  docChecksum: c97a9ded7a30f08386af851a4f54fb80
   docVersion: 0.9.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 0.20.19
-  configChecksum: 28ecf24f86192809495f756ac88f9612
+  releaseVersion: 0.20.20
+  configChecksum: 50cbe9d2af2200a52cc6c41640314b69
   repoURL: https://github.com/gleanwork/api-client-typescript.git
   installationURL: https://github.com/gleanwork/api-client-typescript
   published: true
 persistentEdits:
-  generation_id: 2329c285-7044-4e05-b7cc-079f604806bf
-  pristine_commit_hash: 899d591ef5bc55226d5cca2cc1db3a9262a79e80
-  pristine_tree_hash: a90c44065aab47c7aac4e850957dd7a5962ba433
+  generation_id: 756f0ea0-86f1-41b3-b73f-dc8e8362db91
+  pristine_commit_hash: fc744098ddb80cc2eed075ec1de9705b3f04a800
+  pristine_tree_hash: 6168a686f54b0609ab1b891e82f5ddf67e3bf5e1
 features:
   typescript:
     acceptHeaders: 2.81.2
@@ -4343,12 +4343,12 @@ trackedFiles:
     pristine_git_object: 5a2797590d4be351d62915017d5b2a0f853537c8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:11fbeb69081cb3c913810e5b604f0db8ab9ade36
-    pristine_git_object: c95c69513edf6b3b18d24592b2996099cd238548
+    last_write_checksum: sha1:cb8dbdd311a08b378e5441a4509a0f8b3839a184
+    pristine_git_object: 5d0d29d336232d428f55df7477eacf8282aa8f5a
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:962a7825742d76651a5a24385c731b7f7e67ae1c
-    pristine_git_object: f805ce2cd8d19f469953bdc8c934a4d7d2730ecc
+    last_write_checksum: sha1:9297fb6fb6f4fa4163fc3bc5c42c1d56a8a8f498
+    pristine_git_object: fe8fb69223c846267bdb593974bd8c9a824c953e
   src/__tests__/activities.test.ts:
     id: 65fa859b8f59
     last_write_checksum: sha1:756bc40095f4495bbf62739b8218bb4a559a24f2
@@ -8767,8 +8767,8 @@ trackedFiles:
     pristine_git_object: 80853fce6d86d20766336fb2fd27c8669cd12ca8
   src/__tests__/summarize.test.ts:
     id: 3105d6ebc7eb
-    last_write_checksum: sha1:1b519d8e27e81ad47f67d63bc9e6bad24b7eadf7
-    pristine_git_object: 86678bfb9e08e6c01b90d4547f9ce70fbb2c6a31
+    last_write_checksum: sha1:56378f2a53fd53a8dd89700e017fadc88986998c
+    pristine_git_object: 682a1852ffb44b6785f3eff152b8b7e754ad29d4
   src/__tests__/testclient.ts:
     id: f142c080bff8
     last_write_checksum: sha1:3a38647391f52221c009a9273eebf90793b3d430
@@ -9559,8 +9559,8 @@ trackedFiles:
     pristine_git_object: 42d9739ab67c2fec0689f83777ffa5e1f875e5d5
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:37031c3d6d3c6cfc7efe331a76f00dc27fa9b19a
-    pristine_git_object: c3ad6578a39ec89d8af20330c5fad97f03c98d65
+    last_write_checksum: sha1:96bf5cc0ed442f71c651a04ef47c55f5b2dbccdb
+    pristine_git_object: 329a82b5ed179374f6b41344e85ba0540c2d5288
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:d1917169abb226ccb0d2e93fd211a1d2987822b4
@@ -15908,7 +15908,6 @@ generatedTests:
   platform-documents-get-by-url: "2026-11-06T19:47:41Z"
   platform-documents-get: "2026-11-06T19:47:41Z"
   platform-documents-batch: "2026-11-06T19:47:41Z"
-releaseNotes: "## Typescript SDK Changes:\n* `glean.admin.oauth.clients.list()`: \n  *  `response.results[]` **Changed** (Breaking ⚠️)\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.admin.oauth.clients.get()`: \n  *  `response.client` **Changed** (Breaking ⚠️)\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.admin.agents.list()`: \n  *  `response.results[]` **Changed** (Breaking ⚠️)\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.documents.getByUrl()`: **Added**\n* `glean.documents.getById()`: **Added**\n* `glean.documents.batch()`: **Added**\n* `glean.agents.search()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.agents.get()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.agents.getSchemas()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.agents.createRun()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.agents.getRun()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.agents.cancelRun()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.agents.respondToRun()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.chat.create()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.chat.update()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.chat.createStream()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.create()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.list()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.import()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.validate()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.previewSource()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.update()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.delete()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.retrieve()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.retrieveContent()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.sync()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.createVersion()`: \n  *  `response.version.updatedBy` **Added**\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.listVersions()`: \n  *  `response.results[].updatedBy` **Added**\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.retrieveVersion()`: \n  *  `response.version.updatedBy` **Added**\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.retrieveVersionContent()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.skills.previewSourceStream()`: \n  *  `response.[].union(ERROR).data.error.code.enum(unsupportedActionTarget)` **Added**\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.search.query()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.search.listFilters()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.admin.idpgroups.list()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.admin.idpgroups.get()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.departments.list()`: \n  *  `request.filters` **Added**\n  *  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.departments.get()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.users.list()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.users.get()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.create()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.list()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.get()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.update()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.delete()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.searchEvents()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.listPresets()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.getPreset()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.listPresetInputValues()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.triggers.searchPresetEvents()`:  `error.code.enum(unsupportedActionTarget)` **Added**\n* `glean.client.chat.retrieve()`: \n  *  `request.getChatRequest` **Changed**\n  *  `response.pagination` **Added**\n* `glean.client.agents.run()`:  `response.run.messages[]` **Changed**\n* `glean.client.search.retrieveFeed()`: \n  *  `request.feedRequest.categories[].enum(personalAgentNux)` **Added**\n  *  `response.results[]` **Changed**\n* `glean.indexing.datasources.add()`: \n  *  `request.objectDefinitions[].docCategory.enum(ugcSkill)` **Added**\n* `glean.indexing.datasources.retrieveConfig()`:  `response.objectDefinitions[].docCategory.enum(ugcSkill)` **Added**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
