@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.20.20",
+  "version": "0.20.21",
   "author": "Speakeasy",
   "tshy": {
     "sourceDialects": [
@@ -61,7 +61,7 @@
     "vitest": "^3.2.6"
   },
   "dependencies": {
-    "zod": "^3.25.0 || ^4.0.0"
+    "zod": "^3.25.0 || ^4.6.6"
   },
   "exports": {
     ".": {
