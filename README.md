@@ -1374,7 +1374,7 @@ import { Glean } from "@gleanwork/api-client";
 const sdk = new Glean({ debugLogger: console });
 ```
 
-You can also enable a default debug logger by setting an environment variable `GLEAN_DEBUG` to true.
+You can also enable a default debug logger by setting an environment variable `GLEAN_DEBUG` to `true`, `1`, `yes` or `on` (case-insensitive). Any other value leaves it off.
 <!-- End Debugging [debug] -->
 
 ## Experimental Features and Deprecation Testing
