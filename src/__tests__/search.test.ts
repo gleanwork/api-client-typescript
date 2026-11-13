@@ -2078,3 +2078,22 @@ test("Search Platform Search Filters", async () => {
   const result = await glean.search.listFilters();
   expect(result).toBeDefined();
 });
+
+test("Search Platform Search Enumeration", async () => {
+  const testHttpClient = createTestHTTPClient("platform-search-enumeration");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.search.enumerate({
+    query: "amoxicillin",
+    datasources: [
+      "gdrive",
+    ],
+    page_size: 500,
+  });
+  expect(result).toBeDefined();
+});
