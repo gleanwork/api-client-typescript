@@ -3,6 +3,7 @@
  * @generated-id: b88871d87236
  */
 
+import { searchEnumerate } from "../funcs/searchEnumerate.js";
 import { searchListFilters } from "../funcs/searchListFilters.js";
 import { searchQuery } from "../funcs/searchQuery.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -45,6 +46,25 @@ export class Search extends ClientSDK {
       this,
       datasources,
       query,
+      options,
+    ));
+  }
+
+  /**
+   * Enumerate matching documents
+   *
+   * @remarks
+   * Walk every indexed document that matches a selection and that the caller is permitted to see. Returns document references with minimal metadata and never bodies; request `SNIPPETS` via `include` for query-relevant excerpts, and hydrate full documents with `POST /api/documents/batch`. Unlike `POST /api/search`, `query` is optional: omit it to enumerate by `datasources`, `filters`, and `time_range` alone. Results are ordered for completeness, not relevance.
+   * Follow `next_cursor` until `has_more` is `false`, regardless of page size. This is a live scan, not a snapshot: concurrent index changes can cause duplicates or omissions. Deduplicate by `document_id`.
+   * A page is either complete at its cursor position or an error. A shard or datasource failure returns HTTP 503 and the same cursor stays valid for retry; this endpoint never returns a partial page. A cursor reused with a different selection returns HTTP 400 `invalid_cursor`.
+   */
+  async enumerate(
+    request: components.PlatformSearchEnumerationRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformSearchEnumerationResponse> {
+    return unwrapAsync(searchEnumerate(
+      this,
+      request,
       options,
     ));
   }

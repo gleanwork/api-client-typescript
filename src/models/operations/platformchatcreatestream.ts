@@ -15,32 +15,6 @@ export type PlatformChatCreateStreamInput =
   | string
   | Array<components.PlatformChatInputMessage>;
 
-/**
- * Output format for the assistant text. TEXT is unconstrained. JSON_SCHEMA constrains the response to the supplied schema.
- *
- * @remarks
- */
-export type PlatformChatCreateStreamFormat =
-  | components.PlatformChatTextFormat
-  | components.PlatformChatJsonSchemaFormat;
-
-/**
- * Optional configuration for the assistant's text response. When `format.type` is `JSON_SCHEMA`, the response is constrained to the supplied JSON schema and returned in `output[*].content[*].structured_output`. Structured output is not supported when `stream` is true.
- *
- * @remarks
- */
-export type PlatformChatCreateStreamText = {
-  /**
-   * Output format for the assistant text. TEXT is unconstrained. JSON_SCHEMA constrains the response to the supplied schema.
-   *
-   * @remarks
-   */
-  format?:
-    | components.PlatformChatTextFormat
-    | components.PlatformChatJsonSchemaFormat
-    | undefined;
-};
-
 export type PlatformChatCreateStreamRequest = {
   /**
    * Either a plain string (single user turn) or a chronological array of `USER`/`ASSISTANT` messages. The final array message must be `USER`.
@@ -61,12 +35,6 @@ export type PlatformChatCreateStreamRequest = {
    * @remarks
    */
   conversation_id?: string | undefined;
-  /**
-   * Optional configuration for the assistant's text response. When `format.type` is `JSON_SCHEMA`, the response is constrained to the supplied JSON schema and returned in `output[*].content[*].structured_output`. Structured output is not supported when `stream` is true.
-   *
-   * @remarks
-   */
-  text?: PlatformChatCreateStreamText | undefined;
 };
 
 /** @internal */
@@ -95,67 +63,11 @@ export function platformChatCreateStreamInputToJSON(
 }
 
 /** @internal */
-export type PlatformChatCreateStreamFormat$Outbound =
-  | components.PlatformChatTextFormat$Outbound
-  | components.PlatformChatJsonSchemaFormat$Outbound;
-
-/** @internal */
-export const PlatformChatCreateStreamFormat$outboundSchema: z.ZodType<
-  PlatformChatCreateStreamFormat$Outbound,
-  z.ZodTypeDef,
-  PlatformChatCreateStreamFormat
-> = z.union([
-  components.PlatformChatTextFormat$outboundSchema,
-  components.PlatformChatJsonSchemaFormat$outboundSchema,
-]);
-
-export function platformChatCreateStreamFormatToJSON(
-  platformChatCreateStreamFormat: PlatformChatCreateStreamFormat,
-): string {
-  return JSON.stringify(
-    PlatformChatCreateStreamFormat$outboundSchema.parse(
-      platformChatCreateStreamFormat,
-    ),
-  );
-}
-
-/** @internal */
-export type PlatformChatCreateStreamText$Outbound = {
-  format?:
-    | components.PlatformChatTextFormat$Outbound
-    | components.PlatformChatJsonSchemaFormat$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const PlatformChatCreateStreamText$outboundSchema: z.ZodType<
-  PlatformChatCreateStreamText$Outbound,
-  z.ZodTypeDef,
-  PlatformChatCreateStreamText
-> = z.object({
-  format: z.union([
-    components.PlatformChatTextFormat$outboundSchema,
-    components.PlatformChatJsonSchemaFormat$outboundSchema,
-  ]).optional(),
-});
-
-export function platformChatCreateStreamTextToJSON(
-  platformChatCreateStreamText: PlatformChatCreateStreamText,
-): string {
-  return JSON.stringify(
-    PlatformChatCreateStreamText$outboundSchema.parse(
-      platformChatCreateStreamText,
-    ),
-  );
-}
-
-/** @internal */
 export type PlatformChatCreateStreamRequest$Outbound = {
   input: string | Array<components.PlatformChatInputMessage$Outbound>;
   stream: true;
   store: boolean;
   conversation_id?: string | undefined;
-  text?: PlatformChatCreateStreamText$Outbound | undefined;
 };
 
 /** @internal */
@@ -171,7 +83,6 @@ export const PlatformChatCreateStreamRequest$outboundSchema: z.ZodType<
   stream: z.literal(true).default(true as const),
   store: z.boolean().default(true),
   conversation_id: z.string().optional(),
-  text: z.lazy(() => PlatformChatCreateStreamText$outboundSchema).optional(),
 });
 
 export function platformChatCreateStreamRequestToJSON(
