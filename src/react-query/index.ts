@@ -161,6 +161,7 @@ export * from "./indexingPermissionsProcessMemberships.js";
 export * from "./indexingPermissionsUpdatePermissions.js";
 export * from "./indexingShortcutsBulkIndex.js";
 export * from "./indexingShortcutsUpload.js";
+export * from "./searchEnumerate.js";
 export * from "./searchListFilters.js";
 export * from "./searchQuery.js";
 export * from "./skillsCreate.js";
