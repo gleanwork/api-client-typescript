@@ -17,29 +17,7 @@ test("Chat Platform Chat Create", async () => {
   });
 
   const result = await glean.chat.create({
-    input: "Summarize our parental leave policy as JSON.",
-    text: {
-      format: {
-        type: "JSON_SCHEMA",
-        name: "policy_summary",
-        schema: {
-          "properties": {
-            "duration_weeks": {
-              "type": "integer",
-            },
-            "eligible_employees": {
-              "type": "string",
-            },
-          },
-          "required": [
-            "eligible_employees",
-            "duration_weeks",
-          ],
-          "type": "object",
-        },
-        strict: true,
-      },
-    },
+    input: "Summarize our parental leave policy.",
   });
   expect(result).toBeDefined();
 });

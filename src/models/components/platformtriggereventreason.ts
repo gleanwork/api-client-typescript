@@ -67,6 +67,14 @@ export const PlatformTriggerEventReason = {
    * The source system sent a webhook creation event.
    */
   WebhookCreated: "WEBHOOK_CREATED",
+  /**
+   * The item was closed.
+   */
+  Closed: "CLOSED",
+  /**
+   * A comment was added to the item.
+   */
+  CommentAdded: "COMMENT_ADDED",
 } as const;
 /**
  * Why the event fired.
