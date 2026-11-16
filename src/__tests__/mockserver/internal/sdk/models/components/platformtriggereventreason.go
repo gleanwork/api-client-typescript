@@ -26,6 +26,8 @@ const (
 	PlatformTriggerEventReasonConvertedToDraft     PlatformTriggerEventReason = "CONVERTED_TO_DRAFT"
 	PlatformTriggerEventReasonWebhookUpdated       PlatformTriggerEventReason = "WEBHOOK_UPDATED"
 	PlatformTriggerEventReasonWebhookCreated       PlatformTriggerEventReason = "WEBHOOK_CREATED"
+	PlatformTriggerEventReasonClosed               PlatformTriggerEventReason = "CLOSED"
+	PlatformTriggerEventReasonCommentAdded         PlatformTriggerEventReason = "COMMENT_ADDED"
 )
 
 func (e PlatformTriggerEventReason) ToPointer() *PlatformTriggerEventReason {
@@ -64,6 +66,10 @@ func (e *PlatformTriggerEventReason) UnmarshalJSON(data []byte) error {
 	case "WEBHOOK_UPDATED":
 		fallthrough
 	case "WEBHOOK_CREATED":
+		fallthrough
+	case "CLOSED":
+		fallthrough
+	case "COMMENT_ADDED":
 		*e = PlatformTriggerEventReason(v)
 		return nil
 	default:
