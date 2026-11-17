@@ -62,6 +62,10 @@ export type InsightsOverviewResponse = {
    */
   lastUpdatedTs?: number | undefined;
   /**
+   * Number of current employees in the specified departments who had signed up 7 days before the latest day of insights data. Compare with totalSignups for week-over-week signup change.
+   */
+  totalSignupsWeekAgo?: number | undefined;
+  /**
    * Search session satisfaction rate, over the specified time period in the specified departments.
    *
    * @deprecated field: Deprecated on 2026-05-13, removal scheduled for 2027-01-15: This property is no longer supported. Please contact Support for alternatives..
@@ -120,6 +124,7 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   extensionSummary: CurrentActiveUsers$inboundSchema.optional(),
   ugcSummary: CurrentActiveUsers$inboundSchema.optional(),
   lastUpdatedTs: z.number().int().optional(),
+  totalSignupsWeekAgo: z.number().int().optional(),
   searchSessionSatisfaction: z.number().optional(),
   monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
   weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
