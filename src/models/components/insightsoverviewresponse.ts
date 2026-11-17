@@ -62,7 +62,7 @@ export type InsightsOverviewResponse = {
    */
   lastUpdatedTs?: number | undefined;
   /**
-   * Number of current employees in the specified departments who had signed up 7 days before the latest day of insights data. Compare with totalSignups for week-over-week signup change.
+   * Number of current employees in the specified departments who had signed up 7 days before the latest day of insights data. Compare with totalSignups for week-over-week signup change. Included even when zero.
    */
   totalSignupsWeekAgo?: number | undefined;
   /**
