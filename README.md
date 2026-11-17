@@ -532,7 +532,6 @@ For more information on obtaining the appropriate token type, please contact you
 
 * [query](docs/sdks/search/README.md#query) - Search
 * [listFilters](docs/sdks/search/README.md#listfilters) - List search filters
-* [enumerate](docs/sdks/search/README.md#enumerate) - Enumerate matching documents
 
 ### [Skills](docs/sdks/skills/README.md)
 
@@ -738,7 +737,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingPermissionsUpdatePermissions`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`indexingShortcutsBulkIndex`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`indexingShortcutsUpload`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-- [`searchEnumerate`](docs/sdks/search/README.md#enumerate) - Enumerate matching documents
 - [`searchListFilters`](docs/sdks/search/README.md#listfilters) - List search filters
 - [`searchQuery`](docs/sdks/search/README.md#query) - Search
 - [`skillsCreate`](docs/sdks/skills/README.md#create) - Create skill
@@ -954,7 +952,6 @@ To learn about this feature and how to get started, check
 - [`useIndexingPermissionsUpdatePermissionsMutation`](docs/sdks/permissions/README.md#updatepermissions) - Update document permissions
 - [`useIndexingShortcutsBulkIndexMutation`](docs/sdks/indexingshortcuts/README.md#bulkindex) - Bulk index external shortcuts
 - [`useIndexingShortcutsUploadMutation`](docs/sdks/indexingshortcuts/README.md#upload) - Upload shortcuts
-- [`useSearchEnumerateMutation`](docs/sdks/search/README.md#enumerate) - Enumerate matching documents
 - [`useSearchListFilters`](docs/sdks/search/README.md#listfilters) - List search filters
 - [`useSearchQueryMutation`](docs/sdks/search/README.md#query) - Search
 - [`useSkillsCreateMutation`](docs/sdks/skills/README.md#create) - Create skill
