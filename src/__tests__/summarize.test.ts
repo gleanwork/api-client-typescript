@@ -19,11 +19,11 @@ test("Summarize Summarize", async () => {
   const result = await glean.client.documents.summarize({
     documentSpecs: [
       {
-        id: "<id>",
+        url: "https://carefree-object.net/",
       },
       {
         ugcType: "CHATS",
-        contentId: 668664,
+        contentId: 255860,
       },
     ],
   });

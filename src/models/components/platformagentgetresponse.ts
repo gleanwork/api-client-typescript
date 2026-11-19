@@ -10,6 +10,9 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PlatformAgent, PlatformAgent$inboundSchema } from "./platformagent.js";
 
 export type PlatformAgentGetResponse = {
+  /**
+   * An agent available to the authenticated user.
+   */
   agent: PlatformAgent;
   /**
    * Platform-generated request ID for support correlation.

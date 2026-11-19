@@ -7,6 +7,7 @@ import (
 	"mockserver/internal/sdk/utils"
 )
 
+// PlatformSkillSourcePreviewFile - A supporting file bundled with a skill.
 type PlatformSkillSourcePreviewFile struct {
 	// Relative path within the skill bundle.
 	Path string `json:"path"`

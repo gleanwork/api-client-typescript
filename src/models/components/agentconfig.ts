@@ -53,7 +53,7 @@ export type AgentEnum = OpenEnum<typeof AgentEnum>;
 /**
  * Top level modes to run GleanChat in.
  */
-export const Mode = {
+export const AgentConfigMode = {
   /**
    * Used if no mode supplied.
    */
@@ -66,7 +66,7 @@ export const Mode = {
 /**
  * Top level modes to run GleanChat in.
  */
-export type Mode = OpenEnum<typeof Mode>;
+export type AgentConfigMode = OpenEnum<typeof AgentConfigMode>;
 
 /**
  * Describes the agent that executes the request.
@@ -83,7 +83,7 @@ export type AgentConfig = {
   /**
    * Top level modes to run GleanChat in.
    */
-  mode?: Mode | undefined;
+  mode?: AgentConfigMode | undefined;
   /**
    * Whether the agent should create an image.
    */
@@ -104,11 +104,17 @@ export const AgentEnum$outboundSchema: z.ZodType<
 > = openEnums.outboundSchema(AgentEnum);
 
 /** @internal */
-export const Mode$inboundSchema: z.ZodType<Mode, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(Mode);
+export const AgentConfigMode$inboundSchema: z.ZodType<
+  AgentConfigMode,
+  z.ZodTypeDef,
+  unknown
+> = openEnums.inboundSchema(AgentConfigMode);
 /** @internal */
-export const Mode$outboundSchema: z.ZodType<string, z.ZodTypeDef, Mode> =
-  openEnums.outboundSchema(Mode);
+export const AgentConfigMode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AgentConfigMode
+> = openEnums.outboundSchema(AgentConfigMode);
 
 /** @internal */
 export const AgentConfig$inboundSchema: z.ZodType<
@@ -118,7 +124,7 @@ export const AgentConfig$inboundSchema: z.ZodType<
 > = z.object({
   agent: AgentEnum$inboundSchema.optional(),
   toolSets: ToolSets$inboundSchema.optional(),
-  mode: Mode$inboundSchema.optional(),
+  mode: AgentConfigMode$inboundSchema.optional(),
   useImageGeneration: z.boolean().optional(),
 });
 /** @internal */
@@ -137,7 +143,7 @@ export const AgentConfig$outboundSchema: z.ZodType<
 > = z.object({
   agent: AgentEnum$outboundSchema.optional(),
   toolSets: ToolSets$outboundSchema.optional(),
-  mode: Mode$outboundSchema.optional(),
+  mode: AgentConfigMode$outboundSchema.optional(),
   useImageGeneration: z.boolean().optional(),
 });
 
