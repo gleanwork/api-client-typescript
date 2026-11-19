@@ -1359,7 +1359,7 @@ You can also enable a default debug logger by setting an environment variable `G
 
 The SDK provides options to test upcoming API changes before they become the default behavior. This is useful for:
 
-- **Testing experimental features** before they are generally available
+- **Testing beta features** before they are generally available
 - **Preparing for deprecations** by excluding deprecated endpoints ahead of their removal
 
 ### Configuration Options
@@ -1371,7 +1371,7 @@ You can configure these options either via environment variables or SDK construc
 ```typescript
 // Set environment variables before initializing the SDK
 process.env.X_GLEAN_EXCLUDE_DEPRECATED_AFTER = '2026-10-15';
-process.env.X_GLEAN_INCLUDE_EXPERIMENTAL = 'true';
+process.env.X_GLEAN_INCLUDE_BETA = 'true';
 
 import { Glean } from "@gleanwork/api-client";
 
@@ -1392,7 +1392,7 @@ const opts = {
   apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
   serverURL: "https://mycompany-be.glean.com",
   excludeDeprecatedAfter: "2026-10-15",
-  includeExperimental: true,
+  includeBeta: true,
 } satisfies SDKOptions & XGleanOptions;
 
 const glean = new Glean(opts);
@@ -1403,13 +1403,16 @@ const glean = new Glean(opts);
 | Option | Environment Variable | Type | Description |
 | ------ | -------------------- | ---- | ----------- |
 | `excludeDeprecatedAfter` | `X_GLEAN_EXCLUDE_DEPRECATED_AFTER` | `string` (date) | Exclude API endpoints that will be deprecated after this date (format: `YYYY-MM-DD`). Use this to test your integration against upcoming deprecations. |
-| `includeExperimental` | `X_GLEAN_INCLUDE_EXPERIMENTAL` | `boolean` | When `true`, enables experimental API features that are not yet generally available. Use this to preview and test new functionality. |
+| `includeBeta` | `X_GLEAN_INCLUDE_BETA` | `boolean` | When `true`, enables beta API features that are not yet generally available. Use this to preview and test new functionality. |
+| `includeExperimental` | `X_GLEAN_INCLUDE_EXPERIMENTAL` | `boolean` | Alias of `includeBeta`. Existing code that uses it keeps working. |
 
 > [!NOTE]
-> Environment variables take precedence over SDK constructor options when both are set.
+> Environment variables take precedence over SDK constructor options when both are set. A boolean environment variable set to `true` (case-insensitive) enables its option, and any other non-empty value disables it.
+>
+> `includeBeta` and `includeExperimental` are resolved separately, and either one enables beta features. Disabling one does not disable the other. Both send the `X-Glean-Include-Experimental: true` header.
 
 > [!WARNING]
-> Experimental features may change or be removed without notice. Do not rely on experimental features in production environments.
+> Beta features may change or be removed without notice. Do not rely on beta features in production environments.
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
