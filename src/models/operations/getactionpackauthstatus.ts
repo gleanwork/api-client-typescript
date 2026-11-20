@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetActionPackAuthStatusRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetActionPackAuthStatusRequest$outboundSchema: z.ZodType<
   GetActionPackAuthStatusRequest$Outbound,
   z.ZodTypeDef,
   GetActionPackAuthStatusRequest
-> = z.object({
-  actionPackId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actionPackId: z.string(),
+  })
+);
 
 export function getActionPackAuthStatusRequestToJSON(
   getActionPackAuthStatusRequest: GetActionPackAuthStatusRequest,

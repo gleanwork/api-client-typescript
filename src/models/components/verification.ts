@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -39,20 +39,22 @@ export type Verification = {
 
 /** @internal */
 export const State$inboundSchema: z.ZodType<State, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(State);
+  /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(State));
 /** @internal */
 export const State$outboundSchema: z.ZodType<string, z.ZodTypeDef, State> =
-  openEnums.outboundSchema(State);
+  /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(State));
 
 /** @internal */
 export const Verification$inboundSchema: z.ZodType<
   Verification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  state: State$inboundSchema,
-  metadata: z.lazy(() => VerificationMetadata$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: State$inboundSchema,
+    metadata: z.lazy(() => VerificationMetadata$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type Verification$Outbound = {
   state: string;
@@ -64,10 +66,12 @@ export const Verification$outboundSchema: z.ZodType<
   Verification$Outbound,
   z.ZodTypeDef,
   Verification
-> = z.object({
-  state: State$outboundSchema,
-  metadata: z.lazy(() => VerificationMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: State$outboundSchema,
+    metadata: z.lazy(() => VerificationMetadata$outboundSchema).optional(),
+  })
+);
 
 export function verificationToJSON(verification: Verification): string {
   return JSON.stringify(Verification$outboundSchema.parse(verification));

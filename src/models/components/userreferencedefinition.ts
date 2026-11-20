@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -25,11 +25,13 @@ export const UserReferenceDefinition$inboundSchema: z.ZodType<
   UserReferenceDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string().optional(),
-  datasourceUserId: z.string().optional(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    datasourceUserId: z.string().optional(),
+    name: z.string().optional(),
+  })
+);
 /** @internal */
 export type UserReferenceDefinition$Outbound = {
   email?: string | undefined;
@@ -42,11 +44,13 @@ export const UserReferenceDefinition$outboundSchema: z.ZodType<
   UserReferenceDefinition$Outbound,
   z.ZodTypeDef,
   UserReferenceDefinition
-> = z.object({
-  email: z.string().optional(),
-  datasourceUserId: z.string().optional(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    datasourceUserId: z.string().optional(),
+    name: z.string().optional(),
+  })
+);
 
 export function userReferenceDefinitionToJSON(
   userReferenceDefinition: UserReferenceDefinition,

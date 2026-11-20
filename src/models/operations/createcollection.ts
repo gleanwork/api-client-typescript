@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -47,14 +47,16 @@ export const CreatecollectionRequest$outboundSchema: z.ZodType<
   CreatecollectionRequest$Outbound,
   z.ZodTypeDef,
   CreatecollectionRequest
-> = z.object({
-  locale: z.string().optional(),
-  createCollectionRequest: components.CreateCollectionRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createCollectionRequest: "CreateCollectionRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    createCollectionRequest: components.CreateCollectionRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createCollectionRequest: "CreateCollectionRequest",
+    });
+  })
+);
 
 export function createcollectionRequestToJSON(
   createcollectionRequest: CreatecollectionRequest,
@@ -69,10 +71,12 @@ export const ResponseBody2$inboundSchema: z.ZodType<
   ResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  collection: components.Collection$inboundSchema.optional(),
-  error: components.CollectionError$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collection: components.Collection$inboundSchema.optional(),
+    error: components.CollectionError$inboundSchema,
+  })
+);
 
 export function responseBody2FromJSON(
   jsonString: string,
@@ -89,10 +93,12 @@ export const ResponseBody1$inboundSchema: z.ZodType<
   ResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  collection: components.Collection$inboundSchema,
-  error: components.CollectionError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collection: components.Collection$inboundSchema,
+    error: components.CollectionError$inboundSchema.optional(),
+  })
+);
 
 export function responseBody1FromJSON(
   jsonString: string,
@@ -109,10 +115,12 @@ export const CreatecollectionResponse$inboundSchema: z.ZodType<
   CreatecollectionResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ResponseBody1$inboundSchema),
-  z.lazy(() => ResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ResponseBody1$inboundSchema),
+    z.lazy(() => ResponseBody2$inboundSchema),
+  ])
+);
 
 export function createcollectionResponseFromJSON(
   jsonString: string,

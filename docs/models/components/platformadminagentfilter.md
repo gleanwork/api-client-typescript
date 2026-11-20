@@ -8,7 +8,7 @@ A filter on one agent field.
 import { PlatformAdminAgentFilter } from "@gleanwork/api-client/models/components";
 
 let value: PlatformAdminAgentFilter = {
-  field: "<value>",
+  field: "name",
   values: [
     "<value 1>",
     "<value 2>",

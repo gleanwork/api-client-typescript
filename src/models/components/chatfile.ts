@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,12 +41,14 @@ export const ChatFile$inboundSchema: z.ZodType<
   ChatFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string().optional(),
-  url: z.string().optional(),
-  name: z.string().optional(),
-  metadata: ChatFileMetadata$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    url: z.string().optional(),
+    name: z.string().optional(),
+    metadata: ChatFileMetadata$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ChatFile$Outbound = {
   id?: string | undefined;
@@ -60,12 +62,14 @@ export const ChatFile$outboundSchema: z.ZodType<
   ChatFile$Outbound,
   z.ZodTypeDef,
   ChatFile
-> = z.object({
-  id: z.string().optional(),
-  url: z.string().optional(),
-  name: z.string().optional(),
-  metadata: ChatFileMetadata$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    url: z.string().optional(),
+    name: z.string().optional(),
+    metadata: ChatFileMetadata$outboundSchema.optional(),
+  })
+);
 
 export function chatFileToJSON(chatFile: ChatFile): string {
   return JSON.stringify(ChatFile$outboundSchema.parse(chatFile));

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -39,23 +39,29 @@ export const DocumentVisibilityOverrideOverride$inboundSchema: z.ZodType<
   DocumentVisibilityOverrideOverride,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DocumentVisibilityOverrideOverride);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(DocumentVisibilityOverrideOverride)
+);
 /** @internal */
 export const DocumentVisibilityOverrideOverride$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DocumentVisibilityOverrideOverride
-> = openEnums.outboundSchema(DocumentVisibilityOverrideOverride);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(DocumentVisibilityOverrideOverride)
+);
 
 /** @internal */
 export const DocumentVisibilityOverride$inboundSchema: z.ZodType<
   DocumentVisibilityOverride,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  docId: z.string().optional(),
-  override: DocumentVisibilityOverrideOverride$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    docId: z.string().optional(),
+    override: DocumentVisibilityOverrideOverride$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type DocumentVisibilityOverride$Outbound = {
   docId?: string | undefined;
@@ -67,10 +73,12 @@ export const DocumentVisibilityOverride$outboundSchema: z.ZodType<
   DocumentVisibilityOverride$Outbound,
   z.ZodTypeDef,
   DocumentVisibilityOverride
-> = z.object({
-  docId: z.string().optional(),
-  override: DocumentVisibilityOverrideOverride$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    docId: z.string().optional(),
+    override: DocumentVisibilityOverrideOverride$outboundSchema.optional(),
+  })
+);
 
 export function documentVisibilityOverrideToJSON(
   documentVisibilityOverride: DocumentVisibilityOverride,

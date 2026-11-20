@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -136,45 +136,51 @@ export const EditCollectionResponseErrorCode$inboundSchema: z.ZodType<
   EditCollectionResponseErrorCode,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(EditCollectionResponseErrorCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(EditCollectionResponseErrorCode)
+);
 
 /** @internal */
 export const EditCollectionResponse$inboundSchema: z.ZodType<
   EditCollectionResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  id: z.number().int(),
-  createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  creator: Person$inboundSchema.optional(),
-  updatedBy: Person$inboundSchema.optional(),
-  itemCount: z.number().int().optional(),
-  childCount: z.number().int().optional(),
-  items: z.array(CollectionItem$inboundSchema).optional(),
-  pinMetadata: CollectionPinnedMetadata$inboundSchema.optional(),
-  shortcuts: z.array(z.string()).optional(),
-  children: z.array(Collection$inboundSchema).optional(),
-  roles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
-  errorCode: EditCollectionResponseErrorCode$inboundSchema,
-  collection: Collection$inboundSchema.optional(),
-  error: CollectionError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
+    audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
+    icon: z.string().optional(),
+    adminLocked: z.boolean().optional(),
+    parentId: z.number().int().optional(),
+    thumbnail: Thumbnail$inboundSchema.optional(),
+    allowedDatasource: z.string().optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    trackingToken: z.string().optional(),
+    id: z.number().int(),
+    createTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    creator: Person$inboundSchema.optional(),
+    updatedBy: Person$inboundSchema.optional(),
+    itemCount: z.number().int().optional(),
+    childCount: z.number().int().optional(),
+    items: z.array(CollectionItem$inboundSchema).optional(),
+    pinMetadata: CollectionPinnedMetadata$inboundSchema.optional(),
+    shortcuts: z.array(z.string()).optional(),
+    children: z.array(Collection$inboundSchema).optional(),
+    roles: z.array(UserRoleSpecification$inboundSchema).optional(),
+    favoriteInfo: FavoriteInfo$inboundSchema.optional(),
+    errorCode: EditCollectionResponseErrorCode$inboundSchema,
+    collection: Collection$inboundSchema.optional(),
+    error: CollectionError$inboundSchema.optional(),
+  })
+);
 
 export function editCollectionResponseFromJSON(
   jsonString: string,

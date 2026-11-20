@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const CollectionItemDescriptorItemType = {
@@ -46,7 +47,9 @@ export type CollectionItemDescriptor = {
 /** @internal */
 export const CollectionItemDescriptorItemType$outboundSchema: z.ZodNativeEnum<
   typeof CollectionItemDescriptorItemType
-> = z.nativeEnum(CollectionItemDescriptorItemType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CollectionItemDescriptorItemType)
+);
 
 /** @internal */
 export type CollectionItemDescriptor$Outbound = {
@@ -64,15 +67,17 @@ export const CollectionItemDescriptor$outboundSchema: z.ZodType<
   CollectionItemDescriptor$Outbound,
   z.ZodTypeDef,
   CollectionItemDescriptor
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  url: z.string().optional(),
-  documentId: z.string().optional(),
-  newNextItemId: z.string().optional(),
-  itemType: CollectionItemDescriptorItemType$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    icon: z.string().optional(),
+    url: z.string().optional(),
+    documentId: z.string().optional(),
+    newNextItemId: z.string().optional(),
+    itemType: CollectionItemDescriptorItemType$outboundSchema.optional(),
+  })
+);
 
 export function collectionItemDescriptorToJSON(
   collectionItemDescriptor: CollectionItemDescriptor,

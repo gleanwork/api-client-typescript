@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes a relationship edge between a source and destination entity
@@ -30,10 +31,12 @@ export const EntityRelationship$outboundSchema: z.ZodType<
   EntityRelationship$Outbound,
   z.ZodTypeDef,
   EntityRelationship
-> = z.object({
-  name: z.string(),
-  email: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    email: z.string(),
+  })
+);
 
 export function entityRelationshipToJSON(
   entityRelationship: EntityRelationship,

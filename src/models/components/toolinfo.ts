@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,10 +36,12 @@ export const ToolInfo$inboundSchema: z.ZodType<
   ToolInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  metadata: ToolMetadata$inboundSchema.optional(),
-  parameters: z.record(WriteActionParameter$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metadata: ToolMetadata$inboundSchema.optional(),
+    parameters: z.record(WriteActionParameter$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type ToolInfo$Outbound = {
   metadata?: ToolMetadata$Outbound | undefined;
@@ -51,10 +53,12 @@ export const ToolInfo$outboundSchema: z.ZodType<
   ToolInfo$Outbound,
   z.ZodTypeDef,
   ToolInfo
-> = z.object({
-  metadata: ToolMetadata$outboundSchema.optional(),
-  parameters: z.record(WriteActionParameter$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metadata: ToolMetadata$outboundSchema.optional(),
+    parameters: z.record(WriteActionParameter$outboundSchema).optional(),
+  })
+);
 
 export function toolInfoToJSON(toolInfo: ToolInfo): string {
   return JSON.stringify(ToolInfo$outboundSchema.parse(toolInfo));

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -60,16 +60,18 @@ export const ChatMetadata$inboundSchema: z.ZodType<
   ChatMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string().optional(),
-  createTime: z.number().int().optional(),
-  createdBy: z.lazy(() => Person$inboundSchema).optional(),
-  updateTime: z.number().int().optional(),
-  name: z.string().optional(),
-  applicationId: z.string().optional(),
-  applicationName: z.string().optional(),
-  icon: IconConfig$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    createTime: z.number().int().optional(),
+    createdBy: z.lazy(() => Person$inboundSchema).optional(),
+    updateTime: z.number().int().optional(),
+    name: z.string().optional(),
+    applicationId: z.string().optional(),
+    applicationName: z.string().optional(),
+    icon: IconConfig$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ChatMetadata$Outbound = {
   id?: string | undefined;
@@ -87,16 +89,18 @@ export const ChatMetadata$outboundSchema: z.ZodType<
   ChatMetadata$Outbound,
   z.ZodTypeDef,
   ChatMetadata
-> = z.object({
-  id: z.string().optional(),
-  createTime: z.number().int().optional(),
-  createdBy: z.lazy(() => Person$outboundSchema).optional(),
-  updateTime: z.number().int().optional(),
-  name: z.string().optional(),
-  applicationId: z.string().optional(),
-  applicationName: z.string().optional(),
-  icon: IconConfig$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    createTime: z.number().int().optional(),
+    createdBy: z.lazy(() => Person$outboundSchema).optional(),
+    updateTime: z.number().int().optional(),
+    name: z.string().optional(),
+    applicationId: z.string().optional(),
+    applicationName: z.string().optional(),
+    icon: IconConfig$outboundSchema.optional(),
+  })
+);
 
 export function chatMetadataToJSON(chatMetadata: ChatMetadata): string {
   return JSON.stringify(ChatMetadata$outboundSchema.parse(chatMetadata));

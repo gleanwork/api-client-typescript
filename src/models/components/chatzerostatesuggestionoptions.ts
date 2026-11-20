@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ChatZeroStateSuggestionOptions = {
   /**
@@ -22,9 +23,11 @@ export const ChatZeroStateSuggestionOptions$outboundSchema: z.ZodType<
   ChatZeroStateSuggestionOptions$Outbound,
   z.ZodTypeDef,
   ChatZeroStateSuggestionOptions
-> = z.object({
-  applicationId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    applicationId: z.string().optional(),
+  })
+);
 
 export function chatZeroStateSuggestionOptionsToJSON(
   chatZeroStateSuggestionOptions: ChatZeroStateSuggestionOptions,

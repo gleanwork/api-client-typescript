@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Document, Document$inboundSchema } from "./document.js";
@@ -29,11 +29,13 @@ export const GetDocumentsByFacetsResponse$inboundSchema: z.ZodType<
   GetDocumentsByFacetsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  documents: z.array(Document$inboundSchema).optional(),
-  hasMoreResults: z.boolean().optional(),
-  cursor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documents: z.array(Document$inboundSchema).optional(),
+    hasMoreResults: z.boolean().optional(),
+    cursor: z.string().optional(),
+  })
+);
 
 export function getDocumentsByFacetsResponseFromJSON(
   jsonString: string,

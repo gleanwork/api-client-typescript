@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChatMessage, ChatMessage$inboundSchema } from "./chatmessage.js";
@@ -64,20 +64,22 @@ export type Chat = {
 };
 
 /** @internal */
-export const Chat$inboundSchema: z.ZodType<Chat, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string().optional(),
-    createTime: z.number().int().optional(),
-    createdBy: Person$inboundSchema.optional(),
-    updateTime: z.number().int().optional(),
-    name: z.string().optional(),
-    applicationId: z.string().optional(),
-    applicationName: z.string().optional(),
-    icon: IconConfig$inboundSchema.optional(),
-    permissions: ObjectPermissions$inboundSchema.optional(),
-    messages: z.array(ChatMessage$inboundSchema).optional(),
-    roles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  });
+export const Chat$inboundSchema: z.ZodType<Chat, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string().optional(),
+      createTime: z.number().int().optional(),
+      createdBy: Person$inboundSchema.optional(),
+      updateTime: z.number().int().optional(),
+      name: z.string().optional(),
+      applicationId: z.string().optional(),
+      applicationName: z.string().optional(),
+      icon: IconConfig$inboundSchema.optional(),
+      permissions: ObjectPermissions$inboundSchema.optional(),
+      messages: z.array(ChatMessage$inboundSchema).optional(),
+      roles: z.array(UserRoleSpecification$inboundSchema).optional(),
+    })
+  );
 
 export function chatFromJSON(
   jsonString: string,

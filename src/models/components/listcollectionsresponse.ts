@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Collection, Collection$inboundSchema } from "./collection.js";
@@ -21,9 +21,11 @@ export const ListCollectionsResponse$inboundSchema: z.ZodType<
   ListCollectionsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  collections: z.array(Collection$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collections: z.array(Collection$inboundSchema),
+  })
+);
 
 export function listCollectionsResponseFromJSON(
   jsonString: string,

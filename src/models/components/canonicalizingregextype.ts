@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const CanonicalizingRegexType$inboundSchema: z.ZodType<
   CanonicalizingRegexType,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  matchRegex: z.string().optional(),
-  rewriteRegex: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    matchRegex: z.string().optional(),
+    rewriteRegex: z.string().optional(),
+  })
+);
 /** @internal */
 export type CanonicalizingRegexType$Outbound = {
   matchRegex?: string | undefined;
@@ -42,10 +44,12 @@ export const CanonicalizingRegexType$outboundSchema: z.ZodType<
   CanonicalizingRegexType$Outbound,
   z.ZodTypeDef,
   CanonicalizingRegexType
-> = z.object({
-  matchRegex: z.string().optional(),
-  rewriteRegex: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    matchRegex: z.string().optional(),
+    rewriteRegex: z.string().optional(),
+  })
+);
 
 export function canonicalizingRegexTypeToJSON(
   canonicalizingRegexType: CanonicalizingRegexType,

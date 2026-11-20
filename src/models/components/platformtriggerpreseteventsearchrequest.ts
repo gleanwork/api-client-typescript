@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformTriggerPresetEventSearchRequest = {
   /**
@@ -29,10 +30,12 @@ export const PlatformTriggerPresetEventSearchRequest$outboundSchema: z.ZodType<
   PlatformTriggerPresetEventSearchRequest$Outbound,
   z.ZodTypeDef,
   PlatformTriggerPresetEventSearchRequest
-> = z.object({
-  inputs: z.record(z.string()).optional(),
-  page_size: z.number().int().default(10),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inputs: z.record(z.string()).optional(),
+    page_size: z.number().int().default(10),
+  })
+);
 
 export function platformTriggerPresetEventSearchRequestToJSON(
   platformTriggerPresetEventSearchRequest:

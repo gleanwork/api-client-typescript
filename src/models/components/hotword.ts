@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -21,10 +21,12 @@ export type Hotword = {
 
 /** @internal */
 export const Hotword$inboundSchema: z.ZodType<Hotword, z.ZodTypeDef, unknown> =
-  z.object({
-    regex: z.string().optional(),
-    proximity: HotwordProximity$inboundSchema.optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      regex: z.string().optional(),
+      proximity: HotwordProximity$inboundSchema.optional(),
+    })
+  );
 /** @internal */
 export type Hotword$Outbound = {
   regex?: string | undefined;
@@ -36,10 +38,12 @@ export const Hotword$outboundSchema: z.ZodType<
   Hotword$Outbound,
   z.ZodTypeDef,
   Hotword
-> = z.object({
-  regex: z.string().optional(),
-  proximity: HotwordProximity$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    regex: z.string().optional(),
+    proximity: HotwordProximity$outboundSchema.optional(),
+  })
+);
 
 export function hotwordToJSON(hotword: Hotword): string {
   return JSON.stringify(Hotword$outboundSchema.parse(hotword));

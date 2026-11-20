@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the custom properties of the object.
@@ -27,10 +28,12 @@ export const CustomProperty$outboundSchema: z.ZodType<
   CustomProperty$Outbound,
   z.ZodTypeDef,
   CustomProperty
-> = z.object({
-  name: z.string().optional(),
-  value: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    value: z.any().optional(),
+  })
+);
 
 export function customPropertyToJSON(customProperty: CustomProperty): string {
   return JSON.stringify(CustomProperty$outboundSchema.parse(customProperty));

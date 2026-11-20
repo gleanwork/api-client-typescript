@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -70,17 +70,19 @@ export const QuerySuggestion$inboundSchema: z.ZodType<
   QuerySuggestion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  missingTerm: z.string().optional(),
-  query: z.string(),
-  searchProviderInfo: SearchProviderInfo$inboundSchema.optional(),
-  label: z.string().optional(),
-  datasource: z.string().optional(),
-  resultTab: ResultTab$inboundSchema.optional(),
-  requestOptions: SearchRequestOptions$inboundSchema.optional(),
-  ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
-  inputDetails: SearchRequestInputDetails$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    missingTerm: z.string().optional(),
+    query: z.string(),
+    searchProviderInfo: SearchProviderInfo$inboundSchema.optional(),
+    label: z.string().optional(),
+    datasource: z.string().optional(),
+    resultTab: ResultTab$inboundSchema.optional(),
+    requestOptions: SearchRequestOptions$inboundSchema.optional(),
+    ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
+    inputDetails: SearchRequestInputDetails$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type QuerySuggestion$Outbound = {
   missingTerm?: string | undefined;
@@ -99,17 +101,19 @@ export const QuerySuggestion$outboundSchema: z.ZodType<
   QuerySuggestion$Outbound,
   z.ZodTypeDef,
   QuerySuggestion
-> = z.object({
-  missingTerm: z.string().optional(),
-  query: z.string(),
-  searchProviderInfo: SearchProviderInfo$outboundSchema.optional(),
-  label: z.string().optional(),
-  datasource: z.string().optional(),
-  resultTab: ResultTab$outboundSchema.optional(),
-  requestOptions: SearchRequestOptions$outboundSchema.optional(),
-  ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
-  inputDetails: SearchRequestInputDetails$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    missingTerm: z.string().optional(),
+    query: z.string(),
+    searchProviderInfo: SearchProviderInfo$outboundSchema.optional(),
+    label: z.string().optional(),
+    datasource: z.string().optional(),
+    resultTab: ResultTab$outboundSchema.optional(),
+    requestOptions: SearchRequestOptions$outboundSchema.optional(),
+    ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
+    inputDetails: SearchRequestInputDetails$outboundSchema.optional(),
+  })
+);
 
 export function querySuggestionToJSON(
   querySuggestion: QuerySuggestion,

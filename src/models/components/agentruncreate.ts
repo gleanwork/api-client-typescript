@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   MessageInput,
   MessageInput$Outbound,
@@ -45,12 +46,14 @@ export const AgentRunCreate$outboundSchema: z.ZodType<
   AgentRunCreate$Outbound,
   z.ZodTypeDef,
   AgentRunCreate
-> = z.object({
-  agent_id: z.string(),
-  input: z.record(z.any()).optional(),
-  messages: z.array(MessageInput$outboundSchema).optional(),
-  metadata: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    input: z.record(z.any()).optional(),
+    messages: z.array(MessageInput$outboundSchema).optional(),
+    metadata: z.record(z.any()).optional(),
+  })
+);
 
 export function agentRunCreateToJSON(agentRunCreate: AgentRunCreate): string {
   return JSON.stringify(AgentRunCreate$outboundSchema.parse(agentRunCreate));

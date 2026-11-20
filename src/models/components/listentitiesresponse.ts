@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CustomEntity, CustomEntity$inboundSchema } from "./customentity.js";
@@ -48,17 +48,19 @@ export const ListEntitiesResponse$inboundSchema: z.ZodType<
   ListEntitiesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(Person$inboundSchema).optional(),
-  teamResults: z.array(Team$inboundSchema).optional(),
-  customEntityResults: z.array(CustomEntity$inboundSchema).optional(),
-  facetResults: z.array(FacetResult$inboundSchema).optional(),
-  cursor: z.string().optional(),
-  totalCount: z.number().int().optional(),
-  hasMoreResults: z.boolean().optional(),
-  sortOptions: z.array(EntitiesSortOrder$inboundSchema).optional(),
-  customFacetNames: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(Person$inboundSchema).optional(),
+    teamResults: z.array(Team$inboundSchema).optional(),
+    customEntityResults: z.array(CustomEntity$inboundSchema).optional(),
+    facetResults: z.array(FacetResult$inboundSchema).optional(),
+    cursor: z.string().optional(),
+    totalCount: z.number().int().optional(),
+    hasMoreResults: z.boolean().optional(),
+    sortOptions: z.array(EntitiesSortOrder$inboundSchema).optional(),
+    customFacetNames: z.array(z.string()).optional(),
+  })
+);
 
 export function listEntitiesResponseFromJSON(
   jsonString: string,
