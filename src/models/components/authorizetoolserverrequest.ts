@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type AuthorizeToolServerRequest = {
   /**
@@ -25,9 +26,11 @@ export const AuthorizeToolServerRequest$outboundSchema: z.ZodType<
   AuthorizeToolServerRequest$Outbound,
   z.ZodTypeDef,
   AuthorizeToolServerRequest
-> = z.object({
-  returnUrl: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    returnUrl: z.string(),
+  })
+);
 
 export function authorizeToolServerRequestToJSON(
   authorizeToolServerRequest: AuthorizeToolServerRequest,

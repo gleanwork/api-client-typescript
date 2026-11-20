@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /checkdocumentaccess API call
@@ -40,12 +41,14 @@ export const CheckDocumentAccessRequest$outboundSchema: z.ZodType<
   CheckDocumentAccessRequest$Outbound,
   z.ZodTypeDef,
   CheckDocumentAccessRequest
-> = z.object({
-  datasource: z.string(),
-  objectType: z.string(),
-  docId: z.string(),
-  userEmail: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    objectType: z.string(),
+    docId: z.string(),
+    userEmail: z.string(),
+  })
+);
 
 export function checkDocumentAccessRequestToJSON(
   checkDocumentAccessRequest: CheckDocumentAccessRequest,

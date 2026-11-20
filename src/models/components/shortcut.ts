@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -123,35 +123,40 @@ export const Shortcut$inboundSchema: z.ZodType<
   Shortcut,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int().optional(),
-  inputAlias: z.string(),
-  destinationUrl: z.string().optional(),
-  destinationDocumentId: z.string().optional(),
-  description: z.string().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-  addedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-    .optional(),
-  removedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-    .optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  createdBy: z.lazy(() => Person$inboundSchema).optional(),
-  createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updatedBy: z.lazy(() => Person$inboundSchema).optional(),
-  updateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  destinationDocument: z.lazy(() => Document$inboundSchema).optional(),
-  intermediateUrl: z.string().optional(),
-  viewPrefix: z.string().optional(),
-  isExternal: z.boolean().optional(),
-  editUrl: z.string().optional(),
-  alias: z.string().optional(),
-  title: z.string().optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
-  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int().optional(),
+    inputAlias: z.string(),
+    destinationUrl: z.string().optional(),
+    destinationDocumentId: z.string().optional(),
+    description: z.string().optional(),
+    unlisted: z.boolean().optional(),
+    urlTemplate: z.string().optional(),
+    addedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+    removedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    createdBy: z.lazy(() => Person$inboundSchema).optional(),
+    createTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updatedBy: z.lazy(() => Person$inboundSchema).optional(),
+    updateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    destinationDocument: z.lazy(() => Document$inboundSchema).optional(),
+    intermediateUrl: z.string().optional(),
+    viewPrefix: z.string().optional(),
+    isExternal: z.boolean().optional(),
+    editUrl: z.string().optional(),
+    alias: z.string().optional(),
+    title: z.string().optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+    favoriteInfo: FavoriteInfo$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type Shortcut$Outbound = {
   id?: number | undefined;
@@ -184,33 +189,36 @@ export const Shortcut$outboundSchema: z.ZodType<
   Shortcut$Outbound,
   z.ZodTypeDef,
   Shortcut
-> = z.object({
-  id: z.number().int().optional(),
-  inputAlias: z.string(),
-  destinationUrl: z.string().optional(),
-  destinationDocumentId: z.string().optional(),
-  description: z.string().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-  addedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
-    .optional(),
-  removedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
-    .optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  createdBy: z.lazy(() => Person$outboundSchema).optional(),
-  createTime: z.date().transform(v => v.toISOString()).optional(),
-  updatedBy: z.lazy(() => Person$outboundSchema).optional(),
-  updateTime: z.date().transform(v => v.toISOString()).optional(),
-  destinationDocument: z.lazy(() => Document$outboundSchema).optional(),
-  intermediateUrl: z.string().optional(),
-  viewPrefix: z.string().optional(),
-  isExternal: z.boolean().optional(),
-  editUrl: z.string().optional(),
-  alias: z.string().optional(),
-  title: z.string().optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
-  favoriteInfo: FavoriteInfo$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int().optional(),
+    inputAlias: z.string(),
+    destinationUrl: z.string().optional(),
+    destinationDocumentId: z.string().optional(),
+    description: z.string().optional(),
+    unlisted: z.boolean().optional(),
+    urlTemplate: z.string().optional(),
+    addedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    removedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    permissions: ObjectPermissions$outboundSchema.optional(),
+    createdBy: z.lazy(() => Person$outboundSchema).optional(),
+    createTime: z.date().transform(v => v.toISOString()).optional(),
+    updatedBy: z.lazy(() => Person$outboundSchema).optional(),
+    updateTime: z.date().transform(v => v.toISOString()).optional(),
+    destinationDocument: z.lazy(() => Document$outboundSchema).optional(),
+    intermediateUrl: z.string().optional(),
+    viewPrefix: z.string().optional(),
+    isExternal: z.boolean().optional(),
+    editUrl: z.string().optional(),
+    alias: z.string().optional(),
+    title: z.string().optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    favoriteInfo: FavoriteInfo$outboundSchema.optional(),
+  })
+);
 
 export function shortcutToJSON(shortcut: Shortcut): string {
   return JSON.stringify(Shortcut$outboundSchema.parse(shortcut));

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,22 +46,25 @@ export type Meeting = {
 
 /** @internal */
 export const Meeting$inboundSchema: z.ZodType<Meeting, z.ZodTypeDef, unknown> =
-  z.object({
-    id: z.string().optional(),
-    title: z.string().optional(),
-    description: z.string().optional(),
-    url: z.string().optional(),
-    startTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-      .optional(),
-    attendees: z.lazy(() => CalendarAttendees$inboundSchema).optional(),
-    isCancelled: z.boolean().optional(),
-    location: z.string().optional(),
-    responseStatus: z.string().optional(),
-    conferenceUri: z.string().optional(),
-    conferenceProvider: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string().optional(),
+      title: z.string().optional(),
+      description: z.string().optional(),
+      url: z.string().optional(),
+      startTime: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
+        .optional(),
+      attendees: z.lazy(() => CalendarAttendees$inboundSchema).optional(),
+      isCancelled: z.boolean().optional(),
+      location: z.string().optional(),
+      responseStatus: z.string().optional(),
+      conferenceUri: z.string().optional(),
+      conferenceProvider: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Meeting$Outbound = {
   id?: string | undefined;
@@ -83,20 +86,22 @@ export const Meeting$outboundSchema: z.ZodType<
   Meeting$Outbound,
   z.ZodTypeDef,
   Meeting
-> = z.object({
-  id: z.string().optional(),
-  title: z.string().optional(),
-  description: z.string().optional(),
-  url: z.string().optional(),
-  startTime: z.date().transform(v => v.toISOString()).optional(),
-  endTime: z.date().transform(v => v.toISOString()).optional(),
-  attendees: z.lazy(() => CalendarAttendees$outboundSchema).optional(),
-  isCancelled: z.boolean().optional(),
-  location: z.string().optional(),
-  responseStatus: z.string().optional(),
-  conferenceUri: z.string().optional(),
-  conferenceProvider: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    url: z.string().optional(),
+    startTime: z.date().transform(v => v.toISOString()).optional(),
+    endTime: z.date().transform(v => v.toISOString()).optional(),
+    attendees: z.lazy(() => CalendarAttendees$outboundSchema).optional(),
+    isCancelled: z.boolean().optional(),
+    location: z.string().optional(),
+    responseStatus: z.string().optional(),
+    conferenceUri: z.string().optional(),
+    conferenceProvider: z.string().optional(),
+  })
+);
 
 export function meetingToJSON(meeting: Meeting): string {
   return JSON.stringify(Meeting$outboundSchema.parse(meeting));

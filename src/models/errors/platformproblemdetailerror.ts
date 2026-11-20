@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { GleanBaseError } from "./gleanbaseerror.js";
 
@@ -118,24 +119,26 @@ export const PlatformProblemDetailError$inboundSchema: z.ZodType<
   PlatformProblemDetailError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.string(),
-  title: z.string(),
-  status: z.number().int(),
-  detail: z.string(),
-  code: components.PlatformProblemDetailCode$inboundSchema,
-  documentation_url: z.string().optional(),
-  request_id: z.string(),
-  errors: z.array(components.PlatformProblemDetailError$inboundSchema)
-    .optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PlatformProblemDetailError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string(),
+    title: z.string(),
+    status: z.number().int(),
+    detail: z.string(),
+    code: components.PlatformProblemDetailCode$inboundSchema,
+    documentation_url: z.string().optional(),
+    request_id: z.string(),
+    errors: z.array(components.PlatformProblemDetailError$inboundSchema)
+      .optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new PlatformProblemDetailError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -79,27 +79,33 @@ export const ServerToolRequestRequestType$inboundSchema: z.ZodType<
   ServerToolRequestRequestType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ServerToolRequestRequestType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ServerToolRequestRequestType)
+);
 /** @internal */
 export const ServerToolRequestRequestType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ServerToolRequestRequestType
-> = openEnums.outboundSchema(ServerToolRequestRequestType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(ServerToolRequestRequestType)
+);
 
 /** @internal */
 export const ServerToolRequest$inboundSchema: z.ZodType<
   ServerToolRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  requestType: ServerToolRequestRequestType$inboundSchema,
-  requestId: z.string(),
-  toolDisplayName: z.string().optional(),
-  serverId: z.string().optional(),
-  toolCta: z.string().optional(),
-  actionPreview: ActionPreview$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestType: ServerToolRequestRequestType$inboundSchema,
+    requestId: z.string(),
+    toolDisplayName: z.string().optional(),
+    serverId: z.string().optional(),
+    toolCta: z.string().optional(),
+    actionPreview: ActionPreview$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ServerToolRequest$Outbound = {
   requestType: string;
@@ -115,14 +121,16 @@ export const ServerToolRequest$outboundSchema: z.ZodType<
   ServerToolRequest$Outbound,
   z.ZodTypeDef,
   ServerToolRequest
-> = z.object({
-  requestType: ServerToolRequestRequestType$outboundSchema,
-  requestId: z.string(),
-  toolDisplayName: z.string().optional(),
-  serverId: z.string().optional(),
-  toolCta: z.string().optional(),
-  actionPreview: ActionPreview$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestType: ServerToolRequestRequestType$outboundSchema,
+    requestId: z.string(),
+    toolDisplayName: z.string().optional(),
+    serverId: z.string().optional(),
+    toolCta: z.string().optional(),
+    actionPreview: ActionPreview$outboundSchema.optional(),
+  })
+);
 
 export function serverToolRequestToJSON(
   serverToolRequest: ServerToolRequest,

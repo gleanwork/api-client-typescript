@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -202,76 +202,92 @@ export const DatasourceCategory$inboundSchema: z.ZodType<
   DatasourceCategory,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DatasourceCategory);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(DatasourceCategory)
+);
 /** @internal */
 export const DatasourceCategory$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DatasourceCategory
-> = openEnums.outboundSchema(DatasourceCategory);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(DatasourceCategory)
+);
 
 /** @internal */
 export const HideBuiltInFacet$inboundSchema: z.ZodType<
   HideBuiltInFacet,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(HideBuiltInFacet);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(HideBuiltInFacet)
+);
 /** @internal */
 export const HideBuiltInFacet$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   HideBuiltInFacet
-> = openEnums.outboundSchema(HideBuiltInFacet);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(HideBuiltInFacet)
+);
 
 /** @internal */
 export const CustomDatasourceConfigConnectorType$inboundSchema: z.ZodType<
   CustomDatasourceConfigConnectorType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CustomDatasourceConfigConnectorType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CustomDatasourceConfigConnectorType)
+);
 /** @internal */
 export const CustomDatasourceConfigConnectorType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   CustomDatasourceConfigConnectorType
-> = openEnums.outboundSchema(CustomDatasourceConfigConnectorType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(CustomDatasourceConfigConnectorType)
+);
 
 /** @internal */
 export const CustomDatasourceConfig$inboundSchema: z.ZodType<
   CustomDatasourceConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  displayName: z.string().optional(),
-  datasourceCategory: DatasourceCategory$inboundSchema.default("UNCATEGORIZED"),
-  urlRegex: z.string().optional(),
-  iconUrl: z.string().optional(),
-  objectDefinitions: z.array(ObjectDefinition$inboundSchema).optional(),
-  suggestionText: z.string().optional(),
-  homeUrl: z.string().optional(),
-  crawlerSeedUrls: z.array(z.string()).optional(),
-  iconDarkUrl: z.string().optional(),
-  hideBuiltInFacets: z.array(HideBuiltInFacet$inboundSchema).optional(),
-  canonicalizingURLRegex: z.array(CanonicalizingRegexType$inboundSchema)
-    .optional(),
-  canonicalizingTitleRegex: z.array(CanonicalizingRegexType$inboundSchema)
-    .optional(),
-  redlistTitleRegex: z.string().optional(),
-  connectorType: CustomDatasourceConfigConnectorType$inboundSchema.optional(),
-  quicklinks: z.array(Quicklink$inboundSchema).optional(),
-  renderConfigPreset: z.string().optional(),
-  aliases: z.array(z.string()).optional(),
-  isOnPrem: z.boolean().optional(),
-  trustUrlRegexForViewActivity: z.boolean().default(true),
-  includeUtmSource: z.boolean().optional(),
-  stripFragmentInCanonicalUrl: z.boolean().default(true),
-  identityDatasourceName: z.string().optional(),
-  productAccessGroup: z.string().optional(),
-  isUserReferencedByEmail: z.boolean().optional(),
-  isEntityDatasource: z.boolean().default(false),
-  isTestDatasource: z.boolean().default(false),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    displayName: z.string().optional(),
+    datasourceCategory: DatasourceCategory$inboundSchema.default(
+      "UNCATEGORIZED",
+    ),
+    urlRegex: z.string().optional(),
+    iconUrl: z.string().optional(),
+    objectDefinitions: z.array(ObjectDefinition$inboundSchema).optional(),
+    suggestionText: z.string().optional(),
+    homeUrl: z.string().optional(),
+    crawlerSeedUrls: z.array(z.string()).optional(),
+    iconDarkUrl: z.string().optional(),
+    hideBuiltInFacets: z.array(HideBuiltInFacet$inboundSchema).optional(),
+    canonicalizingURLRegex: z.array(CanonicalizingRegexType$inboundSchema)
+      .optional(),
+    canonicalizingTitleRegex: z.array(CanonicalizingRegexType$inboundSchema)
+      .optional(),
+    redlistTitleRegex: z.string().optional(),
+    connectorType: CustomDatasourceConfigConnectorType$inboundSchema.optional(),
+    quicklinks: z.array(Quicklink$inboundSchema).optional(),
+    renderConfigPreset: z.string().optional(),
+    aliases: z.array(z.string()).optional(),
+    isOnPrem: z.boolean().optional(),
+    trustUrlRegexForViewActivity: z.boolean().default(true),
+    includeUtmSource: z.boolean().optional(),
+    stripFragmentInCanonicalUrl: z.boolean().default(true),
+    identityDatasourceName: z.string().optional(),
+    productAccessGroup: z.string().optional(),
+    isUserReferencedByEmail: z.boolean().optional(),
+    isEntityDatasource: z.boolean().default(false),
+    isTestDatasource: z.boolean().default(false),
+  })
+);
 /** @internal */
 export type CustomDatasourceConfig$Outbound = {
   name: string;
@@ -310,39 +326,42 @@ export const CustomDatasourceConfig$outboundSchema: z.ZodType<
   CustomDatasourceConfig$Outbound,
   z.ZodTypeDef,
   CustomDatasourceConfig
-> = z.object({
-  name: z.string(),
-  displayName: z.string().optional(),
-  datasourceCategory: DatasourceCategory$outboundSchema.default(
-    "UNCATEGORIZED",
-  ),
-  urlRegex: z.string().optional(),
-  iconUrl: z.string().optional(),
-  objectDefinitions: z.array(ObjectDefinition$outboundSchema).optional(),
-  suggestionText: z.string().optional(),
-  homeUrl: z.string().optional(),
-  crawlerSeedUrls: z.array(z.string()).optional(),
-  iconDarkUrl: z.string().optional(),
-  hideBuiltInFacets: z.array(HideBuiltInFacet$outboundSchema).optional(),
-  canonicalizingURLRegex: z.array(CanonicalizingRegexType$outboundSchema)
-    .optional(),
-  canonicalizingTitleRegex: z.array(CanonicalizingRegexType$outboundSchema)
-    .optional(),
-  redlistTitleRegex: z.string().optional(),
-  connectorType: CustomDatasourceConfigConnectorType$outboundSchema.optional(),
-  quicklinks: z.array(Quicklink$outboundSchema).optional(),
-  renderConfigPreset: z.string().optional(),
-  aliases: z.array(z.string()).optional(),
-  isOnPrem: z.boolean().optional(),
-  trustUrlRegexForViewActivity: z.boolean().default(true),
-  includeUtmSource: z.boolean().optional(),
-  stripFragmentInCanonicalUrl: z.boolean().default(true),
-  identityDatasourceName: z.string().optional(),
-  productAccessGroup: z.string().optional(),
-  isUserReferencedByEmail: z.boolean().optional(),
-  isEntityDatasource: z.boolean().default(false),
-  isTestDatasource: z.boolean().default(false),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    displayName: z.string().optional(),
+    datasourceCategory: DatasourceCategory$outboundSchema.default(
+      "UNCATEGORIZED",
+    ),
+    urlRegex: z.string().optional(),
+    iconUrl: z.string().optional(),
+    objectDefinitions: z.array(ObjectDefinition$outboundSchema).optional(),
+    suggestionText: z.string().optional(),
+    homeUrl: z.string().optional(),
+    crawlerSeedUrls: z.array(z.string()).optional(),
+    iconDarkUrl: z.string().optional(),
+    hideBuiltInFacets: z.array(HideBuiltInFacet$outboundSchema).optional(),
+    canonicalizingURLRegex: z.array(CanonicalizingRegexType$outboundSchema)
+      .optional(),
+    canonicalizingTitleRegex: z.array(CanonicalizingRegexType$outboundSchema)
+      .optional(),
+    redlistTitleRegex: z.string().optional(),
+    connectorType: CustomDatasourceConfigConnectorType$outboundSchema
+      .optional(),
+    quicklinks: z.array(Quicklink$outboundSchema).optional(),
+    renderConfigPreset: z.string().optional(),
+    aliases: z.array(z.string()).optional(),
+    isOnPrem: z.boolean().optional(),
+    trustUrlRegexForViewActivity: z.boolean().default(true),
+    includeUtmSource: z.boolean().optional(),
+    stripFragmentInCanonicalUrl: z.boolean().default(true),
+    identityDatasourceName: z.string().optional(),
+    productAccessGroup: z.string().optional(),
+    isUserReferencedByEmail: z.boolean().optional(),
+    isEntityDatasource: z.boolean().default(false),
+    isTestDatasource: z.boolean().default(false),
+  })
+);
 
 export function customDatasourceConfigToJSON(
   customDatasourceConfig: CustomDatasourceConfig,

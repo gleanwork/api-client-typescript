@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const ActionPreview$inboundSchema: z.ZodType<
   ActionPreview,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  markdown: z.string().optional(),
-  description: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    markdown: z.string().optional(),
+    description: z.string().optional(),
+  })
+);
 /** @internal */
 export type ActionPreview$Outbound = {
   markdown?: string | undefined;
@@ -42,10 +44,12 @@ export const ActionPreview$outboundSchema: z.ZodType<
   ActionPreview$Outbound,
   z.ZodTypeDef,
   ActionPreview
-> = z.object({
-  markdown: z.string().optional(),
-  description: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    markdown: z.string().optional(),
+    description: z.string().optional(),
+  })
+);
 
 export function actionPreviewToJSON(actionPreview: ActionPreview): string {
   return JSON.stringify(ActionPreview$outboundSchema.parse(actionPreview));

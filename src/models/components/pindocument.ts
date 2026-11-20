@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -55,19 +55,23 @@ export const PinDocument$inboundSchema: z.ZodType<
   PinDocument,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  queries: z.array(z.string()).optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  id: z.string().optional(),
-  documentId: z.string(),
-  attribution: z.lazy(() => Person$inboundSchema).optional(),
-  updatedBy: z.lazy(() => Person$inboundSchema).optional(),
-  createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    queries: z.array(z.string()).optional(),
+    audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
+    id: z.string().optional(),
+    documentId: z.string(),
+    attribution: z.lazy(() => Person$inboundSchema).optional(),
+    updatedBy: z.lazy(() => Person$inboundSchema).optional(),
+    createTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    favoriteInfo: FavoriteInfo$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type PinDocument$Outbound = {
   queries?: Array<string> | undefined;
@@ -86,17 +90,19 @@ export const PinDocument$outboundSchema: z.ZodType<
   PinDocument$Outbound,
   z.ZodTypeDef,
   PinDocument
-> = z.object({
-  queries: z.array(z.string()).optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  id: z.string().optional(),
-  documentId: z.string(),
-  attribution: z.lazy(() => Person$outboundSchema).optional(),
-  updatedBy: z.lazy(() => Person$outboundSchema).optional(),
-  createTime: z.date().transform(v => v.toISOString()).optional(),
-  updateTime: z.date().transform(v => v.toISOString()).optional(),
-  favoriteInfo: FavoriteInfo$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    queries: z.array(z.string()).optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    id: z.string().optional(),
+    documentId: z.string(),
+    attribution: z.lazy(() => Person$outboundSchema).optional(),
+    updatedBy: z.lazy(() => Person$outboundSchema).optional(),
+    createTime: z.date().transform(v => v.toISOString()).optional(),
+    updateTime: z.date().transform(v => v.toISOString()).optional(),
+    favoriteInfo: FavoriteInfo$outboundSchema.optional(),
+  })
+);
 
 export function pinDocumentToJSON(pinDocument: PinDocument): string {
   return JSON.stringify(PinDocument$outboundSchema.parse(pinDocument));

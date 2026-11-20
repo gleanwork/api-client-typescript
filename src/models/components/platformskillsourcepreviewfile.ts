@@ -4,10 +4,13 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A supporting file bundled with a skill.
+ */
 export type PlatformSkillSourcePreviewFile = {
   /**
    * Relative path within the skill bundle.
@@ -24,10 +27,12 @@ export const PlatformSkillSourcePreviewFile$inboundSchema: z.ZodType<
   PlatformSkillSourcePreviewFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  path: z.string(),
-  content: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    path: z.string(),
+    content: z.string(),
+  })
+);
 
 export function platformSkillSourcePreviewFileFromJSON(
   jsonString: string,

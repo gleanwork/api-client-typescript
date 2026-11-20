@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const ToolsCallResponse$inboundSchema: z.ZodType<
   ToolsCallResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rawResponse: z.record(z.any()).optional(),
-  error: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rawResponse: z.record(z.any()).optional(),
+    error: z.string().optional(),
+  })
+);
 
 export function toolsCallResponseFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -69,18 +69,25 @@ export const PlatformDurableAgentRun$inboundSchema: z.ZodType<
   PlatformDurableAgentRun,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  run_id: z.string(),
-  agent_id: z.string(),
-  state: PlatformAgentRunState$inboundSchema,
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  expires_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  pending_interactions: z.array(PlatformAgentRunToolApproval$inboundSchema),
-  output: z.record(z.any()).optional(),
-  error: PlatformAgentRunError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    run_id: z.string(),
+    agent_id: z.string(),
+    state: PlatformAgentRunState$inboundSchema,
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    expires_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    pending_interactions: z.array(PlatformAgentRunToolApproval$inboundSchema),
+    output: z.record(z.any()).optional(),
+    error: PlatformAgentRunError$inboundSchema.optional(),
+  })
+);
 
 export function platformDurableAgentRunFromJSON(
   jsonString: string,

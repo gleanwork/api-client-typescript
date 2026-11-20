@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -25,4 +26,4 @@ export type ImportAgentSyncMode = ClosedEnum<typeof ImportAgentSyncMode>;
 /** @internal */
 export const ImportAgentSyncMode$outboundSchema: z.ZodNativeEnum<
   typeof ImportAgentSyncMode
-> = z.nativeEnum(ImportAgentSyncMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ImportAgentSyncMode));

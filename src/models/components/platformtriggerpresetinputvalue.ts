@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -26,10 +26,12 @@ export const PlatformTriggerPresetInputValue$inboundSchema: z.ZodType<
   PlatformTriggerPresetInputValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.string(),
-  display_name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string(),
+    display_name: z.string(),
+  })
+);
 
 export function platformTriggerPresetInputValueFromJSON(
   jsonString: string,

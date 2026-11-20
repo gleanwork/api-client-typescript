@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformDepartmentsGetRequest = {
   /**
@@ -24,9 +25,11 @@ export const PlatformDepartmentsGetRequest$outboundSchema: z.ZodType<
   PlatformDepartmentsGetRequest$Outbound,
   z.ZodTypeDef,
   PlatformDepartmentsGetRequest
-> = z.object({
-  department_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    department_id: z.string(),
+  })
+);
 
 export function platformDepartmentsGetRequestToJSON(
   platformDepartmentsGetRequest: PlatformDepartmentsGetRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -184,88 +184,99 @@ export const AuthConfigType$inboundSchema: z.ZodType<
   AuthConfigType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AuthConfigType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(AuthConfigType));
 /** @internal */
 export const AuthConfigType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AuthConfigType
-> = openEnums.outboundSchema(AuthConfigType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(AuthConfigType));
 
 /** @internal */
 export const GrantType$inboundSchema: z.ZodType<
   GrantType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GrantType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(GrantType));
 /** @internal */
 export const GrantType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   GrantType
-> = openEnums.outboundSchema(GrantType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(GrantType));
 
 /** @internal */
 export const AuthConfigStatus$inboundSchema: z.ZodType<
   AuthConfigStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AuthConfigStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(AuthConfigStatus)
+);
 /** @internal */
 export const AuthConfigStatus$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AuthConfigStatus
-> = openEnums.outboundSchema(AuthConfigStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(AuthConfigStatus)
+);
 
 /** @internal */
 export const TokenEndpointAuthMethod$inboundSchema: z.ZodType<
   TokenEndpointAuthMethod,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TokenEndpointAuthMethod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(TokenEndpointAuthMethod)
+);
 /** @internal */
 export const TokenEndpointAuthMethod$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TokenEndpointAuthMethod
-> = openEnums.outboundSchema(TokenEndpointAuthMethod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(TokenEndpointAuthMethod)
+);
 
 /** @internal */
 export const AuthHeaderType$inboundSchema: z.ZodType<
   AuthHeaderType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AuthHeaderType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(AuthHeaderType));
 /** @internal */
 export const AuthHeaderType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AuthHeaderType
-> = openEnums.outboundSchema(AuthHeaderType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(AuthHeaderType));
 
 /** @internal */
 export const AuthConfig$inboundSchema: z.ZodType<
   AuthConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isOnPrem: z.boolean().optional(),
-  usesCentralAuth: z.boolean().optional(),
-  type: AuthConfigType$inboundSchema.optional(),
-  grantType: GrantType$inboundSchema.optional(),
-  status: AuthConfigStatus$inboundSchema.optional(),
-  client_url: z.string().optional(),
-  scopes: z.array(z.string()).optional(),
-  audiences: z.array(z.string()).optional(),
-  authorization_url: z.string().optional(),
-  resource: z.string().optional(),
-  token_endpoint_auth_method: TokenEndpointAuthMethod$inboundSchema.optional(),
-  authHeaderType: AuthHeaderType$inboundSchema.optional(),
-  lastAuthorizedAt: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isOnPrem: z.boolean().optional(),
+    usesCentralAuth: z.boolean().optional(),
+    type: AuthConfigType$inboundSchema.optional(),
+    grantType: GrantType$inboundSchema.optional(),
+    status: AuthConfigStatus$inboundSchema.optional(),
+    client_url: z.string().optional(),
+    scopes: z.array(z.string()).optional(),
+    audiences: z.array(z.string()).optional(),
+    authorization_url: z.string().optional(),
+    resource: z.string().optional(),
+    token_endpoint_auth_method: TokenEndpointAuthMethod$inboundSchema
+      .optional(),
+    authHeaderType: AuthHeaderType$inboundSchema.optional(),
+    lastAuthorizedAt: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type AuthConfig$Outbound = {
   isOnPrem?: boolean | undefined;
@@ -288,21 +299,24 @@ export const AuthConfig$outboundSchema: z.ZodType<
   AuthConfig$Outbound,
   z.ZodTypeDef,
   AuthConfig
-> = z.object({
-  isOnPrem: z.boolean().optional(),
-  usesCentralAuth: z.boolean().optional(),
-  type: AuthConfigType$outboundSchema.optional(),
-  grantType: GrantType$outboundSchema.optional(),
-  status: AuthConfigStatus$outboundSchema.optional(),
-  client_url: z.string().optional(),
-  scopes: z.array(z.string()).optional(),
-  audiences: z.array(z.string()).optional(),
-  authorization_url: z.string().optional(),
-  resource: z.string().optional(),
-  token_endpoint_auth_method: TokenEndpointAuthMethod$outboundSchema.optional(),
-  authHeaderType: AuthHeaderType$outboundSchema.optional(),
-  lastAuthorizedAt: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isOnPrem: z.boolean().optional(),
+    usesCentralAuth: z.boolean().optional(),
+    type: AuthConfigType$outboundSchema.optional(),
+    grantType: GrantType$outboundSchema.optional(),
+    status: AuthConfigStatus$outboundSchema.optional(),
+    client_url: z.string().optional(),
+    scopes: z.array(z.string()).optional(),
+    audiences: z.array(z.string()).optional(),
+    authorization_url: z.string().optional(),
+    resource: z.string().optional(),
+    token_endpoint_auth_method: TokenEndpointAuthMethod$outboundSchema
+      .optional(),
+    authHeaderType: AuthHeaderType$outboundSchema.optional(),
+    lastAuthorizedAt: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function authConfigToJSON(authConfig: AuthConfig): string {
   return JSON.stringify(AuthConfig$outboundSchema.parse(authConfig));

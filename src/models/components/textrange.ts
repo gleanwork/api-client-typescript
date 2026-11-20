@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -49,26 +49,28 @@ export const TextRangeType$inboundSchema: z.ZodType<
   TextRangeType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TextRangeType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(TextRangeType));
 /** @internal */
 export const TextRangeType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TextRangeType
-> = openEnums.outboundSchema(TextRangeType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(TextRangeType));
 
 /** @internal */
 export const TextRange$inboundSchema: z.ZodType<
   TextRange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  startIndex: z.number().int(),
-  endIndex: z.number().int().optional(),
-  type: TextRangeType$inboundSchema.optional(),
-  url: z.string().optional(),
-  document: z.lazy(() => Document$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startIndex: z.number().int(),
+    endIndex: z.number().int().optional(),
+    type: TextRangeType$inboundSchema.optional(),
+    url: z.string().optional(),
+    document: z.lazy(() => Document$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type TextRange$Outbound = {
   startIndex: number;
@@ -83,13 +85,15 @@ export const TextRange$outboundSchema: z.ZodType<
   TextRange$Outbound,
   z.ZodTypeDef,
   TextRange
-> = z.object({
-  startIndex: z.number().int(),
-  endIndex: z.number().int().optional(),
-  type: TextRangeType$outboundSchema.optional(),
-  url: z.string().optional(),
-  document: z.lazy(() => Document$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startIndex: z.number().int(),
+    endIndex: z.number().int().optional(),
+    type: TextRangeType$outboundSchema.optional(),
+    url: z.string().optional(),
+    document: z.lazy(() => Document$outboundSchema).optional(),
+  })
+);
 
 export function textRangeToJSON(textRange: TextRange): string {
   return JSON.stringify(TextRange$outboundSchema.parse(textRange));

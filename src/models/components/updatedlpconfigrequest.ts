@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DlpConfig,
   DlpConfig$Outbound,
@@ -32,10 +33,12 @@ export const UpdateDlpConfigRequest$outboundSchema: z.ZodType<
   UpdateDlpConfigRequest$Outbound,
   z.ZodTypeDef,
   UpdateDlpConfigRequest
-> = z.object({
-  config: DlpConfig$outboundSchema.optional(),
-  frequency: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    config: DlpConfig$outboundSchema.optional(),
+    frequency: z.string().optional(),
+  })
+);
 
 export function updateDlpConfigRequestToJSON(
   updateDlpConfigRequest: UpdateDlpConfigRequest,

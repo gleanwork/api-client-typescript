@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,9 +20,11 @@ export const PermissionsGroupIntersectionDefinition$inboundSchema: z.ZodType<
   PermissionsGroupIntersectionDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  requiredGroups: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requiredGroups: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type PermissionsGroupIntersectionDefinition$Outbound = {
   requiredGroups?: Array<string> | undefined;
@@ -33,9 +35,11 @@ export const PermissionsGroupIntersectionDefinition$outboundSchema: z.ZodType<
   PermissionsGroupIntersectionDefinition$Outbound,
   z.ZodTypeDef,
   PermissionsGroupIntersectionDefinition
-> = z.object({
-  requiredGroups: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requiredGroups: z.array(z.string()).optional(),
+  })
+);
 
 export function permissionsGroupIntersectionDefinitionToJSON(
   permissionsGroupIntersectionDefinition:

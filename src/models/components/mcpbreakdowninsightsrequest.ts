@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
 
@@ -61,7 +62,7 @@ export type McpBreakdownInsightsRequest = {
 /** @internal */
 export const BreakdownType$outboundSchema: z.ZodNativeEnum<
   typeof BreakdownType
-> = z.nativeEnum(BreakdownType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BreakdownType));
 
 /** @internal */
 export type McpBreakdownInsightsRequest$Outbound = {
@@ -81,17 +82,19 @@ export const McpBreakdownInsightsRequest$outboundSchema: z.ZodType<
   McpBreakdownInsightsRequest$Outbound,
   z.ZodTypeDef,
   McpBreakdownInsightsRequest
-> = z.object({
-  departments: z.array(z.string()).optional(),
-  managerIds: z.array(z.string()).optional(),
-  managerEmails: z.array(z.string()).optional(),
-  dayRange: Period$outboundSchema.optional(),
-  breakdownType: BreakdownType$outboundSchema.optional(),
-  hostApplications: z.array(z.string()).optional(),
-  tools: z.array(z.string()).optional(),
-  servers: z.array(z.string()).optional(),
-  authMethods: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    departments: z.array(z.string()).optional(),
+    managerIds: z.array(z.string()).optional(),
+    managerEmails: z.array(z.string()).optional(),
+    dayRange: Period$outboundSchema.optional(),
+    breakdownType: BreakdownType$outboundSchema.optional(),
+    hostApplications: z.array(z.string()).optional(),
+    tools: z.array(z.string()).optional(),
+    servers: z.array(z.string()).optional(),
+    authMethods: z.array(z.string()).optional(),
+  })
+);
 
 export function mcpBreakdownInsightsRequestToJSON(
   mcpBreakdownInsightsRequest: McpBreakdownInsightsRequest,

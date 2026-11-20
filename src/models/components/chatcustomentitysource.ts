@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,14 +22,16 @@ export const ChatCustomEntitySource$inboundSchema: z.ZodType<
   ChatCustomEntitySource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("CUSTOM_ENTITY"),
-  entity_id: z.string(),
-  name: z.string().optional(),
-  title: z.string().optional(),
-  url: z.string().optional(),
-  datasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("CUSTOM_ENTITY"),
+    entity_id: z.string(),
+    name: z.string().optional(),
+    title: z.string().optional(),
+    url: z.string().optional(),
+    datasource: z.string().optional(),
+  })
+);
 
 export function chatCustomEntitySourceFromJSON(
   jsonString: string,

@@ -47,10 +47,10 @@ export type IndexingDocumentsDebugManyMutationError =
   | SDKValidationError;
 
 /**
- * Beta: Get information of a batch of documents
+ * Get information of a batch of documents
  *
  * @remarks
- * Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
+ * Gives various information that would help in debugging related to a batch of documents.
  *
  * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
  */

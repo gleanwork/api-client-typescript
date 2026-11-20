@@ -1,13 +1,13 @@
-# Mode
+# AgentConfigMode
 
 Top level modes to run GleanChat in.
 
 ## Example Usage
 
 ```typescript
-import { Mode } from "@gleanwork/api-client/models/components";
+import { AgentConfigMode } from "@gleanwork/api-client/models/components";
 
-let value: Mode = "QUICK";
+let value: AgentConfigMode = "QUICK";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```

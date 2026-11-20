@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const TeamEmail$inboundSchema: z.ZodType<
   TeamEmail,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: z.string(),
-  type: z.string().default("OTHER"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    type: z.string().default("OTHER"),
+  })
+);
 /** @internal */
 export type TeamEmail$Outbound = {
   email: string;
@@ -42,10 +44,12 @@ export const TeamEmail$outboundSchema: z.ZodType<
   TeamEmail$Outbound,
   z.ZodTypeDef,
   TeamEmail
-> = z.object({
-  email: z.string(),
-  type: z.string().default("OTHER"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    type: z.string().default("OTHER"),
+  })
+);
 
 export function teamEmailToJSON(teamEmail: TeamEmail): string {
   return JSON.stringify(TeamEmail$outboundSchema.parse(teamEmail));

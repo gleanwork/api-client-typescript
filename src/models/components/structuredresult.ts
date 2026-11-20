@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -214,57 +214,65 @@ export const Prominence$inboundSchema: z.ZodType<
   Prominence,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(Prominence);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(Prominence));
 /** @internal */
 export const Prominence$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   Prominence
-> = openEnums.outboundSchema(Prominence);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(Prominence));
 
 /** @internal */
 export const StructuredResultSource$inboundSchema: z.ZodType<
   StructuredResultSource,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(StructuredResultSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(StructuredResultSource)
+);
 /** @internal */
 export const StructuredResultSource$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   StructuredResultSource
-> = openEnums.outboundSchema(StructuredResultSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(StructuredResultSource)
+);
 
 /** @internal */
 export const StructuredResult$inboundSchema: z.ZodType<
   StructuredResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  document: z.lazy(() => Document$inboundSchema).optional(),
-  person: z.lazy(() => Person$inboundSchema).optional(),
-  customer: z.lazy(() => Customer$inboundSchema).optional(),
-  team: z.lazy(() => Team$inboundSchema).optional(),
-  customEntity: z.lazy(() => CustomEntity$inboundSchema).optional(),
-  answer: z.lazy(() => Answer$inboundSchema).optional(),
-  generatedQna: z.lazy(() => GeneratedQna$inboundSchema).optional(),
-  extractedQnA: z.lazy(() => ExtractedQnA$inboundSchema).optional(),
-  meeting: z.lazy(() => Meeting$inboundSchema).optional(),
-  app: AppResult$inboundSchema.optional(),
-  collection: z.lazy(() => Collection$inboundSchema).optional(),
-  code: z.lazy(() => Code$inboundSchema).optional(),
-  shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
-  querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema).optional(),
-  chat: z.lazy(() => ChatMetadata$inboundSchema).optional(),
-  relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
-    .optional(),
-  relatedQuestion: z.lazy(() => RelatedQuestion$inboundSchema).optional(),
-  disambiguation: Disambiguation$inboundSchema.optional(),
-  snippets: z.array(z.lazy(() => SearchResultSnippet$inboundSchema)).optional(),
-  trackingToken: z.string().optional(),
-  prominence: Prominence$inboundSchema.optional(),
-  source: StructuredResultSource$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    document: z.lazy(() => Document$inboundSchema).optional(),
+    person: z.lazy(() => Person$inboundSchema).optional(),
+    customer: z.lazy(() => Customer$inboundSchema).optional(),
+    team: z.lazy(() => Team$inboundSchema).optional(),
+    customEntity: z.lazy(() => CustomEntity$inboundSchema).optional(),
+    answer: z.lazy(() => Answer$inboundSchema).optional(),
+    generatedQna: z.lazy(() => GeneratedQna$inboundSchema).optional(),
+    extractedQnA: z.lazy(() => ExtractedQnA$inboundSchema).optional(),
+    meeting: z.lazy(() => Meeting$inboundSchema).optional(),
+    app: AppResult$inboundSchema.optional(),
+    collection: z.lazy(() => Collection$inboundSchema).optional(),
+    code: z.lazy(() => Code$inboundSchema).optional(),
+    shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
+    querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema)
+      .optional(),
+    chat: z.lazy(() => ChatMetadata$inboundSchema).optional(),
+    relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
+      .optional(),
+    relatedQuestion: z.lazy(() => RelatedQuestion$inboundSchema).optional(),
+    disambiguation: Disambiguation$inboundSchema.optional(),
+    snippets: z.array(z.lazy(() => SearchResultSnippet$inboundSchema))
+      .optional(),
+    trackingToken: z.string().optional(),
+    prominence: Prominence$inboundSchema.optional(),
+    source: StructuredResultSource$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type StructuredResult$Outbound = {
   document?: Document$Outbound | undefined;
@@ -296,32 +304,35 @@ export const StructuredResult$outboundSchema: z.ZodType<
   StructuredResult$Outbound,
   z.ZodTypeDef,
   StructuredResult
-> = z.object({
-  document: z.lazy(() => Document$outboundSchema).optional(),
-  person: z.lazy(() => Person$outboundSchema).optional(),
-  customer: z.lazy(() => Customer$outboundSchema).optional(),
-  team: z.lazy(() => Team$outboundSchema).optional(),
-  customEntity: z.lazy(() => CustomEntity$outboundSchema).optional(),
-  answer: z.lazy(() => Answer$outboundSchema).optional(),
-  generatedQna: z.lazy(() => GeneratedQna$outboundSchema).optional(),
-  extractedQnA: z.lazy(() => ExtractedQnA$outboundSchema).optional(),
-  meeting: z.lazy(() => Meeting$outboundSchema).optional(),
-  app: AppResult$outboundSchema.optional(),
-  collection: z.lazy(() => Collection$outboundSchema).optional(),
-  code: z.lazy(() => Code$outboundSchema).optional(),
-  shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
-  querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema).optional(),
-  chat: z.lazy(() => ChatMetadata$outboundSchema).optional(),
-  relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
-    .optional(),
-  relatedQuestion: z.lazy(() => RelatedQuestion$outboundSchema).optional(),
-  disambiguation: Disambiguation$outboundSchema.optional(),
-  snippets: z.array(z.lazy(() => SearchResultSnippet$outboundSchema))
-    .optional(),
-  trackingToken: z.string().optional(),
-  prominence: Prominence$outboundSchema.optional(),
-  source: StructuredResultSource$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    document: z.lazy(() => Document$outboundSchema).optional(),
+    person: z.lazy(() => Person$outboundSchema).optional(),
+    customer: z.lazy(() => Customer$outboundSchema).optional(),
+    team: z.lazy(() => Team$outboundSchema).optional(),
+    customEntity: z.lazy(() => CustomEntity$outboundSchema).optional(),
+    answer: z.lazy(() => Answer$outboundSchema).optional(),
+    generatedQna: z.lazy(() => GeneratedQna$outboundSchema).optional(),
+    extractedQnA: z.lazy(() => ExtractedQnA$outboundSchema).optional(),
+    meeting: z.lazy(() => Meeting$outboundSchema).optional(),
+    app: AppResult$outboundSchema.optional(),
+    collection: z.lazy(() => Collection$outboundSchema).optional(),
+    code: z.lazy(() => Code$outboundSchema).optional(),
+    shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
+    querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema)
+      .optional(),
+    chat: z.lazy(() => ChatMetadata$outboundSchema).optional(),
+    relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
+      .optional(),
+    relatedQuestion: z.lazy(() => RelatedQuestion$outboundSchema).optional(),
+    disambiguation: Disambiguation$outboundSchema.optional(),
+    snippets: z.array(z.lazy(() => SearchResultSnippet$outboundSchema))
+      .optional(),
+    trackingToken: z.string().optional(),
+    prominence: Prominence$outboundSchema.optional(),
+    source: StructuredResultSource$outboundSchema.optional(),
+  })
+);
 
 export function structuredResultToJSON(
   structuredResult: StructuredResult,

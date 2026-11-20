@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type Security = {
   apiToken?: string | undefined;
@@ -20,13 +21,15 @@ export const Security$outboundSchema: z.ZodType<
   Security$Outbound,
   z.ZodTypeDef,
   Security
-> = z.object({
-  apiToken: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    apiToken: "APIToken",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiToken: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      apiToken: "APIToken",
+    });
+  })
+);
 
 export function securityToJSON(security: Security): string {
   return JSON.stringify(Security$outboundSchema.parse(security));

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformSkillImportRequest = {
   /**
@@ -22,9 +23,11 @@ export const PlatformSkillImportRequest$outboundSchema: z.ZodType<
   PlatformSkillImportRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillImportRequest
-> = z.object({
-  source_urls: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source_urls: z.array(z.string()),
+  })
+);
 
 export function platformSkillImportRequestToJSON(
   platformSkillImportRequest: PlatformSkillImportRequest,

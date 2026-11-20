@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,12 +32,14 @@ export const McpToolBreakdown$inboundSchema: z.ZodType<
   McpToolBreakdown,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool: z.string().optional(),
-  totalCalls: z.number().int().optional(),
-  activeUsers: z.number().int().optional(),
-  hostApplications: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool: z.string().optional(),
+    totalCalls: z.number().int().optional(),
+    activeUsers: z.number().int().optional(),
+    hostApplications: z.array(z.string()).optional(),
+  })
+);
 
 export function mcpToolBreakdownFromJSON(
   jsonString: string,

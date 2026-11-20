@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,14 +28,16 @@ export const AuthToken$inboundSchema: z.ZodType<
   AuthToken,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessToken: z.string(),
-  datasource: z.string(),
-  scope: z.string().optional(),
-  tokenType: z.string().optional(),
-  authUser: z.string().optional(),
-  expiration: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessToken: z.string(),
+    datasource: z.string(),
+    scope: z.string().optional(),
+    tokenType: z.string().optional(),
+    authUser: z.string().optional(),
+    expiration: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type AuthToken$Outbound = {
   accessToken: string;
@@ -51,14 +53,16 @@ export const AuthToken$outboundSchema: z.ZodType<
   AuthToken$Outbound,
   z.ZodTypeDef,
   AuthToken
-> = z.object({
-  accessToken: z.string(),
-  datasource: z.string(),
-  scope: z.string().optional(),
-  tokenType: z.string().optional(),
-  authUser: z.string().optional(),
-  expiration: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessToken: z.string(),
+    datasource: z.string(),
+    scope: z.string().optional(),
+    tokenType: z.string().optional(),
+    authUser: z.string().optional(),
+    expiration: z.number().int().optional(),
+  })
+);
 
 export function authTokenToJSON(authToken: AuthToken): string {
   return JSON.stringify(AuthToken$outboundSchema.parse(authToken));

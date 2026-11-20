@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,11 +27,14 @@ export const AnswerLike$inboundSchema: z.ZodType<
   AnswerLike,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user: z.lazy(() => Person$inboundSchema).optional(),
-  createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user: z.lazy(() => Person$inboundSchema).optional(),
+    createTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type AnswerLike$Outbound = {
   user?: Person$Outbound | undefined;
@@ -43,10 +46,12 @@ export const AnswerLike$outboundSchema: z.ZodType<
   AnswerLike$Outbound,
   z.ZodTypeDef,
   AnswerLike
-> = z.object({
-  user: z.lazy(() => Person$outboundSchema).optional(),
-  createTime: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user: z.lazy(() => Person$outboundSchema).optional(),
+    createTime: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function answerLikeToJSON(answerLike: AnswerLike): string {
   return JSON.stringify(AnswerLike$outboundSchema.parse(answerLike));

@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type VerifyRequest = {
@@ -29,14 +30,16 @@ export const VerifyRequest$outboundSchema: z.ZodType<
   VerifyRequest$Outbound,
   z.ZodTypeDef,
   VerifyRequest
-> = z.object({
-  locale: z.string().optional(),
-  verifyRequest: components.VerifyRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    verifyRequest: "VerifyRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    verifyRequest: components.VerifyRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      verifyRequest: "VerifyRequest",
+    });
+  })
+);
 
 export function verifyRequestToJSON(verifyRequest: VerifyRequest): string {
   return JSON.stringify(VerifyRequest$outboundSchema.parse(verifyRequest));

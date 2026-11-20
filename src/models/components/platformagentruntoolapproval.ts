@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -59,23 +59,28 @@ export type PlatformAgentRunToolApproval = {
 /** @internal */
 export const PlatformAgentRunToolApprovalType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformAgentRunToolApprovalType
-> = z.nativeEnum(PlatformAgentRunToolApprovalType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformAgentRunToolApprovalType)
+);
 
 /** @internal */
 export const PlatformAgentRunToolApproval$inboundSchema: z.ZodType<
   PlatformAgentRunToolApproval,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  interaction_id: z.string(),
-  type: PlatformAgentRunToolApprovalType$inboundSchema,
-  tool_id: z.string().optional(),
-  display_name: z.string(),
-  description: z.string(),
-  arguments: z.record(z.any()),
-  expires_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    interaction_id: z.string(),
+    type: PlatformAgentRunToolApprovalType$inboundSchema,
+    tool_id: z.string().optional(),
+    display_name: z.string(),
+    description: z.string(),
+    arguments: z.record(z.any()),
+    expires_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 
 export function platformAgentRunToolApprovalFromJSON(
   jsonString: string,
