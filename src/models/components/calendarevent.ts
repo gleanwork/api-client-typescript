@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -103,31 +103,35 @@ export const CalendarEventEventType$inboundSchema: z.ZodType<
   CalendarEventEventType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CalendarEventEventType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CalendarEventEventType)
+);
 
 /** @internal */
 export const CalendarEvent$inboundSchema: z.ZodType<
   CalendarEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  time: TimeInterval$inboundSchema.optional(),
-  eventType: CalendarEventEventType$inboundSchema.optional(),
-  id: z.string(),
-  url: z.string(),
-  attendees: CalendarAttendees$inboundSchema.optional(),
-  isOrganizer: z.nullable(z.boolean()).optional(),
-  roomBookingStatus: CalendarRoomBookingStatus$inboundSchema.optional(),
-  roomName: z.string().optional(),
-  location: z.string().optional(),
-  conferenceData: ConferenceData$inboundSchema.optional(),
-  description: z.string().optional(),
-  datasource: z.string().optional(),
-  hasTranscript: z.boolean().optional(),
-  transcriptUrl: z.string().optional(),
-  classifications: z.array(EventClassification$inboundSchema).optional(),
-  generatedAttachments: z.array(GeneratedAttachment$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    time: TimeInterval$inboundSchema.optional(),
+    eventType: CalendarEventEventType$inboundSchema.optional(),
+    id: z.string(),
+    url: z.string(),
+    attendees: CalendarAttendees$inboundSchema.optional(),
+    isOrganizer: z.nullable(z.boolean()).optional(),
+    roomBookingStatus: CalendarRoomBookingStatus$inboundSchema.optional(),
+    roomName: z.string().optional(),
+    location: z.string().optional(),
+    conferenceData: ConferenceData$inboundSchema.optional(),
+    description: z.string().optional(),
+    datasource: z.string().optional(),
+    hasTranscript: z.boolean().optional(),
+    transcriptUrl: z.string().optional(),
+    classifications: z.array(EventClassification$inboundSchema).optional(),
+    generatedAttachments: z.array(GeneratedAttachment$inboundSchema).optional(),
+  })
+);
 
 export function calendarEventFromJSON(
   jsonString: string,

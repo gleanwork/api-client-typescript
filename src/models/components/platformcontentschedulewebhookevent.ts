@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -57,20 +57,23 @@ export const PlatformContentScheduleWebhookEvent$inboundSchema: z.ZodType<
   PlatformContentScheduleWebhookEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.string(),
-  trigger_id: z.string(),
-  event_type: z.string(),
-  datasource: z.string(),
-  reason: z.string(),
-  doc_type: z.string(),
-  doc_id: z.string(),
-  view_url: z.string(),
-  title: z.string(),
-  event_time: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  time_offset_seconds: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.string(),
+    trigger_id: z.string(),
+    event_type: z.string(),
+    datasource: z.string(),
+    reason: z.string(),
+    doc_type: z.string(),
+    doc_id: z.string(),
+    view_url: z.string(),
+    title: z.string(),
+    event_time: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    time_offset_seconds: z.number().int(),
+  })
+);
 /** @internal */
 export type PlatformContentScheduleWebhookEvent$Outbound = {
   version: string;
@@ -91,19 +94,21 @@ export const PlatformContentScheduleWebhookEvent$outboundSchema: z.ZodType<
   PlatformContentScheduleWebhookEvent$Outbound,
   z.ZodTypeDef,
   PlatformContentScheduleWebhookEvent
-> = z.object({
-  version: z.string(),
-  trigger_id: z.string(),
-  event_type: z.string(),
-  datasource: z.string(),
-  reason: z.string(),
-  doc_type: z.string(),
-  doc_id: z.string(),
-  view_url: z.string(),
-  title: z.string(),
-  event_time: z.date().transform(v => v.toISOString()).optional(),
-  time_offset_seconds: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.string(),
+    trigger_id: z.string(),
+    event_type: z.string(),
+    datasource: z.string(),
+    reason: z.string(),
+    doc_type: z.string(),
+    doc_id: z.string(),
+    view_url: z.string(),
+    title: z.string(),
+    event_time: z.date().transform(v => v.toISOString()).optional(),
+    time_offset_seconds: z.number().int(),
+  })
+);
 
 export function platformContentScheduleWebhookEventToJSON(
   platformContentScheduleWebhookEvent: PlatformContentScheduleWebhookEvent,

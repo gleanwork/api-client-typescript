@@ -4,8 +4,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,20 +49,22 @@ export const PlatformTriggersCreateTriggerWebhookEventRequest$inboundSchema:
     PlatformTriggersCreateTriggerWebhookEventRequest,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    "webhook-id": z.string(),
-    "webhook-timestamp": z.number().int(),
-    "webhook-signature": z.string(),
-    PlatformTriggerWebhookEvent:
-      components.PlatformTriggerWebhookEvent$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "webhook-id": "webhook-id",
-      "webhook-timestamp": "webhook-timestamp",
-      "webhook-signature": "webhook-signature",
-      "PlatformTriggerWebhookEvent": "platformTriggerWebhookEvent",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      "webhook-id": z.string(),
+      "webhook-timestamp": z.number().int(),
+      "webhook-signature": z.string(),
+      PlatformTriggerWebhookEvent:
+        components.PlatformTriggerWebhookEvent$inboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        "webhook-id": "webhook-id",
+        "webhook-timestamp": "webhook-timestamp",
+        "webhook-signature": "webhook-signature",
+        "PlatformTriggerWebhookEvent": "platformTriggerWebhookEvent",
+      });
+    })
+  );
 /** @internal */
 export type PlatformTriggersCreateTriggerWebhookEventRequest$Outbound = {
   "webhook-id": string;
@@ -74,20 +79,25 @@ export const PlatformTriggersCreateTriggerWebhookEventRequest$outboundSchema:
     PlatformTriggersCreateTriggerWebhookEventRequest$Outbound,
     z.ZodTypeDef,
     PlatformTriggersCreateTriggerWebhookEventRequest
-  > = z.object({
-    "webhook-id": z.string(),
-    "webhook-timestamp": z.number().int(),
-    "webhook-signature": z.string(),
-    platformTriggerWebhookEvent:
-      components.PlatformTriggerWebhookEvent$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "webhook-id": "webhook-id",
-      "webhook-timestamp": "webhook-timestamp",
-      "webhook-signature": "webhook-signature",
-      platformTriggerWebhookEvent: "PlatformTriggerWebhookEvent",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      "webhook-id": z.string(),
+      "webhook-timestamp": z.number().int(),
+      "webhook-signature": z.string().refine(
+        matchesPattern$("^v1,[A-Za-z0-9+/=]+$"),
+        { message: "Value must match pattern ^v1,[A-Za-z0-9+/=]+$" },
+      ),
+      platformTriggerWebhookEvent:
+        components.PlatformTriggerWebhookEvent$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        "webhook-id": "webhook-id",
+        "webhook-timestamp": "webhook-timestamp",
+        "webhook-signature": "webhook-signature",
+        platformTriggerWebhookEvent: "PlatformTriggerWebhookEvent",
+      });
+    })
+  );
 
 export function platformTriggersCreateTriggerWebhookEventRequestToJSON(
   platformTriggersCreateTriggerWebhookEventRequest:

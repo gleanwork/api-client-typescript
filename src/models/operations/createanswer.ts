@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type CreateanswerRequest = {
@@ -29,14 +30,16 @@ export const CreateanswerRequest$outboundSchema: z.ZodType<
   CreateanswerRequest$Outbound,
   z.ZodTypeDef,
   CreateanswerRequest
-> = z.object({
-  locale: z.string().optional(),
-  createAnswerRequest: components.CreateAnswerRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createAnswerRequest: "CreateAnswerRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    createAnswerRequest: components.CreateAnswerRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createAnswerRequest: "CreateAnswerRequest",
+    });
+  })
+);
 
 export function createanswerRequestToJSON(
   createanswerRequest: CreateanswerRequest,

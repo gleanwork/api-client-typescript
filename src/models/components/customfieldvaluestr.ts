@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,9 +20,11 @@ export const CustomFieldValueStr$inboundSchema: z.ZodType<
   CustomFieldValueStr,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  strText: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    strText: z.string().optional(),
+  })
+);
 /** @internal */
 export type CustomFieldValueStr$Outbound = {
   strText?: string | undefined;
@@ -33,9 +35,11 @@ export const CustomFieldValueStr$outboundSchema: z.ZodType<
   CustomFieldValueStr$Outbound,
   z.ZodTypeDef,
   CustomFieldValueStr
-> = z.object({
-  strText: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    strText: z.string().optional(),
+  })
+);
 
 export function customFieldValueStrToJSON(
   customFieldValueStr: CustomFieldValueStr,

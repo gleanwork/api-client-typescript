@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,13 +28,15 @@ export const TimeRange$inboundSchema: z.ZodType<
   TimeRange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  startTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  lastNDaysValue: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    lastNDaysValue: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type TimeRange$Outbound = {
   startTime?: string | undefined;
@@ -47,11 +49,13 @@ export const TimeRange$outboundSchema: z.ZodType<
   TimeRange$Outbound,
   z.ZodTypeDef,
   TimeRange
-> = z.object({
-  startTime: z.date().transform(v => v.toISOString()).optional(),
-  endTime: z.date().transform(v => v.toISOString()).optional(),
-  lastNDaysValue: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startTime: z.date().transform(v => v.toISOString()).optional(),
+    endTime: z.date().transform(v => v.toISOString()).optional(),
+    lastNDaysValue: z.number().int().optional(),
+  })
+);
 
 export function timeRangeToJSON(timeRange: TimeRange): string {
   return JSON.stringify(TimeRange$outboundSchema.parse(timeRange));

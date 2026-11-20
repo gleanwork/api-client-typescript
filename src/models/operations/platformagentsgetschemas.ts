@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformAgentsGetSchemasRequest = {
   /**
@@ -27,10 +28,12 @@ export const PlatformAgentsGetSchemasRequest$outboundSchema: z.ZodType<
   PlatformAgentsGetSchemasRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentsGetSchemasRequest
-> = z.object({
-  agent_id: z.string(),
-  include_tools: z.boolean().default(false),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    include_tools: z.boolean().default(false),
+  })
+);
 
 export function platformAgentsGetSchemasRequestToJSON(
   platformAgentsGetSchemasRequest: PlatformAgentsGetSchemasRequest,

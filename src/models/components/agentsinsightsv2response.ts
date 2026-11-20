@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -71,28 +71,30 @@ export const AgentsInsightsV2Response$inboundSchema: z.ZodType<
   AgentsInsightsV2Response,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  sharedAgentsCount: z.number().int().optional(),
-  topAgentsInsights: z.array(PerAgentInsight$inboundSchema).optional(),
-  topUseCasesInsights: z.array(AgentUseCaseInsight$inboundSchema).optional(),
-  agentsUsageByDepartmentInsights: z.array(
-    AgentsUsageByDepartmentInsight$inboundSchema,
-  ).optional(),
-  agentUsersInsights: z.array(AgentUsersInsight$inboundSchema).optional(),
-  agentsTimeSavedInsights: z.array(AgentsTimeSavedInsight$inboundSchema)
-    .optional(),
-  dailyAgentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  successfulRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  failedRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  pausedRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    monthlyActiveUsers: z.number().int().optional(),
+    weeklyActiveUsers: z.number().int().optional(),
+    monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    sharedAgentsCount: z.number().int().optional(),
+    topAgentsInsights: z.array(PerAgentInsight$inboundSchema).optional(),
+    topUseCasesInsights: z.array(AgentUseCaseInsight$inboundSchema).optional(),
+    agentsUsageByDepartmentInsights: z.array(
+      AgentsUsageByDepartmentInsight$inboundSchema,
+    ).optional(),
+    agentUsersInsights: z.array(AgentUsersInsight$inboundSchema).optional(),
+    agentsTimeSavedInsights: z.array(AgentsTimeSavedInsight$inboundSchema)
+      .optional(),
+    dailyAgentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    successfulRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    failedRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    pausedRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  })
+);
 
 export function agentsInsightsV2ResponseFromJSON(
   jsonString: string,

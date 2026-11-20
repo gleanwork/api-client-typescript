@@ -8,7 +8,7 @@ A filter on one user field.
 import { PlatformUserFilter } from "@gleanwork/api-client/models/components";
 
 let value: PlatformUserFilter = {
-  field: "<value>",
+  field: "name",
   values: [
     "<value 1>",
     "<value 2>",

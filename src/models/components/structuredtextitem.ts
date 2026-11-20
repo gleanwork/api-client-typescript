@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,12 +35,14 @@ export const StructuredTextItem$inboundSchema: z.ZodType<
   StructuredTextItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  link: z.string().optional(),
-  document: z.lazy(() => Document$inboundSchema).optional(),
-  text: z.string().optional(),
-  structuredResult: z.lazy(() => StructuredResult$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    link: z.string().optional(),
+    document: z.lazy(() => Document$inboundSchema).optional(),
+    text: z.string().optional(),
+    structuredResult: z.lazy(() => StructuredResult$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type StructuredTextItem$Outbound = {
   link?: string | undefined;
@@ -54,12 +56,14 @@ export const StructuredTextItem$outboundSchema: z.ZodType<
   StructuredTextItem$Outbound,
   z.ZodTypeDef,
   StructuredTextItem
-> = z.object({
-  link: z.string().optional(),
-  document: z.lazy(() => Document$outboundSchema).optional(),
-  text: z.string().optional(),
-  structuredResult: z.lazy(() => StructuredResult$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    link: z.string().optional(),
+    document: z.lazy(() => Document$outboundSchema).optional(),
+    text: z.string().optional(),
+    structuredResult: z.lazy(() => StructuredResult$outboundSchema).optional(),
+  })
+);
 
 export function structuredTextItemToJSON(
   structuredTextItem: StructuredTextItem,

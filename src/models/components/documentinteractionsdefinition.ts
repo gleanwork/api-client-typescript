@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * describes the interactions on the document
@@ -26,11 +27,13 @@ export const DocumentInteractionsDefinition$outboundSchema: z.ZodType<
   DocumentInteractionsDefinition$Outbound,
   z.ZodTypeDef,
   DocumentInteractionsDefinition
-> = z.object({
-  numViews: z.number().int().optional(),
-  numLikes: z.number().int().optional(),
-  numComments: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    numViews: z.number().int().optional(),
+    numLikes: z.number().int().optional(),
+    numComments: z.number().int().optional(),
+  })
+);
 
 export function documentInteractionsDefinitionToJSON(
   documentInteractionsDefinition: DocumentInteractionsDefinition,

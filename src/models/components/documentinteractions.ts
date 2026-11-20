@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -54,14 +54,16 @@ export const DocumentInteractions$inboundSchema: z.ZodType<
   DocumentInteractions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  numComments: z.number().int().optional(),
-  numReactions: z.number().int().optional(),
-  reactions: z.array(z.string()).optional(),
-  reacts: z.array(z.lazy(() => Reaction$inboundSchema)).optional(),
-  shares: z.array(z.lazy(() => Share$inboundSchema)).optional(),
-  visitorCount: CountInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    numComments: z.number().int().optional(),
+    numReactions: z.number().int().optional(),
+    reactions: z.array(z.string()).optional(),
+    reacts: z.array(z.lazy(() => Reaction$inboundSchema)).optional(),
+    shares: z.array(z.lazy(() => Share$inboundSchema)).optional(),
+    visitorCount: CountInfo$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type DocumentInteractions$Outbound = {
   numComments?: number | undefined;
@@ -77,14 +79,16 @@ export const DocumentInteractions$outboundSchema: z.ZodType<
   DocumentInteractions$Outbound,
   z.ZodTypeDef,
   DocumentInteractions
-> = z.object({
-  numComments: z.number().int().optional(),
-  numReactions: z.number().int().optional(),
-  reactions: z.array(z.string()).optional(),
-  reacts: z.array(z.lazy(() => Reaction$outboundSchema)).optional(),
-  shares: z.array(z.lazy(() => Share$outboundSchema)).optional(),
-  visitorCount: CountInfo$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    numComments: z.number().int().optional(),
+    numReactions: z.number().int().optional(),
+    reactions: z.array(z.string()).optional(),
+    reacts: z.array(z.lazy(() => Reaction$outboundSchema)).optional(),
+    shares: z.array(z.lazy(() => Share$outboundSchema)).optional(),
+    visitorCount: CountInfo$outboundSchema.optional(),
+  })
+);
 
 export function documentInteractionsToJSON(
   documentInteractions: DocumentInteractions,

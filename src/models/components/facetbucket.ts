@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FacetValue, FacetValue$inboundSchema } from "./facetvalue.js";
@@ -30,12 +30,14 @@ export const FacetBucket$inboundSchema: z.ZodType<
   FacetBucket,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: z.number().int().optional(),
-  datasource: z.string().optional(),
-  percentage: z.number().int().optional(),
-  value: FacetValue$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: z.number().int().optional(),
+    datasource: z.string().optional(),
+    percentage: z.number().int().optional(),
+    value: FacetValue$inboundSchema.optional(),
+  })
+);
 
 export function facetBucketFromJSON(
   jsonString: string,

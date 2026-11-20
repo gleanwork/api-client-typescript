@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Request cooperative cancellation of a run owned by the caller.
@@ -25,9 +26,11 @@ export const PlatformAgentRunCancellationRequest$outboundSchema: z.ZodType<
   PlatformAgentRunCancellationRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentRunCancellationRequest
-> = z.object({
-  run_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    run_id: z.string(),
+  })
+);
 
 export function platformAgentRunCancellationRequestToJSON(
   platformAgentRunCancellationRequest: PlatformAgentRunCancellationRequest,

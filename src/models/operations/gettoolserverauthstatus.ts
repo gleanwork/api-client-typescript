@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetToolServerAuthStatusRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetToolServerAuthStatusRequest$outboundSchema: z.ZodType<
   GetToolServerAuthStatusRequest$Outbound,
   z.ZodTypeDef,
   GetToolServerAuthStatusRequest
-> = z.object({
-  serverId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serverId: z.string(),
+  })
+);
 
 export function getToolServerAuthStatusRequestToJSON(
   getToolServerAuthStatusRequest: GetToolServerAuthStatusRequest,

@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FacetFilter, FacetFilter$inboundSchema } from "./facetfilter.js";
@@ -83,29 +83,31 @@ export const SearchResponse$inboundSchema: z.ZodType<
   SearchResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  results: z.array(SearchResult$inboundSchema).optional(),
-  structuredResults: z.array(StructuredResult$inboundSchema).optional(),
-  generatedQnaResult: GeneratedQna$inboundSchema.optional(),
-  errorInfo: GleanDataError$inboundSchema.optional(),
-  requestID: z.string().optional(),
-  backendTimeMillis: z.number().int().optional(),
-  experimentIds: z.array(z.number().int()).optional(),
-  metadata: SearchResponseMetadata$inboundSchema.optional(),
-  facetResults: z.array(FacetResult$inboundSchema).optional(),
-  resultTabs: z.array(ResultTab$inboundSchema).optional(),
-  resultTabIds: z.array(z.string()).optional(),
-  resultsDescription: ResultsDescription$inboundSchema.optional(),
-  rewrittenFacetFilters: z.array(FacetFilter$inboundSchema).optional(),
-  cursor: z.string().optional(),
-  hasMoreResults: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "errorInfo": "GleanDataError",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trackingToken: z.string().optional(),
+    sessionInfo: SessionInfo$inboundSchema.optional(),
+    results: z.array(SearchResult$inboundSchema).optional(),
+    structuredResults: z.array(StructuredResult$inboundSchema).optional(),
+    generatedQnaResult: GeneratedQna$inboundSchema.optional(),
+    errorInfo: GleanDataError$inboundSchema.optional(),
+    requestID: z.string().optional(),
+    backendTimeMillis: z.number().int().optional(),
+    experimentIds: z.array(z.number().int()).optional(),
+    metadata: SearchResponseMetadata$inboundSchema.optional(),
+    facetResults: z.array(FacetResult$inboundSchema).optional(),
+    resultTabs: z.array(ResultTab$inboundSchema).optional(),
+    resultTabIds: z.array(z.string()).optional(),
+    resultsDescription: ResultsDescription$inboundSchema.optional(),
+    rewrittenFacetFilters: z.array(FacetFilter$inboundSchema).optional(),
+    cursor: z.string().optional(),
+    hasMoreResults: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "errorInfo": "GleanDataError",
+    });
+  })
+);
 
 export function searchResponseFromJSON(
   jsonString: string,

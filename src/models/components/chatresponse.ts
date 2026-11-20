@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChatMessage, ChatMessage$inboundSchema } from "./chatmessage.js";
@@ -42,14 +42,16 @@ export const ChatResponse$inboundSchema: z.ZodType<
   ChatResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  messages: z.array(ChatMessage$inboundSchema).optional(),
-  chatId: z.string().optional(),
-  chat: ChatMetadata$inboundSchema.optional(),
-  followUpPrompts: z.array(z.string()).optional(),
-  backendTimeMillis: z.number().int().optional(),
-  chatSessionTrackingToken: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    messages: z.array(ChatMessage$inboundSchema).optional(),
+    chatId: z.string().optional(),
+    chat: ChatMetadata$inboundSchema.optional(),
+    followUpPrompts: z.array(z.string()).optional(),
+    backendTimeMillis: z.number().int().optional(),
+    chatSessionTrackingToken: z.string().optional(),
+  })
+);
 
 export function chatResponseFromJSON(
   jsonString: string,

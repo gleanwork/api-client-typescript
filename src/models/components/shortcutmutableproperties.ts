@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   UserRoleSpecification,
   UserRoleSpecification$Outbound,
@@ -62,16 +63,18 @@ export const ShortcutMutableProperties$outboundSchema: z.ZodType<
   ShortcutMutableProperties$Outbound,
   z.ZodTypeDef,
   ShortcutMutableProperties
-> = z.object({
-  inputAlias: z.string().optional(),
-  destinationUrl: z.string().optional(),
-  destinationDocumentId: z.string().optional(),
-  description: z.string().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inputAlias: z.string().optional(),
+    destinationUrl: z.string().optional(),
+    destinationDocumentId: z.string().optional(),
+    description: z.string().optional(),
+    unlisted: z.boolean().optional(),
+    urlTemplate: z.string().optional(),
+    addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+  })
+);
 
 export function shortcutMutablePropertiesToJSON(
   shortcutMutableProperties: ShortcutMutableProperties,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DatasourceGroupDefinition,
   DatasourceGroupDefinition$Outbound,
@@ -60,15 +61,17 @@ export const BulkIndexGroupsRequest$outboundSchema: z.ZodType<
   BulkIndexGroupsRequest$Outbound,
   z.ZodTypeDef,
   BulkIndexGroupsRequest
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  datasource: z.string(),
-  groups: z.array(DatasourceGroupDefinition$outboundSchema),
-  disableStaleDataDeletionCheck: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string(),
+    isFirstPage: z.boolean().optional(),
+    isLastPage: z.boolean().optional(),
+    forceRestartUpload: z.boolean().optional(),
+    datasource: z.string(),
+    groups: z.array(DatasourceGroupDefinition$outboundSchema),
+    disableStaleDataDeletionCheck: z.boolean().optional(),
+  })
+);
 
 export function bulkIndexGroupsRequestToJSON(
   bulkIndexGroupsRequest: BulkIndexGroupsRequest,

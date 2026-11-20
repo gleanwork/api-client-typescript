@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,12 +32,14 @@ export const SocialNetwork$inboundSchema: z.ZodType<
   SocialNetwork,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  profileName: z.string().optional(),
-  profileUrl: z.string(),
-  iconUrl: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    profileName: z.string().optional(),
+    profileUrl: z.string(),
+    iconUrl: z.string().optional(),
+  })
+);
 /** @internal */
 export type SocialNetwork$Outbound = {
   name: string;
@@ -51,12 +53,14 @@ export const SocialNetwork$outboundSchema: z.ZodType<
   SocialNetwork$Outbound,
   z.ZodTypeDef,
   SocialNetwork
-> = z.object({
-  name: z.string(),
-  profileName: z.string().optional(),
-  profileUrl: z.string(),
-  iconUrl: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    profileName: z.string().optional(),
+    profileUrl: z.string(),
+    iconUrl: z.string().optional(),
+  })
+);
 
 export function socialNetworkToJSON(socialNetwork: SocialNetwork): string {
   return JSON.stringify(SocialNetwork$outboundSchema.parse(socialNetwork));

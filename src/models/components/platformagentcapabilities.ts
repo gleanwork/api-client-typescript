@@ -7,6 +7,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -29,19 +30,21 @@ export const PlatformAgentCapabilities$inboundSchema: z.ZodType<
   PlatformAgentCapabilities,
   z.ZodTypeDef,
   unknown
-> = collectExtraKeys$(
-  z.object({
-    "ap.io.messages": z.boolean().optional(),
-    "ap.io.streaming": z.boolean().optional(),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-).transform((v) => {
-  return remap$(v, {
-    "ap.io.messages": "ap.io.messages",
-    "ap.io.streaming": "ap.io.streaming",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  collectExtraKeys$(
+    z.object({
+      "ap.io.messages": z.boolean().optional(),
+      "ap.io.streaming": z.boolean().optional(),
+    }).catchall(z.any()),
+    "additionalProperties",
+    true,
+  ).transform((v) => {
+    return remap$(v, {
+      "ap.io.messages": "ap.io.messages",
+      "ap.io.streaming": "ap.io.streaming",
+    });
+  })
+);
 
 export function platformAgentCapabilitiesFromJSON(
   jsonString: string,

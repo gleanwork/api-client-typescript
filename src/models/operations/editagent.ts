@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type EditAgentRequest = {
@@ -36,16 +37,18 @@ export const EditAgentRequest$outboundSchema: z.ZodType<
   EditAgentRequest$Outbound,
   z.ZodTypeDef,
   EditAgentRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  agent_id: z.string(),
-  editWorkflowRequest: components.EditWorkflowRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    editWorkflowRequest: "EditWorkflowRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    agent_id: z.string(),
+    editWorkflowRequest: components.EditWorkflowRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      editWorkflowRequest: "EditWorkflowRequest",
+    });
+  })
+);
 
 export function editAgentRequestToJSON(
   editAgentRequest: EditAgentRequest,

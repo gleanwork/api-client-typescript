@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -50,25 +50,31 @@ export const CustomMetadataPropertyDefinitionPropertyType$inboundSchema:
     CustomMetadataPropertyDefinitionPropertyType,
     z.ZodTypeDef,
     unknown
-  > = openEnums.inboundSchema(CustomMetadataPropertyDefinitionPropertyType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    openEnums.inboundSchema(CustomMetadataPropertyDefinitionPropertyType)
+  );
 /** @internal */
 export const CustomMetadataPropertyDefinitionPropertyType$outboundSchema:
   z.ZodType<
     string,
     z.ZodTypeDef,
     CustomMetadataPropertyDefinitionPropertyType
-  > = openEnums.outboundSchema(CustomMetadataPropertyDefinitionPropertyType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    openEnums.outboundSchema(CustomMetadataPropertyDefinitionPropertyType)
+  );
 
 /** @internal */
 export const CustomMetadataPropertyDefinition$inboundSchema: z.ZodType<
   CustomMetadataPropertyDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  propertyType: CustomMetadataPropertyDefinitionPropertyType$inboundSchema,
-  skipIndexing: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    propertyType: CustomMetadataPropertyDefinitionPropertyType$inboundSchema,
+    skipIndexing: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type CustomMetadataPropertyDefinition$Outbound = {
   name: string;
@@ -81,11 +87,13 @@ export const CustomMetadataPropertyDefinition$outboundSchema: z.ZodType<
   CustomMetadataPropertyDefinition$Outbound,
   z.ZodTypeDef,
   CustomMetadataPropertyDefinition
-> = z.object({
-  name: z.string(),
-  propertyType: CustomMetadataPropertyDefinitionPropertyType$outboundSchema,
-  skipIndexing: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    propertyType: CustomMetadataPropertyDefinitionPropertyType$outboundSchema,
+    skipIndexing: z.boolean().optional(),
+  })
+);
 
 export function customMetadataPropertyDefinitionToJSON(
   customMetadataPropertyDefinition: CustomMetadataPropertyDefinition,

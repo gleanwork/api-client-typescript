@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type CreateWorkflowRequest = {
   /**
@@ -32,11 +33,13 @@ export const CreateWorkflowRequest$outboundSchema: z.ZodType<
   CreateWorkflowRequest$Outbound,
   z.ZodTypeDef,
   CreateWorkflowRequest
-> = z.object({
-  name: z.string().optional(),
-  transient: z.boolean().optional(),
-  parentWorkflowId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    transient: z.boolean().optional(),
+    parentWorkflowId: z.string().optional(),
+  })
+);
 
 export function createWorkflowRequestToJSON(
   createWorkflowRequest: CreateWorkflowRequest,

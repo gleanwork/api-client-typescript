@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -88,4 +89,6 @@ export const PlatformTriggerEventReason$inboundSchema: z.ZodType<
   PlatformTriggerEventReason,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PlatformTriggerEventReason);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PlatformTriggerEventReason)
+);

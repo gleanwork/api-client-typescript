@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type EditCollectionItemRequest = {
   /**
@@ -42,13 +43,15 @@ export const EditCollectionItemRequest$outboundSchema: z.ZodType<
   EditCollectionItemRequest$Outbound,
   z.ZodTypeDef,
   EditCollectionItemRequest
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  collectionId: z.number().int(),
-  itemId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    icon: z.string().optional(),
+    collectionId: z.number().int(),
+    itemId: z.string(),
+  })
+);
 
 export function editCollectionItemRequestToJSON(
   editCollectionItemRequest: EditCollectionItemRequest,

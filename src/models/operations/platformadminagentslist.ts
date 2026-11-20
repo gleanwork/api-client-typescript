@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformAdminAgentsListRequest = {
@@ -37,12 +38,14 @@ export const PlatformAdminAgentsListRequest$outboundSchema: z.ZodType<
   PlatformAdminAgentsListRequest$Outbound,
   z.ZodTypeDef,
   PlatformAdminAgentsListRequest
-> = z.object({
-  page_size: z.number().int().default(50),
-  cursor: z.string().optional(),
-  filters: z.array(components.PlatformAdminAgentFilter$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page_size: z.number().int().default(50),
+    cursor: z.string().optional(),
+    filters: z.array(components.PlatformAdminAgentFilter$outboundSchema)
+      .optional(),
+  })
+);
 
 export function platformAdminAgentsListRequestToJSON(
   platformAdminAgentsListRequest: PlatformAdminAgentsListRequest,

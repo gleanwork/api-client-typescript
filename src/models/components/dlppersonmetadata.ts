@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const DlpPersonMetadata$inboundSchema: z.ZodType<
   DlpPersonMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  firstName: z.string().optional(),
-  email: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string().optional(),
+    email: z.string().optional(),
+  })
+);
 /** @internal */
 export type DlpPersonMetadata$Outbound = {
   firstName?: string | undefined;
@@ -39,10 +41,12 @@ export const DlpPersonMetadata$outboundSchema: z.ZodType<
   DlpPersonMetadata$Outbound,
   z.ZodTypeDef,
   DlpPersonMetadata
-> = z.object({
-  firstName: z.string().optional(),
-  email: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string().optional(),
+    email: z.string().optional(),
+  })
+);
 
 export function dlpPersonMetadataToJSON(
   dlpPersonMetadata: DlpPersonMetadata,

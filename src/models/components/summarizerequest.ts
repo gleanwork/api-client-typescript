@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DocumentSpecUnion,
   DocumentSpecUnion$Outbound,
@@ -50,13 +51,15 @@ export const SummarizeRequest$outboundSchema: z.ZodType<
   SummarizeRequest$Outbound,
   z.ZodTypeDef,
   SummarizeRequest
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()).optional(),
-  query: z.string().optional(),
-  preferredSummaryLength: z.number().int().optional(),
-  documentSpecs: z.array(DocumentSpecUnion$outboundSchema),
-  trackingToken: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()).optional(),
+    query: z.string().optional(),
+    preferredSummaryLength: z.number().int().optional(),
+    documentSpecs: z.array(DocumentSpecUnion$outboundSchema),
+    trackingToken: z.string().optional(),
+  })
+);
 
 export function summarizeRequestToJSON(
   summarizeRequest: SummarizeRequest,

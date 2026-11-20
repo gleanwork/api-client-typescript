@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -33,16 +33,20 @@ export const CollectionErrorErrorCode$inboundSchema: z.ZodType<
   CollectionErrorErrorCode,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CollectionErrorErrorCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CollectionErrorErrorCode)
+);
 
 /** @internal */
 export const CollectionError$inboundSchema: z.ZodType<
   CollectionError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  errorCode: CollectionErrorErrorCode$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    errorCode: CollectionErrorErrorCode$inboundSchema,
+  })
+);
 
 export function collectionErrorFromJSON(
   jsonString: string,

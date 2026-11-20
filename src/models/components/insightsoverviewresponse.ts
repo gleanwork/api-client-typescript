@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -62,7 +62,7 @@ export type InsightsOverviewResponse = {
    */
   lastUpdatedTs?: number | undefined;
   /**
-   * Number of current employees in the specified departments who had signed up 7 days before the latest day of insights data. Compare with totalSignups for week-over-week signup change.
+   * Number of current employees in the specified departments who had signed up 7 days before the latest day of insights data. Compare with totalSignups for week-over-week signup change. Included even when zero.
    */
   totalSignupsWeekAgo?: number | undefined;
   /**
@@ -109,48 +109,53 @@ export const InsightsOverviewResponse$inboundSchema: z.ZodType<
   InsightsOverviewResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  departments: z.array(z.string()).optional(),
-  employeeCount: z.number().int().optional(),
-  totalSignups: z.number().int().optional(),
-  searchSummary: InsightsSearchSummary$inboundSchema.optional(),
-  chatSummary: InsightsChatSummary$inboundSchema.optional(),
-  searchActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
-  assistantActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
-  agentsActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
-  mcpActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
-  extensionSummary: CurrentActiveUsers$inboundSchema.optional(),
-  ugcSummary: CurrentActiveUsers$inboundSchema.optional(),
-  lastUpdatedTs: z.number().int().optional(),
-  totalSignupsWeekAgo: z.number().int().optional(),
-  searchSessionSatisfaction: z.number().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  searchMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  searchWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  searchDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  assistantMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema
-    .optional(),
-  assistantWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema
-    .optional(),
-  assistantDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  agentsMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  agentsWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  agentsDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  mcpMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  mcpWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  mcpDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  searchesTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  assistantInteractionsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  agentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  mcpCallsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  searchDatasourceCounts: z.record(z.number().int()).optional(),
-  chatDatasourceCounts: z.record(z.number().int()).optional(),
-  perUserInsights: z.array(PerUserInsight$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    monthlyActiveUsers: z.number().int().optional(),
+    weeklyActiveUsers: z.number().int().optional(),
+    departments: z.array(z.string()).optional(),
+    employeeCount: z.number().int().optional(),
+    totalSignups: z.number().int().optional(),
+    searchSummary: InsightsSearchSummary$inboundSchema.optional(),
+    chatSummary: InsightsChatSummary$inboundSchema.optional(),
+    searchActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+    assistantActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+    agentsActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+    mcpActiveUsers: CurrentActiveUsers$inboundSchema.optional(),
+    extensionSummary: CurrentActiveUsers$inboundSchema.optional(),
+    ugcSummary: CurrentActiveUsers$inboundSchema.optional(),
+    lastUpdatedTs: z.number().int().optional(),
+    totalSignupsWeekAgo: z.number().int().optional(),
+    searchSessionSatisfaction: z.number().optional(),
+    monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    searchMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+      .optional(),
+    searchWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    searchDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    assistantMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+      .optional(),
+    assistantWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+      .optional(),
+    assistantDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+      .optional(),
+    agentsMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema
+      .optional(),
+    agentsWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    agentsDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    mcpMonthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    mcpWeeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    mcpDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    searchesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    assistantInteractionsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    agentRunsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    mcpCallsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    searchDatasourceCounts: z.record(z.number().int()).optional(),
+    chatDatasourceCounts: z.record(z.number().int()).optional(),
+    perUserInsights: z.array(PerUserInsight$inboundSchema).optional(),
+  })
+);
 
 export function insightsOverviewResponseFromJSON(
   jsonString: string,

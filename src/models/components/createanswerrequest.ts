@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   AnswerCreationData,
   AnswerCreationData$Outbound,
@@ -24,9 +25,11 @@ export const CreateAnswerRequest$outboundSchema: z.ZodType<
   CreateAnswerRequest$Outbound,
   z.ZodTypeDef,
   CreateAnswerRequest
-> = z.object({
-  data: AnswerCreationData$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: AnswerCreationData$outboundSchema,
+  })
+);
 
 export function createAnswerRequestToJSON(
   createAnswerRequest: CreateAnswerRequest,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type Unpin = {
   /**
@@ -22,9 +23,11 @@ export const Unpin$outboundSchema: z.ZodType<
   Unpin$Outbound,
   z.ZodTypeDef,
   Unpin
-> = z.object({
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+  })
+);
 
 export function unpinToJSON(unpin: Unpin): string {
   return JSON.stringify(Unpin$outboundSchema.parse(unpin));

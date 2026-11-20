@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -27,10 +28,14 @@ export const CollectionPinnableCategories$inboundSchema: z.ZodType<
   CollectionPinnableCategories,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CollectionPinnableCategories);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CollectionPinnableCategories)
+);
 /** @internal */
 export const CollectionPinnableCategories$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   CollectionPinnableCategories
-> = openEnums.outboundSchema(CollectionPinnableCategories);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(CollectionPinnableCategories)
+);

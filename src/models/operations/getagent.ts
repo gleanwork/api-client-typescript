@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetAgentRequest = {
   /**
@@ -32,11 +33,13 @@ export const GetAgentRequest$outboundSchema: z.ZodType<
   GetAgentRequest$Outbound,
   z.ZodTypeDef,
   GetAgentRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  agent_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    agent_id: z.string(),
+  })
+);
 
 export function getAgentRequestToJSON(
   getAgentRequest: GetAgentRequest,
