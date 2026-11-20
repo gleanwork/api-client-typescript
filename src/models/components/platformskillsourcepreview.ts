@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -48,15 +48,17 @@ export const PlatformSkillSourcePreview$inboundSchema: z.ZodType<
   PlatformSkillSourcePreview,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_name: z.string(),
-  description: z.string(),
-  source_url: z.string(),
-  commit_sha: z.string(),
-  main_content: z.string(),
-  files: z.array(PlatformSkillSourcePreviewFile$inboundSchema),
-  file_tree: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_name: z.string(),
+    description: z.string(),
+    source_url: z.string(),
+    commit_sha: z.string(),
+    main_content: z.string(),
+    files: z.array(PlatformSkillSourcePreviewFile$inboundSchema),
+    file_tree: z.array(z.string()),
+  })
+);
 
 export function platformSkillSourcePreviewFromJSON(
   jsonString: string,

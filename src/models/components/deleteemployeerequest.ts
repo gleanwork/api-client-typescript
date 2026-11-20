@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /deleteemployee API call
@@ -30,10 +31,12 @@ export const DeleteEmployeeRequest$outboundSchema: z.ZodType<
   DeleteEmployeeRequest$Outbound,
   z.ZodTypeDef,
   DeleteEmployeeRequest
-> = z.object({
-  version: z.number().int().optional(),
-  employeeEmail: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.number().int().optional(),
+    employeeEmail: z.string(),
+  })
+);
 
 export function deleteEmployeeRequestToJSON(
   deleteEmployeeRequest: DeleteEmployeeRequest,

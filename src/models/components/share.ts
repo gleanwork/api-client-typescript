@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,12 +33,14 @@ export type Share = {
 };
 
 /** @internal */
-export const Share$inboundSchema: z.ZodType<Share, z.ZodTypeDef, unknown> = z
-  .object({
-    numDaysAgo: z.number().int(),
-    sharer: z.lazy(() => Person$inboundSchema).optional(),
-    sharingDocument: z.lazy(() => Document$inboundSchema).optional(),
-  });
+export const Share$inboundSchema: z.ZodType<Share, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      numDaysAgo: z.number().int(),
+      sharer: z.lazy(() => Person$inboundSchema).optional(),
+      sharingDocument: z.lazy(() => Document$inboundSchema).optional(),
+    })
+  );
 /** @internal */
 export type Share$Outbound = {
   numDaysAgo: number;
@@ -51,11 +53,13 @@ export const Share$outboundSchema: z.ZodType<
   Share$Outbound,
   z.ZodTypeDef,
   Share
-> = z.object({
-  numDaysAgo: z.number().int(),
-  sharer: z.lazy(() => Person$outboundSchema).optional(),
-  sharingDocument: z.lazy(() => Document$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    numDaysAgo: z.number().int(),
+    sharer: z.lazy(() => Person$outboundSchema).optional(),
+    sharingDocument: z.lazy(() => Document$outboundSchema).optional(),
+  })
+);
 
 export function shareToJSON(share: Share): string {
   return JSON.stringify(Share$outboundSchema.parse(share));

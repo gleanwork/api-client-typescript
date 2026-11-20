@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -43,12 +43,14 @@ export const PlatformIdpGroup$inboundSchema: z.ZodType<
   PlatformIdpGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  idp_group_id: z.string(),
-  display_name: z.string(),
-  provider: z.string(),
-  provider_instance: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idp_group_id: z.string(),
+    display_name: z.string(),
+    provider: z.string(),
+    provider_instance: z.string(),
+  })
+);
 
 export function platformIdpGroupFromJSON(
   jsonString: string,

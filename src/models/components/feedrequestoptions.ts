@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   ChatZeroStateSuggestionOptions,
   ChatZeroStateSuggestionOptions$Outbound,
@@ -44,9 +45,11 @@ export const CategoryToResultSize$outboundSchema: z.ZodType<
   CategoryToResultSize$Outbound,
   z.ZodTypeDef,
   CategoryToResultSize
-> = z.object({
-  resultSize: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resultSize: z.number().int().optional(),
+  })
+);
 
 export function categoryToResultSizeToJSON(
   categoryToResultSize: CategoryToResultSize,
@@ -74,16 +77,18 @@ export const FeedRequestOptions$outboundSchema: z.ZodType<
   FeedRequestOptions$Outbound,
   z.ZodTypeDef,
   FeedRequestOptions
-> = z.object({
-  resultSize: z.number().int(),
-  timezoneOffset: z.number().int().optional(),
-  categoryToResultSize: z.record(
-    z.lazy(() => CategoryToResultSize$outboundSchema),
-  ).optional(),
-  datasourceFilter: z.array(z.string()).optional(),
-  chatZeroStateSuggestionOptions: ChatZeroStateSuggestionOptions$outboundSchema
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resultSize: z.number().int(),
+    timezoneOffset: z.number().int().optional(),
+    categoryToResultSize: z.record(
+      z.lazy(() => CategoryToResultSize$outboundSchema),
+    ).optional(),
+    datasourceFilter: z.array(z.string()).optional(),
+    chatZeroStateSuggestionOptions:
+      ChatZeroStateSuggestionOptions$outboundSchema.optional(),
+  })
+);
 
 export function feedRequestOptionsToJSON(
   feedRequestOptions: FeedRequestOptions,

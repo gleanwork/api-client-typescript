@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -71,27 +71,31 @@ export const BulkUploadHistoryEventStatus$inboundSchema: z.ZodType<
   BulkUploadHistoryEventStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(BulkUploadHistoryEventStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(BulkUploadHistoryEventStatus)
+);
 
 /** @internal */
 export const ProcessingState$inboundSchema: z.ZodType<
   ProcessingState,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ProcessingState);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ProcessingState));
 
 /** @internal */
 export const BulkUploadHistoryEvent$inboundSchema: z.ZodType<
   BulkUploadHistoryEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploadId: z.string().optional(),
-  startTime: z.string().optional(),
-  endTime: z.string().optional(),
-  status: BulkUploadHistoryEventStatus$inboundSchema.optional(),
-  processingState: ProcessingState$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string().optional(),
+    startTime: z.string().optional(),
+    endTime: z.string().optional(),
+    status: BulkUploadHistoryEventStatus$inboundSchema.optional(),
+    processingState: ProcessingState$inboundSchema.optional(),
+  })
+);
 
 export function bulkUploadHistoryEventFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -71,19 +71,21 @@ export const Document$inboundSchema: z.ZodType<
   Document,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string().optional(),
-  datasource: z.string().optional(),
-  connectorType: ConnectorType$inboundSchema.optional(),
-  docType: z.string().optional(),
-  content: DocumentContent$inboundSchema.optional(),
-  containerDocument: z.lazy(() => Document$inboundSchema).optional(),
-  parentDocument: z.lazy(() => Document$inboundSchema).optional(),
-  title: z.string().optional(),
-  url: z.string().optional(),
-  metadata: z.lazy(() => DocumentMetadata$inboundSchema).optional(),
-  sections: z.array(DocumentSection$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    datasource: z.string().optional(),
+    connectorType: ConnectorType$inboundSchema.optional(),
+    docType: z.string().optional(),
+    content: DocumentContent$inboundSchema.optional(),
+    containerDocument: z.lazy(() => Document$inboundSchema).optional(),
+    parentDocument: z.lazy(() => Document$inboundSchema).optional(),
+    title: z.string().optional(),
+    url: z.string().optional(),
+    metadata: z.lazy(() => DocumentMetadata$inboundSchema).optional(),
+    sections: z.array(DocumentSection$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type Document$Outbound = {
   id?: string | undefined;
@@ -104,19 +106,21 @@ export const Document$outboundSchema: z.ZodType<
   Document$Outbound,
   z.ZodTypeDef,
   Document
-> = z.object({
-  id: z.string().optional(),
-  datasource: z.string().optional(),
-  connectorType: ConnectorType$outboundSchema.optional(),
-  docType: z.string().optional(),
-  content: DocumentContent$outboundSchema.optional(),
-  containerDocument: z.lazy(() => Document$outboundSchema).optional(),
-  parentDocument: z.lazy(() => Document$outboundSchema).optional(),
-  title: z.string().optional(),
-  url: z.string().optional(),
-  metadata: z.lazy(() => DocumentMetadata$outboundSchema).optional(),
-  sections: z.array(DocumentSection$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    datasource: z.string().optional(),
+    connectorType: ConnectorType$outboundSchema.optional(),
+    docType: z.string().optional(),
+    content: DocumentContent$outboundSchema.optional(),
+    containerDocument: z.lazy(() => Document$outboundSchema).optional(),
+    parentDocument: z.lazy(() => Document$outboundSchema).optional(),
+    title: z.string().optional(),
+    url: z.string().optional(),
+    metadata: z.lazy(() => DocumentMetadata$outboundSchema).optional(),
+    sections: z.array(DocumentSection$outboundSchema).optional(),
+  })
+);
 
 export function documentToJSON(document: Document): string {
   return JSON.stringify(Document$outboundSchema.parse(document));

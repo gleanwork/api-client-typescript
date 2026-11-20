@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import {
   AdditionalFieldDefinition,
@@ -196,36 +197,38 @@ export const EmployeeInfoDefinition$outboundSchema: z.ZodType<
   EmployeeInfoDefinition$Outbound,
   z.ZodTypeDef,
   EmployeeInfoDefinition
-> = z.object({
-  email: z.string(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  preferredName: z.string().optional(),
-  id: z.string().optional(),
-  phoneNumber: z.string().optional(),
-  location: z.string().optional(),
-  structuredLocation: StructuredLocation$outboundSchema.optional(),
-  title: z.string().optional(),
-  photoUrl: z.string().optional(),
-  businessUnit: z.string().optional(),
-  department: z.string(),
-  datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
-  teams: z.array(EmployeeTeamInfo$outboundSchema).optional(),
-  startDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-  endDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-  bio: z.string().optional(),
-  pronoun: z.string().optional(),
-  alsoKnownAs: z.array(z.string()).optional(),
-  profileUrl: z.string().optional(),
-  socialNetworks: z.array(SocialNetworkDefinition$outboundSchema).optional(),
-  managerEmail: z.string().optional(),
-  managerId: z.string().optional(),
-  type: z.string().default("FULL_TIME"),
-  relationships: z.array(EntityRelationship$outboundSchema).optional(),
-  status: z.string().default("CURRENT"),
-  additionalFields: z.array(AdditionalFieldDefinition$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    firstName: z.string().optional(),
+    lastName: z.string().optional(),
+    preferredName: z.string().optional(),
+    id: z.string().optional(),
+    phoneNumber: z.string().optional(),
+    location: z.string().optional(),
+    structuredLocation: StructuredLocation$outboundSchema.optional(),
+    title: z.string().optional(),
+    photoUrl: z.string().optional(),
+    businessUnit: z.string().optional(),
+    department: z.string(),
+    datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
+    teams: z.array(EmployeeTeamInfo$outboundSchema).optional(),
+    startDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+    endDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+    bio: z.string().optional(),
+    pronoun: z.string().optional(),
+    alsoKnownAs: z.array(z.string()).optional(),
+    profileUrl: z.string().optional(),
+    socialNetworks: z.array(SocialNetworkDefinition$outboundSchema).optional(),
+    managerEmail: z.string().optional(),
+    managerId: z.string().optional(),
+    type: z.string().default("FULL_TIME"),
+    relationships: z.array(EntityRelationship$outboundSchema).optional(),
+    status: z.string().default("CURRENT"),
+    additionalFields: z.array(AdditionalFieldDefinition$outboundSchema)
+      .optional(),
+  })
+);
 
 export function employeeInfoDefinitionToJSON(
   employeeInfoDefinition: EmployeeInfoDefinition,

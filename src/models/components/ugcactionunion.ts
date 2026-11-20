@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { UgcType, UgcType$inboundSchema } from "./ugctype.js";
@@ -23,9 +23,11 @@ export const UgcAction$inboundSchema: z.ZodType<
   UgcAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  create: UgcType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    create: UgcType$inboundSchema,
+  })
+);
 
 export function ugcActionFromJSON(
   jsonString: string,
@@ -42,7 +44,7 @@ export const UgcActionUnion$inboundSchema: z.ZodType<
   UgcActionUnion,
   z.ZodTypeDef,
   unknown
-> = z.lazy(() => UgcAction$inboundSchema);
+> = /* @__PURE__ */ lazySchema$(() => z.lazy(() => UgcAction$inboundSchema));
 
 export function ugcActionUnionFromJSON(
   jsonString: string,

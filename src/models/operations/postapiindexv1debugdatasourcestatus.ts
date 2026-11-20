@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PostApiIndexV1DebugDatasourceStatusRequest = {
   /**
@@ -23,9 +24,11 @@ export const PostApiIndexV1DebugDatasourceStatusRequest$outboundSchema:
     PostApiIndexV1DebugDatasourceStatusRequest$Outbound,
     z.ZodTypeDef,
     PostApiIndexV1DebugDatasourceStatusRequest
-  > = z.object({
-    datasource: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      datasource: z.string(),
+    })
+  );
 
 export function postApiIndexV1DebugDatasourceStatusRequestToJSON(
   postApiIndexV1DebugDatasourceStatusRequest:

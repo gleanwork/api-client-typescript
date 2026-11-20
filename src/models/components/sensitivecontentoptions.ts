@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -59,13 +59,15 @@ export const SensitiveContentOptions$inboundSchema: z.ZodType<
   SensitiveContentOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sensitiveInfoTypes: z.array(SensitiveInfoType$inboundSchema).optional(),
-  sensitiveTerms: z.array(SensitiveExpression$inboundSchema).optional(),
-  sensitiveRegexes: z.array(SensitiveExpression$inboundSchema).optional(),
-  customSensitiveExpressions: z.array(CustomSensitiveExpression$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sensitiveInfoTypes: z.array(SensitiveInfoType$inboundSchema).optional(),
+    sensitiveTerms: z.array(SensitiveExpression$inboundSchema).optional(),
+    sensitiveRegexes: z.array(SensitiveExpression$inboundSchema).optional(),
+    customSensitiveExpressions: z.array(CustomSensitiveExpression$inboundSchema)
+      .optional(),
+  })
+);
 /** @internal */
 export type SensitiveContentOptions$Outbound = {
   sensitiveInfoTypes?: Array<SensitiveInfoType$Outbound> | undefined;
@@ -81,13 +83,16 @@ export const SensitiveContentOptions$outboundSchema: z.ZodType<
   SensitiveContentOptions$Outbound,
   z.ZodTypeDef,
   SensitiveContentOptions
-> = z.object({
-  sensitiveInfoTypes: z.array(SensitiveInfoType$outboundSchema).optional(),
-  sensitiveTerms: z.array(SensitiveExpression$outboundSchema).optional(),
-  sensitiveRegexes: z.array(SensitiveExpression$outboundSchema).optional(),
-  customSensitiveExpressions: z.array(CustomSensitiveExpression$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sensitiveInfoTypes: z.array(SensitiveInfoType$outboundSchema).optional(),
+    sensitiveTerms: z.array(SensitiveExpression$outboundSchema).optional(),
+    sensitiveRegexes: z.array(SensitiveExpression$outboundSchema).optional(),
+    customSensitiveExpressions: z.array(
+      CustomSensitiveExpression$outboundSchema,
+    ).optional(),
+  })
+);
 
 export function sensitiveContentOptionsToJSON(
   sensitiveContentOptions: SensitiveContentOptions,

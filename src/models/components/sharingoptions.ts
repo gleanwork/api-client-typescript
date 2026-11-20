@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -51,16 +51,18 @@ export const SharingOptions$inboundSchema: z.ZodType<
   SharingOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: z.boolean().optional(),
-  threshold: z.number().int().optional(),
-  thresholdEnabled: z.boolean().optional(),
-  anyoneWithLinkEnabled: z.boolean().optional(),
-  anyoneInternalEnabled: z.boolean().optional(),
-  anonymousAccessEnabled: z.boolean().optional(),
-  userAccessEnabled: z.boolean().optional(),
-  userIds: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean().optional(),
+    threshold: z.number().int().optional(),
+    thresholdEnabled: z.boolean().optional(),
+    anyoneWithLinkEnabled: z.boolean().optional(),
+    anyoneInternalEnabled: z.boolean().optional(),
+    anonymousAccessEnabled: z.boolean().optional(),
+    userAccessEnabled: z.boolean().optional(),
+    userIds: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type SharingOptions$Outbound = {
   enabled?: boolean | undefined;
@@ -78,16 +80,18 @@ export const SharingOptions$outboundSchema: z.ZodType<
   SharingOptions$Outbound,
   z.ZodTypeDef,
   SharingOptions
-> = z.object({
-  enabled: z.boolean().optional(),
-  threshold: z.number().int().optional(),
-  thresholdEnabled: z.boolean().optional(),
-  anyoneWithLinkEnabled: z.boolean().optional(),
-  anyoneInternalEnabled: z.boolean().optional(),
-  anonymousAccessEnabled: z.boolean().optional(),
-  userAccessEnabled: z.boolean().optional(),
-  userIds: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean().optional(),
+    threshold: z.number().int().optional(),
+    thresholdEnabled: z.boolean().optional(),
+    anyoneWithLinkEnabled: z.boolean().optional(),
+    anyoneInternalEnabled: z.boolean().optional(),
+    anonymousAccessEnabled: z.boolean().optional(),
+    userAccessEnabled: z.boolean().optional(),
+    userIds: z.array(z.string()).optional(),
+  })
+);
 
 export function sharingOptionsToJSON(sharingOptions: SharingOptions): string {
   return JSON.stringify(SharingOptions$outboundSchema.parse(sharingOptions));

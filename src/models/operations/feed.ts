@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type FeedRequest = {
@@ -29,14 +30,16 @@ export const FeedRequest$outboundSchema: z.ZodType<
   FeedRequest$Outbound,
   z.ZodTypeDef,
   FeedRequest
-> = z.object({
-  locale: z.string().optional(),
-  feedRequest: components.FeedRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    feedRequest: "FeedRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    feedRequest: components.FeedRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      feedRequest: "FeedRequest",
+    });
+  })
+);
 
 export function feedRequestToJSON(feedRequest: FeedRequest): string {
   return JSON.stringify(FeedRequest$outboundSchema.parse(feedRequest));

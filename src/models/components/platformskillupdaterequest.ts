@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformSkillUpdateStatus,
   PlatformSkillUpdateStatus$outboundSchema,
@@ -28,9 +29,11 @@ export const PlatformSkillUpdateRequest$outboundSchema: z.ZodType<
   PlatformSkillUpdateRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillUpdateRequest
-> = z.object({
-  status: PlatformSkillUpdateStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: PlatformSkillUpdateStatus$outboundSchema,
+  })
+);
 
 export function platformSkillUpdateRequestToJSON(
   platformSkillUpdateRequest: PlatformSkillUpdateRequest,

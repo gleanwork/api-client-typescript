@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type StructuredTextMutableProperties = {
   text: string;
@@ -19,9 +20,11 @@ export const StructuredTextMutableProperties$outboundSchema: z.ZodType<
   StructuredTextMutableProperties$Outbound,
   z.ZodTypeDef,
   StructuredTextMutableProperties
-> = z.object({
-  text: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+  })
+);
 
 export function structuredTextMutablePropertiesToJSON(
   structuredTextMutableProperties: StructuredTextMutableProperties,

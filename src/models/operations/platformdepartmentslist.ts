@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformDepartmentsListRequest = {
@@ -37,12 +38,14 @@ export const PlatformDepartmentsListRequest$outboundSchema: z.ZodType<
   PlatformDepartmentsListRequest$Outbound,
   z.ZodTypeDef,
   PlatformDepartmentsListRequest
-> = z.object({
-  page_size: z.number().int().default(50),
-  cursor: z.string().optional(),
-  filters: z.array(components.PlatformDepartmentFilter$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page_size: z.number().int().default(50),
+    cursor: z.string().optional(),
+    filters: z.array(components.PlatformDepartmentFilter$outboundSchema)
+      .optional(),
+  })
+);
 
 export function platformDepartmentsListRequestToJSON(
   platformDepartmentsListRequest: PlatformDepartmentsListRequest,

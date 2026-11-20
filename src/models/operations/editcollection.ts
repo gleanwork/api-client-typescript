@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type EditcollectionRequest = {
@@ -29,14 +30,16 @@ export const EditcollectionRequest$outboundSchema: z.ZodType<
   EditcollectionRequest$Outbound,
   z.ZodTypeDef,
   EditcollectionRequest
-> = z.object({
-  locale: z.string().optional(),
-  editCollectionRequest: components.EditCollectionRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    editCollectionRequest: "EditCollectionRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    editCollectionRequest: components.EditCollectionRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      editCollectionRequest: "EditCollectionRequest",
+    });
+  })
+);
 
 export function editcollectionRequestToJSON(
   editcollectionRequest: EditcollectionRequest,

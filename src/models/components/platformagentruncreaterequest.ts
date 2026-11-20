@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   PlatformMessageInput,
@@ -62,7 +63,7 @@ export type PlatformAgentRunCreateRequest = {
 /** @internal */
 export const ExecutionMode$outboundSchema: z.ZodNativeEnum<
   typeof ExecutionMode
-> = z.nativeEnum(ExecutionMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ExecutionMode));
 
 /** @internal */
 export type PlatformAgentRunCreateRequest$Outbound = {
@@ -78,13 +79,15 @@ export const PlatformAgentRunCreateRequest$outboundSchema: z.ZodType<
   PlatformAgentRunCreateRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentRunCreateRequest
-> = z.object({
-  input: z.record(z.any()).optional(),
-  messages: z.array(PlatformMessageInput$outboundSchema).optional(),
-  metadata: z.record(z.any()).optional(),
-  stream: z.boolean().default(false),
-  execution_mode: ExecutionMode$outboundSchema.default("REQUEST_BOUND"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    input: z.record(z.any()).optional(),
+    messages: z.array(PlatformMessageInput$outboundSchema).optional(),
+    metadata: z.record(z.any()).optional(),
+    stream: z.boolean().default(false),
+    execution_mode: ExecutionMode$outboundSchema.default("REQUEST_BOUND"),
+  })
+);
 
 export function platformAgentRunCreateRequestToJSON(
   platformAgentRunCreateRequest: PlatformAgentRunCreateRequest,

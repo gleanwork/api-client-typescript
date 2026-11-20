@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,9 +22,11 @@ export const PlatformDocumentContent$inboundSchema: z.ZodType<
   PlatformDocumentContent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  full_text_list: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    full_text_list: z.array(z.string()),
+  })
+);
 
 export function platformDocumentContentFromJSON(
   jsonString: string,

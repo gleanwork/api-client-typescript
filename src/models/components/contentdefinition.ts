@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes text content or base64 encoded binary content
@@ -32,11 +33,13 @@ export const ContentDefinition$outboundSchema: z.ZodType<
   ContentDefinition$Outbound,
   z.ZodTypeDef,
   ContentDefinition
-> = z.object({
-  mimeType: z.string(),
-  textContent: z.string().optional(),
-  binaryContent: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mimeType: z.string(),
+    textContent: z.string().optional(),
+    binaryContent: z.string().optional(),
+  })
+);
 
 export function contentDefinitionToJSON(
   contentDefinition: ContentDefinition,

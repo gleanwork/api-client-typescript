@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   Document,
   Document$Outbound,
@@ -65,16 +66,18 @@ export const RecommendationsRequest$outboundSchema: z.ZodType<
   RecommendationsRequest$Outbound,
   z.ZodTypeDef,
   RecommendationsRequest
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()).optional(),
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  sourceDocument: Document$outboundSchema.optional(),
-  pageSize: z.number().int().optional(),
-  maxSnippetSize: z.number().int().optional(),
-  recommendationDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
-  requestOptions: RecommendationsRequestOptions$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()).optional(),
+    trackingToken: z.string().optional(),
+    sessionInfo: SessionInfo$outboundSchema.optional(),
+    sourceDocument: Document$outboundSchema.optional(),
+    pageSize: z.number().int().optional(),
+    maxSnippetSize: z.number().int().optional(),
+    recommendationDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
+    requestOptions: RecommendationsRequestOptions$outboundSchema.optional(),
+  })
+);
 
 export function recommendationsRequestToJSON(
   recommendationsRequest: RecommendationsRequest,

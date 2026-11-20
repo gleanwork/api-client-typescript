@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -43,11 +43,13 @@ export const MessageTextBlock$inboundSchema: z.ZodType<
   MessageTextBlock,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: z.string(),
-  type: ContentType$inboundSchema,
-  annotations: z.array(ChatCitationAnnotation$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    type: ContentType$inboundSchema,
+    annotations: z.array(ChatCitationAnnotation$inboundSchema).optional(),
+  })
+);
 
 export function messageTextBlockFromJSON(
   jsonString: string,
@@ -61,12 +63,14 @@ export function messageTextBlockFromJSON(
 
 /** @internal */
 export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
-  z.object({
-    role: z.string().optional(),
-    content: z.array(z.lazy(() => MessageTextBlock$inboundSchema)).optional(),
-    messageTrackingToken: z.string().optional(),
-    traceId: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      role: z.string().optional(),
+      content: z.array(z.lazy(() => MessageTextBlock$inboundSchema)).optional(),
+      messageTrackingToken: z.string().optional(),
+      traceId: z.string().optional(),
+    })
+  );
 
 export function messageFromJSON(
   jsonString: string,

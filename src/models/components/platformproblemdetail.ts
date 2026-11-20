@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -61,16 +61,18 @@ export const PlatformProblemDetail$inboundSchema: z.ZodType<
   PlatformProblemDetail,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.string(),
-  title: z.string(),
-  status: z.number().int(),
-  detail: z.string(),
-  code: PlatformProblemDetailCode$inboundSchema,
-  documentation_url: z.string().optional(),
-  request_id: z.string(),
-  errors: z.array(PlatformProblemDetailError$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string(),
+    title: z.string(),
+    status: z.number().int(),
+    detail: z.string(),
+    code: PlatformProblemDetailCode$inboundSchema,
+    documentation_url: z.string().optional(),
+    request_id: z.string(),
+    errors: z.array(PlatformProblemDetailError$inboundSchema).optional(),
+  })
+);
 
 export function platformProblemDetailFromJSON(
   jsonString: string,

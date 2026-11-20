@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -20,9 +20,11 @@ export const SearchRequestInputDetails$inboundSchema: z.ZodType<
   SearchRequestInputDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  hasCopyPaste: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hasCopyPaste: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type SearchRequestInputDetails$Outbound = {
   hasCopyPaste?: boolean | undefined;
@@ -33,9 +35,11 @@ export const SearchRequestInputDetails$outboundSchema: z.ZodType<
   SearchRequestInputDetails$Outbound,
   z.ZodTypeDef,
   SearchRequestInputDetails
-> = z.object({
-  hasCopyPaste: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hasCopyPaste: z.boolean().optional(),
+  })
+);
 
 export function searchRequestInputDetailsToJSON(
   searchRequestInputDetails: SearchRequestInputDetails,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -53,15 +53,17 @@ export const DocumentPermissionsDefinition$inboundSchema: z.ZodType<
   DocumentPermissionsDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedUsers: z.array(UserReferenceDefinition$inboundSchema).optional(),
-  allowedGroups: z.array(z.string()).optional(),
-  allowedGroupIntersections: z.array(
-    PermissionsGroupIntersectionDefinition$inboundSchema,
-  ).optional(),
-  allowAnonymousAccess: z.boolean().optional(),
-  allowAllDatasourceUsersAccess: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedUsers: z.array(UserReferenceDefinition$inboundSchema).optional(),
+    allowedGroups: z.array(z.string()).optional(),
+    allowedGroupIntersections: z.array(
+      PermissionsGroupIntersectionDefinition$inboundSchema,
+    ).optional(),
+    allowAnonymousAccess: z.boolean().optional(),
+    allowAllDatasourceUsersAccess: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type DocumentPermissionsDefinition$Outbound = {
   allowedUsers?: Array<UserReferenceDefinition$Outbound> | undefined;
@@ -78,15 +80,17 @@ export const DocumentPermissionsDefinition$outboundSchema: z.ZodType<
   DocumentPermissionsDefinition$Outbound,
   z.ZodTypeDef,
   DocumentPermissionsDefinition
-> = z.object({
-  allowedUsers: z.array(UserReferenceDefinition$outboundSchema).optional(),
-  allowedGroups: z.array(z.string()).optional(),
-  allowedGroupIntersections: z.array(
-    PermissionsGroupIntersectionDefinition$outboundSchema,
-  ).optional(),
-  allowAnonymousAccess: z.boolean().optional(),
-  allowAllDatasourceUsersAccess: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedUsers: z.array(UserReferenceDefinition$outboundSchema).optional(),
+    allowedGroups: z.array(z.string()).optional(),
+    allowedGroupIntersections: z.array(
+      PermissionsGroupIntersectionDefinition$outboundSchema,
+    ).optional(),
+    allowAnonymousAccess: z.boolean().optional(),
+    allowAllDatasourceUsersAccess: z.boolean().optional(),
+  })
+);
 
 export function documentPermissionsDefinitionToJSON(
   documentPermissionsDefinition: DocumentPermissionsDefinition,

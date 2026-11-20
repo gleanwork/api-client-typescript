@@ -46,10 +46,10 @@ export type IndexingPeopleDebugMutationError =
   | SDKValidationError;
 
 /**
- * Beta: Get user information
+ * Get user information
  *
  * @remarks
- * Gives various information that would help in debugging related to a particular user. Currently in beta, might undergo breaking changes without prior notice.
+ * Gives various information that would help in debugging related to a particular user.
  *
  * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
  */
