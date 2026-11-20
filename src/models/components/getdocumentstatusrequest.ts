@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body for /getdocumentstatus API call
@@ -35,11 +36,13 @@ export const GetDocumentStatusRequest$outboundSchema: z.ZodType<
   GetDocumentStatusRequest$Outbound,
   z.ZodTypeDef,
   GetDocumentStatusRequest
-> = z.object({
-  datasource: z.string(),
-  objectType: z.string(),
-  docId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    objectType: z.string(),
+    docId: z.string(),
+  })
+);
 
 export function getDocumentStatusRequestToJSON(
   getDocumentStatusRequest: GetDocumentStatusRequest,

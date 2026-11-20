@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -64,27 +64,33 @@ export const WriteActionParameterType$inboundSchema: z.ZodType<
   WriteActionParameterType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(WriteActionParameterType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(WriteActionParameterType)
+);
 /** @internal */
 export const WriteActionParameterType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   WriteActionParameterType
-> = openEnums.outboundSchema(WriteActionParameterType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(WriteActionParameterType)
+);
 
 /** @internal */
 export const WriteActionParameter$inboundSchema: z.ZodType<
   WriteActionParameter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: WriteActionParameterType$inboundSchema.optional(),
-  displayName: z.string().optional(),
-  value: z.string().optional(),
-  isRequired: z.boolean().optional(),
-  description: z.string().optional(),
-  possibleValues: z.array(PossibleValue$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: WriteActionParameterType$inboundSchema.optional(),
+    displayName: z.string().optional(),
+    value: z.string().optional(),
+    isRequired: z.boolean().optional(),
+    description: z.string().optional(),
+    possibleValues: z.array(PossibleValue$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type WriteActionParameter$Outbound = {
   type?: string | undefined;
@@ -100,14 +106,16 @@ export const WriteActionParameter$outboundSchema: z.ZodType<
   WriteActionParameter$Outbound,
   z.ZodTypeDef,
   WriteActionParameter
-> = z.object({
-  type: WriteActionParameterType$outboundSchema.optional(),
-  displayName: z.string().optional(),
-  value: z.string().optional(),
-  isRequired: z.boolean().optional(),
-  description: z.string().optional(),
-  possibleValues: z.array(PossibleValue$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: WriteActionParameterType$outboundSchema.optional(),
+    displayName: z.string().optional(),
+    value: z.string().optional(),
+    isRequired: z.boolean().optional(),
+    description: z.string().optional(),
+    possibleValues: z.array(PossibleValue$outboundSchema).optional(),
+  })
+);
 
 export function writeActionParameterToJSON(
   writeActionParameter: WriteActionParameter,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -96,24 +96,30 @@ export const DocumentSpecUgcType2$inboundSchema: z.ZodType<
   DocumentSpecUgcType2,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DocumentSpecUgcType2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(DocumentSpecUgcType2)
+);
 /** @internal */
 export const DocumentSpecUgcType2$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DocumentSpecUgcType2
-> = openEnums.outboundSchema(DocumentSpecUgcType2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(DocumentSpecUgcType2)
+);
 
 /** @internal */
 export const DocumentSpec4$inboundSchema: z.ZodType<
   DocumentSpec4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ugcType: DocumentSpecUgcType2$inboundSchema,
-  ugcId: z.string(),
-  docType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ugcType: DocumentSpecUgcType2$inboundSchema,
+    ugcId: z.string(),
+    docType: z.string().optional(),
+  })
+);
 /** @internal */
 export type DocumentSpec4$Outbound = {
   ugcType: string;
@@ -126,11 +132,13 @@ export const DocumentSpec4$outboundSchema: z.ZodType<
   DocumentSpec4$Outbound,
   z.ZodTypeDef,
   DocumentSpec4
-> = z.object({
-  ugcType: DocumentSpecUgcType2$outboundSchema,
-  ugcId: z.string(),
-  docType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ugcType: DocumentSpecUgcType2$outboundSchema,
+    ugcId: z.string(),
+    docType: z.string().optional(),
+  })
+);
 
 export function documentSpec4ToJSON(documentSpec4: DocumentSpec4): string {
   return JSON.stringify(DocumentSpec4$outboundSchema.parse(documentSpec4));
@@ -150,24 +158,30 @@ export const DocumentSpecUgcType1$inboundSchema: z.ZodType<
   DocumentSpecUgcType1,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DocumentSpecUgcType1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(DocumentSpecUgcType1)
+);
 /** @internal */
 export const DocumentSpecUgcType1$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DocumentSpecUgcType1
-> = openEnums.outboundSchema(DocumentSpecUgcType1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(DocumentSpecUgcType1)
+);
 
 /** @internal */
 export const DocumentSpec3$inboundSchema: z.ZodType<
   DocumentSpec3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ugcType: DocumentSpecUgcType1$inboundSchema,
-  contentId: z.number().int(),
-  docType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ugcType: DocumentSpecUgcType1$inboundSchema,
+    contentId: z.number().int(),
+    docType: z.string().optional(),
+  })
+);
 /** @internal */
 export type DocumentSpec3$Outbound = {
   ugcType: string;
@@ -180,11 +194,13 @@ export const DocumentSpec3$outboundSchema: z.ZodType<
   DocumentSpec3$Outbound,
   z.ZodTypeDef,
   DocumentSpec3
-> = z.object({
-  ugcType: DocumentSpecUgcType1$outboundSchema,
-  contentId: z.number().int(),
-  docType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ugcType: DocumentSpecUgcType1$outboundSchema,
+    contentId: z.number().int(),
+    docType: z.string().optional(),
+  })
+);
 
 export function documentSpec3ToJSON(documentSpec3: DocumentSpec3): string {
   return JSON.stringify(DocumentSpec3$outboundSchema.parse(documentSpec3));
@@ -204,9 +220,11 @@ export const DocumentSpec2$inboundSchema: z.ZodType<
   DocumentSpec2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 /** @internal */
 export type DocumentSpec2$Outbound = {
   id: string;
@@ -217,9 +235,11 @@ export const DocumentSpec2$outboundSchema: z.ZodType<
   DocumentSpec2$Outbound,
   z.ZodTypeDef,
   DocumentSpec2
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 
 export function documentSpec2ToJSON(documentSpec2: DocumentSpec2): string {
   return JSON.stringify(DocumentSpec2$outboundSchema.parse(documentSpec2));
@@ -239,9 +259,11 @@ export const DocumentSpec1$inboundSchema: z.ZodType<
   DocumentSpec1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+  })
+);
 /** @internal */
 export type DocumentSpec1$Outbound = {
   url: string;
@@ -252,9 +274,11 @@ export const DocumentSpec1$outboundSchema: z.ZodType<
   DocumentSpec1$Outbound,
   z.ZodTypeDef,
   DocumentSpec1
-> = z.object({
-  url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+  })
+);
 
 export function documentSpec1ToJSON(documentSpec1: DocumentSpec1): string {
   return JSON.stringify(DocumentSpec1$outboundSchema.parse(documentSpec1));
@@ -274,12 +298,14 @@ export const DocumentSpecUnion$inboundSchema: z.ZodType<
   DocumentSpecUnion,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DocumentSpec3$inboundSchema),
-  z.lazy(() => DocumentSpec4$inboundSchema),
-  z.lazy(() => DocumentSpec1$inboundSchema),
-  z.lazy(() => DocumentSpec2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DocumentSpec3$inboundSchema),
+    z.lazy(() => DocumentSpec4$inboundSchema),
+    z.lazy(() => DocumentSpec1$inboundSchema),
+    z.lazy(() => DocumentSpec2$inboundSchema),
+  ])
+);
 /** @internal */
 export type DocumentSpecUnion$Outbound =
   | DocumentSpec3$Outbound
@@ -292,12 +318,14 @@ export const DocumentSpecUnion$outboundSchema: z.ZodType<
   DocumentSpecUnion$Outbound,
   z.ZodTypeDef,
   DocumentSpecUnion
-> = z.union([
-  z.lazy(() => DocumentSpec3$outboundSchema),
-  z.lazy(() => DocumentSpec4$outboundSchema),
-  z.lazy(() => DocumentSpec1$outboundSchema),
-  z.lazy(() => DocumentSpec2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DocumentSpec3$outboundSchema),
+    z.lazy(() => DocumentSpec4$outboundSchema),
+    z.lazy(() => DocumentSpec1$outboundSchema),
+    z.lazy(() => DocumentSpec2$outboundSchema),
+  ])
+);
 
 export function documentSpecUnionToJSON(
   documentSpecUnion: DocumentSpecUnion,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DocumentDefinition,
   DocumentDefinition$Outbound,
@@ -40,11 +41,13 @@ export const IndexDocumentsRequest$outboundSchema: z.ZodType<
   IndexDocumentsRequest$Outbound,
   z.ZodTypeDef,
   IndexDocumentsRequest
-> = z.object({
-  uploadId: z.string().optional(),
-  datasource: z.string(),
-  documents: z.array(DocumentDefinition$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string().optional(),
+    datasource: z.string(),
+    documents: z.array(DocumentDefinition$outboundSchema),
+  })
+);
 
 export function indexDocumentsRequestToJSON(
   indexDocumentsRequest: IndexDocumentsRequest,

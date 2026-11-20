@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const PropertyGroup$inboundSchema: z.ZodType<
   PropertyGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  displayLabel: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    displayLabel: z.string().optional(),
+  })
+);
 /** @internal */
 export type PropertyGroup$Outbound = {
   name?: string | undefined;
@@ -42,10 +44,12 @@ export const PropertyGroup$outboundSchema: z.ZodType<
   PropertyGroup$Outbound,
   z.ZodTypeDef,
   PropertyGroup
-> = z.object({
-  name: z.string().optional(),
-  displayLabel: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    displayLabel: z.string().optional(),
+  })
+);
 
 export function propertyGroupToJSON(propertyGroup: PropertyGroup): string {
   return JSON.stringify(PropertyGroup$outboundSchema.parse(propertyGroup));

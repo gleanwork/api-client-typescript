@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   FacetFilter,
   FacetFilter$Outbound,
@@ -84,19 +85,21 @@ export const CreateCollectionRequest$outboundSchema: z.ZodType<
   CreateCollectionRequest$Outbound,
   z.ZodTypeDef,
   CreateCollectionRequest
-> = z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$outboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  newNextItemId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    icon: z.string().optional(),
+    adminLocked: z.boolean().optional(),
+    parentId: z.number().int().optional(),
+    thumbnail: Thumbnail$outboundSchema.optional(),
+    allowedDatasource: z.string().optional(),
+    newNextItemId: z.string().optional(),
+  })
+);
 
 export function createCollectionRequestToJSON(
   createCollectionRequest: CreateCollectionRequest,

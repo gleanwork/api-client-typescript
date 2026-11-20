@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type AddverificationreminderRequest = {
@@ -29,14 +30,16 @@ export const AddverificationreminderRequest$outboundSchema: z.ZodType<
   AddverificationreminderRequest$Outbound,
   z.ZodTypeDef,
   AddverificationreminderRequest
-> = z.object({
-  locale: z.string().optional(),
-  reminderRequest: components.ReminderRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    reminderRequest: "ReminderRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    reminderRequest: components.ReminderRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      reminderRequest: "ReminderRequest",
+    });
+  })
+);
 
 export function addverificationreminderRequestToJSON(
   addverificationreminderRequest: AddverificationreminderRequest,

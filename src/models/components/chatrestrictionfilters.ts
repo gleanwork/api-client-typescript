@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,11 +28,13 @@ export const ChatRestrictionFilters$inboundSchema: z.ZodType<
   ChatRestrictionFilters,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  containerSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
-  documentSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
-  datasourceInstances: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    containerSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
+    documentSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
+    datasourceInstances: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type ChatRestrictionFilters$Outbound = {
   containerSpecs?: Array<DocumentSpecUnion$Outbound> | undefined;
@@ -45,11 +47,13 @@ export const ChatRestrictionFilters$outboundSchema: z.ZodType<
   ChatRestrictionFilters$Outbound,
   z.ZodTypeDef,
   ChatRestrictionFilters
-> = z.object({
-  containerSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
-  documentSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
-  datasourceInstances: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    containerSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
+    documentSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
+    datasourceInstances: z.array(z.string()).optional(),
+  })
+);
 
 export function chatRestrictionFiltersToJSON(
   chatRestrictionFilters: ChatRestrictionFilters,

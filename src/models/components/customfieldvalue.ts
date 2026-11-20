@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const CustomFieldValue$inboundSchema: z.ZodType<
   CustomFieldValue,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  CustomFieldValueStr$inboundSchema,
-  CustomFieldValueHyperlink$inboundSchema,
-  z.lazy(() => CustomFieldValuePerson$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CustomFieldValueStr$inboundSchema,
+    CustomFieldValueHyperlink$inboundSchema,
+    z.lazy(() => CustomFieldValuePerson$inboundSchema),
+  ])
+);
 /** @internal */
 export type CustomFieldValue$Outbound =
   | CustomFieldValueStr$Outbound
@@ -52,11 +54,13 @@ export const CustomFieldValue$outboundSchema: z.ZodType<
   CustomFieldValue$Outbound,
   z.ZodTypeDef,
   CustomFieldValue
-> = z.union([
-  CustomFieldValueStr$outboundSchema,
-  CustomFieldValueHyperlink$outboundSchema,
-  z.lazy(() => CustomFieldValuePerson$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    CustomFieldValueStr$outboundSchema,
+    CustomFieldValueHyperlink$outboundSchema,
+    z.lazy(() => CustomFieldValuePerson$outboundSchema),
+  ])
+);
 
 export function customFieldValueToJSON(
   customFieldValue: CustomFieldValue,

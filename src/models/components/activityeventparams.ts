@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ActivityEventParams = {
   /**
@@ -62,17 +63,19 @@ export const ActivityEventParams$outboundSchema: z.ZodType<
   ActivityEventParams$Outbound,
   z.ZodTypeDef,
   ActivityEventParams
-> = z.object({
-  bodyContent: z.string().optional(),
-  datasourceInstance: z.string().optional(),
-  datasource: z.string().optional(),
-  instanceOnlyName: z.string().optional(),
-  duration: z.number().int().optional(),
-  query: z.string().optional(),
-  referrer: z.string().optional(),
-  title: z.string().optional(),
-  truncated: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bodyContent: z.string().optional(),
+    datasourceInstance: z.string().optional(),
+    datasource: z.string().optional(),
+    instanceOnlyName: z.string().optional(),
+    duration: z.number().int().optional(),
+    query: z.string().optional(),
+    referrer: z.string().optional(),
+    title: z.string().optional(),
+    truncated: z.boolean().optional(),
+  })
+);
 
 export function activityEventParamsToJSON(
   activityEventParams: ActivityEventParams,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type DeleteCollectionRequest = {
   /**
@@ -27,10 +28,12 @@ export const DeleteCollectionRequest$outboundSchema: z.ZodType<
   DeleteCollectionRequest$Outbound,
   z.ZodTypeDef,
   DeleteCollectionRequest
-> = z.object({
-  ids: z.array(z.number().int()),
-  allowedDatasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ids: z.array(z.number().int()),
+    allowedDatasource: z.string().optional(),
+  })
+);
 
 export function deleteCollectionRequestToJSON(
   deleteCollectionRequest: DeleteCollectionRequest,

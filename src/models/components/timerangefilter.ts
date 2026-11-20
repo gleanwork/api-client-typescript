@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -46,23 +46,29 @@ export const TimeRangeFilterTimePeriodType$inboundSchema: z.ZodType<
   TimeRangeFilterTimePeriodType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TimeRangeFilterTimePeriodType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(TimeRangeFilterTimePeriodType)
+);
 /** @internal */
 export const TimeRangeFilterTimePeriodType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TimeRangeFilterTimePeriodType
-> = openEnums.outboundSchema(TimeRangeFilterTimePeriodType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(TimeRangeFilterTimePeriodType)
+);
 
 /** @internal */
 export const TimeRangeFilter$inboundSchema: z.ZodType<
   TimeRangeFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  timePeriodType: TimeRangeFilterTimePeriodType$inboundSchema.optional(),
-  customTimeRange: TimeRange$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timePeriodType: TimeRangeFilterTimePeriodType$inboundSchema.optional(),
+    customTimeRange: TimeRange$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type TimeRangeFilter$Outbound = {
   timePeriodType?: string | undefined;
@@ -74,10 +80,12 @@ export const TimeRangeFilter$outboundSchema: z.ZodType<
   TimeRangeFilter$Outbound,
   z.ZodTypeDef,
   TimeRangeFilter
-> = z.object({
-  timePeriodType: TimeRangeFilterTimePeriodType$outboundSchema.optional(),
-  customTimeRange: TimeRange$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timePeriodType: TimeRangeFilterTimePeriodType$outboundSchema.optional(),
+    customTimeRange: TimeRange$outboundSchema.optional(),
+  })
+);
 
 export function timeRangeFilterToJSON(
   timeRangeFilter: TimeRangeFilter,

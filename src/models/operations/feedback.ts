@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type FeedbackRequest = {
@@ -26,14 +27,16 @@ export const FeedbackRequest$outboundSchema: z.ZodType<
   FeedbackRequest$Outbound,
   z.ZodTypeDef,
   FeedbackRequest
-> = z.object({
-  feedbackQueryParameter: z.string().optional(),
-  feedback1: components.Feedback$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    feedback1: "Feedback1",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    feedbackQueryParameter: z.string().optional(),
+    feedback1: components.Feedback$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      feedback1: "Feedback1",
+    });
+  })
+);
 
 export function feedbackRequestToJSON(
   feedbackRequest: FeedbackRequest,

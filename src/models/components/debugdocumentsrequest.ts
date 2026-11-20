@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DebugDocumentRequest,
   DebugDocumentRequest$Outbound,
@@ -30,9 +31,11 @@ export const DebugDocumentsRequest$outboundSchema: z.ZodType<
   DebugDocumentsRequest$Outbound,
   z.ZodTypeDef,
   DebugDocumentsRequest
-> = z.object({
-  debugDocuments: z.array(DebugDocumentRequest$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    debugDocuments: z.array(DebugDocumentRequest$outboundSchema),
+  })
+);
 
 export function debugDocumentsRequestToJSON(
   debugDocumentsRequest: DebugDocumentsRequest,

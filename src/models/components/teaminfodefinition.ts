@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   AdditionalFieldDefinition,
   AdditionalFieldDefinition$Outbound,
@@ -97,20 +98,22 @@ export const TeamInfoDefinition$outboundSchema: z.ZodType<
   TeamInfoDefinition$Outbound,
   z.ZodTypeDef,
   TeamInfoDefinition
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  businessUnit: z.string().optional(),
-  department: z.string().optional(),
-  photoUrl: z.string().optional(),
-  externalLink: z.string().optional(),
-  emails: z.array(TeamEmail$outboundSchema).optional(),
-  datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
-  members: z.array(TeamMember$outboundSchema),
-  additionalFields: z.array(AdditionalFieldDefinition$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    description: z.string().optional(),
+    businessUnit: z.string().optional(),
+    department: z.string().optional(),
+    photoUrl: z.string().optional(),
+    externalLink: z.string().optional(),
+    emails: z.array(TeamEmail$outboundSchema).optional(),
+    datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
+    members: z.array(TeamMember$outboundSchema),
+    additionalFields: z.array(AdditionalFieldDefinition$outboundSchema)
+      .optional(),
+  })
+);
 
 export function teamInfoDefinitionToJSON(
   teamInfoDefinition: TeamInfoDefinition,

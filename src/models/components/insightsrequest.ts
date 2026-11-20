@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   AgentsInsightsV2Request,
   AgentsInsightsV2Request$Outbound,
@@ -57,14 +58,16 @@ export const InsightsRequest$outboundSchema: z.ZodType<
   InsightsRequest$Outbound,
   z.ZodTypeDef,
   InsightsRequest
-> = z.object({
-  overviewRequest: InsightsOverviewRequest$outboundSchema.optional(),
-  assistantRequest: InsightsAssistantRequest$outboundSchema.optional(),
-  agentsRequest: AgentsInsightsV2Request$outboundSchema.optional(),
-  mcpRequest: McpInsightsRequest$outboundSchema.optional(),
-  mcpBreakdownRequest: McpBreakdownInsightsRequest$outboundSchema.optional(),
-  disablePerUserInsights: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    overviewRequest: InsightsOverviewRequest$outboundSchema.optional(),
+    assistantRequest: InsightsAssistantRequest$outboundSchema.optional(),
+    agentsRequest: AgentsInsightsV2Request$outboundSchema.optional(),
+    mcpRequest: McpInsightsRequest$outboundSchema.optional(),
+    mcpBreakdownRequest: McpBreakdownInsightsRequest$outboundSchema.optional(),
+    disablePerUserInsights: z.boolean().optional(),
+  })
+);
 
 export function insightsRequestToJSON(
   insightsRequest: InsightsRequest,

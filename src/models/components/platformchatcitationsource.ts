@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,14 +38,16 @@ export const PlatformChatCitationSource$inboundSchema: z.ZodType<
   PlatformChatCitationSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  PlatformChatDocumentSource$inboundSchema.and(
-    z.object({ type: z.literal("DOCUMENT") }),
-  ),
-  PlatformChatPersonSource$inboundSchema,
-  PlatformChatFileSource$inboundSchema,
-  PlatformChatCustomEntitySource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    PlatformChatDocumentSource$inboundSchema.and(
+      z.object({ type: z.literal("DOCUMENT") }),
+    ),
+    PlatformChatPersonSource$inboundSchema,
+    PlatformChatFileSource$inboundSchema,
+    PlatformChatCustomEntitySource$inboundSchema,
+  ])
+);
 
 export function platformChatCitationSourceFromJSON(
   jsonString: string,

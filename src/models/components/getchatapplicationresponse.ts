@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -17,9 +17,11 @@ export const GetChatApplicationResponse$inboundSchema: z.ZodType<
   GetChatApplicationResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  application: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    application: z.any().optional(),
+  })
+);
 
 export function getChatApplicationResponseFromJSON(
   jsonString: string,

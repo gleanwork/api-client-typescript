@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Answer, Answer$inboundSchema } from "./answer.js";
@@ -26,11 +26,13 @@ export const AnswerResult$inboundSchema: z.ZodType<
   AnswerResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  answer: Answer$inboundSchema,
-  trackingToken: z.string().optional(),
-  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    answer: Answer$inboundSchema,
+    trackingToken: z.string().optional(),
+    favoriteInfo: FavoriteInfo$inboundSchema.optional(),
+  })
+);
 
 export function answerResultFromJSON(
   jsonString: string,

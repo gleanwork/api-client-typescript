@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { GeneratedQna, GeneratedQna$inboundSchema } from "./generatedqna.js";
@@ -45,20 +45,22 @@ export const ResultsResponse$inboundSchema: z.ZodType<
   ResultsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  results: z.array(SearchResult$inboundSchema).optional(),
-  structuredResults: z.array(StructuredResult$inboundSchema).optional(),
-  generatedQnaResult: GeneratedQna$inboundSchema.optional(),
-  errorInfo: GleanDataError$inboundSchema.optional(),
-  requestID: z.string().optional(),
-  backendTimeMillis: z.number().int().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "errorInfo": "GleanDataError",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trackingToken: z.string().optional(),
+    sessionInfo: SessionInfo$inboundSchema.optional(),
+    results: z.array(SearchResult$inboundSchema).optional(),
+    structuredResults: z.array(StructuredResult$inboundSchema).optional(),
+    generatedQnaResult: GeneratedQna$inboundSchema.optional(),
+    errorInfo: GleanDataError$inboundSchema.optional(),
+    requestID: z.string().optional(),
+    backendTimeMillis: z.number().int().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "errorInfo": "GleanDataError",
+    });
+  })
+);
 
 export function resultsResponseFromJSON(
   jsonString: string,

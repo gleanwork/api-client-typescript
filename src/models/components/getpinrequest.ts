@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetPinRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetPinRequest$outboundSchema: z.ZodType<
   GetPinRequest$Outbound,
   z.ZodTypeDef,
   GetPinRequest
-> = z.object({
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+  })
+);
 
 export function getPinRequestToJSON(getPinRequest: GetPinRequest): string {
   return JSON.stringify(GetPinRequest$outboundSchema.parse(getPinRequest));
