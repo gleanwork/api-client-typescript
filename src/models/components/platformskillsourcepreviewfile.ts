@@ -8,6 +8,9 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * A supporting file bundled with a skill.
+ */
 export type PlatformSkillSourcePreviewFile = {
   /**
    * Relative path within the skill bundle.

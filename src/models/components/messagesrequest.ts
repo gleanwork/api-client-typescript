@@ -22,14 +22,16 @@ export type IdType = ClosedEnum<typeof IdType>;
 /**
  * The direction of the results asked with respect to the reference timestamp. Missing field defaults to OLDER. Only applicable when using a message_id.
  */
-export const Direction = {
+export const MessagesRequestDirection = {
   Older: "OLDER",
   Newer: "NEWER",
 } as const;
 /**
  * The direction of the results asked with respect to the reference timestamp. Missing field defaults to OLDER. Only applicable when using a message_id.
  */
-export type Direction = ClosedEnum<typeof Direction>;
+export type MessagesRequestDirection = ClosedEnum<
+  typeof MessagesRequestDirection
+>;
 
 /**
  * The type of the data source.
@@ -62,7 +64,7 @@ export type MessagesRequest = {
   /**
    * The direction of the results asked with respect to the reference timestamp. Missing field defaults to OLDER. Only applicable when using a message_id.
    */
-  direction?: Direction | undefined;
+  direction?: MessagesRequestDirection | undefined;
   /**
    * Timestamp in millis of the reference message. Only applicable when using a message_id.
    */
@@ -86,8 +88,9 @@ export const IdType$outboundSchema: z.ZodNativeEnum<typeof IdType> = z
   .nativeEnum(IdType);
 
 /** @internal */
-export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = z
-  .nativeEnum(Direction);
+export const MessagesRequestDirection$outboundSchema: z.ZodNativeEnum<
+  typeof MessagesRequestDirection
+> = z.nativeEnum(MessagesRequestDirection);
 
 /** @internal */
 export const Datasource$outboundSchema: z.ZodNativeEnum<typeof Datasource> = z
@@ -114,7 +117,7 @@ export const MessagesRequest$outboundSchema: z.ZodType<
   idType: IdType$outboundSchema,
   id: z.string(),
   workspaceId: z.string().optional(),
-  direction: Direction$outboundSchema.optional(),
+  direction: MessagesRequestDirection$outboundSchema.optional(),
   timestampMillis: z.number().int().optional(),
   includeRootMessage: z.boolean().optional(),
   datasource: Datasource$outboundSchema,
