@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   ActivityEventParams,
@@ -72,7 +73,7 @@ export type ActivityEvent = {
 /** @internal */
 export const ActivityEventAction$outboundSchema: z.ZodNativeEnum<
   typeof ActivityEventAction
-> = z.nativeEnum(ActivityEventAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ActivityEventAction));
 
 /** @internal */
 export type ActivityEvent$Outbound = {
@@ -88,13 +89,15 @@ export const ActivityEvent$outboundSchema: z.ZodType<
   ActivityEvent$Outbound,
   z.ZodTypeDef,
   ActivityEvent
-> = z.object({
-  id: z.string().optional(),
-  action: ActivityEventAction$outboundSchema,
-  params: ActivityEventParams$outboundSchema.optional(),
-  timestamp: z.date().transform(v => v.toISOString()),
-  url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    action: ActivityEventAction$outboundSchema,
+    params: ActivityEventParams$outboundSchema.optional(),
+    timestamp: z.date().transform(v => v.toISOString()),
+    url: z.string(),
+  })
+);
 
 export function activityEventToJSON(activityEvent: ActivityEvent): string {
   return JSON.stringify(ActivityEvent$outboundSchema.parse(activityEvent));

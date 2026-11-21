@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -152,49 +152,55 @@ export const AnswerSourceType$inboundSchema: z.ZodType<
   AnswerSourceType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AnswerSourceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(AnswerSourceType)
+);
 /** @internal */
 export const AnswerSourceType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AnswerSourceType
-> = openEnums.outboundSchema(AnswerSourceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(AnswerSourceType)
+);
 
 /** @internal */
-export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.number().int(),
-    docId: z.string().optional(),
-    question: z.string().optional(),
-    questionVariations: z.array(z.string()).optional(),
-    bodyText: z.string().optional(),
-    boardId: z.number().int().optional(),
-    audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-    addedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-      .optional(),
-    removedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-      .optional(),
-    roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-      .optional(),
-    sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
-    sourceType: AnswerSourceType$inboundSchema.optional(),
-    permissions: ObjectPermissions$inboundSchema.optional(),
-    trackingToken: z.string().optional(),
-    combinedAnswerText: z.lazy(() => StructuredText$inboundSchema).optional(),
-    likes: z.lazy(() => AnswerLikes$inboundSchema).optional(),
-    author: z.lazy(() => Person$inboundSchema).optional(),
-    createTime: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    updateTime: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    updatedBy: z.lazy(() => Person$inboundSchema).optional(),
-    verification: z.lazy(() => Verification$inboundSchema).optional(),
-    collections: z.array(z.lazy(() => Collection$inboundSchema)).optional(),
-    documentCategory: z.string().optional(),
-    sourceDocument: z.lazy(() => Document$inboundSchema).optional(),
-  });
+export const Answer$inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.number().int(),
+      docId: z.string().optional(),
+      question: z.string().optional(),
+      questionVariations: z.array(z.string()).optional(),
+      bodyText: z.string().optional(),
+      boardId: z.number().int().optional(),
+      audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
+      addedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+        .optional(),
+      removedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+        .optional(),
+      roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+        .optional(),
+      sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
+      sourceType: AnswerSourceType$inboundSchema.optional(),
+      permissions: ObjectPermissions$inboundSchema.optional(),
+      trackingToken: z.string().optional(),
+      combinedAnswerText: z.lazy(() => StructuredText$inboundSchema).optional(),
+      likes: z.lazy(() => AnswerLikes$inboundSchema).optional(),
+      author: z.lazy(() => Person$inboundSchema).optional(),
+      createTime: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      updateTime: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      updatedBy: z.lazy(() => Person$inboundSchema).optional(),
+      verification: z.lazy(() => Verification$inboundSchema).optional(),
+      collections: z.array(z.lazy(() => Collection$inboundSchema)).optional(),
+      documentCategory: z.string().optional(),
+      sourceDocument: z.lazy(() => Document$inboundSchema).optional(),
+    })
+  );
 /** @internal */
 export type Answer$Outbound = {
   id: number;
@@ -228,34 +234,37 @@ export const Answer$outboundSchema: z.ZodType<
   Answer$Outbound,
   z.ZodTypeDef,
   Answer
-> = z.object({
-  id: z.number().int(),
-  docId: z.string().optional(),
-  question: z.string().optional(),
-  questionVariations: z.array(z.string()).optional(),
-  bodyText: z.string().optional(),
-  boardId: z.number().int().optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  addedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
-    .optional(),
-  removedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
-    .optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
-  sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
-  sourceType: AnswerSourceType$outboundSchema.optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  combinedAnswerText: z.lazy(() => StructuredText$outboundSchema).optional(),
-  likes: z.lazy(() => AnswerLikes$outboundSchema).optional(),
-  author: z.lazy(() => Person$outboundSchema).optional(),
-  createTime: z.date().transform(v => v.toISOString()).optional(),
-  updateTime: z.date().transform(v => v.toISOString()).optional(),
-  updatedBy: z.lazy(() => Person$outboundSchema).optional(),
-  verification: z.lazy(() => Verification$outboundSchema).optional(),
-  collections: z.array(z.lazy(() => Collection$outboundSchema)).optional(),
-  documentCategory: z.string().optional(),
-  sourceDocument: z.lazy(() => Document$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    docId: z.string().optional(),
+    question: z.string().optional(),
+    questionVariations: z.array(z.string()).optional(),
+    bodyText: z.string().optional(),
+    boardId: z.number().int().optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    addedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    removedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
+    sourceType: AnswerSourceType$outboundSchema.optional(),
+    permissions: ObjectPermissions$outboundSchema.optional(),
+    trackingToken: z.string().optional(),
+    combinedAnswerText: z.lazy(() => StructuredText$outboundSchema).optional(),
+    likes: z.lazy(() => AnswerLikes$outboundSchema).optional(),
+    author: z.lazy(() => Person$outboundSchema).optional(),
+    createTime: z.date().transform(v => v.toISOString()).optional(),
+    updateTime: z.date().transform(v => v.toISOString()).optional(),
+    updatedBy: z.lazy(() => Person$outboundSchema).optional(),
+    verification: z.lazy(() => Verification$outboundSchema).optional(),
+    collections: z.array(z.lazy(() => Collection$outboundSchema)).optional(),
+    documentCategory: z.string().optional(),
+    sourceDocument: z.lazy(() => Document$outboundSchema).optional(),
+  })
+);
 
 export function answerToJSON(answer: Answer): string {
   return JSON.stringify(Answer$outboundSchema.parse(answer));

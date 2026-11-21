@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -44,14 +44,16 @@ export const PlatformAgentSchemasResponse$inboundSchema: z.ZodType<
   PlatformAgentSchemasResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.string(),
-  name: z.string().optional(),
-  input_schema: z.record(z.any()),
-  output_schema: z.record(z.any()),
-  tools: z.array(PlatformActionSummary$inboundSchema).optional(),
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    name: z.string().optional(),
+    input_schema: z.record(z.any()),
+    output_schema: z.record(z.any()),
+    tools: z.array(PlatformActionSummary$inboundSchema).optional(),
+    request_id: z.string(),
+  })
+);
 
 export function platformAgentSchemasResponseFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { RFCDate } from "../../types/rfcdate.js";
 
 /**
@@ -36,11 +37,13 @@ export const TeamMember$outboundSchema: z.ZodType<
   TeamMember$Outbound,
   z.ZodTypeDef,
   TeamMember
-> = z.object({
-  email: z.string(),
-  relationship: z.string().default("MEMBER"),
-  join_date: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    relationship: z.string().default("MEMBER"),
+    join_date: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+  })
+);
 
 export function teamMemberToJSON(teamMember: TeamMember): string {
   return JSON.stringify(TeamMember$outboundSchema.parse(teamMember));

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const PlatformChatInputMessageRole = {
@@ -22,7 +23,9 @@ export type PlatformChatInputMessage = {
 /** @internal */
 export const PlatformChatInputMessageRole$outboundSchema: z.ZodNativeEnum<
   typeof PlatformChatInputMessageRole
-> = z.nativeEnum(PlatformChatInputMessageRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatInputMessageRole)
+);
 
 /** @internal */
 export type PlatformChatInputMessage$Outbound = {
@@ -35,10 +38,12 @@ export const PlatformChatInputMessage$outboundSchema: z.ZodType<
   PlatformChatInputMessage$Outbound,
   z.ZodTypeDef,
   PlatformChatInputMessage
-> = z.object({
-  role: PlatformChatInputMessageRole$outboundSchema,
-  content: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: PlatformChatInputMessageRole$outboundSchema,
+    content: z.string(),
+  })
+);
 
 export function platformChatInputMessageToJSON(
   platformChatInputMessage: PlatformChatInputMessage,

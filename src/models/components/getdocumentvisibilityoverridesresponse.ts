@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -21,10 +21,12 @@ export const GetDocumentVisibilityOverridesResponse$inboundSchema: z.ZodType<
   GetDocumentVisibilityOverridesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  visibilityOverrides: z.array(DocumentVisibilityOverride$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    visibilityOverrides: z.array(DocumentVisibilityOverride$inboundSchema)
+      .optional(),
+  })
+);
 
 export function getDocumentVisibilityOverridesResponseFromJSON(
   jsonString: string,

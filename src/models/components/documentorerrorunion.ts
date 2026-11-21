@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Document, Document$inboundSchema } from "./document.js";
@@ -23,9 +23,11 @@ export const DocumentOrError$inboundSchema: z.ZodType<
   DocumentOrError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.string(),
+  })
+);
 
 export function documentOrErrorFromJSON(
   jsonString: string,
@@ -42,10 +44,9 @@ export const DocumentOrErrorUnion$inboundSchema: z.ZodType<
   DocumentOrErrorUnion,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DocumentOrError$inboundSchema),
-  Document$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.lazy(() => DocumentOrError$inboundSchema), Document$inboundSchema])
+);
 
 export function documentOrErrorUnionFromJSON(
   jsonString: string,

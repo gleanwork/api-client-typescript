@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,14 +37,16 @@ export type Group = {
 };
 
 /** @internal */
-export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> = z
-  .object({
-    type: GroupType$inboundSchema,
-    id: z.string(),
-    name: z.string().optional(),
-    datasourceInstance: z.string().optional(),
-    provisioningId: z.string().optional(),
-  });
+export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: GroupType$inboundSchema,
+      id: z.string(),
+      name: z.string().optional(),
+      datasourceInstance: z.string().optional(),
+      provisioningId: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Group$Outbound = {
   type: string;
@@ -59,13 +61,15 @@ export const Group$outboundSchema: z.ZodType<
   Group$Outbound,
   z.ZodTypeDef,
   Group
-> = z.object({
-  type: GroupType$outboundSchema,
-  id: z.string(),
-  name: z.string().optional(),
-  datasourceInstance: z.string().optional(),
-  provisioningId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: GroupType$outboundSchema,
+    id: z.string(),
+    name: z.string().optional(),
+    datasourceInstance: z.string().optional(),
+    provisioningId: z.string().optional(),
+  })
+);
 
 export function groupToJSON(group: Group): string {
   return JSON.stringify(Group$outboundSchema.parse(group));

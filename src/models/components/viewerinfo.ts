@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -42,25 +42,27 @@ export const ViewerInfoRole$inboundSchema: z.ZodType<
   ViewerInfoRole,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ViewerInfoRole);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ViewerInfoRole));
 /** @internal */
 export const ViewerInfoRole$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ViewerInfoRole
-> = openEnums.outboundSchema(ViewerInfoRole);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(ViewerInfoRole));
 
 /** @internal */
 export const ViewerInfo$inboundSchema: z.ZodType<
   ViewerInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  role: ViewerInfoRole$inboundSchema.optional(),
-  lastViewedTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: ViewerInfoRole$inboundSchema.optional(),
+    lastViewedTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type ViewerInfo$Outbound = {
   role?: string | undefined;
@@ -72,10 +74,12 @@ export const ViewerInfo$outboundSchema: z.ZodType<
   ViewerInfo$Outbound,
   z.ZodTypeDef,
   ViewerInfo
-> = z.object({
-  role: ViewerInfoRole$outboundSchema.optional(),
-  lastViewedTime: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: ViewerInfoRole$outboundSchema.optional(),
+    lastViewedTime: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function viewerInfoToJSON(viewerInfo: ViewerInfo): string {
   return JSON.stringify(ViewerInfo$outboundSchema.parse(viewerInfo));

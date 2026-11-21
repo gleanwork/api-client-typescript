@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -36,13 +36,15 @@ export const DatasourceProfile$inboundSchema: z.ZodType<
   DatasourceProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  datasource: z.string(),
-  handle: z.string(),
-  url: z.string().optional(),
-  nativeAppUrl: z.string().optional(),
-  isUserGenerated: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    handle: z.string(),
+    url: z.string().optional(),
+    nativeAppUrl: z.string().optional(),
+    isUserGenerated: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type DatasourceProfile$Outbound = {
   datasource: string;
@@ -57,13 +59,15 @@ export const DatasourceProfile$outboundSchema: z.ZodType<
   DatasourceProfile$Outbound,
   z.ZodTypeDef,
   DatasourceProfile
-> = z.object({
-  datasource: z.string(),
-  handle: z.string(),
-  url: z.string().optional(),
-  nativeAppUrl: z.string().optional(),
-  isUserGenerated: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    handle: z.string(),
+    url: z.string().optional(),
+    nativeAppUrl: z.string().optional(),
+    isUserGenerated: z.boolean().optional(),
+  })
+);
 
 export function datasourceProfileToJSON(
   datasourceProfile: DatasourceProfile,

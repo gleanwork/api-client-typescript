@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -67,23 +67,25 @@ export const PlatformDocument$inboundSchema: z.ZodType<
   PlatformDocument,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  document_id: z.string(),
-  url: z.string(),
-  title: z.string(),
-  datasource: z.string(),
-  document_type: z.nullable(z.string()),
-  mime_type: z.string().optional(),
-  creator: PlatformPersonReference$inboundSchema.optional(),
-  owner: PlatformPersonReference$inboundSchema.optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  content: PlatformDocumentContent$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    document_id: z.string(),
+    url: z.string(),
+    title: z.string(),
+    datasource: z.string(),
+    document_type: z.nullable(z.string()),
+    mime_type: z.string().optional(),
+    creator: PlatformPersonReference$inboundSchema.optional(),
+    owner: PlatformPersonReference$inboundSchema.optional(),
+    updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    content: PlatformDocumentContent$inboundSchema.optional(),
+  })
+);
 
 export function platformDocumentFromJSON(
   jsonString: string,

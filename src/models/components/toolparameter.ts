@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -58,22 +58,26 @@ export const ToolParameterType$inboundSchema: z.ZodType<
   ToolParameterType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ToolParameterType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ToolParameterType)
+);
 
 /** @internal */
 export const ToolParameter$inboundSchema: z.ZodType<
   ToolParameter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: ToolParameterType$inboundSchema.optional(),
-  name: z.string().optional(),
-  description: z.string().optional(),
-  isRequired: z.boolean().optional(),
-  possibleValues: z.array(z.string()).optional(),
-  items: z.lazy(() => ToolParameter$inboundSchema).optional(),
-  properties: z.record(z.lazy(() => ToolParameter$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ToolParameterType$inboundSchema.optional(),
+    name: z.string().optional(),
+    description: z.string().optional(),
+    isRequired: z.boolean().optional(),
+    possibleValues: z.array(z.string()).optional(),
+    items: z.lazy(() => ToolParameter$inboundSchema).optional(),
+    properties: z.record(z.lazy(() => ToolParameter$inboundSchema)).optional(),
+  })
+);
 
 export function toolParameterFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   FeedbackChatExchange,
@@ -156,17 +157,16 @@ export type ManualFeedbackInfo = {
 /** @internal */
 export const ManualFeedbackInfoSource$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackInfoSource
-> = z.nativeEnum(ManualFeedbackInfoSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ManualFeedbackInfoSource));
 
 /** @internal */
-export const Issue$outboundSchema: z.ZodNativeEnum<typeof Issue> = z.nativeEnum(
-  Issue,
-);
+export const Issue$outboundSchema: z.ZodNativeEnum<typeof Issue> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Issue));
 
 /** @internal */
 export const ManualFeedbackInfoVote$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackInfoVote
-> = z.nativeEnum(ManualFeedbackInfoVote);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ManualFeedbackInfoVote));
 
 /** @internal */
 export type ManualFeedbackInfo$Outbound = {
@@ -194,25 +194,27 @@ export const ManualFeedbackInfo$outboundSchema: z.ZodType<
   ManualFeedbackInfo$Outbound,
   z.ZodTypeDef,
   ManualFeedbackInfo
-> = z.object({
-  email: z.string().optional(),
-  source: ManualFeedbackInfoSource$outboundSchema.optional(),
-  issue: z.string().optional(),
-  issues: z.array(Issue$outboundSchema).optional(),
-  imageUrls: z.array(z.string()).optional(),
-  query: z.string().optional(),
-  obscuredQuery: z.string().optional(),
-  activeTab: z.string().optional(),
-  comments: z.string().optional(),
-  searchResults: z.array(z.string()).optional(),
-  previousMessages: z.array(z.string()).optional(),
-  chatTranscript: z.array(FeedbackChatExchange$outboundSchema).optional(),
-  numQueriesFromFirstRun: z.number().int().optional(),
-  vote: ManualFeedbackInfoVote$outboundSchema.optional(),
-  rating: z.number().int().optional(),
-  ratingKey: z.string().optional(),
-  ratingScale: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    source: ManualFeedbackInfoSource$outboundSchema.optional(),
+    issue: z.string().optional(),
+    issues: z.array(Issue$outboundSchema).optional(),
+    imageUrls: z.array(z.string()).optional(),
+    query: z.string().optional(),
+    obscuredQuery: z.string().optional(),
+    activeTab: z.string().optional(),
+    comments: z.string().optional(),
+    searchResults: z.array(z.string()).optional(),
+    previousMessages: z.array(z.string()).optional(),
+    chatTranscript: z.array(FeedbackChatExchange$outboundSchema).optional(),
+    numQueriesFromFirstRun: z.number().int().optional(),
+    vote: ManualFeedbackInfoVote$outboundSchema.optional(),
+    rating: z.number().int().optional(),
+    ratingKey: z.string().optional(),
+    ratingScale: z.number().int().optional(),
+  })
+);
 
 export function manualFeedbackInfoToJSON(
   manualFeedbackInfo: ManualFeedbackInfo,

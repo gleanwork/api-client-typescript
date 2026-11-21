@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
 
 export type InsightsAssistantRequest = {
@@ -30,11 +31,13 @@ export const InsightsAssistantRequest$outboundSchema: z.ZodType<
   InsightsAssistantRequest$Outbound,
   z.ZodTypeDef,
   InsightsAssistantRequest
-> = z.object({
-  departments: z.array(z.string()).optional(),
-  managerEmails: z.array(z.string()).optional(),
-  dayRange: Period$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    departments: z.array(z.string()).optional(),
+    managerEmails: z.array(z.string()).optional(),
+    dayRange: Period$outboundSchema.optional(),
+  })
+);
 
 export function insightsAssistantRequestToJSON(
   insightsAssistantRequest: InsightsAssistantRequest,

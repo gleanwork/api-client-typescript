@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -50,22 +50,24 @@ export const AssistantInsightsResponse$inboundSchema: z.ZodType<
   AssistantInsightsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  lastUpdatedTs: z.number().int().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  totalSignups: z.number().int().optional(),
-  chatMessagesTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  summarizationsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  aiAnswersTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  gleanbotInteractionsTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  perUserInsights: z.array(PerUserAssistantInsight$inboundSchema).optional(),
-  upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    monthlyActiveUsers: z.number().int().optional(),
+    weeklyActiveUsers: z.number().int().optional(),
+    lastUpdatedTs: z.number().int().optional(),
+    monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    totalSignups: z.number().int().optional(),
+    chatMessagesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    summarizationsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    aiAnswersTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    gleanbotInteractionsTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    perUserInsights: z.array(PerUserAssistantInsight$inboundSchema).optional(),
+    upvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    downvotesTimeseries: LabeledCountInfo$inboundSchema.optional(),
+  })
+);
 
 export function assistantInsightsResponseFromJSON(
   jsonString: string,

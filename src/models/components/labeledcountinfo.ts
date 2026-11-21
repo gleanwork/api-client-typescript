@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { CountInfo, CountInfo$inboundSchema } from "./countinfo.js";
@@ -25,10 +25,12 @@ export const LabeledCountInfo$inboundSchema: z.ZodType<
   LabeledCountInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  countInfo: z.array(CountInfo$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    countInfo: z.array(CountInfo$inboundSchema).optional(),
+  })
+);
 
 export function labeledCountInfoFromJSON(
   jsonString: string,

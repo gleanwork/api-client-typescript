@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type CreateAgentRequest = {
@@ -31,15 +32,17 @@ export const CreateAgentRequest$outboundSchema: z.ZodType<
   CreateAgentRequest$Outbound,
   z.ZodTypeDef,
   CreateAgentRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  createWorkflowRequest: components.CreateWorkflowRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    createWorkflowRequest: "CreateWorkflowRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    createWorkflowRequest: components.CreateWorkflowRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      createWorkflowRequest: "CreateWorkflowRequest",
+    });
+  })
+);
 
 export function createAgentRequestToJSON(
   createAgentRequest: CreateAgentRequest,

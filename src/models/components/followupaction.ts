@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -47,15 +47,17 @@ export const FollowupAction$inboundSchema: z.ZodType<
   FollowupAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  actionRunId: z.string().optional(),
-  actionInstanceId: z.string().optional(),
-  actionId: z.string().optional(),
-  parameters: z.record(z.string()).optional(),
-  recommendationText: z.string().optional(),
-  actionLabel: z.string().optional(),
-  userConfirmationRequired: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actionRunId: z.string().optional(),
+    actionInstanceId: z.string().optional(),
+    actionId: z.string().optional(),
+    parameters: z.record(z.string()).optional(),
+    recommendationText: z.string().optional(),
+    actionLabel: z.string().optional(),
+    userConfirmationRequired: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type FollowupAction$Outbound = {
   actionRunId?: string | undefined;
@@ -72,15 +74,17 @@ export const FollowupAction$outboundSchema: z.ZodType<
   FollowupAction$Outbound,
   z.ZodTypeDef,
   FollowupAction
-> = z.object({
-  actionRunId: z.string().optional(),
-  actionInstanceId: z.string().optional(),
-  actionId: z.string().optional(),
-  parameters: z.record(z.string()).optional(),
-  recommendationText: z.string().optional(),
-  actionLabel: z.string().optional(),
-  userConfirmationRequired: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actionRunId: z.string().optional(),
+    actionInstanceId: z.string().optional(),
+    actionId: z.string().optional(),
+    parameters: z.record(z.string()).optional(),
+    recommendationText: z.string().optional(),
+    actionLabel: z.string().optional(),
+    userConfirmationRequired: z.boolean().optional(),
+  })
+);
 
 export function followupActionToJSON(followupAction: FollowupAction): string {
   return JSON.stringify(FollowupAction$outboundSchema.parse(followupAction));

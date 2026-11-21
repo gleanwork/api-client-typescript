@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -28,9 +28,11 @@ export const GrantPermission$inboundSchema: z.ZodType<
   GrantPermission,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  scopeType: ScopeType$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: ScopeType$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type GrantPermission$Outbound = {
   scopeType?: string | undefined;
@@ -41,9 +43,11 @@ export const GrantPermission$outboundSchema: z.ZodType<
   GrantPermission$Outbound,
   z.ZodTypeDef,
   GrantPermission
-> = z.object({
-  scopeType: ScopeType$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: ScopeType$outboundSchema.optional(),
+  })
+);
 
 export function grantPermissionToJSON(
   grantPermission: GrantPermission,

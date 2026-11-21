@@ -9,9 +9,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import * as components from "../models/components/index.js";
 import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
 import {
@@ -28,10 +27,10 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Beta: Get document lifecycle events
+ * Get document lifecycle events
  *
  * @remarks
- * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource. Currently in beta, might undergo breaking changes without prior notice.
+ * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource.
  */
 export function indexingDocumentsDebugEvents(
   client: GleanCore,
@@ -107,9 +106,14 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/api/index/v1/debug/{datasource}/document/events")(
+  const pathResult = encodePath(
+    "/api/index/v1/debug/{datasource}/document/events",
     pathParams,
   );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",

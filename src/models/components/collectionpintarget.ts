@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,11 +38,13 @@ export const CollectionPinTarget$inboundSchema: z.ZodType<
   CollectionPinTarget,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  category: CollectionPinnableCategories$inboundSchema,
-  value: z.string().optional(),
-  target: CollectionPinnableTargets$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: CollectionPinnableCategories$inboundSchema,
+    value: z.string().optional(),
+    target: CollectionPinnableTargets$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CollectionPinTarget$Outbound = {
   category: string;
@@ -55,11 +57,13 @@ export const CollectionPinTarget$outboundSchema: z.ZodType<
   CollectionPinTarget$Outbound,
   z.ZodTypeDef,
   CollectionPinTarget
-> = z.object({
-  category: CollectionPinnableCategories$outboundSchema,
-  value: z.string().optional(),
-  target: CollectionPinnableTargets$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: CollectionPinnableCategories$outboundSchema,
+    value: z.string().optional(),
+    target: CollectionPinnableTargets$outboundSchema.optional(),
+  })
+);
 
 export function collectionPinTargetToJSON(
   collectionPinTarget: CollectionPinTarget,

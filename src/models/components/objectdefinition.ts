@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -85,27 +85,29 @@ export const DocCategory$inboundSchema: z.ZodType<
   DocCategory,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DocCategory);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(DocCategory));
 /** @internal */
 export const DocCategory$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DocCategory
-> = openEnums.outboundSchema(DocCategory);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(DocCategory));
 
 /** @internal */
 export const ObjectDefinition$inboundSchema: z.ZodType<
   ObjectDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  displayLabel: z.string().optional(),
-  docCategory: DocCategory$inboundSchema.optional(),
-  propertyDefinitions: z.array(PropertyDefinition$inboundSchema).optional(),
-  propertyGroups: z.array(PropertyGroup$inboundSchema).optional(),
-  summarizable: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    displayLabel: z.string().optional(),
+    docCategory: DocCategory$inboundSchema.optional(),
+    propertyDefinitions: z.array(PropertyDefinition$inboundSchema).optional(),
+    propertyGroups: z.array(PropertyGroup$inboundSchema).optional(),
+    summarizable: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type ObjectDefinition$Outbound = {
   name?: string | undefined;
@@ -121,14 +123,16 @@ export const ObjectDefinition$outboundSchema: z.ZodType<
   ObjectDefinition$Outbound,
   z.ZodTypeDef,
   ObjectDefinition
-> = z.object({
-  name: z.string().optional(),
-  displayLabel: z.string().optional(),
-  docCategory: DocCategory$outboundSchema.optional(),
-  propertyDefinitions: z.array(PropertyDefinition$outboundSchema).optional(),
-  propertyGroups: z.array(PropertyGroup$outboundSchema).optional(),
-  summarizable: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    displayLabel: z.string().optional(),
+    docCategory: DocCategory$outboundSchema.optional(),
+    propertyDefinitions: z.array(PropertyDefinition$outboundSchema).optional(),
+    propertyGroups: z.array(PropertyGroup$outboundSchema).optional(),
+    summarizable: z.boolean().optional(),
+  })
+);
 
 export function objectDefinitionToJSON(
   objectDefinition: ObjectDefinition,

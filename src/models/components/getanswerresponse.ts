@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AnswerResult, AnswerResult$inboundSchema } from "./answerresult.js";
@@ -23,10 +23,12 @@ export const GetAnswerResponse$inboundSchema: z.ZodType<
   GetAnswerResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  answerResult: AnswerResult$inboundSchema.optional(),
-  error: GetAnswerError$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    answerResult: AnswerResult$inboundSchema.optional(),
+    error: GetAnswerError$inboundSchema.optional(),
+  })
+);
 
 export function getAnswerResponseFromJSON(
   jsonString: string,

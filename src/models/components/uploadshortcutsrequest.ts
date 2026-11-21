@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   IndexingShortcut,
   IndexingShortcut$Outbound,
@@ -50,13 +51,15 @@ export const UploadShortcutsRequest$outboundSchema: z.ZodType<
   UploadShortcutsRequest$Outbound,
   z.ZodTypeDef,
   UploadShortcutsRequest
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  shortcuts: z.array(IndexingShortcut$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string(),
+    isFirstPage: z.boolean().optional(),
+    isLastPage: z.boolean().optional(),
+    forceRestartUpload: z.boolean().optional(),
+    shortcuts: z.array(IndexingShortcut$outboundSchema),
+  })
+);
 
 export function uploadShortcutsRequestToJSON(
   uploadShortcutsRequest: UploadShortcutsRequest,

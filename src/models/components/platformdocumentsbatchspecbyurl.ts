@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformDocumentsBatchSpecByUrl = {
   /**
@@ -24,9 +25,11 @@ export const PlatformDocumentsBatchSpecByUrl$outboundSchema: z.ZodType<
   PlatformDocumentsBatchSpecByUrl$Outbound,
   z.ZodTypeDef,
   PlatformDocumentsBatchSpecByUrl
-> = z.object({
-  url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+  })
+);
 
 export function platformDocumentsBatchSpecByUrlToJSON(
   platformDocumentsBatchSpecByUrl: PlatformDocumentsBatchSpecByUrl,

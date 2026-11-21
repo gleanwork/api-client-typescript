@@ -4,32 +4,143 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PlatformAgentCapabilities,
   PlatformAgentCapabilities$inboundSchema,
 } from "./platformagentcapabilities.js";
+import {
+  PlatformAgentChannels,
+  PlatformAgentChannels$inboundSchema,
+} from "./platformagentchannels.js";
+import {
+  PlatformAgentDependency,
+  PlatformAgentDependency$inboundSchema,
+} from "./platformagentdependency.js";
+import {
+  PlatformAgentGleanSearchConfig,
+  PlatformAgentGleanSearchConfig$inboundSchema,
+} from "./platformagentgleansearchconfig.js";
+import {
+  PlatformAgentLlmModel,
+  PlatformAgentLlmModel$inboundSchema,
+} from "./platformagentllmmodel.js";
+import {
+  PlatformAgentServiceCredential,
+  PlatformAgentServiceCredential$inboundSchema,
+} from "./platformagentservicecredential.js";
+import {
+  PlatformAgentSkill,
+  PlatformAgentSkill$inboundSchema,
+} from "./platformagentskill.js";
+import {
+  PlatformAgentToolset,
+  PlatformAgentToolset$inboundSchema,
+} from "./platformagenttoolset.js";
+import {
+  PlatformAgentTrigger,
+  PlatformAgentTrigger$inboundSchema,
+} from "./platformagenttrigger.js";
+import {
+  PlatformPersonReference,
+  PlatformPersonReference$inboundSchema,
+} from "./platformpersonreference.js";
+import {
+  PlatformSubagent,
+  PlatformSubagent$inboundSchema,
+} from "./platformsubagent.js";
 
+/**
+ * An agent available to the authenticated user.
+ */
 export type PlatformAgent = {
+  /**
+   * Human-readable name.
+   */
+  name: string;
+  /**
+   * Description of the agent's purpose and behavior.
+   */
+  description?: string | undefined;
+  /**
+   * System prompt the agent follows.
+   */
+  instructions?: string | undefined;
+  /**
+   * Skills defined inline.
+   */
+  skills?: Array<PlatformAgentSkill> | undefined;
+  /**
+   * Published artifacts referenced by platform ID. Their content is not inlined in `skills` or `subagents`.
+   *
+   * @remarks
+   */
+  dependencies?: Array<PlatformAgentDependency> | undefined;
+  /**
+   * Tool providers and the subset of their tools available to the agent.
+   */
+  tools?: Array<PlatformAgentToolset> | undefined;
+  /**
+   * Glean Search configuration. When omitted, Glean Search is disabled for the agent. An empty object searches all company knowledge available to the invoking user. Populated lists restrict search to the union of the listed datasource instances and URLs.
+   *
+   * @remarks
+   */
+  glean_search_config?: PlatformAgentGleanSearchConfig | undefined;
+  /**
+   * Agentic model the agent runs on and its reasoning effort.
+   */
+  model?: PlatformAgentLlmModel | undefined;
+  /**
+   * Service credentials the agent uses to call tools.
+   */
+  service_credentials?: Array<PlatformAgentServiceCredential> | undefined;
   /**
    * ID of the agent.
    */
   agent_id: string;
   /**
-   * Name of the agent.
-   */
-  name: string;
-  /**
-   * Description of the agent.
-   */
-  description?: string | undefined;
-  /**
    * Agent metadata.
    */
   metadata?: { [k: string]: any } | undefined;
   capabilities: PlatformAgentCapabilities;
+  /**
+   * Whether the agent acts with its own identity instead of the invoking user's. Cannot be changed after the agent is created.
+   *
+   * @remarks
+   */
+  use_agent_identity?: boolean | undefined;
+  /**
+   * Messaging channels the agent is deployed to. Requires `use_agent_identity`.
+   */
+  channels?: PlatformAgentChannels | undefined;
+  /**
+   * Subagents the agent dispatches work to. Subagents cannot contain subagents.
+   *
+   * @remarks
+   */
+  subagents?: Array<PlatformSubagent> | undefined;
+  /**
+   * How the agent is invoked. Applies to top-level agents only.
+   */
+  trigger?: PlatformAgentTrigger | undefined;
+  /**
+   * A lightweight reference to a person, used where a payload merely points at someone.
+   */
+  created_by?: PlatformPersonReference | undefined;
+  /**
+   * A lightweight reference to a person, used where a payload merely points at someone.
+   */
+  updated_by?: PlatformPersonReference | undefined;
+  /**
+   * Time the agent was created.
+   */
+  created_at?: Date | undefined;
+  /**
+   * Time the agent was last updated.
+   */
+  updated_at?: Date | undefined;
 };
 
 /** @internal */
@@ -37,13 +148,36 @@ export const PlatformAgent$inboundSchema: z.ZodType<
   PlatformAgent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  metadata: z.record(z.any()).optional(),
-  capabilities: PlatformAgentCapabilities$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string().optional(),
+    instructions: z.string().optional(),
+    skills: z.array(PlatformAgentSkill$inboundSchema).optional(),
+    dependencies: z.array(PlatformAgentDependency$inboundSchema).optional(),
+    tools: z.array(PlatformAgentToolset$inboundSchema).optional(),
+    glean_search_config: PlatformAgentGleanSearchConfig$inboundSchema
+      .optional(),
+    model: PlatformAgentLlmModel$inboundSchema.optional(),
+    service_credentials: z.array(PlatformAgentServiceCredential$inboundSchema)
+      .optional(),
+    agent_id: z.string(),
+    metadata: z.record(z.any()).optional(),
+    capabilities: PlatformAgentCapabilities$inboundSchema,
+    use_agent_identity: z.boolean().optional(),
+    channels: PlatformAgentChannels$inboundSchema.optional(),
+    subagents: z.array(PlatformSubagent$inboundSchema).optional(),
+    trigger: PlatformAgentTrigger$inboundSchema.optional(),
+    created_by: PlatformPersonReference$inboundSchema.optional(),
+    updated_by: PlatformPersonReference$inboundSchema.optional(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 
 export function platformAgentFromJSON(
   jsonString: string,

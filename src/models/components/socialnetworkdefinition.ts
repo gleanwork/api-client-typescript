@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Employee's social network profile
@@ -35,11 +36,13 @@ export const SocialNetworkDefinition$outboundSchema: z.ZodType<
   SocialNetworkDefinition$Outbound,
   z.ZodTypeDef,
   SocialNetworkDefinition
-> = z.object({
-  name: z.string().optional(),
-  profileName: z.string().optional(),
-  profileUrl: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    profileName: z.string().optional(),
+    profileUrl: z.string().optional(),
+  })
+);
 
 export function socialNetworkDefinitionToJSON(
   socialNetworkDefinition: SocialNetworkDefinition,

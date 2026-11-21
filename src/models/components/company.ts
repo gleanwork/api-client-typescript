@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -66,21 +66,23 @@ export type Company = {
 
 /** @internal */
 export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> =
-  z.object({
-    name: z.string(),
-    profileUrl: z.string().optional(),
-    websiteUrls: z.array(z.string()).optional(),
-    logoUrl: z.string().optional(),
-    location: z.string().optional(),
-    phone: z.string().optional(),
-    fax: z.string().optional(),
-    industry: z.string().optional(),
-    annualRevenue: z.number().optional(),
-    numberOfEmployees: z.number().int().optional(),
-    stockSymbol: z.string().optional(),
-    foundedDate: z.string().transform(v => new RFCDate(v)).optional(),
-    about: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      profileUrl: z.string().optional(),
+      websiteUrls: z.array(z.string()).optional(),
+      logoUrl: z.string().optional(),
+      location: z.string().optional(),
+      phone: z.string().optional(),
+      fax: z.string().optional(),
+      industry: z.string().optional(),
+      annualRevenue: z.number().optional(),
+      numberOfEmployees: z.number().int().optional(),
+      stockSymbol: z.string().optional(),
+      foundedDate: z.string().transform(v => new RFCDate(v)).optional(),
+      about: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Company$Outbound = {
   name: string;
@@ -103,21 +105,23 @@ export const Company$outboundSchema: z.ZodType<
   Company$Outbound,
   z.ZodTypeDef,
   Company
-> = z.object({
-  name: z.string(),
-  profileUrl: z.string().optional(),
-  websiteUrls: z.array(z.string()).optional(),
-  logoUrl: z.string().optional(),
-  location: z.string().optional(),
-  phone: z.string().optional(),
-  fax: z.string().optional(),
-  industry: z.string().optional(),
-  annualRevenue: z.number().optional(),
-  numberOfEmployees: z.number().int().optional(),
-  stockSymbol: z.string().optional(),
-  foundedDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-  about: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    profileUrl: z.string().optional(),
+    websiteUrls: z.array(z.string()).optional(),
+    logoUrl: z.string().optional(),
+    location: z.string().optional(),
+    phone: z.string().optional(),
+    fax: z.string().optional(),
+    industry: z.string().optional(),
+    annualRevenue: z.number().optional(),
+    numberOfEmployees: z.number().int().optional(),
+    stockSymbol: z.string().optional(),
+    foundedDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+    about: z.string().optional(),
+  })
+);
 
 export function companyToJSON(company: Company): string {
   return JSON.stringify(Company$outboundSchema.parse(company));

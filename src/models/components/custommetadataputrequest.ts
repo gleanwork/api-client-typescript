@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   CustomProperty,
   CustomProperty$Outbound,
@@ -30,9 +31,11 @@ export const CustomMetadataPutRequest$outboundSchema: z.ZodType<
   CustomMetadataPutRequest$Outbound,
   z.ZodTypeDef,
   CustomMetadataPutRequest
-> = z.object({
-  customMetadata: z.array(CustomProperty$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customMetadata: z.array(CustomProperty$outboundSchema),
+  })
+);
 
 export function customMetadataPutRequestToJSON(
   customMetadataPutRequest: CustomMetadataPutRequest,

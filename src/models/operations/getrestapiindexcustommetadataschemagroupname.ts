@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export const GetRestApiIndexCustomMetadataSchemaGroupNameServerList = [
   "https://{instance}-be.glean.com",
@@ -27,9 +28,11 @@ export const GetRestApiIndexCustomMetadataSchemaGroupNameRequest$outboundSchema:
     GetRestApiIndexCustomMetadataSchemaGroupNameRequest$Outbound,
     z.ZodTypeDef,
     GetRestApiIndexCustomMetadataSchemaGroupNameRequest
-  > = z.object({
-    groupName: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      groupName: z.string(),
+    })
+  );
 
 export function getRestApiIndexCustomMetadataSchemaGroupNameRequestToJSON(
   getRestApiIndexCustomMetadataSchemaGroupNameRequest:

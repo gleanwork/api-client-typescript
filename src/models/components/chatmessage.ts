@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -153,41 +153,43 @@ export type ChatMessage = {
 
 /** @internal */
 export const Author$inboundSchema: z.ZodType<Author, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(Author);
+  /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(Author));
 /** @internal */
 export const Author$outboundSchema: z.ZodType<string, z.ZodTypeDef, Author> =
-  openEnums.outboundSchema(Author);
+  /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(Author));
 
 /** @internal */
 export const MessageType$inboundSchema: z.ZodType<
   MessageType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(MessageType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(MessageType));
 /** @internal */
 export const MessageType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   MessageType
-> = openEnums.outboundSchema(MessageType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(MessageType));
 
 /** @internal */
 export const ChatMessage$inboundSchema: z.ZodType<
   ChatMessage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agentConfig: AgentConfig$inboundSchema.optional(),
-  author: Author$inboundSchema.default("USER"),
-  citations: z.array(ChatMessageCitation$inboundSchema).optional(),
-  uploadedFileIds: z.array(z.string()).optional(),
-  fragments: z.array(ChatMessageFragment$inboundSchema).optional(),
-  ts: z.string().optional(),
-  messageId: z.string().optional(),
-  messageTrackingToken: z.string().optional(),
-  messageType: MessageType$inboundSchema.default("CONTENT"),
-  hasMoreFragments: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentConfig: AgentConfig$inboundSchema.optional(),
+    author: Author$inboundSchema.default("USER"),
+    citations: z.array(ChatMessageCitation$inboundSchema).optional(),
+    uploadedFileIds: z.array(z.string()).optional(),
+    fragments: z.array(ChatMessageFragment$inboundSchema).optional(),
+    ts: z.string().optional(),
+    messageId: z.string().optional(),
+    messageTrackingToken: z.string().optional(),
+    messageType: MessageType$inboundSchema.default("CONTENT"),
+    hasMoreFragments: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type ChatMessage$Outbound = {
   agentConfig?: AgentConfig$Outbound | undefined;
@@ -207,18 +209,20 @@ export const ChatMessage$outboundSchema: z.ZodType<
   ChatMessage$Outbound,
   z.ZodTypeDef,
   ChatMessage
-> = z.object({
-  agentConfig: AgentConfig$outboundSchema.optional(),
-  author: Author$outboundSchema.default("USER"),
-  citations: z.array(ChatMessageCitation$outboundSchema).optional(),
-  uploadedFileIds: z.array(z.string()).optional(),
-  fragments: z.array(ChatMessageFragment$outboundSchema).optional(),
-  ts: z.string().optional(),
-  messageId: z.string().optional(),
-  messageTrackingToken: z.string().optional(),
-  messageType: MessageType$outboundSchema.default("CONTENT"),
-  hasMoreFragments: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentConfig: AgentConfig$outboundSchema.optional(),
+    author: Author$outboundSchema.default("USER"),
+    citations: z.array(ChatMessageCitation$outboundSchema).optional(),
+    uploadedFileIds: z.array(z.string()).optional(),
+    fragments: z.array(ChatMessageFragment$outboundSchema).optional(),
+    ts: z.string().optional(),
+    messageId: z.string().optional(),
+    messageTrackingToken: z.string().optional(),
+    messageType: MessageType$outboundSchema.default("CONTENT"),
+    hasMoreFragments: z.boolean().optional(),
+  })
+);
 
 export function chatMessageToJSON(chatMessage: ChatMessage): string {
   return JSON.stringify(ChatMessage$outboundSchema.parse(chatMessage));

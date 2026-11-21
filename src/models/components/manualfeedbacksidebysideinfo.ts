@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   SideBySideImplementation,
@@ -79,12 +80,16 @@ export type ManualFeedbackSideBySideInfo = {
 /** @internal */
 export const ManualFeedbackSideBySideInfoSource$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackSideBySideInfoSource
-> = z.nativeEnum(ManualFeedbackSideBySideInfoSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ManualFeedbackSideBySideInfoSource)
+);
 
 /** @internal */
 export const ManualFeedbackSideBySideInfoVote$outboundSchema: z.ZodNativeEnum<
   typeof ManualFeedbackSideBySideInfoVote
-> = z.nativeEnum(ManualFeedbackSideBySideInfoVote);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ManualFeedbackSideBySideInfoVote)
+);
 
 /** @internal */
 export type ManualFeedbackSideBySideInfo$Outbound = {
@@ -103,16 +108,19 @@ export const ManualFeedbackSideBySideInfo$outboundSchema: z.ZodType<
   ManualFeedbackSideBySideInfo$Outbound,
   z.ZodTypeDef,
   ManualFeedbackSideBySideInfo
-> = z.object({
-  email: z.string().optional(),
-  source: ManualFeedbackSideBySideInfoSource$outboundSchema.optional(),
-  query: z.string().optional(),
-  implementations: z.array(SideBySideImplementation$outboundSchema).optional(),
-  evaluationSessionId: z.string().optional(),
-  implementationId: z.string().optional(),
-  vote: ManualFeedbackSideBySideInfoVote$outboundSchema.optional(),
-  comments: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string().optional(),
+    source: ManualFeedbackSideBySideInfoSource$outboundSchema.optional(),
+    query: z.string().optional(),
+    implementations: z.array(SideBySideImplementation$outboundSchema)
+      .optional(),
+    evaluationSessionId: z.string().optional(),
+    implementationId: z.string().optional(),
+    vote: ManualFeedbackSideBySideInfoVote$outboundSchema.optional(),
+    comments: z.string().optional(),
+  })
+);
 
 export function manualFeedbackSideBySideInfoToJSON(
   manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -80,29 +80,35 @@ export const GeneratedQnaStatus$inboundSchema: z.ZodType<
   GeneratedQnaStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GeneratedQnaStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GeneratedQnaStatus)
+);
 /** @internal */
 export const GeneratedQnaStatus$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   GeneratedQnaStatus
-> = openEnums.outboundSchema(GeneratedQnaStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(GeneratedQnaStatus)
+);
 
 /** @internal */
 export const GeneratedQna$inboundSchema: z.ZodType<
   GeneratedQna,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  question: z.string().optional(),
-  answer: z.string().optional(),
-  followUpPrompts: z.array(z.string()).optional(),
-  followupActions: z.array(FollowupAction$inboundSchema).optional(),
-  ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
-  status: GeneratedQnaStatus$inboundSchema.optional(),
-  cursor: z.string().optional(),
-  trackingToken: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    question: z.string().optional(),
+    answer: z.string().optional(),
+    followUpPrompts: z.array(z.string()).optional(),
+    followupActions: z.array(FollowupAction$inboundSchema).optional(),
+    ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
+    status: GeneratedQnaStatus$inboundSchema.optional(),
+    cursor: z.string().optional(),
+    trackingToken: z.string().optional(),
+  })
+);
 /** @internal */
 export type GeneratedQna$Outbound = {
   question?: string | undefined;
@@ -120,16 +126,18 @@ export const GeneratedQna$outboundSchema: z.ZodType<
   GeneratedQna$Outbound,
   z.ZodTypeDef,
   GeneratedQna
-> = z.object({
-  question: z.string().optional(),
-  answer: z.string().optional(),
-  followUpPrompts: z.array(z.string()).optional(),
-  followupActions: z.array(FollowupAction$outboundSchema).optional(),
-  ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
-  status: GeneratedQnaStatus$outboundSchema.optional(),
-  cursor: z.string().optional(),
-  trackingToken: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    question: z.string().optional(),
+    answer: z.string().optional(),
+    followUpPrompts: z.array(z.string()).optional(),
+    followupActions: z.array(FollowupAction$outboundSchema).optional(),
+    ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
+    status: GeneratedQnaStatus$outboundSchema.optional(),
+    cursor: z.string().optional(),
+    trackingToken: z.string().optional(),
+  })
+);
 
 export function generatedQnaToJSON(generatedQna: GeneratedQna): string {
   return JSON.stringify(GeneratedQna$outboundSchema.parse(generatedQna));

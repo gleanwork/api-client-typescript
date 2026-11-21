@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const ConfigurationValue$inboundSchema: z.ZodType<
   ConfigurationValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.string().optional(),
-  valueList: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    valueList: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type ConfigurationValue$Outbound = {
   value?: string | undefined;
@@ -42,10 +44,12 @@ export const ConfigurationValue$outboundSchema: z.ZodType<
   ConfigurationValue$Outbound,
   z.ZodTypeDef,
   ConfigurationValue
-> = z.object({
-  value: z.string().optional(),
-  valueList: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    valueList: z.array(z.string()).optional(),
+  })
+);
 
 export function configurationValueToJSON(
   configurationValue: ConfigurationValue,

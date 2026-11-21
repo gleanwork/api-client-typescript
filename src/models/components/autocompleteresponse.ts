@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,19 +49,21 @@ export const AutocompleteResponse$inboundSchema: z.ZodType<
   AutocompleteResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  experimentIds: z.array(z.number().int()).optional(),
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$inboundSchema.optional(),
-  results: z.array(AutocompleteResult$inboundSchema).optional(),
-  groups: z.array(AutocompleteResultGroup$inboundSchema).optional(),
-  errorInfo: GleanDataError$inboundSchema.optional(),
-  backendTimeMillis: z.number().int().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "errorInfo": "GleanDataError",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experimentIds: z.array(z.number().int()).optional(),
+    trackingToken: z.string().optional(),
+    sessionInfo: SessionInfo$inboundSchema.optional(),
+    results: z.array(AutocompleteResult$inboundSchema).optional(),
+    groups: z.array(AutocompleteResultGroup$inboundSchema).optional(),
+    errorInfo: GleanDataError$inboundSchema.optional(),
+    backendTimeMillis: z.number().int().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "errorInfo": "GleanDataError",
+    });
+  })
+);
 
 export function autocompleteResponseFromJSON(
   jsonString: string,

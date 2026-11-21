@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
@@ -45,15 +45,17 @@ export const AgentsTimeSavedInsight$inboundSchema: z.ZodType<
   AgentsTimeSavedInsight,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agentId: z.string().optional(),
-  agentName: z.string().optional(),
-  icon: IconConfig$inboundSchema.optional(),
-  isDeleted: z.boolean().optional(),
-  runCount: z.number().int().optional(),
-  minsPerRun: z.number().optional(),
-  feedbackUserCount: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.string().optional(),
+    agentName: z.string().optional(),
+    icon: IconConfig$inboundSchema.optional(),
+    isDeleted: z.boolean().optional(),
+    runCount: z.number().int().optional(),
+    minsPerRun: z.number().optional(),
+    feedbackUserCount: z.number().int().optional(),
+  })
+);
 
 export function agentsTimeSavedInsightFromJSON(
   jsonString: string,

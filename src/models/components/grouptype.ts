@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -34,10 +35,10 @@ export const GroupType$inboundSchema: z.ZodType<
   GroupType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GroupType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(GroupType));
 /** @internal */
 export const GroupType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   GroupType
-> = openEnums.outboundSchema(GroupType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(GroupType));

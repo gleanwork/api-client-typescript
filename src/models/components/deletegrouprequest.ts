@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /deletegroup API call
@@ -35,11 +36,13 @@ export const DeleteGroupRequest$outboundSchema: z.ZodType<
   DeleteGroupRequest$Outbound,
   z.ZodTypeDef,
   DeleteGroupRequest
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  groupName: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.number().int().optional(),
+    datasource: z.string(),
+    groupName: z.string(),
+  })
+);
 
 export function deleteGroupRequestToJSON(
   deleteGroupRequest: DeleteGroupRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,11 +34,13 @@ export const RelatedQuestion$inboundSchema: z.ZodType<
   RelatedQuestion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  question: z.string().optional(),
-  answer: z.string().optional(),
-  ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    question: z.string().optional(),
+    answer: z.string().optional(),
+    ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
+  })
+);
 /** @internal */
 export type RelatedQuestion$Outbound = {
   question?: string | undefined;
@@ -51,11 +53,13 @@ export const RelatedQuestion$outboundSchema: z.ZodType<
   RelatedQuestion$Outbound,
   z.ZodTypeDef,
   RelatedQuestion
-> = z.object({
-  question: z.string().optional(),
-  answer: z.string().optional(),
-  ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    question: z.string().optional(),
+    answer: z.string().optional(),
+    ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
+  })
+);
 
 export function relatedQuestionToJSON(
   relatedQuestion: RelatedQuestion,
