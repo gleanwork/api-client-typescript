@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type GetcollectionRequest = {
@@ -29,14 +30,16 @@ export const GetcollectionRequest$outboundSchema: z.ZodType<
   GetcollectionRequest$Outbound,
   z.ZodTypeDef,
   GetcollectionRequest
-> = z.object({
-  locale: z.string().optional(),
-  getCollectionRequest: components.GetCollectionRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    getCollectionRequest: "GetCollectionRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    getCollectionRequest: components.GetCollectionRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      getCollectionRequest: "GetCollectionRequest",
+    });
+  })
+);
 
 export function getcollectionRequestToJSON(
   getcollectionRequest: GetcollectionRequest,

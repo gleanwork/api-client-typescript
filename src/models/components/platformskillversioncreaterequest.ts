@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 
 export type PlatformSkillVersionCreateRequestFile = {
@@ -29,15 +30,17 @@ export const PlatformSkillVersionCreateRequestFile$outboundSchema: z.ZodType<
   PlatformSkillVersionCreateRequestFile$Outbound,
   z.ZodTypeDef,
   PlatformSkillVersionCreateRequestFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function platformSkillVersionCreateRequestFileToJSON(
   platformSkillVersionCreateRequestFile: PlatformSkillVersionCreateRequestFile,
@@ -59,11 +62,13 @@ export const PlatformSkillVersionCreateRequest$outboundSchema: z.ZodType<
   PlatformSkillVersionCreateRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillVersionCreateRequest
-> = z.object({
-  file: z.lazy(() => PlatformSkillVersionCreateRequestFile$outboundSchema).or(
-    blobLikeSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => PlatformSkillVersionCreateRequestFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+  })
+);
 
 export function platformSkillVersionCreateRequestToJSON(
   platformSkillVersionCreateRequest: PlatformSkillVersionCreateRequest,

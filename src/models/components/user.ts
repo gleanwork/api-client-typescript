@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type User = {
   /**
@@ -24,10 +25,12 @@ export type User$Outbound = {
 
 /** @internal */
 export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> =
-  z.object({
-    userID: z.string().optional(),
-    origID: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      userID: z.string().optional(),
+      origID: z.string().optional(),
+    })
+  );
 
 export function userToJSON(user: User): string {
   return JSON.stringify(User$outboundSchema.parse(user));

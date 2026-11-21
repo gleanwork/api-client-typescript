@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -72,16 +72,18 @@ export const Permissions$inboundSchema: z.ZodType<
   Permissions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canAdminSearch: z.boolean().optional(),
-  canAdminClientApiGlobalTokens: z.boolean().optional(),
-  canDlp: z.boolean().optional(),
-  read: z.record(z.array(ReadPermission$inboundSchema)).optional(),
-  write: z.record(z.array(WritePermission$inboundSchema)).optional(),
-  grant: z.record(z.array(GrantPermission$inboundSchema)).optional(),
-  role: z.string().optional(),
-  roles: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canAdminSearch: z.boolean().optional(),
+    canAdminClientApiGlobalTokens: z.boolean().optional(),
+    canDlp: z.boolean().optional(),
+    read: z.record(z.array(ReadPermission$inboundSchema)).optional(),
+    write: z.record(z.array(WritePermission$inboundSchema)).optional(),
+    grant: z.record(z.array(GrantPermission$inboundSchema)).optional(),
+    role: z.string().optional(),
+    roles: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type Permissions$Outbound = {
   canAdminSearch?: boolean | undefined;
@@ -99,16 +101,18 @@ export const Permissions$outboundSchema: z.ZodType<
   Permissions$Outbound,
   z.ZodTypeDef,
   Permissions
-> = z.object({
-  canAdminSearch: z.boolean().optional(),
-  canAdminClientApiGlobalTokens: z.boolean().optional(),
-  canDlp: z.boolean().optional(),
-  read: z.record(z.array(ReadPermission$outboundSchema)).optional(),
-  write: z.record(z.array(WritePermission$outboundSchema)).optional(),
-  grant: z.record(z.array(GrantPermission$outboundSchema)).optional(),
-  role: z.string().optional(),
-  roles: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canAdminSearch: z.boolean().optional(),
+    canAdminClientApiGlobalTokens: z.boolean().optional(),
+    canDlp: z.boolean().optional(),
+    read: z.record(z.array(ReadPermission$outboundSchema)).optional(),
+    write: z.record(z.array(WritePermission$outboundSchema)).optional(),
+    grant: z.record(z.array(GrantPermission$outboundSchema)).optional(),
+    role: z.string().optional(),
+    roles: z.array(z.string()).optional(),
+  })
+);
 
 export function permissionsToJSON(permissions: Permissions): string {
   return JSON.stringify(Permissions$outboundSchema.parse(permissions));

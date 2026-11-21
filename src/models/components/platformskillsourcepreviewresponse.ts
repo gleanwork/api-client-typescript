@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const PlatformSkillSourcePreviewResponse$inboundSchema: z.ZodType<
   PlatformSkillSourcePreviewResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  skills: z.array(PlatformSkillSourcePreview$inboundSchema),
-  failures: z.array(PlatformSkillSourcePreviewFailure$inboundSchema),
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skills: z.array(PlatformSkillSourcePreview$inboundSchema),
+    failures: z.array(PlatformSkillSourcePreviewFailure$inboundSchema),
+    request_id: z.string(),
+  })
+);
 
 export function platformSkillSourcePreviewResponseFromJSON(
   jsonString: string,

@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type UpdateannouncementRequest = {
@@ -29,15 +30,17 @@ export const UpdateannouncementRequest$outboundSchema: z.ZodType<
   UpdateannouncementRequest$Outbound,
   z.ZodTypeDef,
   UpdateannouncementRequest
-> = z.object({
-  locale: z.string().optional(),
-  updateAnnouncementRequest:
-    components.UpdateAnnouncementRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateAnnouncementRequest: "UpdateAnnouncementRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    updateAnnouncementRequest:
+      components.UpdateAnnouncementRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateAnnouncementRequest: "UpdateAnnouncementRequest",
+    });
+  })
+);
 
 export function updateannouncementRequestToJSON(
   updateannouncementRequest: UpdateannouncementRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,11 +31,13 @@ export const CountInfo$inboundSchema: z.ZodType<
   CountInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: z.number().int(),
-  period: Period$inboundSchema.optional(),
-  org: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: z.number().int(),
+    period: Period$inboundSchema.optional(),
+    org: z.string().optional(),
+  })
+);
 /** @internal */
 export type CountInfo$Outbound = {
   count: number;
@@ -48,11 +50,13 @@ export const CountInfo$outboundSchema: z.ZodType<
   CountInfo$Outbound,
   z.ZodTypeDef,
   CountInfo
-> = z.object({
-  count: z.number().int(),
-  period: Period$outboundSchema.optional(),
-  org: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: z.number().int(),
+    period: Period$outboundSchema.optional(),
+    org: z.string().optional(),
+  })
+);
 
 export function countInfoToJSON(countInfo: CountInfo): string {
   return JSON.stringify(CountInfo$outboundSchema.parse(countInfo));

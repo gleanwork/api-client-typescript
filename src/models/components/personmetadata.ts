@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -286,69 +286,77 @@ export const PersonMetadataType$inboundSchema: z.ZodType<
   PersonMetadataType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PersonMetadataType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PersonMetadataType)
+);
 /** @internal */
 export const PersonMetadataType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   PersonMetadataType
-> = openEnums.outboundSchema(PersonMetadataType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(PersonMetadataType)
+);
 
 /** @internal */
 export const PersonMetadata$inboundSchema: z.ZodType<
   PersonMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PersonMetadataType$inboundSchema.optional(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  title: z.string().optional(),
-  businessUnit: z.string().optional(),
-  department: z.string().optional(),
-  jobFunction: z.string().optional(),
-  teams: z.array(PersonTeam$inboundSchema).optional(),
-  departmentCount: z.number().int().optional(),
-  email: z.string().optional(),
-  aliasEmails: z.array(z.string()).optional(),
-  location: z.string().optional(),
-  structuredLocation: StructuredLocation$inboundSchema.optional(),
-  externalProfileLink: z.string().optional(),
-  manager: z.lazy(() => Person$inboundSchema).optional(),
-  managementChain: z.array(z.lazy(() => Person$inboundSchema)).optional(),
-  phone: z.string().optional(),
-  timezone: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  timezoneIANA: z.string().optional(),
-  photoUrl: z.string().optional(),
-  uneditedPhotoUrl: z.string().optional(),
-  bannerUrl: z.string().optional(),
-  reports: z.array(z.lazy(() => Person$inboundSchema)).optional(),
-  startDate: z.string().transform(v => new RFCDate(v)).optional(),
-  endDate: z.string().transform(v => new RFCDate(v)).optional(),
-  bio: z.string().optional(),
-  pronoun: z.string().optional(),
-  orgSizeCount: z.number().int().optional(),
-  directReportsCount: z.number().int().optional(),
-  preferredName: z.string().optional(),
-  socialNetwork: z.array(SocialNetwork$inboundSchema).optional(),
-  datasourceProfile: z.array(DatasourceProfile$inboundSchema).optional(),
-  querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema).optional(),
-  peopleDistance: z.array(PersonDistance$inboundSchema).optional(),
-  inviteInfo: z.lazy(() => InviteInfo$inboundSchema).optional(),
-  isSignedUp: z.boolean().optional(),
-  lastExtensionUse: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  permissions: Permissions$inboundSchema.optional(),
-  customFields: z.array(z.lazy(() => CustomFieldData$inboundSchema)).optional(),
-  loggingId: z.string().optional(),
-  startDatePercentile: z.number().optional(),
-  busyEvents: z.array(AnonymousEvent$inboundSchema).optional(),
-  profileBoolSettings: z.record(z.boolean()).optional(),
-  badges: z.array(Badge$inboundSchema).optional(),
-  isOrgRoot: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PersonMetadataType$inboundSchema.optional(),
+    firstName: z.string().optional(),
+    lastName: z.string().optional(),
+    title: z.string().optional(),
+    businessUnit: z.string().optional(),
+    department: z.string().optional(),
+    jobFunction: z.string().optional(),
+    teams: z.array(PersonTeam$inboundSchema).optional(),
+    departmentCount: z.number().int().optional(),
+    email: z.string().optional(),
+    aliasEmails: z.array(z.string()).optional(),
+    location: z.string().optional(),
+    structuredLocation: StructuredLocation$inboundSchema.optional(),
+    externalProfileLink: z.string().optional(),
+    manager: z.lazy(() => Person$inboundSchema).optional(),
+    managementChain: z.array(z.lazy(() => Person$inboundSchema)).optional(),
+    phone: z.string().optional(),
+    timezone: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    timezoneIANA: z.string().optional(),
+    photoUrl: z.string().optional(),
+    uneditedPhotoUrl: z.string().optional(),
+    bannerUrl: z.string().optional(),
+    reports: z.array(z.lazy(() => Person$inboundSchema)).optional(),
+    startDate: z.string().transform(v => new RFCDate(v)).optional(),
+    endDate: z.string().transform(v => new RFCDate(v)).optional(),
+    bio: z.string().optional(),
+    pronoun: z.string().optional(),
+    orgSizeCount: z.number().int().optional(),
+    directReportsCount: z.number().int().optional(),
+    preferredName: z.string().optional(),
+    socialNetwork: z.array(SocialNetwork$inboundSchema).optional(),
+    datasourceProfile: z.array(DatasourceProfile$inboundSchema).optional(),
+    querySuggestions: z.lazy(() => QuerySuggestionList$inboundSchema)
+      .optional(),
+    peopleDistance: z.array(PersonDistance$inboundSchema).optional(),
+    inviteInfo: z.lazy(() => InviteInfo$inboundSchema).optional(),
+    isSignedUp: z.boolean().optional(),
+    lastExtensionUse: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    permissions: Permissions$inboundSchema.optional(),
+    customFields: z.array(z.lazy(() => CustomFieldData$inboundSchema))
+      .optional(),
+    loggingId: z.string().optional(),
+    startDatePercentile: z.number().optional(),
+    busyEvents: z.array(AnonymousEvent$inboundSchema).optional(),
+    profileBoolSettings: z.record(z.boolean()).optional(),
+    badges: z.array(Badge$inboundSchema).optional(),
+    isOrgRoot: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type PersonMetadata$Outbound = {
   type?: string | undefined;
@@ -404,55 +412,58 @@ export const PersonMetadata$outboundSchema: z.ZodType<
   PersonMetadata$Outbound,
   z.ZodTypeDef,
   PersonMetadata
-> = z.object({
-  type: PersonMetadataType$outboundSchema.optional(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  title: z.string().optional(),
-  businessUnit: z.string().optional(),
-  department: z.string().optional(),
-  jobFunction: z.string().optional(),
-  teams: z.array(PersonTeam$outboundSchema).optional(),
-  departmentCount: z.number().int().optional(),
-  email: z.string().optional(),
-  aliasEmails: z.array(z.string()).optional(),
-  location: z.string().optional(),
-  structuredLocation: StructuredLocation$outboundSchema.optional(),
-  externalProfileLink: z.string().optional(),
-  manager: z.lazy(() => Person$outboundSchema).optional(),
-  managementChain: z.array(z.lazy(() => Person$outboundSchema)).optional(),
-  phone: z.string().optional(),
-  timezone: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  timezoneIANA: z.string().optional(),
-  photoUrl: z.string().optional(),
-  uneditedPhotoUrl: z.string().optional(),
-  bannerUrl: z.string().optional(),
-  reports: z.array(z.lazy(() => Person$outboundSchema)).optional(),
-  startDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-  endDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-  bio: z.string().optional(),
-  pronoun: z.string().optional(),
-  orgSizeCount: z.number().int().optional(),
-  directReportsCount: z.number().int().optional(),
-  preferredName: z.string().optional(),
-  socialNetwork: z.array(SocialNetwork$outboundSchema).optional(),
-  datasourceProfile: z.array(DatasourceProfile$outboundSchema).optional(),
-  querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema).optional(),
-  peopleDistance: z.array(PersonDistance$outboundSchema).optional(),
-  inviteInfo: z.lazy(() => InviteInfo$outboundSchema).optional(),
-  isSignedUp: z.boolean().optional(),
-  lastExtensionUse: z.date().transform(v => v.toISOString()).optional(),
-  permissions: Permissions$outboundSchema.optional(),
-  customFields: z.array(z.lazy(() => CustomFieldData$outboundSchema))
-    .optional(),
-  loggingId: z.string().optional(),
-  startDatePercentile: z.number().optional(),
-  busyEvents: z.array(AnonymousEvent$outboundSchema).optional(),
-  profileBoolSettings: z.record(z.boolean()).optional(),
-  badges: z.array(Badge$outboundSchema).optional(),
-  isOrgRoot: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PersonMetadataType$outboundSchema.optional(),
+    firstName: z.string().optional(),
+    lastName: z.string().optional(),
+    title: z.string().optional(),
+    businessUnit: z.string().optional(),
+    department: z.string().optional(),
+    jobFunction: z.string().optional(),
+    teams: z.array(PersonTeam$outboundSchema).optional(),
+    departmentCount: z.number().int().optional(),
+    email: z.string().optional(),
+    aliasEmails: z.array(z.string()).optional(),
+    location: z.string().optional(),
+    structuredLocation: StructuredLocation$outboundSchema.optional(),
+    externalProfileLink: z.string().optional(),
+    manager: z.lazy(() => Person$outboundSchema).optional(),
+    managementChain: z.array(z.lazy(() => Person$outboundSchema)).optional(),
+    phone: z.string().optional(),
+    timezone: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    timezoneIANA: z.string().optional(),
+    photoUrl: z.string().optional(),
+    uneditedPhotoUrl: z.string().optional(),
+    bannerUrl: z.string().optional(),
+    reports: z.array(z.lazy(() => Person$outboundSchema)).optional(),
+    startDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+    endDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+    bio: z.string().optional(),
+    pronoun: z.string().optional(),
+    orgSizeCount: z.number().int().optional(),
+    directReportsCount: z.number().int().optional(),
+    preferredName: z.string().optional(),
+    socialNetwork: z.array(SocialNetwork$outboundSchema).optional(),
+    datasourceProfile: z.array(DatasourceProfile$outboundSchema).optional(),
+    querySuggestions: z.lazy(() => QuerySuggestionList$outboundSchema)
+      .optional(),
+    peopleDistance: z.array(PersonDistance$outboundSchema).optional(),
+    inviteInfo: z.lazy(() => InviteInfo$outboundSchema).optional(),
+    isSignedUp: z.boolean().optional(),
+    lastExtensionUse: z.date().transform(v => v.toISOString()).optional(),
+    permissions: Permissions$outboundSchema.optional(),
+    customFields: z.array(z.lazy(() => CustomFieldData$outboundSchema))
+      .optional(),
+    loggingId: z.string().optional(),
+    startDatePercentile: z.number().optional(),
+    busyEvents: z.array(AnonymousEvent$outboundSchema).optional(),
+    profileBoolSettings: z.record(z.boolean()).optional(),
+    badges: z.array(Badge$outboundSchema).optional(),
+    isOrgRoot: z.boolean().optional(),
+  })
+);
 
 export function personMetadataToJSON(personMetadata: PersonMetadata): string {
   return JSON.stringify(PersonMetadata$outboundSchema.parse(personMetadata));

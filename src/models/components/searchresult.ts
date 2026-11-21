@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -145,34 +145,38 @@ export const SearchResult$inboundSchema: z.ZodType<
   SearchResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  structuredResults: z.array(z.lazy(() => StructuredResult$inboundSchema))
-    .optional(),
-  trackingToken: z.string().optional(),
-  document: z.lazy(() => Document$inboundSchema).optional(),
-  title: z.string().optional(),
-  url: z.string(),
-  nativeAppUrl: z.string().optional(),
-  snippets: z.array(z.lazy(() => SearchResultSnippet$inboundSchema)).optional(),
-  fullText: z.string().optional(),
-  fullTextList: z.array(z.string()).optional(),
-  relatedResults: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
-    .optional(),
-  clusteredResults: z.array(z.lazy(() => SearchResult$inboundSchema))
-    .optional(),
-  allClusteredResults: z.array(z.lazy(() => ClusterGroup$inboundSchema))
-    .optional(),
-  attachmentCount: z.number().int().optional(),
-  attachments: z.array(z.lazy(() => SearchResult$inboundSchema)).optional(),
-  backlinkResults: z.array(z.lazy(() => SearchResult$inboundSchema)).optional(),
-  clusterType: ClusterTypeEnum$inboundSchema.optional(),
-  mustIncludeSuggestions: z.lazy(() => QuerySuggestionList$inboundSchema)
-    .optional(),
-  querySuggestion: z.lazy(() => QuerySuggestion$inboundSchema).optional(),
-  prominence: SearchResultProminenceEnum$inboundSchema.optional(),
-  attachmentContext: z.string().optional(),
-  pins: z.array(z.lazy(() => PinDocument$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    structuredResults: z.array(z.lazy(() => StructuredResult$inboundSchema))
+      .optional(),
+    trackingToken: z.string().optional(),
+    document: z.lazy(() => Document$inboundSchema).optional(),
+    title: z.string().optional(),
+    url: z.string(),
+    nativeAppUrl: z.string().optional(),
+    snippets: z.array(z.lazy(() => SearchResultSnippet$inboundSchema))
+      .optional(),
+    fullText: z.string().optional(),
+    fullTextList: z.array(z.string()).optional(),
+    relatedResults: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
+      .optional(),
+    clusteredResults: z.array(z.lazy(() => SearchResult$inboundSchema))
+      .optional(),
+    allClusteredResults: z.array(z.lazy(() => ClusterGroup$inboundSchema))
+      .optional(),
+    attachmentCount: z.number().int().optional(),
+    attachments: z.array(z.lazy(() => SearchResult$inboundSchema)).optional(),
+    backlinkResults: z.array(z.lazy(() => SearchResult$inboundSchema))
+      .optional(),
+    clusterType: ClusterTypeEnum$inboundSchema.optional(),
+    mustIncludeSuggestions: z.lazy(() => QuerySuggestionList$inboundSchema)
+      .optional(),
+    querySuggestion: z.lazy(() => QuerySuggestion$inboundSchema).optional(),
+    prominence: SearchResultProminenceEnum$inboundSchema.optional(),
+    attachmentContext: z.string().optional(),
+    pins: z.array(z.lazy(() => PinDocument$inboundSchema)).optional(),
+  })
+);
 /** @internal */
 export type SearchResult$Outbound = {
   structuredResults?: Array<StructuredResult$Outbound> | undefined;
@@ -203,36 +207,38 @@ export const SearchResult$outboundSchema: z.ZodType<
   SearchResult$Outbound,
   z.ZodTypeDef,
   SearchResult
-> = z.object({
-  structuredResults: z.array(z.lazy(() => StructuredResult$outboundSchema))
-    .optional(),
-  trackingToken: z.string().optional(),
-  document: z.lazy(() => Document$outboundSchema).optional(),
-  title: z.string().optional(),
-  url: z.string(),
-  nativeAppUrl: z.string().optional(),
-  snippets: z.array(z.lazy(() => SearchResultSnippet$outboundSchema))
-    .optional(),
-  fullText: z.string().optional(),
-  fullTextList: z.array(z.string()).optional(),
-  relatedResults: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
-    .optional(),
-  clusteredResults: z.array(z.lazy(() => SearchResult$outboundSchema))
-    .optional(),
-  allClusteredResults: z.array(z.lazy(() => ClusterGroup$outboundSchema))
-    .optional(),
-  attachmentCount: z.number().int().optional(),
-  attachments: z.array(z.lazy(() => SearchResult$outboundSchema)).optional(),
-  backlinkResults: z.array(z.lazy(() => SearchResult$outboundSchema))
-    .optional(),
-  clusterType: ClusterTypeEnum$outboundSchema.optional(),
-  mustIncludeSuggestions: z.lazy(() => QuerySuggestionList$outboundSchema)
-    .optional(),
-  querySuggestion: z.lazy(() => QuerySuggestion$outboundSchema).optional(),
-  prominence: SearchResultProminenceEnum$outboundSchema.optional(),
-  attachmentContext: z.string().optional(),
-  pins: z.array(z.lazy(() => PinDocument$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    structuredResults: z.array(z.lazy(() => StructuredResult$outboundSchema))
+      .optional(),
+    trackingToken: z.string().optional(),
+    document: z.lazy(() => Document$outboundSchema).optional(),
+    title: z.string().optional(),
+    url: z.string(),
+    nativeAppUrl: z.string().optional(),
+    snippets: z.array(z.lazy(() => SearchResultSnippet$outboundSchema))
+      .optional(),
+    fullText: z.string().optional(),
+    fullTextList: z.array(z.string()).optional(),
+    relatedResults: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
+      .optional(),
+    clusteredResults: z.array(z.lazy(() => SearchResult$outboundSchema))
+      .optional(),
+    allClusteredResults: z.array(z.lazy(() => ClusterGroup$outboundSchema))
+      .optional(),
+    attachmentCount: z.number().int().optional(),
+    attachments: z.array(z.lazy(() => SearchResult$outboundSchema)).optional(),
+    backlinkResults: z.array(z.lazy(() => SearchResult$outboundSchema))
+      .optional(),
+    clusterType: ClusterTypeEnum$outboundSchema.optional(),
+    mustIncludeSuggestions: z.lazy(() => QuerySuggestionList$outboundSchema)
+      .optional(),
+    querySuggestion: z.lazy(() => QuerySuggestion$outboundSchema).optional(),
+    prominence: SearchResultProminenceEnum$outboundSchema.optional(),
+    attachmentContext: z.string().optional(),
+    pins: z.array(z.lazy(() => PinDocument$outboundSchema)).optional(),
+  })
+);
 
 export function searchResultToJSON(searchResult: SearchResult): string {
   return JSON.stringify(SearchResult$outboundSchema.parse(searchResult));

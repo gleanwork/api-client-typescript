@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,11 +27,13 @@ export const StructuredText$inboundSchema: z.ZodType<
   StructuredText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: z.string(),
-  structuredList: z.array(z.lazy(() => StructuredTextItem$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    structuredList: z.array(z.lazy(() => StructuredTextItem$inboundSchema))
+      .optional(),
+  })
+);
 /** @internal */
 export type StructuredText$Outbound = {
   text: string;
@@ -43,11 +45,13 @@ export const StructuredText$outboundSchema: z.ZodType<
   StructuredText$Outbound,
   z.ZodTypeDef,
   StructuredText
-> = z.object({
-  text: z.string(),
-  structuredList: z.array(z.lazy(() => StructuredTextItem$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    structuredList: z.array(z.lazy(() => StructuredTextItem$outboundSchema))
+      .optional(),
+  })
+);
 
 export function structuredTextToJSON(structuredText: StructuredText): string {
   return JSON.stringify(StructuredText$outboundSchema.parse(structuredText));

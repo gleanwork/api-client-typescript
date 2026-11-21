@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const PeopleRequestIncludeField = {
@@ -62,11 +63,11 @@ export type PeopleRequest = {
 /** @internal */
 export const PeopleRequestIncludeField$outboundSchema: z.ZodNativeEnum<
   typeof PeopleRequestIncludeField
-> = z.nativeEnum(PeopleRequestIncludeField);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PeopleRequestIncludeField));
 
 /** @internal */
-export const IncludeType$outboundSchema: z.ZodNativeEnum<typeof IncludeType> = z
-  .nativeEnum(IncludeType);
+export const IncludeType$outboundSchema: z.ZodNativeEnum<typeof IncludeType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IncludeType));
 
 /** @internal */
 export type PeopleRequest$Outbound = {
@@ -84,15 +85,17 @@ export const PeopleRequest$outboundSchema: z.ZodType<
   PeopleRequest$Outbound,
   z.ZodTypeDef,
   PeopleRequest
-> = z.object({
-  fallbackToAuthenticatedIdentity: z.boolean().default(false),
-  timezoneOffset: z.number().int().optional(),
-  obfuscatedIds: z.array(z.string()).optional(),
-  emailIds: z.array(z.string()).optional(),
-  includeFields: z.array(PeopleRequestIncludeField$outboundSchema).optional(),
-  includeTypes: z.array(IncludeType$outboundSchema).optional(),
-  source: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fallbackToAuthenticatedIdentity: z.boolean().default(false),
+    timezoneOffset: z.number().int().optional(),
+    obfuscatedIds: z.array(z.string()).optional(),
+    emailIds: z.array(z.string()).optional(),
+    includeFields: z.array(PeopleRequestIncludeField$outboundSchema).optional(),
+    includeTypes: z.array(IncludeType$outboundSchema).optional(),
+    source: z.string().optional(),
+  })
+);
 
 export function peopleRequestToJSON(peopleRequest: PeopleRequest): string {
   return JSON.stringify(PeopleRequest$outboundSchema.parse(peopleRequest));

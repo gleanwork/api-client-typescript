@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -49,7 +49,7 @@ export type PlatformTriggerAuth = {
 /** @internal */
 export const PlatformTriggerAuthType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformTriggerAuthType
-> = z.nativeEnum(PlatformTriggerAuthType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PlatformTriggerAuthType));
 /** @internal */
 export const PlatformTriggerAuthType$outboundSchema: z.ZodNativeEnum<
   typeof PlatformTriggerAuthType
@@ -60,9 +60,11 @@ export const PlatformTriggerAuthOutput$inboundSchema: z.ZodType<
   PlatformTriggerAuthOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformTriggerAuthType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformTriggerAuthType$inboundSchema,
+  })
+);
 
 export function platformTriggerAuthOutputFromJSON(
   jsonString: string,
@@ -85,10 +87,12 @@ export const PlatformTriggerAuth$outboundSchema: z.ZodType<
   PlatformTriggerAuth$Outbound,
   z.ZodTypeDef,
   PlatformTriggerAuth
-> = z.object({
-  type: PlatformTriggerAuthType$outboundSchema,
-  secret: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformTriggerAuthType$outboundSchema,
+    secret: z.string(),
+  })
+);
 
 export function platformTriggerAuthToJSON(
   platformTriggerAuth: PlatformTriggerAuth,

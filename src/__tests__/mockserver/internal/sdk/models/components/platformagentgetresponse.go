@@ -4,6 +4,7 @@
 package components
 
 type PlatformAgentGetResponse struct {
+	// An agent available to the authenticated user.
 	Agent PlatformAgent `json:"agent"`
 	// Platform-generated request ID for support correlation.
 	RequestID string `json:"request_id"`

@@ -60,11 +60,11 @@ type PlatformIdpGroupFilter struct {
 	// - name: matches groups whose display_name contains the value, ignoring case and
 	//   surrounding whitespace. Each value is at most 256 characters.
 	//
-	Field string `json:"field"`
+	Field string `json:"field" queryParam:"name=field"`
 	// The values to match. An IdP group matches when any value matches.
-	Values []string `json:"values"`
+	Values []string `json:"values" queryParam:"name=values"`
 	// The only supported operator is EQUALS. Defaults to EQUALS.
-	Operator *PlatformIdpGroupFilterOperator `default:"EQUALS" json:"operator"`
+	Operator *PlatformIdpGroupFilterOperator `default:"EQUALS" json:"operator" queryParam:"name=operator"`
 }
 
 func (p PlatformIdpGroupFilter) MarshalJSON() ([]byte, error) {

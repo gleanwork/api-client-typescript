@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type AuthorizeActionPackRequest = {
   /**
@@ -25,9 +26,11 @@ export const AuthorizeActionPackRequest$outboundSchema: z.ZodType<
   AuthorizeActionPackRequest$Outbound,
   z.ZodTypeDef,
   AuthorizeActionPackRequest
-> = z.object({
-  returnUrl: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    returnUrl: z.string(),
+  })
+);
 
 export function authorizeActionPackRequestToJSON(
   authorizeActionPackRequest: AuthorizeActionPackRequest,

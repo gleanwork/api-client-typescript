@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -81,19 +81,21 @@ export const PlatformUser$inboundSchema: z.ZodType<
   PlatformUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user_id: z.string(),
-  display_name: z.string(),
-  email: z.string().optional(),
-  alias_emails: z.array(z.string()).optional(),
-  user_type: PlatformPersonType$inboundSchema.optional(),
-  title: z.string().optional(),
-  department: PlatformDepartmentReference$inboundSchema.optional(),
-  manager: PlatformUserManager$inboundSchema.optional(),
-  photo_url: z.string().optional(),
-  datasource_profiles: z.array(PlatformUserDatasourceProfile$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_id: z.string(),
+    display_name: z.string(),
+    email: z.string().optional(),
+    alias_emails: z.array(z.string()).optional(),
+    user_type: PlatformPersonType$inboundSchema.optional(),
+    title: z.string().optional(),
+    department: PlatformDepartmentReference$inboundSchema.optional(),
+    manager: PlatformUserManager$inboundSchema.optional(),
+    photo_url: z.string().optional(),
+    datasource_profiles: z.array(PlatformUserDatasourceProfile$inboundSchema)
+      .optional(),
+  })
+);
 
 export function platformUserFromJSON(
   jsonString: string,

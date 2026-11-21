@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -51,17 +51,19 @@ export const ToolType$inboundSchema: z.ZodType<
   ToolType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ToolType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ToolType));
 
 /** @internal */
-export const Tool$inboundSchema: z.ZodType<Tool, z.ZodTypeDef, unknown> = z
-  .object({
-    type: ToolType$inboundSchema.optional(),
-    name: z.string().optional(),
-    displayName: z.string().optional(),
-    description: z.string().optional(),
-    parameters: z.record(ToolParameter$inboundSchema).optional(),
-  });
+export const Tool$inboundSchema: z.ZodType<Tool, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: ToolType$inboundSchema.optional(),
+      name: z.string().optional(),
+      displayName: z.string().optional(),
+      description: z.string().optional(),
+      parameters: z.record(ToolParameter$inboundSchema).optional(),
+    })
+  );
 
 export function toolFromJSON(
   jsonString: string,

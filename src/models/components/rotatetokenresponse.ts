@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -31,11 +31,13 @@ export const RotateTokenResponse$inboundSchema: z.ZodType<
   RotateTokenResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rawSecret: z.string().optional(),
-  createdAt: z.number().int().optional(),
-  rotationPeriodMinutes: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rawSecret: z.string().optional(),
+    createdAt: z.number().int().optional(),
+    rotationPeriodMinutes: z.number().int().optional(),
+  })
+);
 
 export function rotateTokenResponseFromJSON(
   jsonString: string,

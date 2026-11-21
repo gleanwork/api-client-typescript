@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { UpdateType, UpdateType$inboundSchema } from "./updatetype.js";
@@ -41,14 +41,16 @@ export const DigestUpdate$inboundSchema: z.ZodType<
   DigestUpdate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  urls: z.array(z.string()).optional(),
-  url: z.string().optional(),
-  title: z.string().optional(),
-  datasource: z.string().optional(),
-  summary: z.string().optional(),
-  type: UpdateType$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urls: z.array(z.string()).optional(),
+    url: z.string().optional(),
+    title: z.string().optional(),
+    datasource: z.string().optional(),
+    summary: z.string().optional(),
+    type: UpdateType$inboundSchema.optional(),
+  })
+);
 
 export function digestUpdateFromJSON(
   jsonString: string,

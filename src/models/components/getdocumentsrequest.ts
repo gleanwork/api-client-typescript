@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   DocumentSpecUnion,
@@ -36,7 +37,9 @@ export type GetDocumentsRequest = {
 /** @internal */
 export const GetDocumentsRequestIncludeField$outboundSchema: z.ZodNativeEnum<
   typeof GetDocumentsRequestIncludeField
-> = z.nativeEnum(GetDocumentsRequestIncludeField);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDocumentsRequestIncludeField)
+);
 
 /** @internal */
 export type GetDocumentsRequest$Outbound = {
@@ -49,11 +52,13 @@ export const GetDocumentsRequest$outboundSchema: z.ZodType<
   GetDocumentsRequest$Outbound,
   z.ZodTypeDef,
   GetDocumentsRequest
-> = z.object({
-  documentSpecs: z.array(DocumentSpecUnion$outboundSchema),
-  includeFields: z.array(GetDocumentsRequestIncludeField$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documentSpecs: z.array(DocumentSpecUnion$outboundSchema),
+    includeFields: z.array(GetDocumentsRequestIncludeField$outboundSchema)
+      .optional(),
+  })
+);
 
 export function getDocumentsRequestToJSON(
   getDocumentsRequest: GetDocumentsRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
@@ -30,12 +30,14 @@ export const FacetValue$inboundSchema: z.ZodType<
   FacetValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  stringValue: z.string().optional(),
-  integerValue: z.number().int().optional(),
-  displayLabel: z.string().optional(),
-  iconConfig: IconConfig$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    stringValue: z.string().optional(),
+    integerValue: z.number().int().optional(),
+    displayLabel: z.string().optional(),
+    iconConfig: IconConfig$inboundSchema.optional(),
+  })
+);
 
 export function facetValueFromJSON(
   jsonString: string,

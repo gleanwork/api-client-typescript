@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,12 +46,14 @@ export const UserRoleSpecification$inboundSchema: z.ZodType<
   UserRoleSpecification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
-  person: z.lazy(() => Person$inboundSchema).optional(),
-  group: Group$inboundSchema.optional(),
-  role: UserRole$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourceDocumentSpec: DocumentSpecUnion$inboundSchema.optional(),
+    person: z.lazy(() => Person$inboundSchema).optional(),
+    group: Group$inboundSchema.optional(),
+    role: UserRole$inboundSchema,
+  })
+);
 /** @internal */
 export type UserRoleSpecification$Outbound = {
   sourceDocumentSpec?: DocumentSpecUnion$Outbound | undefined;
@@ -65,12 +67,14 @@ export const UserRoleSpecification$outboundSchema: z.ZodType<
   UserRoleSpecification$Outbound,
   z.ZodTypeDef,
   UserRoleSpecification
-> = z.object({
-  sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
-  person: z.lazy(() => Person$outboundSchema).optional(),
-  group: Group$outboundSchema.optional(),
-  role: UserRole$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
+    person: z.lazy(() => Person$outboundSchema).optional(),
+    group: Group$outboundSchema.optional(),
+    role: UserRole$outboundSchema,
+  })
+);
 
 export function userRoleSpecificationToJSON(
   userRoleSpecification: UserRoleSpecification,

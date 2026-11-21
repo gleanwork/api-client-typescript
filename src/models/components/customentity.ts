@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -56,15 +56,18 @@ export const CustomEntity$inboundSchema: z.ZodType<
   CustomEntity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  id: z.string().optional(),
-  title: z.string().optional(),
-  datasource: z.string().optional(),
-  objectType: z.string().optional(),
-  metadata: CustomEntityMetadata$inboundSchema.optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    id: z.string().optional(),
+    title: z.string().optional(),
+    datasource: z.string().optional(),
+    objectType: z.string().optional(),
+    metadata: CustomEntityMetadata$inboundSchema.optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+  })
+);
 /** @internal */
 export type CustomEntity$Outbound = {
   permissions?: ObjectPermissions$Outbound | undefined;
@@ -81,15 +84,18 @@ export const CustomEntity$outboundSchema: z.ZodType<
   CustomEntity$Outbound,
   z.ZodTypeDef,
   CustomEntity
-> = z.object({
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  id: z.string().optional(),
-  title: z.string().optional(),
-  datasource: z.string().optional(),
-  objectType: z.string().optional(),
-  metadata: CustomEntityMetadata$outboundSchema.optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    permissions: ObjectPermissions$outboundSchema.optional(),
+    id: z.string().optional(),
+    title: z.string().optional(),
+    datasource: z.string().optional(),
+    objectType: z.string().optional(),
+    metadata: CustomEntityMetadata$outboundSchema.optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+  })
+);
 
 export function customEntityToJSON(customEntity: CustomEntity): string {
   return JSON.stringify(CustomEntity$outboundSchema.parse(customEntity));

@@ -47,10 +47,10 @@ export type IndexingDocumentsDebugMutationError =
   | SDKValidationError;
 
 /**
- * Beta: Get document information
+ * Get document information
  *
  * @remarks
- * Gives various information that would help in debugging related to a particular document. Currently in beta, might undergo breaking changes without prior notice.
+ * Gives various information that would help in debugging related to a particular document.
  *
  * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
  */

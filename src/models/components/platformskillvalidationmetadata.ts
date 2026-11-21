@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const PlatformSkillValidationMetadata$inboundSchema: z.ZodType<
   PlatformSkillValidationMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_name: z.string(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_name: z.string(),
+    description: z.string(),
+  })
+);
 
 export function platformSkillValidationMetadataFromJSON(
   jsonString: string,

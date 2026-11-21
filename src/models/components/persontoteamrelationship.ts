@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -57,28 +57,34 @@ export const PersonToTeamRelationshipRelationship$inboundSchema: z.ZodType<
   PersonToTeamRelationshipRelationship,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PersonToTeamRelationshipRelationship);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PersonToTeamRelationshipRelationship)
+);
 /** @internal */
 export const PersonToTeamRelationshipRelationship$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   PersonToTeamRelationshipRelationship
-> = openEnums.outboundSchema(PersonToTeamRelationshipRelationship);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(PersonToTeamRelationshipRelationship)
+);
 
 /** @internal */
 export const PersonToTeamRelationship$inboundSchema: z.ZodType<
   PersonToTeamRelationship,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  person: z.lazy(() => Person$inboundSchema),
-  relationship: PersonToTeamRelationshipRelationship$inboundSchema.default(
-    "MEMBER",
-  ),
-  customRelationshipStr: z.string().optional(),
-  joinDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person: z.lazy(() => Person$inboundSchema),
+    relationship: PersonToTeamRelationshipRelationship$inboundSchema.default(
+      "MEMBER",
+    ),
+    customRelationshipStr: z.string().optional(),
+    joinDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+  })
+);
 /** @internal */
 export type PersonToTeamRelationship$Outbound = {
   person: Person$Outbound;
@@ -92,14 +98,16 @@ export const PersonToTeamRelationship$outboundSchema: z.ZodType<
   PersonToTeamRelationship$Outbound,
   z.ZodTypeDef,
   PersonToTeamRelationship
-> = z.object({
-  person: z.lazy(() => Person$outboundSchema),
-  relationship: PersonToTeamRelationshipRelationship$outboundSchema.default(
-    "MEMBER",
-  ),
-  customRelationshipStr: z.string().optional(),
-  joinDate: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person: z.lazy(() => Person$outboundSchema),
+    relationship: PersonToTeamRelationshipRelationship$outboundSchema.default(
+      "MEMBER",
+    ),
+    customRelationshipStr: z.string().optional(),
+    joinDate: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function personToTeamRelationshipToJSON(
   personToTeamRelationship: PersonToTeamRelationship,

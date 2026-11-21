@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type DeletecollectionitemRequest = {
@@ -29,15 +30,17 @@ export const DeletecollectionitemRequest$outboundSchema: z.ZodType<
   DeletecollectionitemRequest$Outbound,
   z.ZodTypeDef,
   DeletecollectionitemRequest
-> = z.object({
-  locale: z.string().optional(),
-  deleteCollectionItemRequest:
-    components.DeleteCollectionItemRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    deleteCollectionItemRequest: "DeleteCollectionItemRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    deleteCollectionItemRequest:
+      components.DeleteCollectionItemRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      deleteCollectionItemRequest: "DeleteCollectionItemRequest",
+    });
+  })
+);
 
 export function deletecollectionitemRequestToJSON(
   deletecollectionitemRequest: DeletecollectionitemRequest,

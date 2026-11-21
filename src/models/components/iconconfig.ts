@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -55,29 +55,31 @@ export const IconType$inboundSchema: z.ZodType<
   IconType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(IconType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(IconType));
 /** @internal */
 export const IconType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   IconType
-> = openEnums.outboundSchema(IconType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(IconType));
 
 /** @internal */
 export const IconConfig$inboundSchema: z.ZodType<
   IconConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  generatedBackgroundColorKey: z.string().optional(),
-  backgroundColor: z.string().optional(),
-  color: z.string().optional(),
-  key: z.string().optional(),
-  iconType: IconType$inboundSchema.optional(),
-  masked: z.boolean().optional(),
-  name: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    generatedBackgroundColorKey: z.string().optional(),
+    backgroundColor: z.string().optional(),
+    color: z.string().optional(),
+    key: z.string().optional(),
+    iconType: IconType$inboundSchema.optional(),
+    masked: z.boolean().optional(),
+    name: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 /** @internal */
 export type IconConfig$Outbound = {
   generatedBackgroundColorKey?: string | undefined;
@@ -95,16 +97,18 @@ export const IconConfig$outboundSchema: z.ZodType<
   IconConfig$Outbound,
   z.ZodTypeDef,
   IconConfig
-> = z.object({
-  generatedBackgroundColorKey: z.string().optional(),
-  backgroundColor: z.string().optional(),
-  color: z.string().optional(),
-  key: z.string().optional(),
-  iconType: IconType$outboundSchema.optional(),
-  masked: z.boolean().optional(),
-  name: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    generatedBackgroundColorKey: z.string().optional(),
+    backgroundColor: z.string().optional(),
+    color: z.string().optional(),
+    key: z.string().optional(),
+    iconType: IconType$outboundSchema.optional(),
+    masked: z.boolean().optional(),
+    name: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function iconConfigToJSON(iconConfig: IconConfig): string {
   return JSON.stringify(IconConfig$outboundSchema.parse(iconConfig));

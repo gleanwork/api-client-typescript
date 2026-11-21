@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Filter results to those last updated within this range.
@@ -30,10 +31,12 @@ export const PlatformTimeRange$outboundSchema: z.ZodType<
   PlatformTimeRange$Outbound,
   z.ZodTypeDef,
   PlatformTimeRange
-> = z.object({
-  start: z.date().transform(v => v.toISOString()).optional(),
-  end: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.date().transform(v => v.toISOString()).optional(),
+    end: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function platformTimeRangeToJSON(
   platformTimeRange: PlatformTimeRange,
