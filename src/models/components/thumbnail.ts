@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const Thumbnail$inboundSchema: z.ZodType<
   Thumbnail,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  photoId: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    photoId: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 /** @internal */
 export type Thumbnail$Outbound = {
   photoId?: string | undefined;
@@ -39,10 +41,12 @@ export const Thumbnail$outboundSchema: z.ZodType<
   Thumbnail$Outbound,
   z.ZodTypeDef,
   Thumbnail
-> = z.object({
-  photoId: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    photoId: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function thumbnailToJSON(thumbnail: Thumbnail): string {
   return JSON.stringify(Thumbnail$outboundSchema.parse(thumbnail));

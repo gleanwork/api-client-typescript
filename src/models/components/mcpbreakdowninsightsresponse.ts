@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,15 +41,18 @@ export const McpBreakdownInsightsResponse$inboundSchema: z.ZodType<
   McpBreakdownInsightsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  usersBreakdown: z.array(McpUserBreakdown$inboundSchema).optional(),
-  hostApplicationsBreakdown: z.array(McpHostApplicationBreakdown$inboundSchema)
-    .optional(),
-  toolsBreakdown: z.array(McpToolBreakdown$inboundSchema).optional(),
-  serversBreakdown: z.array(McpServerBreakdown$inboundSchema).optional(),
-  authMethodsBreakdown: z.array(McpAuthMethodBreakdown$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    usersBreakdown: z.array(McpUserBreakdown$inboundSchema).optional(),
+    hostApplicationsBreakdown: z.array(
+      McpHostApplicationBreakdown$inboundSchema,
+    ).optional(),
+    toolsBreakdown: z.array(McpToolBreakdown$inboundSchema).optional(),
+    serversBreakdown: z.array(McpServerBreakdown$inboundSchema).optional(),
+    authMethodsBreakdown: z.array(McpAuthMethodBreakdown$inboundSchema)
+      .optional(),
+  })
+);
 
 export function mcpBreakdownInsightsResponseFromJSON(
   jsonString: string,

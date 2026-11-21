@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AnswerResult, AnswerResult$inboundSchema } from "./answerresult.js";
@@ -21,9 +21,11 @@ export const ListAnswersResponse$inboundSchema: z.ZodType<
   ListAnswersResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  answerResults: z.array(AnswerResult$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    answerResults: z.array(AnswerResult$inboundSchema),
+  })
+);
 
 export function listAnswersResponseFromJSON(
   jsonString: string,

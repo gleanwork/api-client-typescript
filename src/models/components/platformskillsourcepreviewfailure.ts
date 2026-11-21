@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,11 +32,13 @@ export const PlatformSkillSourcePreviewFailure$inboundSchema: z.ZodType<
   PlatformSkillSourcePreviewFailure,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  source_url: z.string(),
-  code: PlatformSkillSourcePreviewFailureCode$inboundSchema,
-  detail: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source_url: z.string(),
+    code: PlatformSkillSourcePreviewFailureCode$inboundSchema,
+    detail: z.string(),
+  })
+);
 
 export function platformSkillSourcePreviewFailureFromJSON(
   jsonString: string,

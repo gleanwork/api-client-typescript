@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,11 +31,13 @@ export const CustomFieldData$inboundSchema: z.ZodType<
   CustomFieldData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  values: z.array(z.lazy(() => CustomFieldValue$inboundSchema)),
-  displayable: z.boolean().default(true),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    values: z.array(z.lazy(() => CustomFieldValue$inboundSchema)),
+    displayable: z.boolean().default(true),
+  })
+);
 /** @internal */
 export type CustomFieldData$Outbound = {
   label: string;
@@ -48,11 +50,13 @@ export const CustomFieldData$outboundSchema: z.ZodType<
   CustomFieldData$Outbound,
   z.ZodTypeDef,
   CustomFieldData
-> = z.object({
-  label: z.string(),
-  values: z.array(z.lazy(() => CustomFieldValue$outboundSchema)),
-  displayable: z.boolean().default(true),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    values: z.array(z.lazy(() => CustomFieldValue$outboundSchema)),
+    displayable: z.boolean().default(true),
+  })
+);
 
 export function customFieldDataToJSON(
   customFieldData: CustomFieldData,

@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PinRequest = {
@@ -29,14 +30,16 @@ export const PinRequest$outboundSchema: z.ZodType<
   PinRequest$Outbound,
   z.ZodTypeDef,
   PinRequest
-> = z.object({
-  locale: z.string().optional(),
-  pinRequest: components.PinRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    pinRequest: "PinRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    pinRequest: components.PinRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      pinRequest: "PinRequest",
+    });
+  })
+);
 
 export function pinRequestToJSON(pinRequest: PinRequest): string {
   return JSON.stringify(PinRequest$outboundSchema.parse(pinRequest));

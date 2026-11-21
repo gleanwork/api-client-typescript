@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -48,14 +48,16 @@ export const SearchResultSnippet$inboundSchema: z.ZodType<
   SearchResultSnippet,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mimeType: z.string().optional(),
-  text: z.string().optional(),
-  snippetTextOrdering: z.number().int().optional(),
-  ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
-  url: z.string().optional(),
-  snippet: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mimeType: z.string().optional(),
+    text: z.string().optional(),
+    snippetTextOrdering: z.number().int().optional(),
+    ranges: z.array(z.lazy(() => TextRange$inboundSchema)).optional(),
+    url: z.string().optional(),
+    snippet: z.string().optional(),
+  })
+);
 /** @internal */
 export type SearchResultSnippet$Outbound = {
   mimeType?: string | undefined;
@@ -71,14 +73,16 @@ export const SearchResultSnippet$outboundSchema: z.ZodType<
   SearchResultSnippet$Outbound,
   z.ZodTypeDef,
   SearchResultSnippet
-> = z.object({
-  mimeType: z.string().optional(),
-  text: z.string().optional(),
-  snippetTextOrdering: z.number().int().optional(),
-  ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
-  url: z.string().optional(),
-  snippet: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mimeType: z.string().optional(),
+    text: z.string().optional(),
+    snippetTextOrdering: z.number().int().optional(),
+    ranges: z.array(z.lazy(() => TextRange$outboundSchema)).optional(),
+    url: z.string().optional(),
+    snippet: z.string().optional(),
+  })
+);
 
 export function searchResultSnippetToJSON(
   searchResultSnippet: SearchResultSnippet,

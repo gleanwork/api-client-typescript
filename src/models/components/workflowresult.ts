@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Workflow, Workflow$inboundSchema } from "./workflow.js";
@@ -18,9 +18,11 @@ export const WorkflowResult$inboundSchema: z.ZodType<
   WorkflowResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflow: Workflow$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflow: Workflow$inboundSchema,
+  })
+);
 
 export function workflowResultFromJSON(
   jsonString: string,

@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type ImportAgentRequest = {
@@ -36,16 +37,18 @@ export const ImportAgentRequest$outboundSchema: z.ZodType<
   ImportAgentRequest$Outbound,
   z.ZodTypeDef,
   ImportAgentRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  agent_id: z.string(),
-  importAgentRequest: components.ImportAgentRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    importAgentRequest: "ImportAgentRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    agent_id: z.string(),
+    importAgentRequest: components.ImportAgentRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      importAgentRequest: "ImportAgentRequest",
+    });
+  })
+);
 
 export function importAgentRequestToJSON(
   importAgentRequest: ImportAgentRequest,

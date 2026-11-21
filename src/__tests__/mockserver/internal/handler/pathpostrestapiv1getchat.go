@@ -75,7 +75,7 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 					components.ChatMessage{
 						AgentConfig: &components.AgentConfig{
 							Agent: components.AgentEnumDefault.ToPointer(),
-							Mode:  components.ModeDefault.ToPointer(),
+							Mode:  components.AgentConfigModeDefault.ToPointer(),
 						},
 						Author: components.AuthorUser.ToPointer(),
 						Citations: []components.ChatMessageCitation{
@@ -629,8 +629,8 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 											Roles:              []components.UserRoleSpecification{},
 											SourceDocumentSpec: types.Pointer(components.CreateDocumentSpecUnionDocumentSpec3(
 												components.DocumentSpec3{
-													UgcType:   components.DocumentSpecUgcType1Shortcuts,
-													ContentID: 602763,
+													UgcType:   components.DocumentSpecUgcType1Announcements,
+													ContentID: 848009,
 												},
 											)),
 											SourceType: components.AnswerSourceTypeAssistant.ToPointer(),

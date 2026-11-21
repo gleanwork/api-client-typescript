@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /processallmemberships API call
@@ -25,9 +26,11 @@ export const ProcessAllMembershipsRequest$outboundSchema: z.ZodType<
   ProcessAllMembershipsRequest$Outbound,
   z.ZodTypeDef,
   ProcessAllMembershipsRequest
-> = z.object({
-  datasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string().optional(),
+  })
+);
 
 export function processAllMembershipsRequestToJSON(
   processAllMembershipsRequest: ProcessAllMembershipsRequest,

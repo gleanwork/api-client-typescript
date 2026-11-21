@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   FacetFilter,
@@ -100,17 +101,23 @@ export type ListEntitiesRequest = {
 /** @internal */
 export const ListEntitiesRequestEntityType$outboundSchema: z.ZodNativeEnum<
   typeof ListEntitiesRequestEntityType
-> = z.nativeEnum(ListEntitiesRequestEntityType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListEntitiesRequestEntityType)
+);
 
 /** @internal */
 export const ListEntitiesRequestIncludeField$outboundSchema: z.ZodNativeEnum<
   typeof ListEntitiesRequestIncludeField
-> = z.nativeEnum(ListEntitiesRequestIncludeField);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListEntitiesRequestIncludeField)
+);
 
 /** @internal */
 export const ListEntitiesRequestRequestType$outboundSchema: z.ZodNativeEnum<
   typeof ListEntitiesRequestRequestType
-> = z.nativeEnum(ListEntitiesRequestRequestType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListEntitiesRequestRequestType)
+);
 
 /** @internal */
 export type ListEntitiesRequest$Outbound = {
@@ -131,21 +138,23 @@ export const ListEntitiesRequest$outboundSchema: z.ZodType<
   ListEntitiesRequest$Outbound,
   z.ZodTypeDef,
   ListEntitiesRequest
-> = z.object({
-  filter: z.array(FacetFilter$outboundSchema).optional(),
-  sort: z.array(SortOptions$outboundSchema).optional(),
-  entityType: ListEntitiesRequestEntityType$outboundSchema.default("PEOPLE"),
-  datasource: z.string().optional(),
-  query: z.string().optional(),
-  includeFields: z.array(ListEntitiesRequestIncludeField$outboundSchema)
-    .optional(),
-  pageSize: z.number().int().optional(),
-  cursor: z.string().optional(),
-  source: z.string().optional(),
-  requestType: ListEntitiesRequestRequestType$outboundSchema.default(
-    "STANDARD",
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filter: z.array(FacetFilter$outboundSchema).optional(),
+    sort: z.array(SortOptions$outboundSchema).optional(),
+    entityType: ListEntitiesRequestEntityType$outboundSchema.default("PEOPLE"),
+    datasource: z.string().optional(),
+    query: z.string().optional(),
+    includeFields: z.array(ListEntitiesRequestIncludeField$outboundSchema)
+      .optional(),
+    pageSize: z.number().int().optional(),
+    cursor: z.string().optional(),
+    source: z.string().optional(),
+    requestType: ListEntitiesRequestRequestType$outboundSchema.default(
+      "STANDARD",
+    ),
+  })
+);
 
 export function listEntitiesRequestToJSON(
   listEntitiesRequest: ListEntitiesRequest,

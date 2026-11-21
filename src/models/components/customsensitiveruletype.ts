@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -25,10 +26,14 @@ export const CustomSensitiveRuleType$inboundSchema: z.ZodType<
   CustomSensitiveRuleType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CustomSensitiveRuleType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CustomSensitiveRuleType)
+);
 /** @internal */
 export const CustomSensitiveRuleType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   CustomSensitiveRuleType
-> = openEnums.outboundSchema(CustomSensitiveRuleType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(CustomSensitiveRuleType)
+);

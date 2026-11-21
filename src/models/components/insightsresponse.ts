@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,14 +46,16 @@ export const InsightsResponse$inboundSchema: z.ZodType<
   InsightsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  gleanAssist: GleanAssistInsightsResponse$inboundSchema.optional(),
-  overviewResponse: InsightsOverviewResponse$inboundSchema.optional(),
-  assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
-  agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),
-  mcpResponse: McpInsightsResponse$inboundSchema.optional(),
-  mcpBreakdownResponse: McpBreakdownInsightsResponse$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gleanAssist: GleanAssistInsightsResponse$inboundSchema.optional(),
+    overviewResponse: InsightsOverviewResponse$inboundSchema.optional(),
+    assistantResponse: AssistantInsightsResponse$inboundSchema.optional(),
+    agentsResponse: AgentsInsightsV2Response$inboundSchema.optional(),
+    mcpResponse: McpInsightsResponse$inboundSchema.optional(),
+    mcpBreakdownResponse: McpBreakdownInsightsResponse$inboundSchema.optional(),
+  })
+);
 
 export function insightsResponseFromJSON(
   jsonString: string,

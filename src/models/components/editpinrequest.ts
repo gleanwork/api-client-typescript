@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   FacetFilter,
   FacetFilter$Outbound,
@@ -37,11 +38,13 @@ export const EditPinRequest$outboundSchema: z.ZodType<
   EditPinRequest$Outbound,
   z.ZodTypeDef,
   EditPinRequest
-> = z.object({
-  queries: z.array(z.string()).optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    queries: z.array(z.string()).optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    id: z.string().optional(),
+  })
+);
 
 export function editPinRequestToJSON(editPinRequest: EditPinRequest): string {
   return JSON.stringify(EditPinRequest$outboundSchema.parse(editPinRequest));

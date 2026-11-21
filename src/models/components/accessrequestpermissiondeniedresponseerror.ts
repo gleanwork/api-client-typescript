@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const AccessRequestPermissionDeniedResponseErrorType = {
@@ -15,5 +16,7 @@ export type AccessRequestPermissionDeniedResponseErrorType = ClosedEnum<
 
 /** @internal */
 export const AccessRequestPermissionDeniedResponseErrorType$inboundSchema:
-  z.ZodNativeEnum<typeof AccessRequestPermissionDeniedResponseErrorType> = z
-    .nativeEnum(AccessRequestPermissionDeniedResponseErrorType);
+  z.ZodNativeEnum<typeof AccessRequestPermissionDeniedResponseErrorType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(AccessRequestPermissionDeniedResponseErrorType)
+    );

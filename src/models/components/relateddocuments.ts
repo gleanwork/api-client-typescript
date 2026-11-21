@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -84,26 +84,28 @@ export const Relation$inboundSchema: z.ZodType<
   Relation,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(Relation);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(Relation));
 /** @internal */
 export const Relation$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   Relation
-> = openEnums.outboundSchema(Relation);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(Relation));
 
 /** @internal */
 export const RelatedDocuments$inboundSchema: z.ZodType<
   RelatedDocuments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  relation: Relation$inboundSchema.optional(),
-  associatedEntityId: z.string().optional(),
-  querySuggestion: z.lazy(() => QuerySuggestion$inboundSchema).optional(),
-  documents: z.array(z.lazy(() => Document$inboundSchema)).optional(),
-  results: z.array(z.lazy(() => SearchResult$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    relation: Relation$inboundSchema.optional(),
+    associatedEntityId: z.string().optional(),
+    querySuggestion: z.lazy(() => QuerySuggestion$inboundSchema).optional(),
+    documents: z.array(z.lazy(() => Document$inboundSchema)).optional(),
+    results: z.array(z.lazy(() => SearchResult$inboundSchema)).optional(),
+  })
+);
 /** @internal */
 export type RelatedDocuments$Outbound = {
   relation?: string | undefined;
@@ -118,13 +120,15 @@ export const RelatedDocuments$outboundSchema: z.ZodType<
   RelatedDocuments$Outbound,
   z.ZodTypeDef,
   RelatedDocuments
-> = z.object({
-  relation: Relation$outboundSchema.optional(),
-  associatedEntityId: z.string().optional(),
-  querySuggestion: z.lazy(() => QuerySuggestion$outboundSchema).optional(),
-  documents: z.array(z.lazy(() => Document$outboundSchema)).optional(),
-  results: z.array(z.lazy(() => SearchResult$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    relation: Relation$outboundSchema.optional(),
+    associatedEntityId: z.string().optional(),
+    querySuggestion: z.lazy(() => QuerySuggestion$outboundSchema).optional(),
+    documents: z.array(z.lazy(() => Document$outboundSchema)).optional(),
+    results: z.array(z.lazy(() => SearchResult$outboundSchema)).optional(),
+  })
+);
 
 export function relatedDocumentsToJSON(
   relatedDocuments: RelatedDocuments,

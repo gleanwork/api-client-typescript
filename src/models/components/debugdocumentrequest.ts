@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /debug/{datasource}/document API call.
@@ -30,10 +31,12 @@ export const DebugDocumentRequest$outboundSchema: z.ZodType<
   DebugDocumentRequest$Outbound,
   z.ZodTypeDef,
   DebugDocumentRequest
-> = z.object({
-  objectType: z.string(),
-  docId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    objectType: z.string(),
+    docId: z.string(),
+  })
+);
 
 export function debugDocumentRequestToJSON(
   debugDocumentRequest: DebugDocumentRequest,

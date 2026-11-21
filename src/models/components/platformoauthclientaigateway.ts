@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,10 +35,12 @@ export const PlatformOAuthClientAiGateway$inboundSchema: z.ZodType<
   PlatformOAuthClientAiGateway,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  usage_client_id: z.string(),
-  supported_apps: z.array(PlatformOAuthClientSupportedApp$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    usage_client_id: z.string(),
+    supported_apps: z.array(PlatformOAuthClientSupportedApp$inboundSchema),
+  })
+);
 
 export function platformOAuthClientAiGatewayFromJSON(
   jsonString: string,

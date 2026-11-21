@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetDatasourceCredentialStatusRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetDatasourceCredentialStatusRequest$outboundSchema: z.ZodType<
   GetDatasourceCredentialStatusRequest$Outbound,
   z.ZodTypeDef,
   GetDatasourceCredentialStatusRequest
-> = z.object({
-  datasourceInstanceId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourceInstanceId: z.string(),
+  })
+);
 
 export function getDatasourceCredentialStatusRequestToJSON(
   getDatasourceCredentialStatusRequest: GetDatasourceCredentialStatusRequest,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformTriggersDeleteRequest = {
   /**
@@ -22,9 +23,11 @@ export const PlatformTriggersDeleteRequest$outboundSchema: z.ZodType<
   PlatformTriggersDeleteRequest$Outbound,
   z.ZodTypeDef,
   PlatformTriggersDeleteRequest
-> = z.object({
-  trigger_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trigger_id: z.string(),
+  })
+);
 
 export function platformTriggersDeleteRequestToJSON(
   platformTriggersDeleteRequest: PlatformTriggersDeleteRequest,

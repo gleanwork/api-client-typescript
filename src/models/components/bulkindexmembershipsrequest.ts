@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DatasourceBulkMembershipDefinition,
   DatasourceBulkMembershipDefinition$Outbound,
@@ -60,15 +61,17 @@ export const BulkIndexMembershipsRequest$outboundSchema: z.ZodType<
   BulkIndexMembershipsRequest$Outbound,
   z.ZodTypeDef,
   BulkIndexMembershipsRequest
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  datasource: z.string(),
-  group: z.string().optional(),
-  memberships: z.array(DatasourceBulkMembershipDefinition$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string(),
+    isFirstPage: z.boolean().optional(),
+    isLastPage: z.boolean().optional(),
+    forceRestartUpload: z.boolean().optional(),
+    datasource: z.string(),
+    group: z.string().optional(),
+    memberships: z.array(DatasourceBulkMembershipDefinition$outboundSchema),
+  })
+);
 
 export function bulkIndexMembershipsRequestToJSON(
   bulkIndexMembershipsRequest: BulkIndexMembershipsRequest,

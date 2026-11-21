@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -25,9 +25,11 @@ export const AuthContext$inboundSchema: z.ZodType<
   AuthContext,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  serverId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serverId: z.string().optional(),
+  })
+);
 /** @internal */
 export type AuthContext$Outbound = {
   serverId?: string | undefined;
@@ -38,9 +40,11 @@ export const AuthContext$outboundSchema: z.ZodType<
   AuthContext$Outbound,
   z.ZodTypeDef,
   AuthContext
-> = z.object({
-  serverId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serverId: z.string().optional(),
+  })
+);
 
 export function authContextToJSON(authContext: AuthContext): string {
   return JSON.stringify(AuthContext$outboundSchema.parse(authContext));
