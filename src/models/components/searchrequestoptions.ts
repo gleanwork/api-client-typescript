@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -137,38 +137,40 @@ export const ResponseHint$inboundSchema: z.ZodType<
   ResponseHint,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ResponseHint);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ResponseHint));
 /** @internal */
 export const ResponseHint$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ResponseHint
-> = openEnums.outboundSchema(ResponseHint);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(ResponseHint));
 
 /** @internal */
 export const SearchRequestOptions$inboundSchema: z.ZodType<
   SearchRequestOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  datasourceFilter: z.string().optional(),
-  datasourcesFilter: z.array(z.string()).optional(),
-  queryOverridesFacetFilters: z.boolean().optional(),
-  facetFilters: z.array(FacetFilter$inboundSchema).optional(),
-  facetFilterSets: z.array(FacetFilterSet$inboundSchema).optional(),
-  facetBucketFilter: FacetBucketFilter$inboundSchema.optional(),
-  facetBucketSize: z.number().int(),
-  defaultFacets: z.array(z.string()).optional(),
-  authTokens: z.array(AuthToken$inboundSchema).optional(),
-  fetchAllDatasourceCounts: z.boolean().optional(),
-  responseHints: z.array(ResponseHint$inboundSchema).optional(),
-  timezoneOffset: z.number().int().optional(),
-  disableSpellcheck: z.boolean().optional(),
-  disableQueryAutocorrect: z.boolean().optional(),
-  returnLlmContentOverSnippets: z.boolean().optional(),
-  inclusions: RestrictionFilters$inboundSchema.optional(),
-  exclusions: RestrictionFilters$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourceFilter: z.string().optional(),
+    datasourcesFilter: z.array(z.string()).optional(),
+    queryOverridesFacetFilters: z.boolean().optional(),
+    facetFilters: z.array(FacetFilter$inboundSchema).optional(),
+    facetFilterSets: z.array(FacetFilterSet$inboundSchema).optional(),
+    facetBucketFilter: FacetBucketFilter$inboundSchema.optional(),
+    facetBucketSize: z.number().int(),
+    defaultFacets: z.array(z.string()).optional(),
+    authTokens: z.array(AuthToken$inboundSchema).optional(),
+    fetchAllDatasourceCounts: z.boolean().optional(),
+    responseHints: z.array(ResponseHint$inboundSchema).optional(),
+    timezoneOffset: z.number().int().optional(),
+    disableSpellcheck: z.boolean().optional(),
+    disableQueryAutocorrect: z.boolean().optional(),
+    returnLlmContentOverSnippets: z.boolean().optional(),
+    inclusions: RestrictionFilters$inboundSchema.optional(),
+    exclusions: RestrictionFilters$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type SearchRequestOptions$Outbound = {
   datasourceFilter?: string | undefined;
@@ -195,25 +197,27 @@ export const SearchRequestOptions$outboundSchema: z.ZodType<
   SearchRequestOptions$Outbound,
   z.ZodTypeDef,
   SearchRequestOptions
-> = z.object({
-  datasourceFilter: z.string().optional(),
-  datasourcesFilter: z.array(z.string()).optional(),
-  queryOverridesFacetFilters: z.boolean().optional(),
-  facetFilters: z.array(FacetFilter$outboundSchema).optional(),
-  facetFilterSets: z.array(FacetFilterSet$outboundSchema).optional(),
-  facetBucketFilter: FacetBucketFilter$outboundSchema.optional(),
-  facetBucketSize: z.number().int(),
-  defaultFacets: z.array(z.string()).optional(),
-  authTokens: z.array(AuthToken$outboundSchema).optional(),
-  fetchAllDatasourceCounts: z.boolean().optional(),
-  responseHints: z.array(ResponseHint$outboundSchema).optional(),
-  timezoneOffset: z.number().int().optional(),
-  disableSpellcheck: z.boolean().optional(),
-  disableQueryAutocorrect: z.boolean().optional(),
-  returnLlmContentOverSnippets: z.boolean().optional(),
-  inclusions: RestrictionFilters$outboundSchema.optional(),
-  exclusions: RestrictionFilters$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourceFilter: z.string().optional(),
+    datasourcesFilter: z.array(z.string()).optional(),
+    queryOverridesFacetFilters: z.boolean().optional(),
+    facetFilters: z.array(FacetFilter$outboundSchema).optional(),
+    facetFilterSets: z.array(FacetFilterSet$outboundSchema).optional(),
+    facetBucketFilter: FacetBucketFilter$outboundSchema.optional(),
+    facetBucketSize: z.number().int(),
+    defaultFacets: z.array(z.string()).optional(),
+    authTokens: z.array(AuthToken$outboundSchema).optional(),
+    fetchAllDatasourceCounts: z.boolean().optional(),
+    responseHints: z.array(ResponseHint$outboundSchema).optional(),
+    timezoneOffset: z.number().int().optional(),
+    disableSpellcheck: z.boolean().optional(),
+    disableQueryAutocorrect: z.boolean().optional(),
+    returnLlmContentOverSnippets: z.boolean().optional(),
+    inclusions: RestrictionFilters$outboundSchema.optional(),
+    exclusions: RestrictionFilters$outboundSchema.optional(),
+  })
+);
 
 export function searchRequestOptionsToJSON(
   searchRequestOptions: SearchRequestOptions,

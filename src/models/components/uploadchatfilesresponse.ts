@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChatFile, ChatFile$inboundSchema } from "./chatfile.js";
@@ -21,9 +21,11 @@ export const UploadChatFilesResponse$inboundSchema: z.ZodType<
   UploadChatFilesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  files: z.array(ChatFile$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    files: z.array(ChatFile$inboundSchema).optional(),
+  })
+);
 
 export function uploadChatFilesResponseFromJSON(
   jsonString: string,

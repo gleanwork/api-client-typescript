@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,13 +49,15 @@ export const ToolServerAuthStatusResponse$inboundSchema: z.ZodType<
   ToolServerAuthStatusResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  displayName: z.string().optional(),
-  logoUrl: z.string().optional(),
-  description: z.string().optional(),
-  authStatus: ToolServerAuthStatus$inboundSchema,
-  authType: ActionAuthType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayName: z.string().optional(),
+    logoUrl: z.string().optional(),
+    description: z.string().optional(),
+    authStatus: ToolServerAuthStatus$inboundSchema,
+    authType: ActionAuthType$inboundSchema,
+  })
+);
 
 export function toolServerAuthStatusResponseFromJSON(
   jsonString: string,

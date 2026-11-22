@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { GleanBaseError } from "./gleanbaseerror.js";
 
@@ -44,20 +45,23 @@ export class AccessRequestPermissionDeniedResponseError extends GleanBaseError {
 /** @internal */
 export const AccessRequestPermissionDeniedResponseError$inboundSchema:
   z.ZodType<AccessRequestPermissionDeniedResponseError, z.ZodTypeDef, unknown> =
-    z.object({
-      errorType:
-        components.AccessRequestPermissionDeniedResponseErrorType$inboundSchema,
-      createdBy: components.Person$inboundSchema,
-      requestableRoles: z.array(components.UserRole$inboundSchema),
-      hasPendingRequest: z.boolean(),
-      request$: z.instanceof(Request),
-      response$: z.instanceof(Response),
-      body$: z.string(),
-    })
-      .transform((v) => {
-        return new AccessRequestPermissionDeniedResponseError(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
-      });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        errorType:
+          components
+            .AccessRequestPermissionDeniedResponseErrorType$inboundSchema,
+        createdBy: components.Person$inboundSchema,
+        requestableRoles: z.array(components.UserRole$inboundSchema),
+        hasPendingRequest: z.boolean(),
+        request$: z.instanceof(Request),
+        response$: z.instanceof(Response),
+        body$: z.string(),
+      })
+        .transform((v) => {
+          return new AccessRequestPermissionDeniedResponseError(v, {
+            request: v.request$,
+            response: v.response$,
+            body: v.body$,
+          });
+        })
+    );

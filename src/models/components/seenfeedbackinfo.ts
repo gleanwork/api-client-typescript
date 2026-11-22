@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type SeenFeedbackInfo = {
   /**
@@ -22,9 +23,11 @@ export const SeenFeedbackInfo$outboundSchema: z.ZodType<
   SeenFeedbackInfo$Outbound,
   z.ZodTypeDef,
   SeenFeedbackInfo
-> = z.object({
-  isExplicit: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isExplicit: z.boolean().optional(),
+  })
+);
 
 export function seenFeedbackInfoToJSON(
   seenFeedbackInfo: SeenFeedbackInfo,

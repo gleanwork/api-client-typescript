@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type GetdocpermissionsRequest = {
@@ -29,14 +30,17 @@ export const GetdocpermissionsRequest$outboundSchema: z.ZodType<
   GetdocpermissionsRequest$Outbound,
   z.ZodTypeDef,
   GetdocpermissionsRequest
-> = z.object({
-  locale: z.string().optional(),
-  getDocPermissionsRequest: components.GetDocPermissionsRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    getDocPermissionsRequest: "GetDocPermissionsRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    getDocPermissionsRequest:
+      components.GetDocPermissionsRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      getDocPermissionsRequest: "GetDocPermissionsRequest",
+    });
+  })
+);
 
 export function getdocpermissionsRequestToJSON(
   getdocpermissionsRequest: GetdocpermissionsRequest,

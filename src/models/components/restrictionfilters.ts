@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,9 +26,11 @@ export const RestrictionFilters$inboundSchema: z.ZodType<
   RestrictionFilters,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  containerSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    containerSpecs: z.array(DocumentSpecUnion$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type RestrictionFilters$Outbound = {
   containerSpecs?: Array<DocumentSpecUnion$Outbound> | undefined;
@@ -39,9 +41,11 @@ export const RestrictionFilters$outboundSchema: z.ZodType<
   RestrictionFilters$Outbound,
   z.ZodTypeDef,
   RestrictionFilters
-> = z.object({
-  containerSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    containerSpecs: z.array(DocumentSpecUnion$outboundSchema).optional(),
+  })
+);
 
 export function restrictionFiltersToJSON(
   restrictionFilters: RestrictionFilters,

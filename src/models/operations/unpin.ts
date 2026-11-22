@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type UnpinRequest = {
@@ -29,14 +30,16 @@ export const UnpinRequest$outboundSchema: z.ZodType<
   UnpinRequest$Outbound,
   z.ZodTypeDef,
   UnpinRequest
-> = z.object({
-  locale: z.string().optional(),
-  unpin: components.Unpin$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    unpin: "Unpin",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    unpin: components.Unpin$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      unpin: "Unpin",
+    });
+  })
+);
 
 export function unpinRequestToJSON(unpinRequest: UnpinRequest): string {
   return JSON.stringify(UnpinRequest$outboundSchema.parse(unpinRequest));

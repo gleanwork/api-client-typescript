@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -53,7 +53,7 @@ export type AgentEnum = OpenEnum<typeof AgentEnum>;
 /**
  * Top level modes to run GleanChat in.
  */
-export const Mode = {
+export const AgentConfigMode = {
   /**
    * Used if no mode supplied.
    */
@@ -66,7 +66,7 @@ export const Mode = {
 /**
  * Top level modes to run GleanChat in.
  */
-export type Mode = OpenEnum<typeof Mode>;
+export type AgentConfigMode = OpenEnum<typeof AgentConfigMode>;
 
 /**
  * Describes the agent that executes the request.
@@ -83,7 +83,7 @@ export type AgentConfig = {
   /**
    * Top level modes to run GleanChat in.
    */
-  mode?: Mode | undefined;
+  mode?: AgentConfigMode | undefined;
   /**
    * Whether the agent should create an image.
    */
@@ -95,32 +95,42 @@ export const AgentEnum$inboundSchema: z.ZodType<
   AgentEnum,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AgentEnum);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(AgentEnum));
 /** @internal */
 export const AgentEnum$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AgentEnum
-> = openEnums.outboundSchema(AgentEnum);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(AgentEnum));
 
 /** @internal */
-export const Mode$inboundSchema: z.ZodType<Mode, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(Mode);
+export const AgentConfigMode$inboundSchema: z.ZodType<
+  AgentConfigMode,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(AgentConfigMode));
 /** @internal */
-export const Mode$outboundSchema: z.ZodType<string, z.ZodTypeDef, Mode> =
-  openEnums.outboundSchema(Mode);
+export const AgentConfigMode$outboundSchema: z.ZodType<
+  string,
+  z.ZodTypeDef,
+  AgentConfigMode
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(AgentConfigMode)
+);
 
 /** @internal */
 export const AgentConfig$inboundSchema: z.ZodType<
   AgentConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent: AgentEnum$inboundSchema.optional(),
-  toolSets: ToolSets$inboundSchema.optional(),
-  mode: Mode$inboundSchema.optional(),
-  useImageGeneration: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent: AgentEnum$inboundSchema.optional(),
+    toolSets: ToolSets$inboundSchema.optional(),
+    mode: AgentConfigMode$inboundSchema.optional(),
+    useImageGeneration: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type AgentConfig$Outbound = {
   agent?: string | undefined;
@@ -134,12 +144,14 @@ export const AgentConfig$outboundSchema: z.ZodType<
   AgentConfig$Outbound,
   z.ZodTypeDef,
   AgentConfig
-> = z.object({
-  agent: AgentEnum$outboundSchema.optional(),
-  toolSets: ToolSets$outboundSchema.optional(),
-  mode: Mode$outboundSchema.optional(),
-  useImageGeneration: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent: AgentEnum$outboundSchema.optional(),
+    toolSets: ToolSets$outboundSchema.optional(),
+    mode: AgentConfigMode$outboundSchema.optional(),
+    useImageGeneration: z.boolean().optional(),
+  })
+);
 
 export function agentConfigToJSON(agentConfig: AgentConfig): string {
   return JSON.stringify(AgentConfig$outboundSchema.parse(agentConfig));

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -83,20 +83,23 @@ export const PlatformOAuthClient$inboundSchema: z.ZodType<
   PlatformOAuthClient,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  client_id: z.string(),
-  display_name: z.string(),
-  registration_type: PlatformOAuthClientRegistrationType$inboundSchema,
-  client_type: PlatformOAuthClientType$inboundSchema.optional(),
-  grant_types: z.array(PlatformOAuthGrantType$inboundSchema),
-  token_endpoint_auth_method: PlatformOAuthTokenEndpointAuthMethod$inboundSchema
-    .optional(),
-  redirect_uris: z.array(z.string()),
-  is_enabled: z.boolean(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  ai_gateway: PlatformOAuthClientAiGateway$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    client_id: z.string(),
+    display_name: z.string(),
+    registration_type: PlatformOAuthClientRegistrationType$inboundSchema,
+    client_type: PlatformOAuthClientType$inboundSchema.optional(),
+    grant_types: z.array(PlatformOAuthGrantType$inboundSchema),
+    token_endpoint_auth_method:
+      PlatformOAuthTokenEndpointAuthMethod$inboundSchema.optional(),
+    redirect_uris: z.array(z.string()),
+    is_enabled: z.boolean(),
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    ai_gateway: PlatformOAuthClientAiGateway$inboundSchema.optional(),
+  })
+);
 
 export function platformOAuthClientFromJSON(
   jsonString: string,

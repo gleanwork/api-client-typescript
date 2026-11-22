@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /betausers API call
@@ -30,10 +31,12 @@ export const GreenlistUsersRequest$outboundSchema: z.ZodType<
   GreenlistUsersRequest$Outbound,
   z.ZodTypeDef,
   GreenlistUsersRequest
-> = z.object({
-  datasource: z.string(),
-  emails: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    emails: z.array(z.string()),
+  })
+);
 
 export function greenlistUsersRequestToJSON(
   greenlistUsersRequest: GreenlistUsersRequest,

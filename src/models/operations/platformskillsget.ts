@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformSkillsGetRequest = {
   /**
@@ -22,9 +23,11 @@ export const PlatformSkillsGetRequest$outboundSchema: z.ZodType<
   PlatformSkillsGetRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillsGetRequest
-> = z.object({
-  skill_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skill_id: z.string(),
+  })
+);
 
 export function platformSkillsGetRequestToJSON(
   platformSkillsGetRequest: PlatformSkillsGetRequest,

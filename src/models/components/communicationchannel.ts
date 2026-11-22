@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -18,10 +19,14 @@ export const CommunicationChannel$inboundSchema: z.ZodType<
   CommunicationChannel,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CommunicationChannel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CommunicationChannel)
+);
 /** @internal */
 export const CommunicationChannel$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   CommunicationChannel
-> = openEnums.outboundSchema(CommunicationChannel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(CommunicationChannel)
+);

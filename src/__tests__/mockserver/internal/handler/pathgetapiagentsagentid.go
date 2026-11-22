@@ -48,9 +48,14 @@ func testPlatformAgentsGetPlatformAgentsGet0(w http.ResponseWriter, req *http.Re
 	}
 	var respBody *components.PlatformAgentGetResponse = &components.PlatformAgentGetResponse{
 		Agent: components.PlatformAgent{
-			AgentID:      "mho4lwzylcozgoc2",
 			Name:         "HR Policy Agent",
+			AgentID:      "mho4lwzylcozgoc2",
 			Capabilities: components.PlatformAgentCapabilities{},
+			Subagents: []components.PlatformSubagent{
+				components.PlatformSubagent{
+					Name: "HR Policy Agent",
+				},
+			},
 		},
 		RequestID: "<id>",
 	}

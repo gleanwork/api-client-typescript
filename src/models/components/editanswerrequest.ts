@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   DocumentSpecUnion,
@@ -90,7 +91,9 @@ export type EditAnswerRequest = {
 /** @internal */
 export const EditAnswerRequestSourceType$outboundSchema: z.ZodNativeEnum<
   typeof EditAnswerRequestSourceType
-> = z.nativeEnum(EditAnswerRequestSourceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(EditAnswerRequestSourceType)
+);
 
 /** @internal */
 export type EditAnswerRequest$Outbound = {
@@ -116,23 +119,26 @@ export const EditAnswerRequest$outboundSchema: z.ZodType<
   EditAnswerRequest$Outbound,
   z.ZodTypeDef,
   EditAnswerRequest
-> = z.object({
-  id: z.number().int(),
-  docId: z.string().optional(),
-  question: z.string().optional(),
-  questionVariations: z.array(z.string()).optional(),
-  bodyText: z.string().optional(),
-  boardId: z.number().int().optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  roles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
-  sourceType: EditAnswerRequestSourceType$outboundSchema.optional(),
-  addedCollections: z.array(z.number().int()).optional(),
-  removedCollections: z.array(z.number().int()).optional(),
-  combinedAnswerText: StructuredTextMutableProperties$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    docId: z.string().optional(),
+    question: z.string().optional(),
+    questionVariations: z.array(z.string()).optional(),
+    bodyText: z.string().optional(),
+    boardId: z.number().int().optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    roles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
+    sourceType: EditAnswerRequestSourceType$outboundSchema.optional(),
+    addedCollections: z.array(z.number().int()).optional(),
+    removedCollections: z.array(z.number().int()).optional(),
+    combinedAnswerText: StructuredTextMutableProperties$outboundSchema
+      .optional(),
+  })
+);
 
 export function editAnswerRequestToJSON(
   editAnswerRequest: EditAnswerRequest,

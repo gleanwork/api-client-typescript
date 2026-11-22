@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,20 +46,24 @@ export type PlatformChatDocumentSource =
 /** @internal */
 export const PlatformChatDocumentSourceType2$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatDocumentSourceType2
-> = z.nativeEnum(PlatformChatDocumentSourceType2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatDocumentSourceType2)
+);
 
 /** @internal */
 export const PlatformChatDocumentSourceDocument2$inboundSchema: z.ZodType<
   PlatformChatDocumentSourceDocument2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  url: z.string(),
-  type: PlatformChatDocumentSourceType2$inboundSchema,
-  document_id: z.string().optional(),
-  title: z.string().optional(),
-  datasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    type: PlatformChatDocumentSourceType2$inboundSchema,
+    document_id: z.string().optional(),
+    title: z.string().optional(),
+    datasource: z.string().optional(),
+  })
+);
 
 export function platformChatDocumentSourceDocument2FromJSON(
   jsonString: string,
@@ -75,20 +79,24 @@ export function platformChatDocumentSourceDocument2FromJSON(
 /** @internal */
 export const PlatformChatDocumentSourceType1$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatDocumentSourceType1
-> = z.nativeEnum(PlatformChatDocumentSourceType1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatDocumentSourceType1)
+);
 
 /** @internal */
 export const PlatformChatDocumentSourceDocument1$inboundSchema: z.ZodType<
   PlatformChatDocumentSourceDocument1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  document_id: z.string(),
-  type: PlatformChatDocumentSourceType1$inboundSchema,
-  url: z.string().optional(),
-  title: z.string().optional(),
-  datasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    document_id: z.string(),
+    type: PlatformChatDocumentSourceType1$inboundSchema,
+    url: z.string().optional(),
+    title: z.string().optional(),
+    datasource: z.string().optional(),
+  })
+);
 
 export function platformChatDocumentSourceDocument1FromJSON(
   jsonString: string,
@@ -106,10 +114,12 @@ export const PlatformChatDocumentSource$inboundSchema: z.ZodType<
   PlatformChatDocumentSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => PlatformChatDocumentSourceDocument1$inboundSchema),
-  z.lazy(() => PlatformChatDocumentSourceDocument2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => PlatformChatDocumentSourceDocument1$inboundSchema),
+    z.lazy(() => PlatformChatDocumentSourceDocument2$inboundSchema),
+  ])
+);
 
 export function platformChatDocumentSourceFromJSON(
   jsonString: string,

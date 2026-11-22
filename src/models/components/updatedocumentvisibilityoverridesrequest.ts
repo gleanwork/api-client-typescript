@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DocumentVisibilityOverride,
   DocumentVisibilityOverride$Outbound,
@@ -24,10 +25,12 @@ export const UpdateDocumentVisibilityOverridesRequest$outboundSchema: z.ZodType<
   UpdateDocumentVisibilityOverridesRequest$Outbound,
   z.ZodTypeDef,
   UpdateDocumentVisibilityOverridesRequest
-> = z.object({
-  visibilityOverrides: z.array(DocumentVisibilityOverride$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    visibilityOverrides: z.array(DocumentVisibilityOverride$outboundSchema)
+      .optional(),
+  })
+);
 
 export function updateDocumentVisibilityOverridesRequestToJSON(
   updateDocumentVisibilityOverridesRequest:

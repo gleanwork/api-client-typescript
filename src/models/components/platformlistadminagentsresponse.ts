@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PlatformAgent, PlatformAgent$inboundSchema } from "./platformagent.js";
@@ -36,12 +36,14 @@ export const PlatformListAdminAgentsResponse$inboundSchema: z.ZodType<
   PlatformListAdminAgentsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(PlatformAgent$inboundSchema),
-  has_more: z.boolean(),
-  next_cursor: z.nullable(z.string()).optional(),
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(PlatformAgent$inboundSchema),
+    has_more: z.boolean(),
+    next_cursor: z.nullable(z.string()).optional(),
+    request_id: z.string(),
+  })
+);
 
 export function platformListAdminAgentsResponseFromJSON(
   jsonString: string,

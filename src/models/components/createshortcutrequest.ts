@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   ShortcutMutableProperties,
   ShortcutMutableProperties$Outbound,
@@ -24,9 +25,11 @@ export const CreateShortcutRequest$outboundSchema: z.ZodType<
   CreateShortcutRequest$Outbound,
   z.ZodTypeDef,
   CreateShortcutRequest
-> = z.object({
-  data: ShortcutMutableProperties$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: ShortcutMutableProperties$outboundSchema,
+  })
+);
 
 export function createShortcutRequestToJSON(
   createShortcutRequest: CreateShortcutRequest,

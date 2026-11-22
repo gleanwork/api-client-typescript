@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -41,10 +41,12 @@ export const PlatformSearchFiltersRequest$outboundSchema: z.ZodType<
   PlatformSearchFiltersRequest$Outbound,
   z.ZodTypeDef,
   PlatformSearchFiltersRequest
-> = z.object({
-  datasources: z.array(z.string()).optional(),
-  query: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasources: z.array(z.string()).optional(),
+    query: z.string().optional(),
+  })
+);
 
 export function platformSearchFiltersRequestToJSON(
   platformSearchFiltersRequest: PlatformSearchFiltersRequest,
@@ -61,14 +63,16 @@ export const PlatformSearchFiltersResponse$inboundSchema: z.ZodType<
   PlatformSearchFiltersResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: components.PlatformSearchFiltersResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: components.PlatformSearchFiltersResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function platformSearchFiltersResponseFromJSON(
   jsonString: string,

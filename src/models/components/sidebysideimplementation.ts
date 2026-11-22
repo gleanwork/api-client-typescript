@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Metadata about the response (e.g., latency, token count).
@@ -58,11 +59,13 @@ export const ResponseMetadata$outboundSchema: z.ZodType<
   ResponseMetadata$Outbound,
   z.ZodTypeDef,
   ResponseMetadata
-> = z.object({
-  latencyMs: z.number().int().optional(),
-  tokenCount: z.number().int().optional(),
-  modelUsed: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    latencyMs: z.number().int().optional(),
+    tokenCount: z.number().int().optional(),
+    modelUsed: z.string().optional(),
+  })
+);
 
 export function responseMetadataToJSON(
   responseMetadata: ResponseMetadata,
@@ -86,13 +89,15 @@ export const SideBySideImplementation$outboundSchema: z.ZodType<
   SideBySideImplementation$Outbound,
   z.ZodTypeDef,
   SideBySideImplementation
-> = z.object({
-  implementationId: z.string().optional(),
-  implementationName: z.string().optional(),
-  searchParams: z.record(z.string()).optional(),
-  response: z.string().optional(),
-  responseMetadata: z.lazy(() => ResponseMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    implementationId: z.string().optional(),
+    implementationName: z.string().optional(),
+    searchParams: z.record(z.string()).optional(),
+    response: z.string().optional(),
+    responseMetadata: z.lazy(() => ResponseMetadata$outboundSchema).optional(),
+  })
+);
 
 export function sideBySideImplementationToJSON(
   sideBySideImplementation: SideBySideImplementation,

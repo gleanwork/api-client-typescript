@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,10 +30,12 @@ export const SensitiveExpression$inboundSchema: z.ZodType<
   SensitiveExpression,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expression: z.string().optional(),
-  hotwords: z.array(Hotword$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expression: z.string().optional(),
+    hotwords: z.array(Hotword$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type SensitiveExpression$Outbound = {
   expression?: string | undefined;
@@ -45,10 +47,12 @@ export const SensitiveExpression$outboundSchema: z.ZodType<
   SensitiveExpression$Outbound,
   z.ZodTypeDef,
   SensitiveExpression
-> = z.object({
-  expression: z.string().optional(),
-  hotwords: z.array(Hotword$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expression: z.string().optional(),
+    hotwords: z.array(Hotword$outboundSchema).optional(),
+  })
+);
 
 export function sensitiveExpressionToJSON(
   sensitiveExpression: SensitiveExpression,

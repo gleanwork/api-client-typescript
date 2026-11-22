@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformMessageRole,
   PlatformMessageRole$outboundSchema,
@@ -36,10 +37,12 @@ export const PlatformMessageInput$outboundSchema: z.ZodType<
   PlatformMessageInput$Outbound,
   z.ZodTypeDef,
   PlatformMessageInput
-> = z.object({
-  role: PlatformMessageRole$outboundSchema,
-  content: z.array(PlatformMessageTextBlockInput$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: PlatformMessageRole$outboundSchema,
+    content: z.array(PlatformMessageTextBlockInput$outboundSchema),
+  })
+);
 
 export function platformMessageInputToJSON(
   platformMessageInput: PlatformMessageInput,

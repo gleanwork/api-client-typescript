@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ListchatsRequest = {
   /**
@@ -27,10 +28,12 @@ export const ListchatsRequest$outboundSchema: z.ZodType<
   ListchatsRequest$Outbound,
   z.ZodTypeDef,
   ListchatsRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+  })
+);
 
 export function listchatsRequestToJSON(
   listchatsRequest: ListchatsRequest,

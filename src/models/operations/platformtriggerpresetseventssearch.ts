@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformTriggerPresetsEventsSearchRequest = {
@@ -31,16 +32,18 @@ export const PlatformTriggerPresetsEventsSearchRequest$outboundSchema:
     PlatformTriggerPresetsEventsSearchRequest$Outbound,
     z.ZodTypeDef,
     PlatformTriggerPresetsEventsSearchRequest
-  > = z.object({
-    preset_id: z.string(),
-    platformTriggerPresetEventSearchRequest: components
-      .PlatformTriggerPresetEventSearchRequest$outboundSchema.optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      platformTriggerPresetEventSearchRequest:
-        "PlatformTriggerPresetEventSearchRequest",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      preset_id: z.string(),
+      platformTriggerPresetEventSearchRequest: components
+        .PlatformTriggerPresetEventSearchRequest$outboundSchema.optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        platformTriggerPresetEventSearchRequest:
+          "PlatformTriggerPresetEventSearchRequest",
+      });
+    })
+  );
 
 export function platformTriggerPresetsEventsSearchRequestToJSON(
   platformTriggerPresetsEventsSearchRequest:

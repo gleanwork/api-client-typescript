@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ChatResult, ChatResult$inboundSchema } from "./chatresult.js";
@@ -26,10 +26,12 @@ export const GetChatResponse$inboundSchema: z.ZodType<
   GetChatResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  chatResult: ChatResult$inboundSchema.optional(),
-  pagination: GetChatPagination$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    chatResult: ChatResult$inboundSchema.optional(),
+    pagination: GetChatPagination$inboundSchema.optional(),
+  })
+);
 
 export function getChatResponseFromJSON(
   jsonString: string,
