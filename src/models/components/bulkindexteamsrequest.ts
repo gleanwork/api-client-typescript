@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   TeamInfoDefinition,
   TeamInfoDefinition$Outbound,
@@ -50,13 +51,15 @@ export const BulkIndexTeamsRequest$outboundSchema: z.ZodType<
   BulkIndexTeamsRequest$Outbound,
   z.ZodTypeDef,
   BulkIndexTeamsRequest
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  teams: z.array(TeamInfoDefinition$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string(),
+    isFirstPage: z.boolean().optional(),
+    isLastPage: z.boolean().optional(),
+    forceRestartUpload: z.boolean().optional(),
+    teams: z.array(TeamInfoDefinition$outboundSchema),
+  })
+);
 
 export function bulkIndexTeamsRequestToJSON(
   bulkIndexTeamsRequest: BulkIndexTeamsRequest,

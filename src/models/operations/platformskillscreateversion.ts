@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformSkillsCreateVersionRequest = {
@@ -28,15 +29,17 @@ export const PlatformSkillsCreateVersionRequest$outboundSchema: z.ZodType<
   PlatformSkillsCreateVersionRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillsCreateVersionRequest
-> = z.object({
-  skill_id: z.string(),
-  platformSkillVersionCreateRequest:
-    components.PlatformSkillVersionCreateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformSkillVersionCreateRequest: "PlatformSkillVersionCreateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skill_id: z.string(),
+    platformSkillVersionCreateRequest:
+      components.PlatformSkillVersionCreateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      platformSkillVersionCreateRequest: "PlatformSkillVersionCreateRequest",
+    });
+  })
+);
 
 export function platformSkillsCreateVersionRequestToJSON(
   platformSkillsCreateVersionRequest: PlatformSkillsCreateVersionRequest,

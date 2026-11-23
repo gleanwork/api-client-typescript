@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -52,28 +52,36 @@ export type PlatformChatCompletedResponse = {
 /** @internal */
 export const PlatformChatCompletedResponseObject$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatCompletedResponseObject
-> = z.nativeEnum(PlatformChatCompletedResponseObject);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatCompletedResponseObject)
+);
 
 /** @internal */
 export const PlatformChatCompletedResponseStatus$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatCompletedResponseStatus
-> = z.nativeEnum(PlatformChatCompletedResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatCompletedResponseStatus)
+);
 
 /** @internal */
 export const PlatformChatCompletedResponse$inboundSchema: z.ZodType<
   PlatformChatCompletedResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  object: PlatformChatCompletedResponseObject$inboundSchema,
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: PlatformChatCompletedResponseStatus$inboundSchema,
-  output: z.array(PlatformChatOutputMessage$inboundSchema),
-  store: z.boolean(),
-  conversation_id: z.nullable(z.string()).optional(),
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    object: PlatformChatCompletedResponseObject$inboundSchema,
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: PlatformChatCompletedResponseStatus$inboundSchema,
+    output: z.array(PlatformChatOutputMessage$inboundSchema),
+    store: z.boolean(),
+    conversation_id: z.nullable(z.string()).optional(),
+    request_id: z.string(),
+  })
+);
 
 export function platformChatCompletedResponseFromJSON(
   jsonString: string,

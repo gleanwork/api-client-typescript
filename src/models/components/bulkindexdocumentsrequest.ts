@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DocumentDefinition,
   DocumentDefinition$Outbound,
@@ -60,15 +61,17 @@ export const BulkIndexDocumentsRequest$outboundSchema: z.ZodType<
   BulkIndexDocumentsRequest$Outbound,
   z.ZodTypeDef,
   BulkIndexDocumentsRequest
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  datasource: z.string(),
-  documents: z.array(DocumentDefinition$outboundSchema),
-  disableStaleDocumentDeletionCheck: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string(),
+    isFirstPage: z.boolean().optional(),
+    isLastPage: z.boolean().optional(),
+    forceRestartUpload: z.boolean().optional(),
+    datasource: z.string(),
+    documents: z.array(DocumentDefinition$outboundSchema),
+    disableStaleDocumentDeletionCheck: z.boolean().optional(),
+  })
+);
 
 export function bulkIndexDocumentsRequestToJSON(
   bulkIndexDocumentsRequest: BulkIndexDocumentsRequest,

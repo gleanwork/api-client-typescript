@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,18 +32,20 @@ export const PlatformTriggerWebhookEvent$inboundSchema: z.ZodType<
   PlatformTriggerWebhookEvent,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  PlatformDocumentChangeWebhookEvent$inboundSchema.and(
-    z.object({ event_type: z.literal("DOCUMENT_CHANGE") }).transform((v) => ({
-      eventType: v.event_type,
-    })),
-  ),
-  PlatformContentScheduleWebhookEvent$inboundSchema.and(
-    z.object({ event_type: z.literal("CONTENT_SCHEDULE") }).transform((v) => ({
-      eventType: v.event_type,
-    })),
-  ),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    PlatformDocumentChangeWebhookEvent$inboundSchema.and(
+      z.object({ event_type: z.literal("DOCUMENT_CHANGE") }).transform((v) => ({
+        eventType: v.event_type,
+      })),
+    ),
+    PlatformContentScheduleWebhookEvent$inboundSchema.and(
+      z.object({ event_type: z.literal("CONTENT_SCHEDULE") }).transform((
+        v,
+      ) => ({ eventType: v.event_type })),
+    ),
+  ])
+);
 /** @internal */
 export type PlatformTriggerWebhookEvent$Outbound =
   | (PlatformDocumentChangeWebhookEvent$Outbound & {
@@ -58,18 +60,20 @@ export const PlatformTriggerWebhookEvent$outboundSchema: z.ZodType<
   PlatformTriggerWebhookEvent$Outbound,
   z.ZodTypeDef,
   PlatformTriggerWebhookEvent
-> = z.union([
-  PlatformDocumentChangeWebhookEvent$outboundSchema.and(
-    z.object({ eventType: z.literal("DOCUMENT_CHANGE") }).transform((v) => ({
-      event_type: v.eventType,
-    })),
-  ),
-  PlatformContentScheduleWebhookEvent$outboundSchema.and(
-    z.object({ eventType: z.literal("CONTENT_SCHEDULE") }).transform((v) => ({
-      event_type: v.eventType,
-    })),
-  ),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    PlatformDocumentChangeWebhookEvent$outboundSchema.and(
+      z.object({ eventType: z.literal("DOCUMENT_CHANGE") }).transform((v) => ({
+        event_type: v.eventType,
+      })),
+    ),
+    PlatformContentScheduleWebhookEvent$outboundSchema.and(
+      z.object({ eventType: z.literal("CONTENT_SCHEDULE") }).transform((v) => ({
+        event_type: v.eventType,
+      })),
+    ),
+  ])
+);
 
 export function platformTriggerWebhookEventToJSON(
   platformTriggerWebhookEvent: PlatformTriggerWebhookEvent,

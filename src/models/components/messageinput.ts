@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ContentType, ContentType$outboundSchema } from "./contenttype.js";
 
 export type MessageTextBlockInput = {
@@ -33,10 +34,12 @@ export const MessageTextBlockInput$outboundSchema: z.ZodType<
   MessageTextBlockInput$Outbound,
   z.ZodTypeDef,
   MessageTextBlockInput
-> = z.object({
-  text: z.string(),
-  type: ContentType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    type: ContentType$outboundSchema,
+  })
+);
 
 export function messageTextBlockInputToJSON(
   messageTextBlockInput: MessageTextBlockInput,
@@ -57,11 +60,13 @@ export const MessageInput$outboundSchema: z.ZodType<
   MessageInput$Outbound,
   z.ZodTypeDef,
   MessageInput
-> = z.object({
-  role: z.string().optional(),
-  content: z.array(z.lazy(() => MessageTextBlockInput$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: z.string().optional(),
+    content: z.array(z.lazy(() => MessageTextBlockInput$outboundSchema))
+      .optional(),
+  })
+);
 
 export function messageInputToJSON(messageInput: MessageInput): string {
   return JSON.stringify(MessageInput$outboundSchema.parse(messageInput));

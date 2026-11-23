@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -27,16 +27,20 @@ export const ShortcutErrorErrorType$inboundSchema: z.ZodType<
   ShortcutErrorErrorType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ShortcutErrorErrorType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ShortcutErrorErrorType)
+);
 
 /** @internal */
 export const ShortcutError$inboundSchema: z.ZodType<
   ShortcutError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  errorType: ShortcutErrorErrorType$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    errorType: ShortcutErrorErrorType$inboundSchema.optional(),
+  })
+);
 
 export function shortcutErrorFromJSON(
   jsonString: string,

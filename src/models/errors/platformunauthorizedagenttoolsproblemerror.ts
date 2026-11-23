@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { GleanBaseError } from "./gleanbaseerror.js";
 
@@ -125,27 +126,29 @@ export class PlatformUnauthorizedAgentToolsProblemError extends GleanBaseError {
 /** @internal */
 export const PlatformUnauthorizedAgentToolsProblemError$inboundSchema:
   z.ZodType<PlatformUnauthorizedAgentToolsProblemError, z.ZodTypeDef, unknown> =
-    z.object({
-      type: z.string(),
-      title: z.string(),
-      status: z.number().int(),
-      detail: z.string(),
-      code: components.PlatformProblemDetailCode$inboundSchema,
-      documentation_url: z.string().optional(),
-      request_id: z.string(),
-      errors: z.array(components.PlatformProblemDetailError$inboundSchema)
-        .optional(),
-      authentication_suggestions: z.array(
-        components.PlatformAuthenticationSuggestion$inboundSchema,
-      ),
-      request$: z.instanceof(Request),
-      response$: z.instanceof(Response),
-      body$: z.string(),
-    })
-      .transform((v) => {
-        return new PlatformUnauthorizedAgentToolsProblemError(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
-      });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        type: z.string(),
+        title: z.string(),
+        status: z.number().int(),
+        detail: z.string(),
+        code: components.PlatformProblemDetailCode$inboundSchema,
+        documentation_url: z.string().optional(),
+        request_id: z.string(),
+        errors: z.array(components.PlatformProblemDetailError$inboundSchema)
+          .optional(),
+        authentication_suggestions: z.array(
+          components.PlatformAuthenticationSuggestion$inboundSchema,
+        ),
+        request$: z.instanceof(Request),
+        response$: z.instanceof(Response),
+        body$: z.string(),
+      })
+        .transform((v) => {
+          return new PlatformUnauthorizedAgentToolsProblemError(v, {
+            request: v.request$,
+            response: v.response$,
+            body: v.body$,
+          });
+        })
+    );

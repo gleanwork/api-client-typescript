@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DlpConfig,
   DlpConfig$Outbound,
@@ -43,12 +44,14 @@ export const CreateDlpReportRequest$outboundSchema: z.ZodType<
   CreateDlpReportRequest$Outbound,
   z.ZodTypeDef,
   CreateDlpReportRequest
-> = z.object({
-  name: z.string().optional(),
-  config: DlpConfig$outboundSchema.optional(),
-  frequency: DlpFrequency$outboundSchema.optional(),
-  autoHideDocs: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    config: DlpConfig$outboundSchema.optional(),
+    frequency: DlpFrequency$outboundSchema.optional(),
+    autoHideDocs: z.boolean().optional(),
+  })
+);
 
 export function createDlpReportRequestToJSON(
   createDlpReportRequest: CreateDlpReportRequest,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformTriggerPresetsGetRequest = {
   /**
@@ -22,9 +23,11 @@ export const PlatformTriggerPresetsGetRequest$outboundSchema: z.ZodType<
   PlatformTriggerPresetsGetRequest$Outbound,
   z.ZodTypeDef,
   PlatformTriggerPresetsGetRequest
-> = z.object({
-  preset_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset_id: z.string(),
+  })
+);
 
 export function platformTriggerPresetsGetRequestToJSON(
   platformTriggerPresetsGetRequest: PlatformTriggerPresetsGetRequest,

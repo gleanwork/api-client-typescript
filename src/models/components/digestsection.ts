@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DigestUpdate, DigestUpdate$inboundSchema } from "./digestupdate.js";
@@ -53,16 +53,18 @@ export const DigestSection$inboundSchema: z.ZodType<
   DigestSection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: SectionType$inboundSchema,
-  displayName: z.string().optional(),
-  channelName: z.string().optional(),
-  channelType: z.string().optional(),
-  instanceId: z.string().optional(),
-  url: z.string().optional(),
-  updates: z.array(DigestUpdate$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: SectionType$inboundSchema,
+    displayName: z.string().optional(),
+    channelName: z.string().optional(),
+    channelType: z.string().optional(),
+    instanceId: z.string().optional(),
+    url: z.string().optional(),
+    updates: z.array(DigestUpdate$inboundSchema),
+  })
+);
 
 export function digestSectionFromJSON(
   jsonString: string,

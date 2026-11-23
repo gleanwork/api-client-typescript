@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -44,13 +44,15 @@ export const PlatformSkillSourcePreviewStreamEventServerSentEvent$inboundSchema:
     PlatformSkillSourcePreviewStreamEventServerSentEvent,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    PlatformSkillSourcePreviewStreamScanServerSentEvent$inboundSchema,
-    PlatformSkillSourcePreviewStreamProgressServerSentEvent$inboundSchema,
-    PlatformSkillSourcePreviewStreamSkillServerSentEvent$inboundSchema,
-    PlatformSkillSourcePreviewStreamResultServerSentEvent$inboundSchema,
-    PlatformSkillSourcePreviewStreamErrorServerSentEvent$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      PlatformSkillSourcePreviewStreamScanServerSentEvent$inboundSchema,
+      PlatformSkillSourcePreviewStreamProgressServerSentEvent$inboundSchema,
+      PlatformSkillSourcePreviewStreamSkillServerSentEvent$inboundSchema,
+      PlatformSkillSourcePreviewStreamResultServerSentEvent$inboundSchema,
+      PlatformSkillSourcePreviewStreamErrorServerSentEvent$inboundSchema,
+    ])
+  );
 
 export function platformSkillSourcePreviewStreamEventServerSentEventFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,11 +28,13 @@ export const PersonDistance$inboundSchema: z.ZodType<
   PersonDistance,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-  distance: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+    distance: z.number(),
+  })
+);
 /** @internal */
 export type PersonDistance$Outbound = {
   name: string;
@@ -45,11 +47,13 @@ export const PersonDistance$outboundSchema: z.ZodType<
   PersonDistance$Outbound,
   z.ZodTypeDef,
   PersonDistance
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-  distance: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+    distance: z.number(),
+  })
+);
 
 export function personDistanceToJSON(personDistance: PersonDistance): string {
   return JSON.stringify(PersonDistance$outboundSchema.parse(personDistance));

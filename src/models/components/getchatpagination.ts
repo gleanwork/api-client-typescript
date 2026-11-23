@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -35,12 +35,14 @@ export const GetChatPagination$inboundSchema: z.ZodType<
   GetChatPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  startCursor: z.string().optional(),
-  endCursor: z.string().optional(),
-  hasNextPage: z.boolean(),
-  hasPreviousPage: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startCursor: z.string().optional(),
+    endCursor: z.string().optional(),
+    hasNextPage: z.boolean(),
+    hasPreviousPage: z.boolean(),
+  })
+);
 
 export function getChatPaginationFromJSON(
   jsonString: string,

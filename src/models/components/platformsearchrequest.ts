@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformFilter,
   PlatformFilter$Outbound,
@@ -65,14 +66,16 @@ export const PlatformSearchRequest$outboundSchema: z.ZodType<
   PlatformSearchRequest$Outbound,
   z.ZodTypeDef,
   PlatformSearchRequest
-> = z.object({
-  query: z.string(),
-  page_size: z.number().int().default(10),
-  cursor: z.nullable(z.string()).optional(),
-  datasources: z.array(z.string()).optional(),
-  filters: z.array(PlatformFilter$outboundSchema).optional(),
-  time_range: PlatformTimeRange$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    query: z.string(),
+    page_size: z.number().int().default(10),
+    cursor: z.nullable(z.string()).optional(),
+    datasources: z.array(z.string()).optional(),
+    filters: z.array(PlatformFilter$outboundSchema).optional(),
+    time_range: PlatformTimeRange$outboundSchema.optional(),
+  })
+);
 
 export function platformSearchRequestToJSON(
   platformSearchRequest: PlatformSearchRequest,

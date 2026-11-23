@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -43,20 +43,22 @@ export const ActivityEnum$inboundSchema: z.ZodType<
   ActivityEnum,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ActivityEnum);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ActivityEnum));
 
 /** @internal */
 export const UserActivityInsight$inboundSchema: z.ZodType<
   UserActivityInsight,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user: Person$inboundSchema,
-  activity: ActivityEnum$inboundSchema,
-  lastActivityTimestamp: z.number().int().optional(),
-  activityCount: CountInfo$inboundSchema.optional(),
-  activeDayCount: CountInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user: Person$inboundSchema,
+    activity: ActivityEnum$inboundSchema,
+    lastActivityTimestamp: z.number().int().optional(),
+    activityCount: CountInfo$inboundSchema.optional(),
+    activeDayCount: CountInfo$inboundSchema.optional(),
+  })
+);
 
 export function userActivityInsightFromJSON(
   jsonString: string,

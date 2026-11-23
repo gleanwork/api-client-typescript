@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -46,15 +46,17 @@ export const PostRestApiIndexSubmissionsDatasourceInstanceTypeRequest$outboundSc
     PostRestApiIndexSubmissionsDatasourceInstanceTypeRequest$Outbound,
     z.ZodTypeDef,
     PostRestApiIndexSubmissionsDatasourceInstanceTypeRequest
-  > = z.object({
-    datasourceInstance: z.string(),
-    type: z.string(),
-    requestBody: z.record(z.any()),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      datasourceInstance: z.string(),
+      type: z.string(),
+      requestBody: z.record(z.any()),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function postRestApiIndexSubmissionsDatasourceInstanceTypeRequestToJSON(
   postRestApiIndexSubmissionsDatasourceInstanceTypeRequest:
@@ -72,9 +74,11 @@ export const PostRestApiIndexSubmissionsDatasourceInstanceTypeResponse$inboundSc
     PostRestApiIndexSubmissionsDatasourceInstanceTypeResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    requestId: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      requestId: z.string(),
+    })
+  );
 
 export function postRestApiIndexSubmissionsDatasourceInstanceTypeResponseFromJSON(
   jsonString: string,

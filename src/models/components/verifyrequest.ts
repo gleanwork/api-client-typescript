@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -33,7 +34,7 @@ export type VerifyRequest = {
 /** @internal */
 export const VerifyRequestAction$outboundSchema: z.ZodNativeEnum<
   typeof VerifyRequestAction
-> = z.nativeEnum(VerifyRequestAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VerifyRequestAction));
 
 /** @internal */
 export type VerifyRequest$Outbound = {
@@ -46,10 +47,12 @@ export const VerifyRequest$outboundSchema: z.ZodType<
   VerifyRequest$Outbound,
   z.ZodTypeDef,
   VerifyRequest
-> = z.object({
-  documentId: z.string(),
-  action: VerifyRequestAction$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documentId: z.string(),
+    action: VerifyRequestAction$outboundSchema.optional(),
+  })
+);
 
 export function verifyRequestToJSON(verifyRequest: VerifyRequest): string {
   return JSON.stringify(VerifyRequest$outboundSchema.parse(verifyRequest));

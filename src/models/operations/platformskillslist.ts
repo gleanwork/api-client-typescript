@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformSkillsListRequest = {
   /**
@@ -27,10 +28,12 @@ export const PlatformSkillsListRequest$outboundSchema: z.ZodType<
   PlatformSkillsListRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillsListRequest
-> = z.object({
-  page_size: z.number().int().default(20),
-  cursor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page_size: z.number().int().default(20),
+    cursor: z.string().optional(),
+  })
+);
 
 export function platformSkillsListRequestToJSON(
   platformSkillsListRequest: PlatformSkillsListRequest,

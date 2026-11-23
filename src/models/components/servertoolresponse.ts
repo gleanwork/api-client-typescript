@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -122,39 +122,45 @@ export const ServerToolResponseRequestType$inboundSchema: z.ZodType<
   ServerToolResponseRequestType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ServerToolResponseRequestType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ServerToolResponseRequestType)
+);
 /** @internal */
 export const ServerToolResponseRequestType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ServerToolResponseRequestType
-> = openEnums.outboundSchema(ServerToolResponseRequestType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(ServerToolResponseRequestType)
+);
 
 /** @internal */
 export const GrantScope$inboundSchema: z.ZodType<
   GrantScope,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GrantScope);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(GrantScope));
 /** @internal */
 export const GrantScope$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   GrantScope
-> = openEnums.outboundSchema(GrantScope);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(GrantScope));
 
 /** @internal */
 export const ServerToolResponse$inboundSchema: z.ZodType<
   ServerToolResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  requestType: ServerToolResponseRequestType$inboundSchema,
-  requestId: z.string(),
-  isGranted: z.boolean().optional(),
-  grantScope: GrantScope$inboundSchema.default("CURRENT_REQUEST"),
-  authContext: AuthContext$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestType: ServerToolResponseRequestType$inboundSchema,
+    requestId: z.string(),
+    isGranted: z.boolean().optional(),
+    grantScope: GrantScope$inboundSchema.default("CURRENT_REQUEST"),
+    authContext: AuthContext$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ServerToolResponse$Outbound = {
   requestType: string;
@@ -169,13 +175,15 @@ export const ServerToolResponse$outboundSchema: z.ZodType<
   ServerToolResponse$Outbound,
   z.ZodTypeDef,
   ServerToolResponse
-> = z.object({
-  requestType: ServerToolResponseRequestType$outboundSchema,
-  requestId: z.string(),
-  isGranted: z.boolean().optional(),
-  grantScope: GrantScope$outboundSchema.default("CURRENT_REQUEST"),
-  authContext: AuthContext$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requestType: ServerToolResponseRequestType$outboundSchema,
+    requestId: z.string(),
+    isGranted: z.boolean().optional(),
+    grantScope: GrantScope$outboundSchema.default("CURRENT_REQUEST"),
+    authContext: AuthContext$outboundSchema.optional(),
+  })
+);
 
 export function serverToolResponseToJSON(
   serverToolResponse: ServerToolResponse,

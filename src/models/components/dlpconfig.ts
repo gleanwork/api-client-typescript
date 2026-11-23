@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -112,21 +112,23 @@ export const DlpConfig$inboundSchema: z.ZodType<
   DlpConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.number().int().optional(),
-  sensitiveInfoTypes: z.array(SensitiveInfoType$inboundSchema).optional(),
-  inputOptions: InputOptions$inboundSchema.optional(),
-  externalSharingOptions: ExternalSharingOptions$inboundSchema.optional(),
-  broadSharingOptions: SharingOptions$inboundSchema.optional(),
-  sensitiveContentOptions: SensitiveContentOptions$inboundSchema.optional(),
-  reportName: z.string().optional(),
-  frequency: z.string().optional(),
-  createdBy: DlpPerson$inboundSchema.optional(),
-  createdAt: z.string().optional(),
-  redactQuote: z.boolean().optional(),
-  autoHideDocs: z.boolean().optional(),
-  allowlistOptions: AllowlistOptions$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.number().int().optional(),
+    sensitiveInfoTypes: z.array(SensitiveInfoType$inboundSchema).optional(),
+    inputOptions: InputOptions$inboundSchema.optional(),
+    externalSharingOptions: ExternalSharingOptions$inboundSchema.optional(),
+    broadSharingOptions: SharingOptions$inboundSchema.optional(),
+    sensitiveContentOptions: SensitiveContentOptions$inboundSchema.optional(),
+    reportName: z.string().optional(),
+    frequency: z.string().optional(),
+    createdBy: DlpPerson$inboundSchema.optional(),
+    createdAt: z.string().optional(),
+    redactQuote: z.boolean().optional(),
+    autoHideDocs: z.boolean().optional(),
+    allowlistOptions: AllowlistOptions$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type DlpConfig$Outbound = {
   version?: number | undefined;
@@ -149,21 +151,23 @@ export const DlpConfig$outboundSchema: z.ZodType<
   DlpConfig$Outbound,
   z.ZodTypeDef,
   DlpConfig
-> = z.object({
-  version: z.number().int().optional(),
-  sensitiveInfoTypes: z.array(SensitiveInfoType$outboundSchema).optional(),
-  inputOptions: InputOptions$outboundSchema.optional(),
-  externalSharingOptions: ExternalSharingOptions$outboundSchema.optional(),
-  broadSharingOptions: SharingOptions$outboundSchema.optional(),
-  sensitiveContentOptions: SensitiveContentOptions$outboundSchema.optional(),
-  reportName: z.string().optional(),
-  frequency: z.string().optional(),
-  createdBy: DlpPerson$outboundSchema.optional(),
-  createdAt: z.string().optional(),
-  redactQuote: z.boolean().optional(),
-  autoHideDocs: z.boolean().optional(),
-  allowlistOptions: AllowlistOptions$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.number().int().optional(),
+    sensitiveInfoTypes: z.array(SensitiveInfoType$outboundSchema).optional(),
+    inputOptions: InputOptions$outboundSchema.optional(),
+    externalSharingOptions: ExternalSharingOptions$outboundSchema.optional(),
+    broadSharingOptions: SharingOptions$outboundSchema.optional(),
+    sensitiveContentOptions: SensitiveContentOptions$outboundSchema.optional(),
+    reportName: z.string().optional(),
+    frequency: z.string().optional(),
+    createdBy: DlpPerson$outboundSchema.optional(),
+    createdAt: z.string().optional(),
+    redactQuote: z.boolean().optional(),
+    autoHideDocs: z.boolean().optional(),
+    allowlistOptions: AllowlistOptions$outboundSchema.optional(),
+  })
+);
 
 export function dlpConfigToJSON(dlpConfig: DlpConfig): string {
   return JSON.stringify(DlpConfig$outboundSchema.parse(dlpConfig));

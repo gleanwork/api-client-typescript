@@ -115,10 +115,10 @@ export class IndexingDocuments extends ClientSDK {
   }
 
   /**
-   * Beta: Get document information
+   * Get document information
    *
    * @remarks
-   * Gives various information that would help in debugging related to a particular document. Currently in beta, might undergo breaking changes without prior notice.
+   * Gives various information that would help in debugging related to a particular document.
    *
    * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
    */
@@ -136,10 +136,10 @@ export class IndexingDocuments extends ClientSDK {
   }
 
   /**
-   * Beta: Get information of a batch of documents
+   * Get information of a batch of documents
    *
    * @remarks
-   * Gives various information that would help in debugging related to a batch of documents. Currently in beta, might undergo breaking changes without prior notice.
+   * Gives various information that would help in debugging related to a batch of documents.
    *
    * Tip: Refer to the [Troubleshooting tutorial](https://developers.glean.com/indexing/debugging/datasource-config) for more information.
    */
@@ -218,10 +218,10 @@ export class IndexingDocuments extends ClientSDK {
   }
 
   /**
-   * Beta: Get document lifecycle events
+   * Get document lifecycle events
    *
    * @remarks
-   * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource. Currently in beta, might undergo breaking changes without prior notice.
+   * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource.
    */
   async debugEvents(
     debugDocumentLifecycleRequest: components.DebugDocumentLifecycleRequest,

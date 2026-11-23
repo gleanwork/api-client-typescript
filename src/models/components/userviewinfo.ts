@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type UserViewInfo = {
   /**
@@ -32,11 +33,13 @@ export const UserViewInfo$outboundSchema: z.ZodType<
   UserViewInfo$Outbound,
   z.ZodTypeDef,
   UserViewInfo
-> = z.object({
-  docId: z.string().optional(),
-  docTitle: z.string().optional(),
-  docUrl: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    docId: z.string().optional(),
+    docTitle: z.string().optional(),
+    docUrl: z.string().optional(),
+  })
+);
 
 export function userViewInfoToJSON(userViewInfo: UserViewInfo): string {
   return JSON.stringify(UserViewInfo$outboundSchema.parse(userViewInfo));

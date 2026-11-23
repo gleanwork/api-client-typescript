@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PlatformChat, PlatformChat$inboundSchema } from "./platformchat.js";
@@ -28,10 +28,12 @@ export const PlatformChatUpdateResponse$inboundSchema: z.ZodType<
   PlatformChatUpdateResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  chat: PlatformChat$inboundSchema,
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    chat: PlatformChat$inboundSchema,
+    request_id: z.string(),
+  })
+);
 
 export function platformChatUpdateResponseFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -46,27 +46,29 @@ export const ResponseStatus$inboundSchema: z.ZodType<
   ResponseStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ResponseStatus));
 /** @internal */
 export const ResponseStatus$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ResponseStatus
-> = openEnums.outboundSchema(ResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(ResponseStatus));
 
 /** @internal */
 export const CalendarAttendee$inboundSchema: z.ZodType<
   CalendarAttendee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isOrganizer: z.boolean().optional(),
-  isInGroup: z.boolean().optional(),
-  person: z.lazy(() => Person$inboundSchema),
-  groupAttendees: z.array(z.lazy(() => CalendarAttendee$inboundSchema))
-    .optional(),
-  responseStatus: ResponseStatus$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isOrganizer: z.boolean().optional(),
+    isInGroup: z.boolean().optional(),
+    person: z.lazy(() => Person$inboundSchema),
+    groupAttendees: z.array(z.lazy(() => CalendarAttendee$inboundSchema))
+      .optional(),
+    responseStatus: ResponseStatus$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type CalendarAttendee$Outbound = {
   isOrganizer?: boolean | undefined;
@@ -81,14 +83,16 @@ export const CalendarAttendee$outboundSchema: z.ZodType<
   CalendarAttendee$Outbound,
   z.ZodTypeDef,
   CalendarAttendee
-> = z.object({
-  isOrganizer: z.boolean().optional(),
-  isInGroup: z.boolean().optional(),
-  person: z.lazy(() => Person$outboundSchema),
-  groupAttendees: z.array(z.lazy(() => CalendarAttendee$outboundSchema))
-    .optional(),
-  responseStatus: ResponseStatus$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isOrganizer: z.boolean().optional(),
+    isInGroup: z.boolean().optional(),
+    person: z.lazy(() => Person$outboundSchema),
+    groupAttendees: z.array(z.lazy(() => CalendarAttendee$outboundSchema))
+      .optional(),
+    responseStatus: ResponseStatus$outboundSchema.optional(),
+  })
+);
 
 export function calendarAttendeeToJSON(
   calendarAttendee: CalendarAttendee,

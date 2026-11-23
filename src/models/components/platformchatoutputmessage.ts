@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -36,23 +36,29 @@ export type PlatformChatOutputMessage = {
 /** @internal */
 export const PlatformChatOutputMessageType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatOutputMessageType
-> = z.nativeEnum(PlatformChatOutputMessageType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatOutputMessageType)
+);
 
 /** @internal */
 export const PlatformChatOutputMessageRole$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatOutputMessageRole
-> = z.nativeEnum(PlatformChatOutputMessageRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatOutputMessageRole)
+);
 
 /** @internal */
 export const PlatformChatOutputMessage$inboundSchema: z.ZodType<
   PlatformChatOutputMessage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformChatOutputMessageType$inboundSchema,
-  role: PlatformChatOutputMessageRole$inboundSchema,
-  content: z.array(PlatformChatOutputTextContent$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformChatOutputMessageType$inboundSchema,
+    role: PlatformChatOutputMessageRole$inboundSchema,
+    content: z.array(PlatformChatOutputTextContent$inboundSchema),
+  })
+);
 
 export function platformChatOutputMessageFromJSON(
   jsonString: string,

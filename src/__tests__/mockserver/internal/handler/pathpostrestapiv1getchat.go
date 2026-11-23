@@ -75,7 +75,7 @@ func testGetchatGetchat0(w http.ResponseWriter, req *http.Request) {
 					components.ChatMessage{
 						AgentConfig: &components.AgentConfig{
 							Agent: components.AgentEnumDefault.ToPointer(),
-							Mode:  components.ModeDefault.ToPointer(),
+							Mode:  components.AgentConfigModeDefault.ToPointer(),
 						},
 						Author: components.AuthorUser.ToPointer(),
 						Citations: []components.ChatMessageCitation{

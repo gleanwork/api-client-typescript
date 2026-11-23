@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { ClosedEnum, OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -191,18 +191,20 @@ export type FeedEntry = {
 };
 
 /** @internal */
-export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> = z
-  .nativeEnum(Format);
+export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Format));
 
 /** @internal */
 export const UiConfig$inboundSchema: z.ZodType<
   UiConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  format: Format$inboundSchema.optional(),
-  additionalFlags: DisplayableListItemUIConfig$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    format: Format$inboundSchema.optional(),
+    additionalFlags: DisplayableListItemUIConfig$inboundSchema.optional(),
+  })
+);
 
 export function uiConfigFromJSON(
   jsonString: string,
@@ -219,37 +221,41 @@ export const JustificationType$inboundSchema: z.ZodType<
   JustificationType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(JustificationType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(JustificationType)
+);
 
 /** @internal */
 export const FeedEntry$inboundSchema: z.ZodType<
   FeedEntry,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entryId: z.string().optional(),
-  title: z.string(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  createdBy: Person$inboundSchema.optional(),
-  uiConfig: z.lazy(() => UiConfig$inboundSchema).optional(),
-  justificationType: JustificationType$inboundSchema.optional(),
-  justification: z.string().optional(),
-  trackingToken: z.string().optional(),
-  viewUrl: z.string().optional(),
-  document: Document$inboundSchema.optional(),
-  event: CalendarEvent$inboundSchema.optional(),
-  announcement: Announcement$inboundSchema.optional(),
-  digest: Digest$inboundSchema.optional(),
-  collection: Collection$inboundSchema.optional(),
-  collectionItem: CollectionItem$inboundSchema.optional(),
-  person: Person$inboundSchema.optional(),
-  app: AppResult$inboundSchema.optional(),
-  chatSuggestion: ChatSuggestion$inboundSchema.optional(),
-  promptTemplate: PromptTemplateResult$inboundSchema.optional(),
-  workflow: WorkflowResult$inboundSchema.optional(),
-  activities: z.array(UserActivity$inboundSchema).optional(),
-  documentVisitorCount: CountInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entryId: z.string().optional(),
+    title: z.string(),
+    thumbnail: Thumbnail$inboundSchema.optional(),
+    createdBy: Person$inboundSchema.optional(),
+    uiConfig: z.lazy(() => UiConfig$inboundSchema).optional(),
+    justificationType: JustificationType$inboundSchema.optional(),
+    justification: z.string().optional(),
+    trackingToken: z.string().optional(),
+    viewUrl: z.string().optional(),
+    document: Document$inboundSchema.optional(),
+    event: CalendarEvent$inboundSchema.optional(),
+    announcement: Announcement$inboundSchema.optional(),
+    digest: Digest$inboundSchema.optional(),
+    collection: Collection$inboundSchema.optional(),
+    collectionItem: CollectionItem$inboundSchema.optional(),
+    person: Person$inboundSchema.optional(),
+    app: AppResult$inboundSchema.optional(),
+    chatSuggestion: ChatSuggestion$inboundSchema.optional(),
+    promptTemplate: PromptTemplateResult$inboundSchema.optional(),
+    workflow: WorkflowResult$inboundSchema.optional(),
+    activities: z.array(UserActivity$inboundSchema).optional(),
+    documentVisitorCount: CountInfo$inboundSchema.optional(),
+  })
+);
 
 export function feedEntryFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   UserGeneratedContentId,
   UserGeneratedContentId$Outbound,
@@ -31,9 +32,11 @@ export const GetShortcutRequest$outboundSchema: z.ZodType<
   GetShortcutRequest$Outbound,
   z.ZodTypeDef,
   GetShortcutRequest
-> = z.object({
-  alias: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: z.string(),
+  })
+);
 
 export function getShortcutRequestToJSON(
   getShortcutRequest: GetShortcutRequest,
@@ -53,10 +56,12 @@ export const GetShortcutRequestUnion$outboundSchema: z.ZodType<
   GetShortcutRequestUnion$Outbound,
   z.ZodTypeDef,
   GetShortcutRequestUnion
-> = z.union([
-  z.lazy(() => GetShortcutRequest$outboundSchema),
-  UserGeneratedContentId$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetShortcutRequest$outboundSchema),
+    UserGeneratedContentId$outboundSchema,
+  ])
+);
 
 export function getShortcutRequestUnionToJSON(
   getShortcutRequestUnion: GetShortcutRequestUnion,
