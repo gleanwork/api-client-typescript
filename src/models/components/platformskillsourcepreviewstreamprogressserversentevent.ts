@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,19 +27,21 @@ export const PlatformSkillSourcePreviewStreamProgressServerSentEvent$inboundSche
     PlatformSkillSourcePreviewStreamProgressServerSentEvent,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string().optional(),
-    event: z.literal("PROGRESS"),
-    data: z.unknown().transform((v, ctx) => {
-      if (typeof v !== "string") return v;
-      try {
-        return JSON.parse(v);
-      } catch (err) {
-        ctx.addIssue({ code: "custom", message: `malformed json: ${err}` });
-        return z.NEVER;
-      }
-    }).pipe(PlatformSkillSourcePreviewStreamProgress$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string().optional(),
+      event: z.literal("PROGRESS"),
+      data: z.unknown().transform((v, ctx) => {
+        if (typeof v !== "string") return v;
+        try {
+          return JSON.parse(v);
+        } catch (err) {
+          ctx.addIssue({ code: "custom", message: `malformed json: ${err}` });
+          return z.NEVER;
+        }
+      }).pipe(PlatformSkillSourcePreviewStreamProgress$inboundSchema),
+    })
+  );
 
 export function platformSkillSourcePreviewStreamProgressServerSentEventFromJSON(
   jsonString: string,

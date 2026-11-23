@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,14 +26,16 @@ export type Code = {
 };
 
 /** @internal */
-export const Code$inboundSchema: z.ZodType<Code, z.ZodTypeDef, unknown> = z
-  .object({
-    repoName: z.string().optional(),
-    fileName: z.string().optional(),
-    fileUrl: z.string().optional(),
-    lines: z.array(z.lazy(() => CodeLine$inboundSchema)).optional(),
-    isLastMatch: z.boolean().optional(),
-  });
+export const Code$inboundSchema: z.ZodType<Code, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      repoName: z.string().optional(),
+      fileName: z.string().optional(),
+      fileUrl: z.string().optional(),
+      lines: z.array(z.lazy(() => CodeLine$inboundSchema)).optional(),
+      isLastMatch: z.boolean().optional(),
+    })
+  );
 /** @internal */
 export type Code$Outbound = {
   repoName?: string | undefined;
@@ -45,13 +47,15 @@ export type Code$Outbound = {
 
 /** @internal */
 export const Code$outboundSchema: z.ZodType<Code$Outbound, z.ZodTypeDef, Code> =
-  z.object({
-    repoName: z.string().optional(),
-    fileName: z.string().optional(),
-    fileUrl: z.string().optional(),
-    lines: z.array(z.lazy(() => CodeLine$outboundSchema)).optional(),
-    isLastMatch: z.boolean().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      repoName: z.string().optional(),
+      fileName: z.string().optional(),
+      fileUrl: z.string().optional(),
+      lines: z.array(z.lazy(() => CodeLine$outboundSchema)).optional(),
+      isLastMatch: z.boolean().optional(),
+    })
+  );
 
 export function codeToJSON(code: Code): string {
   return JSON.stringify(Code$outboundSchema.parse(code));

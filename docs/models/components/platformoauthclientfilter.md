@@ -8,7 +8,7 @@ A filter on one OAuth client field.
 import { PlatformOAuthClientFilter } from "@gleanwork/api-client/models/components";
 
 let value: PlatformOAuthClientFilter = {
-  field: "<value>",
+  field: "is_enabled",
   values: [],
 };
 ```

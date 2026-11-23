@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * List pins request
@@ -30,7 +31,7 @@ export const ListpinsRequestBody$outboundSchema: z.ZodType<
   ListpinsRequestBody$Outbound,
   z.ZodTypeDef,
   ListpinsRequestBody
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function listpinsRequestBodyToJSON(
   listpinsRequestBody: ListpinsRequestBody,
@@ -51,14 +52,16 @@ export const ListpinsRequest$outboundSchema: z.ZodType<
   ListpinsRequest$Outbound,
   z.ZodTypeDef,
   ListpinsRequest
-> = z.object({
-  locale: z.string().optional(),
-  requestBody: z.lazy(() => ListpinsRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    requestBody: z.lazy(() => ListpinsRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function listpinsRequestToJSON(
   listpinsRequest: ListpinsRequest,

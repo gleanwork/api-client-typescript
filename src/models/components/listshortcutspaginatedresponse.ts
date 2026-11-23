@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FacetResult, FacetResult$inboundSchema } from "./facetresult.js";
@@ -28,11 +28,13 @@ export const ListShortcutsPaginatedResponse$inboundSchema: z.ZodType<
   ListShortcutsPaginatedResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  shortcuts: z.array(Shortcut$inboundSchema),
-  facetResults: z.array(FacetResult$inboundSchema).optional(),
-  meta: ShortcutsPaginationMetadata$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    shortcuts: z.array(Shortcut$inboundSchema),
+    facetResults: z.array(FacetResult$inboundSchema).optional(),
+    meta: ShortcutsPaginationMetadata$inboundSchema,
+  })
+);
 
 export function listShortcutsPaginatedResponseFromJSON(
   jsonString: string,

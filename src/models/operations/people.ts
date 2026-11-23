@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PeopleRequest = {
@@ -29,14 +30,16 @@ export const PeopleRequest$outboundSchema: z.ZodType<
   PeopleRequest$Outbound,
   z.ZodTypeDef,
   PeopleRequest
-> = z.object({
-  locale: z.string().optional(),
-  peopleRequest: components.PeopleRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    peopleRequest: "PeopleRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    peopleRequest: components.PeopleRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      peopleRequest: "PeopleRequest",
+    });
+  })
+);
 
 export function peopleRequestToJSON(peopleRequest: PeopleRequest): string {
   return JSON.stringify(PeopleRequest$outboundSchema.parse(peopleRequest));

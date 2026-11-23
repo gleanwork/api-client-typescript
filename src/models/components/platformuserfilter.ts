@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -58,7 +59,7 @@ export type PlatformUserFilter = {
 /** @internal */
 export const PlatformUserFilterOperator$outboundSchema: z.ZodNativeEnum<
   typeof PlatformUserFilterOperator
-> = z.nativeEnum(PlatformUserFilterOperator);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PlatformUserFilterOperator));
 
 /** @internal */
 export type PlatformUserFilter$Outbound = {
@@ -72,11 +73,13 @@ export const PlatformUserFilter$outboundSchema: z.ZodType<
   PlatformUserFilter$Outbound,
   z.ZodTypeDef,
   PlatformUserFilter
-> = z.object({
-  field: z.string(),
-  values: z.array(z.string()),
-  operator: PlatformUserFilterOperator$outboundSchema.default("EQUALS"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string(),
+    values: z.array(z.string()),
+    operator: PlatformUserFilterOperator$outboundSchema.default("EQUALS"),
+  })
+);
 
 export function platformUserFilterToJSON(
   platformUserFilter: PlatformUserFilter,

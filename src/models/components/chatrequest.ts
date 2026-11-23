@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   AgentConfig,
   AgentConfig$Outbound,
@@ -86,19 +87,21 @@ export const ChatRequest$outboundSchema: z.ZodType<
   ChatRequest$Outbound,
   z.ZodTypeDef,
   ChatRequest
-> = z.object({
-  messages: z.array(ChatMessage$outboundSchema),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  saveChat: z.boolean().optional(),
-  chatId: z.string().optional(),
-  agentConfig: AgentConfig$outboundSchema.optional(),
-  inclusions: ChatRestrictionFilters$outboundSchema.optional(),
-  exclusions: ChatRestrictionFilters$outboundSchema.optional(),
-  timeoutMillis: z.number().int().optional(),
-  applicationId: z.string().optional(),
-  agentId: z.string().optional(),
-  stream: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    messages: z.array(ChatMessage$outboundSchema),
+    sessionInfo: SessionInfo$outboundSchema.optional(),
+    saveChat: z.boolean().optional(),
+    chatId: z.string().optional(),
+    agentConfig: AgentConfig$outboundSchema.optional(),
+    inclusions: ChatRestrictionFilters$outboundSchema.optional(),
+    exclusions: ChatRestrictionFilters$outboundSchema.optional(),
+    timeoutMillis: z.number().int().optional(),
+    applicationId: z.string().optional(),
+    agentId: z.string().optional(),
+    stream: z.boolean().optional(),
+  })
+);
 
 export function chatRequestToJSON(chatRequest: ChatRequest): string {
   return JSON.stringify(ChatRequest$outboundSchema.parse(chatRequest));

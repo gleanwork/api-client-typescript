@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   ManualFeedbackInfo,
@@ -271,17 +272,17 @@ export type Feedback = {
 /** @internal */
 export const FeedbackCategory$outboundSchema: z.ZodNativeEnum<
   typeof FeedbackCategory
-> = z.nativeEnum(FeedbackCategory);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FeedbackCategory));
 
 /** @internal */
 export const FeedbackEvent$outboundSchema: z.ZodNativeEnum<
   typeof FeedbackEvent
-> = z.nativeEnum(FeedbackEvent);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FeedbackEvent));
 
 /** @internal */
 export const FeedbackChannel$outboundSchema: z.ZodNativeEnum<
   typeof FeedbackChannel
-> = z.nativeEnum(FeedbackChannel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FeedbackChannel));
 
 /** @internal */
 export type Feedback$Outbound = {
@@ -315,30 +316,32 @@ export const Feedback$outboundSchema: z.ZodType<
   Feedback$Outbound,
   z.ZodTypeDef,
   Feedback
-> = z.object({
-  id: z.string().optional(),
-  category: FeedbackCategory$outboundSchema.optional(),
-  trackingTokens: z.array(z.string()),
-  event: FeedbackEvent$outboundSchema,
-  position: z.number().int().optional(),
-  payload: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  timestamp: z.date().transform(v => v.toISOString()).optional(),
-  user: User$outboundSchema.optional(),
-  pathname: z.string().optional(),
-  channels: z.array(FeedbackChannel$outboundSchema).optional(),
-  url: z.string().optional(),
-  uiTree: z.array(z.string()).optional(),
-  uiElement: z.string().optional(),
-  manualFeedbackInfo: ManualFeedbackInfo$outboundSchema.optional(),
-  manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo$outboundSchema
-    .optional(),
-  seenFeedbackInfo: SeenFeedbackInfo$outboundSchema.optional(),
-  userViewInfo: UserViewInfo$outboundSchema.optional(),
-  workflowFeedbackInfo: WorkflowFeedbackInfo$outboundSchema.optional(),
-  applicationId: z.string().optional(),
-  agentId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    category: FeedbackCategory$outboundSchema.optional(),
+    trackingTokens: z.array(z.string()),
+    event: FeedbackEvent$outboundSchema,
+    position: z.number().int().optional(),
+    payload: z.string().optional(),
+    sessionInfo: SessionInfo$outboundSchema.optional(),
+    timestamp: z.date().transform(v => v.toISOString()).optional(),
+    user: User$outboundSchema.optional(),
+    pathname: z.string().optional(),
+    channels: z.array(FeedbackChannel$outboundSchema).optional(),
+    url: z.string().optional(),
+    uiTree: z.array(z.string()).optional(),
+    uiElement: z.string().optional(),
+    manualFeedbackInfo: ManualFeedbackInfo$outboundSchema.optional(),
+    manualFeedbackSideBySideInfo: ManualFeedbackSideBySideInfo$outboundSchema
+      .optional(),
+    seenFeedbackInfo: SeenFeedbackInfo$outboundSchema.optional(),
+    userViewInfo: UserViewInfo$outboundSchema.optional(),
+    workflowFeedbackInfo: WorkflowFeedbackInfo$outboundSchema.optional(),
+    applicationId: z.string().optional(),
+    agentId: z.string().optional(),
+  })
+);
 
 export function feedbackToJSON(feedback: Feedback): string {
   return JSON.stringify(Feedback$outboundSchema.parse(feedback));

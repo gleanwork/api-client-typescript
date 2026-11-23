@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FacetBucket, FacetBucket$inboundSchema } from "./facetbucket.js";
@@ -37,13 +37,15 @@ export const FacetResult$inboundSchema: z.ZodType<
   FacetResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sourceName: z.string().optional(),
-  operatorName: z.string().optional(),
-  buckets: z.array(FacetBucket$inboundSchema).optional(),
-  hasMoreBuckets: z.boolean().optional(),
-  groupName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sourceName: z.string().optional(),
+    operatorName: z.string().optional(),
+    buckets: z.array(FacetBucket$inboundSchema).optional(),
+    hasMoreBuckets: z.boolean().optional(),
+    groupName: z.string().optional(),
+  })
+);
 
 export function facetResultFromJSON(
   jsonString: string,

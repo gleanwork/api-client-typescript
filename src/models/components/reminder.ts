@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,13 +36,15 @@ export const Reminder$inboundSchema: z.ZodType<
   Reminder,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  assignee: z.lazy(() => Person$inboundSchema),
-  requestor: z.lazy(() => Person$inboundSchema).optional(),
-  remindAt: z.number().int(),
-  createdAt: z.number().int().optional(),
-  reason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assignee: z.lazy(() => Person$inboundSchema),
+    requestor: z.lazy(() => Person$inboundSchema).optional(),
+    remindAt: z.number().int(),
+    createdAt: z.number().int().optional(),
+    reason: z.string().optional(),
+  })
+);
 /** @internal */
 export type Reminder$Outbound = {
   assignee: Person$Outbound;
@@ -57,13 +59,15 @@ export const Reminder$outboundSchema: z.ZodType<
   Reminder$Outbound,
   z.ZodTypeDef,
   Reminder
-> = z.object({
-  assignee: z.lazy(() => Person$outboundSchema),
-  requestor: z.lazy(() => Person$outboundSchema).optional(),
-  remindAt: z.number().int(),
-  createdAt: z.number().int().optional(),
-  reason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assignee: z.lazy(() => Person$outboundSchema),
+    requestor: z.lazy(() => Person$outboundSchema).optional(),
+    remindAt: z.number().int(),
+    createdAt: z.number().int().optional(),
+    reason: z.string().optional(),
+  })
+);
 
 export function reminderToJSON(reminder: Reminder): string {
   return JSON.stringify(Reminder$outboundSchema.parse(reminder));

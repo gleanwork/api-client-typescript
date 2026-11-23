@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type EditWorkflowRequest = {
   /**
@@ -27,10 +28,12 @@ export const EditWorkflowRequest$outboundSchema: z.ZodType<
   EditWorkflowRequest$Outbound,
   z.ZodTypeDef,
   EditWorkflowRequest
-> = z.object({
-  name: z.string().optional(),
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    id: z.string().optional(),
+  })
+);
 
 export function editWorkflowRequestToJSON(
   editWorkflowRequest: EditWorkflowRequest,

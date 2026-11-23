@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,18 +37,20 @@ export const McpInsightsResponse$inboundSchema: z.ZodType<
   McpInsightsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  dailyActiveUsers: z.number().int().optional(),
-  monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  overallDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
-  topHostApplicationsActiveUserTimeseries: z.array(
-    LabeledCountInfo$inboundSchema,
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    monthlyActiveUsers: z.number().int().optional(),
+    weeklyActiveUsers: z.number().int().optional(),
+    dailyActiveUsers: z.number().int().optional(),
+    monthlyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    weeklyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    dailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    overallDailyActiveUserTimeseries: LabeledCountInfo$inboundSchema.optional(),
+    topHostApplicationsActiveUserTimeseries: z.array(
+      LabeledCountInfo$inboundSchema,
+    ).optional(),
+  })
+);
 
 export function mcpInsightsResponseFromJSON(
   jsonString: string,

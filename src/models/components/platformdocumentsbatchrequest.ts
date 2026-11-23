@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformDocumentInclude,
   PlatformDocumentInclude$outboundSchema,
@@ -49,10 +50,12 @@ export const PlatformDocumentsBatchRequestDocumentSpec$outboundSchema:
     PlatformDocumentsBatchRequestDocumentSpec$Outbound,
     z.ZodTypeDef,
     PlatformDocumentsBatchRequestDocumentSpec
-  > = z.union([
-    PlatformDocumentsBatchSpecById$outboundSchema,
-    PlatformDocumentsBatchSpecByUrl$outboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      PlatformDocumentsBatchSpecById$outboundSchema,
+      PlatformDocumentsBatchSpecByUrl$outboundSchema,
+    ])
+  );
 
 export function platformDocumentsBatchRequestDocumentSpecToJSON(
   platformDocumentsBatchRequestDocumentSpec:
@@ -79,15 +82,17 @@ export const PlatformDocumentsBatchRequest$outboundSchema: z.ZodType<
   PlatformDocumentsBatchRequest$Outbound,
   z.ZodTypeDef,
   PlatformDocumentsBatchRequest
-> = z.object({
-  document_specs: z.array(
-    z.union([
-      PlatformDocumentsBatchSpecById$outboundSchema,
-      PlatformDocumentsBatchSpecByUrl$outboundSchema,
-    ]),
-  ),
-  include: z.array(PlatformDocumentInclude$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    document_specs: z.array(
+      z.union([
+        PlatformDocumentsBatchSpecById$outboundSchema,
+        PlatformDocumentsBatchSpecByUrl$outboundSchema,
+      ]),
+    ),
+    include: z.array(PlatformDocumentInclude$outboundSchema).optional(),
+  })
+);
 
 export function platformDocumentsBatchRequestToJSON(
   platformDocumentsBatchRequest: PlatformDocumentsBatchRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,9 +26,11 @@ export const ObjectPermissions$inboundSchema: z.ZodType<
   ObjectPermissions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  write: WritePermission$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    write: WritePermission$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ObjectPermissions$Outbound = {
   write?: WritePermission$Outbound | undefined;
@@ -39,9 +41,11 @@ export const ObjectPermissions$outboundSchema: z.ZodType<
   ObjectPermissions$Outbound,
   z.ZodTypeDef,
   ObjectPermissions
-> = z.object({
-  write: WritePermission$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    write: WritePermission$outboundSchema.optional(),
+  })
+);
 
 export function objectPermissionsToJSON(
   objectPermissions: ObjectPermissions,

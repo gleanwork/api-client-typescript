@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -31,10 +31,12 @@ export const PlatformGetIdpGroupResponse$inboundSchema: z.ZodType<
   PlatformGetIdpGroupResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  idp_group: PlatformIdpGroup$inboundSchema,
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idp_group: PlatformIdpGroup$inboundSchema,
+    request_id: z.string(),
+  })
+);
 
 export function platformGetIdpGroupResponseFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetRestApiV1ToolsListRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetRestApiV1ToolsListRequest$outboundSchema: z.ZodType<
   GetRestApiV1ToolsListRequest$Outbound,
   z.ZodTypeDef,
   GetRestApiV1ToolsListRequest
-> = z.object({
-  toolNames: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toolNames: z.array(z.string()).optional(),
+  })
+);
 
 export function getRestApiV1ToolsListRequestToJSON(
   getRestApiV1ToolsListRequest: GetRestApiV1ToolsListRequest,

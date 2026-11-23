@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -50,24 +50,26 @@ export const RelationType$inboundSchema: z.ZodType<
   RelationType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(RelationType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(RelationType));
 /** @internal */
 export const RelationType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   RelationType
-> = openEnums.outboundSchema(RelationType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(RelationType));
 
 /** @internal */
 export const FacetFilterValue$inboundSchema: z.ZodType<
   FacetFilterValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.string().optional(),
-  relationType: RelationType$inboundSchema.optional(),
-  isNegated: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    relationType: RelationType$inboundSchema.optional(),
+    isNegated: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type FacetFilterValue$Outbound = {
   value?: string | undefined;
@@ -80,11 +82,13 @@ export const FacetFilterValue$outboundSchema: z.ZodType<
   FacetFilterValue$Outbound,
   z.ZodTypeDef,
   FacetFilterValue
-> = z.object({
-  value: z.string().optional(),
-  relationType: RelationType$outboundSchema.optional(),
-  isNegated: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    relationType: RelationType$outboundSchema.optional(),
+    isNegated: z.boolean().optional(),
+  })
+);
 
 export function facetFilterValueToJSON(
   facetFilterValue: FacetFilterValue,

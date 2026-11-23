@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DlpReport, DlpReport$inboundSchema } from "./dlpreport.js";
@@ -21,9 +21,11 @@ export const GetDlpReportResponse$inboundSchema: z.ZodType<
   GetDlpReportResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  report: DlpReport$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    report: DlpReport$inboundSchema.optional(),
+  })
+);
 
 export function getDlpReportResponseFromJSON(
   jsonString: string,

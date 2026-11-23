@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -44,23 +44,29 @@ export const AnonymousEventEventType$inboundSchema: z.ZodType<
   AnonymousEventEventType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AnonymousEventEventType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(AnonymousEventEventType)
+);
 /** @internal */
 export const AnonymousEventEventType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AnonymousEventEventType
-> = openEnums.outboundSchema(AnonymousEventEventType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(AnonymousEventEventType)
+);
 
 /** @internal */
 export const AnonymousEvent$inboundSchema: z.ZodType<
   AnonymousEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  time: TimeInterval$inboundSchema.optional(),
-  eventType: AnonymousEventEventType$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    time: TimeInterval$inboundSchema.optional(),
+    eventType: AnonymousEventEventType$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type AnonymousEvent$Outbound = {
   time?: TimeInterval$Outbound | undefined;
@@ -72,10 +78,12 @@ export const AnonymousEvent$outboundSchema: z.ZodType<
   AnonymousEvent$Outbound,
   z.ZodTypeDef,
   AnonymousEvent
-> = z.object({
-  time: TimeInterval$outboundSchema.optional(),
-  eventType: AnonymousEventEventType$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    time: TimeInterval$outboundSchema.optional(),
+    eventType: AnonymousEventEventType$outboundSchema.optional(),
+  })
+);
 
 export function anonymousEventToJSON(anonymousEvent: AnonymousEvent): string {
   return JSON.stringify(AnonymousEvent$outboundSchema.parse(anonymousEvent));

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DatasourceGroupDefinition,
   DatasourceGroupDefinition$Outbound,
@@ -40,11 +41,13 @@ export const IndexGroupRequest$outboundSchema: z.ZodType<
   IndexGroupRequest$Outbound,
   z.ZodTypeDef,
   IndexGroupRequest
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  group: DatasourceGroupDefinition$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.number().int().optional(),
+    datasource: z.string(),
+    group: DatasourceGroupDefinition$outboundSchema,
+  })
+);
 
 export function indexGroupRequestToJSON(
   indexGroupRequest: IndexGroupRequest,

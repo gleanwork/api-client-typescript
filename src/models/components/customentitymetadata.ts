@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,9 +26,11 @@ export const CustomEntityMetadata$inboundSchema: z.ZodType<
   CustomEntityMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customData: z.record(CustomDataValue$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customData: z.record(CustomDataValue$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CustomEntityMetadata$Outbound = {
   customData?: { [k: string]: CustomDataValue$Outbound } | undefined;
@@ -39,9 +41,11 @@ export const CustomEntityMetadata$outboundSchema: z.ZodType<
   CustomEntityMetadata$Outbound,
   z.ZodTypeDef,
   CustomEntityMetadata
-> = z.object({
-  customData: z.record(CustomDataValue$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customData: z.record(CustomDataValue$outboundSchema).optional(),
+  })
+);
 
 export function customEntityMetadataToJSON(
   customEntityMetadata: CustomEntityMetadata,

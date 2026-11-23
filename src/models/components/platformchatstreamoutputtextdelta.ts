@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -25,24 +25,39 @@ export type PlatformChatStreamOutputTextDelta = {
    */
   response_id: string;
   delta: string;
+  /**
+   * The ID of the chat the event belongs to, when the chat is stored.
+   */
+  conversation_id?: string | undefined;
+  /**
+   * Position of this event's source message in the chat stream. Pass the last one you received as `last_seen_sequence_id` when resuming.
+   *
+   * @remarks
+   */
+  sequence_id?: number | undefined;
 };
 
 /** @internal */
 export const PlatformChatStreamOutputTextDeltaType$inboundSchema:
-  z.ZodNativeEnum<typeof PlatformChatStreamOutputTextDeltaType> = z.nativeEnum(
-    PlatformChatStreamOutputTextDeltaType,
-  );
+  z.ZodNativeEnum<typeof PlatformChatStreamOutputTextDeltaType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PlatformChatStreamOutputTextDeltaType)
+    );
 
 /** @internal */
 export const PlatformChatStreamOutputTextDelta$inboundSchema: z.ZodType<
   PlatformChatStreamOutputTextDelta,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformChatStreamOutputTextDeltaType$inboundSchema,
-  response_id: z.string(),
-  delta: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformChatStreamOutputTextDeltaType$inboundSchema,
+    response_id: z.string(),
+    delta: z.string(),
+    conversation_id: z.string().optional(),
+    sequence_id: z.number().int().optional(),
+  })
+);
 
 export function platformChatStreamOutputTextDeltaFromJSON(
   jsonString: string,

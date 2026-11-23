@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -57,17 +57,23 @@ export const PlatformTriggerWithSecret$inboundSchema: z.ZodType<
   PlatformTriggerWithSecret,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trigger_id: z.string(),
-  preset_id: z.string(),
-  description: z.string().optional(),
-  status: PlatformTriggerStatus$inboundSchema,
-  inputs: z.record(z.any()).optional(),
-  delivery: PlatformTriggerDeliveryOutput$inboundSchema,
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  signing_secret: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trigger_id: z.string(),
+    preset_id: z.string(),
+    description: z.string().optional(),
+    status: PlatformTriggerStatus$inboundSchema,
+    inputs: z.record(z.any()).optional(),
+    delivery: PlatformTriggerDeliveryOutput$inboundSchema,
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    signing_secret: z.string(),
+  })
+);
 
 export function platformTriggerWithSecretFromJSON(
   jsonString: string,

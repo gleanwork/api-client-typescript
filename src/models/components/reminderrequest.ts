@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ReminderRequest = {
   /**
@@ -37,12 +38,14 @@ export const ReminderRequest$outboundSchema: z.ZodType<
   ReminderRequest$Outbound,
   z.ZodTypeDef,
   ReminderRequest
-> = z.object({
-  documentId: z.string(),
-  assignee: z.string().optional(),
-  remindInDays: z.number().int().optional(),
-  reason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documentId: z.string(),
+    assignee: z.string().optional(),
+    remindInDays: z.number().int().optional(),
+    reason: z.string().optional(),
+  })
+);
 
 export function reminderRequestToJSON(
   reminderRequest: ReminderRequest,

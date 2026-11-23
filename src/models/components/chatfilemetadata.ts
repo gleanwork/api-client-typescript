@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -49,13 +49,15 @@ export const ChatFileMetadata$inboundSchema: z.ZodType<
   ChatFileMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: ChatFileStatus$inboundSchema.optional(),
-  uploadTime: z.number().int().optional(),
-  processedSize: z.number().int().optional(),
-  failureReason: ChatFileFailureReason$inboundSchema.optional(),
-  mimeType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: ChatFileStatus$inboundSchema.optional(),
+    uploadTime: z.number().int().optional(),
+    processedSize: z.number().int().optional(),
+    failureReason: ChatFileFailureReason$inboundSchema.optional(),
+    mimeType: z.string().optional(),
+  })
+);
 /** @internal */
 export type ChatFileMetadata$Outbound = {
   status?: string | undefined;
@@ -70,13 +72,15 @@ export const ChatFileMetadata$outboundSchema: z.ZodType<
   ChatFileMetadata$Outbound,
   z.ZodTypeDef,
   ChatFileMetadata
-> = z.object({
-  status: ChatFileStatus$outboundSchema.optional(),
-  uploadTime: z.number().int().optional(),
-  processedSize: z.number().int().optional(),
-  failureReason: ChatFileFailureReason$outboundSchema.optional(),
-  mimeType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: ChatFileStatus$outboundSchema.optional(),
+    uploadTime: z.number().int().optional(),
+    processedSize: z.number().int().optional(),
+    failureReason: ChatFileFailureReason$outboundSchema.optional(),
+    mimeType: z.string().optional(),
+  })
+);
 
 export function chatFileMetadataToJSON(
   chatFileMetadata: ChatFileMetadata,

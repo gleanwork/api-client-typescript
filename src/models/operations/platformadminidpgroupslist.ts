@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformAdminIdpGroupsListRequest = {
@@ -37,11 +38,14 @@ export const PlatformAdminIdpGroupsListRequest$outboundSchema: z.ZodType<
   PlatformAdminIdpGroupsListRequest$Outbound,
   z.ZodTypeDef,
   PlatformAdminIdpGroupsListRequest
-> = z.object({
-  page_size: z.number().int().default(50),
-  cursor: z.string().optional(),
-  filters: z.array(components.PlatformIdpGroupFilter$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page_size: z.number().int().default(50),
+    cursor: z.string().optional(),
+    filters: z.array(components.PlatformIdpGroupFilter$outboundSchema)
+      .optional(),
+  })
+);
 
 export function platformAdminIdpGroupsListRequestToJSON(
   platformAdminIdpGroupsListRequest: PlatformAdminIdpGroupsListRequest,

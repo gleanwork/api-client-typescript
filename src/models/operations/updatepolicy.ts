@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type UpdatepolicyRequest = {
@@ -26,14 +27,16 @@ export const UpdatepolicyRequest$outboundSchema: z.ZodType<
   UpdatepolicyRequest$Outbound,
   z.ZodTypeDef,
   UpdatepolicyRequest
-> = z.object({
-  id: z.string(),
-  updateDlpReportRequest: components.UpdateDlpReportRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateDlpReportRequest: "UpdateDlpReportRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    updateDlpReportRequest: components.UpdateDlpReportRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateDlpReportRequest: "UpdateDlpReportRequest",
+    });
+  })
+);
 
 export function updatepolicyRequestToJSON(
   updatepolicyRequest: UpdatepolicyRequest,

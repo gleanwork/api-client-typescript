@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -30,23 +30,39 @@ export type PlatformChatStreamProgress = {
    * @remarks
    */
   text: string;
+  /**
+   * The ID of the chat the event belongs to, when the chat is stored.
+   */
+  conversation_id?: string | undefined;
+  /**
+   * Position of this event's source message in the chat stream. Pass the last one you received as `last_seen_sequence_id` when resuming.
+   *
+   * @remarks
+   */
+  sequence_id?: number | undefined;
 };
 
 /** @internal */
 export const PlatformChatStreamProgressType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatStreamProgressType
-> = z.nativeEnum(PlatformChatStreamProgressType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatStreamProgressType)
+);
 
 /** @internal */
 export const PlatformChatStreamProgress$inboundSchema: z.ZodType<
   PlatformChatStreamProgress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformChatStreamProgressType$inboundSchema,
-  response_id: z.string(),
-  text: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformChatStreamProgressType$inboundSchema,
+    response_id: z.string(),
+    text: z.string(),
+    conversation_id: z.string().optional(),
+    sequence_id: z.number().int().optional(),
+  })
+);
 
 export function platformChatStreamProgressFromJSON(
   jsonString: string,

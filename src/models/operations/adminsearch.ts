@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type AdminsearchRequest = {
@@ -29,14 +30,16 @@ export const AdminsearchRequest$outboundSchema: z.ZodType<
   AdminsearchRequest$Outbound,
   z.ZodTypeDef,
   AdminsearchRequest
-> = z.object({
-  locale: z.string().optional(),
-  searchRequest: components.SearchRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    searchRequest: "SearchRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    searchRequest: components.SearchRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      searchRequest: "SearchRequest",
+    });
+  })
+);
 
 export function adminsearchRequestToJSON(
   adminsearchRequest: AdminsearchRequest,

@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -42,10 +42,12 @@ export const GetPersonPhotoRequest$outboundSchema: z.ZodType<
   GetPersonPhotoRequest$Outbound,
   z.ZodTypeDef,
   GetPersonPhotoRequest
-> = z.object({
-  person_id: z.string(),
-  ds: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person_id: z.string(),
+    ds: z.string().optional(),
+  })
+);
 
 export function getPersonPhotoRequestToJSON(
   getPersonPhotoRequest: GetPersonPhotoRequest,
@@ -60,10 +62,12 @@ export const GetPersonPhotoResponseResult$inboundSchema: z.ZodType<
   GetPersonPhotoResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.instanceof(ReadableStream<Uint8Array>),
-  z.instanceof(ReadableStream<Uint8Array>),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.instanceof(ReadableStream<Uint8Array>),
+    z.instanceof(ReadableStream<Uint8Array>),
+  ])
+);
 
 export function getPersonPhotoResponseResultFromJSON(
   jsonString: string,
@@ -80,17 +84,19 @@ export const GetPersonPhotoResponse$inboundSchema: z.ZodType<
   GetPersonPhotoResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(ReadableStream<Uint8Array>),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(ReadableStream<Uint8Array>),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function getPersonPhotoResponseFromJSON(
   jsonString: string,
