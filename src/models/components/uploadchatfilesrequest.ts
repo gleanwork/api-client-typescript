@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type UploadChatFilesRequestFile = {
   fileName: string;
@@ -28,15 +29,17 @@ export const UploadChatFilesRequestFile$outboundSchema: z.ZodType<
   UploadChatFilesRequestFile$Outbound,
   z.ZodTypeDef,
   UploadChatFilesRequestFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function uploadChatFilesRequestFileToJSON(
   uploadChatFilesRequestFile: UploadChatFilesRequestFile,
@@ -56,9 +59,11 @@ export const UploadChatFilesRequest$outboundSchema: z.ZodType<
   UploadChatFilesRequest$Outbound,
   z.ZodTypeDef,
   UploadChatFilesRequest
-> = z.object({
-  files: z.array(z.lazy(() => UploadChatFilesRequestFile$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    files: z.array(z.lazy(() => UploadChatFilesRequestFile$outboundSchema)),
+  })
+);
 
 export function uploadChatFilesRequestToJSON(
   uploadChatFilesRequest: UploadChatFilesRequest,

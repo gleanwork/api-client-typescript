@@ -12,6 +12,7 @@ export * from "./adminIdpgroupsList.js";
 export * from "./adminOauthClientsGet.js";
 export * from "./adminOauthClientsList.js";
 export * from "./agentsCancelRun.js";
+export * from "./agentsCreate.js";
 export * from "./agentsCreateRun.js";
 export * from "./agentsGet.js";
 export * from "./agentsGetRun.js";

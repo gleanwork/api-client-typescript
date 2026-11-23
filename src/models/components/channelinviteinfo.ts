@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -44,16 +44,19 @@ export const ChannelInviteInfo$inboundSchema: z.ZodType<
   ChannelInviteInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  channel: CommunicationChannel$inboundSchema.optional(),
-  isAutoInvite: z.boolean().optional(),
-  inviter: z.lazy(() => Person$inboundSchema).optional(),
-  inviteTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  reminderTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel: CommunicationChannel$inboundSchema.optional(),
+    isAutoInvite: z.boolean().optional(),
+    inviter: z.lazy(() => Person$inboundSchema).optional(),
+    inviteTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    reminderTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type ChannelInviteInfo$Outbound = {
   channel?: string | undefined;
@@ -68,13 +71,15 @@ export const ChannelInviteInfo$outboundSchema: z.ZodType<
   ChannelInviteInfo$Outbound,
   z.ZodTypeDef,
   ChannelInviteInfo
-> = z.object({
-  channel: CommunicationChannel$outboundSchema.optional(),
-  isAutoInvite: z.boolean().optional(),
-  inviter: z.lazy(() => Person$outboundSchema).optional(),
-  inviteTime: z.date().transform(v => v.toISOString()).optional(),
-  reminderTime: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    channel: CommunicationChannel$outboundSchema.optional(),
+    isAutoInvite: z.boolean().optional(),
+    inviter: z.lazy(() => Person$outboundSchema).optional(),
+    inviteTime: z.date().transform(v => v.toISOString()).optional(),
+    reminderTime: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function channelInviteInfoToJSON(
   channelInviteInfo: ChannelInviteInfo,

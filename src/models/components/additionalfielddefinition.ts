@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Either a string or HypertextField. When OpenAPI Generator supports oneOf, we can semantically enforce this in the docs.
@@ -48,7 +49,7 @@ export const Value$outboundSchema: z.ZodType<
   Value$Outbound,
   z.ZodTypeDef,
   Value
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
@@ -65,10 +66,12 @@ export const AdditionalFieldDefinition$outboundSchema: z.ZodType<
   AdditionalFieldDefinition$Outbound,
   z.ZodTypeDef,
   AdditionalFieldDefinition
-> = z.object({
-  key: z.string().optional(),
-  value: z.array(z.lazy(() => Value$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string().optional(),
+    value: z.array(z.lazy(() => Value$outboundSchema)).optional(),
+  })
+);
 
 export function additionalFieldDefinitionToJSON(
   additionalFieldDefinition: AdditionalFieldDefinition,

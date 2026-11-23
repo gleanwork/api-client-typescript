@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -41,15 +41,17 @@ export type Person = {
 };
 
 /** @internal */
-export const Person$inboundSchema: z.ZodType<Person, z.ZodTypeDef, unknown> = z
-  .object({
-    name: z.string(),
-    obfuscatedId: z.string(),
-    identityOnly: z.boolean().optional(),
-    relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
-      .optional(),
-    metadata: z.lazy(() => PersonMetadata$inboundSchema).optional(),
-  });
+export const Person$inboundSchema: z.ZodType<Person, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      obfuscatedId: z.string(),
+      identityOnly: z.boolean().optional(),
+      relatedDocuments: z.array(z.lazy(() => RelatedDocuments$inboundSchema))
+        .optional(),
+      metadata: z.lazy(() => PersonMetadata$inboundSchema).optional(),
+    })
+  );
 /** @internal */
 export type Person$Outbound = {
   name: string;
@@ -64,14 +66,16 @@ export const Person$outboundSchema: z.ZodType<
   Person$Outbound,
   z.ZodTypeDef,
   Person
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-  identityOnly: z.boolean().optional(),
-  relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
-    .optional(),
-  metadata: z.lazy(() => PersonMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+    identityOnly: z.boolean().optional(),
+    relatedDocuments: z.array(z.lazy(() => RelatedDocuments$outboundSchema))
+      .optional(),
+    metadata: z.lazy(() => PersonMetadata$outboundSchema).optional(),
+  })
+);
 
 export function personToJSON(person: Person): string {
   return JSON.stringify(Person$outboundSchema.parse(person));

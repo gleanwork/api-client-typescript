@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   EmployeeInfoDefinition,
   EmployeeInfoDefinition$Outbound,
@@ -55,14 +56,16 @@ export const BulkIndexEmployeesRequest$outboundSchema: z.ZodType<
   BulkIndexEmployeesRequest$Outbound,
   z.ZodTypeDef,
   BulkIndexEmployeesRequest
-> = z.object({
-  uploadId: z.string(),
-  isFirstPage: z.boolean().optional(),
-  isLastPage: z.boolean().optional(),
-  forceRestartUpload: z.boolean().optional(),
-  employees: z.array(EmployeeInfoDefinition$outboundSchema),
-  disableStaleDataDeletionCheck: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploadId: z.string(),
+    isFirstPage: z.boolean().optional(),
+    isLastPage: z.boolean().optional(),
+    forceRestartUpload: z.boolean().optional(),
+    employees: z.array(EmployeeInfoDefinition$outboundSchema),
+    disableStaleDataDeletionCheck: z.boolean().optional(),
+  })
+);
 
 export function bulkIndexEmployeesRequestToJSON(
   bulkIndexEmployeesRequest: BulkIndexEmployeesRequest,

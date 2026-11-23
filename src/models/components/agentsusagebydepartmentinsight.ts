@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
@@ -49,16 +49,18 @@ export const AgentsUsageByDepartmentInsight$inboundSchema: z.ZodType<
   AgentsUsageByDepartmentInsight,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  department: z.string().optional(),
-  agentAdoptionRate: z.number().optional(),
-  userCount: z.number().int().optional(),
-  runCount: z.number().int().optional(),
-  agentId: z.string().optional(),
-  agentName: z.string().optional(),
-  icon: IconConfig$inboundSchema.optional(),
-  isDeleted: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    department: z.string().optional(),
+    agentAdoptionRate: z.number().optional(),
+    userCount: z.number().int().optional(),
+    runCount: z.number().int().optional(),
+    agentId: z.string().optional(),
+    agentName: z.string().optional(),
+    icon: IconConfig$inboundSchema.optional(),
+    isDeleted: z.boolean().optional(),
+  })
+);
 
 export function agentsUsageByDepartmentInsightFromJSON(
   jsonString: string,

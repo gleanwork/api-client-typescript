@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -48,13 +48,15 @@ export const PlatformSearchResponse$inboundSchema: z.ZodType<
   PlatformSearchResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(PlatformResult$inboundSchema),
-  has_more: z.boolean(),
-  next_cursor: z.nullable(z.string()),
-  request_id: z.string(),
-  warnings: z.array(PlatformWarning$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(PlatformResult$inboundSchema),
+    has_more: z.boolean(),
+    next_cursor: z.nullable(z.string()),
+    request_id: z.string(),
+    warnings: z.array(PlatformWarning$inboundSchema),
+  })
+);
 
 export function platformSearchResponseFromJSON(
   jsonString: string,

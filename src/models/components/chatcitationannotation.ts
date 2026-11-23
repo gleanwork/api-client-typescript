@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,20 +35,22 @@ export type ChatCitationAnnotation = {
 /** @internal */
 export const ChatCitationAnnotationType$inboundSchema: z.ZodNativeEnum<
   typeof ChatCitationAnnotationType
-> = z.nativeEnum(ChatCitationAnnotationType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ChatCitationAnnotationType));
 
 /** @internal */
 export const ChatCitationAnnotation$inboundSchema: z.ZodType<
   ChatCitationAnnotation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: ChatCitationAnnotationType$inboundSchema,
-  sources: z.array(ChatCitationSource$inboundSchema),
-  start_index: z.nullable(z.number().int()).optional(),
-  end_index: z.nullable(z.number().int()).optional(),
-  snippets: z.nullable(z.array(ChatCitationSnippet$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ChatCitationAnnotationType$inboundSchema,
+    sources: z.array(ChatCitationSource$inboundSchema),
+    start_index: z.nullable(z.number().int()).optional(),
+    end_index: z.nullable(z.number().int()).optional(),
+    snippets: z.nullable(z.array(ChatCitationSnippet$inboundSchema)).optional(),
+  })
+);
 
 export function chatCitationAnnotationFromJSON(
   jsonString: string,

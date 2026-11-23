@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -75,19 +75,25 @@ export const PlatformSkill$inboundSchema: z.ZodType<
   PlatformSkill,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  skill_id: z.string(),
-  display_name: z.string(),
-  description: z.string(),
-  latest_version: z.number().int(),
-  latest_minor_version: z.number().int(),
-  status: PlatformSkillStatus$inboundSchema,
-  origin: PlatformSkillOrigin$inboundSchema,
-  source_provenance: PlatformSkillSourceProvenance$inboundSchema.optional(),
-  owner: PlatformPersonReference$inboundSchema,
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skill_id: z.string(),
+    display_name: z.string(),
+    description: z.string(),
+    latest_version: z.number().int(),
+    latest_minor_version: z.number().int(),
+    status: PlatformSkillStatus$inboundSchema,
+    origin: PlatformSkillOrigin$inboundSchema,
+    source_provenance: PlatformSkillSourceProvenance$inboundSchema.optional(),
+    owner: PlatformPersonReference$inboundSchema,
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    updated_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 
 export function platformSkillFromJSON(
   jsonString: string,

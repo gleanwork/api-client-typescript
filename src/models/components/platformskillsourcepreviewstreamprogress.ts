@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -46,20 +46,24 @@ export type PlatformSkillSourcePreviewStreamProgress = {
 
 /** @internal */
 export const PlatformSkillSourcePreviewStreamProgressType$inboundSchema:
-  z.ZodNativeEnum<typeof PlatformSkillSourcePreviewStreamProgressType> = z
-    .nativeEnum(PlatformSkillSourcePreviewStreamProgressType);
+  z.ZodNativeEnum<typeof PlatformSkillSourcePreviewStreamProgressType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PlatformSkillSourcePreviewStreamProgressType)
+    );
 
 /** @internal */
 export const PlatformSkillSourcePreviewStreamProgress$inboundSchema: z.ZodType<
   PlatformSkillSourcePreviewStreamProgress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformSkillSourcePreviewStreamProgressType$inboundSchema,
-  completed: z.number().int(),
-  total: z.number().int(),
-  current_skill: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformSkillSourcePreviewStreamProgressType$inboundSchema,
+    completed: z.number().int(),
+    total: z.number().int(),
+    current_skill: z.string(),
+  })
+);
 
 export function platformSkillSourcePreviewStreamProgressFromJSON(
   jsonString: string,

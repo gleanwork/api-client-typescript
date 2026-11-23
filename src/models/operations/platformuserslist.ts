@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformUsersListRequest = {
@@ -44,12 +45,14 @@ export const PlatformUsersListRequest$outboundSchema: z.ZodType<
   PlatformUsersListRequest$Outbound,
   z.ZodTypeDef,
   PlatformUsersListRequest
-> = z.object({
-  page_size: z.number().int().default(50),
-  cursor: z.string().optional(),
-  filters: z.array(components.PlatformUserFilter$outboundSchema).optional(),
-  include: z.array(components.PlatformUserInclude$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page_size: z.number().int().default(50),
+    cursor: z.string().optional(),
+    filters: z.array(components.PlatformUserFilter$outboundSchema).optional(),
+    include: z.array(components.PlatformUserInclude$outboundSchema).optional(),
+  })
+);
 
 export function platformUsersListRequestToJSON(
   platformUsersListRequest: PlatformUsersListRequest,

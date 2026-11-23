@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type AutocompleteRequest = {
@@ -29,14 +30,16 @@ export const AutocompleteRequest$outboundSchema: z.ZodType<
   AutocompleteRequest$Outbound,
   z.ZodTypeDef,
   AutocompleteRequest
-> = z.object({
-  locale: z.string().optional(),
-  autocompleteRequest: components.AutocompleteRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    autocompleteRequest: "AutocompleteRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    autocompleteRequest: components.AutocompleteRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      autocompleteRequest: "AutocompleteRequest",
+    });
+  })
+);
 
 export function autocompleteRequestToJSON(
   autocompleteRequest: AutocompleteRequest,

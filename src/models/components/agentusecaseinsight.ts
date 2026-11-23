@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
@@ -49,16 +49,18 @@ export const AgentUseCaseInsight$inboundSchema: z.ZodType<
   AgentUseCaseInsight,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  useCase: z.string().optional(),
-  runCount: z.number().int().optional(),
-  trend: z.number().optional(),
-  topDepartments: z.string().optional(),
-  topAgentId: z.string().optional(),
-  topAgentName: z.string().optional(),
-  topAgentIcon: IconConfig$inboundSchema.optional(),
-  topAgentIsDeleted: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    useCase: z.string().optional(),
+    runCount: z.number().int().optional(),
+    trend: z.number().optional(),
+    topDepartments: z.string().optional(),
+    topAgentId: z.string().optional(),
+    topAgentName: z.string().optional(),
+    topAgentIcon: IconConfig$inboundSchema.optional(),
+    topAgentIsDeleted: z.boolean().optional(),
+  })
+);
 
 export function agentUseCaseInsightFromJSON(
   jsonString: string,

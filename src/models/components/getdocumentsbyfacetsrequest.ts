@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   FacetFilterSet,
   FacetFilterSet$Outbound,
@@ -37,11 +38,13 @@ export const GetDocumentsByFacetsRequest$outboundSchema: z.ZodType<
   GetDocumentsByFacetsRequest$Outbound,
   z.ZodTypeDef,
   GetDocumentsByFacetsRequest
-> = z.object({
-  datasourcesFilter: z.array(z.string()).optional(),
-  filterSets: z.array(FacetFilterSet$outboundSchema),
-  cursor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourcesFilter: z.array(z.string()).optional(),
+    filterSets: z.array(FacetFilterSet$outboundSchema),
+    cursor: z.string().optional(),
+  })
+);
 
 export function getDocumentsByFacetsRequestToJSON(
   getDocumentsByFacetsRequest: GetDocumentsByFacetsRequest,

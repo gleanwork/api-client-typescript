@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -91,32 +91,38 @@ export const ExportInfoExportType$inboundSchema: z.ZodType<
   ExportInfoExportType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ExportInfoExportType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ExportInfoExportType)
+);
 
 /** @internal */
 export const ExportInfoStatus$inboundSchema: z.ZodType<
   ExportInfoStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ExportInfoStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ExportInfoStatus)
+);
 
 /** @internal */
 export const ExportInfo$inboundSchema: z.ZodType<
   ExportInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdBy: DlpPerson$inboundSchema.optional(),
-  startTime: z.string().optional(),
-  endTime: z.string().optional(),
-  exportId: z.string().optional(),
-  fileName: z.string().optional(),
-  exportType: ExportInfoExportType$inboundSchema.optional(),
-  filter: DlpFindingFilter$inboundSchema.optional(),
-  issueFilter: DlpIssueFilter$inboundSchema.optional(),
-  status: ExportInfoStatus$inboundSchema.optional(),
-  exportSize: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdBy: DlpPerson$inboundSchema.optional(),
+    startTime: z.string().optional(),
+    endTime: z.string().optional(),
+    exportId: z.string().optional(),
+    fileName: z.string().optional(),
+    exportType: ExportInfoExportType$inboundSchema.optional(),
+    filter: DlpFindingFilter$inboundSchema.optional(),
+    issueFilter: DlpIssueFilter$inboundSchema.optional(),
+    status: ExportInfoStatus$inboundSchema.optional(),
+    exportSize: z.number().int().optional(),
+  })
+);
 
 export function exportInfoFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -143,24 +143,30 @@ export const AnnouncementChannel$inboundSchema: z.ZodType<
   AnnouncementChannel,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AnnouncementChannel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(AnnouncementChannel)
+);
 
 /** @internal */
 export const AnnouncementPostType$inboundSchema: z.ZodType<
   AnnouncementPostType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AnnouncementPostType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(AnnouncementPostType)
+);
 
 /** @internal */
 export const AnnouncementViewerInfo$inboundSchema: z.ZodType<
   AnnouncementViewerInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isDismissed: z.boolean().optional(),
-  isRead: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isDismissed: z.boolean().optional(),
+    isRead: z.boolean().optional(),
+  })
+);
 
 export function announcementViewerInfoFromJSON(
   jsonString: string,
@@ -177,36 +183,38 @@ export const Announcement$inboundSchema: z.ZodType<
   Announcement,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  startTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  title: z.string().optional(),
-  body: StructuredText$inboundSchema.optional(),
-  emoji: z.string().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  banner: Thumbnail$inboundSchema.optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  sourceDocumentId: z.string().optional(),
-  hideAttribution: z.boolean().optional(),
-  channel: AnnouncementChannel$inboundSchema.optional(),
-  postType: AnnouncementPostType$inboundSchema.optional(),
-  isPrioritized: z.boolean().optional(),
-  viewUrl: z.string().optional(),
-  draftId: z.number().int().optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  id: z.number().int().optional(),
-  author: Person$inboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  updatedBy: Person$inboundSchema.optional(),
-  viewerInfo: z.lazy(() => AnnouncementViewerInfo$inboundSchema).optional(),
-  sourceDocument: Document$inboundSchema.optional(),
-  isPublished: z.boolean().optional(),
-  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    endTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    title: z.string().optional(),
+    body: StructuredText$inboundSchema.optional(),
+    emoji: z.string().optional(),
+    thumbnail: Thumbnail$inboundSchema.optional(),
+    banner: Thumbnail$inboundSchema.optional(),
+    audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
+    sourceDocumentId: z.string().optional(),
+    hideAttribution: z.boolean().optional(),
+    channel: AnnouncementChannel$inboundSchema.optional(),
+    postType: AnnouncementPostType$inboundSchema.optional(),
+    isPrioritized: z.boolean().optional(),
+    viewUrl: z.string().optional(),
+    draftId: z.number().int().optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    trackingToken: z.string().optional(),
+    id: z.number().int().optional(),
+    author: Person$inboundSchema.optional(),
+    createTimestamp: z.number().int().optional(),
+    lastUpdateTimestamp: z.number().int().optional(),
+    updatedBy: Person$inboundSchema.optional(),
+    viewerInfo: z.lazy(() => AnnouncementViewerInfo$inboundSchema).optional(),
+    sourceDocument: Document$inboundSchema.optional(),
+    isPublished: z.boolean().optional(),
+    favoriteInfo: FavoriteInfo$inboundSchema.optional(),
+  })
+);
 
 export function announcementFromJSON(
   jsonString: string,

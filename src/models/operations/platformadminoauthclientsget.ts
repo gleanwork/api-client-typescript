@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformAdminOauthClientsGetRequest = {
   /**
@@ -22,9 +23,11 @@ export const PlatformAdminOauthClientsGetRequest$outboundSchema: z.ZodType<
   PlatformAdminOauthClientsGetRequest$Outbound,
   z.ZodTypeDef,
   PlatformAdminOauthClientsGetRequest
-> = z.object({
-  client_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    client_id: z.string(),
+  })
+);
 
 export function platformAdminOauthClientsGetRequestToJSON(
   platformAdminOauthClientsGetRequest: PlatformAdminOauthClientsGetRequest,

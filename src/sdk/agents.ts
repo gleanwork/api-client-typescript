@@ -4,6 +4,7 @@
  */
 
 import { agentsCancelRun } from "../funcs/agentsCancelRun.js";
+import { agentsCreate } from "../funcs/agentsCreate.js";
 import {
   agentsCreateRun,
   CreateRunAcceptEnum,
@@ -21,6 +22,23 @@ import { unwrapAsync } from "../types/fp.js";
 export { CreateRunAcceptEnum } from "../funcs/agentsCreateRun.js";
 
 export class Agents extends ClientSDK {
+  /**
+   * Create agent
+   *
+   * @remarks
+   * Create and publish an agent from its complete definition.
+   */
+  async create(
+    request: components.PlatformAgentCreateRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentGetResponse> {
+    return unwrapAsync(agentsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Search agents
    *

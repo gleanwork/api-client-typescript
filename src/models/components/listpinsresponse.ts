@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { PinDocument, PinDocument$inboundSchema } from "./pindocument.js";
@@ -21,9 +21,11 @@ export const ListPinsResponse$inboundSchema: z.ZodType<
   ListPinsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pins: z.array(PinDocument$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pins: z.array(PinDocument$inboundSchema),
+  })
+);
 
 export function listPinsResponseFromJSON(
   jsonString: string,

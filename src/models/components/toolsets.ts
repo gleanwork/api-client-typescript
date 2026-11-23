@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const ToolSets$inboundSchema: z.ZodType<
   ToolSets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enableWebSearch: z.boolean().optional(),
-  enableCompanyTools: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enableWebSearch: z.boolean().optional(),
+    enableCompanyTools: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type ToolSets$Outbound = {
   enableWebSearch?: boolean | undefined;
@@ -42,10 +44,12 @@ export const ToolSets$outboundSchema: z.ZodType<
   ToolSets$Outbound,
   z.ZodTypeDef,
   ToolSets
-> = z.object({
-  enableWebSearch: z.boolean().optional(),
-  enableCompanyTools: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enableWebSearch: z.boolean().optional(),
+    enableCompanyTools: z.boolean().optional(),
+  })
+);
 
 export function toolSetsToJSON(toolSets: ToolSets): string {
   return JSON.stringify(ToolSets$outboundSchema.parse(toolSets));

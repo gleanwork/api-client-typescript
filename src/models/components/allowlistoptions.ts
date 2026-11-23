@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const AllowlistOptions$inboundSchema: z.ZodType<
   AllowlistOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  terms: z.array(z.string()).optional(),
-  regexes: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terms: z.array(z.string()).optional(),
+    regexes: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type AllowlistOptions$Outbound = {
   terms?: Array<string> | undefined;
@@ -42,10 +44,12 @@ export const AllowlistOptions$outboundSchema: z.ZodType<
   AllowlistOptions$Outbound,
   z.ZodTypeDef,
   AllowlistOptions
-> = z.object({
-  terms: z.array(z.string()).optional(),
-  regexes: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    terms: z.array(z.string()).optional(),
+    regexes: z.array(z.string()).optional(),
+  })
+);
 
 export function allowlistOptionsToJSON(
   allowlistOptions: AllowlistOptions,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -27,10 +28,10 @@ export const DlpSeverity$inboundSchema: z.ZodType<
   DlpSeverity,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DlpSeverity);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(DlpSeverity));
 /** @internal */
 export const DlpSeverity$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DlpSeverity
-> = openEnums.outboundSchema(DlpSeverity);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(DlpSeverity));

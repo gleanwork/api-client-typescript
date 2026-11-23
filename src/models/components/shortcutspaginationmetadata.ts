@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -22,11 +22,13 @@ export const ShortcutsPaginationMetadata$inboundSchema: z.ZodType<
   ShortcutsPaginationMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cursor: z.string().optional(),
-  hasNextPage: z.boolean().optional(),
-  totalItemCount: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string().optional(),
+    hasNextPage: z.boolean().optional(),
+    totalItemCount: z.number().int().optional(),
+  })
+);
 
 export function shortcutsPaginationMetadataFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { RFCDate } from "../../types/rfcdate.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -69,18 +69,20 @@ export const Customer$inboundSchema: z.ZodType<
   Customer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  domains: z.array(z.string()).optional(),
-  company: Company$inboundSchema,
-  documentCounts: z.record(z.number().int()).optional(),
-  poc: z.array(z.lazy(() => Person$inboundSchema)).optional(),
-  metadata: CustomerMetadata$inboundSchema.optional(),
-  mergedCustomers: z.array(z.lazy(() => Customer$inboundSchema)).optional(),
-  startDate: z.string().transform(v => new RFCDate(v)).optional(),
-  contractAnnualRevenue: z.number().optional(),
-  notes: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domains: z.array(z.string()).optional(),
+    company: Company$inboundSchema,
+    documentCounts: z.record(z.number().int()).optional(),
+    poc: z.array(z.lazy(() => Person$inboundSchema)).optional(),
+    metadata: CustomerMetadata$inboundSchema.optional(),
+    mergedCustomers: z.array(z.lazy(() => Customer$inboundSchema)).optional(),
+    startDate: z.string().transform(v => new RFCDate(v)).optional(),
+    contractAnnualRevenue: z.number().optional(),
+    notes: z.string().optional(),
+  })
+);
 /** @internal */
 export type Customer$Outbound = {
   id: string;
@@ -100,18 +102,20 @@ export const Customer$outboundSchema: z.ZodType<
   Customer$Outbound,
   z.ZodTypeDef,
   Customer
-> = z.object({
-  id: z.string(),
-  domains: z.array(z.string()).optional(),
-  company: Company$outboundSchema,
-  documentCounts: z.record(z.number().int()).optional(),
-  poc: z.array(z.lazy(() => Person$outboundSchema)).optional(),
-  metadata: CustomerMetadata$outboundSchema.optional(),
-  mergedCustomers: z.array(z.lazy(() => Customer$outboundSchema)).optional(),
-  startDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
-  contractAnnualRevenue: z.number().optional(),
-  notes: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    domains: z.array(z.string()).optional(),
+    company: Company$outboundSchema,
+    documentCounts: z.record(z.number().int()).optional(),
+    poc: z.array(z.lazy(() => Person$outboundSchema)).optional(),
+    metadata: CustomerMetadata$outboundSchema.optional(),
+    mergedCustomers: z.array(z.lazy(() => Customer$outboundSchema)).optional(),
+    startDate: z.instanceof(RFCDate).transform(v => v.toString()).optional(),
+    contractAnnualRevenue: z.number().optional(),
+    notes: z.string().optional(),
+  })
+);
 
 export function customerToJSON(customer: Customer): string {
   return JSON.stringify(Customer$outboundSchema.parse(customer));

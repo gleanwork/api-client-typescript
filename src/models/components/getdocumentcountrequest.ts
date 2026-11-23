@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /getdocumentcount API call
@@ -25,9 +26,11 @@ export const GetDocumentCountRequest$outboundSchema: z.ZodType<
   GetDocumentCountRequest$Outbound,
   z.ZodTypeDef,
   GetDocumentCountRequest
-> = z.object({
-  datasource: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+  })
+);
 
 export function getDocumentCountRequestToJSON(
   getDocumentCountRequest: GetDocumentCountRequest,

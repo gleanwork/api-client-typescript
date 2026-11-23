@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type DeleteallchatsRequest = {
   /**
@@ -27,10 +28,12 @@ export const DeleteallchatsRequest$outboundSchema: z.ZodType<
   DeleteallchatsRequest$Outbound,
   z.ZodTypeDef,
   DeleteallchatsRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+  })
+);
 
 export function deleteallchatsRequestToJSON(
   deleteallchatsRequest: DeleteallchatsRequest,

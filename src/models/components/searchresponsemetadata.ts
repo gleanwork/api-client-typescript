@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -69,21 +69,23 @@ export const SearchResponseMetadata$inboundSchema: z.ZodType<
   SearchResponseMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rewrittenQuery: z.string().optional(),
-  searchedQuery: z.string().optional(),
-  searchedQueryWithoutNegation: z.string().optional(),
-  searchedQueryRanges: z.array(TextRange$inboundSchema).optional(),
-  originalQuery: z.string().optional(),
-  querySuggestion: QuerySuggestion$inboundSchema.optional(),
-  additionalQuerySuggestions: QuerySuggestionList$inboundSchema.optional(),
-  negatedTerms: z.array(z.string()).optional(),
-  modifiedQueryWasUsed: z.boolean().optional(),
-  originalQueryHadNoResults: z.boolean().optional(),
-  searchWarning: SearchWarning$inboundSchema.optional(),
-  triggeredExpertDetection: z.boolean().optional(),
-  isNoQuotesSuggestion: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rewrittenQuery: z.string().optional(),
+    searchedQuery: z.string().optional(),
+    searchedQueryWithoutNegation: z.string().optional(),
+    searchedQueryRanges: z.array(TextRange$inboundSchema).optional(),
+    originalQuery: z.string().optional(),
+    querySuggestion: QuerySuggestion$inboundSchema.optional(),
+    additionalQuerySuggestions: QuerySuggestionList$inboundSchema.optional(),
+    negatedTerms: z.array(z.string()).optional(),
+    modifiedQueryWasUsed: z.boolean().optional(),
+    originalQueryHadNoResults: z.boolean().optional(),
+    searchWarning: SearchWarning$inboundSchema.optional(),
+    triggeredExpertDetection: z.boolean().optional(),
+    isNoQuotesSuggestion: z.boolean().optional(),
+  })
+);
 
 export function searchResponseMetadataFromJSON(
   jsonString: string,

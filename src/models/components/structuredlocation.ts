@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -55,17 +55,19 @@ export const StructuredLocation$inboundSchema: z.ZodType<
   StructuredLocation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deskLocation: z.string().optional(),
-  timezone: z.string().optional(),
-  address: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  region: z.string().optional(),
-  zipCode: z.string().optional(),
-  country: z.string().optional(),
-  countryCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deskLocation: z.string().optional(),
+    timezone: z.string().optional(),
+    address: z.string().optional(),
+    city: z.string().optional(),
+    state: z.string().optional(),
+    region: z.string().optional(),
+    zipCode: z.string().optional(),
+    country: z.string().optional(),
+    countryCode: z.string().optional(),
+  })
+);
 /** @internal */
 export type StructuredLocation$Outbound = {
   deskLocation?: string | undefined;
@@ -84,17 +86,19 @@ export const StructuredLocation$outboundSchema: z.ZodType<
   StructuredLocation$Outbound,
   z.ZodTypeDef,
   StructuredLocation
-> = z.object({
-  deskLocation: z.string().optional(),
-  timezone: z.string().optional(),
-  address: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  region: z.string().optional(),
-  zipCode: z.string().optional(),
-  country: z.string().optional(),
-  countryCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deskLocation: z.string().optional(),
+    timezone: z.string().optional(),
+    address: z.string().optional(),
+    city: z.string().optional(),
+    state: z.string().optional(),
+    region: z.string().optional(),
+    zipCode: z.string().optional(),
+    country: z.string().optional(),
+    countryCode: z.string().optional(),
+  })
+);
 
 export function structuredLocationToJSON(
   structuredLocation: StructuredLocation,

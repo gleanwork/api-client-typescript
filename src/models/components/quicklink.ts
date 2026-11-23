@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -57,24 +57,26 @@ export type Quicklink = {
 
 /** @internal */
 export const Scope$inboundSchema: z.ZodType<Scope, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(Scope);
+  /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(Scope));
 /** @internal */
 export const Scope$outboundSchema: z.ZodType<string, z.ZodTypeDef, Scope> =
-  openEnums.outboundSchema(Scope);
+  /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(Scope));
 
 /** @internal */
 export const Quicklink$inboundSchema: z.ZodType<
   Quicklink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  shortName: z.string().optional(),
-  url: z.string().optional(),
-  iconConfig: IconConfig$inboundSchema.optional(),
-  id: z.string().optional(),
-  scopes: z.array(Scope$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    shortName: z.string().optional(),
+    url: z.string().optional(),
+    iconConfig: IconConfig$inboundSchema.optional(),
+    id: z.string().optional(),
+    scopes: z.array(Scope$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type Quicklink$Outbound = {
   name?: string | undefined;
@@ -90,14 +92,16 @@ export const Quicklink$outboundSchema: z.ZodType<
   Quicklink$Outbound,
   z.ZodTypeDef,
   Quicklink
-> = z.object({
-  name: z.string().optional(),
-  shortName: z.string().optional(),
-  url: z.string().optional(),
-  iconConfig: IconConfig$outboundSchema.optional(),
-  id: z.string().optional(),
-  scopes: z.array(Scope$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    shortName: z.string().optional(),
+    url: z.string().optional(),
+    iconConfig: IconConfig$outboundSchema.optional(),
+    id: z.string().optional(),
+    scopes: z.array(Scope$outboundSchema).optional(),
+  })
+);
 
 export function quicklinkToJSON(quicklink: Quicklink): string {
   return JSON.stringify(Quicklink$outboundSchema.parse(quicklink));

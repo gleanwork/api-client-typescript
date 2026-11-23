@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,15 +35,17 @@ export const PlatformAgentsCreateRunRequest$outboundSchema: z.ZodType<
   PlatformAgentsCreateRunRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentsCreateRunRequest
-> = z.object({
-  agent_id: z.string(),
-  platformAgentRunCreateRequest:
-    components.PlatformAgentRunCreateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformAgentRunCreateRequest: "PlatformAgentRunCreateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    platformAgentRunCreateRequest:
+      components.PlatformAgentRunCreateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      platformAgentRunCreateRequest: "PlatformAgentRunCreateRequest",
+    });
+  })
+);
 
 export function platformAgentsCreateRunRequestToJSON(
   platformAgentsCreateRunRequest: PlatformAgentsCreateRunRequest,
@@ -60,11 +62,13 @@ export const PlatformAgentsCreateRunResponse$inboundSchema: z.ZodType<
   PlatformAgentsCreateRunResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.PlatformAgentRunResponse$inboundSchema,
-  components.PlatformAgentRunWaitResponse$inboundSchema,
-  z.string(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.PlatformAgentRunResponse$inboundSchema,
+    components.PlatformAgentRunWaitResponse$inboundSchema,
+    z.string(),
+  ])
+);
 
 export function platformAgentsCreateRunResponseFromJSON(
   jsonString: string,

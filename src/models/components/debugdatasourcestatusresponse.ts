@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -91,12 +91,14 @@ export const DebugDatasourceStatusResponseCounts$inboundSchema: z.ZodType<
   DebugDatasourceStatusResponseCounts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uploaded: z.array(DatasourceObjectTypeDocumentCountEntry$inboundSchema)
-    .optional(),
-  indexed: z.array(DatasourceObjectTypeDocumentCountEntry$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uploaded: z.array(DatasourceObjectTypeDocumentCountEntry$inboundSchema)
+      .optional(),
+    indexed: z.array(DatasourceObjectTypeDocumentCountEntry$inboundSchema)
+      .optional(),
+  })
+);
 
 export function debugDatasourceStatusResponseCountsFromJSON(
   jsonString: string,
@@ -114,12 +116,14 @@ export const Documents$inboundSchema: z.ZodType<
   Documents,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bulkUploadHistory: z.array(BulkUploadHistoryEvent$inboundSchema).optional(),
-  counts: z.lazy(() => DebugDatasourceStatusResponseCounts$inboundSchema)
-    .optional(),
-  processingHistory: z.array(ProcessingHistoryEvent$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bulkUploadHistory: z.array(BulkUploadHistoryEvent$inboundSchema).optional(),
+    counts: z.lazy(() => DebugDatasourceStatusResponseCounts$inboundSchema)
+      .optional(),
+    processingHistory: z.array(ProcessingHistoryEvent$inboundSchema).optional(),
+  })
+);
 
 export function documentsFromJSON(
   jsonString: string,
@@ -136,15 +140,17 @@ export const Identity$inboundSchema: z.ZodType<
   Identity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  processingHistory: z.array(ProcessingHistoryEvent$inboundSchema).optional(),
-  users: DebugDatasourceStatusIdentityResponseComponent$inboundSchema
-    .optional(),
-  groups: DebugDatasourceStatusIdentityResponseComponent$inboundSchema
-    .optional(),
-  memberships: DebugDatasourceStatusIdentityResponseComponent$inboundSchema
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    processingHistory: z.array(ProcessingHistoryEvent$inboundSchema).optional(),
+    users: DebugDatasourceStatusIdentityResponseComponent$inboundSchema
+      .optional(),
+    groups: DebugDatasourceStatusIdentityResponseComponent$inboundSchema
+      .optional(),
+    memberships: DebugDatasourceStatusIdentityResponseComponent$inboundSchema
+      .optional(),
+  })
+);
 
 export function identityFromJSON(
   jsonString: string,
@@ -161,18 +167,22 @@ export const DatasourceVisibility$inboundSchema: z.ZodType<
   DatasourceVisibility,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DatasourceVisibility);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(DatasourceVisibility)
+);
 
 /** @internal */
 export const DebugDatasourceStatusResponse$inboundSchema: z.ZodType<
   DebugDatasourceStatusResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  documents: z.lazy(() => Documents$inboundSchema).optional(),
-  identity: z.lazy(() => Identity$inboundSchema).optional(),
-  datasourceVisibility: DatasourceVisibility$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documents: z.lazy(() => Documents$inboundSchema).optional(),
+    identity: z.lazy(() => Identity$inboundSchema).optional(),
+    datasourceVisibility: DatasourceVisibility$inboundSchema.optional(),
+  })
+);
 
 export function debugDatasourceStatusResponseFromJSON(
   jsonString: string,

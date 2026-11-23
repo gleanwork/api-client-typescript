@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -74,15 +74,17 @@ export const ChatMessageCitation$inboundSchema: z.ZodType<
   ChatMessageCitation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trackingToken: z.string().optional(),
-  sourceDocument: Document$inboundSchema.optional(),
-  sourceFile: ChatFile$inboundSchema.optional(),
-  sourcePerson: Person$inboundSchema.optional(),
-  sourceCustomEntity: CustomEntity$inboundSchema.optional(),
-  sourceSkill: ChatSkill$inboundSchema.optional(),
-  referenceRanges: z.array(ReferenceRange$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trackingToken: z.string().optional(),
+    sourceDocument: Document$inboundSchema.optional(),
+    sourceFile: ChatFile$inboundSchema.optional(),
+    sourcePerson: Person$inboundSchema.optional(),
+    sourceCustomEntity: CustomEntity$inboundSchema.optional(),
+    sourceSkill: ChatSkill$inboundSchema.optional(),
+    referenceRanges: z.array(ReferenceRange$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type ChatMessageCitation$Outbound = {
   trackingToken?: string | undefined;
@@ -99,15 +101,17 @@ export const ChatMessageCitation$outboundSchema: z.ZodType<
   ChatMessageCitation$Outbound,
   z.ZodTypeDef,
   ChatMessageCitation
-> = z.object({
-  trackingToken: z.string().optional(),
-  sourceDocument: Document$outboundSchema.optional(),
-  sourceFile: ChatFile$outboundSchema.optional(),
-  sourcePerson: Person$outboundSchema.optional(),
-  sourceCustomEntity: CustomEntity$outboundSchema.optional(),
-  sourceSkill: ChatSkill$outboundSchema.optional(),
-  referenceRanges: z.array(ReferenceRange$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trackingToken: z.string().optional(),
+    sourceDocument: Document$outboundSchema.optional(),
+    sourceFile: ChatFile$outboundSchema.optional(),
+    sourcePerson: Person$outboundSchema.optional(),
+    sourceCustomEntity: CustomEntity$outboundSchema.optional(),
+    sourceSkill: ChatSkill$outboundSchema.optional(),
+    referenceRanges: z.array(ReferenceRange$outboundSchema).optional(),
+  })
+);
 
 export function chatMessageCitationToJSON(
   chatMessageCitation: ChatMessageCitation,

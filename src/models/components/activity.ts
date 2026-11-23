@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   ActivityEvent,
   ActivityEvent$Outbound,
@@ -24,9 +25,11 @@ export const Activity$outboundSchema: z.ZodType<
   Activity$Outbound,
   z.ZodTypeDef,
   Activity
-> = z.object({
-  events: z.array(ActivityEvent$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    events: z.array(ActivityEvent$outboundSchema),
+  })
+);
 
 export function activityToJSON(activity: Activity): string {
   return JSON.stringify(Activity$outboundSchema.parse(activity));

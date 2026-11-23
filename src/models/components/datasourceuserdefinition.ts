@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * describes a user in the datasource
@@ -34,12 +35,14 @@ export const DatasourceUserDefinition$outboundSchema: z.ZodType<
   DatasourceUserDefinition$Outbound,
   z.ZodTypeDef,
   DatasourceUserDefinition
-> = z.object({
-  email: z.string(),
-  userId: z.string().optional(),
-  name: z.string(),
-  isActive: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    userId: z.string().optional(),
+    name: z.string(),
+    isActive: z.boolean().optional(),
+  })
+);
 
 export function datasourceUserDefinitionToJSON(
   datasourceUserDefinition: DatasourceUserDefinition,

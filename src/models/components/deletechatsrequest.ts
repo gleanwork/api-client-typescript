@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type DeleteChatsRequest = {
   /**
@@ -22,9 +23,11 @@ export const DeleteChatsRequest$outboundSchema: z.ZodType<
   DeleteChatsRequest$Outbound,
   z.ZodTypeDef,
   DeleteChatsRequest
-> = z.object({
-  ids: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ids: z.array(z.string()),
+  })
+);
 
 export function deleteChatsRequestToJSON(
   deleteChatsRequest: DeleteChatsRequest,

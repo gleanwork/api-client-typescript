@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type GetdocumentsbyfacetsRequest = {
@@ -33,15 +34,17 @@ export const GetdocumentsbyfacetsRequest$outboundSchema: z.ZodType<
   GetdocumentsbyfacetsRequest$Outbound,
   z.ZodTypeDef,
   GetdocumentsbyfacetsRequest
-> = z.object({
-  locale: z.string().optional(),
-  getDocumentsByFacetsRequest: components
-    .GetDocumentsByFacetsRequest$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    getDocumentsByFacetsRequest: "GetDocumentsByFacetsRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    getDocumentsByFacetsRequest: components
+      .GetDocumentsByFacetsRequest$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      getDocumentsByFacetsRequest: "GetDocumentsByFacetsRequest",
+    });
+  })
+);
 
 export function getdocumentsbyfacetsRequestToJSON(
   getdocumentsbyfacetsRequest: GetdocumentsbyfacetsRequest,

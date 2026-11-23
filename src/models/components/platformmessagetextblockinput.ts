@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformContentType,
   PlatformContentType$outboundSchema,
@@ -28,10 +29,12 @@ export const PlatformMessageTextBlockInput$outboundSchema: z.ZodType<
   PlatformMessageTextBlockInput$Outbound,
   z.ZodTypeDef,
   PlatformMessageTextBlockInput
-> = z.object({
-  text: z.string(),
-  type: PlatformContentType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: z.string(),
+    type: PlatformContentType$outboundSchema,
+  })
+);
 
 export function platformMessageTextBlockInputToJSON(
   platformMessageTextBlockInput: PlatformMessageTextBlockInput,

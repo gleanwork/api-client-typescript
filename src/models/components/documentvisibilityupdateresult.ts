@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -43,18 +43,22 @@ export const DocumentVisibilityUpdateResultOverride$inboundSchema: z.ZodType<
   DocumentVisibilityUpdateResultOverride,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DocumentVisibilityUpdateResultOverride);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(DocumentVisibilityUpdateResultOverride)
+);
 
 /** @internal */
 export const DocumentVisibilityUpdateResult$inboundSchema: z.ZodType<
   DocumentVisibilityUpdateResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  docId: z.string().optional(),
-  override: DocumentVisibilityUpdateResultOverride$inboundSchema.optional(),
-  success: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    docId: z.string().optional(),
+    override: DocumentVisibilityUpdateResultOverride$inboundSchema.optional(),
+    success: z.boolean().optional(),
+  })
+);
 
 export function documentVisibilityUpdateResultFromJSON(
   jsonString: string,

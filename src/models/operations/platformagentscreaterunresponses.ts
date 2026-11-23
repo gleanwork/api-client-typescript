@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformAgentsCreateRunResponsesRequest = {
@@ -27,15 +28,17 @@ export const PlatformAgentsCreateRunResponsesRequest$outboundSchema: z.ZodType<
   PlatformAgentsCreateRunResponsesRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentsCreateRunResponsesRequest
-> = z.object({
-  agent_id: z.string(),
-  platformAgentRunResponsesRequest:
-    components.PlatformAgentRunResponsesRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformAgentRunResponsesRequest: "PlatformAgentRunResponsesRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    platformAgentRunResponsesRequest:
+      components.PlatformAgentRunResponsesRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      platformAgentRunResponsesRequest: "PlatformAgentRunResponsesRequest",
+    });
+  })
+);
 
 export function platformAgentsCreateRunResponsesRequestToJSON(
   platformAgentsCreateRunResponsesRequest:

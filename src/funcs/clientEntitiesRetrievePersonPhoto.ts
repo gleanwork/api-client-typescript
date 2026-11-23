@@ -9,9 +9,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
 import {
   ConnectionError,
@@ -110,7 +109,14 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/rest/api/v1/people/{person_id}/photo")(pathParams);
+  const pathResult = encodePath(
+    "/rest/api/v1/people/{person_id}/photo",
+    pathParams,
+  );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "ds": payload.ds,

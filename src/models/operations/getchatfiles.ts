@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type GetchatfilesRequest = {
@@ -31,15 +32,17 @@ export const GetchatfilesRequest$outboundSchema: z.ZodType<
   GetchatfilesRequest$Outbound,
   z.ZodTypeDef,
   GetchatfilesRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  getChatFilesRequest: components.GetChatFilesRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    getChatFilesRequest: "GetChatFilesRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    getChatFilesRequest: components.GetChatFilesRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      getChatFilesRequest: "GetChatFilesRequest",
+    });
+  })
+);
 
 export function getchatfilesRequestToJSON(
   getchatfilesRequest: GetchatfilesRequest,

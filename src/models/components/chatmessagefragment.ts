@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -102,17 +102,19 @@ export const ChatMessageFragment$inboundSchema: z.ZodType<
   ChatMessageFragment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  structuredResults: z.array(StructuredResult$inboundSchema).optional(),
-  trackingToken: z.string().optional(),
-  text: z.string().optional(),
-  querySuggestion: QuerySuggestion$inboundSchema.optional(),
-  file: ChatFile$inboundSchema.optional(),
-  action: ToolInfo$inboundSchema.optional(),
-  citation: ChatMessageCitation$inboundSchema.optional(),
-  serverToolRequest: ServerToolRequest$inboundSchema.optional(),
-  serverToolResponse: ServerToolResponse$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    structuredResults: z.array(StructuredResult$inboundSchema).optional(),
+    trackingToken: z.string().optional(),
+    text: z.string().optional(),
+    querySuggestion: QuerySuggestion$inboundSchema.optional(),
+    file: ChatFile$inboundSchema.optional(),
+    action: ToolInfo$inboundSchema.optional(),
+    citation: ChatMessageCitation$inboundSchema.optional(),
+    serverToolRequest: ServerToolRequest$inboundSchema.optional(),
+    serverToolResponse: ServerToolResponse$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type ChatMessageFragment$Outbound = {
   structuredResults?: Array<StructuredResult$Outbound> | undefined;
@@ -131,17 +133,19 @@ export const ChatMessageFragment$outboundSchema: z.ZodType<
   ChatMessageFragment$Outbound,
   z.ZodTypeDef,
   ChatMessageFragment
-> = z.object({
-  structuredResults: z.array(StructuredResult$outboundSchema).optional(),
-  trackingToken: z.string().optional(),
-  text: z.string().optional(),
-  querySuggestion: QuerySuggestion$outboundSchema.optional(),
-  file: ChatFile$outboundSchema.optional(),
-  action: ToolInfo$outboundSchema.optional(),
-  citation: ChatMessageCitation$outboundSchema.optional(),
-  serverToolRequest: ServerToolRequest$outboundSchema.optional(),
-  serverToolResponse: ServerToolResponse$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    structuredResults: z.array(StructuredResult$outboundSchema).optional(),
+    trackingToken: z.string().optional(),
+    text: z.string().optional(),
+    querySuggestion: QuerySuggestion$outboundSchema.optional(),
+    file: ChatFile$outboundSchema.optional(),
+    action: ToolInfo$outboundSchema.optional(),
+    citation: ChatMessageCitation$outboundSchema.optional(),
+    serverToolRequest: ServerToolRequest$outboundSchema.optional(),
+    serverToolResponse: ServerToolResponse$outboundSchema.optional(),
+  })
+);
 
 export function chatMessageFragmentToJSON(
   chatMessageFragment: ChatMessageFragment,

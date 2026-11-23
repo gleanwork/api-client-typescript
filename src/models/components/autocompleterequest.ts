@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   AuthToken,
@@ -68,7 +69,9 @@ export type AutocompleteRequest = {
 /** @internal */
 export const AutocompleteRequestResultType$outboundSchema: z.ZodNativeEnum<
   typeof AutocompleteRequestResultType
-> = z.nativeEnum(AutocompleteRequestResultType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AutocompleteRequestResultType)
+);
 
 /** @internal */
 export type AutocompleteRequest$Outbound = {
@@ -87,16 +90,19 @@ export const AutocompleteRequest$outboundSchema: z.ZodType<
   AutocompleteRequest$Outbound,
   z.ZodTypeDef,
   AutocompleteRequest
-> = z.object({
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  query: z.string().optional(),
-  datasourcesFilter: z.array(z.string()).optional(),
-  datasource: z.string().optional(),
-  resultTypes: z.array(AutocompleteRequestResultType$outboundSchema).optional(),
-  resultSize: z.number().int().optional(),
-  authTokens: z.array(AuthToken$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trackingToken: z.string().optional(),
+    sessionInfo: SessionInfo$outboundSchema.optional(),
+    query: z.string().optional(),
+    datasourcesFilter: z.array(z.string()).optional(),
+    datasource: z.string().optional(),
+    resultTypes: z.array(AutocompleteRequestResultType$outboundSchema)
+      .optional(),
+    resultSize: z.number().int().optional(),
+    authTokens: z.array(AuthToken$outboundSchema).optional(),
+  })
+);
 
 export function autocompleteRequestToJSON(
   autocompleteRequest: AutocompleteRequest,
