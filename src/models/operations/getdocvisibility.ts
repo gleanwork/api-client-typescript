@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetdocvisibilityRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetdocvisibilityRequest$outboundSchema: z.ZodType<
   GetdocvisibilityRequest$Outbound,
   z.ZodTypeDef,
   GetdocvisibilityRequest
-> = z.object({
-  docIds: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    docIds: z.array(z.string()).optional(),
+  })
+);
 
 export function getdocvisibilityRequestToJSON(
   getdocvisibilityRequest: GetdocvisibilityRequest,

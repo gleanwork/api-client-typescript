@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   FacetFilter,
@@ -106,12 +107,16 @@ export type UpdateAnnouncementRequest = {
 /** @internal */
 export const UpdateAnnouncementRequestChannel$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAnnouncementRequestChannel
-> = z.nativeEnum(UpdateAnnouncementRequestChannel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateAnnouncementRequestChannel)
+);
 
 /** @internal */
 export const UpdateAnnouncementRequestPostType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAnnouncementRequestPostType
-> = z.nativeEnum(UpdateAnnouncementRequestPostType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateAnnouncementRequestPostType)
+);
 
 /** @internal */
 export type UpdateAnnouncementRequest$Outbound = {
@@ -137,23 +142,25 @@ export const UpdateAnnouncementRequest$outboundSchema: z.ZodType<
   UpdateAnnouncementRequest$Outbound,
   z.ZodTypeDef,
   UpdateAnnouncementRequest
-> = z.object({
-  startTime: z.date().transform(v => v.toISOString()),
-  endTime: z.date().transform(v => v.toISOString()),
-  title: z.string(),
-  body: StructuredText$outboundSchema.optional(),
-  emoji: z.string().optional(),
-  thumbnail: Thumbnail$outboundSchema.optional(),
-  banner: Thumbnail$outboundSchema.optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  sourceDocumentId: z.string().optional(),
-  hideAttribution: z.boolean().optional(),
-  channel: UpdateAnnouncementRequestChannel$outboundSchema.optional(),
-  postType: UpdateAnnouncementRequestPostType$outboundSchema.optional(),
-  isPrioritized: z.boolean().optional(),
-  viewUrl: z.string().optional(),
-  id: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    startTime: z.date().transform(v => v.toISOString()),
+    endTime: z.date().transform(v => v.toISOString()),
+    title: z.string(),
+    body: StructuredText$outboundSchema.optional(),
+    emoji: z.string().optional(),
+    thumbnail: Thumbnail$outboundSchema.optional(),
+    banner: Thumbnail$outboundSchema.optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    sourceDocumentId: z.string().optional(),
+    hideAttribution: z.boolean().optional(),
+    channel: UpdateAnnouncementRequestChannel$outboundSchema.optional(),
+    postType: UpdateAnnouncementRequestPostType$outboundSchema.optional(),
+    isPrioritized: z.boolean().optional(),
+    viewUrl: z.string().optional(),
+    id: z.number().int(),
+  })
+);
 
 export function updateAnnouncementRequestToJSON(
   updateAnnouncementRequest: UpdateAnnouncementRequest,

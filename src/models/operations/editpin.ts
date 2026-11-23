@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type EditpinRequest = {
@@ -29,14 +30,16 @@ export const EditpinRequest$outboundSchema: z.ZodType<
   EditpinRequest$Outbound,
   z.ZodTypeDef,
   EditpinRequest
-> = z.object({
-  locale: z.string().optional(),
-  editPinRequest: components.EditPinRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    editPinRequest: "EditPinRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    editPinRequest: components.EditPinRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      editPinRequest: "EditPinRequest",
+    });
+  })
+);
 
 export function editpinRequestToJSON(editpinRequest: EditpinRequest): string {
   return JSON.stringify(EditpinRequest$outboundSchema.parse(editpinRequest));

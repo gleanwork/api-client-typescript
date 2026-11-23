@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * describes the membership row of a group in the bulk uploaded. Only one of memberUserId and memberGroupName can be specified.
@@ -30,10 +31,12 @@ export const DatasourceBulkMembershipDefinition$outboundSchema: z.ZodType<
   DatasourceBulkMembershipDefinition$Outbound,
   z.ZodTypeDef,
   DatasourceBulkMembershipDefinition
-> = z.object({
-  memberUserId: z.string().optional(),
-  memberGroupName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memberUserId: z.string().optional(),
+    memberGroupName: z.string().optional(),
+  })
+);
 
 export function datasourceBulkMembershipDefinitionToJSON(
   datasourceBulkMembershipDefinition: DatasourceBulkMembershipDefinition,

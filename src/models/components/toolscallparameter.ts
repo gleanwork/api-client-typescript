@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ToolsCallParameter = {
   /**
@@ -37,13 +38,15 @@ export const ToolsCallParameter$outboundSchema: z.ZodType<
   ToolsCallParameter$Outbound,
   z.ZodTypeDef,
   ToolsCallParameter
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  items: z.array(z.lazy(() => ToolsCallParameter$outboundSchema)).optional(),
-  properties: z.record(z.lazy(() => ToolsCallParameter$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.string(),
+    items: z.array(z.lazy(() => ToolsCallParameter$outboundSchema)).optional(),
+    properties: z.record(z.lazy(() => ToolsCallParameter$outboundSchema))
+      .optional(),
+  })
+);
 
 export function toolsCallParameterToJSON(
   toolsCallParameter: ToolsCallParameter,

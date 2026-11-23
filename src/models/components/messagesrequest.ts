@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -22,14 +23,16 @@ export type IdType = ClosedEnum<typeof IdType>;
 /**
  * The direction of the results asked with respect to the reference timestamp. Missing field defaults to OLDER. Only applicable when using a message_id.
  */
-export const Direction = {
+export const MessagesRequestDirection = {
   Older: "OLDER",
   Newer: "NEWER",
 } as const;
 /**
  * The direction of the results asked with respect to the reference timestamp. Missing field defaults to OLDER. Only applicable when using a message_id.
  */
-export type Direction = ClosedEnum<typeof Direction>;
+export type MessagesRequestDirection = ClosedEnum<
+  typeof MessagesRequestDirection
+>;
 
 /**
  * The type of the data source.
@@ -62,7 +65,7 @@ export type MessagesRequest = {
   /**
    * The direction of the results asked with respect to the reference timestamp. Missing field defaults to OLDER. Only applicable when using a message_id.
    */
-  direction?: Direction | undefined;
+  direction?: MessagesRequestDirection | undefined;
   /**
    * Timestamp in millis of the reference message. Only applicable when using a message_id.
    */
@@ -82,16 +85,17 @@ export type MessagesRequest = {
 };
 
 /** @internal */
-export const IdType$outboundSchema: z.ZodNativeEnum<typeof IdType> = z
-  .nativeEnum(IdType);
+export const IdType$outboundSchema: z.ZodNativeEnum<typeof IdType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IdType));
 
 /** @internal */
-export const Direction$outboundSchema: z.ZodNativeEnum<typeof Direction> = z
-  .nativeEnum(Direction);
+export const MessagesRequestDirection$outboundSchema: z.ZodNativeEnum<
+  typeof MessagesRequestDirection
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MessagesRequestDirection));
 
 /** @internal */
-export const Datasource$outboundSchema: z.ZodNativeEnum<typeof Datasource> = z
-  .nativeEnum(Datasource);
+export const Datasource$outboundSchema: z.ZodNativeEnum<typeof Datasource> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Datasource));
 
 /** @internal */
 export type MessagesRequest$Outbound = {
@@ -110,16 +114,18 @@ export const MessagesRequest$outboundSchema: z.ZodType<
   MessagesRequest$Outbound,
   z.ZodTypeDef,
   MessagesRequest
-> = z.object({
-  idType: IdType$outboundSchema,
-  id: z.string(),
-  workspaceId: z.string().optional(),
-  direction: Direction$outboundSchema.optional(),
-  timestampMillis: z.number().int().optional(),
-  includeRootMessage: z.boolean().optional(),
-  datasource: Datasource$outboundSchema,
-  datasourceInstanceDisplayName: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idType: IdType$outboundSchema,
+    id: z.string(),
+    workspaceId: z.string().optional(),
+    direction: MessagesRequestDirection$outboundSchema.optional(),
+    timestampMillis: z.number().int().optional(),
+    includeRootMessage: z.boolean().optional(),
+    datasource: Datasource$outboundSchema,
+    datasourceInstanceDisplayName: z.string().optional(),
+  })
+);
 
 export function messagesRequestToJSON(
   messagesRequest: MessagesRequest,

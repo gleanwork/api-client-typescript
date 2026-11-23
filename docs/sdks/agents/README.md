@@ -4,6 +4,7 @@
 
 ### Available Operations
 
+* [create](#create) - Create agent
 * [search](#search) - Search agents
 * [get](#get) - Get agent
 * [getSchemas](#getschemas) - Get agent schemas
@@ -11,6 +12,101 @@
 * [getRun](#getrun) - Get agent run
 * [cancelRun](#cancelrun) - Cancel an agent run
 * [respondToRun](#respondtorun) - Respond to agent run approvals
+
+## create
+
+Create and publish an agent from its complete definition.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-agents-create" method="post" path="/api/agents" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.agents.create({
+    name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { agentsCreate } from "@gleanwork/api-client/funcs/agentsCreate.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await agentsCreate(glean, {
+    name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsCreate failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAgentsCreateMutation
+} from "@gleanwork/api-client/react-query/agentsCreate.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.PlatformAgentCreateRequest](../../models/components/platformagentcreaterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.PlatformAgentGetResponse](../../models/components/platformagentgetresponse.md)\>**
+
+### Errors
+
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.PlatformProblemDetailError           | 400, 401, 403, 404, 408, 409, 413, 422, 429 | application/problem+json                    |
+| errors.PlatformProblemDetailError           | 500, 503                                    | application/problem+json                    |
+| errors.GleanError                           | 4XX, 5XX                                    | \*/\*                                       |
 
 ## search
 

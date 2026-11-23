@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -40,12 +40,14 @@ export const WritePermission$inboundSchema: z.ZodType<
   WritePermission,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  scopeType: ScopeType$inboundSchema.optional(),
-  create: z.boolean().optional(),
-  update: z.boolean().optional(),
-  delete: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: ScopeType$inboundSchema.optional(),
+    create: z.boolean().optional(),
+    update: z.boolean().optional(),
+    delete: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type WritePermission$Outbound = {
   scopeType?: string | undefined;
@@ -59,12 +61,14 @@ export const WritePermission$outboundSchema: z.ZodType<
   WritePermission$Outbound,
   z.ZodTypeDef,
   WritePermission
-> = z.object({
-  scopeType: ScopeType$outboundSchema.optional(),
-  create: z.boolean().optional(),
-  update: z.boolean().optional(),
-  delete: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: ScopeType$outboundSchema.optional(),
+    create: z.boolean().optional(),
+    update: z.boolean().optional(),
+    delete: z.boolean().optional(),
+  })
+);
 
 export function writePermissionToJSON(
   writePermission: WritePermission,

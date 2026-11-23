@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -77,43 +77,49 @@ export const PropertyDefinitionPropertyType$inboundSchema: z.ZodType<
   PropertyDefinitionPropertyType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PropertyDefinitionPropertyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PropertyDefinitionPropertyType)
+);
 /** @internal */
 export const PropertyDefinitionPropertyType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   PropertyDefinitionPropertyType
-> = openEnums.outboundSchema(PropertyDefinitionPropertyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(PropertyDefinitionPropertyType)
+);
 
 /** @internal */
 export const UiOptions$inboundSchema: z.ZodType<
   UiOptions,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(UiOptions);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(UiOptions));
 /** @internal */
 export const UiOptions$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   UiOptions
-> = openEnums.outboundSchema(UiOptions);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(UiOptions));
 
 /** @internal */
 export const PropertyDefinition$inboundSchema: z.ZodType<
   PropertyDefinition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  displayLabel: z.string().optional(),
-  displayLabelPlural: z.string().optional(),
-  propertyType: PropertyDefinitionPropertyType$inboundSchema.optional(),
-  uiOptions: UiOptions$inboundSchema.optional(),
-  hideUiFacet: z.boolean().optional(),
-  uiFacetOrder: z.number().int().optional(),
-  skipIndexing: z.boolean().optional(),
-  group: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    displayLabel: z.string().optional(),
+    displayLabelPlural: z.string().optional(),
+    propertyType: PropertyDefinitionPropertyType$inboundSchema.optional(),
+    uiOptions: UiOptions$inboundSchema.optional(),
+    hideUiFacet: z.boolean().optional(),
+    uiFacetOrder: z.number().int().optional(),
+    skipIndexing: z.boolean().optional(),
+    group: z.string().optional(),
+  })
+);
 /** @internal */
 export type PropertyDefinition$Outbound = {
   name?: string | undefined;
@@ -132,17 +138,19 @@ export const PropertyDefinition$outboundSchema: z.ZodType<
   PropertyDefinition$Outbound,
   z.ZodTypeDef,
   PropertyDefinition
-> = z.object({
-  name: z.string().optional(),
-  displayLabel: z.string().optional(),
-  displayLabelPlural: z.string().optional(),
-  propertyType: PropertyDefinitionPropertyType$outboundSchema.optional(),
-  uiOptions: UiOptions$outboundSchema.optional(),
-  hideUiFacet: z.boolean().optional(),
-  uiFacetOrder: z.number().int().optional(),
-  skipIndexing: z.boolean().optional(),
-  group: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    displayLabel: z.string().optional(),
+    displayLabelPlural: z.string().optional(),
+    propertyType: PropertyDefinitionPropertyType$outboundSchema.optional(),
+    uiOptions: UiOptions$outboundSchema.optional(),
+    hideUiFacet: z.boolean().optional(),
+    uiFacetOrder: z.number().int().optional(),
+    skipIndexing: z.boolean().optional(),
+    group: z.string().optional(),
+  })
+);
 
 export function propertyDefinitionToJSON(
   propertyDefinition: PropertyDefinition,

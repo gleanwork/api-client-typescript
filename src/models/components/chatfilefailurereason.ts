@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -33,10 +34,14 @@ export const ChatFileFailureReason$inboundSchema: z.ZodType<
   ChatFileFailureReason,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ChatFileFailureReason);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ChatFileFailureReason)
+);
 /** @internal */
 export const ChatFileFailureReason$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ChatFileFailureReason
-> = openEnums.outboundSchema(ChatFileFailureReason);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(ChatFileFailureReason)
+);

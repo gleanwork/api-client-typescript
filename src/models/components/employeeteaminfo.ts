@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Information about which team an employee belongs to
@@ -35,11 +36,13 @@ export const EmployeeTeamInfo$outboundSchema: z.ZodType<
   EmployeeTeamInfo$Outbound,
   z.ZodTypeDef,
   EmployeeTeamInfo
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    name: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function employeeTeamInfoToJSON(
   employeeTeamInfo: EmployeeTeamInfo,

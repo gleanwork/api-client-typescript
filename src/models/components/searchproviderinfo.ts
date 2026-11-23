@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -28,11 +28,13 @@ export const SearchProviderInfo$inboundSchema: z.ZodType<
   SearchProviderInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  logoUrl: z.string().optional(),
-  searchLinkUrlTemplate: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    logoUrl: z.string().optional(),
+    searchLinkUrlTemplate: z.string().optional(),
+  })
+);
 /** @internal */
 export type SearchProviderInfo$Outbound = {
   name?: string | undefined;
@@ -45,11 +47,13 @@ export const SearchProviderInfo$outboundSchema: z.ZodType<
   SearchProviderInfo$Outbound,
   z.ZodTypeDef,
   SearchProviderInfo
-> = z.object({
-  name: z.string().optional(),
-  logoUrl: z.string().optional(),
-  searchLinkUrlTemplate: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    logoUrl: z.string().optional(),
+    searchLinkUrlTemplate: z.string().optional(),
+  })
+);
 
 export function searchProviderInfoToJSON(
   searchProviderInfo: SearchProviderInfo,

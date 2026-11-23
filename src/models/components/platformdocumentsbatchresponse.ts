@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const PlatformDocumentsBatchResponse$inboundSchema: z.ZodType<
   PlatformDocumentsBatchResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(PlatformDocumentsBatchResult$inboundSchema),
-  warnings: z.array(PlatformDocumentsBatchWarning$inboundSchema),
-  request_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(PlatformDocumentsBatchResult$inboundSchema),
+    warnings: z.array(PlatformDocumentsBatchWarning$inboundSchema),
+    request_id: z.string(),
+  })
+);
 
 export function platformDocumentsBatchResponseFromJSON(
   jsonString: string,

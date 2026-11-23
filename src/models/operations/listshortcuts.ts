@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type ListshortcutsRequest = {
@@ -30,15 +31,17 @@ export const ListshortcutsRequest$outboundSchema: z.ZodType<
   ListshortcutsRequest$Outbound,
   z.ZodTypeDef,
   ListshortcutsRequest
-> = z.object({
-  locale: z.string().optional(),
-  listShortcutsPaginatedRequest:
-    components.ListShortcutsPaginatedRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    listShortcutsPaginatedRequest: "ListShortcutsPaginatedRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    listShortcutsPaginatedRequest:
+      components.ListShortcutsPaginatedRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      listShortcutsPaginatedRequest: "ListShortcutsPaginatedRequest",
+    });
+  })
+);
 
 export function listshortcutsRequestToJSON(
   listshortcutsRequest: ListshortcutsRequest,

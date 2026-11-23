@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const OrderBy = {
@@ -18,8 +19,8 @@ export type SortOptions = {
 };
 
 /** @internal */
-export const OrderBy$outboundSchema: z.ZodNativeEnum<typeof OrderBy> = z
-  .nativeEnum(OrderBy);
+export const OrderBy$outboundSchema: z.ZodNativeEnum<typeof OrderBy> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrderBy));
 
 /** @internal */
 export type SortOptions$Outbound = {
@@ -32,10 +33,12 @@ export const SortOptions$outboundSchema: z.ZodType<
   SortOptions$Outbound,
   z.ZodTypeDef,
   SortOptions
-> = z.object({
-  orderBy: OrderBy$outboundSchema.optional(),
-  sortBy: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderBy: OrderBy$outboundSchema.optional(),
+    sortBy: z.string().optional(),
+  })
+);
 
 export function sortOptionsToJSON(sortOptions: SortOptions): string {
   return JSON.stringify(SortOptions$outboundSchema.parse(sortOptions));

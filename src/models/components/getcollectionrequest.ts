@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetCollectionRequest = {
   /**
@@ -37,12 +38,14 @@ export const GetCollectionRequest$outboundSchema: z.ZodType<
   GetCollectionRequest$Outbound,
   z.ZodTypeDef,
   GetCollectionRequest
-> = z.object({
-  id: z.number().int(),
-  withItems: z.boolean().optional(),
-  withHierarchy: z.boolean().optional(),
-  allowedDatasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    withItems: z.boolean().optional(),
+    withHierarchy: z.boolean().optional(),
+    allowedDatasource: z.string().optional(),
+  })
+);
 
 export function getCollectionRequestToJSON(
   getCollectionRequest: GetCollectionRequest,

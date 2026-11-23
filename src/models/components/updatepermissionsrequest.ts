@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DocumentPermissionsDefinition,
   DocumentPermissionsDefinition$Outbound,
@@ -49,13 +50,15 @@ export const UpdatePermissionsRequest$outboundSchema: z.ZodType<
   UpdatePermissionsRequest$Outbound,
   z.ZodTypeDef,
   UpdatePermissionsRequest
-> = z.object({
-  datasource: z.string(),
-  objectType: z.string().optional(),
-  id: z.string().optional(),
-  viewURL: z.string().optional(),
-  permissions: DocumentPermissionsDefinition$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    objectType: z.string().optional(),
+    id: z.string().optional(),
+    viewURL: z.string().optional(),
+    permissions: DocumentPermissionsDefinition$outboundSchema,
+  })
+);
 
 export function updatePermissionsRequestToJSON(
   updatePermissionsRequest: UpdatePermissionsRequest,

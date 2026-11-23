@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   CommentDefinition,
   CommentDefinition$Outbound,
@@ -168,32 +169,34 @@ export const DocumentDefinition$outboundSchema: z.ZodType<
   DocumentDefinition$Outbound,
   z.ZodTypeDef,
   DocumentDefinition
-> = z.object({
-  title: z.string().optional(),
-  filename: z.string().optional(),
-  container: z.string().optional(),
-  containerDatasourceId: z.string().optional(),
-  containerObjectType: z.string().optional(),
-  datasource: z.string(),
-  objectType: z.string().optional(),
-  viewURL: z.string().optional(),
-  id: z.string().optional(),
-  summary: ContentDefinition$outboundSchema.optional(),
-  body: ContentDefinition$outboundSchema.optional(),
-  author: UserReferenceDefinition$outboundSchema.optional(),
-  owner: UserReferenceDefinition$outboundSchema.optional(),
-  permissions: DocumentPermissionsDefinition$outboundSchema.optional(),
-  createdAt: z.number().int().optional(),
-  updatedAt: z.number().int().optional(),
-  updatedBy: UserReferenceDefinition$outboundSchema.optional(),
-  tags: z.array(z.string()).optional(),
-  interactions: DocumentInteractionsDefinition$outboundSchema.optional(),
-  status: z.string().optional(),
-  additionalUrls: z.array(z.string()).optional(),
-  nativeAppUrl: z.string().optional(),
-  comments: z.array(CommentDefinition$outboundSchema).optional(),
-  customProperties: z.array(CustomProperty$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    filename: z.string().optional(),
+    container: z.string().optional(),
+    containerDatasourceId: z.string().optional(),
+    containerObjectType: z.string().optional(),
+    datasource: z.string(),
+    objectType: z.string().optional(),
+    viewURL: z.string().optional(),
+    id: z.string().optional(),
+    summary: ContentDefinition$outboundSchema.optional(),
+    body: ContentDefinition$outboundSchema.optional(),
+    author: UserReferenceDefinition$outboundSchema.optional(),
+    owner: UserReferenceDefinition$outboundSchema.optional(),
+    permissions: DocumentPermissionsDefinition$outboundSchema.optional(),
+    createdAt: z.number().int().optional(),
+    updatedAt: z.number().int().optional(),
+    updatedBy: UserReferenceDefinition$outboundSchema.optional(),
+    tags: z.array(z.string()).optional(),
+    interactions: DocumentInteractionsDefinition$outboundSchema.optional(),
+    status: z.string().optional(),
+    additionalUrls: z.array(z.string()).optional(),
+    nativeAppUrl: z.string().optional(),
+    comments: z.array(CommentDefinition$outboundSchema).optional(),
+    customProperties: z.array(CustomProperty$outboundSchema).optional(),
+  })
+);
 
 export function documentDefinitionToJSON(
   documentDefinition: DocumentDefinition,

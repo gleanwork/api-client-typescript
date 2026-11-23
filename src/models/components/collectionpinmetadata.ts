@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -27,10 +27,12 @@ export const CollectionPinMetadata$inboundSchema: z.ZodType<
   CollectionPinMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.number().int(),
-  target: CollectionPinTarget$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    target: CollectionPinTarget$inboundSchema,
+  })
+);
 /** @internal */
 export type CollectionPinMetadata$Outbound = {
   id: number;
@@ -42,10 +44,12 @@ export const CollectionPinMetadata$outboundSchema: z.ZodType<
   CollectionPinMetadata$Outbound,
   z.ZodTypeDef,
   CollectionPinMetadata
-> = z.object({
-  id: z.number().int(),
-  target: CollectionPinTarget$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    target: CollectionPinTarget$outboundSchema,
+  })
+);
 
 export function collectionPinMetadataToJSON(
   collectionPinMetadata: CollectionPinMetadata,

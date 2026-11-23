@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -35,18 +35,22 @@ export type PlatformChatStreamProgress = {
 /** @internal */
 export const PlatformChatStreamProgressType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatStreamProgressType
-> = z.nativeEnum(PlatformChatStreamProgressType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatStreamProgressType)
+);
 
 /** @internal */
 export const PlatformChatStreamProgress$inboundSchema: z.ZodType<
   PlatformChatStreamProgress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformChatStreamProgressType$inboundSchema,
-  response_id: z.string(),
-  text: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformChatStreamProgressType$inboundSchema,
+    response_id: z.string(),
+    text: z.string(),
+  })
+);
 
 export function platformChatStreamProgressFromJSON(
   jsonString: string,

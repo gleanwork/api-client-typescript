@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -57,29 +57,37 @@ export type PlatformChatFailedResponse = {
 /** @internal */
 export const PlatformChatFailedResponseObject$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatFailedResponseObject
-> = z.nativeEnum(PlatformChatFailedResponseObject);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatFailedResponseObject)
+);
 
 /** @internal */
 export const PlatformChatFailedResponseStatus$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatFailedResponseStatus
-> = z.nativeEnum(PlatformChatFailedResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatFailedResponseStatus)
+);
 
 /** @internal */
 export const PlatformChatFailedResponse$inboundSchema: z.ZodType<
   PlatformChatFailedResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  object: PlatformChatFailedResponseObject$inboundSchema,
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  status: PlatformChatFailedResponseStatus$inboundSchema,
-  output: z.array(PlatformChatOutputMessage$inboundSchema),
-  store: z.boolean(),
-  conversation_id: z.nullable(z.string()).optional(),
-  request_id: z.string(),
-  error: PlatformChatResponseError$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    object: PlatformChatFailedResponseObject$inboundSchema,
+    created_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    status: PlatformChatFailedResponseStatus$inboundSchema,
+    output: z.array(PlatformChatOutputMessage$inboundSchema),
+    store: z.boolean(),
+    conversation_id: z.nullable(z.string()).optional(),
+    request_id: z.string(),
+    error: PlatformChatResponseError$inboundSchema,
+  })
+);
 
 export function platformChatFailedResponseFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -34,9 +34,11 @@ export const RelatedObjectMetadata$inboundSchema: z.ZodType<
   RelatedObjectMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+  })
+);
 /** @internal */
 export type RelatedObjectMetadata$Outbound = {
   name?: string | undefined;
@@ -47,9 +49,11 @@ export const RelatedObjectMetadata$outboundSchema: z.ZodType<
   RelatedObjectMetadata$Outbound,
   z.ZodTypeDef,
   RelatedObjectMetadata
-> = z.object({
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+  })
+);
 
 export function relatedObjectMetadataToJSON(
   relatedObjectMetadata: RelatedObjectMetadata,
@@ -73,10 +77,12 @@ export const RelatedObject$inboundSchema: z.ZodType<
   RelatedObject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  metadata: z.lazy(() => RelatedObjectMetadata$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    metadata: z.lazy(() => RelatedObjectMetadata$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type RelatedObject$Outbound = {
   id: string;
@@ -88,10 +94,12 @@ export const RelatedObject$outboundSchema: z.ZodType<
   RelatedObject$Outbound,
   z.ZodTypeDef,
   RelatedObject
-> = z.object({
-  id: z.string(),
-  metadata: z.lazy(() => RelatedObjectMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    metadata: z.lazy(() => RelatedObjectMetadata$outboundSchema).optional(),
+  })
+);
 
 export function relatedObjectToJSON(relatedObject: RelatedObject): string {
   return JSON.stringify(RelatedObject$outboundSchema.parse(relatedObject));

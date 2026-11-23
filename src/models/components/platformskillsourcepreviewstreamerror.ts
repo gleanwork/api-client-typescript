@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -54,21 +54,25 @@ export type PlatformSkillSourcePreviewStreamError = {
 
 /** @internal */
 export const PlatformSkillSourcePreviewStreamErrorType$inboundSchema:
-  z.ZodNativeEnum<typeof PlatformSkillSourcePreviewStreamErrorType> = z
-    .nativeEnum(PlatformSkillSourcePreviewStreamErrorType);
+  z.ZodNativeEnum<typeof PlatformSkillSourcePreviewStreamErrorType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PlatformSkillSourcePreviewStreamErrorType)
+    );
 
 /** @internal */
 export const PlatformSkillSourcePreviewStreamError$inboundSchema: z.ZodType<
   PlatformSkillSourcePreviewStreamError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformSkillSourcePreviewStreamErrorType$inboundSchema,
-  error: PlatformProblemDetail$inboundSchema,
-  authentication_suggestions: z.array(
-    PlatformAuthenticationSuggestion$inboundSchema,
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformSkillSourcePreviewStreamErrorType$inboundSchema,
+    error: PlatformProblemDetail$inboundSchema,
+    authentication_suggestions: z.array(
+      PlatformAuthenticationSuggestion$inboundSchema,
+    ).optional(),
+  })
+);
 
 export function platformSkillSourcePreviewStreamErrorFromJSON(
   jsonString: string,
