@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -38,14 +38,16 @@ export const ChatCitationSource$inboundSchema: z.ZodType<
   ChatCitationSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  ChatDocumentSource$inboundSchema.and(
-    z.object({ type: z.literal("DOCUMENT") }),
-  ),
-  ChatPersonSource$inboundSchema,
-  ChatFileSource$inboundSchema,
-  ChatCustomEntitySource$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    ChatDocumentSource$inboundSchema.and(
+      z.object({ type: z.literal("DOCUMENT") }),
+    ),
+    ChatPersonSource$inboundSchema,
+    ChatFileSource$inboundSchema,
+    ChatCustomEntitySource$inboundSchema,
+  ])
+);
 
 export function chatCitationSourceFromJSON(
   jsonString: string,

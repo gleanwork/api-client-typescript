@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetDocPermissionsRequest = {
   /**
@@ -22,9 +23,11 @@ export const GetDocPermissionsRequest$outboundSchema: z.ZodType<
   GetDocPermissionsRequest$Outbound,
   z.ZodTypeDef,
   GetDocPermissionsRequest
-> = z.object({
-  documentId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documentId: z.string().optional(),
+  })
+);
 
 export function getDocPermissionsRequestToJSON(
   getDocPermissionsRequest: GetDocPermissionsRequest,

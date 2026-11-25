@@ -63,11 +63,11 @@ type PlatformUserFilter struct {
 	// - department_id: matches users in the department, as returned in
 	//   department.department_id.
 	//
-	Field string `json:"field"`
+	Field string `json:"field" queryParam:"name=field"`
 	// The values to match. A user matches when any value matches.
-	Values []string `json:"values"`
+	Values []string `json:"values" queryParam:"name=values"`
 	// The only supported operator is EQUALS. Defaults to EQUALS.
-	Operator *PlatformUserFilterOperator `default:"EQUALS" json:"operator"`
+	Operator *PlatformUserFilterOperator `default:"EQUALS" json:"operator" queryParam:"name=operator"`
 }
 
 func (p PlatformUserFilter) MarshalJSON() ([]byte, error) {

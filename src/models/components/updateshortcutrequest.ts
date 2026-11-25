@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   UserRoleSpecification,
   UserRoleSpecification$Outbound,
@@ -67,17 +68,19 @@ export const UpdateShortcutRequest$outboundSchema: z.ZodType<
   UpdateShortcutRequest$Outbound,
   z.ZodTypeDef,
   UpdateShortcutRequest
-> = z.object({
-  id: z.number().int(),
-  inputAlias: z.string().optional(),
-  destinationUrl: z.string().optional(),
-  destinationDocumentId: z.string().optional(),
-  description: z.string().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    inputAlias: z.string().optional(),
+    destinationUrl: z.string().optional(),
+    destinationDocumentId: z.string().optional(),
+    description: z.string().optional(),
+    unlisted: z.boolean().optional(),
+    urlTemplate: z.string().optional(),
+    addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+  })
+);
 
 export function updateShortcutRequestToJSON(
   updateShortcutRequest: UpdateShortcutRequest,

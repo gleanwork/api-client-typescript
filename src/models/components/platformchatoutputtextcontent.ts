@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -29,18 +29,23 @@ export type PlatformChatOutputTextContent = {
 /** @internal */
 export const PlatformChatOutputTextContentType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformChatOutputTextContentType
-> = z.nativeEnum(PlatformChatOutputTextContentType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformChatOutputTextContentType)
+);
 
 /** @internal */
 export const PlatformChatOutputTextContent$inboundSchema: z.ZodType<
   PlatformChatOutputTextContent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformChatOutputTextContentType$inboundSchema,
-  text: z.string(),
-  annotations: z.array(PlatformChatCitationAnnotation$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformChatOutputTextContentType$inboundSchema,
+    text: z.string(),
+    annotations: z.array(PlatformChatCitationAnnotation$inboundSchema)
+      .optional(),
+  })
+);
 
 export function platformChatOutputTextContentFromJSON(
   jsonString: string,

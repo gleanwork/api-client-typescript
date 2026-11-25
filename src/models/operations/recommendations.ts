@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type RecommendationsRequest = {
@@ -29,14 +30,16 @@ export const RecommendationsRequest$outboundSchema: z.ZodType<
   RecommendationsRequest$Outbound,
   z.ZodTypeDef,
   RecommendationsRequest
-> = z.object({
-  locale: z.string().optional(),
-  recommendationsRequest: components.RecommendationsRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    recommendationsRequest: "RecommendationsRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    recommendationsRequest: components.RecommendationsRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      recommendationsRequest: "RecommendationsRequest",
+    });
+  })
+);
 
 export function recommendationsRequestToJSON(
   recommendationsRequest: RecommendationsRequest,

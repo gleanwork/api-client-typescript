@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,10 +36,12 @@ export const ReferenceRange$inboundSchema: z.ZodType<
   ReferenceRange,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  textRange: TextRange$inboundSchema.optional(),
-  snippets: z.array(SearchResultSnippet$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    textRange: TextRange$inboundSchema.optional(),
+    snippets: z.array(SearchResultSnippet$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type ReferenceRange$Outbound = {
   textRange?: TextRange$Outbound | undefined;
@@ -51,10 +53,12 @@ export const ReferenceRange$outboundSchema: z.ZodType<
   ReferenceRange$Outbound,
   z.ZodTypeDef,
   ReferenceRange
-> = z.object({
-  textRange: TextRange$outboundSchema.optional(),
-  snippets: z.array(SearchResultSnippet$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    textRange: TextRange$outboundSchema.optional(),
+    snippets: z.array(SearchResultSnippet$outboundSchema).optional(),
+  })
+);
 
 export function referenceRangeToJSON(referenceRange: ReferenceRange): string {
   return JSON.stringify(ReferenceRange$outboundSchema.parse(referenceRange));

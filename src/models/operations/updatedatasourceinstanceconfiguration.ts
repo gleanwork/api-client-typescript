@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type UpdateDatasourceInstanceConfigurationRequest = {
@@ -34,17 +35,19 @@ export const UpdateDatasourceInstanceConfigurationRequest$outboundSchema:
     UpdateDatasourceInstanceConfigurationRequest$Outbound,
     z.ZodTypeDef,
     UpdateDatasourceInstanceConfigurationRequest
-  > = z.object({
-    datasourceId: z.string(),
-    instanceId: z.string(),
-    updateDatasourceConfigurationRequest:
-      components.UpdateDatasourceConfigurationRequest$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      datasourceId: z.string(),
+      instanceId: z.string(),
       updateDatasourceConfigurationRequest:
-        "UpdateDatasourceConfigurationRequest",
-    });
-  });
+        components.UpdateDatasourceConfigurationRequest$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        updateDatasourceConfigurationRequest:
+          "UpdateDatasourceConfigurationRequest",
+      });
+    })
+  );
 
 export function updateDatasourceInstanceConfigurationRequestToJSON(
   updateDatasourceInstanceConfigurationRequest:

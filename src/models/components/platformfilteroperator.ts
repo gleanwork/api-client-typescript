@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -28,10 +29,14 @@ export const PlatformFilterOperator$inboundSchema: z.ZodType<
   PlatformFilterOperator,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PlatformFilterOperator);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PlatformFilterOperator)
+);
 /** @internal */
 export const PlatformFilterOperator$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   PlatformFilterOperator
-> = openEnums.outboundSchema(PlatformFilterOperator);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(PlatformFilterOperator)
+);

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,12 +32,14 @@ export const Reaction$inboundSchema: z.ZodType<
   Reaction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.string().optional(),
-  count: z.number().int().optional(),
-  reactors: z.array(z.lazy(() => Person$inboundSchema)).optional(),
-  reactedByViewer: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string().optional(),
+    count: z.number().int().optional(),
+    reactors: z.array(z.lazy(() => Person$inboundSchema)).optional(),
+    reactedByViewer: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type Reaction$Outbound = {
   type?: string | undefined;
@@ -51,12 +53,14 @@ export const Reaction$outboundSchema: z.ZodType<
   Reaction$Outbound,
   z.ZodTypeDef,
   Reaction
-> = z.object({
-  type: z.string().optional(),
-  count: z.number().int().optional(),
-  reactors: z.array(z.lazy(() => Person$outboundSchema)).optional(),
-  reactedByViewer: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string().optional(),
+    count: z.number().int().optional(),
+    reactors: z.array(z.lazy(() => Person$outboundSchema)).optional(),
+    reactedByViewer: z.boolean().optional(),
+  })
+);
 
 export function reactionToJSON(reaction: Reaction): string {
   return JSON.stringify(Reaction$outboundSchema.parse(reaction));

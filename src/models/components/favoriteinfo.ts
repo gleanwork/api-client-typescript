@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,12 +34,14 @@ export const FavoriteInfo$inboundSchema: z.ZodType<
   FavoriteInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ugcType: UgcType$inboundSchema.optional(),
-  id: z.string().optional(),
-  count: z.number().int().optional(),
-  favoritedByUser: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ugcType: UgcType$inboundSchema.optional(),
+    id: z.string().optional(),
+    count: z.number().int().optional(),
+    favoritedByUser: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type FavoriteInfo$Outbound = {
   ugcType?: string | undefined;
@@ -53,12 +55,14 @@ export const FavoriteInfo$outboundSchema: z.ZodType<
   FavoriteInfo$Outbound,
   z.ZodTypeDef,
   FavoriteInfo
-> = z.object({
-  ugcType: UgcType$outboundSchema.optional(),
-  id: z.string().optional(),
-  count: z.number().int().optional(),
-  favoritedByUser: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ugcType: UgcType$outboundSchema.optional(),
+    id: z.string().optional(),
+    count: z.number().int().optional(),
+    favoritedByUser: z.boolean().optional(),
+  })
+);
 
 export function favoriteInfoToJSON(favoriteInfo: FavoriteInfo): string {
   return JSON.stringify(FavoriteInfo$outboundSchema.parse(favoriteInfo));

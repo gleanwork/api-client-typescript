@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Customer, Customer$inboundSchema } from "./customer.js";
@@ -46,14 +46,16 @@ export const GeneratedAttachment$inboundSchema: z.ZodType<
   GeneratedAttachment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  strategyName: EventStrategyName$inboundSchema.optional(),
-  documents: z.array(Document$inboundSchema).optional(),
-  person: Person$inboundSchema.optional(),
-  customer: Customer$inboundSchema.optional(),
-  externalLinks: z.array(StructuredLink$inboundSchema).optional(),
-  content: z.array(GeneratedAttachmentContent$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    strategyName: EventStrategyName$inboundSchema.optional(),
+    documents: z.array(Document$inboundSchema).optional(),
+    person: Person$inboundSchema.optional(),
+    customer: Customer$inboundSchema.optional(),
+    externalLinks: z.array(StructuredLink$inboundSchema).optional(),
+    content: z.array(GeneratedAttachmentContent$inboundSchema).optional(),
+  })
+);
 
 export function generatedAttachmentFromJSON(
   jsonString: string,

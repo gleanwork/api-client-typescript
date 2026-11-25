@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const PersonObject$inboundSchema: z.ZodType<
   PersonObject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+  })
+);
 /** @internal */
 export type PersonObject$Outbound = {
   name: string;
@@ -39,10 +41,12 @@ export const PersonObject$outboundSchema: z.ZodType<
   PersonObject$Outbound,
   z.ZodTypeDef,
   PersonObject
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+  })
+);
 
 export function personObjectToJSON(personObject: PersonObject): string {
   return JSON.stringify(PersonObject$outboundSchema.parse(personObject));

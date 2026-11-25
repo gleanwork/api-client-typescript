@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -85,41 +85,49 @@ export const DatasourcesType$inboundSchema: z.ZodType<
   DatasourcesType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(DatasourcesType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(DatasourcesType));
 /** @internal */
 export const DatasourcesType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   DatasourcesType
-> = openEnums.outboundSchema(DatasourcesType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(DatasourcesType)
+);
 
 /** @internal */
 export const InputOptionsTimePeriodType$inboundSchema: z.ZodType<
   InputOptionsTimePeriodType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(InputOptionsTimePeriodType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(InputOptionsTimePeriodType)
+);
 /** @internal */
 export const InputOptionsTimePeriodType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   InputOptionsTimePeriodType
-> = openEnums.outboundSchema(InputOptionsTimePeriodType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(InputOptionsTimePeriodType)
+);
 
 /** @internal */
 export const InputOptions$inboundSchema: z.ZodType<
   InputOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  urlGreenlist: z.array(z.string()).optional(),
-  datasourcesType: DatasourcesType$inboundSchema.optional(),
-  datasources: z.array(z.string()).optional(),
-  datasourceInstances: z.array(z.string()).optional(),
-  timePeriodType: InputOptionsTimePeriodType$inboundSchema.optional(),
-  customTimeRange: TimeRange$inboundSchema.optional(),
-  subsetDocIdsToScan: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urlGreenlist: z.array(z.string()).optional(),
+    datasourcesType: DatasourcesType$inboundSchema.optional(),
+    datasources: z.array(z.string()).optional(),
+    datasourceInstances: z.array(z.string()).optional(),
+    timePeriodType: InputOptionsTimePeriodType$inboundSchema.optional(),
+    customTimeRange: TimeRange$inboundSchema.optional(),
+    subsetDocIdsToScan: z.array(z.string()).optional(),
+  })
+);
 /** @internal */
 export type InputOptions$Outbound = {
   urlGreenlist?: Array<string> | undefined;
@@ -136,15 +144,17 @@ export const InputOptions$outboundSchema: z.ZodType<
   InputOptions$Outbound,
   z.ZodTypeDef,
   InputOptions
-> = z.object({
-  urlGreenlist: z.array(z.string()).optional(),
-  datasourcesType: DatasourcesType$outboundSchema.optional(),
-  datasources: z.array(z.string()).optional(),
-  datasourceInstances: z.array(z.string()).optional(),
-  timePeriodType: InputOptionsTimePeriodType$outboundSchema.optional(),
-  customTimeRange: TimeRange$outboundSchema.optional(),
-  subsetDocIdsToScan: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urlGreenlist: z.array(z.string()).optional(),
+    datasourcesType: DatasourcesType$outboundSchema.optional(),
+    datasources: z.array(z.string()).optional(),
+    datasourceInstances: z.array(z.string()).optional(),
+    timePeriodType: InputOptionsTimePeriodType$outboundSchema.optional(),
+    customTimeRange: TimeRange$outboundSchema.optional(),
+    subsetDocIdsToScan: z.array(z.string()).optional(),
+  })
+);
 
 export function inputOptionsToJSON(inputOptions: InputOptions): string {
   return JSON.stringify(InputOptions$outboundSchema.parse(inputOptions));

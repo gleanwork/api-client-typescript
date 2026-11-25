@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -63,21 +63,23 @@ export const Workflow$inboundSchema: z.ZodType<
   Workflow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  author: Person$inboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  lastDraftSavedAt: z.number().int().optional(),
-  lastDraftSavedBy: Person$inboundSchema.optional(),
-  lastDraftGitAuthorId: z.string().optional(),
-  lastUpdatedBy: Person$inboundSchema.optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  id: z.string().optional(),
-  verified: z.boolean().optional(),
-  showOrganizationAsAuthor: z.boolean().optional(),
-  webhookUrl: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    author: Person$inboundSchema.optional(),
+    createTimestamp: z.number().int().optional(),
+    lastUpdateTimestamp: z.number().int().optional(),
+    lastDraftSavedAt: z.number().int().optional(),
+    lastDraftSavedBy: Person$inboundSchema.optional(),
+    lastDraftGitAuthorId: z.string().optional(),
+    lastUpdatedBy: Person$inboundSchema.optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    id: z.string().optional(),
+    verified: z.boolean().optional(),
+    showOrganizationAsAuthor: z.boolean().optional(),
+    webhookUrl: z.string().optional(),
+  })
+);
 
 export function workflowFromJSON(
   jsonString: string,

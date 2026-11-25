@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const TimeInterval$inboundSchema: z.ZodType<
   TimeInterval,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  start: z.string(),
-  end: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.string(),
+    end: z.string(),
+  })
+);
 /** @internal */
 export type TimeInterval$Outbound = {
   start: string;
@@ -39,10 +41,12 @@ export const TimeInterval$outboundSchema: z.ZodType<
   TimeInterval$Outbound,
   z.ZodTypeDef,
   TimeInterval
-> = z.object({
-  start: z.string(),
-  end: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.string(),
+    end: z.string(),
+  })
+);
 
 export function timeIntervalToJSON(timeInterval: TimeInterval): string {
   return JSON.stringify(TimeInterval$outboundSchema.parse(timeInterval));

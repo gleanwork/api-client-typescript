@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const FacetBucketFilter$inboundSchema: z.ZodType<
   FacetBucketFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  facet: z.string().optional(),
-  prefix: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    facet: z.string().optional(),
+    prefix: z.string().optional(),
+  })
+);
 /** @internal */
 export type FacetBucketFilter$Outbound = {
   facet?: string | undefined;
@@ -39,10 +41,12 @@ export const FacetBucketFilter$outboundSchema: z.ZodType<
   FacetBucketFilter$Outbound,
   z.ZodTypeDef,
   FacetBucketFilter
-> = z.object({
-  facet: z.string().optional(),
-  prefix: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    facet: z.string().optional(),
+    prefix: z.string().optional(),
+  })
+);
 
 export function facetBucketFilterToJSON(
   facetBucketFilter: FacetBucketFilter,

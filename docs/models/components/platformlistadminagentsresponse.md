@@ -10,9 +10,14 @@ import { PlatformListAdminAgentsResponse } from "@gleanwork/api-client/models/co
 let value: PlatformListAdminAgentsResponse = {
   results: [
     {
-      agent_id: "mho4lwzylcozgoc2",
       name: "HR Policy Agent",
+      agent_id: "ef33aecf52c142a6873adf76037b642e",
       capabilities: {},
+      subagents: [
+        {
+          name: "HR Policy Agent",
+        },
+      ],
     },
   ],
   has_more: true,

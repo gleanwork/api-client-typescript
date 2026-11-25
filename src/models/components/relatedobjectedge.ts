@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -23,9 +23,11 @@ export const RelatedObjectEdge$inboundSchema: z.ZodType<
   RelatedObjectEdge,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  objects: z.array(RelatedObject$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    objects: z.array(RelatedObject$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type RelatedObjectEdge$Outbound = {
   objects?: Array<RelatedObject$Outbound> | undefined;
@@ -36,9 +38,11 @@ export const RelatedObjectEdge$outboundSchema: z.ZodType<
   RelatedObjectEdge$Outbound,
   z.ZodTypeDef,
   RelatedObjectEdge
-> = z.object({
-  objects: z.array(RelatedObject$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    objects: z.array(RelatedObject$outboundSchema).optional(),
+  })
+);
 
 export function relatedObjectEdgeToJSON(
   relatedObjectEdge: RelatedObjectEdge,

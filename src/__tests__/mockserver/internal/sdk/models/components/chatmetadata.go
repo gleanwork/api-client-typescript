@@ -24,6 +24,8 @@ type ChatMetadata struct {
 	ApplicationName *string `json:"applicationName,omitempty"`
 	// Defines how to render an icon
 	Icon *IconConfig `json:"icon,omitempty"`
+	// The status of the Chat.
+	Status *ChatStatus `json:"status,omitempty"`
 }
 
 func (c ChatMetadata) MarshalJSON() ([]byte, error) {
@@ -91,4 +93,11 @@ func (o *ChatMetadata) GetIcon() *IconConfig {
 		return nil
 	}
 	return o.Icon
+}
+
+func (o *ChatMetadata) GetStatus() *ChatStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
 }

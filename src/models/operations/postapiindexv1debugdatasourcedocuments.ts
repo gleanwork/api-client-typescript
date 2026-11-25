@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PostApiIndexV1DebugDatasourceDocumentsRequest = {
@@ -27,14 +28,16 @@ export const PostApiIndexV1DebugDatasourceDocumentsRequest$outboundSchema:
     PostApiIndexV1DebugDatasourceDocumentsRequest$Outbound,
     z.ZodTypeDef,
     PostApiIndexV1DebugDatasourceDocumentsRequest
-  > = z.object({
-    datasource: z.string(),
-    debugDocumentsRequest: components.DebugDocumentsRequest$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      debugDocumentsRequest: "DebugDocumentsRequest",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      datasource: z.string(),
+      debugDocumentsRequest: components.DebugDocumentsRequest$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        debugDocumentsRequest: "DebugDocumentsRequest",
+      });
+    })
+  );
 
 export function postApiIndexV1DebugDatasourceDocumentsRequestToJSON(
   postApiIndexV1DebugDatasourceDocumentsRequest:

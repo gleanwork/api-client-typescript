@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type DeletechatsRequest = {
@@ -31,15 +32,17 @@ export const DeletechatsRequest$outboundSchema: z.ZodType<
   DeletechatsRequest$Outbound,
   z.ZodTypeDef,
   DeletechatsRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  deleteChatsRequest: components.DeleteChatsRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    deleteChatsRequest: "DeleteChatsRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    deleteChatsRequest: components.DeleteChatsRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      deleteChatsRequest: "DeleteChatsRequest",
+    });
+  })
+);
 
 export function deletechatsRequestToJSON(
   deletechatsRequest: DeletechatsRequest,

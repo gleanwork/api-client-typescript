@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/api-client",
-  "version": "0.20.25",
+  "version": "0.21.0",
   "author": "Speakeasy",
   "tshy": {
     "sourceDialects": [
@@ -9,6 +9,7 @@
     "exports": {
       ".": "./src/index.ts",
       "./package.json": "./package.json",
+      "./node": "./src/node.ts",
       "./types": "./src/types/index.ts",
       "./models/errors": "./src/models/errors/index.ts",
       "./models/components": "./src/models/components/index.ts",
@@ -76,6 +77,17 @@
       }
     },
     "./package.json": "./package.json",
+    "./node": {
+      "import": {
+        "@gleanwork/api-client/source": "./src/node.ts",
+        "types": "./dist/esm/node.d.ts",
+        "default": "./dist/esm/node.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/node.d.ts",
+        "default": "./dist/commonjs/node.js"
+      }
+    },
     "./types": {
       "import": {
         "@gleanwork/api-client/source": "./src/types/index.ts",

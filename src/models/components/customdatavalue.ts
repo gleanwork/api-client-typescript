@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,13 +24,15 @@ export const CustomDataValue$inboundSchema: z.ZodType<
   CustomDataValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  displayLabel: z.string().optional(),
-  stringValue: z.string().optional(),
-  stringListValue: z.array(z.string()).optional(),
-  numberValue: z.number().optional(),
-  booleanValue: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayLabel: z.string().optional(),
+    stringValue: z.string().optional(),
+    stringListValue: z.array(z.string()).optional(),
+    numberValue: z.number().optional(),
+    booleanValue: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type CustomDataValue$Outbound = {
   displayLabel?: string | undefined;
@@ -45,13 +47,15 @@ export const CustomDataValue$outboundSchema: z.ZodType<
   CustomDataValue$Outbound,
   z.ZodTypeDef,
   CustomDataValue
-> = z.object({
-  displayLabel: z.string().optional(),
-  stringValue: z.string().optional(),
-  stringListValue: z.array(z.string()).optional(),
-  numberValue: z.number().optional(),
-  booleanValue: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    displayLabel: z.string().optional(),
+    stringValue: z.string().optional(),
+    stringListValue: z.array(z.string()).optional(),
+    numberValue: z.number().optional(),
+    booleanValue: z.boolean().optional(),
+  })
+);
 
 export function customDataValueToJSON(
   customDataValue: CustomDataValue,

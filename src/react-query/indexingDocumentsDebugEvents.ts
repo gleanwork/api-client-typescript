@@ -47,10 +47,10 @@ export type IndexingDocumentsDebugEventsMutationError =
   | SDKValidationError;
 
 /**
- * Beta: Get document lifecycle events
+ * Get document lifecycle events
  *
  * @remarks
- * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource. Currently in beta, might undergo breaking changes without prior notice.
+ * Retrieves lifecycle events for a specific document including upload time, index times and deletions. Rate limited to 1 request per minute per datasource.
  */
 export function useIndexingDocumentsDebugEventsMutation(
   options?: MutationHookOptions<

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -34,11 +34,13 @@ export const DlpPerson$inboundSchema: z.ZodType<
   DlpPerson,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-  metadata: DlpPersonMetadata$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+    metadata: DlpPersonMetadata$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type DlpPerson$Outbound = {
   name: string;
@@ -51,11 +53,13 @@ export const DlpPerson$outboundSchema: z.ZodType<
   DlpPerson$Outbound,
   z.ZodTypeDef,
   DlpPerson
-> = z.object({
-  name: z.string(),
-  obfuscatedId: z.string(),
-  metadata: DlpPersonMetadata$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    obfuscatedId: z.string(),
+    metadata: DlpPersonMetadata$outboundSchema.optional(),
+  })
+);
 
 export function dlpPersonToJSON(dlpPerson: DlpPerson): string {
   return JSON.stringify(DlpPerson$outboundSchema.parse(dlpPerson));

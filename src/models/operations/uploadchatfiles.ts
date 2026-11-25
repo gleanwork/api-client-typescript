@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type UploadchatfilesRequest = {
@@ -31,15 +32,17 @@ export const UploadchatfilesRequest$outboundSchema: z.ZodType<
   UploadchatfilesRequest$Outbound,
   z.ZodTypeDef,
   UploadchatfilesRequest
-> = z.object({
-  locale: z.string().optional(),
-  timezoneOffset: z.number().int().optional(),
-  uploadChatFilesRequest: components.UploadChatFilesRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    uploadChatFilesRequest: "UploadChatFilesRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    timezoneOffset: z.number().int().optional(),
+    uploadChatFilesRequest: components.UploadChatFilesRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      uploadChatFilesRequest: "UploadChatFilesRequest",
+    });
+  })
+);
 
 export function uploadchatfilesRequestToJSON(
   uploadchatfilesRequest: UploadchatfilesRequest,

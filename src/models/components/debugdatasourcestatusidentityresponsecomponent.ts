@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -33,9 +33,11 @@ export const DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema:
     DebugDatasourceStatusIdentityResponseComponentCounts,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    uploaded: z.number().int().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      uploaded: z.number().int().optional(),
+    })
+  );
 
 export function debugDatasourceStatusIdentityResponseComponentCountsFromJSON(
   jsonString: string,
@@ -59,12 +61,15 @@ export const DebugDatasourceStatusIdentityResponseComponent$inboundSchema:
     DebugDatasourceStatusIdentityResponseComponent,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    bulkUploadHistory: z.array(BulkUploadHistoryEvent$inboundSchema).optional(),
-    counts: z.lazy(() =>
-      DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      bulkUploadHistory: z.array(BulkUploadHistoryEvent$inboundSchema)
+        .optional(),
+      counts: z.lazy(() =>
+        DebugDatasourceStatusIdentityResponseComponentCounts$inboundSchema
+      ).optional(),
+    })
+  );
 
 export function debugDatasourceStatusIdentityResponseComponentFromJSON(
   jsonString: string,

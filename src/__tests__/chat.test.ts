@@ -36,3 +36,16 @@ test("Chat Platform Chat Update", async () => {
   }, "{chat_id}");
   expect(result).toBeDefined();
 });
+
+test("Chat Platform Chat Cancel", async () => {
+  const testHttpClient = createTestHTTPClient("platform-chat-cancel");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.chat.cancel("{chat_id}");
+  expect(result).toBeDefined();
+});

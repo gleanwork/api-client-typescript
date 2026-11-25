@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformSkillsPreviewSourceStreamRequest = {
   /**
@@ -24,10 +25,12 @@ export const PlatformSkillsPreviewSourceStreamRequest$outboundSchema: z.ZodType<
   PlatformSkillsPreviewSourceStreamRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillsPreviewSourceStreamRequest
-> = z.object({
-  source_url: z.string(),
-  stream: z.literal(true).default(true as const),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source_url: z.string(),
+    stream: z.literal(true).default(true as const),
+  })
+);
 
 export function platformSkillsPreviewSourceStreamRequestToJSON(
   platformSkillsPreviewSourceStreamRequest:

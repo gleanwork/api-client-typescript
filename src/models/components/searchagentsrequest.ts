@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type SearchAgentsRequest = {
   /**
@@ -22,9 +23,11 @@ export const SearchAgentsRequest$outboundSchema: z.ZodType<
   SearchAgentsRequest$Outbound,
   z.ZodTypeDef,
   SearchAgentsRequest
-> = z.object({
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+  })
+);
 
 export function searchAgentsRequestToJSON(
   searchAgentsRequest: SearchAgentsRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,11 +36,13 @@ export const Disambiguation$inboundSchema: z.ZodType<
   Disambiguation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  id: z.string().optional(),
-  type: EntityType$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    id: z.string().optional(),
+    type: EntityType$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type Disambiguation$Outbound = {
   name?: string | undefined;
@@ -53,11 +55,13 @@ export const Disambiguation$outboundSchema: z.ZodType<
   Disambiguation$Outbound,
   z.ZodTypeDef,
   Disambiguation
-> = z.object({
-  name: z.string().optional(),
-  id: z.string().optional(),
-  type: EntityType$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    id: z.string().optional(),
+    type: EntityType$outboundSchema.optional(),
+  })
+);
 
 export function disambiguationToJSON(disambiguation: Disambiguation): string {
   return JSON.stringify(Disambiguation$outboundSchema.parse(disambiguation));

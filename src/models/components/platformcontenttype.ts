@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const PlatformContentType = {
@@ -14,7 +15,7 @@ export type PlatformContentType = ClosedEnum<typeof PlatformContentType>;
 /** @internal */
 export const PlatformContentType$inboundSchema: z.ZodNativeEnum<
   typeof PlatformContentType
-> = z.nativeEnum(PlatformContentType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PlatformContentType));
 /** @internal */
 export const PlatformContentType$outboundSchema: z.ZodNativeEnum<
   typeof PlatformContentType

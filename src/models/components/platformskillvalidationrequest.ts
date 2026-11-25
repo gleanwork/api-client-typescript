@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 
 export type PlatformSkillValidationRequestFile = {
@@ -29,15 +30,17 @@ export const PlatformSkillValidationRequestFile$outboundSchema: z.ZodType<
   PlatformSkillValidationRequestFile$Outbound,
   z.ZodTypeDef,
   PlatformSkillValidationRequestFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function platformSkillValidationRequestFileToJSON(
   platformSkillValidationRequestFile: PlatformSkillValidationRequestFile,
@@ -59,11 +62,13 @@ export const PlatformSkillValidationRequest$outboundSchema: z.ZodType<
   PlatformSkillValidationRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillValidationRequest
-> = z.object({
-  file: z.lazy(() => PlatformSkillValidationRequestFile$outboundSchema).or(
-    blobLikeSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => PlatformSkillValidationRequestFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+  })
+);
 
 export function platformSkillValidationRequestToJSON(
   platformSkillValidationRequest: PlatformSkillValidationRequest,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   CollectionItemDescriptor,
   CollectionItemDescriptor$Outbound,
@@ -34,12 +35,14 @@ export const AddCollectionItemsRequest$outboundSchema: z.ZodType<
   AddCollectionItemsRequest$Outbound,
   z.ZodTypeDef,
   AddCollectionItemsRequest
-> = z.object({
-  collectionId: z.number(),
-  addedCollectionItemDescriptors: z.array(
-    CollectionItemDescriptor$outboundSchema,
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collectionId: z.number(),
+    addedCollectionItemDescriptors: z.array(
+      CollectionItemDescriptor$outboundSchema,
+    ).optional(),
+  })
+);
 
 export function addCollectionItemsRequestToJSON(
   addCollectionItemsRequest: AddCollectionItemsRequest,

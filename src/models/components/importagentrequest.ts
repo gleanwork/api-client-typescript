@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
@@ -88,15 +89,17 @@ export const Bundle$outboundSchema: z.ZodType<
   Bundle$Outbound,
   z.ZodTypeDef,
   Bundle
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function bundleToJSON(bundle: Bundle): string {
   return JSON.stringify(Bundle$outboundSchema.parse(bundle));
@@ -105,7 +108,7 @@ export function bundleToJSON(bundle: Bundle): string {
 /** @internal */
 export const VersionSource$outboundSchema: z.ZodNativeEnum<
   typeof VersionSource
-> = z.nativeEnum(VersionSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VersionSource));
 
 /** @internal */
 export type ImportAgentRequest$Outbound = {
@@ -124,16 +127,18 @@ export const ImportAgentRequest$outboundSchema: z.ZodType<
   ImportAgentRequest$Outbound,
   z.ZodTypeDef,
   ImportAgentRequest
-> = z.object({
-  bundle: z.lazy(() => Bundle$outboundSchema).or(blobLikeSchema),
-  gitCommitSha: z.string().optional(),
-  gitAuthorId: z.string().optional(),
-  commitMessage: z.string().optional(),
-  syncMode: ImportAgentSyncMode$outboundSchema.optional(),
-  versionSource: VersionSource$outboundSchema.default("USER"),
-  publishedBaselineHash: z.string().optional(),
-  isDraft: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bundle: z.lazy(() => Bundle$outboundSchema).or(blobLikeSchema),
+    gitCommitSha: z.string().optional(),
+    gitAuthorId: z.string().optional(),
+    commitMessage: z.string().optional(),
+    syncMode: ImportAgentSyncMode$outboundSchema.optional(),
+    versionSource: VersionSource$outboundSchema.default("USER"),
+    publishedBaselineHash: z.string().optional(),
+    isDraft: z.boolean().optional(),
+  })
+);
 
 export function importAgentRequestToJSON(
   importAgentRequest: ImportAgentRequest,

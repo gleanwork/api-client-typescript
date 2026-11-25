@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -37,13 +37,15 @@ export type Badge = {
 };
 
 /** @internal */
-export const Badge$inboundSchema: z.ZodType<Badge, z.ZodTypeDef, unknown> = z
-  .object({
-    key: z.string().optional(),
-    displayName: z.string().optional(),
-    iconConfig: IconConfig$inboundSchema.optional(),
-    pinned: z.boolean().optional(),
-  });
+export const Badge$inboundSchema: z.ZodType<Badge, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: z.string().optional(),
+      displayName: z.string().optional(),
+      iconConfig: IconConfig$inboundSchema.optional(),
+      pinned: z.boolean().optional(),
+    })
+  );
 /** @internal */
 export type Badge$Outbound = {
   key?: string | undefined;
@@ -57,12 +59,14 @@ export const Badge$outboundSchema: z.ZodType<
   Badge$Outbound,
   z.ZodTypeDef,
   Badge
-> = z.object({
-  key: z.string().optional(),
-  displayName: z.string().optional(),
-  iconConfig: IconConfig$outboundSchema.optional(),
-  pinned: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string().optional(),
+    displayName: z.string().optional(),
+    iconConfig: IconConfig$outboundSchema.optional(),
+    pinned: z.boolean().optional(),
+  })
+);
 
 export function badgeToJSON(badge: Badge): string {
   return JSON.stringify(Badge$outboundSchema.parse(badge));
