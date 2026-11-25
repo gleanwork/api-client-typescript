@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -59,16 +59,20 @@ export const PlatformTriggerEvent$inboundSchema: z.ZodType<
   PlatformTriggerEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  event_type: PlatformTriggerEventType$inboundSchema,
-  datasource: z.string(),
-  reason: PlatformTriggerEventReason$inboundSchema,
-  doc_type: z.string(),
-  doc_id: z.string(),
-  view_url: z.string(),
-  title: z.string(),
-  event_time: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event_type: PlatformTriggerEventType$inboundSchema,
+    datasource: z.string(),
+    reason: PlatformTriggerEventReason$inboundSchema,
+    doc_type: z.string(),
+    doc_id: z.string(),
+    view_url: z.string(),
+    title: z.string(),
+    event_time: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 
 export function platformTriggerEventFromJSON(
   jsonString: string,

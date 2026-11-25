@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -77,27 +77,29 @@ export const LastScanStatus$inboundSchema: z.ZodType<
   LastScanStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(LastScanStatus);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(LastScanStatus));
 
 /** @internal */
 export const DlpReport$inboundSchema: z.ZodType<
   DlpReport,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  config: DlpConfig$inboundSchema.optional(),
-  frequency: DlpFrequency$inboundSchema.optional(),
-  status: DlpReportStatus$inboundSchema.optional(),
-  createdBy: DlpPerson$inboundSchema.optional(),
-  createdAt: z.string().optional(),
-  lastUpdatedAt: z.string().optional(),
-  autoHideDocs: z.boolean().optional(),
-  lastScanStatus: LastScanStatus$inboundSchema.optional(),
-  lastScanStartTime: z.string().optional(),
-  updatedBy: DlpPerson$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    name: z.string().optional(),
+    config: DlpConfig$inboundSchema.optional(),
+    frequency: DlpFrequency$inboundSchema.optional(),
+    status: DlpReportStatus$inboundSchema.optional(),
+    createdBy: DlpPerson$inboundSchema.optional(),
+    createdAt: z.string().optional(),
+    lastUpdatedAt: z.string().optional(),
+    autoHideDocs: z.boolean().optional(),
+    lastScanStatus: LastScanStatus$inboundSchema.optional(),
+    lastScanStartTime: z.string().optional(),
+    updatedBy: DlpPerson$inboundSchema.optional(),
+  })
+);
 
 export function dlpReportFromJSON(
   jsonString: string,

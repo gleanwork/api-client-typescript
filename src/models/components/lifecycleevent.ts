@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -40,17 +40,21 @@ export const LifeCycleEventEvent$inboundSchema: z.ZodType<
   LifeCycleEventEvent,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(LifeCycleEventEvent);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(LifeCycleEventEvent)
+);
 
 /** @internal */
 export const LifeCycleEvent$inboundSchema: z.ZodType<
   LifeCycleEvent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  event: LifeCycleEventEvent$inboundSchema.optional(),
-  timestamp: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: LifeCycleEventEvent$inboundSchema.optional(),
+    timestamp: z.string().optional(),
+  })
+);
 
 export function lifeCycleEventFromJSON(
   jsonString: string,

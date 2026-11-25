@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,10 +24,12 @@ export const CustomFieldValueHyperlink$inboundSchema: z.ZodType<
   CustomFieldValueHyperlink,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  urlAnchor: z.string().optional(),
-  urlLink: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urlAnchor: z.string().optional(),
+    urlLink: z.string().optional(),
+  })
+);
 /** @internal */
 export type CustomFieldValueHyperlink$Outbound = {
   urlAnchor?: string | undefined;
@@ -39,10 +41,12 @@ export const CustomFieldValueHyperlink$outboundSchema: z.ZodType<
   CustomFieldValueHyperlink$Outbound,
   z.ZodTypeDef,
   CustomFieldValueHyperlink
-> = z.object({
-  urlAnchor: z.string().optional(),
-  urlLink: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urlAnchor: z.string().optional(),
+    urlLink: z.string().optional(),
+  })
+);
 
 export function customFieldValueHyperlinkToJSON(
   customFieldValueHyperlink: CustomFieldValueHyperlink,

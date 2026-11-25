@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -56,27 +56,33 @@ export const PersonTeamRelationship$inboundSchema: z.ZodType<
   PersonTeamRelationship,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PersonTeamRelationship);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PersonTeamRelationship)
+);
 /** @internal */
 export const PersonTeamRelationship$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   PersonTeamRelationship
-> = openEnums.outboundSchema(PersonTeamRelationship);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(PersonTeamRelationship)
+);
 
 /** @internal */
 export const PersonTeam$inboundSchema: z.ZodType<
   PersonTeam,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  externalLink: z.string().optional(),
-  relationship: PersonTeamRelationship$inboundSchema.default("MEMBER"),
-  joinDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    name: z.string().optional(),
+    externalLink: z.string().optional(),
+    relationship: PersonTeamRelationship$inboundSchema.default("MEMBER"),
+    joinDate: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+  })
+);
 /** @internal */
 export type PersonTeam$Outbound = {
   id?: string | undefined;
@@ -91,13 +97,15 @@ export const PersonTeam$outboundSchema: z.ZodType<
   PersonTeam$Outbound,
   z.ZodTypeDef,
   PersonTeam
-> = z.object({
-  id: z.string().optional(),
-  name: z.string().optional(),
-  externalLink: z.string().optional(),
-  relationship: PersonTeamRelationship$outboundSchema.default("MEMBER"),
-  joinDate: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    name: z.string().optional(),
+    externalLink: z.string().optional(),
+    relationship: PersonTeamRelationship$outboundSchema.default("MEMBER"),
+    joinDate: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function personTeamToJSON(personTeam: PersonTeam): string {
   return JSON.stringify(PersonTeam$outboundSchema.parse(personTeam));

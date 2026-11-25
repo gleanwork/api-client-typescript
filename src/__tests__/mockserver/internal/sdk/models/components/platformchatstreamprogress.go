@@ -40,6 +40,11 @@ type PlatformChatStreamProgress struct {
 	// Verbatim concatenated fragment text from an assistant UPDATE wire message. Display-oriented passthrough only; not part of the final answer and not present on terminal response snapshots.
 	//
 	Text string `json:"text"`
+	// The ID of the chat the event belongs to, when the chat is stored.
+	ConversationID *string `json:"conversation_id,omitempty"`
+	// Position of this event's source message in the chat stream. Pass the last one you received as `last_seen_sequence_id` when resuming.
+	//
+	SequenceID *int64 `json:"sequence_id,omitempty"`
 }
 
 func (p PlatformChatStreamProgress) MarshalJSON() ([]byte, error) {
@@ -72,4 +77,18 @@ func (o *PlatformChatStreamProgress) GetText() string {
 		return ""
 	}
 	return o.Text
+}
+
+func (o *PlatformChatStreamProgress) GetConversationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConversationID
+}
+
+func (o *PlatformChatStreamProgress) GetSequenceID() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.SequenceID
 }

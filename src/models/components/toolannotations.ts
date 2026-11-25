@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -58,13 +58,15 @@ export const ToolAnnotations$inboundSchema: z.ZodType<
   ToolAnnotations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  title: z.string().optional(),
-  readOnlyHint: z.boolean().optional(),
-  destructiveHint: z.nullable(z.boolean()).optional(),
-  idempotentHint: z.boolean().optional(),
-  openWorldHint: z.nullable(z.boolean()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    readOnlyHint: z.boolean().optional(),
+    destructiveHint: z.nullable(z.boolean()).optional(),
+    idempotentHint: z.boolean().optional(),
+    openWorldHint: z.nullable(z.boolean()).optional(),
+  })
+);
 
 export function toolAnnotationsFromJSON(
   jsonString: string,

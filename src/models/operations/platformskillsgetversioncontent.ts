@@ -5,7 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -36,10 +36,12 @@ export const PlatformSkillsGetVersionContentRequest$outboundSchema: z.ZodType<
   PlatformSkillsGetVersionContentRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillsGetVersionContentRequest
-> = z.object({
-  skill_id: z.string(),
-  version: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skill_id: z.string(),
+    version: z.number().int(),
+  })
+);
 
 export function platformSkillsGetVersionContentRequestToJSON(
   platformSkillsGetVersionContentRequest:
@@ -57,14 +59,16 @@ export const PlatformSkillsGetVersionContentResponse$inboundSchema: z.ZodType<
   PlatformSkillsGetVersionContentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Headers: z.record(z.array(z.string())).default({}),
-  Result: z.instanceof(ReadableStream<Uint8Array>),
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Headers: z.record(z.array(z.string())).default({}),
+    Result: z.instanceof(ReadableStream<Uint8Array>),
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function platformSkillsGetVersionContentResponseFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { Period, Period$Outbound, Period$outboundSchema } from "./period.js";
 
 export type McpInsightsRequest = {
@@ -35,12 +36,14 @@ export const McpInsightsRequest$outboundSchema: z.ZodType<
   McpInsightsRequest$Outbound,
   z.ZodTypeDef,
   McpInsightsRequest
-> = z.object({
-  departments: z.array(z.string()).optional(),
-  managerIds: z.array(z.string()).optional(),
-  managerEmails: z.array(z.string()).optional(),
-  dayRange: Period$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    departments: z.array(z.string()).optional(),
+    managerIds: z.array(z.string()).optional(),
+    managerEmails: z.array(z.string()).optional(),
+    dayRange: Period$outboundSchema.optional(),
+  })
+);
 
 export function mcpInsightsRequestToJSON(
   mcpInsightsRequest: McpInsightsRequest,

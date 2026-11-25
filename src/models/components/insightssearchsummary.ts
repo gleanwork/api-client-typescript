@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,12 +32,14 @@ export const InsightsSearchSummary$inboundSchema: z.ZodType<
   InsightsSearchSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  monthlyActiveUsers: z.number().int().optional(),
-  weeklyActiveUsers: z.number().int().optional(),
-  numSearches: z.number().int().optional(),
-  numSearchUsers: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    monthlyActiveUsers: z.number().int().optional(),
+    weeklyActiveUsers: z.number().int().optional(),
+    numSearches: z.number().int().optional(),
+    numSearchUsers: z.number().int().optional(),
+  })
+);
 
 export function insightsSearchSummaryFromJSON(
   jsonString: string,

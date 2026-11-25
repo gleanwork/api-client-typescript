@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ListverificationsRequest = {
   /**
@@ -27,10 +28,12 @@ export const ListverificationsRequest$outboundSchema: z.ZodType<
   ListverificationsRequest$Outbound,
   z.ZodTypeDef,
   ListverificationsRequest
-> = z.object({
-  count: z.number().int().optional(),
-  locale: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: z.number().int().optional(),
+    locale: z.string().optional(),
+  })
+);
 
 export function listverificationsRequestToJSON(
   listverificationsRequest: ListverificationsRequest,

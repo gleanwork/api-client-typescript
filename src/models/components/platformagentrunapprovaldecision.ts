@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -33,8 +34,8 @@ export type PlatformAgentRunApprovalDecision = {
 };
 
 /** @internal */
-export const Decision$outboundSchema: z.ZodNativeEnum<typeof Decision> = z
-  .nativeEnum(Decision);
+export const Decision$outboundSchema: z.ZodNativeEnum<typeof Decision> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Decision));
 
 /** @internal */
 export type PlatformAgentRunApprovalDecision$Outbound = {
@@ -47,10 +48,12 @@ export const PlatformAgentRunApprovalDecision$outboundSchema: z.ZodType<
   PlatformAgentRunApprovalDecision$Outbound,
   z.ZodTypeDef,
   PlatformAgentRunApprovalDecision
-> = z.object({
-  interaction_id: z.string(),
-  decision: Decision$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    interaction_id: z.string(),
+    decision: Decision$outboundSchema,
+  })
+);
 
 export function platformAgentRunApprovalDecisionToJSON(
   platformAgentRunApprovalDecision: PlatformAgentRunApprovalDecision,

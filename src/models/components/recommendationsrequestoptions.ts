@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   Document,
   Document$Outbound,
@@ -53,14 +54,16 @@ export const RecommendationsRequestOptions$outboundSchema: z.ZodType<
   RecommendationsRequestOptions$Outbound,
   z.ZodTypeDef,
   RecommendationsRequestOptions
-> = z.object({
-  datasourceFilter: z.string().optional(),
-  datasourcesFilter: z.array(z.string()).optional(),
-  facetFilterSets: z.array(FacetFilterSet$outboundSchema).optional(),
-  context: Document$outboundSchema.optional(),
-  resultProminence: z.array(SearchResultProminenceEnum$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourceFilter: z.string().optional(),
+    datasourcesFilter: z.array(z.string()).optional(),
+    facetFilterSets: z.array(FacetFilterSet$outboundSchema).optional(),
+    context: Document$outboundSchema.optional(),
+    resultProminence: z.array(SearchResultProminenceEnum$outboundSchema)
+      .optional(),
+  })
+);
 
 export function recommendationsRequestOptionsToJSON(
   recommendationsRequestOptions: RecommendationsRequestOptions,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type DeleteAnswerRequest = {
   /**
@@ -27,10 +28,12 @@ export const DeleteAnswerRequest$outboundSchema: z.ZodType<
   DeleteAnswerRequest$Outbound,
   z.ZodTypeDef,
   DeleteAnswerRequest
-> = z.object({
-  id: z.number().int(),
-  docId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+    docId: z.string().optional(),
+  })
+);
 
 export function deleteAnswerRequestToJSON(
   deleteAnswerRequest: DeleteAnswerRequest,

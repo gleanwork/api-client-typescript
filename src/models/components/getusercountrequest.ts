@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /getusercount API call
@@ -25,9 +26,11 @@ export const GetUserCountRequest$outboundSchema: z.ZodType<
   GetUserCountRequest$Outbound,
   z.ZodTypeDef,
   GetUserCountRequest
-> = z.object({
-  datasource: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+  })
+);
 
 export function getUserCountRequestToJSON(
   getUserCountRequest: GetUserCountRequest,

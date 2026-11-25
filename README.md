@@ -129,6 +129,26 @@ yarn add @tanstack/react-query react react-dom
 ## Requirements
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+
+### Lazy operation loading in Node.js
+
+The `/node` entry point and its lazy SDK classes are generated for every SDK. No `gen.yaml` flag is needed; Node.js applications opt in to loading operation functions on first use by changing their import:
+
+```typescript
+import { Glean } from "@gleanwork/api-client/node";
+
+const sdk = new Glean();
+```
+
+The `/node` entry point keeps the same method signatures, pagination behaviour, and response helpers. Operation modules load through dynamic imports when a method is called. Models and error classes are shared with the standard entry points, rather than bundled into separate copies.
+
+The standard package entry point and SDK subpaths retain their static imports. Keep using those entry points in browser bundles, including IIFE and UMD builds, to avoid dynamic-import chunks. Custom root exports may still load additional modules.
+
+The Node SDK classes live in `src/sdk/*.lazy.ts`. Custom code regions in the standard SDK classes are not copied to these classes; apply any required customisations to their separate regions. Accept-header enums have the same values, but their enum objects are specific to each entry point.
+
+Generated model schemas are constructed synchronously and cached on first use with either entry point. Importing a model does not construct its schema; parsing or inspecting a schema does. This does not require changing the configured Zod version.
+
+`Object.freeze`, `Object.seal`, and `Object.preventExtensions` construct the schema and apply to the cached Zod object. Zod's own restrictions on frozen schemas still apply, including methods that install properties on first access.
 <!-- End Requirements [requirements] -->
 
 <!-- Start SDK Example Usage [usage] -->
@@ -213,8 +233,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.agents.search({
+  const result = await glean.agents.create({
     name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
   });
 
   console.log(result);
@@ -276,18 +297,24 @@ For more information on obtaining the appropriate token type, please contact you
 
 ### [Agents](docs/sdks/agents/README.md)
 
+* [create](docs/sdks/agents/README.md#create) - Create agent
 * [search](docs/sdks/agents/README.md#search) - Search agents
 * [get](docs/sdks/agents/README.md#get) - Get agent
+* [update](docs/sdks/agents/README.md#update) - Update agent
+* [delete](docs/sdks/agents/README.md#delete) - Delete agent
 * [getSchemas](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 * [createRun](docs/sdks/agents/README.md#createrun) - Create agent run
 * [getRun](docs/sdks/agents/README.md#getrun) - Get agent run
 * [cancelRun](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
 * [respondToRun](docs/sdks/agents/README.md#respondtorun) - Respond to agent run approvals
+* [createRunStream](docs/sdks/agents/README.md#createrunstream) - Create a streaming agent run
 
 ### [Chat](docs/sdks/chat/README.md)
 
 * [create](docs/sdks/chat/README.md#create) - Create a chat response
 * [update](docs/sdks/chat/README.md#update) - Update a chat
+* [resume](docs/sdks/chat/README.md#resume) - Resume a chat stream
+* [cancel](docs/sdks/chat/README.md#cancel) - Cancel a chat
 * [createStream](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
 
 ### [Client.Activity](docs/sdks/activity/README.md)
@@ -469,7 +496,7 @@ For more information on obtaining the appropriate token type, please contact you
 
 ### [Indexing.Datasource](docs/sdks/datasource/README.md)
 
-* [status](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
+* [status](docs/sdks/datasource/README.md#status) - Get datasource status
 
 
 ### [Indexing.Datasources](docs/sdks/indexingdatasources/README.md)
@@ -485,19 +512,19 @@ For more information on obtaining the appropriate token type, please contact you
 * [bulkIndex](docs/sdks/indexingdocuments/README.md#bulkindex) - Bulk index documents
 * [processAll](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
 * [delete](docs/sdks/indexingdocuments/README.md#delete) - Delete document
-* [debug](docs/sdks/indexingdocuments/README.md#debug) - Beta: Get document information
+* [debug](docs/sdks/indexingdocuments/README.md#debug) - Get document information
 
-* [debugMany](docs/sdks/indexingdocuments/README.md#debugmany) - Beta: Get information of a batch of documents
+* [debugMany](docs/sdks/indexingdocuments/README.md#debugmany) - Get information of a batch of documents
 
 * [checkAccess](docs/sdks/indexingdocuments/README.md#checkaccess) - Check document access
 * [~~status~~](docs/sdks/indexingdocuments/README.md#status) - Get document upload and indexing status :warning: **Deprecated**
 * [~~count~~](docs/sdks/indexingdocuments/README.md#count) - Get document count :warning: **Deprecated**
-* [debugEvents](docs/sdks/indexingdocuments/README.md#debugevents) - Beta: Get document lifecycle events
+* [debugEvents](docs/sdks/indexingdocuments/README.md#debugevents) - Get document lifecycle events
 
 
 ### [Indexing.People](docs/sdks/people/README.md)
 
-* [debug](docs/sdks/people/README.md#debug) - Beta: Get user information
+* [debug](docs/sdks/people/README.md#debug) - Get user information
 
 * [~~count~~](docs/sdks/people/README.md#count) - Get user count :warning: **Deprecated**
 * [index](docs/sdks/people/README.md#index) - Index employee
@@ -593,14 +620,20 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`adminOauthClientsGet`](docs/sdks/clients/README.md#get) - Get an OAuth client
 - [`adminOauthClientsList`](docs/sdks/clients/README.md#list) - List OAuth clients
 - [`agentsCancelRun`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
+- [`agentsCreate`](docs/sdks/agents/README.md#create) - Create agent
 - [`agentsCreateRun`](docs/sdks/agents/README.md#createrun) - Create agent run
+- [`agentsCreateRunStream`](docs/sdks/agents/README.md#createrunstream) - Create a streaming agent run
+- [`agentsDelete`](docs/sdks/agents/README.md#delete) - Delete agent
 - [`agentsGet`](docs/sdks/agents/README.md#get) - Get agent
 - [`agentsGetRun`](docs/sdks/agents/README.md#getrun) - Get agent run
 - [`agentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`agentsRespondToRun`](docs/sdks/agents/README.md#respondtorun) - Respond to agent run approvals
 - [`agentsSearch`](docs/sdks/agents/README.md#search) - Search agents
+- [`agentsUpdate`](docs/sdks/agents/README.md#update) - Update agent
+- [`chatCancel`](docs/sdks/chat/README.md#cancel) - Cancel a chat
 - [`chatCreate`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`chatCreateStream`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
+- [`chatResume`](docs/sdks/chat/README.md#resume) - Resume a chat stream
 - [`chatUpdate`](docs/sdks/chat/README.md#update) - Update a chat
 - [`clientActivityFeedback`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`clientActivityReport`](docs/sdks/activity/README.md#report) - Report document activity
@@ -701,22 +734,22 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`indexingDatasourcesAdd`](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
 - [`indexingDatasourcesRetrieveConfig`](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
 - [`indexingDatasourcesSubmit`](docs/sdks/indexingdatasources/README.md#submit) - Submit datasource data
-- [`indexingDatasourceStatus`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
+- [`indexingDatasourceStatus`](docs/sdks/datasource/README.md#status) - Get datasource status
 
 - [`indexingDocumentsAddOrUpdate`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
 - [`indexingDocumentsBulkIndex`](docs/sdks/indexingdocuments/README.md#bulkindex) - Bulk index documents
 - [`indexingDocumentsCheckAccess`](docs/sdks/indexingdocuments/README.md#checkaccess) - Check document access
-- [`indexingDocumentsDebug`](docs/sdks/indexingdocuments/README.md#debug) - Beta: Get document information
+- [`indexingDocumentsDebug`](docs/sdks/indexingdocuments/README.md#debug) - Get document information
 
-- [`indexingDocumentsDebugEvents`](docs/sdks/indexingdocuments/README.md#debugevents) - Beta: Get document lifecycle events
+- [`indexingDocumentsDebugEvents`](docs/sdks/indexingdocuments/README.md#debugevents) - Get document lifecycle events
 
-- [`indexingDocumentsDebugMany`](docs/sdks/indexingdocuments/README.md#debugmany) - Beta: Get information of a batch of documents
+- [`indexingDocumentsDebugMany`](docs/sdks/indexingdocuments/README.md#debugmany) - Get information of a batch of documents
 
 - [`indexingDocumentsDelete`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`indexingDocumentsIndex`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`indexingDocumentsProcessAll`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
 - [`indexingPeopleBulkIndexTeams`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
-- [`indexingPeopleDebug`](docs/sdks/people/README.md#debug) - Beta: Get user information
+- [`indexingPeopleDebug`](docs/sdks/people/README.md#debug) - Get user information
 
 - [`indexingPeopleDelete`](docs/sdks/people/README.md#delete) - Delete employee
 - [`indexingPeopleDeleteTeam`](docs/sdks/people/README.md#deleteteam) - Delete team
@@ -808,14 +841,20 @@ To learn about this feature and how to get started, check
 - [`useAdminOauthClientsGet`](docs/sdks/clients/README.md#get) - Get an OAuth client
 - [`useAdminOauthClientsList`](docs/sdks/clients/README.md#list) - List OAuth clients
 - [`useAgentsCancelRunMutation`](docs/sdks/agents/README.md#cancelrun) - Cancel an agent run
+- [`useAgentsCreateMutation`](docs/sdks/agents/README.md#create) - Create agent
 - [`useAgentsCreateRunMutation`](docs/sdks/agents/README.md#createrun) - Create agent run
+- [`useAgentsCreateRunStreamMutation`](docs/sdks/agents/README.md#createrunstream) - Create a streaming agent run
+- [`useAgentsDeleteMutation`](docs/sdks/agents/README.md#delete) - Delete agent
 - [`useAgentsGet`](docs/sdks/agents/README.md#get) - Get agent
 - [`useAgentsGetRun`](docs/sdks/agents/README.md#getrun) - Get agent run
 - [`useAgentsGetSchemas`](docs/sdks/agents/README.md#getschemas) - Get agent schemas
 - [`useAgentsRespondToRunMutation`](docs/sdks/agents/README.md#respondtorun) - Respond to agent run approvals
 - [`useAgentsSearchMutation`](docs/sdks/agents/README.md#search) - Search agents
+- [`useAgentsUpdateMutation`](docs/sdks/agents/README.md#update) - Update agent
+- [`useChatCancelMutation`](docs/sdks/chat/README.md#cancel) - Cancel a chat
 - [`useChatCreateMutation`](docs/sdks/chat/README.md#create) - Create a chat response
 - [`useChatCreateStreamMutation`](docs/sdks/chat/README.md#createstream) - Create a streaming chat response
+- [`useChatResume`](docs/sdks/chat/README.md#resume) - Resume a chat stream
 - [`useChatUpdateMutation`](docs/sdks/chat/README.md#update) - Update a chat
 - [`useClientActivityFeedbackMutation`](docs/sdks/activity/README.md#feedback) - Report client activity
 - [`useClientActivityReportMutation`](docs/sdks/activity/README.md#report) - Report document activity
@@ -916,22 +955,22 @@ To learn about this feature and how to get started, check
 - [`useIndexingDatasourcesAddMutation`](docs/sdks/indexingdatasources/README.md#add) - Add or update datasource
 - [`useIndexingDatasourcesRetrieveConfigMutation`](docs/sdks/indexingdatasources/README.md#retrieveconfig) - Get datasource config
 - [`useIndexingDatasourcesSubmitMutation`](docs/sdks/indexingdatasources/README.md#submit) - Submit datasource data
-- [`useIndexingDatasourceStatusMutation`](docs/sdks/datasource/README.md#status) - Beta: Get datasource status
+- [`useIndexingDatasourceStatusMutation`](docs/sdks/datasource/README.md#status) - Get datasource status
 
 - [`useIndexingDocumentsAddOrUpdateMutation`](docs/sdks/indexingdocuments/README.md#addorupdate) - Index document
 - [`useIndexingDocumentsBulkIndexMutation`](docs/sdks/indexingdocuments/README.md#bulkindex) - Bulk index documents
 - [`useIndexingDocumentsCheckAccessMutation`](docs/sdks/indexingdocuments/README.md#checkaccess) - Check document access
-- [`useIndexingDocumentsDebugEventsMutation`](docs/sdks/indexingdocuments/README.md#debugevents) - Beta: Get document lifecycle events
+- [`useIndexingDocumentsDebugEventsMutation`](docs/sdks/indexingdocuments/README.md#debugevents) - Get document lifecycle events
 
-- [`useIndexingDocumentsDebugManyMutation`](docs/sdks/indexingdocuments/README.md#debugmany) - Beta: Get information of a batch of documents
+- [`useIndexingDocumentsDebugManyMutation`](docs/sdks/indexingdocuments/README.md#debugmany) - Get information of a batch of documents
 
-- [`useIndexingDocumentsDebugMutation`](docs/sdks/indexingdocuments/README.md#debug) - Beta: Get document information
+- [`useIndexingDocumentsDebugMutation`](docs/sdks/indexingdocuments/README.md#debug) - Get document information
 
 - [`useIndexingDocumentsDeleteMutation`](docs/sdks/indexingdocuments/README.md#delete) - Delete document
 - [`useIndexingDocumentsIndexMutation`](docs/sdks/indexingdocuments/README.md#index) - Index documents
 - [`useIndexingDocumentsProcessAllMutation`](docs/sdks/indexingdocuments/README.md#processall) - Schedules the processing of uploaded documents
 - [`useIndexingPeopleBulkIndexTeamsMutation`](docs/sdks/people/README.md#bulkindexteams) - Bulk index teams
-- [`useIndexingPeopleDebugMutation`](docs/sdks/people/README.md#debug) - Beta: Get user information
+- [`useIndexingPeopleDebugMutation`](docs/sdks/people/README.md#debug) - Get user information
 
 - [`useIndexingPeopleDeleteMutation`](docs/sdks/people/README.md#delete) - Delete employee
 - [`useIndexingPeopleDeleteTeamMutation`](docs/sdks/people/README.md#deleteteam) - Delete team
@@ -1012,9 +1051,19 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.chat.createStream({
-    input: "Summarize our parental leave policy.",
-  });
+  const result = await glean.agents.createRunStream({
+    messages: [
+      {
+        role: "USER",
+        content: [
+          {
+            text: "What is our parental leave policy?",
+            type: "text",
+          },
+        ],
+      },
+    ],
+  }, "{agent_id}");
 
   for await (const event of result) {
     console.log(event);
@@ -1078,8 +1127,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.agents.search({
+  const result = await glean.agents.create({
     name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
   }, {
     retries: {
       strategy: "backoff",
@@ -1119,8 +1169,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.agents.search({
+  const result = await glean.agents.create({
     name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
   });
 
   console.log(result);
@@ -1217,8 +1268,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.agents.search({
+  const result = await glean.agents.create({
     name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
   });
 
   console.log(result);
@@ -1240,8 +1292,9 @@ const glean = new Glean({
 });
 
 async function run() {
-  const result = await glean.agents.search({
+  const result = await glean.agents.create({
     name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
   });
 
   console.log(result);

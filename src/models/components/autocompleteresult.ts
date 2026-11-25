@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -86,27 +86,31 @@ export const AutocompleteResultResultType$inboundSchema: z.ZodType<
   AutocompleteResultResultType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AutocompleteResultResultType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(AutocompleteResultResultType)
+);
 
 /** @internal */
 export const AutocompleteResult$inboundSchema: z.ZodType<
   AutocompleteResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  result: z.string(),
-  keywords: z.array(z.string()).optional(),
-  resultType: AutocompleteResultResultType$inboundSchema.optional(),
-  score: z.number().optional(),
-  operatorMetadata: OperatorMetadata$inboundSchema.optional(),
-  quicklink: Quicklink$inboundSchema.optional(),
-  document: Document$inboundSchema.optional(),
-  url: z.string().optional(),
-  structuredResult: StructuredResult$inboundSchema.optional(),
-  ugcAction: UgcActionUnion$inboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  ranges: z.array(TextRange$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    result: z.string(),
+    keywords: z.array(z.string()).optional(),
+    resultType: AutocompleteResultResultType$inboundSchema.optional(),
+    score: z.number().optional(),
+    operatorMetadata: OperatorMetadata$inboundSchema.optional(),
+    quicklink: Quicklink$inboundSchema.optional(),
+    document: Document$inboundSchema.optional(),
+    url: z.string().optional(),
+    structuredResult: StructuredResult$inboundSchema.optional(),
+    ugcAction: UgcActionUnion$inboundSchema.optional(),
+    trackingToken: z.string().optional(),
+    ranges: z.array(TextRange$inboundSchema).optional(),
+  })
+);
 
 export function autocompleteResultFromJSON(
   jsonString: string,

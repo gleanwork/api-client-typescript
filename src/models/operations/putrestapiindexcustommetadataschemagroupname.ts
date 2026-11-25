@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export const PutRestApiIndexCustomMetadataSchemaGroupNameServerList = [
@@ -31,14 +32,16 @@ export const PutRestApiIndexCustomMetadataSchemaGroupNameRequest$outboundSchema:
     PutRestApiIndexCustomMetadataSchemaGroupNameRequest$Outbound,
     z.ZodTypeDef,
     PutRestApiIndexCustomMetadataSchemaGroupNameRequest
-  > = z.object({
-    groupName: z.string(),
-    customMetadataSchema: components.CustomMetadataSchema$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      customMetadataSchema: "CustomMetadataSchema",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      groupName: z.string(),
+      customMetadataSchema: components.CustomMetadataSchema$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        customMetadataSchema: "CustomMetadataSchema",
+      });
+    })
+  );
 
 export function putRestApiIndexCustomMetadataSchemaGroupNameRequestToJSON(
   putRestApiIndexCustomMetadataSchemaGroupNameRequest:

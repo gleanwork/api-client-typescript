@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -27,10 +27,12 @@ export const PossibleValue$inboundSchema: z.ZodType<
   PossibleValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: z.string().optional(),
-  label: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    label: z.string().optional(),
+  })
+);
 /** @internal */
 export type PossibleValue$Outbound = {
   value?: string | undefined;
@@ -42,10 +44,12 @@ export const PossibleValue$outboundSchema: z.ZodType<
   PossibleValue$Outbound,
   z.ZodTypeDef,
   PossibleValue
-> = z.object({
-  value: z.string().optional(),
-  label: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    label: z.string().optional(),
+  })
+);
 
 export function possibleValueToJSON(possibleValue: PossibleValue): string {
   return JSON.stringify(PossibleValue$outboundSchema.parse(possibleValue));

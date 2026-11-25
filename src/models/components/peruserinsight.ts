@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Person, Person$inboundSchema } from "./person.js";
@@ -54,18 +54,20 @@ export const PerUserInsight$inboundSchema: z.ZodType<
   PerUserInsight,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  person: Person$inboundSchema.optional(),
-  numSearches: z.number().int().optional(),
-  numChats: z.number().int().optional(),
-  numActiveSessions: z.number().int().optional(),
-  numGleanbotUsefulResponses: z.number().int().optional(),
-  numDaysActive: z.number().int().optional(),
-  numSummarizations: z.number().int().optional(),
-  numAiAnswers: z.number().int().optional(),
-  numAgentRuns: z.number().int().optional(),
-  numMcpCalls: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person: Person$inboundSchema.optional(),
+    numSearches: z.number().int().optional(),
+    numChats: z.number().int().optional(),
+    numActiveSessions: z.number().int().optional(),
+    numGleanbotUsefulResponses: z.number().int().optional(),
+    numDaysActive: z.number().int().optional(),
+    numSummarizations: z.number().int().optional(),
+    numAiAnswers: z.number().int().optional(),
+    numAgentRuns: z.number().int().optional(),
+    numMcpCalls: z.number().int().optional(),
+  })
+);
 
 export function perUserInsightFromJSON(
   jsonString: string,

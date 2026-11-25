@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -35,11 +35,13 @@ export const PlatformTriggerPresetInputValueListResponse$inboundSchema:
     PlatformTriggerPresetInputValueListResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    results: z.array(PlatformTriggerPresetInputValue$inboundSchema),
-    is_truncated: z.boolean(),
-    request_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      results: z.array(PlatformTriggerPresetInputValue$inboundSchema),
+      is_truncated: z.boolean(),
+      request_id: z.string(),
+    })
+  );
 
 export function platformTriggerPresetInputValueListResponseFromJSON(
   jsonString: string,

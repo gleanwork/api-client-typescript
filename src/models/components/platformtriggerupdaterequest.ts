@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformTriggerDelivery,
   PlatformTriggerDelivery$Outbound,
@@ -46,12 +47,14 @@ export const PlatformTriggerUpdateRequest$outboundSchema: z.ZodType<
   PlatformTriggerUpdateRequest$Outbound,
   z.ZodTypeDef,
   PlatformTriggerUpdateRequest
-> = z.object({
-  status: PlatformTriggerStatus$outboundSchema.optional(),
-  description: z.string().optional(),
-  inputs: z.record(z.any()).optional(),
-  delivery: PlatformTriggerDelivery$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: PlatformTriggerStatus$outboundSchema.optional(),
+    description: z.string().optional(),
+    inputs: z.record(z.any()).optional(),
+    delivery: PlatformTriggerDelivery$outboundSchema.optional(),
+  })
+);
 
 export function platformTriggerUpdateRequestToJSON(
   platformTriggerUpdateRequest: PlatformTriggerUpdateRequest,

@@ -9,10 +9,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
-import * as components from "../models/components/index.js";
 import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
 import {
   ConnectionError,
@@ -28,11 +26,6 @@ import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
-export enum CreateRunAcceptEnum {
-  applicationJson = "application/json",
-  textEventStream = "text/event-stream",
-}
-
 /**
  * Create agent run
  *
@@ -41,9 +34,9 @@ export enum CreateRunAcceptEnum {
  */
 export function agentsCreateRun(
   client: GleanCore,
-  platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest,
+  requestBody: operations.PlatformAgentsCreateRunRequestBody,
   agentId: string,
-  options?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum },
+  options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PlatformAgentsCreateRunResponse,
@@ -61,7 +54,7 @@ export function agentsCreateRun(
 > {
   return new APIPromise($do(
     client,
-    platformAgentRunCreateRequest,
+    requestBody,
     agentId,
     options,
   ));
@@ -69,9 +62,9 @@ export function agentsCreateRun(
 
 async function $do(
   client: GleanCore,
-  platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest,
+  requestBody: operations.PlatformAgentsCreateRunRequestBody,
   agentId: string,
-  options?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum },
+  options?: RequestOptions,
 ): Promise<
   [
     Result<
@@ -91,7 +84,7 @@ async function $do(
   ]
 > {
   const input: operations.PlatformAgentsCreateRunRequest = {
-    platformAgentRunCreateRequest: platformAgentRunCreateRequest,
+    requestBody: requestBody,
     agent_id: agentId,
   };
 
@@ -105,9 +98,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.PlatformAgentRunCreateRequest, {
-    explode: true,
-  });
+  const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
   const pathParams = {
     agent_id: encodeSimple("agent_id", payload.agent_id, {
@@ -115,12 +106,15 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/api/agents/{agent_id}/runs")(pathParams);
+  const pathResult = encodePath("/api/agents/{agent_id}/runs", pathParams);
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
-    Accept: options?.acceptHeaderOverride
-      || "application/json;q=1, text/event-stream;q=0",
+    Accept: "application/json",
   }));
 
   const secConfig = await extractSecurity(client._options.apiToken);
@@ -187,9 +181,6 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, operations.PlatformAgentsCreateRunResponse$inboundSchema),
-    M.text(200, operations.PlatformAgentsCreateRunResponse$inboundSchema, {
-      ctype: "text/event-stream",
-    }),
     M.json(201, operations.PlatformAgentsCreateRunResponse$inboundSchema),
     M.jsonErr(
       422,

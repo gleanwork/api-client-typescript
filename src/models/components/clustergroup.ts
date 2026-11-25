@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -39,12 +39,14 @@ export const ClusterGroup$inboundSchema: z.ZodType<
   ClusterGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clusteredResults: z.array(z.lazy(() => SearchResult$inboundSchema))
-    .optional(),
-  clusterType: ClusterTypeEnum$inboundSchema.optional(),
-  visibleCountHint: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clusteredResults: z.array(z.lazy(() => SearchResult$inboundSchema))
+      .optional(),
+    clusterType: ClusterTypeEnum$inboundSchema.optional(),
+    visibleCountHint: z.number().int(),
+  })
+);
 /** @internal */
 export type ClusterGroup$Outbound = {
   clusteredResults?: Array<SearchResult$Outbound> | undefined;
@@ -57,12 +59,14 @@ export const ClusterGroup$outboundSchema: z.ZodType<
   ClusterGroup$Outbound,
   z.ZodTypeDef,
   ClusterGroup
-> = z.object({
-  clusteredResults: z.array(z.lazy(() => SearchResult$outboundSchema))
-    .optional(),
-  clusterType: ClusterTypeEnum$outboundSchema.optional(),
-  visibleCountHint: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clusteredResults: z.array(z.lazy(() => SearchResult$outboundSchema))
+      .optional(),
+    clusterType: ClusterTypeEnum$outboundSchema.optional(),
+    visibleCountHint: z.number().int(),
+  })
+);
 
 export function clusterGroupToJSON(clusterGroup: ClusterGroup): string {
   return JSON.stringify(ClusterGroup$outboundSchema.parse(clusterGroup));

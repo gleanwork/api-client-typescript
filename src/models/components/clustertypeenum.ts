@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -33,10 +34,12 @@ export const ClusterTypeEnum$inboundSchema: z.ZodType<
   ClusterTypeEnum,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ClusterTypeEnum);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(ClusterTypeEnum));
 /** @internal */
 export const ClusterTypeEnum$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ClusterTypeEnum
-> = openEnums.outboundSchema(ClusterTypeEnum);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(ClusterTypeEnum)
+);

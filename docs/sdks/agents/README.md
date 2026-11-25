@@ -4,13 +4,112 @@
 
 ### Available Operations
 
+* [create](#create) - Create agent
 * [search](#search) - Search agents
 * [get](#get) - Get agent
+* [update](#update) - Update agent
+* [delete](#delete) - Delete agent
 * [getSchemas](#getschemas) - Get agent schemas
 * [createRun](#createrun) - Create agent run
 * [getRun](#getrun) - Get agent run
 * [cancelRun](#cancelrun) - Cancel an agent run
 * [respondToRun](#respondtorun) - Respond to agent run approvals
+* [createRunStream](#createrunstream) - Create a streaming agent run
+
+## create
+
+Create and publish an agent from its complete definition.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-agents-create" method="post" path="/api/agents" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.agents.create({
+    name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { agentsCreate } from "@gleanwork/api-client/funcs/agentsCreate.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await agentsCreate(glean, {
+    name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsCreate failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAgentsCreateMutation
+} from "@gleanwork/api-client/react-query/agentsCreate.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.PlatformAgentCreateRequest](../../models/components/platformagentcreaterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.PlatformAgentGetResponse](../../models/components/platformagentgetresponse.md)\>**
+
+### Errors
+
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.PlatformProblemDetailError           | 400, 401, 403, 404, 408, 409, 413, 422, 429 | application/problem+json                    |
+| errors.PlatformProblemDetailError           | 500, 503                                    | application/problem+json                    |
+| errors.GleanError                           | 4XX, 5XX                                    | \*/\*                                       |
 
 ## search
 
@@ -196,6 +295,189 @@ import {
 ### Response
 
 **Promise\<[components.PlatformAgentGetResponse](../../models/components/platformagentgetresponse.md)\>**
+
+### Errors
+
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| errors.PlatformProblemDetailError | 400, 401, 403, 404, 408, 429      | application/problem+json          |
+| errors.PlatformProblemDetailError | 500, 503                          | application/problem+json          |
+| errors.GleanError                 | 4XX, 5XX                          | \*/\*                             |
+
+## update
+
+Update and publish an agent. Supplied fields replace their saved values and omitted fields are kept.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-agents-update" method="patch" path="/api/agents/{agent_id}" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.agents.update({
+    instructions: "Answer questions using the latest HR policies.",
+  }, "{agent_id}");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { agentsUpdate } from "@gleanwork/api-client/funcs/agentsUpdate.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await agentsUpdate(glean, {
+    instructions: "Answer questions using the latest HR policies.",
+  }, "{agent_id}");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("agentsUpdate failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAgentsUpdateMutation
+} from "@gleanwork/api-client/react-query/agentsUpdate.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the agent to update.                                                                                                                                                 | {agent_id}                                                                                                                                                                     |
+| `platformAgentUpdateRequest`                                                                                                                                                   | [components.PlatformAgentUpdateRequest](../../models/components/platformagentupdaterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | {<br/>"instructions": "Answer questions using the latest HR policies."<br/>}                                                                                                   |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[components.PlatformAgentGetResponse](../../models/components/platformagentgetresponse.md)\>**
+
+### Errors
+
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.PlatformProblemDetailError           | 400, 401, 403, 404, 408, 409, 413, 422, 429 | application/problem+json                    |
+| errors.PlatformProblemDetailError           | 500, 503                                    | application/problem+json                    |
+| errors.GleanError                           | 4XX, 5XX                                    | \*/\*                                       |
+
+## delete
+
+Delete an agent.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-agents-delete" method="delete" path="/api/agents/{agent_id}" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  await glean.agents.delete("{agent_id}");
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { agentsDelete } from "@gleanwork/api-client/funcs/agentsDelete.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await agentsDelete(glean, "{agent_id}");
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("agentsDelete failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAgentsDeleteMutation
+} from "@gleanwork/api-client/react-query/agentsDelete.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the agent to delete.                                                                                                                                                 | {agent_id}                                                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<void\>**
 
 ### Errors
 
@@ -403,7 +685,7 @@ import {
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | ID of the agent to run.                                                                                                                                                        | {agent_id}                                                                                                                                                                     |
-| `platformAgentRunCreateRequest`                                                                                                                                                | [components.PlatformAgentRunCreateRequest](../../models/components/platformagentruncreaterequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | {<br/>"messages": [<br/>{<br/>"role": "USER",<br/>"content": [<br/>{<br/>"text": "What is our parental leave policy?",<br/>"type": "text"<br/>}<br/>]<br/>}<br/>]<br/>}        |
+| `requestBody`                                                                                                                                                                  | [operations.PlatformAgentsCreateRunRequestBody](../../models/operations/platformagentscreaterunrequestbody.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | {<br/>"messages": [<br/>{<br/>"role": "USER",<br/>"content": [<br/>{<br/>"text": "What is our parental leave policy?",<br/>"type": "text"<br/>}<br/>]<br/>}<br/>]<br/>}        |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
@@ -721,3 +1003,122 @@ import {
 | errors.PlatformProblemDetailError      | 400, 401, 403, 404, 408, 409, 413, 429 | application/problem+json               |
 | errors.PlatformProblemDetailError      | 500, 503                               | application/problem+json               |
 | errors.GleanError                      | 4XX, 5XX                               | \*/\*                                  |
+
+## createRunStream
+
+SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Execute an agent run as server-sent events. HTTP clients request this mode by setting `stream` to true in the JSON body. Streaming is not supported in DURABLE mode.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="platform-agents-create-run-stream" method="post" path="/api/agents/{agent_id}/runs#stream" -->
+```typescript
+import { Glean } from "@gleanwork/api-client";
+
+const glean = new Glean({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const result = await glean.agents.createRunStream({
+    messages: [
+      {
+        role: "USER",
+        content: [
+          {
+            text: "What is our parental leave policy?",
+            type: "text",
+          },
+        ],
+      },
+    ],
+  }, "{agent_id}");
+
+  for await (const event of result) {
+    console.log(event);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { GleanCore } from "@gleanwork/api-client/core.js";
+import { agentsCreateRunStream } from "@gleanwork/api-client/funcs/agentsCreateRunStream.js";
+
+// Use `GleanCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const glean = new GleanCore({
+  apiToken: process.env["GLEAN_API_TOKEN"] ?? "",
+});
+
+async function run() {
+  const res = await agentsCreateRunStream(glean, {
+    messages: [
+      {
+        role: "USER",
+        content: [
+          {
+            text: "What is our parental leave policy?",
+            type: "text",
+          },
+        ],
+      },
+    ],
+  }, "{agent_id}");
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const event of result) {
+    console.log(event);
+  }
+  } else {
+    console.log("agentsCreateRunStream failed:", res.error);
+  }
+}
+
+run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAgentsCreateRunStreamMutation
+} from "@gleanwork/api-client/react-query/agentsCreateRunStream.js";
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `agentId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | ID of the agent to run.                                                                                                                                                        | {agent_id}                                                                                                                                                                     |
+| `requestBody`                                                                                                                                                                  | [operations.PlatformAgentsCreateRunStreamRequestBody](../../models/operations/platformagentscreaterunstreamrequestbody.md)                                                     | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            | {<br/>"messages": [<br/>{<br/>"role": "USER",<br/>"content": [<br/>{<br/>"text": "What is our parental leave policy?",<br/>"type": "text"<br/>}<br/>]<br/>}<br/>]<br/>}        |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+
+### Response
+
+**Promise\<[EventStream<components.PlatformAgentRunStreamEvent>](../../models/.md)\>**
+
+### Errors
+
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| errors.PlatformUnauthorizedAgentToolsProblemError | 422                                               | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 400, 401, 403, 404, 408, 409, 413, 429            | application/problem+json                          |
+| errors.PlatformProblemDetailError                 | 500, 503                                          | application/problem+json                          |
+| errors.GleanError                                 | 4XX, 5XX                                          | \*/\*                                             |
