@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -37,12 +37,14 @@ export const PlatformUserDatasourceProfile$inboundSchema: z.ZodType<
   PlatformUserDatasourceProfile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  datasource: z.string(),
-  handle: z.string(),
-  account_id: z.string().optional(),
-  profile_url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string(),
+    handle: z.string(),
+    account_id: z.string().optional(),
+    profile_url: z.string().optional(),
+  })
+);
 
 export function platformUserDatasourceProfileFromJSON(
   jsonString: string,

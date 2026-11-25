@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /debug/{datasource}/document/events API call.
@@ -40,12 +41,14 @@ export const DebugDocumentLifecycleRequest$outboundSchema: z.ZodType<
   DebugDocumentLifecycleRequest$Outbound,
   z.ZodTypeDef,
   DebugDocumentLifecycleRequest
-> = z.object({
-  objectType: z.string(),
-  docId: z.string(),
-  startDate: z.string().optional(),
-  maxEvents: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    objectType: z.string(),
+    docId: z.string(),
+    startDate: z.string().optional(),
+    maxEvents: z.number().int().optional(),
+  })
+);
 
 export function debugDocumentLifecycleRequestToJSON(
   debugDocumentLifecycleRequest: DebugDocumentLifecycleRequest,

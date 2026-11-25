@@ -3,8 +3,10 @@
  * @generated-id: c56babc22a20
  */
 
+import { chatCancel } from "../funcs/chatCancel.js";
 import { chatCreate } from "../funcs/chatCreate.js";
 import { chatCreateStream } from "../funcs/chatCreateStream.js";
+import { chatResume } from "../funcs/chatResume.js";
 import { chatUpdate } from "../funcs/chatUpdate.js";
 import { EventStream } from "../lib/event-streams.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -44,6 +46,42 @@ export class Chat extends ClientSDK {
     return unwrapAsync(chatUpdate(
       this,
       platformChatUpdateRequest,
+      chatId,
+      options,
+    ));
+  }
+
+  /**
+   * Resume a chat stream
+   *
+   * @remarks
+   * Reconnect to a chat that is still running, or replay one that just finished. The response is server-sent events in the same format as the streaming response of the create endpoint. Pass the `sequence_id` of the last event you received as `last_seen_sequence_id`, or omit it to start from the beginning of the stream. The final event is `RESPONSE_COMPLETED` or `RESPONSE_FAILED`, and its text covers only the events sent on this connection. Streams are kept for a limited time, so a chat that finished long ago returns 404.
+   */
+  async resume(
+    chatId: string,
+    lastSeenSequenceId?: number | undefined,
+    options?: RequestOptions,
+  ): Promise<EventStream<components.PlatformChatStreamEventServerSentEvent>> {
+    return unwrapAsync(chatResume(
+      this,
+      chatId,
+      lastSeenSequenceId,
+      options,
+    ));
+  }
+
+  /**
+   * Cancel a chat
+   *
+   * @remarks
+   * Stop a running chat. Only users who can edit the chat can cancel it. Cancelling a chat that is not running succeeds without effect.
+   */
+  async cancel(
+    chatId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformChatCancelResponse> {
+    return unwrapAsync(chatCancel(
+      this,
       chatId,
       options,
     ));

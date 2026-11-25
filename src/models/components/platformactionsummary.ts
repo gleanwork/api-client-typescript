@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -44,15 +44,17 @@ export const PlatformActionSummary$inboundSchema: z.ZodType<
   PlatformActionSummary,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tool_id: z.string(),
-  display_name: z.string(),
-  type: z.string().optional(),
-  auth_type: z.string().optional(),
-  write_action_type: z.string().optional(),
-  is_setup_finished: z.boolean().optional(),
-  data_source: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool_id: z.string(),
+    display_name: z.string(),
+    type: z.string().optional(),
+    auth_type: z.string().optional(),
+    write_action_type: z.string().optional(),
+    is_setup_finished: z.boolean().optional(),
+    data_source: z.string().optional(),
+  })
+);
 
 export function platformActionSummaryFromJSON(
   jsonString: string,

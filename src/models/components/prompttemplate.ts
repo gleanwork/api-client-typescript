@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -69,21 +69,23 @@ export const PromptTemplate$inboundSchema: z.ZodType<
   PromptTemplate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  template: z.string(),
-  applicationId: z.string().optional(),
-  inclusions: ChatRestrictionFilters$inboundSchema.optional(),
-  addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  id: z.string().optional(),
-  author: Person$inboundSchema.optional(),
-  createTimestamp: z.number().int().optional(),
-  lastUpdateTimestamp: z.number().int().optional(),
-  lastUpdatedBy: Person$inboundSchema.optional(),
-  roles: z.array(UserRoleSpecification$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    template: z.string(),
+    applicationId: z.string().optional(),
+    inclusions: ChatRestrictionFilters$inboundSchema.optional(),
+    addedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$inboundSchema).optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    id: z.string().optional(),
+    author: Person$inboundSchema.optional(),
+    createTimestamp: z.number().int().optional(),
+    lastUpdateTimestamp: z.number().int().optional(),
+    lastUpdatedBy: Person$inboundSchema.optional(),
+    roles: z.array(UserRoleSpecification$inboundSchema).optional(),
+  })
+);
 
 export function promptTemplateFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   FeedRequestOptions,
@@ -95,7 +96,7 @@ export type FeedRequest = {
 /** @internal */
 export const FeedRequestCategory$outboundSchema: z.ZodNativeEnum<
   typeof FeedRequestCategory
-> = z.nativeEnum(FeedRequestCategory);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FeedRequestCategory));
 
 /** @internal */
 export type FeedRequest$Outbound = {
@@ -110,12 +111,14 @@ export const FeedRequest$outboundSchema: z.ZodType<
   FeedRequest$Outbound,
   z.ZodTypeDef,
   FeedRequest
-> = z.object({
-  categories: z.array(FeedRequestCategory$outboundSchema).optional(),
-  requestOptions: FeedRequestOptions$outboundSchema.optional(),
-  timeoutMillis: z.number().int().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categories: z.array(FeedRequestCategory$outboundSchema).optional(),
+    requestOptions: FeedRequestOptions$outboundSchema.optional(),
+    timeoutMillis: z.number().int().optional(),
+    sessionInfo: SessionInfo$outboundSchema.optional(),
+  })
+);
 
 export function feedRequestToJSON(feedRequest: FeedRequest): string {
   return JSON.stringify(FeedRequest$outboundSchema.parse(feedRequest));

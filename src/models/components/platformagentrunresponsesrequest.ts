@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformAgentRunApprovalDecision,
   PlatformAgentRunApprovalDecision$Outbound,
@@ -35,10 +36,12 @@ export const PlatformAgentRunResponsesRequest$outboundSchema: z.ZodType<
   PlatformAgentRunResponsesRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentRunResponsesRequest
-> = z.object({
-  run_id: z.string(),
-  responses: z.array(PlatformAgentRunApprovalDecision$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    run_id: z.string(),
+    responses: z.array(PlatformAgentRunApprovalDecision$outboundSchema),
+  })
+);
 
 export function platformAgentRunResponsesRequestToJSON(
   platformAgentRunResponsesRequest: PlatformAgentRunResponsesRequest,

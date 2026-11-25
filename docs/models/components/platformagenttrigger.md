@@ -1,0 +1,23 @@
+# PlatformAgentTrigger
+
+How the agent is invoked. Applies to top-level agents only.
+
+## Example Usage
+
+```typescript
+import { PlatformAgentTrigger } from "@gleanwork/api-client/models/components";
+
+let value: PlatformAgentTrigger = {
+  type: "CONTENT_TRIGGER",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                       | Type                                                                                                                                                        | Required                                                                                                                                                    | Description                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                                                                      | [components.PlatformAgentTriggerType](../../models/components/platformagenttriggertype.md)                                                                  | :heavy_check_mark:                                                                                                                                          | Invocation mode of the agent.                                                                                                                               |
+| `inputFields`                                                                                                                                               | [components.PlatformAgentInputField](../../models/components/platformagentinputfield.md)[]                                                                  | :heavy_minus_sign:                                                                                                                                          | Typed inputs collected when the agent is invoked. Valid for INPUT_FORM and CONTENT_TRIGGER. An INPUT_FORM trigger without input fields runs with no input.<br/> |
+| `schedule`                                                                                                                                                  | [components.PlatformAgentSchedule](../../models/components/platformagentschedule.md)                                                                        | :heavy_minus_sign:                                                                                                                                          | Wall-clock schedule for INPUT_FORM and CHAT_MESSAGE agents.                                                                                                 |
+| `prompts`                                                                                                                                                   | [components.PlatformAgentPrompt](../../models/components/platformagentprompt.md)[]                                                                          | :heavy_minus_sign:                                                                                                                                          | Conversation starters. Valid only for CHAT_MESSAGE.                                                                                                         |
+| `content`                                                                                                                                                   | [components.Content](../../models/components/content.md)                                                                                                    | :heavy_minus_sign:                                                                                                                                          | Document events that run a CONTENT_TRIGGER agent.                                                                                                           |

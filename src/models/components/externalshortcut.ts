@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ExternalShortcut = {
   /**
@@ -72,19 +73,21 @@ export const ExternalShortcut$outboundSchema: z.ZodType<
   ExternalShortcut$Outbound,
   z.ZodTypeDef,
   ExternalShortcut
-> = z.object({
-  inputAlias: z.string(),
-  description: z.string().optional(),
-  destinationUrl: z.string(),
-  createdBy: z.string(),
-  createTime: z.number().int().optional(),
-  updatedBy: z.string().optional(),
-  updateTime: z.number().int().optional(),
-  title: z.string().optional(),
-  intermediateUrl: z.string(),
-  decayedVisitScore: z.number().optional(),
-  editUrl: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inputAlias: z.string(),
+    description: z.string().optional(),
+    destinationUrl: z.string(),
+    createdBy: z.string(),
+    createTime: z.number().int().optional(),
+    updatedBy: z.string().optional(),
+    updateTime: z.number().int().optional(),
+    title: z.string().optional(),
+    intermediateUrl: z.string(),
+    decayedVisitScore: z.number().optional(),
+    editUrl: z.string().optional(),
+  })
+);
 
 export function externalShortcutToJSON(
   externalShortcut: ExternalShortcut,

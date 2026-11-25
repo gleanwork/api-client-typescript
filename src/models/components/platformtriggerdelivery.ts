@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformTriggerAuth,
   PlatformTriggerAuth$Outbound,
@@ -32,10 +33,12 @@ export const PlatformTriggerDelivery$outboundSchema: z.ZodType<
   PlatformTriggerDelivery$Outbound,
   z.ZodTypeDef,
   PlatformTriggerDelivery
-> = z.object({
-  webhook_url: z.string(),
-  auth: PlatformTriggerAuth$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webhook_url: z.string(),
+    auth: PlatformTriggerAuth$outboundSchema.optional(),
+  })
+);
 
 export function platformTriggerDeliveryToJSON(
   platformTriggerDelivery: PlatformTriggerDelivery,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   PlatformFilterOperator,
   PlatformFilterOperator$outboundSchema,
@@ -47,11 +48,13 @@ export const PlatformFilter$outboundSchema: z.ZodType<
   PlatformFilter$Outbound,
   z.ZodTypeDef,
   PlatformFilter
-> = z.object({
-  field: z.string(),
-  values: z.array(z.string()),
-  operator: PlatformFilterOperator$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string(),
+    values: z.array(z.string()),
+    operator: PlatformFilterOperator$outboundSchema.optional(),
+  })
+);
 
 export function platformFilterToJSON(platformFilter: PlatformFilter): string {
   return JSON.stringify(PlatformFilter$outboundSchema.parse(platformFilter));

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,9 +29,11 @@ export const DatasourceInstanceConfiguration$inboundSchema: z.ZodType<
   DatasourceInstanceConfiguration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  values: z.record(ConfigurationValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    values: z.record(ConfigurationValue$inboundSchema),
+  })
+);
 /** @internal */
 export type DatasourceInstanceConfiguration$Outbound = {
   values: { [k: string]: ConfigurationValue$Outbound };
@@ -42,9 +44,11 @@ export const DatasourceInstanceConfiguration$outboundSchema: z.ZodType<
   DatasourceInstanceConfiguration$Outbound,
   z.ZodTypeDef,
   DatasourceInstanceConfiguration
-> = z.object({
-  values: z.record(ConfigurationValue$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    values: z.record(ConfigurationValue$outboundSchema),
+  })
+);
 
 export function datasourceInstanceConfigurationToJSON(
   datasourceInstanceConfiguration: DatasourceInstanceConfiguration,

@@ -27,12 +27,6 @@ const value: components.PlatformAgentRunWaitResponse = {
 };
 ```
 
-### `string`
-
-```typescript
-const value: string = "<value>";
-```
-
 ### `components.PlatformAgentRunResponse`
 
 ```typescript

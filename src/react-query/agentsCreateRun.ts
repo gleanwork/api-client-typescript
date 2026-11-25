@@ -9,13 +9,9 @@ import {
   UseMutationResult,
 } from "@tanstack/react-query";
 import { GleanCore } from "../core.js";
-import {
-  agentsCreateRun,
-  CreateRunAcceptEnum,
-} from "../funcs/agentsCreateRun.js";
+import { agentsCreateRun } from "../funcs/agentsCreateRun.js";
 import { combineSignals } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
 import { GleanBaseError } from "../models/errors/gleanbaseerror.js";
 import {
   ConnectionError,
@@ -32,12 +28,10 @@ import { unwrapAsync } from "../types/fp.js";
 import { useGleanContext } from "./_context.js";
 import { MutationHookOptions } from "./_types.js";
 
-export { CreateRunAcceptEnum } from "../funcs/agentsCreateRun.js";
-
 export type AgentsCreateRunMutationVariables = {
-  platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest;
+  requestBody: operations.PlatformAgentsCreateRunRequestBody;
   agentId: string;
-  options?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum };
+  options?: RequestOptions;
 };
 
 export type AgentsCreateRunMutationData =
@@ -85,7 +79,7 @@ export function mutationKeyAgentsCreateRun(): MutationKey {
 
 export function buildAgentsCreateRunMutation(
   client$: GleanCore,
-  hookOptions?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum },
+  hookOptions?: RequestOptions,
 ): {
   mutationKey: MutationKey;
   mutationFn: (
@@ -95,7 +89,7 @@ export function buildAgentsCreateRunMutation(
   return {
     mutationKey: mutationKeyAgentsCreateRun(),
     mutationFn: function agentsCreateRunMutationFn({
-      platformAgentRunCreateRequest,
+      requestBody,
       agentId,
       options,
     }): Promise<AgentsCreateRunMutationData> {
@@ -113,7 +107,7 @@ export function buildAgentsCreateRunMutation(
       };
       return unwrapAsync(agentsCreateRun(
         client$,
-        platformAgentRunCreateRequest,
+        requestBody,
         agentId,
         mergedOptions,
       ));

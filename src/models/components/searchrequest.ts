@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   Document,
   Document$Outbound,
@@ -90,21 +91,23 @@ export const SearchRequest$outboundSchema: z.ZodType<
   SearchRequest$Outbound,
   z.ZodTypeDef,
   SearchRequest
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()).optional(),
-  trackingToken: z.string().optional(),
-  sessionInfo: SessionInfo$outboundSchema.optional(),
-  sourceDocument: Document$outboundSchema.optional(),
-  pageSize: z.number().int().optional(),
-  maxSnippetSize: z.number().int().optional(),
-  query: z.string(),
-  cursor: z.string().optional(),
-  resultTabIds: z.array(z.string()).optional(),
-  inputDetails: SearchRequestInputDetails$outboundSchema.optional(),
-  requestOptions: SearchRequestOptions$outboundSchema.optional(),
-  timeoutMillis: z.number().int().optional(),
-  disableSpellcheck: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()).optional(),
+    trackingToken: z.string().optional(),
+    sessionInfo: SessionInfo$outboundSchema.optional(),
+    sourceDocument: Document$outboundSchema.optional(),
+    pageSize: z.number().int().optional(),
+    maxSnippetSize: z.number().int().optional(),
+    query: z.string(),
+    cursor: z.string().optional(),
+    resultTabIds: z.array(z.string()).optional(),
+    inputDetails: SearchRequestInputDetails$outboundSchema.optional(),
+    requestOptions: SearchRequestOptions$outboundSchema.optional(),
+    timeoutMillis: z.number().int().optional(),
+    disableSpellcheck: z.boolean().optional(),
+  })
+);
 
 export function searchRequestToJSON(searchRequest: SearchRequest): string {
   return JSON.stringify(SearchRequest$outboundSchema.parse(searchRequest));

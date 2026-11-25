@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /deleteteam API call
@@ -25,9 +26,11 @@ export const DeleteTeamRequest$outboundSchema: z.ZodType<
   DeleteTeamRequest$Outbound,
   z.ZodTypeDef,
   DeleteTeamRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 
 export function deleteTeamRequestToJSON(
   deleteTeamRequest: DeleteTeamRequest,

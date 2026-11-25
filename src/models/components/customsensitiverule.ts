@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -56,26 +56,32 @@ export const CustomSensitiveRuleLikelihoodThreshold$inboundSchema: z.ZodType<
   CustomSensitiveRuleLikelihoodThreshold,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CustomSensitiveRuleLikelihoodThreshold);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CustomSensitiveRuleLikelihoodThreshold)
+);
 /** @internal */
 export const CustomSensitiveRuleLikelihoodThreshold$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   CustomSensitiveRuleLikelihoodThreshold
-> = openEnums.outboundSchema(CustomSensitiveRuleLikelihoodThreshold);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(CustomSensitiveRuleLikelihoodThreshold)
+);
 
 /** @internal */
 export const CustomSensitiveRule$inboundSchema: z.ZodType<
   CustomSensitiveRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string().optional(),
-  value: z.string().optional(),
-  type: CustomSensitiveRuleType$inboundSchema.optional(),
-  likelihoodThreshold: CustomSensitiveRuleLikelihoodThreshold$inboundSchema
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    value: z.string().optional(),
+    type: CustomSensitiveRuleType$inboundSchema.optional(),
+    likelihoodThreshold: CustomSensitiveRuleLikelihoodThreshold$inboundSchema
+      .optional(),
+  })
+);
 /** @internal */
 export type CustomSensitiveRule$Outbound = {
   id?: string | undefined;
@@ -89,13 +95,15 @@ export const CustomSensitiveRule$outboundSchema: z.ZodType<
   CustomSensitiveRule$Outbound,
   z.ZodTypeDef,
   CustomSensitiveRule
-> = z.object({
-  id: z.string().optional(),
-  value: z.string().optional(),
-  type: CustomSensitiveRuleType$outboundSchema.optional(),
-  likelihoodThreshold: CustomSensitiveRuleLikelihoodThreshold$outboundSchema
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string().optional(),
+    value: z.string().optional(),
+    type: CustomSensitiveRuleType$outboundSchema.optional(),
+    likelihoodThreshold: CustomSensitiveRuleLikelihoodThreshold$outboundSchema
+      .optional(),
+  })
+);
 
 export function customSensitiveRuleToJSON(
   customSensitiveRule: CustomSensitiveRule,

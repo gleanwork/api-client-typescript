@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -118,27 +118,31 @@ export const FeedResultCategory$inboundSchema: z.ZodType<
   FeedResultCategory,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(FeedResultCategory);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(FeedResultCategory)
+);
 
 /** @internal */
 export const PlacementReason$inboundSchema: z.ZodType<
   PlacementReason,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PlacementReason);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(PlacementReason));
 
 /** @internal */
 export const FeedResult$inboundSchema: z.ZodType<
   FeedResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  category: FeedResultCategory$inboundSchema,
-  primaryEntry: FeedEntry$inboundSchema,
-  secondaryEntries: z.array(FeedEntry$inboundSchema).optional(),
-  rank: z.number().int().optional(),
-  placementReason: PlacementReason$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: FeedResultCategory$inboundSchema,
+    primaryEntry: FeedEntry$inboundSchema,
+    secondaryEntries: z.array(FeedEntry$inboundSchema).optional(),
+    rank: z.number().int().optional(),
+    placementReason: PlacementReason$inboundSchema.optional(),
+  })
+);
 
 export function feedResultFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -36,10 +36,12 @@ export const CollectionPinnedMetadata$inboundSchema: z.ZodType<
   CollectionPinnedMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  existingPins: z.array(CollectionPinTarget$inboundSchema).optional(),
-  eligiblePins: z.array(CollectionPinMetadata$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    existingPins: z.array(CollectionPinTarget$inboundSchema).optional(),
+    eligiblePins: z.array(CollectionPinMetadata$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CollectionPinnedMetadata$Outbound = {
   existingPins?: Array<CollectionPinTarget$Outbound> | undefined;
@@ -51,10 +53,12 @@ export const CollectionPinnedMetadata$outboundSchema: z.ZodType<
   CollectionPinnedMetadata$Outbound,
   z.ZodTypeDef,
   CollectionPinnedMetadata
-> = z.object({
-  existingPins: z.array(CollectionPinTarget$outboundSchema).optional(),
-  eligiblePins: z.array(CollectionPinMetadata$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    existingPins: z.array(CollectionPinTarget$outboundSchema).optional(),
+    eligiblePins: z.array(CollectionPinMetadata$outboundSchema).optional(),
+  })
+);
 
 export function collectionPinnedMetadataToJSON(
   collectionPinnedMetadata: CollectionPinnedMetadata,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -43,22 +43,24 @@ export const OperatorType$inboundSchema: z.ZodType<
   OperatorType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(OperatorType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(OperatorType));
 
 /** @internal */
 export const OperatorMetadata$inboundSchema: z.ZodType<
   OperatorMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  isCustom: z.boolean().optional(),
-  operatorType: OperatorType$inboundSchema.optional(),
-  helpText: z.string().optional(),
-  scopes: z.array(OperatorScope$inboundSchema).optional(),
-  value: z.string().optional(),
-  displayValue: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    isCustom: z.boolean().optional(),
+    operatorType: OperatorType$inboundSchema.optional(),
+    helpText: z.string().optional(),
+    scopes: z.array(OperatorScope$inboundSchema).optional(),
+    value: z.string().optional(),
+    displayValue: z.string().optional(),
+  })
+);
 
 export function operatorMetadataFromJSON(
   jsonString: string,

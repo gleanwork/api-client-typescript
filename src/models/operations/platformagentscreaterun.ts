@@ -5,29 +5,119 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+/**
+ * REQUEST_BOUND preserves the existing wait/stream behavior. DURABLE starts a fresh, persisted execution with a 30-minute execution timeout and returns immediately. DURABLE requires stream to be false or omitted and does not accept metadata.chat_session_id. It does not bypass tool approval requirements or provide automatic QE-crash resumption. Expiry is read-triggered: the next GET of the run marks an active turn FAILED if more than 40 minutes have passed since the turn was accepted. There is no periodic sweep, so the stored run can remain RUNNING until it is read. Expiry never replays execution or expires approval-paused runs, and failure does not prove that external tool work has stopped.
+ *
+ * @remarks
+ */
+export const PlatformAgentsCreateRunExecutionMode = {
+  RequestBound: "REQUEST_BOUND",
+  Durable: "DURABLE",
+} as const;
+/**
+ * REQUEST_BOUND preserves the existing wait/stream behavior. DURABLE starts a fresh, persisted execution with a 30-minute execution timeout and returns immediately. DURABLE requires stream to be false or omitted and does not accept metadata.chat_session_id. It does not bypass tool approval requirements or provide automatic QE-crash resumption. Expiry is read-triggered: the next GET of the run marks an active turn FAILED if more than 40 minutes have passed since the turn was accepted. There is no periodic sweep, so the stored run can remain RUNNING until it is read. Expiry never replays execution or expires approval-paused runs, and failure does not prove that external tool work has stopped.
+ *
+ * @remarks
+ */
+export type PlatformAgentsCreateRunExecutionMode = ClosedEnum<
+  typeof PlatformAgentsCreateRunExecutionMode
+>;
+
+/**
+ * Request to run an agent. A request MUST supply either `messages` (a non-empty conversation) or `input` (for input-form triggered agents).
+ *
+ * @remarks
+ */
+export type PlatformAgentsCreateRunRequestBody = {
+  /**
+   * Input fields for an input-form triggered agent.
+   */
+  input?: { [k: string]: any } | undefined;
+  /**
+   * Messages to pass to the agent. When provided, the array MUST contain at least one message and each message MUST specify a valid `role` and non-empty `content`.
+   *
+   * @remarks
+   */
+  messages?: Array<components.PlatformMessageInput> | undefined;
+  /**
+   * Metadata to pass to the agent.
+   */
+  metadata?: { [k: string]: any } | undefined;
+  stream?: false | undefined;
+  /**
+   * REQUEST_BOUND preserves the existing wait/stream behavior. DURABLE starts a fresh, persisted execution with a 30-minute execution timeout and returns immediately. DURABLE requires stream to be false or omitted and does not accept metadata.chat_session_id. It does not bypass tool approval requirements or provide automatic QE-crash resumption. Expiry is read-triggered: the next GET of the run marks an active turn FAILED if more than 40 minutes have passed since the turn was accepted. There is no periodic sweep, so the stored run can remain RUNNING until it is read. Expiry never replays execution or expires approval-paused runs, and failure does not prove that external tool work has stopped.
+   *
+   * @remarks
+   */
+  execution_mode?: PlatformAgentsCreateRunExecutionMode | undefined;
+};
 
 export type PlatformAgentsCreateRunRequest = {
   /**
    * ID of the agent to run.
    */
   agent_id: string;
-  platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest;
+  requestBody: PlatformAgentsCreateRunRequestBody;
 };
 
 export type PlatformAgentsCreateRunResponse =
   | components.PlatformAgentRunResponse
-  | components.PlatformAgentRunWaitResponse
-  | string;
+  | components.PlatformAgentRunWaitResponse;
+
+/** @internal */
+export const PlatformAgentsCreateRunExecutionMode$outboundSchema:
+  z.ZodNativeEnum<typeof PlatformAgentsCreateRunExecutionMode> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PlatformAgentsCreateRunExecutionMode)
+    );
+
+/** @internal */
+export type PlatformAgentsCreateRunRequestBody$Outbound = {
+  input?: { [k: string]: any } | undefined;
+  messages?: Array<components.PlatformMessageInput$Outbound> | undefined;
+  metadata?: { [k: string]: any } | undefined;
+  stream: false;
+  execution_mode: string;
+};
+
+/** @internal */
+export const PlatformAgentsCreateRunRequestBody$outboundSchema: z.ZodType<
+  PlatformAgentsCreateRunRequestBody$Outbound,
+  z.ZodTypeDef,
+  PlatformAgentsCreateRunRequestBody
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    input: z.record(z.any()).optional(),
+    messages: z.array(components.PlatformMessageInput$outboundSchema)
+      .optional(),
+    metadata: z.record(z.any()).optional(),
+    stream: z.literal(false).default(false as const),
+    execution_mode: PlatformAgentsCreateRunExecutionMode$outboundSchema.default(
+      "REQUEST_BOUND",
+    ),
+  })
+);
+
+export function platformAgentsCreateRunRequestBodyToJSON(
+  platformAgentsCreateRunRequestBody: PlatformAgentsCreateRunRequestBody,
+): string {
+  return JSON.stringify(
+    PlatformAgentsCreateRunRequestBody$outboundSchema.parse(
+      platformAgentsCreateRunRequestBody,
+    ),
+  );
+}
 
 /** @internal */
 export type PlatformAgentsCreateRunRequest$Outbound = {
   agent_id: string;
-  PlatformAgentRunCreateRequest:
-    components.PlatformAgentRunCreateRequest$Outbound;
+  RequestBody: PlatformAgentsCreateRunRequestBody$Outbound;
 };
 
 /** @internal */
@@ -35,15 +125,18 @@ export const PlatformAgentsCreateRunRequest$outboundSchema: z.ZodType<
   PlatformAgentsCreateRunRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentsCreateRunRequest
-> = z.object({
-  agent_id: z.string(),
-  platformAgentRunCreateRequest:
-    components.PlatformAgentRunCreateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformAgentRunCreateRequest: "PlatformAgentRunCreateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    requestBody: z.lazy(() =>
+      PlatformAgentsCreateRunRequestBody$outboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function platformAgentsCreateRunRequestToJSON(
   platformAgentsCreateRunRequest: PlatformAgentsCreateRunRequest,
@@ -60,11 +153,12 @@ export const PlatformAgentsCreateRunResponse$inboundSchema: z.ZodType<
   PlatformAgentsCreateRunResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  components.PlatformAgentRunResponse$inboundSchema,
-  components.PlatformAgentRunWaitResponse$inboundSchema,
-  z.string(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    components.PlatformAgentRunResponse$inboundSchema,
+    components.PlatformAgentRunWaitResponse$inboundSchema,
+  ])
+);
 
 export function platformAgentsCreateRunResponseFromJSON(
   jsonString: string,

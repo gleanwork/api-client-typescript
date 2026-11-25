@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type DeleteCollectionItemRequest = {
   /**
@@ -32,11 +33,13 @@ export const DeleteCollectionItemRequest$outboundSchema: z.ZodType<
   DeleteCollectionItemRequest$Outbound,
   z.ZodTypeDef,
   DeleteCollectionItemRequest
-> = z.object({
-  collectionId: z.number(),
-  itemId: z.string(),
-  documentId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collectionId: z.number(),
+    itemId: z.string(),
+    documentId: z.string().optional(),
+  })
+);
 
 export function deleteCollectionItemRequestToJSON(
   deleteCollectionItemRequest: DeleteCollectionItemRequest,

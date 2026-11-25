@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -63,16 +63,18 @@ export const VerificationMetadata$inboundSchema: z.ZodType<
   VerificationMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  lastVerifier: z.lazy(() => Person$inboundSchema).optional(),
-  lastVerificationTs: z.number().int().optional(),
-  expirationTs: z.number().int().optional(),
-  document: z.lazy(() => Document$inboundSchema).optional(),
-  reminders: z.array(z.lazy(() => Reminder$inboundSchema)).optional(),
-  lastReminder: z.lazy(() => Reminder$inboundSchema).optional(),
-  visitorCount: z.array(CountInfo$inboundSchema).optional(),
-  candidateVerifiers: z.array(z.lazy(() => Person$inboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lastVerifier: z.lazy(() => Person$inboundSchema).optional(),
+    lastVerificationTs: z.number().int().optional(),
+    expirationTs: z.number().int().optional(),
+    document: z.lazy(() => Document$inboundSchema).optional(),
+    reminders: z.array(z.lazy(() => Reminder$inboundSchema)).optional(),
+    lastReminder: z.lazy(() => Reminder$inboundSchema).optional(),
+    visitorCount: z.array(CountInfo$inboundSchema).optional(),
+    candidateVerifiers: z.array(z.lazy(() => Person$inboundSchema)).optional(),
+  })
+);
 /** @internal */
 export type VerificationMetadata$Outbound = {
   lastVerifier?: Person$Outbound | undefined;
@@ -90,16 +92,18 @@ export const VerificationMetadata$outboundSchema: z.ZodType<
   VerificationMetadata$Outbound,
   z.ZodTypeDef,
   VerificationMetadata
-> = z.object({
-  lastVerifier: z.lazy(() => Person$outboundSchema).optional(),
-  lastVerificationTs: z.number().int().optional(),
-  expirationTs: z.number().int().optional(),
-  document: z.lazy(() => Document$outboundSchema).optional(),
-  reminders: z.array(z.lazy(() => Reminder$outboundSchema)).optional(),
-  lastReminder: z.lazy(() => Reminder$outboundSchema).optional(),
-  visitorCount: z.array(CountInfo$outboundSchema).optional(),
-  candidateVerifiers: z.array(z.lazy(() => Person$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lastVerifier: z.lazy(() => Person$outboundSchema).optional(),
+    lastVerificationTs: z.number().int().optional(),
+    expirationTs: z.number().int().optional(),
+    document: z.lazy(() => Document$outboundSchema).optional(),
+    reminders: z.array(z.lazy(() => Reminder$outboundSchema)).optional(),
+    lastReminder: z.lazy(() => Reminder$outboundSchema).optional(),
+    visitorCount: z.array(CountInfo$outboundSchema).optional(),
+    candidateVerifiers: z.array(z.lazy(() => Person$outboundSchema)).optional(),
+  })
+);
 
 export function verificationMetadataToJSON(
   verificationMetadata: VerificationMetadata,

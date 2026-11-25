@@ -8,7 +8,7 @@ A filter on one department field.
 import { PlatformDepartmentFilter } from "@gleanwork/api-client/models/components";
 
 let value: PlatformDepartmentFilter = {
-  field: "<value>",
+  field: "name",
   values: [
     "<value 1>",
     "<value 2>",

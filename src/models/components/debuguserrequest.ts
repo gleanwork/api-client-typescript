@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /debug/{datasource}/user API call
@@ -25,9 +26,11 @@ export const DebugUserRequest$outboundSchema: z.ZodType<
   DebugUserRequest$Outbound,
   z.ZodTypeDef,
   DebugUserRequest
-> = z.object({
-  email: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+  })
+);
 
 export function debugUserRequestToJSON(
   debugUserRequest: DebugUserRequest,

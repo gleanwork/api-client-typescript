@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { blobLikeSchema } from "../../types/blobs.js";
 
 export type PlatformSkillCreateRequestFile = {
@@ -29,15 +30,17 @@ export const PlatformSkillCreateRequestFile$outboundSchema: z.ZodType<
   PlatformSkillCreateRequestFile$Outbound,
   z.ZodTypeDef,
   PlatformSkillCreateRequestFile
-> = z.object({
-  fileName: z.string(),
-  content: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fileName: z.string(),
+    content: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  })
+);
 
 export function platformSkillCreateRequestFileToJSON(
   platformSkillCreateRequestFile: PlatformSkillCreateRequestFile,
@@ -59,11 +62,13 @@ export const PlatformSkillCreateRequest$outboundSchema: z.ZodType<
   PlatformSkillCreateRequest$Outbound,
   z.ZodTypeDef,
   PlatformSkillCreateRequest
-> = z.object({
-  file: z.lazy(() => PlatformSkillCreateRequestFile$outboundSchema).or(
-    blobLikeSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    file: z.lazy(() => PlatformSkillCreateRequestFile$outboundSchema).or(
+      blobLikeSchema,
+    ),
+  })
+);
 
 export function platformSkillCreateRequestToJSON(
   platformSkillCreateRequest: PlatformSkillCreateRequest,

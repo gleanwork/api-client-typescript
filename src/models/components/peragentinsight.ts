@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { IconConfig, IconConfig$inboundSchema } from "./iconconfig.js";
@@ -51,17 +51,19 @@ export const PerAgentInsight$inboundSchema: z.ZodType<
   PerAgentInsight,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agentId: z.string().optional(),
-  agentName: z.string().optional(),
-  icon: IconConfig$inboundSchema.optional(),
-  isDeleted: z.boolean().optional(),
-  userCount: z.number().int().optional(),
-  runCount: z.number().int().optional(),
-  upvoteCount: z.number().int().optional(),
-  downvoteCount: z.number().int().optional(),
-  owner: Person$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agentId: z.string().optional(),
+    agentName: z.string().optional(),
+    icon: IconConfig$inboundSchema.optional(),
+    isDeleted: z.boolean().optional(),
+    userCount: z.number().int().optional(),
+    runCount: z.number().int().optional(),
+    upvoteCount: z.number().int().optional(),
+    downvoteCount: z.number().int().optional(),
+    owner: Person$inboundSchema.optional(),
+  })
+);
 
 export function perAgentInsightFromJSON(
   jsonString: string,

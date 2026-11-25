@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   ToolsCallParameter,
   ToolsCallParameter$Outbound,
@@ -32,10 +33,12 @@ export const ToolsCallRequest$outboundSchema: z.ZodType<
   ToolsCallRequest$Outbound,
   z.ZodTypeDef,
   ToolsCallRequest
-> = z.object({
-  name: z.string(),
-  parameters: z.record(ToolsCallParameter$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    parameters: z.record(ToolsCallParameter$outboundSchema),
+  })
+);
 
 export function toolsCallRequestToJSON(
   toolsCallRequest: ToolsCallRequest,

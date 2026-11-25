@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { Verification, Verification$inboundSchema } from "./verification.js";
@@ -21,9 +21,11 @@ export const VerificationFeed$inboundSchema: z.ZodType<
   VerificationFeed,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  documents: z.array(Verification$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    documents: z.array(Verification$inboundSchema).optional(),
+  })
+);
 
 export function verificationFeedFromJSON(
   jsonString: string,

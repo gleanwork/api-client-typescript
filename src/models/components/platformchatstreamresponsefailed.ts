@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -33,20 +33,23 @@ export type PlatformChatStreamResponseFailed = {
 
 /** @internal */
 export const PlatformChatStreamResponseFailedType$inboundSchema:
-  z.ZodNativeEnum<typeof PlatformChatStreamResponseFailedType> = z.nativeEnum(
-    PlatformChatStreamResponseFailedType,
-  );
+  z.ZodNativeEnum<typeof PlatformChatStreamResponseFailedType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PlatformChatStreamResponseFailedType)
+    );
 
 /** @internal */
 export const PlatformChatStreamResponseFailed$inboundSchema: z.ZodType<
   PlatformChatStreamResponseFailed,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: PlatformChatStreamResponseFailedType$inboundSchema,
-  response_id: z.string(),
-  response: PlatformChatFailedResponse$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PlatformChatStreamResponseFailedType$inboundSchema,
+    response_id: z.string(),
+    response: PlatformChatFailedResponse$inboundSchema,
+  })
+);
 
 export function platformChatStreamResponseFailedFromJSON(
   jsonString: string,

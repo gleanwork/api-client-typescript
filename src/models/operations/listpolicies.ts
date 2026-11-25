@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ListpoliciesRequest = {
   /**
@@ -27,10 +28,12 @@ export const ListpoliciesRequest$outboundSchema: z.ZodType<
   ListpoliciesRequest$Outbound,
   z.ZodTypeDef,
   ListpoliciesRequest
-> = z.object({
-  autoHide: z.boolean().optional(),
-  frequency: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    autoHide: z.boolean().optional(),
+    frequency: z.string().optional(),
+  })
+);
 
 export function listpoliciesRequestToJSON(
   listpoliciesRequest: ListpoliciesRequest,

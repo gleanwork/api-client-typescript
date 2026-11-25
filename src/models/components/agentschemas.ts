@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { ActionSummary, ActionSummary$inboundSchema } from "./actionsummary.js";
@@ -50,7 +50,7 @@ export const InputSchema$inboundSchema: z.ZodType<
   InputSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function inputSchemaFromJSON(
   jsonString: string,
@@ -67,7 +67,7 @@ export const OutputSchema$inboundSchema: z.ZodType<
   OutputSchema,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function outputSchemaFromJSON(
   jsonString: string,
@@ -84,13 +84,15 @@ export const AgentSchemas$inboundSchema: z.ZodType<
   AgentSchemas,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  agent_id: z.string(),
-  name: z.string().optional(),
-  input_schema: z.lazy(() => InputSchema$inboundSchema),
-  output_schema: z.lazy(() => OutputSchema$inboundSchema),
-  tools: z.array(ActionSummary$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    name: z.string().optional(),
+    input_schema: z.lazy(() => InputSchema$inboundSchema),
+    output_schema: z.lazy(() => OutputSchema$inboundSchema),
+    tools: z.array(ActionSummary$inboundSchema).optional(),
+  })
+);
 
 export function agentSchemasFromJSON(
   jsonString: string,

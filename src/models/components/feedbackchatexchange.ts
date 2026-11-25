@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type ResultDocument = {
   title?: string | undefined;
@@ -45,10 +46,12 @@ export const ResultDocument$outboundSchema: z.ZodType<
   ResultDocument$Outbound,
   z.ZodTypeDef,
   ResultDocument
-> = z.object({
-  title: z.string().optional(),
-  url: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    title: z.string().optional(),
+    url: z.string().optional(),
+  })
+);
 
 export function resultDocumentToJSON(resultDocument: ResultDocument): string {
   return JSON.stringify(ResultDocument$outboundSchema.parse(resultDocument));
@@ -69,15 +72,17 @@ export const FeedbackChatExchange$outboundSchema: z.ZodType<
   FeedbackChatExchange$Outbound,
   z.ZodTypeDef,
   FeedbackChatExchange
-> = z.object({
-  timestamp: z.number().int().optional(),
-  agent: z.string().optional(),
-  userQuery: z.string().optional(),
-  searchQuery: z.string().optional(),
-  resultDocuments: z.array(z.lazy(() => ResultDocument$outboundSchema))
-    .optional(),
-  response: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.number().int().optional(),
+    agent: z.string().optional(),
+    userQuery: z.string().optional(),
+    searchQuery: z.string().optional(),
+    resultDocuments: z.array(z.lazy(() => ResultDocument$outboundSchema))
+      .optional(),
+    response: z.string().optional(),
+  })
+);
 
 export function feedbackChatExchangeToJSON(
   feedbackChatExchange: FeedbackChatExchange,

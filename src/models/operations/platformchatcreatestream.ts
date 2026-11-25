@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 /**
@@ -47,10 +48,12 @@ export const PlatformChatCreateStreamInput$outboundSchema: z.ZodType<
   PlatformChatCreateStreamInput$Outbound,
   z.ZodTypeDef,
   PlatformChatCreateStreamInput
-> = z.union([
-  z.string(),
-  z.array(components.PlatformChatInputMessage$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.array(components.PlatformChatInputMessage$outboundSchema),
+  ])
+);
 
 export function platformChatCreateStreamInputToJSON(
   platformChatCreateStreamInput: PlatformChatCreateStreamInput,
@@ -75,15 +78,17 @@ export const PlatformChatCreateStreamRequest$outboundSchema: z.ZodType<
   PlatformChatCreateStreamRequest$Outbound,
   z.ZodTypeDef,
   PlatformChatCreateStreamRequest
-> = z.object({
-  input: z.union([
-    z.string(),
-    z.array(components.PlatformChatInputMessage$outboundSchema),
-  ]),
-  stream: z.literal(true).default(true as const),
-  store: z.boolean().default(true),
-  conversation_id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    input: z.union([
+      z.string(),
+      z.array(components.PlatformChatInputMessage$outboundSchema),
+    ]),
+    stream: z.literal(true).default(true as const),
+    store: z.boolean().default(true),
+    conversation_id: z.string().optional(),
+  })
+);
 
 export function platformChatCreateStreamRequestToJSON(
   platformChatCreateStreamRequest: PlatformChatCreateStreamRequest,
