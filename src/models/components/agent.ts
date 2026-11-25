@@ -7,6 +7,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -70,7 +71,7 @@ export const AgentMetadata$inboundSchema: z.ZodType<
   AgentMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function agentMetadataFromJSON(
   jsonString: string,
@@ -87,19 +88,21 @@ export const AgentCapabilities$inboundSchema: z.ZodType<
   AgentCapabilities,
   z.ZodTypeDef,
   unknown
-> = collectExtraKeys$(
-  z.object({
-    "ap.io.messages": z.boolean().optional(),
-    "ap.io.streaming": z.boolean().optional(),
-  }).catchall(z.any()),
-  "additionalProperties",
-  true,
-).transform((v) => {
-  return remap$(v, {
-    "ap.io.messages": "ap.io.messages",
-    "ap.io.streaming": "ap.io.streaming",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  collectExtraKeys$(
+    z.object({
+      "ap.io.messages": z.boolean().optional(),
+      "ap.io.streaming": z.boolean().optional(),
+    }).catchall(z.any()),
+    "additionalProperties",
+    true,
+  ).transform((v) => {
+    return remap$(v, {
+      "ap.io.messages": "ap.io.messages",
+      "ap.io.streaming": "ap.io.streaming",
+    });
+  })
+);
 
 export function agentCapabilitiesFromJSON(
   jsonString: string,
@@ -112,14 +115,16 @@ export function agentCapabilitiesFromJSON(
 }
 
 /** @internal */
-export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> = z
-  .object({
-    agent_id: z.string(),
-    name: z.string(),
-    description: z.string().optional(),
-    metadata: z.lazy(() => AgentMetadata$inboundSchema).optional(),
-    capabilities: z.lazy(() => AgentCapabilities$inboundSchema),
-  });
+export const Agent$inboundSchema: z.ZodType<Agent, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      agent_id: z.string(),
+      name: z.string(),
+      description: z.string().optional(),
+      metadata: z.lazy(() => AgentMetadata$inboundSchema).optional(),
+      capabilities: z.lazy(() => AgentCapabilities$inboundSchema),
+    })
+  );
 
 export function agentFromJSON(
   jsonString: string,

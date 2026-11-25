@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type AuthorizeActionPackRequest = {
@@ -26,15 +27,17 @@ export const AuthorizeActionPackRequest$outboundSchema: z.ZodType<
   AuthorizeActionPackRequest$Outbound,
   z.ZodTypeDef,
   AuthorizeActionPackRequest
-> = z.object({
-  actionPackId: z.string(),
-  authorizeActionPackRequest:
-    components.AuthorizeActionPackRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    authorizeActionPackRequest: "AuthorizeActionPackRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actionPackId: z.string(),
+    authorizeActionPackRequest:
+      components.AuthorizeActionPackRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      authorizeActionPackRequest: "AuthorizeActionPackRequest",
+    });
+  })
+);
 
 export function authorizeActionPackRequestToJSON(
   authorizeActionPackRequest: AuthorizeActionPackRequest,

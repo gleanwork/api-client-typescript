@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetpolicyRequest = {
   /**
@@ -27,10 +28,12 @@ export const GetpolicyRequest$outboundSchema: z.ZodType<
   GetpolicyRequest$Outbound,
   z.ZodTypeDef,
   GetpolicyRequest
-> = z.object({
-  id: z.string(),
-  version: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    version: z.number().int().optional(),
+  })
+);
 
 export function getpolicyRequestToJSON(
   getpolicyRequest: GetpolicyRequest,

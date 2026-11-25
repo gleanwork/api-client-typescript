@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -24,14 +24,16 @@ export const IndexStatus$inboundSchema: z.ZodType<
   IndexStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  lastCrawledTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  lastIndexedTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lastCrawledTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    lastIndexedTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type IndexStatus$Outbound = {
   lastCrawledTime?: string | undefined;
@@ -43,10 +45,12 @@ export const IndexStatus$outboundSchema: z.ZodType<
   IndexStatus$Outbound,
   z.ZodTypeDef,
   IndexStatus
-> = z.object({
-  lastCrawledTime: z.date().transform(v => v.toISOString()).optional(),
-  lastIndexedTime: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lastCrawledTime: z.date().transform(v => v.toISOString()).optional(),
+    lastIndexedTime: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function indexStatusToJSON(indexStatus: IndexStatus): string {
   return JSON.stringify(IndexStatus$outboundSchema.parse(indexStatus));

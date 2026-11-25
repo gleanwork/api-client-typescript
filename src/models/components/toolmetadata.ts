@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -219,95 +219,107 @@ export const ToolMetadataType$inboundSchema: z.ZodType<
   ToolMetadataType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ToolMetadataType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ToolMetadataType)
+);
 /** @internal */
 export const ToolMetadataType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ToolMetadataType
-> = openEnums.outboundSchema(ToolMetadataType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(ToolMetadataType)
+);
 
 /** @internal */
 export const KnowledgeType$inboundSchema: z.ZodType<
   KnowledgeType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(KnowledgeType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(KnowledgeType));
 /** @internal */
 export const KnowledgeType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   KnowledgeType
-> = openEnums.outboundSchema(KnowledgeType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(KnowledgeType));
 
 /** @internal */
 export const WriteActionType$inboundSchema: z.ZodType<
   WriteActionType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(WriteActionType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(WriteActionType));
 /** @internal */
 export const WriteActionType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   WriteActionType
-> = openEnums.outboundSchema(WriteActionType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(WriteActionType)
+);
 
 /** @internal */
 export const ActionTypeSource$inboundSchema: z.ZodType<
   ActionTypeSource,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ActionTypeSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ActionTypeSource)
+);
 /** @internal */
 export const ActionTypeSource$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   ActionTypeSource
-> = openEnums.outboundSchema(ActionTypeSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(ActionTypeSource)
+);
 
 /** @internal */
 export const AuthType$inboundSchema: z.ZodType<
   AuthType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(AuthType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(AuthType));
 /** @internal */
 export const AuthType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   AuthType
-> = openEnums.outboundSchema(AuthType);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(AuthType));
 
 /** @internal */
 export const ToolMetadata$inboundSchema: z.ZodType<
   ToolMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: ToolMetadataType$inboundSchema,
-  name: z.string(),
-  displayName: z.string(),
-  toolId: z.string().optional(),
-  displayDescription: z.string(),
-  logoUrl: z.string().optional(),
-  objectName: z.string().optional(),
-  knowledgeType: KnowledgeType$inboundSchema.optional(),
-  createdBy: PersonObject$inboundSchema.optional(),
-  lastUpdatedBy: PersonObject$inboundSchema.optional(),
-  createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  lastUpdatedAt: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  writeActionType: WriteActionType$inboundSchema.optional(),
-  actionTypeSource: ActionTypeSource$inboundSchema.optional(),
-  authType: AuthType$inboundSchema.optional(),
-  auth: AuthConfig$inboundSchema.optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  usageInstructions: z.string().optional(),
-  isSetupFinished: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ToolMetadataType$inboundSchema,
+    name: z.string(),
+    displayName: z.string(),
+    toolId: z.string().optional(),
+    displayDescription: z.string(),
+    logoUrl: z.string().optional(),
+    objectName: z.string().optional(),
+    knowledgeType: KnowledgeType$inboundSchema.optional(),
+    createdBy: PersonObject$inboundSchema.optional(),
+    lastUpdatedBy: PersonObject$inboundSchema.optional(),
+    createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    lastUpdatedAt: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    writeActionType: WriteActionType$inboundSchema.optional(),
+    actionTypeSource: ActionTypeSource$inboundSchema.optional(),
+    authType: AuthType$inboundSchema.optional(),
+    auth: AuthConfig$inboundSchema.optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    usageInstructions: z.string().optional(),
+    isSetupFinished: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type ToolMetadata$Outbound = {
   type: string;
@@ -336,27 +348,29 @@ export const ToolMetadata$outboundSchema: z.ZodType<
   ToolMetadata$Outbound,
   z.ZodTypeDef,
   ToolMetadata
-> = z.object({
-  type: ToolMetadataType$outboundSchema,
-  name: z.string(),
-  displayName: z.string(),
-  toolId: z.string().optional(),
-  displayDescription: z.string(),
-  logoUrl: z.string().optional(),
-  objectName: z.string().optional(),
-  knowledgeType: KnowledgeType$outboundSchema.optional(),
-  createdBy: PersonObject$outboundSchema.optional(),
-  lastUpdatedBy: PersonObject$outboundSchema.optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  lastUpdatedAt: z.date().transform(v => v.toISOString()).optional(),
-  writeActionType: WriteActionType$outboundSchema.optional(),
-  actionTypeSource: ActionTypeSource$outboundSchema.optional(),
-  authType: AuthType$outboundSchema.optional(),
-  auth: AuthConfig$outboundSchema.optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  usageInstructions: z.string().optional(),
-  isSetupFinished: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ToolMetadataType$outboundSchema,
+    name: z.string(),
+    displayName: z.string(),
+    toolId: z.string().optional(),
+    displayDescription: z.string(),
+    logoUrl: z.string().optional(),
+    objectName: z.string().optional(),
+    knowledgeType: KnowledgeType$outboundSchema.optional(),
+    createdBy: PersonObject$outboundSchema.optional(),
+    lastUpdatedBy: PersonObject$outboundSchema.optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    lastUpdatedAt: z.date().transform(v => v.toISOString()).optional(),
+    writeActionType: WriteActionType$outboundSchema.optional(),
+    actionTypeSource: ActionTypeSource$outboundSchema.optional(),
+    authType: AuthType$outboundSchema.optional(),
+    auth: AuthConfig$outboundSchema.optional(),
+    permissions: ObjectPermissions$outboundSchema.optional(),
+    usageInstructions: z.string().optional(),
+    isSetupFinished: z.boolean().optional(),
+  })
+);
 
 export function toolMetadataToJSON(toolMetadata: ToolMetadata): string {
   return JSON.stringify(ToolMetadata$outboundSchema.parse(toolMetadata));

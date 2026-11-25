@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type DownloadpolicycsvRequest = {
   /**
@@ -22,9 +23,11 @@ export const DownloadpolicycsvRequest$outboundSchema: z.ZodType<
   DownloadpolicycsvRequest$Outbound,
   z.ZodTypeDef,
   DownloadpolicycsvRequest
-> = z.object({
-  id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+  })
+);
 
 export function downloadpolicycsvRequestToJSON(
   downloadpolicycsvRequest: DownloadpolicycsvRequest,

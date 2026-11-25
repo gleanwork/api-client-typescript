@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AgentRun, AgentRun$inboundSchema } from "./agentrun.js";
@@ -23,10 +23,12 @@ export const AgentRunWaitResponse$inboundSchema: z.ZodType<
   AgentRunWaitResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  run: AgentRun$inboundSchema.optional(),
-  messages: z.array(Message$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    run: AgentRun$inboundSchema.optional(),
+    messages: z.array(Message$inboundSchema).optional(),
+  })
+);
 
 export function agentRunWaitResponseFromJSON(
   jsonString: string,

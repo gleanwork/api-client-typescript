@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   FacetFilter,
@@ -47,8 +48,10 @@ export type ListShortcutsPaginatedRequest = {
 
 /** @internal */
 export const ListShortcutsPaginatedRequestIncludeField$outboundSchema:
-  z.ZodNativeEnum<typeof ListShortcutsPaginatedRequestIncludeField> = z
-    .nativeEnum(ListShortcutsPaginatedRequestIncludeField);
+  z.ZodNativeEnum<typeof ListShortcutsPaginatedRequestIncludeField> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListShortcutsPaginatedRequestIncludeField)
+    );
 
 /** @internal */
 export type ListShortcutsPaginatedRequest$Outbound = {
@@ -65,16 +68,18 @@ export const ListShortcutsPaginatedRequest$outboundSchema: z.ZodType<
   ListShortcutsPaginatedRequest$Outbound,
   z.ZodTypeDef,
   ListShortcutsPaginatedRequest
-> = z.object({
-  includeFields: z.array(
-    ListShortcutsPaginatedRequestIncludeField$outboundSchema,
-  ).optional(),
-  pageSize: z.number().int(),
-  cursor: z.string().optional(),
-  filters: z.array(FacetFilter$outboundSchema).optional(),
-  sort: SortOptions$outboundSchema.optional(),
-  query: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    includeFields: z.array(
+      ListShortcutsPaginatedRequestIncludeField$outboundSchema,
+    ).optional(),
+    pageSize: z.number().int(),
+    cursor: z.string().optional(),
+    filters: z.array(FacetFilter$outboundSchema).optional(),
+    sort: SortOptions$outboundSchema.optional(),
+    query: z.string().optional(),
+  })
+);
 
 export function listShortcutsPaginatedRequestToJSON(
   listShortcutsPaginatedRequest: ListShortcutsPaginatedRequest,

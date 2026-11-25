@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -42,12 +42,14 @@ export const PlatformFilterFieldInfo$inboundSchema: z.ZodType<
   PlatformFilterFieldInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  field: z.string(),
-  type: z.string(),
-  operators: z.array(PlatformFilterOperator$inboundSchema),
-  values: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string(),
+    type: z.string(),
+    operators: z.array(PlatformFilterOperator$inboundSchema),
+    values: z.array(z.string()).optional(),
+  })
+);
 
 export function platformFilterFieldInfoFromJSON(
   jsonString: string,

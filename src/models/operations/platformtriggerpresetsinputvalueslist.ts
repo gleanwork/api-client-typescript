@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformTriggerPresetsInputValuesListRequest = {
   /**
@@ -35,11 +36,13 @@ export const PlatformTriggerPresetsInputValuesListRequest$outboundSchema:
     PlatformTriggerPresetsInputValuesListRequest$Outbound,
     z.ZodTypeDef,
     PlatformTriggerPresetsInputValuesListRequest
-  > = z.object({
-    preset_id: z.string(),
-    field: z.string(),
-    query: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      preset_id: z.string(),
+      field: z.string(),
+      query: z.string().optional(),
+    })
+  );
 
 export function platformTriggerPresetsInputValuesListRequestToJSON(
   platformTriggerPresetsInputValuesListRequest:

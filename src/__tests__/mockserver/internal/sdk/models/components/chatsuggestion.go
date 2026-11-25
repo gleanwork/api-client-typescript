@@ -8,6 +8,8 @@ type ChatSuggestion struct {
 	Query *string `json:"query,omitempty"`
 	// Button text to show for the suggestion action.
 	Cta *string `json:"cta,omitempty"`
+	// A shorter version of the suggestion's title for one-line lists. Fall back to the entry's title when empty.
+	ShortTitle *string `json:"shortTitle,omitempty"`
 	// Targeted Glean Chat feature for the suggestion.
 	Feature *string `json:"feature,omitempty"`
 	// Type of the Artifact
@@ -28,6 +30,13 @@ func (o *ChatSuggestion) GetCta() *string {
 		return nil
 	}
 	return o.Cta
+}
+
+func (o *ChatSuggestion) GetShortTitle() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ShortTitle
 }
 
 func (o *ChatSuggestion) GetFeature() *string {

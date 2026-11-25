@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -31,7 +32,7 @@ export type WorkflowFeedbackInfo = {
 /** @internal */
 export const WorkflowFeedbackInfoSource$outboundSchema: z.ZodNativeEnum<
   typeof WorkflowFeedbackInfoSource
-> = z.nativeEnum(WorkflowFeedbackInfoSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(WorkflowFeedbackInfoSource));
 
 /** @internal */
 export type WorkflowFeedbackInfo$Outbound = {
@@ -43,9 +44,11 @@ export const WorkflowFeedbackInfo$outboundSchema: z.ZodType<
   WorkflowFeedbackInfo$Outbound,
   z.ZodTypeDef,
   WorkflowFeedbackInfo
-> = z.object({
-  source: WorkflowFeedbackInfoSource$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: WorkflowFeedbackInfoSource$outboundSchema.optional(),
+  })
+);
 
 export function workflowFeedbackInfoToJSON(
   workflowFeedbackInfo: WorkflowFeedbackInfo,

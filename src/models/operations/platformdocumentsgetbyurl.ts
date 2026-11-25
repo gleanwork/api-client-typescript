@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformDocumentsGetByUrlRequest = {
@@ -30,11 +31,13 @@ export const PlatformDocumentsGetByUrlRequest$outboundSchema: z.ZodType<
   PlatformDocumentsGetByUrlRequest$Outbound,
   z.ZodTypeDef,
   PlatformDocumentsGetByUrlRequest
-> = z.object({
-  url: z.string(),
-  include: z.array(components.PlatformDocumentInclude$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    include: z.array(components.PlatformDocumentInclude$outboundSchema)
+      .optional(),
+  })
+);
 
 export function platformDocumentsGetByUrlRequestToJSON(
   platformDocumentsGetByUrlRequest: PlatformDocumentsGetByUrlRequest,

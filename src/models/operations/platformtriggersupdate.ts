@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformTriggersUpdateRequest = {
@@ -27,15 +28,17 @@ export const PlatformTriggersUpdateRequest$outboundSchema: z.ZodType<
   PlatformTriggersUpdateRequest$Outbound,
   z.ZodTypeDef,
   PlatformTriggersUpdateRequest
-> = z.object({
-  trigger_id: z.string(),
-  platformTriggerUpdateRequest:
-    components.PlatformTriggerUpdateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformTriggerUpdateRequest: "PlatformTriggerUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trigger_id: z.string(),
+    platformTriggerUpdateRequest:
+      components.PlatformTriggerUpdateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      platformTriggerUpdateRequest: "PlatformTriggerUpdateRequest",
+    });
+  })
+);
 
 export function platformTriggersUpdateRequestToJSON(
   platformTriggersUpdateRequest: PlatformTriggersUpdateRequest,

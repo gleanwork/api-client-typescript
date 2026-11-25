@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   ContentDefinition,
   ContentDefinition$Outbound,
@@ -60,14 +61,16 @@ export const CommentDefinition$outboundSchema: z.ZodType<
   CommentDefinition$Outbound,
   z.ZodTypeDef,
   CommentDefinition
-> = z.object({
-  id: z.string(),
-  author: UserReferenceDefinition$outboundSchema.optional(),
-  content: ContentDefinition$outboundSchema.optional(),
-  createdAt: z.number().int().optional(),
-  updatedAt: z.number().int().optional(),
-  updatedBy: UserReferenceDefinition$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    author: UserReferenceDefinition$outboundSchema.optional(),
+    content: ContentDefinition$outboundSchema.optional(),
+    createdAt: z.number().int().optional(),
+    updatedAt: z.number().int().optional(),
+    updatedBy: UserReferenceDefinition$outboundSchema.optional(),
+  })
+);
 
 export function commentDefinitionToJSON(
   commentDefinition: CommentDefinition,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 
@@ -35,7 +36,7 @@ export type UgcType = OpenEnum<typeof UgcType>;
 
 /** @internal */
 export const UgcType$inboundSchema: z.ZodType<UgcType, z.ZodTypeDef, unknown> =
-  openEnums.inboundSchema(UgcType);
+  /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(UgcType));
 /** @internal */
 export const UgcType$outboundSchema: z.ZodType<string, z.ZodTypeDef, UgcType> =
-  openEnums.outboundSchema(UgcType);
+  /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(UgcType));

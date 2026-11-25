@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { FacetResult, FacetResult$inboundSchema } from "./facetresult.js";
@@ -39,14 +39,16 @@ export const FeedResponse$inboundSchema: z.ZodType<
   FeedResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  experimentIds: z.array(z.number().int()).optional(),
-  trackingToken: z.string().optional(),
-  serverTimestamp: z.number().int(),
-  results: z.array(FeedResult$inboundSchema).optional(),
-  facetResults: z.record(z.array(FacetResult$inboundSchema)).optional(),
-  mentionsTimeWindowInHours: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    experimentIds: z.array(z.number().int()).optional(),
+    trackingToken: z.string().optional(),
+    serverTimestamp: z.number().int(),
+    results: z.array(FeedResult$inboundSchema).optional(),
+    facetResults: z.record(z.array(FacetResult$inboundSchema)).optional(),
+    mentionsTimeWindowInHours: z.number().int().optional(),
+  })
+);
 
 export function feedResponseFromJSON(
   jsonString: string,

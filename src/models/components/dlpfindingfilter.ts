@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -46,19 +46,21 @@ export const DlpFindingFilter$inboundSchema: z.ZodType<
   DlpFindingFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  infoType: z.string().optional(),
-  regexId: z.string().optional(),
-  reportId: z.string().optional(),
-  datasource: z.string().optional(),
-  visibility: z.string().optional(),
-  documentIds: z.array(z.string()).optional(),
-  severity: DlpSeverity$inboundSchema.optional(),
-  documentSeverity: z.array(DlpSeverity$inboundSchema).optional(),
-  statuses: z.array(DlpIssueStatus$inboundSchema).optional(),
-  timeRange: TimeRangeFilter$inboundSchema.optional(),
-  archived: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    infoType: z.string().optional(),
+    regexId: z.string().optional(),
+    reportId: z.string().optional(),
+    datasource: z.string().optional(),
+    visibility: z.string().optional(),
+    documentIds: z.array(z.string()).optional(),
+    severity: DlpSeverity$inboundSchema.optional(),
+    documentSeverity: z.array(DlpSeverity$inboundSchema).optional(),
+    statuses: z.array(DlpIssueStatus$inboundSchema).optional(),
+    timeRange: TimeRangeFilter$inboundSchema.optional(),
+    archived: z.boolean().optional(),
+  })
+);
 /** @internal */
 export type DlpFindingFilter$Outbound = {
   infoType?: string | undefined;
@@ -79,19 +81,21 @@ export const DlpFindingFilter$outboundSchema: z.ZodType<
   DlpFindingFilter$Outbound,
   z.ZodTypeDef,
   DlpFindingFilter
-> = z.object({
-  infoType: z.string().optional(),
-  regexId: z.string().optional(),
-  reportId: z.string().optional(),
-  datasource: z.string().optional(),
-  visibility: z.string().optional(),
-  documentIds: z.array(z.string()).optional(),
-  severity: DlpSeverity$outboundSchema.optional(),
-  documentSeverity: z.array(DlpSeverity$outboundSchema).optional(),
-  statuses: z.array(DlpIssueStatus$outboundSchema).optional(),
-  timeRange: TimeRangeFilter$outboundSchema.optional(),
-  archived: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    infoType: z.string().optional(),
+    regexId: z.string().optional(),
+    reportId: z.string().optional(),
+    datasource: z.string().optional(),
+    visibility: z.string().optional(),
+    documentIds: z.array(z.string()).optional(),
+    severity: DlpSeverity$outboundSchema.optional(),
+    documentSeverity: z.array(DlpSeverity$outboundSchema).optional(),
+    statuses: z.array(DlpIssueStatus$outboundSchema).optional(),
+    timeRange: TimeRangeFilter$outboundSchema.optional(),
+    archived: z.boolean().optional(),
+  })
+);
 
 export function dlpFindingFilterToJSON(
   dlpFindingFilter: DlpFindingFilter,

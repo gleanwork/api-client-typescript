@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -26,9 +26,11 @@ export const FacetFilterSet$inboundSchema: z.ZodType<
   FacetFilterSet,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  filters: z.array(FacetFilter$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filters: z.array(FacetFilter$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type FacetFilterSet$Outbound = {
   filters?: Array<FacetFilter$Outbound> | undefined;
@@ -39,9 +41,11 @@ export const FacetFilterSet$outboundSchema: z.ZodType<
   FacetFilterSet$Outbound,
   z.ZodTypeDef,
   FacetFilterSet
-> = z.object({
-  filters: z.array(FacetFilter$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filters: z.array(FacetFilter$outboundSchema).optional(),
+  })
+);
 
 export function facetFilterSetToJSON(facetFilterSet: FacetFilterSet): string {
   return JSON.stringify(FacetFilterSet$outboundSchema.parse(facetFilterSet));

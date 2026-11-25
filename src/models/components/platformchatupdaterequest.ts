@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * The fields to update on a chat.
@@ -27,9 +28,11 @@ export const PlatformChatUpdateRequest$outboundSchema: z.ZodType<
   PlatformChatUpdateRequest$Outbound,
   z.ZodTypeDef,
   PlatformChatUpdateRequest
-> = z.object({
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+  })
+);
 
 export function platformChatUpdateRequestToJSON(
   platformChatUpdateRequest: PlatformChatUpdateRequest,

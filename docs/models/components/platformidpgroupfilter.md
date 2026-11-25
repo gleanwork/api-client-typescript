@@ -8,7 +8,7 @@ A filter on one IdP group field.
 import { PlatformIdpGroupFilter } from "@gleanwork/api-client/models/components";
 
 let value: PlatformIdpGroupFilter = {
-  field: "<value>",
+  field: "provider_instance",
   values: [
     "<value 1>",
     "<value 2>",

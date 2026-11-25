@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DatasourceInstanceConfiguration,
   DatasourceInstanceConfiguration$Outbound,
@@ -33,9 +34,11 @@ export const RotateDatasourceCredentialsRequest$outboundSchema: z.ZodType<
   RotateDatasourceCredentialsRequest$Outbound,
   z.ZodTypeDef,
   RotateDatasourceCredentialsRequest
-> = z.object({
-  credentials: DatasourceInstanceConfiguration$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    credentials: DatasourceInstanceConfiguration$outboundSchema,
+  })
+);
 
 export function rotateDatasourceCredentialsRequestToJSON(
   rotateDatasourceCredentialsRequest: RotateDatasourceCredentialsRequest,
