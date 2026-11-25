@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DatasourceInstanceConfiguration,
   DatasourceInstanceConfiguration$Outbound,
@@ -32,9 +33,11 @@ export const UpdateDatasourceConfigurationRequest$outboundSchema: z.ZodType<
   UpdateDatasourceConfigurationRequest$Outbound,
   z.ZodTypeDef,
   UpdateDatasourceConfigurationRequest
-> = z.object({
-  configuration: DatasourceInstanceConfiguration$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: DatasourceInstanceConfiguration$outboundSchema,
+  })
+);
 
 export function updateDatasourceConfigurationRequestToJSON(
   updateDatasourceConfigurationRequest: UpdateDatasourceConfigurationRequest,

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import {
   DatasourceMembershipDefinition,
   DatasourceMembershipDefinition$Outbound,
@@ -40,11 +41,13 @@ export const IndexMembershipRequest$outboundSchema: z.ZodType<
   IndexMembershipRequest$Outbound,
   z.ZodTypeDef,
   IndexMembershipRequest
-> = z.object({
-  version: z.number().int().optional(),
-  datasource: z.string(),
-  membership: DatasourceMembershipDefinition$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.number().int().optional(),
+    datasource: z.string(),
+    membership: DatasourceMembershipDefinition$outboundSchema,
+  })
+);
 
 export function indexMembershipRequestToJSON(
   indexMembershipRequest: IndexMembershipRequest,

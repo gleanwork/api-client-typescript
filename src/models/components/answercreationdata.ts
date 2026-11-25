@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   DocumentSpecUnion,
@@ -78,7 +79,9 @@ export type AnswerCreationData = {
 /** @internal */
 export const AnswerCreationDataSourceType$outboundSchema: z.ZodNativeEnum<
   typeof AnswerCreationDataSourceType
-> = z.nativeEnum(AnswerCreationDataSourceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AnswerCreationDataSourceType)
+);
 
 /** @internal */
 export type AnswerCreationData$Outbound = {
@@ -101,20 +104,23 @@ export const AnswerCreationData$outboundSchema: z.ZodType<
   AnswerCreationData$Outbound,
   z.ZodTypeDef,
   AnswerCreationData
-> = z.object({
-  question: z.string().optional(),
-  questionVariations: z.array(z.string()).optional(),
-  bodyText: z.string().optional(),
-  boardId: z.number().int().optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  roles: z.array(UserRoleSpecification$outboundSchema).optional(),
-  sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
-  sourceType: AnswerCreationDataSourceType$outboundSchema.optional(),
-  addedCollections: z.array(z.number().int()).optional(),
-  combinedAnswerText: StructuredTextMutableProperties$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    question: z.string().optional(),
+    questionVariations: z.array(z.string()).optional(),
+    bodyText: z.string().optional(),
+    boardId: z.number().int().optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    addedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    removedRoles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    roles: z.array(UserRoleSpecification$outboundSchema).optional(),
+    sourceDocumentSpec: DocumentSpecUnion$outboundSchema.optional(),
+    sourceType: AnswerCreationDataSourceType$outboundSchema.optional(),
+    addedCollections: z.array(z.number().int()).optional(),
+    combinedAnswerText: StructuredTextMutableProperties$outboundSchema
+      .optional(),
+  })
+);
 
 export function answerCreationDataToJSON(
   answerCreationData: AnswerCreationData,

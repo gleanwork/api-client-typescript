@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type IndexingShortcut = {
   /**
@@ -62,17 +63,19 @@ export const IndexingShortcut$outboundSchema: z.ZodType<
   IndexingShortcut$Outbound,
   z.ZodTypeDef,
   IndexingShortcut
-> = z.object({
-  inputAlias: z.string(),
-  description: z.string().optional(),
-  destinationUrl: z.string(),
-  createdBy: z.string(),
-  createTime: z.number().int().optional(),
-  updatedBy: z.string().optional(),
-  updateTime: z.number().int().optional(),
-  unlisted: z.boolean().optional(),
-  urlTemplate: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inputAlias: z.string(),
+    description: z.string().optional(),
+    destinationUrl: z.string(),
+    createdBy: z.string(),
+    createTime: z.number().int().optional(),
+    updatedBy: z.string().optional(),
+    updateTime: z.number().int().optional(),
+    unlisted: z.boolean().optional(),
+    urlTemplate: z.string().optional(),
+  })
+);
 
 export function indexingShortcutToJSON(
   indexingShortcut: IndexingShortcut,

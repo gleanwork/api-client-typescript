@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Retrieves a Chat. Omit pagination fields to return the full message history. When paginating, messages are returned in chronological order. Allowed combinations: last alone (latest page), last with before (older messages), first alone (earliest page), or first with after (newer messages). first and last are mutually exclusive; before and after are mutually exclusive; first cannot be combined with before; last cannot be combined with after.
@@ -45,13 +46,15 @@ export const GetChatRequest$outboundSchema: z.ZodType<
   GetChatRequest$Outbound,
   z.ZodTypeDef,
   GetChatRequest
-> = z.object({
-  id: z.string(),
-  first: z.number().int().optional(),
-  after: z.string().optional(),
-  last: z.number().int().optional(),
-  before: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    first: z.number().int().optional(),
+    after: z.string().optional(),
+    last: z.number().int().optional(),
+    before: z.string().optional(),
+  })
+);
 
 export function getChatRequestToJSON(getChatRequest: GetChatRequest): string {
   return JSON.stringify(GetChatRequest$outboundSchema.parse(getChatRequest));

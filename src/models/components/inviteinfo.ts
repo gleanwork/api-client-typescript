@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -52,17 +52,21 @@ export const InviteInfo$inboundSchema: z.ZodType<
   InviteInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  signUpTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  invites: z.array(z.lazy(() => ChannelInviteInfo$inboundSchema)).optional(),
-  inviter: z.lazy(() => Person$inboundSchema).optional(),
-  inviteTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  reminderTime: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    signUpTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    invites: z.array(z.lazy(() => ChannelInviteInfo$inboundSchema)).optional(),
+    inviter: z.lazy(() => Person$inboundSchema).optional(),
+    inviteTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    reminderTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+  })
+);
 /** @internal */
 export type InviteInfo$Outbound = {
   signUpTime?: string | undefined;
@@ -77,13 +81,15 @@ export const InviteInfo$outboundSchema: z.ZodType<
   InviteInfo$Outbound,
   z.ZodTypeDef,
   InviteInfo
-> = z.object({
-  signUpTime: z.date().transform(v => v.toISOString()).optional(),
-  invites: z.array(z.lazy(() => ChannelInviteInfo$outboundSchema)).optional(),
-  inviter: z.lazy(() => Person$outboundSchema).optional(),
-  inviteTime: z.date().transform(v => v.toISOString()).optional(),
-  reminderTime: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    signUpTime: z.date().transform(v => v.toISOString()).optional(),
+    invites: z.array(z.lazy(() => ChannelInviteInfo$outboundSchema)).optional(),
+    inviter: z.lazy(() => Person$outboundSchema).optional(),
+    inviteTime: z.date().transform(v => v.toISOString()).optional(),
+    reminderTime: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function inviteInfoToJSON(inviteInfo: InviteInfo): string {
   return JSON.stringify(InviteInfo$outboundSchema.parse(inviteInfo));

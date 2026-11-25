@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 /**
  * Describes the request body of the /processalldocuments API call
@@ -25,9 +26,11 @@ export const ProcessAllDocumentsRequest$outboundSchema: z.ZodType<
   ProcessAllDocumentsRequest$Outbound,
   z.ZodTypeDef,
   ProcessAllDocumentsRequest
-> = z.object({
-  datasource: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasource: z.string().optional(),
+  })
+);
 
 export function processAllDocumentsRequestToJSON(
   processAllDocumentsRequest: ProcessAllDocumentsRequest,

@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type RotateDatasourceCredentialsRequest = {
@@ -28,15 +29,17 @@ export const RotateDatasourceCredentialsRequest$outboundSchema: z.ZodType<
   RotateDatasourceCredentialsRequest$Outbound,
   z.ZodTypeDef,
   RotateDatasourceCredentialsRequest
-> = z.object({
-  datasourceInstanceId: z.string(),
-  rotateDatasourceCredentialsRequest:
-    components.RotateDatasourceCredentialsRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    rotateDatasourceCredentialsRequest: "RotateDatasourceCredentialsRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourceInstanceId: z.string(),
+    rotateDatasourceCredentialsRequest:
+      components.RotateDatasourceCredentialsRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      rotateDatasourceCredentialsRequest: "RotateDatasourceCredentialsRequest",
+    });
+  })
+);
 
 export function rotateDatasourceCredentialsRequestToJSON(
   rotateDatasourceCredentialsRequest: RotateDatasourceCredentialsRequest,

@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { AuthStatus, AuthStatus$inboundSchema } from "./authstatus.js";
@@ -42,12 +42,14 @@ export const UnauthorizedDatasourceInstance$inboundSchema: z.ZodType<
   UnauthorizedDatasourceInstance,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  datasourceInstance: z.string().optional(),
-  displayName: z.string().optional(),
-  authStatus: AuthStatus$inboundSchema.optional(),
-  authUrlRelativePath: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    datasourceInstance: z.string().optional(),
+    displayName: z.string().optional(),
+    authStatus: AuthStatus$inboundSchema.optional(),
+    authUrlRelativePath: z.string().optional(),
+  })
+);
 
 export function unauthorizedDatasourceInstanceFromJSON(
   jsonString: string,

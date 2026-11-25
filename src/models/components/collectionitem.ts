@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -87,35 +87,41 @@ export const CollectionItemItemType$inboundSchema: z.ZodType<
   CollectionItemItemType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(CollectionItemItemType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(CollectionItemItemType)
+);
 /** @internal */
 export const CollectionItemItemType$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   CollectionItemItemType
-> = openEnums.outboundSchema(CollectionItemItemType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.outboundSchema(CollectionItemItemType)
+);
 
 /** @internal */
 export const CollectionItem$inboundSchema: z.ZodType<
   CollectionItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  collectionId: z.number().int(),
-  documentId: z.string().optional(),
-  url: z.string().optional(),
-  itemId: z.string().optional(),
-  createdBy: z.lazy(() => Person$inboundSchema).optional(),
-  createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  document: z.lazy(() => Document$inboundSchema).optional(),
-  shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
-  collection: z.lazy(() => Collection$inboundSchema).optional(),
-  itemType: CollectionItemItemType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    icon: z.string().optional(),
+    collectionId: z.number().int(),
+    documentId: z.string().optional(),
+    url: z.string().optional(),
+    itemId: z.string().optional(),
+    createdBy: z.lazy(() => Person$inboundSchema).optional(),
+    createdAt: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    document: z.lazy(() => Document$inboundSchema).optional(),
+    shortcut: z.lazy(() => Shortcut$inboundSchema).optional(),
+    collection: z.lazy(() => Collection$inboundSchema).optional(),
+    itemType: CollectionItemItemType$inboundSchema,
+  })
+);
 /** @internal */
 export type CollectionItem$Outbound = {
   name?: string | undefined;
@@ -138,21 +144,23 @@ export const CollectionItem$outboundSchema: z.ZodType<
   CollectionItem$Outbound,
   z.ZodTypeDef,
   CollectionItem
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  collectionId: z.number().int(),
-  documentId: z.string().optional(),
-  url: z.string().optional(),
-  itemId: z.string().optional(),
-  createdBy: z.lazy(() => Person$outboundSchema).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  document: z.lazy(() => Document$outboundSchema).optional(),
-  shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
-  collection: z.lazy(() => Collection$outboundSchema).optional(),
-  itemType: CollectionItemItemType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    icon: z.string().optional(),
+    collectionId: z.number().int(),
+    documentId: z.string().optional(),
+    url: z.string().optional(),
+    itemId: z.string().optional(),
+    createdBy: z.lazy(() => Person$outboundSchema).optional(),
+    createdAt: z.date().transform(v => v.toISOString()).optional(),
+    document: z.lazy(() => Document$outboundSchema).optional(),
+    shortcut: z.lazy(() => Shortcut$outboundSchema).optional(),
+    collection: z.lazy(() => Collection$outboundSchema).optional(),
+    itemType: CollectionItemItemType$outboundSchema,
+  })
+);
 
 export function collectionItemToJSON(collectionItem: CollectionItem): string {
   return JSON.stringify(CollectionItem$outboundSchema.parse(collectionItem));

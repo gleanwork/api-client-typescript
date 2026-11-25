@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformUsersGetRequest = {
@@ -30,10 +31,12 @@ export const PlatformUsersGetRequest$outboundSchema: z.ZodType<
   PlatformUsersGetRequest$Outbound,
   z.ZodTypeDef,
   PlatformUsersGetRequest
-> = z.object({
-  user_id: z.string(),
-  include: z.array(components.PlatformUserInclude$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_id: z.string(),
+    include: z.array(components.PlatformUserInclude$outboundSchema).optional(),
+  })
+);
 
 export function platformUsersGetRequestToJSON(
   platformUsersGetRequest: PlatformUsersGetRequest,

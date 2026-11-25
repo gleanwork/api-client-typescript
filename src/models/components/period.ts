@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,13 +32,15 @@ export type Period = {
 };
 
 /** @internal */
-export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> = z
-  .object({
-    minDaysFromNow: z.number().int().optional(),
-    maxDaysFromNow: z.number().int().optional(),
-    start: TimePoint$inboundSchema.optional(),
-    end: TimePoint$inboundSchema.optional(),
-  });
+export const Period$inboundSchema: z.ZodType<Period, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      minDaysFromNow: z.number().int().optional(),
+      maxDaysFromNow: z.number().int().optional(),
+      start: TimePoint$inboundSchema.optional(),
+      end: TimePoint$inboundSchema.optional(),
+    })
+  );
 /** @internal */
 export type Period$Outbound = {
   minDaysFromNow?: number | undefined;
@@ -52,12 +54,14 @@ export const Period$outboundSchema: z.ZodType<
   Period$Outbound,
   z.ZodTypeDef,
   Period
-> = z.object({
-  minDaysFromNow: z.number().int().optional(),
-  maxDaysFromNow: z.number().int().optional(),
-  start: TimePoint$outboundSchema.optional(),
-  end: TimePoint$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    minDaysFromNow: z.number().int().optional(),
+    maxDaysFromNow: z.number().int().optional(),
+    start: TimePoint$outboundSchema.optional(),
+    end: TimePoint$outboundSchema.optional(),
+  })
+);
 
 export function periodToJSON(period: Period): string {
   return JSON.stringify(Period$outboundSchema.parse(period));

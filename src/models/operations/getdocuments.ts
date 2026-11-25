@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type GetdocumentsRequest = {
@@ -29,14 +30,17 @@ export const GetdocumentsRequest$outboundSchema: z.ZodType<
   GetdocumentsRequest$Outbound,
   z.ZodTypeDef,
   GetdocumentsRequest
-> = z.object({
-  locale: z.string().optional(),
-  getDocumentsRequest: components.GetDocumentsRequest$outboundSchema.optional(),
-}).transform((v) => {
-  return remap$(v, {
-    getDocumentsRequest: "GetDocumentsRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    getDocumentsRequest: components.GetDocumentsRequest$outboundSchema
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      getDocumentsRequest: "GetDocumentsRequest",
+    });
+  })
+);
 
 export function getdocumentsRequestToJSON(
   getdocumentsRequest: GetdocumentsRequest,

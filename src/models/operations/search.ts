@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type SearchRequest = {
@@ -29,14 +30,16 @@ export const SearchRequest$outboundSchema: z.ZodType<
   SearchRequest$Outbound,
   z.ZodTypeDef,
   SearchRequest
-> = z.object({
-  locale: z.string().optional(),
-  searchRequest: components.SearchRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    searchRequest: "SearchRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    searchRequest: components.SearchRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      searchRequest: "SearchRequest",
+    });
+  })
+);
 
 export function searchRequestToJSON(searchRequest: SearchRequest): string {
   return JSON.stringify(SearchRequest$outboundSchema.parse(searchRequest));

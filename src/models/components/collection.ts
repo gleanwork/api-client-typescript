@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -140,37 +140,42 @@ export const Collection$inboundSchema: z.ZodType<
   Collection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  addedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-    .optional(),
-  removedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
-    .optional(),
-  audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$inboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  permissions: ObjectPermissions$inboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  id: z.number().int(),
-  createTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  updateTime: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  creator: z.lazy(() => Person$inboundSchema).optional(),
-  updatedBy: z.lazy(() => Person$inboundSchema).optional(),
-  itemCount: z.number().int().optional(),
-  childCount: z.number().int().optional(),
-  items: z.array(z.lazy(() => CollectionItem$inboundSchema)).optional(),
-  pinMetadata: CollectionPinnedMetadata$inboundSchema.optional(),
-  shortcuts: z.array(z.string()).optional(),
-  children: z.array(z.lazy(() => Collection$inboundSchema)).optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema)).optional(),
-  favoriteInfo: FavoriteInfo$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    addedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+    removedRoles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+    audienceFilters: z.array(FacetFilter$inboundSchema).optional(),
+    icon: z.string().optional(),
+    adminLocked: z.boolean().optional(),
+    parentId: z.number().int().optional(),
+    thumbnail: Thumbnail$inboundSchema.optional(),
+    allowedDatasource: z.string().optional(),
+    permissions: ObjectPermissions$inboundSchema.optional(),
+    trackingToken: z.string().optional(),
+    id: z.number().int(),
+    createTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    updateTime: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ).optional(),
+    creator: z.lazy(() => Person$inboundSchema).optional(),
+    updatedBy: z.lazy(() => Person$inboundSchema).optional(),
+    itemCount: z.number().int().optional(),
+    childCount: z.number().int().optional(),
+    items: z.array(z.lazy(() => CollectionItem$inboundSchema)).optional(),
+    pinMetadata: CollectionPinnedMetadata$inboundSchema.optional(),
+    shortcuts: z.array(z.string()).optional(),
+    children: z.array(z.lazy(() => Collection$inboundSchema)).optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$inboundSchema))
+      .optional(),
+    favoriteInfo: FavoriteInfo$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type Collection$Outbound = {
   name: string;
@@ -205,35 +210,38 @@ export const Collection$outboundSchema: z.ZodType<
   Collection$Outbound,
   z.ZodTypeDef,
   Collection
-> = z.object({
-  name: z.string(),
-  description: z.string(),
-  addedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
-    .optional(),
-  removedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
-    .optional(),
-  audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
-  icon: z.string().optional(),
-  adminLocked: z.boolean().optional(),
-  parentId: z.number().int().optional(),
-  thumbnail: Thumbnail$outboundSchema.optional(),
-  allowedDatasource: z.string().optional(),
-  permissions: ObjectPermissions$outboundSchema.optional(),
-  trackingToken: z.string().optional(),
-  id: z.number().int(),
-  createTime: z.date().transform(v => v.toISOString()).optional(),
-  updateTime: z.date().transform(v => v.toISOString()).optional(),
-  creator: z.lazy(() => Person$outboundSchema).optional(),
-  updatedBy: z.lazy(() => Person$outboundSchema).optional(),
-  itemCount: z.number().int().optional(),
-  childCount: z.number().int().optional(),
-  items: z.array(z.lazy(() => CollectionItem$outboundSchema)).optional(),
-  pinMetadata: CollectionPinnedMetadata$outboundSchema.optional(),
-  shortcuts: z.array(z.string()).optional(),
-  children: z.array(z.lazy(() => Collection$outboundSchema)).optional(),
-  roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema)).optional(),
-  favoriteInfo: FavoriteInfo$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    description: z.string(),
+    addedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    removedRoles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    audienceFilters: z.array(FacetFilter$outboundSchema).optional(),
+    icon: z.string().optional(),
+    adminLocked: z.boolean().optional(),
+    parentId: z.number().int().optional(),
+    thumbnail: Thumbnail$outboundSchema.optional(),
+    allowedDatasource: z.string().optional(),
+    permissions: ObjectPermissions$outboundSchema.optional(),
+    trackingToken: z.string().optional(),
+    id: z.number().int(),
+    createTime: z.date().transform(v => v.toISOString()).optional(),
+    updateTime: z.date().transform(v => v.toISOString()).optional(),
+    creator: z.lazy(() => Person$outboundSchema).optional(),
+    updatedBy: z.lazy(() => Person$outboundSchema).optional(),
+    itemCount: z.number().int().optional(),
+    childCount: z.number().int().optional(),
+    items: z.array(z.lazy(() => CollectionItem$outboundSchema)).optional(),
+    pinMetadata: CollectionPinnedMetadata$outboundSchema.optional(),
+    shortcuts: z.array(z.string()).optional(),
+    children: z.array(z.lazy(() => Collection$outboundSchema)).optional(),
+    roles: z.array(z.lazy(() => UserRoleSpecification$outboundSchema))
+      .optional(),
+    favoriteInfo: FavoriteInfo$outboundSchema.optional(),
+  })
+);
 
 export function collectionToJSON(collection: Collection): string {
   return JSON.stringify(Collection$outboundSchema.parse(collection));

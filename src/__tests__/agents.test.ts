@@ -185,3 +185,34 @@ test("Agents Platform Agents Create Run Responses", async () => {
   }, "{agent_id}");
   expect(result).toBeDefined();
 });
+
+test("Agents Platform Agents Create", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-create");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.create({
+    name: "HR Policy Agent",
+    instructions: "Answer employee questions about HR policies and benefits.",
+  });
+  expect(result).toBeDefined();
+});
+
+test("Agents Platform Agents Update", async () => {
+  const testHttpClient = createTestHTTPClient("platform-agents-update");
+
+  const glean = new Glean({
+    serverURL: process.env["TEST_SERVER_URL"] ?? "http://localhost:18080",
+    httpClient: testHttpClient,
+    apiToken: process.env["GLEAN_API_TOKEN"] ?? "value",
+  });
+
+  const result = await glean.agents.update({
+    instructions: "Answer questions using the latest HR policies.",
+  }, "{agent_id}");
+  expect(result).toBeDefined();
+});

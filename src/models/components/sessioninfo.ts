@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -32,13 +32,15 @@ export const SessionInfo$inboundSchema: z.ZodType<
   SessionInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sessionTrackingToken: z.string().optional(),
-  tabId: z.string().optional(),
-  lastSeen: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  lastQuery: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionTrackingToken: z.string().optional(),
+    tabId: z.string().optional(),
+    lastSeen: z.string().datetime({ offset: true }).transform(v => new Date(v))
+      .optional(),
+    lastQuery: z.string().optional(),
+  })
+);
 /** @internal */
 export type SessionInfo$Outbound = {
   sessionTrackingToken?: string | undefined;
@@ -52,12 +54,14 @@ export const SessionInfo$outboundSchema: z.ZodType<
   SessionInfo$Outbound,
   z.ZodTypeDef,
   SessionInfo
-> = z.object({
-  sessionTrackingToken: z.string().optional(),
-  tabId: z.string().optional(),
-  lastSeen: z.date().transform(v => v.toISOString()).optional(),
-  lastQuery: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionTrackingToken: z.string().optional(),
+    tabId: z.string().optional(),
+    lastSeen: z.date().transform(v => v.toISOString()).optional(),
+    lastQuery: z.string().optional(),
+  })
+);
 
 export function sessionInfoToJSON(sessionInfo: SessionInfo): string {
   return JSON.stringify(SessionInfo$outboundSchema.parse(sessionInfo));

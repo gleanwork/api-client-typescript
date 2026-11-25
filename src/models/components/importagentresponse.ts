@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -29,10 +29,12 @@ export const ImportAgentResponse$inboundSchema: z.ZodType<
   ImportAgentResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  workflowResult: WorkflowResult$inboundSchema.optional(),
-  status: ImportAgentStatus$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    workflowResult: WorkflowResult$inboundSchema.optional(),
+    status: ImportAgentStatus$inboundSchema.optional(),
+  })
+);
 
 export function importAgentResponseFromJSON(
   jsonString: string,

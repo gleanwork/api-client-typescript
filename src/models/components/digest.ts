@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { DigestSection, DigestSection$inboundSchema } from "./digestsection.js";
@@ -29,13 +29,15 @@ export type Digest = {
 };
 
 /** @internal */
-export const Digest$inboundSchema: z.ZodType<Digest, z.ZodTypeDef, unknown> = z
-  .object({
-    podcastFileId: z.string().optional(),
-    podcastDuration: z.number().optional(),
-    digestDate: z.string().optional(),
-    sections: z.array(DigestSection$inboundSchema).optional(),
-  });
+export const Digest$inboundSchema: z.ZodType<Digest, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      podcastFileId: z.string().optional(),
+      podcastDuration: z.number().optional(),
+      digestDate: z.string().optional(),
+      sections: z.array(DigestSection$inboundSchema).optional(),
+    })
+  );
 
 export function digestFromJSON(
   jsonString: string,

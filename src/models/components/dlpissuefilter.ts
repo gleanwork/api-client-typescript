@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -94,23 +94,25 @@ export const DlpIssueFilter$inboundSchema: z.ZodType<
   DlpIssueFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  searchText: z.string().optional(),
-  statuses: z.array(DlpIssueStatus$inboundSchema).optional(),
-  assigneeId: z.string().optional(),
-  assigneeIds: z.array(z.string()).optional(),
-  infoType: z.string().optional(),
-  infoTypes: z.array(z.string()).optional(),
-  regexId: z.string().optional(),
-  regexIds: z.array(z.string()).optional(),
-  reportIds: z.array(z.string()).optional(),
-  docId: z.string().optional(),
-  datasource: z.string().optional(),
-  datasources: z.array(z.string()).optional(),
-  visibility: z.string().optional(),
-  severities: z.array(DlpSeverity$inboundSchema).optional(),
-  timeRange: TimeRangeFilter$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    searchText: z.string().optional(),
+    statuses: z.array(DlpIssueStatus$inboundSchema).optional(),
+    assigneeId: z.string().optional(),
+    assigneeIds: z.array(z.string()).optional(),
+    infoType: z.string().optional(),
+    infoTypes: z.array(z.string()).optional(),
+    regexId: z.string().optional(),
+    regexIds: z.array(z.string()).optional(),
+    reportIds: z.array(z.string()).optional(),
+    docId: z.string().optional(),
+    datasource: z.string().optional(),
+    datasources: z.array(z.string()).optional(),
+    visibility: z.string().optional(),
+    severities: z.array(DlpSeverity$inboundSchema).optional(),
+    timeRange: TimeRangeFilter$inboundSchema.optional(),
+  })
+);
 /** @internal */
 export type DlpIssueFilter$Outbound = {
   searchText?: string | undefined;
@@ -135,23 +137,25 @@ export const DlpIssueFilter$outboundSchema: z.ZodType<
   DlpIssueFilter$Outbound,
   z.ZodTypeDef,
   DlpIssueFilter
-> = z.object({
-  searchText: z.string().optional(),
-  statuses: z.array(DlpIssueStatus$outboundSchema).optional(),
-  assigneeId: z.string().optional(),
-  assigneeIds: z.array(z.string()).optional(),
-  infoType: z.string().optional(),
-  infoTypes: z.array(z.string()).optional(),
-  regexId: z.string().optional(),
-  regexIds: z.array(z.string()).optional(),
-  reportIds: z.array(z.string()).optional(),
-  docId: z.string().optional(),
-  datasource: z.string().optional(),
-  datasources: z.array(z.string()).optional(),
-  visibility: z.string().optional(),
-  severities: z.array(DlpSeverity$outboundSchema).optional(),
-  timeRange: TimeRangeFilter$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    searchText: z.string().optional(),
+    statuses: z.array(DlpIssueStatus$outboundSchema).optional(),
+    assigneeId: z.string().optional(),
+    assigneeIds: z.array(z.string()).optional(),
+    infoType: z.string().optional(),
+    infoTypes: z.array(z.string()).optional(),
+    regexId: z.string().optional(),
+    regexIds: z.array(z.string()).optional(),
+    reportIds: z.array(z.string()).optional(),
+    docId: z.string().optional(),
+    datasource: z.string().optional(),
+    datasources: z.array(z.string()).optional(),
+    visibility: z.string().optional(),
+    severities: z.array(DlpSeverity$outboundSchema).optional(),
+    timeRange: TimeRangeFilter$outboundSchema.optional(),
+  })
+);
 
 export function dlpIssueFilterToJSON(dlpIssueFilter: DlpIssueFilter): string {
   return JSON.stringify(DlpIssueFilter$outboundSchema.parse(dlpIssueFilter));

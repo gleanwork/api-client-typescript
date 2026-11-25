@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import {
   DlpFindingFilter,
@@ -72,11 +73,13 @@ export type DlpExportFindingsRequest = {
 /** @internal */
 export const DlpExportFindingsRequestExportType$outboundSchema: z.ZodNativeEnum<
   typeof DlpExportFindingsRequestExportType
-> = z.nativeEnum(DlpExportFindingsRequestExportType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DlpExportFindingsRequestExportType)
+);
 
 /** @internal */
-export const FieldScope$outboundSchema: z.ZodNativeEnum<typeof FieldScope> = z
-  .nativeEnum(FieldScope);
+export const FieldScope$outboundSchema: z.ZodNativeEnum<typeof FieldScope> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FieldScope));
 
 /** @internal */
 export type DlpExportFindingsRequest$Outbound = {
@@ -93,14 +96,16 @@ export const DlpExportFindingsRequest$outboundSchema: z.ZodType<
   DlpExportFindingsRequest$Outbound,
   z.ZodTypeDef,
   DlpExportFindingsRequest
-> = z.object({
-  exportType: DlpExportFindingsRequestExportType$outboundSchema.optional(),
-  filter: DlpFindingFilter$outboundSchema.optional(),
-  issueFilter: DlpIssueFilter$outboundSchema.optional(),
-  fileName: z.string().optional(),
-  fieldScope: FieldScope$outboundSchema.optional(),
-  fieldsToExclude: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exportType: DlpExportFindingsRequestExportType$outboundSchema.optional(),
+    filter: DlpFindingFilter$outboundSchema.optional(),
+    issueFilter: DlpIssueFilter$outboundSchema.optional(),
+    fileName: z.string().optional(),
+    fieldScope: FieldScope$outboundSchema.optional(),
+    fieldsToExclude: z.array(z.string()).optional(),
+  })
+);
 
 export function dlpExportFindingsRequestToJSON(
   dlpExportFindingsRequest: DlpExportFindingsRequest,

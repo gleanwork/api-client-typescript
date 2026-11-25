@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 
 /**
@@ -47,7 +48,9 @@ export type PlatformAdminAgentFilter = {
 /** @internal */
 export const PlatformAdminAgentFilterOperator$outboundSchema: z.ZodNativeEnum<
   typeof PlatformAdminAgentFilterOperator
-> = z.nativeEnum(PlatformAdminAgentFilterOperator);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PlatformAdminAgentFilterOperator)
+);
 
 /** @internal */
 export type PlatformAdminAgentFilter$Outbound = {
@@ -61,11 +64,13 @@ export const PlatformAdminAgentFilter$outboundSchema: z.ZodType<
   PlatformAdminAgentFilter$Outbound,
   z.ZodTypeDef,
   PlatformAdminAgentFilter
-> = z.object({
-  field: z.string(),
-  values: z.array(z.string()),
-  operator: PlatformAdminAgentFilterOperator$outboundSchema.default("EQUALS"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string(),
+    values: z.array(z.string()),
+    operator: PlatformAdminAgentFilterOperator$outboundSchema.default("EQUALS"),
+  })
+);
 
 export function platformAdminAgentFilterToJSON(
   platformAdminAgentFilter: PlatformAdminAgentFilter,

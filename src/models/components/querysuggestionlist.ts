@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -30,10 +30,13 @@ export const QuerySuggestionList$inboundSchema: z.ZodType<
   QuerySuggestionList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  suggestions: z.array(z.lazy(() => QuerySuggestion$inboundSchema)).optional(),
-  person: z.lazy(() => Person$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    suggestions: z.array(z.lazy(() => QuerySuggestion$inboundSchema))
+      .optional(),
+    person: z.lazy(() => Person$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type QuerySuggestionList$Outbound = {
   suggestions?: Array<QuerySuggestion$Outbound> | undefined;
@@ -45,10 +48,13 @@ export const QuerySuggestionList$outboundSchema: z.ZodType<
   QuerySuggestionList$Outbound,
   z.ZodTypeDef,
   QuerySuggestionList
-> = z.object({
-  suggestions: z.array(z.lazy(() => QuerySuggestion$outboundSchema)).optional(),
-  person: z.lazy(() => Person$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    suggestions: z.array(z.lazy(() => QuerySuggestion$outboundSchema))
+      .optional(),
+    person: z.lazy(() => Person$outboundSchema).optional(),
+  })
+);
 
 export function querySuggestionListToJSON(
   querySuggestionList: QuerySuggestionList,

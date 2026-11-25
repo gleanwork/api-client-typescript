@@ -4,23 +4,40 @@
  */
 
 import { agentsCancelRun } from "../funcs/agentsCancelRun.js";
-import {
-  agentsCreateRun,
-  CreateRunAcceptEnum,
-} from "../funcs/agentsCreateRun.js";
+import { agentsCreate } from "../funcs/agentsCreate.js";
+import { agentsCreateRun } from "../funcs/agentsCreateRun.js";
+import { agentsCreateRunStream } from "../funcs/agentsCreateRunStream.js";
+import { agentsDelete } from "../funcs/agentsDelete.js";
 import { agentsGet } from "../funcs/agentsGet.js";
 import { agentsGetRun } from "../funcs/agentsGetRun.js";
 import { agentsGetSchemas } from "../funcs/agentsGetSchemas.js";
 import { agentsRespondToRun } from "../funcs/agentsRespondToRun.js";
 import { agentsSearch } from "../funcs/agentsSearch.js";
+import { agentsUpdate } from "../funcs/agentsUpdate.js";
+import { EventStream } from "../lib/event-streams.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
-export { CreateRunAcceptEnum } from "../funcs/agentsCreateRun.js";
-
 export class Agents extends ClientSDK {
+  /**
+   * Create agent
+   *
+   * @remarks
+   * Create and publish an agent from its complete definition.
+   */
+  async create(
+    request: components.PlatformAgentCreateRequest,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentGetResponse> {
+    return unwrapAsync(agentsCreate(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Search agents
    *
@@ -56,6 +73,42 @@ export class Agents extends ClientSDK {
   }
 
   /**
+   * Update agent
+   *
+   * @remarks
+   * Update and publish an agent. Supplied fields replace their saved values and omitted fields are kept.
+   */
+  async update(
+    platformAgentUpdateRequest: components.PlatformAgentUpdateRequest,
+    agentId: string,
+    options?: RequestOptions,
+  ): Promise<components.PlatformAgentGetResponse> {
+    return unwrapAsync(agentsUpdate(
+      this,
+      platformAgentUpdateRequest,
+      agentId,
+      options,
+    ));
+  }
+
+  /**
+   * Delete agent
+   *
+   * @remarks
+   * Delete an agent.
+   */
+  async delete(
+    agentId: string,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(agentsDelete(
+      this,
+      agentId,
+      options,
+    ));
+  }
+
+  /**
    * Get agent schemas
    *
    * @remarks
@@ -81,13 +134,13 @@ export class Agents extends ClientSDK {
    * Execute an agent run. By default, set `stream` to true to receive server-sent events; otherwise the response contains the final agent messages. Set `execution_mode` to `DURABLE` to persist a new run and return its initial snapshot with HTTP 201 without waiting for execution. Poll the agent-scoped GET run endpoint for progress. Durable execution continues after an HTTP disconnect, but is not automatically resumed after a QE restart or crash. An active turn becomes overdue more than 40 minutes after acceptance (a 30-minute execution timeout plus 10 minutes of grace). The next GET of the run marks the overdue turn FAILED without replay; there is no periodic sweep. Without a GET, the stored run can remain RUNNING. Failure does not prove that external tool work has stopped. Paused runs are not expired; an accepted approval continuation starts a fresh deadline. Each POST creates a new run; retrying a POST can create another execution. Submit pending approval decisions through the run responses endpoint, and cancellation can be requested through the run cancellations endpoint. A run tracks one workflow execution; automatic background-subagent wake turns are separate executions, not continuations tracked by this run ID.
    */
   async createRun(
-    platformAgentRunCreateRequest: components.PlatformAgentRunCreateRequest,
+    requestBody: operations.PlatformAgentsCreateRunRequestBody,
     agentId: string,
-    options?: RequestOptions & { acceptHeaderOverride?: CreateRunAcceptEnum },
+    options?: RequestOptions,
   ): Promise<operations.PlatformAgentsCreateRunResponse> {
     return unwrapAsync(agentsCreateRun(
       this,
-      platformAgentRunCreateRequest,
+      requestBody,
       agentId,
       options,
     ));
@@ -147,6 +200,25 @@ export class Agents extends ClientSDK {
     return unwrapAsync(agentsRespondToRun(
       this,
       platformAgentRunResponsesRequest,
+      agentId,
+      options,
+    ));
+  }
+
+  /**
+   * Create a streaming agent run
+   *
+   * @remarks
+   * SDK-only logical operation. HTTP clients must call the base path; the URL fragment is not sent. Execute an agent run as server-sent events. HTTP clients request this mode by setting `stream` to true in the JSON body. Streaming is not supported in DURABLE mode.
+   */
+  async createRunStream(
+    requestBody: operations.PlatformAgentsCreateRunStreamRequestBody,
+    agentId: string,
+    options?: RequestOptions,
+  ): Promise<EventStream<components.PlatformAgentRunStreamEvent>> {
+    return unwrapAsync(agentsCreateRunStream(
+      this,
+      requestBody,
       agentId,
       options,
     ));

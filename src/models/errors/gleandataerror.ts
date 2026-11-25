@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 import { GleanBaseError } from "./gleanbaseerror.js";
 
@@ -77,21 +78,24 @@ export const GleanDataError$inboundSchema: z.ZodType<
   GleanDataError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  badGmailToken: z.boolean().optional(),
-  badOutlookToken: z.boolean().optional(),
-  invalidOperators: z.array(components.InvalidOperatorValueError$inboundSchema)
-    .optional(),
-  errorMessages: z.array(components.ErrorMessage$inboundSchema).optional(),
-  federatedSearchRateLimitError: z.boolean().optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new GleanDataError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    badGmailToken: z.boolean().optional(),
+    badOutlookToken: z.boolean().optional(),
+    invalidOperators: z.array(
+      components.InvalidOperatorValueError$inboundSchema,
+    ).optional(),
+    errorMessages: z.array(components.ErrorMessage$inboundSchema).optional(),
+    federatedSearchRateLimitError: z.boolean().optional(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new GleanDataError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

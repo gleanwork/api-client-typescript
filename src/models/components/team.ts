@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -148,43 +148,45 @@ export const TeamStatus$inboundSchema: z.ZodType<
   TeamStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(TeamStatus);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(TeamStatus));
 /** @internal */
 export const TeamStatus$outboundSchema: z.ZodType<
   string,
   z.ZodTypeDef,
   TeamStatus
-> = openEnums.outboundSchema(TeamStatus);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.outboundSchema(TeamStatus));
 
 /** @internal */
-export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> = z
-  .object({
-    relatedObjects: z.record(RelatedObjectEdge$inboundSchema).optional(),
-    permissions: ObjectPermissions$inboundSchema.optional(),
-    id: z.string(),
-    name: z.string(),
-    description: z.string().optional(),
-    businessUnit: z.string().optional(),
-    department: z.string().optional(),
-    photoUrl: z.string().optional(),
-    bannerUrl: z.string().optional(),
-    externalLink: z.string().optional(),
-    members: z.array(z.lazy(() => PersonToTeamRelationship$inboundSchema))
-      .optional(),
-    memberCount: z.number().int().optional(),
-    emails: z.array(TeamEmail$inboundSchema).optional(),
-    customFields: z.array(z.lazy(() => CustomFieldData$inboundSchema))
-      .optional(),
-    datasourceProfiles: z.array(DatasourceProfile$inboundSchema).optional(),
-    datasource: z.string().optional(),
-    createdFrom: z.string().optional(),
-    lastUpdatedAt: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    status: TeamStatus$inboundSchema.default("PROCESSED"),
-    canBeDeleted: z.boolean().default(true),
-    loggingId: z.string().optional(),
-  });
+export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      relatedObjects: z.record(RelatedObjectEdge$inboundSchema).optional(),
+      permissions: ObjectPermissions$inboundSchema.optional(),
+      id: z.string(),
+      name: z.string(),
+      description: z.string().optional(),
+      businessUnit: z.string().optional(),
+      department: z.string().optional(),
+      photoUrl: z.string().optional(),
+      bannerUrl: z.string().optional(),
+      externalLink: z.string().optional(),
+      members: z.array(z.lazy(() => PersonToTeamRelationship$inboundSchema))
+        .optional(),
+      memberCount: z.number().int().optional(),
+      emails: z.array(TeamEmail$inboundSchema).optional(),
+      customFields: z.array(z.lazy(() => CustomFieldData$inboundSchema))
+        .optional(),
+      datasourceProfiles: z.array(DatasourceProfile$inboundSchema).optional(),
+      datasource: z.string().optional(),
+      createdFrom: z.string().optional(),
+      lastUpdatedAt: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ).optional(),
+      status: TeamStatus$inboundSchema.default("PROCESSED"),
+      canBeDeleted: z.boolean().default(true),
+      loggingId: z.string().optional(),
+    })
+  );
 /** @internal */
 export type Team$Outbound = {
   relatedObjects?: { [k: string]: RelatedObjectEdge$Outbound } | undefined;
@@ -212,31 +214,33 @@ export type Team$Outbound = {
 
 /** @internal */
 export const Team$outboundSchema: z.ZodType<Team$Outbound, z.ZodTypeDef, Team> =
-  z.object({
-    relatedObjects: z.record(RelatedObjectEdge$outboundSchema).optional(),
-    permissions: ObjectPermissions$outboundSchema.optional(),
-    id: z.string(),
-    name: z.string(),
-    description: z.string().optional(),
-    businessUnit: z.string().optional(),
-    department: z.string().optional(),
-    photoUrl: z.string().optional(),
-    bannerUrl: z.string().optional(),
-    externalLink: z.string().optional(),
-    members: z.array(z.lazy(() => PersonToTeamRelationship$outboundSchema))
-      .optional(),
-    memberCount: z.number().int().optional(),
-    emails: z.array(TeamEmail$outboundSchema).optional(),
-    customFields: z.array(z.lazy(() => CustomFieldData$outboundSchema))
-      .optional(),
-    datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
-    datasource: z.string().optional(),
-    createdFrom: z.string().optional(),
-    lastUpdatedAt: z.date().transform(v => v.toISOString()).optional(),
-    status: TeamStatus$outboundSchema.default("PROCESSED"),
-    canBeDeleted: z.boolean().default(true),
-    loggingId: z.string().optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      relatedObjects: z.record(RelatedObjectEdge$outboundSchema).optional(),
+      permissions: ObjectPermissions$outboundSchema.optional(),
+      id: z.string(),
+      name: z.string(),
+      description: z.string().optional(),
+      businessUnit: z.string().optional(),
+      department: z.string().optional(),
+      photoUrl: z.string().optional(),
+      bannerUrl: z.string().optional(),
+      externalLink: z.string().optional(),
+      members: z.array(z.lazy(() => PersonToTeamRelationship$outboundSchema))
+        .optional(),
+      memberCount: z.number().int().optional(),
+      emails: z.array(TeamEmail$outboundSchema).optional(),
+      customFields: z.array(z.lazy(() => CustomFieldData$outboundSchema))
+        .optional(),
+      datasourceProfiles: z.array(DatasourceProfile$outboundSchema).optional(),
+      datasource: z.string().optional(),
+      createdFrom: z.string().optional(),
+      lastUpdatedAt: z.date().transform(v => v.toISOString()).optional(),
+      status: TeamStatus$outboundSchema.default("PROCESSED"),
+      canBeDeleted: z.boolean().default(true),
+      loggingId: z.string().optional(),
+    })
+  );
 
 export function teamToJSON(team: Team): string {
   return JSON.stringify(Team$outboundSchema.parse(team));

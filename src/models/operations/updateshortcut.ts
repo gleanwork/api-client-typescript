@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type UpdateshortcutRequest = {
@@ -29,14 +30,16 @@ export const UpdateshortcutRequest$outboundSchema: z.ZodType<
   UpdateshortcutRequest$Outbound,
   z.ZodTypeDef,
   UpdateshortcutRequest
-> = z.object({
-  locale: z.string().optional(),
-  updateShortcutRequest: components.UpdateShortcutRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    updateShortcutRequest: "UpdateShortcutRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    locale: z.string().optional(),
+    updateShortcutRequest: components.UpdateShortcutRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      updateShortcutRequest: "UpdateShortcutRequest",
+    });
+  })
+);
 
 export function updateshortcutRequestToJSON(
   updateshortcutRequest: UpdateshortcutRequest,

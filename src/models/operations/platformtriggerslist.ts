@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type PlatformTriggersListRequest = {
   /**
@@ -27,10 +28,12 @@ export const PlatformTriggersListRequest$outboundSchema: z.ZodType<
   PlatformTriggersListRequest$Outbound,
   z.ZodTypeDef,
   PlatformTriggersListRequest
-> = z.object({
-  page_size: z.number().int().default(50),
-  cursor: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    page_size: z.number().int().default(50),
+    cursor: z.string().optional(),
+  })
+);
 
 export function platformTriggersListRequestToJSON(
   platformTriggersListRequest: PlatformTriggersListRequest,

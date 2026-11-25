@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformChatUpdateRequest = {
@@ -26,15 +27,17 @@ export const PlatformChatUpdateRequest$outboundSchema: z.ZodType<
   PlatformChatUpdateRequest$Outbound,
   z.ZodTypeDef,
   PlatformChatUpdateRequest
-> = z.object({
-  chat_id: z.string(),
-  platformChatUpdateRequest:
-    components.PlatformChatUpdateRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformChatUpdateRequest: "PlatformChatUpdateRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    chat_id: z.string(),
+    platformChatUpdateRequest:
+      components.PlatformChatUpdateRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      platformChatUpdateRequest: "PlatformChatUpdateRequest",
+    });
+  })
+);
 
 export function platformChatUpdateRequestToJSON(
   platformChatUpdateRequest: PlatformChatUpdateRequest,

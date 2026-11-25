@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type AuthorizeToolServerRequest = {
@@ -26,15 +27,17 @@ export const AuthorizeToolServerRequest$outboundSchema: z.ZodType<
   AuthorizeToolServerRequest$Outbound,
   z.ZodTypeDef,
   AuthorizeToolServerRequest
-> = z.object({
-  serverId: z.string(),
-  authorizeToolServerRequest:
-    components.AuthorizeToolServerRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    authorizeToolServerRequest: "AuthorizeToolServerRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serverId: z.string(),
+    authorizeToolServerRequest:
+      components.AuthorizeToolServerRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      authorizeToolServerRequest: "AuthorizeToolServerRequest",
+    });
+  })
+);
 
 export function authorizeToolServerRequestToJSON(
   authorizeToolServerRequest: AuthorizeToolServerRequest,

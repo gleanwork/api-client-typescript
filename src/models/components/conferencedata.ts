@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import * as openEnums from "../../types/enums.js";
 import { OpenEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
@@ -37,25 +37,29 @@ export const Provider$inboundSchema: z.ZodType<
   Provider,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(Provider);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(Provider));
 
 /** @internal */
 export const ConferenceDataSource$inboundSchema: z.ZodType<
   ConferenceDataSource,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ConferenceDataSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ConferenceDataSource)
+);
 
 /** @internal */
 export const ConferenceData$inboundSchema: z.ZodType<
   ConferenceData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  provider: Provider$inboundSchema,
-  uri: z.string(),
-  source: ConferenceDataSource$inboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: Provider$inboundSchema,
+    uri: z.string(),
+    source: ConferenceDataSource$inboundSchema.optional(),
+  })
+);
 
 export function conferenceDataFromJSON(
   jsonString: string,

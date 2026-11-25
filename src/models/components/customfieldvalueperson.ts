@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -23,9 +23,11 @@ export const CustomFieldValuePerson$inboundSchema: z.ZodType<
   CustomFieldValuePerson,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  person: z.lazy(() => Person$inboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person: z.lazy(() => Person$inboundSchema).optional(),
+  })
+);
 /** @internal */
 export type CustomFieldValuePerson$Outbound = {
   person?: Person$Outbound | undefined;
@@ -36,9 +38,11 @@ export const CustomFieldValuePerson$outboundSchema: z.ZodType<
   CustomFieldValuePerson$Outbound,
   z.ZodTypeDef,
   CustomFieldValuePerson
-> = z.object({
-  person: z.lazy(() => Person$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person: z.lazy(() => Person$outboundSchema).optional(),
+  })
+);
 
 export function customFieldValuePersonToJSON(
   customFieldValuePerson: CustomFieldValuePerson,

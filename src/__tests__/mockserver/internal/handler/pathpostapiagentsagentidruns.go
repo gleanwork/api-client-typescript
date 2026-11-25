@@ -41,7 +41,7 @@ func testPlatformAgentsCreateRunPlatformAgentsCreateRun0(w http.ResponseWriter, 
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if err := assert.AcceptHeader(req, []string{"application/json;q=1", "text/event-stream;q=0"}); err != nil {
+	if err := assert.AcceptHeader(req, []string{"application/json"}); err != nil {
 		log.Printf("assertion error: %s\n", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

@@ -4,6 +4,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type UserGeneratedContentId = {
   /**
@@ -22,9 +23,11 @@ export const UserGeneratedContentId$outboundSchema: z.ZodType<
   UserGeneratedContentId$Outbound,
   z.ZodTypeDef,
   UserGeneratedContentId
-> = z.object({
-  id: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int().optional(),
+  })
+);
 
 export function userGeneratedContentIdToJSON(
   userGeneratedContentId: UserGeneratedContentId,

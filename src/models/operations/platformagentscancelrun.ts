@@ -5,6 +5,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as components from "../components/index.js";
 
 export type PlatformAgentsCancelRunRequest = {
@@ -28,15 +29,18 @@ export const PlatformAgentsCancelRunRequest$outboundSchema: z.ZodType<
   PlatformAgentsCancelRunRequest$Outbound,
   z.ZodTypeDef,
   PlatformAgentsCancelRunRequest
-> = z.object({
-  agent_id: z.string(),
-  platformAgentRunCancellationRequest:
-    components.PlatformAgentRunCancellationRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    platformAgentRunCancellationRequest: "PlatformAgentRunCancellationRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    agent_id: z.string(),
+    platformAgentRunCancellationRequest:
+      components.PlatformAgentRunCancellationRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      platformAgentRunCancellationRequest:
+        "PlatformAgentRunCancellationRequest",
+    });
+  })
+);
 
 export function platformAgentsCancelRunRequestToJSON(
   platformAgentsCancelRunRequest: PlatformAgentsCancelRunRequest,

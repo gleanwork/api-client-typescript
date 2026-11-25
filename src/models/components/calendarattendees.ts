@@ -4,7 +4,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -50,15 +50,17 @@ export const CalendarAttendees$inboundSchema: z.ZodType<
   CalendarAttendees,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  people: z.array(z.lazy(() => CalendarAttendee$inboundSchema)).optional(),
-  isLimit: z.boolean().optional(),
-  total: z.number().int().optional(),
-  numAccepted: z.number().int().optional(),
-  numDeclined: z.number().int().optional(),
-  numNoResponse: z.number().int().optional(),
-  numTentative: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    people: z.array(z.lazy(() => CalendarAttendee$inboundSchema)).optional(),
+    isLimit: z.boolean().optional(),
+    total: z.number().int().optional(),
+    numAccepted: z.number().int().optional(),
+    numDeclined: z.number().int().optional(),
+    numNoResponse: z.number().int().optional(),
+    numTentative: z.number().int().optional(),
+  })
+);
 /** @internal */
 export type CalendarAttendees$Outbound = {
   people?: Array<CalendarAttendee$Outbound> | undefined;
@@ -75,15 +77,17 @@ export const CalendarAttendees$outboundSchema: z.ZodType<
   CalendarAttendees$Outbound,
   z.ZodTypeDef,
   CalendarAttendees
-> = z.object({
-  people: z.array(z.lazy(() => CalendarAttendee$outboundSchema)).optional(),
-  isLimit: z.boolean().optional(),
-  total: z.number().int().optional(),
-  numAccepted: z.number().int().optional(),
-  numDeclined: z.number().int().optional(),
-  numNoResponse: z.number().int().optional(),
-  numTentative: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    people: z.array(z.lazy(() => CalendarAttendee$outboundSchema)).optional(),
+    isLimit: z.boolean().optional(),
+    total: z.number().int().optional(),
+    numAccepted: z.number().int().optional(),
+    numDeclined: z.number().int().optional(),
+    numNoResponse: z.number().int().optional(),
+    numTentative: z.number().int().optional(),
+  })
+);
 
 export function calendarAttendeesToJSON(
   calendarAttendees: CalendarAttendees,
